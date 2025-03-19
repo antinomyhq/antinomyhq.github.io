@@ -78,7 +78,7 @@ const CodeTabItem = ({
           {MAC_INSTALLATION}
         </CodeBlock>
       </TabItem>
-      <TabItem value="linux" label="Linux (Shell Script)">
+      <TabItem value="linux" label="Linux">
         <CodeBlock
           language={language}
           showLineNumbers={showLineNumbers}
