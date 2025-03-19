@@ -7,9 +7,27 @@ sidebar_label: Installation
 
 # Installing Forge
 
-Forge can be installed on macOS and Linux operating systems. Follow the instructions for your platform below.
+Forge can be installed on Windows, macOS, and Linux operating systems. Follow the instructions for your preferred method below.
 
-## macOS Installation
+## NPM Installation (Recommended)
+
+The recommended way to install Forge is using npm, which works consistently across **all platforms** (Windows, macOS, and Linux):
+
+```bash
+# Install Forge globally using npm
+npm install -g @antinomyhq/forge
+
+# Or run directly without installation using npx
+npx @antinomyhq/forge
+```
+
+This method provides a consistent installation experience across all operating systems.
+
+## Alternative Installation Methods
+
+While npm is the recommended approach, you can also install Forge using these platform-specific methods:
+
+### macOS: Homebrew
 
 Using Homebrew (macOS package manager):
 
@@ -23,17 +41,17 @@ brew install code-forge
 
 If you don't have Homebrew installed, you can install it by following the instructions at [brew.sh](https://brew.sh/).
 
-## Linux Installation
+### Linux: Shell Script
 
 Choose either of these methods to install Forge on Linux:
 
-### Using curl
+#### Using curl
 
 ```bash
 curl -L https://raw.githubusercontent.com/antinomyhq/forge/main/install.sh | bash
 ```
 
-### Using wget
+#### Using wget
 
 ```bash
 wget -qO- https://raw.githubusercontent.com/antinomyhq/forge/main/install.sh | bash
@@ -53,13 +71,20 @@ You should see output displaying the version of Forge that you've installed.
 
 To update Forge to the latest version:
 
-### macOS
+### NPM (All Platforms)
+
+```bash
+# Update globally installed package
+npm update -g @antinomyhq/forge
+```
+
+### macOS: Homebrew
 
 ```bash
 brew upgrade code-forge
 ```
 
-### Linux
+### Linux: Shell Script
 
 Run the same installation command again to get the latest version:
 

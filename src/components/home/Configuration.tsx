@@ -20,7 +20,7 @@ const Configuration = (): JSX.Element => {
         <div className="mb-SPACE_06">
           <h5 className="font-semibold mb-2">Quick Setup</h5>
           <p className="text-content-small sm:text-content-medium mb-2">
-            1. Install Forge using the commands on the right
+            1. Install Forge using the commands on the right (npm works on all platforms)
           </p>
           <p className="text-content-small sm:text-content-medium mb-2">
             2. Create a <code>.env</code> file in your home directory with:
@@ -60,7 +60,16 @@ const CodeTabItem = ({
   <div>
     {title && <h4 className="text-lg font-semibold mb-2">{title}</h4>}
     <Tabs>
-      <TabItem value="mac" label="MacOS">
+      <TabItem value="npm" label="NPM (All Platforms)" default>
+        <CodeBlock
+          language={language}
+          showLineNumbers={showLineNumbers}
+          className="overflow-y-auto md:min-w-[45rem] min-w-[100%]"
+        >
+          {NPM_INSTALLATION}
+        </CodeBlock>
+      </TabItem>
+      <TabItem value="mac" label="MacOS (Homebrew)">
         <CodeBlock
           language={language}
           showLineNumbers={showLineNumbers}
@@ -69,7 +78,7 @@ const CodeTabItem = ({
           {MAC_INSTALLATION}
         </CodeBlock>
       </TabItem>
-      <TabItem value="linux" label="Linux">
+      <TabItem value="linux" label="Linux (Shell Script)">
         <CodeBlock
           language={language}
           showLineNumbers={showLineNumbers}
@@ -85,6 +94,13 @@ const CodeTabItem = ({
 export default Configuration
 
 const INSTALLATION = `# Choose the appropriate tab for your operating system
+`
+
+const NPM_INSTALLATION = `# Install Forge globally using npm (recommended for all platforms)
+npm install -g @antinomyhq/forge
+
+# Or run directly without installation using npx
+npx @antinomyhq/forge
 `
 
 const MAC_INSTALLATION = `# Add Code-Forge's package repository to Homebrew
