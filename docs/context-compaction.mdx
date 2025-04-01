@@ -64,9 +64,8 @@ agents:
 
 Set `token_threshold` based on your model's context window size. For example:
 
-- For Claude 3.5 Sonnet (~200K token window): 150,000 to 180,000 tokens
-- For Claude 3 Opus (~180K token window): 120,000 to 160,000 tokens
-- For GPT-4 Turbo (~128K token window): 80,000 to 100,000 tokens
+- For Claude 3.7 Sonnet (~200K token window): 150,000 to 180,000 tokens
+- For Claude 3.5 haiku (~200K token window): 120,000 to 160,000 tokens
 
 ### Choosing Summarization Models
 
@@ -82,15 +81,6 @@ The retention window controls how many recent messages are preserved verbatim:
 - Larger windows maintain more recent context but reduce compaction efficiency
 - Smaller windows allow for more aggressive compaction but may lose recent details
 - A typical value is 6-10 messages
-
-### Custom Summarization Prompts
-
-You can provide a custom Handlebars template for the summarization prompt to better suit your specific use case:
-
-```yaml
-compact:
-  prompt: "{{> custom-summarizer.hbs }}"
-```
 
 The template receives the conversation history and should instruct the model on how to create an effective summary.
 
