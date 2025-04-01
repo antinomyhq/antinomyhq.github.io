@@ -16,7 +16,7 @@ Forge provides a suite of built-in commands prefixed with a forward slash (`/`) 
 | `/new`    | Start a new task          | When you've completed your current task and want to begin a fresh conversation           |
 | `/info`   | View environment summary  | When you need to check your environment configuration, logs location, or command history |
 | `/models` | List available AI models  | When you want to see which AI models are available and their capabilities                |
-| `/dump`   | Save conversation to JSON | When you want to save the current conversation for reference or sharing                  |
+| `/dump`   | Save conversation to JSON | When you need to debug issues or report problems to the development team                   |
 | `/act`    | Switch to ACT mode        | When you want Forge to execute commands and implement changes (this is the default mode) |
 | `/plan`   | Switch to PLAN mode       | When you want Forge to analyze and plan but not modify files                             |
 | `/help`   | Display help information  | When you need a reminder of available commands                                           |
@@ -99,7 +99,7 @@ The `/dump` command saves the current conversation in JSON format to a file for 
 Conversation saved to: /Users/username/2023-03-15_14-22-37-dump.json
 ```
 
-**When to use**: Use this when you want to save a particularly useful conversation for documentation, sharing, or reference.
+**When to use**: Use this when you need to debug issues, inspect the conversation context, or report problems to the development team.
 
 ### `/act`
 
@@ -162,11 +162,11 @@ For information about creating custom commands, see the [Custom Commands](/docs/
 ## Best Practices
 
 - **Start Fresh**: Use `/new` when switching between unrelated tasks to ensure the context is clean.
-- **Preserve Knowledge**: Use `/dump` to save valuable conversations that you might want to reference later.
+- **Debug Context**: Use `/dump` for debugging purposes when you need to inspect the conversation context or report issues.
 - **Understand Before Acting**: Use `/plan` to see what actions Forge would take before allowing it to make changes.
 - **Check System Status**: Use `/info` when something isn't working as expected to diagnose potential issues.
 - **Select Appropriate Models**: Use `/models` to understand which model is best for your specific task.
-- **Create Custom Commands**: Define your own [custom commands](../custom-commands) for project-specific operations and workflows.
+- **Create Custom Commands**: Define your own [custom commands](/docs/custom-commands) for project-specific operations and workflows.
 
 ## Related Documentation
 
