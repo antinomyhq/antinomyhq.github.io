@@ -5,11 +5,11 @@ description: "Explore Forge's built-in commands and when to use them."
 sidebar_label: Built-in Commands
 ---
 
-# Built-in Commands
+# Built-in Commands and Tools
 
-Forge provides a suite of built-in commands that enhance workflow efficiency and provide system control. These commands are prefixed with a forward slash (`/`) to differentiate them from standard input queries and task descriptions.
+Forge provides a suite of built-in commands and tools that enhance workflow efficiency and provide system control. Commands are prefixed with a forward slash (`/`) for direct user interaction, while tools are used by AI agents to perform operations and communicate with users.
 
-## Available Commands
+## Slash Commands
 
 | Command   | Description               | When to Use                                                                              |
 | --------- | ------------------------- | ---------------------------------------------------------------------------------------- |
@@ -101,6 +101,39 @@ The `/help` command displays information about available commands and their usag
 
 **When to use**: Use this when you need a quick reminder of the available commands and their functions.
 
+## Core Tools
+
+Forge agents use a variety of tools to interact with your system and provide information. The following are some of the most important tools:
+
+### User Communication Tool
+
+#### tool_forge_display_show_user
+
+This tool allows agents to display richly formatted information using markdown. It renders properly formatted content in your terminal with support for headings, lists, tables, code blocks, and text emphasis.
+
+```javascript
+tool_forge_display_show_user({
+  content: "# Analysis Results\n\n- **Issue found**: Memory leak in module X\n- **Solution**: Update allocation strategy"
+})
+```
+
+**Key features**:
+- Rich markdown rendering in the terminal
+- Support for complex formatting including tables and code blocks
+- Improved readability for complex information
+- Visual hierarchy through headings and emphasis
+
+**Example output**:
+
+```
+# Analysis Results
+
+- **Issue found**: Memory leak in module X
+- **Solution**: Update allocation strategy
+```
+
+For a complete reference of all available tools including file operations, network requests, and process management, see the [Tools Reference](../tools-reference) documentation.
+
 ## Best Practices
 
 - **Start Fresh**: Use `/new` when switching between unrelated tasks to ensure the context is clean.
@@ -108,5 +141,12 @@ The `/help` command displays information about available commands and their usag
 - **Understand Before Acting**: Use `/plan` to see what actions Forge would take before allowing it to make changes.
 - **Check System Status**: Use `/info` when something isn't working as expected to diagnose potential issues.
 - **Select Appropriate Models**: Use `/models` to understand which model is best for your specific task.
+- **Improve Readability**: Agents use `tool_forge_display_show_user` to make complex information more readable with markdown formatting.
+- **Create Custom Commands**: Define your own [custom commands](../custom-commands) for project-specific operations and workflows.
 
-<!-- Note: This page focuses on built-in commands that enhance your interaction with Forge. For information about operating modes, see the Operation Modes section. -->
+## Related Documentation
+
+- [Custom Commands](../custom-commands) - Learn how to define your own slash commands
+- [Operation Modes](../operation-modes) - Learn about ACT and PLAN modes in detail
+- [Tools Reference](../tools-reference) - Comprehensive documentation of all available tools
+- [Error Handling](../error-handling) - How Forge handles and recovers from errors

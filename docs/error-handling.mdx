@@ -1,0 +1,235 @@
+---
+title: Error Handling & Retry Mechanisms
+slug: /error-handling
+sidebar_position: 15
+description: "Configure robust error handling with automatic retries for improved resilience"
+sidebar_label: Error Handling
+---
+
+# Error Handling & Retry Mechanisms
+
+Forge includes powerful error handling capabilities, including an automatic retry mechanism with exponential backoff. This documentation covers how to configure and optimize these features for improved system resilience.
+
+## Automatic Retry Mechanism
+
+Forge can automatically retry failed operations such as API calls, model inference requests, and certain tool executions when they encounter transient errors.
+
+### How It Works
+
+When a supported operation fails:
+
+1. Forge detects the failure and categorizes the error
+2. If the error is retryable, a retry is attempted after an initial delay
+3. Each subsequent retry uses an exponentially increasing delay
+4. After reaching the maximum retry count, the operation fails permanently
+5. Success at any point in the retry sequence continues normal execution
+
+This approach follows industry best practices for handling transient issues like network glitches, rate limiting, and temporary service unavailability.
+
+## Configuration Options
+
+The retry mechanism can be configured in your `forge.yaml` file:
+
+```yaml
+retry:
+  max_attempts: 5             # Maximum number of attempts (including first try)
+  initial_delay_ms: 100       # Initial delay before first retry (milliseconds)
+  max_delay_ms: 10000         # Maximum delay between retries (milliseconds)
+  backoff_factor: 2           # Multiplier for delay between retries
+  retryable_status_codes:     # HTTP status codes to retry
+    - 429                     # Too Many Requests
+    - 500                     # Internal Server Error
+    - 502                     # Bad Gateway
+    - 503                     # Service Unavailable
+    - 504                     # Gateway Timeout
+```
+
+### Configuration Parameters
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `max_attempts` | 3 | Maximum number of attempts (including initial attempt) |
+| `initial_delay_ms` | 100 | Initial delay before first retry (milliseconds) |
+| `max_delay_ms` | 10000 | Maximum delay cap between retries |
+| `backoff_factor` | 2 | Exponential multiplier for delay between retries |
+| `retryable_status_codes` | [429, 500, 502, 503, 504] | HTTP status codes that trigger retries |
+
+### How Backoff Works
+
+With default settings, retry delays follow this pattern:
+1. Initial attempt fails
+2. Wait 100ms (initial_delay_ms)
+3. First retry fails
+4. Wait 200ms (initial_delay_ms × backoff_factor)
+5. Second retry fails
+6. Wait 400ms (previous delay × backoff_factor)
+
+The delay doubles with each retry until reaching `max_delay_ms` or `max_attempts`.
+
+## Retryable Operations
+
+The following operations support automatic retries:
+
+### API Requests
+
+- AI model API calls (OpenAI, Anthropic, etc.)
+- External API calls through tools
+- Data fetching operations
+
+### Tool Calls
+
+- `tool_forge_net_fetch` - Network requests
+- Model inference calls
+- Certain file system operations with transient errors
+
+## Best Practices
+
+### Adjusting Retry Parameters
+
+Optimize retry settings based on your specific use case:
+
+#### For Stable, Low-Latency Environments
+
+```yaml
+retry:
+  max_attempts: 3
+  initial_delay_ms: 50
+  max_delay_ms: 5000
+  backoff_factor: 2
+```
+
+#### For Less Reliable Networks
+
+```yaml
+retry:
+  max_attempts: 5
+  initial_delay_ms: 200
+  max_delay_ms: 30000
+  backoff_factor: 3
+```
+
+#### For Rate-Limited APIs
+
+```yaml
+retry:
+  max_attempts: 7
+  initial_delay_ms: 500
+  max_delay_ms: 60000
+  backoff_factor: 2
+  retryable_status_codes:
+    - 429
+```
+
+### Error Handling Strategies
+
+Beyond the automatic retry mechanism, consider these additional error handling strategies:
+
+1. **Graceful Degradation**: Design your workflows to continue with reduced functionality when non-critical operations fail
+2. **Checkpointing**: Save progress regularly to minimize impact of failures
+3. **User Feedback**: Communicate error states clearly to users
+4. **Logging**: Enable detailed error logging for diagnostics
+
+## Example: Custom Retry Configuration
+
+Here's a comprehensive example combining retry configuration with error logging:
+
+```yaml
+# forge.yaml
+retry:
+  max_attempts: 5
+  initial_delay_ms: 200
+  max_delay_ms: 15000
+  backoff_factor: 2
+  retryable_status_codes:
+    - 429
+    - 500
+    - 502
+    - 503
+    - 504
+    - 408
+
+logging:
+  level: info
+  error_detail: true
+```
+
+## Exponential Backoff Algorithm
+
+The retry mechanism uses the following algorithm to calculate delay times:
+
+```
+delay = min(max_delay_ms, initial_delay_ms * (backoff_factor ^ retry_number))
+```
+
+For example, with default settings:
+- First retry: min(10000, 100 * (2^0)) = 100ms
+- Second retry: min(10000, 100 * (2^1)) = 200ms
+- Third retry: min(10000, 100 * (2^2)) = 400ms
+- Fourth retry: min(10000, 100 * (2^3)) = 800ms
+- Fifth retry: min(10000, 100 * (2^4)) = 1600ms
+
+This approach balances quick recovery from momentary issues against avoiding overwhelming systems experiencing prolonged problems.
+
+## Handling Non-Retryable Errors
+
+Not all errors should be retried. The system categorizes errors as:
+
+### Retryable Errors
+
+- Temporary network failures
+- Rate limiting responses
+- Server overload responses
+- Timeouts
+- Configured HTTP status codes
+
+### Non-Retryable Errors
+
+- Authentication failures
+- Permission denied errors
+- Invalid request format errors
+- Resource not found errors
+- Business logic validation errors
+
+Non-retryable errors fail immediately without retry attempts.
+
+## Monitoring Retry Activity
+
+To monitor retry activity, check the logs for entries containing the `retry` component:
+
+```
+INFO [retry] Retrying operation after 200ms (attempt 2 of 5)
+```
+
+Frequent retries may indicate:
+- Network reliability issues
+- Rate limiting thresholds being exceeded
+- API endpoint stability problems
+- Resource constraints
+
+## Troubleshooting
+
+### Issue: Too Many Retries
+
+- Check the API service status for outages
+- Consider if you're exceeding rate limits
+- Increase `initial_delay_ms` to give services more recovery time
+- Review request payloads for validity
+
+### Issue: Long Operation Times
+
+- Decrease `max_attempts` to fail faster
+- Lower `backoff_factor` for less aggressive backoff
+- Set lower `max_delay_ms` to cap maximum wait times
+
+### Issue: Premature Failures
+
+- Increase `max_attempts` for more retry attempts
+- Add relevant status codes to `retryable_status_codes`
+- Check if errors are non-retryable by design
+
+## Related Documentation
+
+- [Logging](../logging) - Configure logging for better error visibility
+- [Environment Configuration](../environment-configuration) - System-wide configuration options
+- [Agent Configuration](../agent-configuration) - Agent-specific settings
+- [Tools Reference](../tools-reference) - Detailed information about tools that support retries
