@@ -1,0 +1,261 @@
+---
+title: Custom Rules
+slug: /custom-rules
+sidebar_position: 6
+description: "Learn how to define custom rules and guidelines for AI agents in Forge"
+sidebar_label: Custom Rules
+---
+
+# Custom Rules
+
+Custom rules allow you to define specific guidelines and instructions that shape how AI agents behave in Forge. These rules act as specialized knowledge or constraints that influence how agents interpret tasks, generate code, and formulate responses.
+
+## Understanding Custom Rules
+
+Custom rules provide a way to:
+
+1. **Enforce coding standards** specific to your organization or project
+2. **Define domain-specific knowledge** for specialized tasks
+3. **Set procedural guidelines** for workflows or decision-making
+4. **Establish response formatting requirements** for consistent outputs
+
+Unlike system prompts which set general behavior, custom rules can be more granular and task-specific.
+
+## Adding Custom Rules
+
+Custom rules are defined in your `forge.yaml` file under each agent's configuration:
+
+```yaml
+agents:
+  - id: engineer
+    model: anthropic/claude-3.5-sonnet
+    custom_rules: |
+      Code Review Guidelines:
+      - Check for proper error handling in all functions
+      - Ensure consistent code formatting according to project style guide
+      - Verify input validation for all user-provided data
+      - Look for potential security vulnerabilities
+      - Suggest optimizations for performance-critical sections
+      - Ensure proper documentation for public APIs
+```
+
+The `custom_rules` field accepts multi-line text that can include:
+
+- Markdown-formatted content
+- Lists and bullet points
+- Code examples
+- Step-by-step instructions
+
+## Example Use Cases
+
+### Coding Standards Enforcement
+
+```yaml
+custom_rules: |
+  Rust Coding Standards:
+
+  - Use `anyhow::Result` for error handling in services and repositories
+  - Create domain errors using `thiserror`
+  - Never implement `From` for converting domain errors, manually convert them
+  - Use `unwrap()` only in test code, never in production code
+  - Follow the Rust API guidelines for public interfaces
+  - Use `#[derive]` macros for common trait implementations
+```
+
+### Testing Guidelines
+
+````yaml
+custom_rules: |
+  Testing Guidelines:
+
+  - All tests should follow the Arrange-Act-Assert pattern:
+    ```rust
+    fn test_function() {
+        // Arrange: Set up test data
+        let fixture = ...;
+        
+        // Act: Call the function being tested
+        let actual = function_under_test(fixture);
+        
+        // Assert: Verify the results
+        let expected = ...;
+        assert_eq!(actual, expected);
+    }
+    ```
+  - Use descriptive test names that explain what is being tested
+  - Use `pretty_assertions` for better error messages
+  - Create fixtures for complex test data
+  - Test edge cases and failure modes
+````
+
+### Security Analysis Rules
+
+```yaml
+custom_rules: |
+  Security Analysis Protocol:
+
+  1. For each user input, verify:
+     - Input validation and sanitization
+     - Protection against injection attacks
+     - Proper error handling without information leakage
+
+  2. For authentication flows, check:
+     - Proper password hashing with strong algorithms
+     - Protection against brute force attempts
+     - Secure session management
+
+  3. Coding patterns to flag:
+     - Hardcoded credentials
+     - Insecure random number generation
+     - Missing access controls
+     - Insecure file operations
+```
+
+### Documentation Guidelines
+
+```yaml
+custom_rules: |
+  Documentation Standards:
+
+  - Every public function must have a docstring explaining:
+    - Purpose and functionality
+    - Parameter descriptions
+    - Return value details
+    - Examples of usage
+    - Any exceptions/errors that might be thrown
+
+  - READMEs must include:
+    - Project overview
+    - Installation instructions
+    - Basic usage examples
+    - Contributing guidelines
+```
+
+## Best Practices
+
+### Be Specific and Clear
+
+```yaml
+# ❌ Too vague
+custom_rules: |
+  Write good code.
+
+# ✅ Clear and specific
+custom_rules: |
+  Code Quality Guidelines:
+  - Functions should do one thing and have a clear purpose
+  - Variable names should be descriptive of their content
+  - Comments should explain "why", not "what" the code does
+  - Functions should not exceed 30 lines where possible
+```
+
+### Provide Examples
+
+````yaml
+custom_rules: |
+  Error Handling Pattern:
+
+  Always use this pattern for error handling:
+
+  ```typescript
+  try {
+    // Operation that might fail
+  } catch (error) {
+    if (error instanceof KnownError) {
+      // Handle specific error
+    } else {
+      // Log and propagate unexpected errors
+      logger.error('Unexpected error:', error);
+      throw error;
+    }
+  }
+````
+
+````
+
+### Prioritize Important Rules
+
+Put the most important rules at the beginning of your custom rules section, as they'll have more influence on the agent's behavior.
+
+### Keep Rules Concise
+
+While comprehensive guidelines are valuable, excessively long rules might dilute their effectiveness. Focus on the most important guidelines for your specific use case.
+
+## Advanced Techniques
+
+### Conditional Rules
+
+You can include conditional logic in your custom rules:
+
+```yaml
+custom_rules: |
+  Performance Rules:
+
+  For server-side code:
+  - Minimize database queries
+  - Use connection pooling
+  - Implement caching for frequently accessed data
+
+  For client-side code:
+  - Optimize bundle size
+  - Minimize DOM manipulations
+  - Implement lazy loading for heavy components
+````
+
+### Formatting Requirements
+
+You can specify exact formatting requirements for code or other outputs:
+
+```yaml
+custom_rules: |
+  Commit Message Format:
+
+  All commit messages must follow this format:
+```
+
+type(scope): subject
+
+body
+
+```
+
+Where:
+- type: feat, fix, docs, style, refactor, test, or chore
+- scope: component affected (optional)
+- subject: short description in present tense, no capitalization
+- body: detailed explanation if needed
+```
+
+### Linking to External Resources
+
+You can reference external documentation:
+
+```yaml
+custom_rules: |
+  Follow the Google TypeScript Style Guide: https://google.github.io/styleguide/tsguide.html
+
+  Key points to emphasize:
+  - Use `interface` for public APIs, `type` for complex types
+  - Prefer readonly properties over ones that will be mutated
+  - Use ECMAScript module imports with the `import {x} from 'y'` syntax
+```
+
+## Troubleshooting
+
+### Agent Not Following Rules
+
+If the agent isn't following your custom rules:
+
+1. **Make rules more explicit**: Break down complex guidelines into clear, specific instructions
+2. **Add examples**: Include concrete examples demonstrating the desired behavior
+3. **Prioritize**: Put the most important rules at the beginning
+4. **Simplify**: If you have too many rules, focus on the critical ones
+5. **Update system prompt**: Ensure your system prompt instructs the agent to follow the custom rules
+
+### Rules Conflicting with System Prompt
+
+If custom rules conflict with the system prompt:
+
+1. **Align content**: Ensure system prompts and custom rules have consistent guidelines
+2. **Specify precedence**: Clarify which guidelines take priority in case of conflicts
+3. **Consolidate**: Consider moving some guidelines between system prompts and custom rules

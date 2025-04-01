@@ -1,0 +1,218 @@
+---
+title: Custom Commands
+slug: /custom-commands
+sidebar_position: 3
+description: "Create and configure your own custom commands in Forge to streamline workflows"
+sidebar_label: Custom Commands
+---
+
+# Custom Commands
+
+Forge allows you to define and use custom commands that extend its functionality and streamline your workflow. These commands can be executed within the Forge CLI using the `/command_name` syntax and are configured in your `forge.yaml` file.
+
+## What Are Custom Commands?
+
+Custom commands are user-defined shortcuts that trigger specific actions or workflows. They enable you to:
+
+- Create project-specific automation
+- Standardize common workflows across your team
+- Simplify complex operations into single commands
+- Integrate Forge with your development processes
+
+## Configuring Custom Commands
+
+Custom commands are defined in the `commands` section of your `forge.yaml` file:
+
+```yaml
+commands:
+  - name: commit
+    description: Commit changes with a standard prefix
+    value: |
+      Understand the diff produced and commit using the 'conventional commit' standard
+
+  - name: branch
+    description: Create and checkout a new branch
+
+  - name: pull-request
+    description: Create a pull request with standard template
+    value: |
+      Understand the diff with respect to `main` and create a pull-request.
+      Ensure it follows 'conventional commit' standard.
+```
+
+### Configuration Options
+
+| Option        | Required | Description                                              |
+| ------------- | -------- | -------------------------------------------------------- |
+| `name`        | Yes      | The name of the command (used as `/name` in the CLI)     |
+| `description` | Yes      | A description of what the command does (shown in help)   |
+| `value`       | No       | Default prompt value used when no arguments are provided |
+
+## Using Custom Commands
+
+Once configured, you can use custom commands in the Forge CLI in two ways:
+
+### Basic Command Execution
+
+To execute a command with its default value (if provided):
+
+```bash
+/commit
+```
+
+This executes the `commit` command with the default instructions defined in its `value` field.
+
+### Command with Arguments
+
+To override the default value or provide instructions for commands without a default:
+
+```bash
+/commit Create a detailed commit message for the login feature
+```
+
+```bash
+/branch feature/new-auth
+```
+
+## How Custom Commands Work
+
+When a custom command is executed, it follows this event flow:
+
+1. **Command Execution**: User types a command like `/commit feat: add user authentication`
+2. **Event Dispatch**: Forge dispatches an event with:
+   - **Name**: The command name (e.g., `commit`)
+   - **Value**: The provided argument or default value (e.g., `feat: add user authentication`)
+3. **Agent Subscription**: Any agent that has subscribed to this event name receives the event
+4. **Event Processing**: The agent processes the event according to its configuration
+
+## Agent Configuration for Custom Commands
+
+For an agent to respond to a custom command, it must explicitly subscribe to the event with the same name as the command:
+
+```yaml
+agents:
+  - id: git-commit
+    model: anthropic/claude-3.7-sonnet
+    system_prompt: "{{> system-prompt-git-commit.hbs }}"
+    tools:
+      - tool_forge_process_shell
+    subscribe:
+      - commit # This agent subscribes to the 'commit' custom command
+```
+
+## Command Handling Approaches
+
+There are two main approaches for handling custom command events in agents:
+
+### 1. Using Event Value as Instructions
+
+Pass the event value directly to the agent as complete instructions:
+
+```yaml
+commands:
+  - name: commit
+    description: Commit changes with a standard prefix
+    value: |
+      Understand the diff and commit using the 'conventional commit' standard
+
+agents:
+  - id: git-commit
+    model: anthropic/claude-3.7-sonnet
+    system_prompt: "{{> system-prompt-git-commit.hbs }}"
+    user_prompt: "{{event.value}}"
+    tools:
+      - tool_forge_process_shell
+    subscribe:
+      - commit
+```
+
+### 2. Using Event Value as Data in a Template
+
+Incorporate the event value into a structured template:
+
+```yaml
+commands:
+  - name: summarize
+    description: Summarize a file with specific focus
+
+agents:
+  - id: summarizer
+    model: anthropic/claude-3.7-sonnet
+    system_prompt: "{{> system-prompt-summarizer.hbs }}"
+    user_prompt: |
+      <task>Summarize the following file in detail</task>
+      <focus>{{event.value}}</focus>
+      <mode>PLAN</mode>
+    tools:
+      - tool_forge_fs_read
+    subscribe:
+      - summarize
+```
+
+## Example Custom Commands
+
+### Git Workflow Commands
+
+```yaml
+commands:
+  - name: commit
+    description: Commit changes with a standard prefix
+    value: |
+      Analyze changes and create a commit message following conventional commit format
+
+  - name: branch
+    description: Create and checkout a new branch from the current changes
+
+  - name: pr
+    description: Create a pull request for current branch
+    value: |
+      Create a detailed pull request description based on the changes in this branch
+```
+
+### Development Workflow Commands
+
+```yaml
+commands:
+  - name: review
+    description: Review code for bugs and improvements
+    value: |
+      Review the code for bugs, security issues, performance problems, and suggest improvements
+
+  - name: document
+    description: Generate documentation for a file
+
+  - name: test
+    description: Generate unit tests for a file or function
+    value: |
+      Create comprehensive unit tests with good coverage for the specified code
+```
+
+### Project-Specific Commands
+
+```yaml
+commands:
+  - name: fixme
+    description: Looks for all the fixme comments in the code and attempts to fix them
+    value: |
+      Find all the FIXME comments in source-code files and attempt to fix them.
+
+  - name: deploy
+    description: Prepare deployment package and update version numbers
+    value: |
+      Update version numbers and prepare the project for deployment
+```
+
+## Best Practices
+
+1. **Descriptive Names**: Use clear, action-oriented names for commands
+2. **Helpful Descriptions**: Write descriptions that explain both the purpose and expected outcome
+3. **Default Values**: Provide default values for commands that can work without specific arguments
+4. **Specialized Agents**: Configure agents specifically for handling particular commands
+5. **Command Organization**: Group related commands in your configuration for easier management
+6. **Documentation**: Document custom commands for your team in a project README
+
+## Related Documentation
+
+- [Custom Workflows](../custom-workflows) - Learn how to create sophisticated workflows with multiple agents
+- [Agent Configuration](../agent-configuration) - Configure agents to respond to custom commands
+- [Commands](../commands) - Learn about Forge's built-in commands

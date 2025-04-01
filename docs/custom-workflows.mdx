@@ -76,12 +76,16 @@ Each agent needs tools to perform tasks, configured in the `tools` field:
 
 - `id` - Unique identifier for the agent
 - `model` - AI model to use (from the `\models` list)
+- `temperature` - Control response determinism and creativity (0.0-2.0)
 - `tools` - List of tools the agent can use
 - `subscribe` - Events the agent listens to
 - `ephemeral` - If true, agent is destroyed after task completion
 - `tool_supported` - (Optional) Boolean flag that determines whether tools defined in the agent configuration are actually made available to the LLM
 - `system_prompt` - (Optional) Instructions for how the agent should behave
 - `user_prompt` - (Optional) Format for user inputs
+- `hide_content` - (Optional) When true, agent responses aren't displayed in console
+- `compact` - (Optional) Configuration for automatic context summarization
+- `max_walker_depth` - (Optional) Maximum directory/file depth for exploration
 
 ### Built-in Templates
 
@@ -114,8 +118,21 @@ agents:
     system_prompt: "{{> system-prompt-title-generator.hbs }}"
     user_prompt: <technical_content>{{event.value}}</technical_content>
 
+  - id: background_researcher
+    model: *efficiency_model
+    temperature: 0.3 # Lower temperature for more deterministic responses
+    hide_content: true # Responses won't appear in console
+    tools:
+      - tool_forge_net_fetch
+      - tool_forge_event_dispatch
+      - tool_forge_process_think
+    subscribe:
+      - research_request
+    system_prompt: "{{> system-prompt-researcher.hbs }}"
+
   - id: developer
     model: *advanced_model
+    temperature: 0.7 # Balanced creativity and determinism
     tools:
       - tool_forge_fs_read
       - tool_forge_fs_create
@@ -124,9 +141,17 @@ agents:
       - tool_forge_process_shell
       - tool_forge_net_fetch
       - tool_forge_fs_search
+      - tool_forge_display_show_user # Rich markdown display tool
     subscribe:
       - user_task_init
       - user_task_update
+      - research_results
+    max_walker_depth: 1024 # Maximum directory exploration depth
+    compact:
+      max_tokens: 2000 # Maximum tokens for summary
+      token_threshold: 80000 # When to trigger compaction
+      model: *efficiency_model
+      retention_window: 6 # Recent messages to preserve
     ephemeral: false
     tool_supported: true # Use model's native tool call format (default)
     system_prompt: "{{> system-prompt-engineer.hbs }}"
@@ -134,9 +159,88 @@ agents:
       <task>{{event.value}}</task>
 ```
 
-This example workflow creates two agents:
+This example workflow creates three agents:
 
 1. A title generation worker that creates meaningful titles for user conversations
-2. A developer agent that can perform comprehensive file and system operations
+2. A background researcher that fetches information without displaying its work in the console
+3. A developer agent that can perform comprehensive file and system operations with context compaction enabled
+
+## Advanced Configuration Examples
+
+### Context Compaction Configuration
+
+Enable automatic context management to maintain lengthy conversations:
+
+```yaml
+agents:
+  - id: assistant
+    model: anthropic/claude-3.5-sonnet
+    compact:
+      max_tokens: 2000 # Maximum tokens for summary
+      token_threshold: 80000 # When to trigger compaction
+      model: google/gemini-2.0-flash-001 # Fast model for summarization
+      retention_window: 6 # Recent messages to preserve
+      prompt: "{{> system-prompt-context-summarizer.hbs }}" # Custom prompt
+```
+
+### Temperature Configuration
+
+Control agent creativity and determinism with temperature settings:
+
+```yaml
+agents:
+  # Precise, deterministic coding agent
+  - id: code_generator
+    model: anthropic/claude-3.5-sonnet
+    temperature: 0.1 # Very deterministic for consistent code
+
+  # Balanced general assistant
+  - id: assistant
+    model: anthropic/claude-3.5-sonnet
+    temperature: 0.7 # Default balanced setting
+
+  # Creative content generator
+  - id: creative_writer
+    model: anthropic/claude-3.5-sonnet
+    temperature: 1.2 # Higher creativity for brainstorming
+```
+
+### Agent Visibility Control
+
+Hide background agent responses from the console:
+
+```yaml
+agents:
+  # Background helper that works silently
+  - id: background_helper
+    model: anthropic/claude-3.5-haiku
+    hide_content: true
+
+  # Main agent that displays its responses
+  - id: main_agent
+    model: anthropic/claude-3.5-sonnet
+    # hide_content defaults to false
+```
+
+### Rich Display Configuration
+
+Enable formatted markdown display to users:
+
+```yaml
+agents:
+  - id: presenter
+    model: anthropic/claude-3.5-sonnet
+    tools:
+      - tool_forge_display_show_user # Required for rich display
+      # Other tools...
+```
+
+## Related Documentation
+
+- [Custom Commands](../custom-commands) - Create your own commands for specialized tasks
+- [Context Compaction](../context-compaction) - Learn how to optimize context management
+- [Agent Configuration](../agent-configuration) - Detailed reference for agent configuration options
+- [Tools Reference](../tools-reference) - Complete documentation of available tools
+- [Error Handling](../error-handling) - Configure automatic retries and error recovery
 
 <!-- Note: This page focuses on custom workflows and multi-agent systems. For information about environment configuration, see the Environment Configuration section. -->

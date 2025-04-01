@@ -7,19 +7,20 @@ sidebar_label: Built-in Commands
 
 # Built-in Commands
 
-Forge provides a suite of built-in commands that enhance workflow efficiency and provide system control. These commands are prefixed with a forward slash (`/`) to differentiate them from standard input queries and task descriptions.
+Forge provides a suite of built-in commands prefixed with a forward slash (`/`) that enhance workflow efficiency and provide system control. These commands can be used directly in the Forge terminal interface.
 
-## Available Commands
+## Available Slash Commands
 
 | Command   | Description               | When to Use                                                                              |
 | --------- | ------------------------- | ---------------------------------------------------------------------------------------- |
 | `/new`    | Start a new task          | When you've completed your current task and want to begin a fresh conversation           |
 | `/info`   | View environment summary  | When you need to check your environment configuration, logs location, or command history |
 | `/models` | List available AI models  | When you want to see which AI models are available and their capabilities                |
-| `/dump`   | Save conversation to JSON | When you want to save the current conversation for reference or sharing                  |
+| `/dump`   | Save conversation to JSON | When you need to debug issues or report problems to the development team                 |
 | `/act`    | Switch to ACT mode        | When you want Forge to execute commands and implement changes (this is the default mode) |
 | `/plan`   | Switch to PLAN mode       | When you want Forge to analyze and plan but not modify files                             |
 | `/help`   | Display help information  | When you need a reminder of available commands                                           |
+| `/exit`   | Exit the application      | When you want to cleanly exit the Forge CLI                                              |
 
 ## Command Details
 
@@ -39,6 +40,29 @@ The `/info` command displays information about your environment, including syste
 
 ```bash
 /info
+```
+
+**Example output**:
+
+```
+System Information:
+- OS: macOS Monterey 12.6
+- Architecture: x86_64
+- Shell: /bin/zsh
+
+Environment:
+- Current Directory: /Users/username/projects
+- Forge Version: 0.8.2
+
+Log Files:
+- Location: /Users/username/.forge/logs
+- Debug Log: debug.log
+- Error Log: error.log
+
+Recent Commands:
+1. analyze this codebase
+2. fix the bug in auth.js
+3. /models
 ```
 
 **When to use**: Use this when you need to troubleshoot, find log files, or review your recent commands.
@@ -69,7 +93,13 @@ The `/dump` command saves the current conversation in JSON format to a file for 
 /dump
 ```
 
-**When to use**: Use this when you want to save a particularly useful conversation for documentation, sharing, or reference.
+**Example output**:
+
+```
+Conversation saved to: /Users/username/2023-03-15_14-22-37-dump.json
+```
+
+**When to use**: Use this when you need to debug issues, inspect the conversation context, or report problems to the development team.
 
 ### `/act`
 
@@ -77,6 +107,12 @@ The `/act` command switches Forge to ACT mode, where it can execute commands and
 
 ```bash
 /act
+```
+
+**Example output**:
+
+```
+Switched to ACT mode. Forge will now implement changes when instructed.
 ```
 
 **When to use**: This is the default mode. Use this command to switch back to ACT mode if you were previously in PLAN mode.
@@ -87,6 +123,12 @@ The `/plan` command switches Forge to PLAN mode, where it analyzes and suggests 
 
 ```bash
 /plan
+```
+
+**Example output**:
+
+```
+Switched to PLAN mode. Forge will analyze and plan but NOT implement changes.
 ```
 
 **When to use**: Use this when you want Forge to analyze your codebase and suggest changes without actually implementing them. This is useful for understanding what would happen before making changes.
@@ -101,12 +143,34 @@ The `/help` command displays information about available commands and their usag
 
 **When to use**: Use this when you need a quick reminder of the available commands and their functions.
 
+### `/exit`
+
+The `/exit` command cleanly exits the Forge CLI application.
+
+```bash
+/exit
+```
+
+**When to use**: Use this when you want to close Forge. Alternatively, you can press `Ctrl+D`.
+
+## Custom Commands
+
+In addition to these built-in commands, Forge allows you to define your own custom commands in your `forge.yaml` configuration file. These custom commands can be used to trigger specific agents to perform specialized tasks.
+
+For information about creating custom commands, see the [Custom Commands](/docs/custom-commands) documentation.
+
 ## Best Practices
 
 - **Start Fresh**: Use `/new` when switching between unrelated tasks to ensure the context is clean.
-- **Preserve Knowledge**: Use `/dump` to save valuable conversations that you might want to reference later.
+- **Debug Context**: Use `/dump` for debugging purposes when you need to inspect the conversation context or report issues.
 - **Understand Before Acting**: Use `/plan` to see what actions Forge would take before allowing it to make changes.
 - **Check System Status**: Use `/info` when something isn't working as expected to diagnose potential issues.
 - **Select Appropriate Models**: Use `/models` to understand which model is best for your specific task.
+- **Create Custom Commands**: Define your own [custom commands](/docs/custom-commands) for project-specific operations and workflows.
 
-<!-- Note: This page focuses on built-in commands that enhance your interaction with Forge. For information about operating modes, see the Operation Modes section. -->
+## Related Documentation
+
+- [Custom Commands](../custom-commands) - Learn how to define your own slash commands
+- [Operation Modes](../operation-modes) - Learn about ACT and PLAN modes in detail
+- [Tools Reference](../tools-reference) - Comprehensive documentation of all available tools
+- [Error Handling](../error-handling) - How Forge handles and recovers from errors

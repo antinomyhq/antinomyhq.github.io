@@ -36,8 +36,7 @@ const Configuration = (): JSX.Element => {
           <h5 className="font-semibold">Learn More</h5>
           <p className="text-content-small sm:text-content-medium mb-SPACE_11">
             Explore our <Link href="/docs">documentation</Link> to learn about Forge's{" "}
-            <Link href="/docs/capabilities">powerful capabilities</Link> and how to leverage them in your development
-            workflow.
+            <Link href="/docs">powerful capabilities</Link> and how to leverage them in your development workflow.
           </p>
         </div>
       </div>

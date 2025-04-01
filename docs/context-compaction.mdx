@@ -1,0 +1,132 @@
+---
+title: Context Compaction
+slug: /context-compaction
+sidebar_position: 12
+description: "Optimize AI conversations with automatic context management"
+sidebar_label: Context Compaction
+---
+
+# Context Compaction
+
+Forge includes powerful automatic context management capabilities that optimize AI conversations while preserving important information.
+
+## What is Context Compaction?
+
+As conversations with AI agents grow longer, they can exceed token limits and become inefficient. Context compaction automatically summarizes older parts of conversations when they reach configurable thresholds, allowing you to maintain longer, more productive interactions without hitting model context limits.
+
+Key benefits include:
+
+- **Extended Conversations**: Continue conversations beyond normal token limits
+- **Optimized Performance**: Reduce token usage and improve response times
+- **Preserved Context**: Keep critical information while summarizing less important details
+- **Cost Efficiency**: Reduce token usage in API calls
+
+## How It Works
+
+When a conversation reaches the configured token threshold:
+
+1. The system identifies which messages to preserve (based on the retention window)
+2. Older messages are sent to the configured summarization model
+3. A concise summary replaces the older messages
+4. New conversation turns continue with the summarized context
+
+This process happens automatically and transparently to the user.
+
+## Configuration Options
+
+Add the following to your `forge.yaml` file under an agent configuration:
+
+```yaml
+agents:
+  - id: assistant
+    model: anthropic/claude-3.5-sonnet
+    compact:
+      max_tokens: 2000 # Maximum tokens for the summary
+      token_threshold: 80000 # When to trigger compaction
+      model: google/gemini-2.0-flash-001 # Model to use for summarization
+      retention_window: 6 # Recent messages to preserve
+      prompt: "{{> system-prompt-context-summarizer.hbs }}" # Optional custom prompt
+```
+
+### Configuration Parameters
+
+| Parameter          | Required | Description                                       |
+| ------------------ | -------- | ------------------------------------------------- |
+| `max_tokens`       | Yes      | Maximum token count for the generated summary     |
+| `token_threshold`  | Yes      | Conversation token count that triggers compaction |
+| `model`            | Yes      | AI model to use for generating the summary        |
+| `retention_window` | No       | Number of recent messages to preserve unchanged   |
+| `prompt`           | No       | Custom prompt template for summarization          |
+
+## Best Practices
+
+### Selecting Appropriate Thresholds
+
+Set `token_threshold` based on your model's context window size. For example:
+
+- For Claude 3.7 Sonnet (~200K token window): 150,000 to 180,000 tokens
+- For Claude 3.5 haiku (~200K token window): 120,000 to 160,000 tokens
+
+### Choosing Summarization Models
+
+For the summarization model, balance speed and quality:
+
+- Fast models (like Gemini Flash) provide quicker summaries
+- More powerful models may provide better context preservation but take longer
+
+### Retention Window Considerations
+
+The retention window controls how many recent messages are preserved verbatim:
+
+- Larger windows maintain more recent context but reduce compaction efficiency
+- Smaller windows allow for more aggressive compaction but may lose recent details
+- A typical value is 6-10 messages
+
+The template receives the conversation history and should instruct the model on how to create an effective summary.
+
+## Example Use Cases
+
+### Long Debugging Sessions
+
+When debugging complex issues, conversations can become lengthy. Context compaction allows the agent to remember key debugging steps while summarizing earlier diagnostics.
+
+### Multi-Stage Project Development
+
+For projects developed over multiple sessions, context compaction enables the agent to maintain awareness of project requirements and previous decisions while focusing on current tasks.
+
+### Interactive Learning and Tutorials
+
+When using Forge for learning or following tutorials, compaction helps maintain the thread of the lesson while summarizing earlier explanations.
+
+## Performance Considerations
+
+Context compaction runs asynchronously to minimize impact on response times. However, consider these performance factors:
+
+- **Summarization Latency**: More powerful summarization models may take longer
+- **Summary Quality vs. Speed**: Balance between fast models and high-quality summaries
+- **Token Thresholds**: Lower thresholds trigger more frequent compaction
+- **Retention Window Size**: Larger windows preserve more context but reduce compaction efficiency
+
+## Troubleshooting
+
+### Issue: Context Seems Lost After Compaction
+
+- Increase `max_tokens` to allow for more detailed summaries
+- Use a more capable summarization model
+- Increase the retention window to preserve more recent messages
+
+### Issue: Slow Responses After Threshold is Reached
+
+- Choose a faster summarization model
+- Reduce the token threshold to trigger earlier compaction
+- Consider lowering `max_tokens` if full context isn't critical
+
+## Related Features
+
+- [Agent Configuration](../agent-configuration) - Learn about other agent configuration options
+- [Operation Modes](../operation-modes) - Understand how context works in different operation modes
+- [Tools Reference](../tools-reference) - Explore the tools agents use to interact with your system
+
+---
+
+By effectively using context compaction, you can maintain longer, more productive AI conversations while optimizing for performance and cost efficiency.

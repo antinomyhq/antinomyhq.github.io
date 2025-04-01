@@ -1,0 +1,113 @@
+---
+title: Error Handling & Retry Mechanisms
+slug: /error-handling
+sidebar_position: 15
+description: "Configure robust error handling with automatic retries for improved resilience"
+sidebar_label: Error Handling
+---
+
+# Error Handling & Retry Mechanisms
+
+Forge includes error handling capabilities, including limited automatic retry mechanisms with exponential backoff for specific types of errors. This documentation covers how to configure and optimize these features for improved system resilience.
+
+## Automatic Retry Mechanism
+
+Forge currently implements automatic retries specifically for tool call parsing errors that occur during agent interactions. This ensures that temporary issues in parsing tool calls don't cause complete workflow failures.
+
+### How It Works
+
+When a tool call parsing error occurs:
+
+1. Forge detects the parsing failure
+2. A retry is attempted after an initial delay
+3. Each subsequent retry uses an exponentially increasing delay with jitter
+4. After reaching the maximum retry count, the operation fails permanently
+5. Success at any point in the retry sequence continues normal execution
+
+This targeted approach helps maintain conversational flow by gracefully handling errors in the agent's tool usage expressions.
+
+## Configuration Options
+
+The retry mechanism can be configured in your `forge.yaml` file:
+
+```yaml
+retry:
+  max_attempts: 5 # Maximum number of attempts (including first try)
+  initial_delay_ms: 200 # Initial delay before first retry (milliseconds)
+  backoff_factor: 2 # Multiplier for delay between retries
+```
+
+### Configuration Parameters
+
+| Parameter          | Default | Description                                            |
+| ------------------ | ------- | ------------------------------------------------------ |
+| `max_attempts`     | 3       | Maximum number of attempts (including initial attempt) |
+| `initial_delay_ms` | 200     | Initial delay before first retry (milliseconds)        |
+| `backoff_factor`   | 2       | Exponential multiplier for delay between retries       |
+
+### How Backoff Works
+
+With default settings, retry delays follow this pattern (with added jitter):
+
+1. Initial attempt fails
+2. Wait ~200ms (initial_delay_ms with jitter)
+3. First retry fails
+4. Wait ~400ms (initial_delay_ms × backoff_factor with jitter)
+5. Second retry fails
+6. Wait ~800ms (previous delay × backoff_factor with jitter)
+
+The delay approximately doubles with each retry until reaching the maximum number of attempts.
+
+## Retryable Error Types
+
+Currently, Forge implements retries only for specific error types:
+
+### Tool Call Parsing Errors
+
+The following parsing-related errors trigger automatic retries:
+
+- `ToolCallParse`: Errors that occur when parsing a tool call expression
+- `ToolCallArgument`: Errors related to invalid arguments in a tool call
+- `ToolCallMissingName`: Errors when a tool call is missing a required name
+
+These retries help handle cases where the AI model produces malformed tool call syntax but might output correct syntax on a retry.
+
+## Best Practices
+
+### Adjusting Retry Parameters
+
+Optimize retry settings based on your specific use case:
+
+#### For High-Quality Models
+
+Models that rarely produce syntax errors may benefit from fewer retries:
+
+```yaml
+retry:
+  max_attempts: 3
+  initial_delay_ms: 100
+  backoff_factor: 2
+```
+
+#### For More Exploratory Workflows
+
+Workflows that might push model boundaries could benefit from more patient retries:
+
+```yaml
+retry:
+  max_attempts: 5
+  initial_delay_ms: 100
+  backoff_factor: 2
+```
+
+## Example: Custom Retry Configuration
+
+Here's a comprehensive example combining retry configuration with error logging:
+
+```yaml
+# forge.yaml
+retry:
+  max_attempts: 4
+  initial_delay_ms: 200
+  backoff_factor: 2
+```
