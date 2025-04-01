@@ -23,14 +23,14 @@ agents:
 
 ### Basic Configuration Parameters
 
-| Parameter          | Required | Description                                         |
-| ------------------ | -------- | --------------------------------------------------- |
-| `id`               | Yes      | Unique identifier for the agent                     |
-| `model`            | Yes      | AI model to use (e.g., anthropic/claude-3.5-sonnet) |
-| `system_prompt`    | Yes      | System prompt or template reference                 |
-| `subscribe`        | No       | List of commands the agent should respond to        |
-| `max_walker_depth` | No       | Maximum directory/file depth for exploration        |
-| `custom_rules`     | No       | Custom instructions for the agent                   |
+| Parameter          | Required | Description                                                           |
+| ------------------ | -------- | --------------------------------------------------------------------- |
+| `id`               | Yes      | Unique identifier for the agent                                       |
+| `model`            | Yes      | AI model to use (e.g., anthropic/claude-3.5-sonnet)                   |
+| `system_prompt`    | Yes      | System prompt or template reference                                   |
+| `subscribe`        | No       | List of commands the agent should respond to                          |
+| `max_walker_depth` | No       | Maximum directory/file depth for exploration                          |
+| `custom_rules`     | No       | Custom instructions or rules (see [Custom Rules](/docs/custom-rules)) |
 
 ## Temperature Configuration
 
@@ -131,29 +131,6 @@ agents:
 | ----------- | --------------------------------------------------- |
 | `subscribe` | List of command names the agent responds to         |
 | `publish`   | (Advanced) Define custom channels for agent outputs |
-
-## Custom Rules and Instructions
-
-Provide special instructions or guidelines for specific agents:
-
-```yaml
-agents:
-  - id: security-analyst
-    model: anthropic/claude-3.5-sonnet
-    custom_rules: |
-      Security Analysis Guidelines:
-      - Always prioritize identifying security vulnerabilities
-      - Check for common issues like XSS, CSRF, and SQL injection
-      - Provide severity ratings for all identified issues
-      - Suggest specific remediation steps for each vulnerability
-```
-
-Custom rules can include:
-
-- Coding style guidelines
-- Domain-specific knowledge
-- Procedural instructions
-- Response formatting requirements
 
 ## Example Configurations
 
