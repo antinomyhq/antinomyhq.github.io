@@ -28,11 +28,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Basic Features", // Renamed from "Core Features" for better hierarchy
       collapsed: false,
-      items: [
-        "commands",
-        "custom-commands", // Added new page for custom commands
-        "operation-modes",
-      ],
+      items: ["commands", "operation-modes"],
     },
     {
       type: "category",
@@ -50,6 +46,7 @@ const sidebars: SidebarsConfig = {
         "environment-configuration", // Moved from Core Features
         "agent-configuration",
         "context-compaction",
+        "custom-commands", // Moved from Basic Features to Advanced Configuration
         "custom-workflows", // Moved from Core Features as it's an advanced topic
         "security-features", // Moved from Core Features as it's a configuration concern
       ],
