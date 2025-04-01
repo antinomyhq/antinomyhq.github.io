@@ -32,31 +32,32 @@ The retry mechanism can be configured in your `forge.yaml` file:
 
 ```yaml
 retry:
-  max_attempts: 5             # Maximum number of attempts (including first try)
-  initial_delay_ms: 100       # Initial delay before first retry (milliseconds)
-  max_delay_ms: 10000         # Maximum delay between retries (milliseconds)
-  backoff_factor: 2           # Multiplier for delay between retries
-  retryable_status_codes:     # HTTP status codes to retry
-    - 429                     # Too Many Requests
-    - 500                     # Internal Server Error
-    - 502                     # Bad Gateway
-    - 503                     # Service Unavailable
-    - 504                     # Gateway Timeout
+  max_attempts: 5 # Maximum number of attempts (including first try)
+  initial_delay_ms: 100 # Initial delay before first retry (milliseconds)
+  max_delay_ms: 10000 # Maximum delay between retries (milliseconds)
+  backoff_factor: 2 # Multiplier for delay between retries
+  retryable_status_codes: # HTTP status codes to retry
+    - 429 # Too Many Requests
+    - 500 # Internal Server Error
+    - 502 # Bad Gateway
+    - 503 # Service Unavailable
+    - 504 # Gateway Timeout
 ```
 
 ### Configuration Parameters
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `max_attempts` | 3 | Maximum number of attempts (including initial attempt) |
-| `initial_delay_ms` | 100 | Initial delay before first retry (milliseconds) |
-| `max_delay_ms` | 10000 | Maximum delay cap between retries |
-| `backoff_factor` | 2 | Exponential multiplier for delay between retries |
-| `retryable_status_codes` | [429, 500, 502, 503, 504] | HTTP status codes that trigger retries |
+| Parameter                | Default                   | Description                                            |
+| ------------------------ | ------------------------- | ------------------------------------------------------ |
+| `max_attempts`           | 3                         | Maximum number of attempts (including initial attempt) |
+| `initial_delay_ms`       | 100                       | Initial delay before first retry (milliseconds)        |
+| `max_delay_ms`           | 10000                     | Maximum delay cap between retries                      |
+| `backoff_factor`         | 2                         | Exponential multiplier for delay between retries       |
+| `retryable_status_codes` | [429, 500, 502, 503, 504] | HTTP status codes that trigger retries                 |
 
 ### How Backoff Works
 
 With default settings, retry delays follow this pattern:
+
 1. Initial attempt fails
 2. Wait 100ms (initial_delay_ms)
 3. First retry fails
@@ -162,11 +163,12 @@ delay = min(max_delay_ms, initial_delay_ms * (backoff_factor ^ retry_number))
 ```
 
 For example, with default settings:
-- First retry: min(10000, 100 * (2^0)) = 100ms
-- Second retry: min(10000, 100 * (2^1)) = 200ms
-- Third retry: min(10000, 100 * (2^2)) = 400ms
-- Fourth retry: min(10000, 100 * (2^3)) = 800ms
-- Fifth retry: min(10000, 100 * (2^4)) = 1600ms
+
+- First retry: min(10000, 100 \* (2^0)) = 100ms
+- Second retry: min(10000, 100 \* (2^1)) = 200ms
+- Third retry: min(10000, 100 \* (2^2)) = 400ms
+- Fourth retry: min(10000, 100 \* (2^3)) = 800ms
+- Fifth retry: min(10000, 100 \* (2^4)) = 1600ms
 
 This approach balances quick recovery from momentary issues against avoiding overwhelming systems experiencing prolonged problems.
 
@@ -201,6 +203,7 @@ INFO [retry] Retrying operation after 200ms (attempt 2 of 5)
 ```
 
 Frequent retries may indicate:
+
 - Network reliability issues
 - Rate limiting thresholds being exceeded
 - API endpoint stability problems

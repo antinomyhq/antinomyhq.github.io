@@ -120,8 +120,8 @@ agents:
 
   - id: background_researcher
     model: *efficiency_model
-    temperature: 0.3  # Lower temperature for more deterministic responses
-    hide_content: true  # Responses won't appear in console
+    temperature: 0.3 # Lower temperature for more deterministic responses
+    hide_content: true # Responses won't appear in console
     tools:
       - tool_forge_net_fetch
       - tool_forge_event_dispatch
@@ -132,7 +132,7 @@ agents:
 
   - id: developer
     model: *advanced_model
-    temperature: 0.7  # Balanced creativity and determinism
+    temperature: 0.7 # Balanced creativity and determinism
     tools:
       - tool_forge_fs_read
       - tool_forge_fs_create
@@ -141,17 +141,17 @@ agents:
       - tool_forge_process_shell
       - tool_forge_net_fetch
       - tool_forge_fs_search
-      - tool_forge_display_show_user  # Rich markdown display tool
+      - tool_forge_display_show_user # Rich markdown display tool
     subscribe:
       - user_task_init
       - user_task_update
       - research_results
-    max_walker_depth: 1024  # Maximum directory exploration depth
+    max_walker_depth: 1024 # Maximum directory exploration depth
     compact:
-      max_tokens: 2000       # Maximum tokens for summary
+      max_tokens: 2000 # Maximum tokens for summary
       token_threshold: 80000 # When to trigger compaction
       model: *efficiency_model
-      retention_window: 6     # Recent messages to preserve
+      retention_window: 6 # Recent messages to preserve
     ephemeral: false
     tool_supported: true # Use model's native tool call format (default)
     system_prompt: "{{> system-prompt-engineer.hbs }}"
@@ -176,11 +176,11 @@ agents:
   - id: assistant
     model: anthropic/claude-3.5-sonnet
     compact:
-      max_tokens: 2000        # Maximum tokens for summary
-      token_threshold: 80000  # When to trigger compaction
-      model: google/gemini-2.0-flash-001  # Fast model for summarization
-      retention_window: 6     # Recent messages to preserve
-      prompt: "{{> system-prompt-context-summarizer.hbs }}"  # Custom prompt
+      max_tokens: 2000 # Maximum tokens for summary
+      token_threshold: 80000 # When to trigger compaction
+      model: google/gemini-2.0-flash-001 # Fast model for summarization
+      retention_window: 6 # Recent messages to preserve
+      prompt: "{{> system-prompt-context-summarizer.hbs }}" # Custom prompt
 ```
 
 ### Temperature Configuration
@@ -192,17 +192,17 @@ agents:
   # Precise, deterministic coding agent
   - id: code_generator
     model: anthropic/claude-3.5-sonnet
-    temperature: 0.1  # Very deterministic for consistent code
-    
+    temperature: 0.1 # Very deterministic for consistent code
+
   # Balanced general assistant
   - id: assistant
     model: anthropic/claude-3.5-sonnet
-    temperature: 0.7  # Default balanced setting
-    
+    temperature: 0.7 # Default balanced setting
+
   # Creative content generator
   - id: creative_writer
     model: anthropic/claude-3.5-sonnet
-    temperature: 1.2  # Higher creativity for brainstorming
+    temperature: 1.2 # Higher creativity for brainstorming
 ```
 
 ### Agent Visibility Control
@@ -215,7 +215,7 @@ agents:
   - id: background_helper
     model: anthropic/claude-3.5-haiku
     hide_content: true
-    
+
   # Main agent that displays its responses
   - id: main_agent
     model: anthropic/claude-3.5-sonnet
@@ -231,7 +231,7 @@ agents:
   - id: presenter
     model: anthropic/claude-3.5-sonnet
     tools:
-      - tool_forge_display_show_user  # Required for rich display
+      - tool_forge_display_show_user # Required for rich display
       # Other tools...
 ```
 

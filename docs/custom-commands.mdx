@@ -42,11 +42,11 @@ commands:
 
 ### Configuration Options
 
-| Option | Required | Description |
-|--------|----------|-------------|
-| `name` | Yes | The name of the command (used as `/name` in the CLI) |
-| `description` | Yes | A description of what the command does (shown in help) |
-| `value` | No | Default prompt value used when no arguments are provided |
+| Option        | Required | Description                                              |
+| ------------- | -------- | -------------------------------------------------------- |
+| `name`        | Yes      | The name of the command (used as `/name` in the CLI)     |
+| `description` | Yes      | A description of what the command does (shown in help)   |
+| `value`       | No       | Default prompt value used when no arguments are provided |
 
 ## Using Custom Commands
 
@@ -97,7 +97,7 @@ agents:
     tools:
       - tool_forge_process_shell
     subscribe:
-      - commit  # This agent subscribes to the 'commit' custom command
+      - commit # This agent subscribes to the 'commit' custom command
 ```
 
 ## Command Handling Approaches

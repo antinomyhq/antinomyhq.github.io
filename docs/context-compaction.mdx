@@ -15,6 +15,7 @@ Forge includes powerful automatic context management capabilities that optimize 
 As conversations with AI agents grow longer, they can exceed token limits and become inefficient. Context compaction automatically summarizes older parts of conversations when they reach configurable thresholds, allowing you to maintain longer, more productive interactions without hitting model context limits.
 
 Key benefits include:
+
 - **Extended Conversations**: Continue conversations beyond normal token limits
 - **Optimized Performance**: Reduce token usage and improve response times
 - **Preserved Context**: Keep critical information while summarizing less important details
@@ -40,28 +41,29 @@ agents:
   - id: assistant
     model: anthropic/claude-3.5-sonnet
     compact:
-      max_tokens: 2000        # Maximum tokens for the summary
-      token_threshold: 80000  # When to trigger compaction
-      model: google/gemini-2.0-flash-001  # Model to use for summarization
-      retention_window: 6     # Recent messages to preserve
-      prompt: "{{> system-prompt-context-summarizer.hbs }}"  # Optional custom prompt
+      max_tokens: 2000 # Maximum tokens for the summary
+      token_threshold: 80000 # When to trigger compaction
+      model: google/gemini-2.0-flash-001 # Model to use for summarization
+      retention_window: 6 # Recent messages to preserve
+      prompt: "{{> system-prompt-context-summarizer.hbs }}" # Optional custom prompt
 ```
 
 ### Configuration Parameters
 
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `max_tokens` | Yes | Maximum token count for the generated summary |
-| `token_threshold` | Yes | Conversation token count that triggers compaction |
-| `model` | Yes | AI model to use for generating the summary |
-| `retention_window` | No | Number of recent messages to preserve unchanged |
-| `prompt` | No | Custom prompt template for summarization |
+| Parameter          | Required | Description                                       |
+| ------------------ | -------- | ------------------------------------------------- |
+| `max_tokens`       | Yes      | Maximum token count for the generated summary     |
+| `token_threshold`  | Yes      | Conversation token count that triggers compaction |
+| `model`            | Yes      | AI model to use for generating the summary        |
+| `retention_window` | No       | Number of recent messages to preserve unchanged   |
+| `prompt`           | No       | Custom prompt template for summarization          |
 
 ## Best Practices
 
 ### Selecting Appropriate Thresholds
 
 Set `token_threshold` based on your model's context window size. For example:
+
 - For Claude 3.5 Sonnet (~200K token window): 150,000 to 180,000 tokens
 - For Claude 3 Opus (~180K token window): 120,000 to 160,000 tokens
 - For GPT-4 Turbo (~128K token window): 80,000 to 100,000 tokens
@@ -69,12 +71,14 @@ Set `token_threshold` based on your model's context window size. For example:
 ### Choosing Summarization Models
 
 For the summarization model, balance speed and quality:
+
 - Fast models (like Gemini Flash) provide quicker summaries
 - More powerful models may provide better context preservation but take longer
 
 ### Retention Window Considerations
 
 The retention window controls how many recent messages are preserved verbatim:
+
 - Larger windows maintain more recent context but reduce compaction efficiency
 - Smaller windows allow for more aggressive compaction but may lose recent details
 - A typical value is 6-10 messages

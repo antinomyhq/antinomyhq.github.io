@@ -20,9 +20,9 @@ Displays formatted markdown content to the user in the terminal.
 
 #### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `content` | string | Yes | Markdown content to display to the user |
+| Parameter | Type   | Required | Description                             |
+| --------- | ------ | -------- | --------------------------------------- |
+| `content` | string | Yes      | Markdown content to display to the user |
 
 #### Features
 
@@ -34,6 +34,7 @@ Displays formatted markdown content to the user in the terminal.
 #### When to Use
 
 Agents use this tool when they need to present:
+
 - Structured information with clear hierarchy
 - Tabular data
 - Code snippets with syntax highlighting
@@ -48,9 +49,9 @@ Reads file contents at a specified path.
 
 #### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `path` | string | Yes | Absolute path to the file |
+| Parameter | Type   | Required | Description               |
+| --------- | ------ | -------- | ------------------------- |
+| `path`    | string | Yes      | Absolute path to the file |
 
 ### tool_forge_fs_create
 
@@ -58,11 +59,11 @@ Creates or overwrites a file with specified content.
 
 #### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `path` | string | Yes | Absolute path to the file |
-| `content` | string | Yes | Content to write to the file |
-| `overwrite` | boolean | No | Whether to overwrite if file exists (default: false) |
+| Parameter   | Type    | Required | Description                                          |
+| ----------- | ------- | -------- | ---------------------------------------------------- |
+| `path`      | string  | Yes      | Absolute path to the file                            |
+| `content`   | string  | Yes      | Content to write to the file                         |
+| `overwrite` | boolean | No       | Whether to overwrite if file exists (default: false) |
 
 ### tool_forge_fs_patch
 
@@ -70,19 +71,19 @@ Modifies files with targeted text operations on matched patterns.
 
 #### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `path` | string | Yes | Absolute path to the file |
-| `patches` | array | Yes | List of patch operations to apply |
+| Parameter | Type   | Required | Description                       |
+| --------- | ------ | -------- | --------------------------------- |
+| `path`    | string | Yes      | Absolute path to the file         |
+| `patches` | array  | Yes      | List of patch operations to apply |
 
 #### Patch Operations
 
-| Operation | Description |
-|-----------|-------------|
-| `prepend` | Add content before the matched text |
-| `append` | Add content after the matched text |
-| `replace` | Replace the matched text with new content |
-| `swap` | Exchange the matched text with another text |
+| Operation | Description                                 |
+| --------- | ------------------------------------------- |
+| `prepend` | Add content before the matched text         |
+| `append`  | Add content after the matched text          |
+| `replace` | Replace the matched text with new content   |
+| `swap`    | Exchange the matched text with another text |
 
 ### tool_forge_fs_remove
 
@@ -90,9 +91,9 @@ Removes a file at a specified path.
 
 #### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `path` | string | Yes | Absolute path to the file |
+| Parameter | Type   | Required | Description               |
+| --------- | ------ | -------- | ------------------------- |
+| `path`    | string | Yes      | Absolute path to the file |
 
 ### tool_forge_fs_list
 
@@ -100,9 +101,9 @@ Lists files and directories at a specified path.
 
 #### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `path` | string | Yes | Absolute path to the directory |
+| Parameter | Type   | Required | Description                    |
+| --------- | ------ | -------- | ------------------------------ |
+| `path`    | string | Yes      | Absolute path to the directory |
 
 ### tool_forge_fs_info
 
@@ -110,9 +111,9 @@ Retrieves metadata about a file or directory.
 
 #### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `path` | string | Yes | Absolute path to the file or directory |
+| Parameter | Type   | Required | Description                            |
+| --------- | ------ | -------- | -------------------------------------- |
+| `path`    | string | Yes      | Absolute path to the file or directory |
 
 ### tool_forge_fs_search
 
@@ -120,11 +121,11 @@ Searches for text patterns across files using regex.
 
 #### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `path` | string | Yes | Directory to search in (recursively) |
-| `regex` | string | Yes | Regular expression pattern to search for |
-| `file_pattern` | string | No | Glob pattern to filter files (e.g., "*.js") |
+| Parameter      | Type   | Required | Description                                  |
+| -------------- | ------ | -------- | -------------------------------------------- |
+| `path`         | string | Yes      | Directory to search in (recursively)         |
+| `regex`        | string | Yes      | Regular expression pattern to search for     |
+| `file_pattern` | string | No       | Glob pattern to filter files (e.g., "\*.js") |
 
 ## Network Tools
 
@@ -134,12 +135,12 @@ Retrieves content from URLs as markdown or raw text.
 
 #### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `url` | string | Yes | URL to fetch content from |
-| `raw` | boolean | No | Whether to return raw content instead of markdown (default: false) |
-| `max_length` | number | No | Maximum characters to return (default: 40000) |
-| `start_index` | number | No | Starting character index for pagination (default: 0) |
+| Parameter     | Type    | Required | Description                                                        |
+| ------------- | ------- | -------- | ------------------------------------------------------------------ |
+| `url`         | string  | Yes      | URL to fetch content from                                          |
+| `raw`         | boolean | No       | Whether to return raw content instead of markdown (default: false) |
+| `max_length`  | number  | No       | Maximum characters to return (default: 40000)                      |
+| `start_index` | number  | No       | Starting character index for pagination (default: 0)               |
 
 ## Process Tools
 
@@ -149,10 +150,10 @@ Executes shell commands with safety measures.
 
 #### Parameters
 
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `command` | string | Yes | Shell command to execute |
-| `cwd` | string | Yes | Working directory for command execution |
+| Parameter | Type   | Required | Description                             |
+| --------- | ------ | -------- | --------------------------------------- |
+| `command` | string | Yes      | Shell command to execute                |
+| `cwd`     | string | Yes      | Working directory for command execution |
 
 ## Agent Best Practices
 
@@ -177,18 +178,18 @@ Executes shell commands with safety measures.
 
 ## Tool Selection Guide
 
-| When agents need to... | They use this tool |
-|---------------------|--------------|
+| When agents need to...                    | They use this tool             |
+| ----------------------------------------- | ------------------------------ |
 | Present formatted information to the user | `tool_forge_display_show_user` |
-| Read file content | `tool_forge_fs_read` |
-| Create or update a file | `tool_forge_fs_create` |
-| Make small targeted changes to a file | `tool_forge_fs_patch` |
-| Delete a file | `tool_forge_fs_remove` |
-| List files in a directory | `tool_forge_fs_list` |
-| Get file metadata | `tool_forge_fs_info` |
-| Find text patterns across multiple files | `tool_forge_fs_search` |
-| Retrieve data from a URL | `tool_forge_net_fetch` |
-| Execute shell commands | `tool_forge_process_shell` |
+| Read file content                         | `tool_forge_fs_read`           |
+| Create or update a file                   | `tool_forge_fs_create`         |
+| Make small targeted changes to a file     | `tool_forge_fs_patch`          |
+| Delete a file                             | `tool_forge_fs_remove`         |
+| List files in a directory                 | `tool_forge_fs_list`           |
+| Get file metadata                         | `tool_forge_fs_info`           |
+| Find text patterns across multiple files  | `tool_forge_fs_search`         |
+| Retrieve data from a URL                  | `tool_forge_net_fetch`         |
+| Execute shell commands                    | `tool_forge_process_shell`     |
 
 ## Related Documentation
 
