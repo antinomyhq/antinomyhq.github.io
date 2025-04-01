@@ -2,25 +2,21 @@
 title: Tools Reference
 slug: /tools-reference
 sidebar_position: 14
-description: "Complete reference for all built-in tools available in Forge"
+description: "Complete reference for all built-in tools available in Forge's AI agents"
 sidebar_label: Tools Reference
 ---
 
 # Tools Reference
 
-Forge provides a comprehensive set of built-in tools that enable AI agents to interact with your system, manage files, process data, and communicate with users. This reference documents all available tools, their parameters, and usage examples.
+Forge provides a comprehensive set of built-in tools that enable AI agents to interact with your system, manage files, process data, and communicate with users. This reference documents all available tools and their parameters.
+
+> **Note:** These tools are used internally by Forge's AI agents and are not meant to be directly called by developers. This reference is provided for understanding what capabilities agents have access to within your system.
 
 ## User Interface Tools
 
 ### tool_forge_display_show_user
 
 Displays formatted markdown content to the user in the terminal.
-
-```javascript
-tool_forge_display_show_user({
-  content: "# Hello World\n\nThis is **formatted** markdown content."
-})
-```
 
 #### Parameters
 
@@ -35,36 +31,9 @@ tool_forge_display_show_user({
 - Properly rendered using the termimad library
 - Improves readability of complex information
 
-#### Example: Creating a Structured Output
-
-```javascript
-tool_forge_display_show_user({
-  content: `# Analysis Results
-
-## Performance Issues
-- **High CPU Usage**: 94% average over 5 minutes
-- **Memory Leak Detected**: Growing by ~5MB per minute
-
-## Recommended Actions
-1. Check process ID 3421 for excessive resource consumption
-2. Review recent code changes in authentication module
-
-| Metric | Current | Threshold | Status |
-|--------|---------|-----------|--------|
-| CPU    | 94%     | 80%       | ❌     |
-| Memory | 2.3GB   | 2GB       | ❌     |
-| Disk   | 68%     | 90%       | ✅     |
-
-\`\`\`bash
-# Run this command to restart the affected service
-sudo systemctl restart app-server.service
-\`\`\``
-})
-```
-
 #### When to Use
 
-Use this tool when you need to present:
+Agents use this tool when they need to present:
 - Structured information with clear hierarchy
 - Tabular data
 - Code snippets with syntax highlighting
@@ -77,12 +46,6 @@ Use this tool when you need to present:
 
 Reads file contents at a specified path.
 
-```javascript
-tool_forge_fs_read({
-  path: "/absolute/path/to/file.txt"
-})
-```
-
 #### Parameters
 
 | Parameter | Type | Required | Description |
@@ -92,14 +55,6 @@ tool_forge_fs_read({
 ### tool_forge_fs_create
 
 Creates or overwrites a file with specified content.
-
-```javascript
-tool_forge_fs_create({
-  path: "/absolute/path/to/file.txt",
-  content: "File content goes here",
-  overwrite: true
-})
-```
 
 #### Parameters
 
@@ -112,19 +67,6 @@ tool_forge_fs_create({
 ### tool_forge_fs_patch
 
 Modifies files with targeted text operations on matched patterns.
-
-```javascript
-tool_forge_fs_patch({
-  path: "/absolute/path/to/file.txt",
-  patches: [
-    {
-      search: "old text",
-      operation: "replace",
-      content: "new text"
-    }
-  ]
-})
-```
 
 #### Parameters
 
@@ -146,29 +88,35 @@ tool_forge_fs_patch({
 
 Removes a file at a specified path.
 
-```javascript
-tool_forge_fs_remove({
-  path: "/absolute/path/to/file.txt"
-})
-```
-
 #### Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `path` | string | Yes | Absolute path to the file |
 
+### tool_forge_fs_list
+
+Lists files and directories at a specified path.
+
+#### Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `path` | string | Yes | Absolute path to the directory |
+
+### tool_forge_fs_info
+
+Retrieves metadata about a file or directory.
+
+#### Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `path` | string | Yes | Absolute path to the file or directory |
+
 ### tool_forge_fs_search
 
 Searches for text patterns across files using regex.
-
-```javascript
-tool_forge_fs_search({
-  path: "/absolute/path/to/directory",
-  regex: "function\\s+\\w+\\s*\\(",
-  file_pattern: "*.js"
-})
-```
 
 #### Parameters
 
@@ -183,15 +131,6 @@ tool_forge_fs_search({
 ### tool_forge_net_fetch
 
 Retrieves content from URLs as markdown or raw text.
-
-```javascript
-tool_forge_net_fetch({
-  url: "https://example.com/api/data",
-  raw: false,
-  max_length: 20000,
-  start_index: 0
-})
-```
 
 #### Parameters
 
@@ -208,13 +147,6 @@ tool_forge_net_fetch({
 
 Executes shell commands with safety measures.
 
-```javascript
-tool_forge_process_shell({
-  command: "ls -la",
-  cwd: "/absolute/path/to/directory"
-})
-```
-
 #### Parameters
 
 | Parameter | Type | Required | Description |
@@ -222,36 +154,38 @@ tool_forge_process_shell({
 | `command` | string | Yes | Shell command to execute |
 | `cwd` | string | Yes | Working directory for command execution |
 
-## Best Practices
+## Agent Best Practices
 
 ### User Interface
 
-1. **Use Structured Formatting**: Organize information with clear headings, lists, and emphasis
-2. **Code Block Usage**: Always use code blocks for commands, code snippets, and configuration examples
-3. **Table Organization**: Present comparative or structured data in tables for clarity
+1. **Structured Formatting**: Agents organize information with clear headings, lists, and emphasis
+2. **Code Block Usage**: Agents present commands, code snippets, and configuration examples in code blocks
+3. **Table Organization**: Agents present comparative or structured data in tables for clarity
 
 ### File Operations
 
-1. **Path Safety**: Always use absolute paths for file operations
-2. **Error Handling**: Check for success or failure responses from file tools
-3. **Minimize Writes**: Use `tool_forge_fs_patch` for small changes instead of rewriting entire files
-4. **Content Verification**: Use `tool_forge_fs_read` to verify file content before modifying
+1. **Path Safety**: Agents use absolute paths for file operations
+2. **Error Handling**: Agents check for success or failure responses from file tools
+3. **Minimize Writes**: Agents use `tool_forge_fs_patch` for small changes instead of rewriting entire files
+4. **Content Verification**: Agents verify file content before modifying
 
 ### Shell Commands
 
-1. **Command Safety**: Avoid potentially destructive commands
-2. **Working Directory**: Always specify the appropriate working directory
-3. **Command Results**: Always check command outputs and exit codes for errors
+1. **Command Safety**: Agents avoid potentially destructive commands
+2. **Working Directory**: Agents specify the appropriate working directory
+3. **Command Results**: Agents check command outputs and exit codes for errors
 
 ## Tool Selection Guide
 
-| When you need to... | Use this tool |
+| When agents need to... | They use this tool |
 |---------------------|--------------|
 | Present formatted information to the user | `tool_forge_display_show_user` |
 | Read file content | `tool_forge_fs_read` |
 | Create or update a file | `tool_forge_fs_create` |
 | Make small targeted changes to a file | `tool_forge_fs_patch` |
 | Delete a file | `tool_forge_fs_remove` |
+| List files in a directory | `tool_forge_fs_list` |
+| Get file metadata | `tool_forge_fs_info` |
 | Find text patterns across multiple files | `tool_forge_fs_search` |
 | Retrieve data from a URL | `tool_forge_net_fetch` |
 | Execute shell commands | `tool_forge_process_shell` |
