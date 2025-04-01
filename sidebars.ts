@@ -21,9 +21,7 @@ const sidebars: SidebarsConfig = {
       items: [
         "introduction",
         "installation",
-        "quick-setup",
-        "why-shell", // Moved from Reference to Getting Started for better context
-        "shell-integration",
+        "using-forge", // New combined document replacing quick-setup and shell-integration
       ],
     },
     {
