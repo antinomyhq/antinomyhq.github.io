@@ -8,6 +8,219 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 <VersionUpdateCard />
 
+## v0.92.0 
+
+### 🚀 Features
+
+- feat(mcp): add support for mcp via `.mcp.json` [@ssddOnTop](https://github.com/ssddOnTop) ([#797](https://github.com/antinomyhq/forge/pull/797))
+
+### 🐛 Bug Fixes
+
+- fix: implement retry at orch level [@laststylebender14](https://github.com/laststylebender14) ([#824](https://github.com/antinomyhq/forge/pull/824))
+- fix: improve agent interaction with completion feedback [@tusharmath](https://github.com/tusharmath) ([#820](https://github.com/antinomyhq/forge/pull/820))
+- fix(domain): ensure workflow model updates agent compaction configurations [@tusharmath](https://github.com/tusharmath) ([#818](https://github.com/antinomyhq/forge/pull/818))
+
+### 🧰 Maintenance
+
+- chore: rename open router to antinomy [@laststylebender14](https://github.com/laststylebender14) ([#819](https://github.com/antinomyhq/forge/pull/819))
+
+
+---
+## v0.91.0 
+
+### 🚀 Features
+
+- feat: use raw command api for command execution [@laststylebender14](https://github.com/laststylebender14) ([#816](https://github.com/antinomyhq/forge/pull/816))
+
+### 🐛 Bug Fixes
+
+- fix: infinite spinner unstable internet [@ssddOnTop](https://github.com/ssddOnTop) ([#810](https://github.com/antinomyhq/forge/pull/810))
+- fix: auto update [@laststylebender14](https://github.com/laststylebender14) ([#813](https://github.com/antinomyhq/forge/pull/813))
+- fix: correct release ID reference in CI workflow [@tusharmath](https://github.com/tusharmath) ([#815](https://github.com/antinomyhq/forge/pull/815))
+- fix: app version [@tusharmath](https://github.com/tusharmath) ([#814](https://github.com/antinomyhq/forge/pull/814))
+- fix: application version [@tusharmath](https://github.com/tusharmath) ([#812](https://github.com/antinomyhq/forge/pull/812))
+
+
+---
+## v0.90.1 
+
+### 🐛 Bug Fixes
+
+- fix: CI improvements [@tusharmath](https://github.com/tusharmath) ([#811](https://github.com/antinomyhq/forge/pull/811))
+
+
+---
+## v0.90.0 
+
+### 🚀 Features
+
+- feat: support environment variables across directory hierarchy [@ssddOnTop](https://github.com/ssddOnTop) ([#803](https://github.com/antinomyhq/forge/pull/803))
+
+### 🐛 Bug Fixes
+
+- fix: consolidate question handling into forge\_tool\_attempt\_completion [@tusharmath](https://github.com/tusharmath) ([#807](https://github.com/antinomyhq/forge/pull/807))
+- fix: correct tag in usage instructions for Completion tool [@tusharmath](https://github.com/tusharmath) ([#806](https://github.com/antinomyhq/forge/pull/806))
+- feat: persist `mode` in `forge.yaml` [@laststylebender14](https://github.com/laststylebender14) ([#793](https://github.com/antinomyhq/forge/pull/793))
+- fix: quotation issues in windows [@ssddOnTop](https://github.com/ssddOnTop) ([#805](https://github.com/antinomyhq/forge/pull/805))
+- fix: include tool description in schema [@tusharmath](https://github.com/tusharmath) ([#800](https://github.com/antinomyhq/forge/pull/800))
+
+### 🧰 Maintenance
+
+- chore: store model ID with each conversation message [@tusharmath](https://github.com/tusharmath) ([#808](https://github.com/antinomyhq/forge/pull/808))
+- chore: update `antinomy.ai` links in `README` [@laststylebender14](https://github.com/laststylebender14) ([#802](https://github.com/antinomyhq/forge/pull/802))
+
+
+---
+## v0.89.0 
+
+### 🚀 Features
+
+- feat: add `update` functionality on startup and an update command for manual updates [@iambenkay](https://github.com/iambenkay) ([#720](https://github.com/antinomyhq/forge/pull/720))
+
+### 🐛 Bug Fixes
+
+- fix: improve error diagnostics and file operation feedback [@tusharmath](https://github.com/tusharmath) ([#799](https://github.com/antinomyhq/forge/pull/799))
+
+### 🧰 Maintenance
+
+- chore: track model across all events [@laststylebender14](https://github.com/laststylebender14) ([#796](https://github.com/antinomyhq/forge/pull/796))
+
+
+---
+## v0.87.4 
+
+### 🐛 Bug Fixes
+
+- fix: support large `fs_find` operations [@laststylebender14](https://github.com/laststylebender14) ([#766](https://github.com/antinomyhq/forge/pull/766))
+- fix: compaction spinner fixes and interrupt handling [@tusharmath](https://github.com/tusharmath) ([#783](https://github.com/antinomyhq/forge/pull/783))
+- fix: compaction spinner updates and interruption [@laststylebender14](https://github.com/laststylebender14) ([#775](https://github.com/antinomyhq/forge/pull/775))
+- fix: support large shell command outputs [@laststylebender14](https://github.com/laststylebender14) ([#748](https://github.com/antinomyhq/forge/pull/748))
+- fix: optimise `completion` tool prompts [@laststylebender14](https://github.com/laststylebender14) ([#768](https://github.com/antinomyhq/forge/pull/768))
+- fix: add `forge_tool_attempt_completion` to software-designer agent's tools [@amitksingh1490](https://github.com/amitksingh1490) ([#777](https://github.com/antinomyhq/forge/pull/777))
+
+### 🧰 Maintenance
+
+- refactor(domain): standardize tool input types across services [@tusharmath](https://github.com/tusharmath) ([#788](https://github.com/antinomyhq/forge/pull/788))
+
+
+---
+## v0.87.2 
+
+### 🐛 Bug Fixes
+
+- fix: update CI workflow to trigger on tag pushes and update dependenc… [@amitksingh1490](https://github.com/amitksingh1490) ([#776](https://github.com/antinomyhq/forge/pull/776))
+- fix: update CI workflow to trigger on tag pushes instead of main branch [@amitksingh1490](https://github.com/amitksingh1490) ([#773](https://github.com/antinomyhq/forge/pull/773))
+
+
+---
+## v0.87.1 
+
+### 🐛 Bug Fixes
+
+- fix: update CI workflow to trigger on tag pushes instead of main branch [@amitksingh1490](https://github.com/amitksingh1490) ([#773](https://github.com/antinomyhq/forge/pull/773))
+- fix: add range support for fetch tool [@laststylebender14](https://github.com/laststylebender14) ([#745](https://github.com/antinomyhq/forge/pull/745))
+
+
+---
+## v0.87.0 
+
+### 🚀 Features
+
+- fix: never reveal tool name to user [@laststylebender14](https://github.com/laststylebender14) ([#764](https://github.com/antinomyhq/forge/pull/764))
+
+### 🐛 Bug Fixes
+
+- fix: never reveal tool name to user [@laststylebender14](https://github.com/laststylebender14) ([#764](https://github.com/antinomyhq/forge/pull/764))
+- fix: allow multiline pastes [@laststylebender14](https://github.com/laststylebender14) ([#760](https://github.com/antinomyhq/forge/pull/760))
+
+
+---
+## v0.86.0 
+
+### 🚀 Features
+
+- feat: allow search tool to accept file path to search in [@laststylebender14](https://github.com/laststylebender14) ([#758](https://github.com/antinomyhq/forge/pull/758))
+
+
+---
+## v0.85.3 
+
+### 🐛 Bug Fixes
+
+- fix: zero usage [@laststylebender14](https://github.com/laststylebender14) ([#751](https://github.com/antinomyhq/forge/pull/751))
+
+
+---
+## v0.85.2 
+
+### 🐛 Bug Fixes
+
+- fix: zero usage [@laststylebender14](https://github.com/laststylebender14) ([#751](https://github.com/antinomyhq/forge/pull/751))
+- fix(markdown): add dim attribute to code block style for better visibility [@tusharmath](https://github.com/tusharmath) ([#752](https://github.com/antinomyhq/forge/pull/752))
+
+
+---
+## v0.85.1 
+
+### 🐛 Bug Fixes
+
+- fix(tools): update tool names to use consistent naming convention [@tusharmath](https://github.com/tusharmath) ([#749](https://github.com/antinomyhq/forge/pull/749))
+
+
+---
+## v0.85.0 
+
+### 🚀 Features
+
+- fix(tools): use JsonSchema instead of XML to Parse Tools [@tusharmath](https://github.com/tusharmath) ([#739](https://github.com/antinomyhq/forge/pull/739))
+
+### 🐛 Bug Fixes
+
+- fix(tools): use JsonSchema instead of XML to Parse Tools [@tusharmath](https://github.com/tusharmath) ([#739](https://github.com/antinomyhq/forge/pull/739))
+
+
+---
+## v0.84.0 
+
+### 🚀 Features
+
+- feat: ensure agent doesn't quit in-between task [@laststylebender14](https://github.com/laststylebender14) ([#734](https://github.com/antinomyhq/forge/pull/734))
+
+
+---
+## v0.83.2 
+
+### 🐛 Bug Fixes
+
+- fix: remove duplicate tool call params from result [@laststylebender14](https://github.com/laststylebender14) ([#738](https://github.com/antinomyhq/forge/pull/738))
+
+
+---
+## v0.83.1 
+
+### 🐛 Bug Fixes
+
+- fix: fs tool usage prompt to include the correct calculation [@laststylebender14](https://github.com/laststylebender14) ([#737](https://github.com/antinomyhq/forge/pull/737))
+
+
+---
+## v0.83.0 
+
+### 🚀 Features
+
+- feat: add keep\_ansi flag to shell tool @akmane-96 (#732)
+
+
+---
+## v0.82.0 
+
+### 🚀 Features
+
+- feat: add keep\_ansi flag to shell tool @akmane-96 (#732)
+- feat: add provider in `/info` @akmane-96 (#722)
+
+
+---
 ## v0.81.0 
 
 ### 🚀 Features
