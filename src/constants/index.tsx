@@ -301,14 +301,16 @@ export const benefits: Benefits[] = [
   {
     id: 2,
     title: "Seamless Terminal Integration",
-    description: "No new IDE to learn. Forge lives in your terminal and plugs into your existing workflow with near zero setup. It understands your entire codebase and git history.",
+    description:
+      "No new IDE to learn. Forge lives in your terminal and plugs into your existing workflow with near zero setup. It understands your entire codebase and git history.",
     image: require("@site/static/images/home/customizable-icon.png").default,
     redirection_url: "/docs",
   },
   {
     id: 3,
     title: "Model-Agnostic Flexibility",
-    description: "Leverage the best of AI now and in the future. Forge works with OpenAI, Anthropic Claude, and hundreds of other models (300+ supported) including open-source and on-premise models.",
+    description:
+      "Leverage the best of AI now and in the future. Forge works with OpenAI, Anthropic Claude, and hundreds of other models (300+ supported) including open-source and on-premise models.",
     image: require("@site/static/images/home/performance.png").default,
     redirection_url: "/docs",
   },

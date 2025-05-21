@@ -19,21 +19,20 @@ const Configuration = (): JSX.Element => {
         <div className="mb-SPACE_06">
           <h5 className="font-semibold">Need help?</h5>
           <p className="text-content-small sm:text-content-medium mb-SPACE_11">
-            Explore our <Link href="/docs">documentation</Link> to learn about Forge's powerful capabilities 
-            and how to leverage AI models in your development workflow.
+            Explore our <Link href="/docs">documentation</Link> to learn about Forge's powerful capabilities and how to
+            leverage AI models in your development workflow.
           </p>
         </div>
       </div>
       <div>
         <h4 className="text-lg font-semibold mb-2">Install Forge</h4>
-        <CodeBlock
-          language="bash"
-          showLineNumbers={false}
-          className="overflow-y-auto md:min-w-[45rem] min-w-[100%]"
-        >
+        <CodeBlock language="bash" showLineNumbers={false} className="overflow-y-auto md:min-w-[45rem] min-w-[100%]">
           {NPM_INSTALLATION}
         </CodeBlock>
-        <p className="text-content-tiny mt-4 text-gray-500">After installing, create a <code>.env</code> file in your home directory with your API key, then type <code>forge</code> in your terminal.</p>
+        <p className="text-content-tiny mt-4 text-gray-500">
+          After installing, create a <code>.env</code> file in your home directory with your API key, then type{" "}
+          <code>forge</code> in your terminal.
+        </p>
       </div>
     </Section>
   )
