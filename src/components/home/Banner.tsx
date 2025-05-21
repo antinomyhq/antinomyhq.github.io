@@ -17,12 +17,10 @@ const Banner = (): JSX.Element => {
             className="hero-banner-title text-title-large max-w-xs sm:text-display-small lg:text-display-large sm:max-w-5xl"
           >
             Code Smarter. <br />
-            <span className="bg-tailCall-yellow rounded-md sm:rounded-2xl px-SPACE_02">Build Faster.</span> Rule the
-            Terminal.
+            <span className="bg-tailCall-yellow rounded-md sm:rounded-2xl px-SPACE_02">Build Faster.</span> On Your Terms
           </Heading>
           <p className="hero-banner-sub-title sm:max-w-2xl sm:m-auto text-content-small sm:text-content-medium lg:text-content-large font-normal max-w-md sm:mt-SPACE_04 mb-0">
-            Unleash your potential with Code-Forge, the AI coding agent that transforms senior developers into 100x
-            engineers. Command the terminal with unprecedented power.
+            Unleash the power of AI right from your terminal with <b>Forge</b> – the open-source CLI coding assistant that <b>accelerates development</b> without compromising your control or workflow.
           </p>
           <div className="hidden sm:flex justify-center mt-SPACE_06 sm:mt-SPACE_10 space-x-SPACE_04 sm:space-x-SPACE_06">
             <LinkButton
