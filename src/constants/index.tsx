@@ -13,7 +13,7 @@ export const algoliaConstants = {
   categoryFacet: "category",
   searchModalPlaceholder: "What do you want to now about code forge ?",
 }
-
+// FIXME: change the list of items and logos
 export const companies: PartnerImage[] = [
   {name: "Dream11", logo: require("@site/static/icons/companies/dream11.png").default},
   {name: "AfterShip", logo: require("@site/static/icons/companies/aftership.png").default},

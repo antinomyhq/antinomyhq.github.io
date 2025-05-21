@@ -18,7 +18,7 @@ interface TrustedByMarqueeProps {
 }
 
 const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
-  title = "Deploy Anywhere",
+  title = "Used By",
   logos,
   onClick,
   titleClassName = "text-content-small font-bold sm:text-title-tiny lg:text-title-small text-tailCall-light-500 text-center space-x-1",

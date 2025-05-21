@@ -2,7 +2,7 @@ import React from "react"
 import Heading from "@theme/Heading"
 import Section from "../shared/Section"
 import TrustedByMarquee from "./TrustedByMarquee"
-import { partnerImages } from "@site/src/constants"
+import { companies } from "@site/src/constants"
 
 const WhyChooseForge = (): JSX.Element => {
   return (
@@ -66,7 +66,7 @@ const WhyChooseForge = (): JSX.Element => {
         </p>
       </div>
       
-      <TrustedByMarquee title="Used by developers at" logos={partnerImages} />
+      <TrustedByMarquee title="Used by developers at" logos={companies} />
     </Section>
   )
 }
