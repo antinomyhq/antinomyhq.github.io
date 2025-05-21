@@ -19,11 +19,6 @@ const IntroductionGif: React.FC = () => {
           style={{objectPosition: "center"}}
         />
       </div>
-      <div className="text-center mt-4 max-w-3xl mx-auto">
-        <p className="text-content-tiny text-gray-600">
-          Forge understands your project context, git history, and development environment to provide accurate, relevant assistance.
-        </p>
-      </div>
     </div>
   )
 }

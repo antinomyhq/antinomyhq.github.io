@@ -14,7 +14,7 @@ const Configuration = (): JSX.Element => {
           Get <span className="rounded-lg px-SPACE_02 bg-tailCall-yellow">Started</span>
         </Heading>
         <p className="text-content-small sm:text-content-medium mb-SPACE_06">
-          Install Forge globally using your favorite package manager and get started in seconds.
+          Install Forge globally and get started in seconds.
         </p>
         <div className="mb-SPACE_06">
           <h5 className="font-semibold">Need help?</h5>
