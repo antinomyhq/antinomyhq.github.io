@@ -1,10 +1,12 @@
 import React from "react"
 import Heading from "@theme/Heading"
 import Section from "../shared/Section"
+import TrustedByMarquee from "./TrustedByMarquee"
+import { partnerImages } from "@site/src/constants"
 
 const WhyChooseForge = (): JSX.Element => {
   return (
-    <Section className="!bg-tailCall-dark-600 h-full w-full text-tailCall-light-100 !bg-contain md:!bg-center md:!bg-top py-16 md:py-20 lg:pt-36 lg:pb-24">
+    <Section className="customer-container !bg-tailCall-dark-600 h-full w-full text-tailCall-light-100 !bg-contain md:!bg-center md:!bg-top py-16 md:py-20 lg:pt-36 lg:pb-24">
       <div className="flex flex-row items-center justify-center">
         <Heading
           as="h5"
@@ -58,11 +60,13 @@ const WhyChooseForge = (): JSX.Element => {
       </div>
       
       <div className="mt-14 text-center">
-        <p className="text-lg italic max-w-3xl mx-auto">
+        <p className="text-lg italic max-w-3xl mx-auto mb-14">
           "Join developers worldwide in embracing a faster, smarter way to code – without surrendering control. 
           <span className="font-bold"> With Forge, you write the rules.</span>"
         </p>
       </div>
+      
+      <TrustedByMarquee title="Used by developers at" logos={partnerImages} />
     </Section>
   )
 }
