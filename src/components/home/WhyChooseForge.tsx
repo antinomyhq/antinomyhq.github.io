@@ -29,15 +29,13 @@ const WhyChooseForge = (): JSX.Element => {
             For Individual <span className="text-tailCall-yellow">Developers</span>
           </span>
           <p className="text-content-small sm:text-content-medium mb-4">
-            Forge removes the complexity from your workflow, letting you focus on creative problem-solving. Use natural language 
-            to build features, implement bug fixes, and explore unfamiliar code bases—all while keeping
-            your code private.
+            Forge removes the complexity from your workflow, letting you focus on creative problem-solving. With Forge, you can:
           </p>
           <ul className="text-left list-disc pl-5 space-y-2 text-content-small sm:text-content-medium">
-            <li>Stay in your terminal—no context switching</li>
-            <li>Work with the AI models you prefer</li>
-            <li>Fast-track prototyping and implementation</li>
-            <li>Retain complete control of your code and data</li>
+            <li>Implement new features with natural language descriptions</li>
+            <li>Debug complex issues with contextual assistance</li>
+            <li>Explore and understand unfamiliar codebases quickly</li>
+            <li>Refactor and modernize legacy code intelligently</li>
           </ul>
         </div>
         
@@ -47,14 +45,13 @@ const WhyChooseForge = (): JSX.Element => {
             For <span className="text-tailCall-yellow">Enterprise</span> Teams
           </span>
           <p className="text-content-small sm:text-content-medium mb-4">
-            Implement a secure AI coding solution that respects your enterprise security requirements. Forge's model-agnostic approach 
-            means you can switch between providers or use your own internal models as needed.
+            Implement a secure AI coding solution that respects your enterprise security requirements. With Forge, your team can:
           </p>
           <ul className="text-left list-disc pl-5 space-y-2 text-content-small sm:text-content-medium">
-            <li>Ensure code never leaves your secure environment</li>
-            <li>Standardize coding practices across teams</li>
-            <li>Customize and extend for your specific workflows</li>
-            <li>Accelerate onboarding with AI-powered code exploration</li>
+            <li>Use on-premise AI models for complete data privacy</li>
+            <li>Customize workflows with your internal coding standards</li>
+            <li>Onboard new team members faster with codebase assistance</li>
+            <li>Integrate with existing CI/CD pipelines and tools</li>
           </ul>
         </div>
       </div>

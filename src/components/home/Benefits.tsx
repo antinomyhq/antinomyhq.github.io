@@ -15,7 +15,7 @@ const Benefits = (): JSX.Element => {
               as="h3"
               className="text-title-large sm:text-display-tiny lg:text-display-small text-white md:w-[65%]"
             >
-              Why Choose Forge - Your Coding Partner, On Your Terms
+              Key Benefits - AI Assistance Without Compromises
             </Heading>
           </div>
         </div>
