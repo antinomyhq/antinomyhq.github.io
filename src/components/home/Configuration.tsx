@@ -14,8 +14,9 @@ const Configuration = (): JSX.Element => {
           Get <span className="rounded-lg px-SPACE_02 bg-tailCall-yellow">Started</span>
         </Heading>
         <p className="text-content-small sm:text-content-medium mb-SPACE_11">
-          Forge is a comprehensive coding agent that integrates AI capabilities with your development environment,
-          offering sophisticated assistance while maintaining the efficiency of your existing workflow.
+          Forge uniquely combines the power of an industry-leading AI coding agent with the transparency and 
+          hackability of an open-source project. Unlike proprietary assistants, it's not a one-size-fits-all 
+          black box – it's <b>your coding partner, on your terms</b>.
         </p>
         <div className="mb-SPACE_06">
           <h5 className="font-semibold mb-2">Quick Setup</h5>
@@ -23,7 +24,7 @@ const Configuration = (): JSX.Element => {
             1. Install Forge using the commands on the right (npm works on all platforms)
           </p>
           <p className="text-content-small sm:text-content-medium mb-2">
-            2. Create a <code>.env</code> file in your home directory with:
+            2. Create a <code>.env</code> file in your home directory with your preferred AI model API key:
           </p>
           <pre className="bg-gray-100 p-2 rounded-md mb-4">
             <code>OPENROUTER_API_KEY=&lt;Your Open Router Key&gt;</code>
@@ -33,10 +34,11 @@ const Configuration = (): JSX.Element => {
           </p>
         </div>
         <div>
-          <h5 className="font-semibold">Learn More</h5>
+          <h5 className="font-semibold">Why Forge?</h5>
           <p className="text-content-small sm:text-content-medium mb-SPACE_11">
-            Explore our <Link href="/docs">documentation</Link> to learn about Forge's{" "}
-            <Link href="/docs">powerful capabilities</Link> and how to leverage them in your development workflow.
+            Whether you're an indie developer or part of a large enterprise, Forge adapts to your needs: 
+            use it to rapidly prototype, onboard to unfamiliar codebases, crush bugs, or enforce coding standards with AI-based fixes.
+            All of this happens right in your terminal, where you're most productive.
           </p>
         </div>
       </div>
