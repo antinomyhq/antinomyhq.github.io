@@ -4,7 +4,7 @@ import prismTheme from "./src/theme/CodeBlock/theme"
 import type {Config} from "@docusaurus/types"
 import {getNavDropdownItemHtml} from "./src/utils"
 
-const title = "Antinomy"
+const title = "Forge"
 const organization = "antinomyhq"
 const project = "antinomyhq.github.io"
 

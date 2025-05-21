@@ -14,7 +14,7 @@ export default function NavbarLogo({className, imageClassName}: Props): JSX.Elem
 
   // Force text logo instead of image
   return (
-    <Link to="/" className={`navbar__brand ${className ?? ""}`} aria-label={siteConfig.title || "Antinomy"}>
+    <Link to="/" className={`navbar__brand ${className ?? ""}`} aria-label={siteConfig.title || "Forge"}>
       <div className="navbar__logo">
         {/* This div maintains spacing and layout similar to having a logo */}
         <div style={{height: "24px", width: "1px"}} />

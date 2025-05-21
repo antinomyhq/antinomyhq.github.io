@@ -10,7 +10,7 @@ const Footer = (): JSX.Element => {
   return (
     <footer className="flex flex-col relative w-full relative px-4 py-8 lg:px-40 lg:pt-20 lg:pb-0 bg-tailCall-dark-700 grid-dark gap-4 lg:gap-8">
       <div className="grid grid-cols-2 gap-8 lg:flex lg:gap-32 xl:gap-64 w-full z-10">
-        <span className="text-2xl font-semibold text-white col-span-2 h-10 flex items-center">Antinomy</span>
+        <span className="text-2xl font-semibold text-white col-span-2 h-10 flex items-center">Forge</span>
         {footerItems.map((category: FooterItem, idx: number) => {
           return (
             <div className="flex flex-col gap-4 lg:gap-6" key={idx}>
