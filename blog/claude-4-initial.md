@@ -9,7 +9,9 @@ hide_table_of_contents: false
 ---
 
 Yesterday, Anthropic dropped what might be the biggest announcement in AI development tools this year. At their inaugural developer conference on May 22, 2025, they unveiled Claude 4, featuring both **Claude Opus 4** and **Claude Sonnet 4**. As someone who is actively building a coding assistant and has extensive experience evaluating AI models for development workflows, I knew I had to dive in immediately to see if these models live up to their bold claims..
+
 <!--truncate-->
+
 After spending my first day exploring Claude 4, I want to share my initial impressions, what the benchmarks really mean, and why I think this release represents a significant shift in how we'll approach AI-assisted development. Let me walk you through what I've discovered so far.
 
 ## Understanding the Strategic Positioning
@@ -29,6 +31,7 @@ On SWE-bench Verified, which evaluates how well AI models can solve actual softw
 Claude Opus 4 achieved 72.5% while **Sonnet 4 reached an even higher 72.7%**. To put these numbers in perspective, they surpass OpenAI's Codex 1 at 72.1%, o3 at 69.1%, and Google's Gemini 2.5 Pro Preview at 63.2%. What makes these results particularly meaningful is the nature of SWE-bench Verified itself.
 
 ### Understanding the Methodology Questions
+
 I should note that some developers have raised questions about the methodology behind these benchmarks, particularly regarding what Anthropic calls "parallel test-time compute" and their data handling practices. While I understand these concerns and think transparency is important, my initial testing suggests these numbers reflect genuine capabilities rather than benchmark gaming. The proof, as they say, is in the pudding—and my real-world testing has largely validated these impressive scores.
 
 ## My Real-World Testing Experience: Where Theory Meets Practice
@@ -61,7 +64,6 @@ The level of precision I witnessed isn't just useful—it's transformative. Clau
 
 What particularly impressed me was how Claude 4 models, seem specifically tuned for recursive, test-driven development workflows. The way they approach problem-solving mirrors the methodical, systematic thinking that defines engineering-grade development practices. Rather than treating each issue in isolation, they demonstrate understanding of how changes ripple through complex systems and anticipate the downstream effects of their modifications.
 
-
 ### Reduced Reward Hacking: Reliable Engineering Practices
 
 Perhaps most importantly, I noticed what Anthropic describes as reduced "reward hacking"—the tendency for AI models to find shortcuts or exploit loopholes rather than solving problems properly. In my testing, Claude 4 consistently chose approaches that were not just correct but also maintainable and aligned with software engineering best practices.
@@ -78,21 +80,21 @@ My comparison reinforced my growing sense that Claude 4 excels at system-level t
 
 ### Availability and Access
 
-The models are available through  
+The models are available through
+
 - [Amazon Bedrock](https://aws.amazon.com/about-aws/whats-new/2025/05/anthropics-claude-4-foundation-models-amazon-bedrock/)
 - [Google Cloud's Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/claude)
-- [OpenRouter](https://openrouter.ai/anthropic/claude-sonnet-4) 
+- [OpenRouter](https://openrouter.ai/anthropic/claude-sonnet-4)
 - [the Anthropic API](https://www.anthropic.com/news/claude-4)
 
 ### Pricing Structure and Value Considerations
 
 ## Claude 4 Model Pricing Structure
 
-| Model | Input Tokens (per million) | Output Tokens (per million) |
-|-------|---------------------------|----------------------------|
-| **Opus 4** | $15 | $75 |
-| **Sonnet 4** | $3 | $15 |
-
+| Model        | Input Tokens (per million) | Output Tokens (per million) |
+| ------------ | -------------------------- | --------------------------- |
+| **Opus 4**   | $15                        | $75                         |
+| **Sonnet 4** | $3                         | $15                         |
 
 ## My Initial Assessment: Cautious Optimism with Strong Evidence
 
