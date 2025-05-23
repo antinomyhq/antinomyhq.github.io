@@ -1,7 +1,7 @@
 ---
 slug: claude-4-initial-impressions-anthropic-ai-coding-breakthrough
 title: "Claude 4 First Impressions: Anthropic’s AI Models Redefine Coding Excellence"
-authors: [antinomy]
+authors: [forge]
 tags: ["Claude 4", "Anthropic", "models"]
 date: 2025-05-23
 description: "Explore my first 24 hours with Claude 4, Anthropic’s latest AI models. With top-tier SWE-bench Verified performance (Opus 4: 72.5%, Sonnet 4: 72.7%), these models excel in complex coding tasks, offering transformative precision and system-level thinking for developers."
