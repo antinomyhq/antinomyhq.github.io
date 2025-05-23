@@ -16,14 +16,10 @@ const Banner = (): JSX.Element => {
             as="h1"
             className="hero-banner-title text-title-large max-w-xs sm:text-display-small lg:text-display-large sm:max-w-5xl"
           >
-            Code Smarter. <br />
-            <span className="bg-tailCall-yellow rounded-md sm:rounded-2xl px-SPACE_02">Build Faster.</span> On Your
-            Terms
+            ❯ The AI shell
           </Heading>
           <p className="hero-banner-sub-title sm:max-w-2xl sm:m-auto text-content-small sm:text-content-medium lg:text-content-large font-normal max-w-md sm:mt-SPACE_04 mb-0">
-            <b>Forge</b> brings AI directly to your terminal – the open-source coding assistant that{" "}
-            <b>understands your entire codebase</b>, supports 300+ AI models, and keeps your code private on your
-            machine.
+            Forge is a non-intrusive light-weight AI assistant for the terminal.
           </p>
           <div className="hidden sm:flex justify-center mt-SPACE_06 sm:mt-SPACE_10 space-x-SPACE_04 sm:space-x-SPACE_06">
             <LinkButton

@@ -1,4 +1,4 @@
-const tagline = "Code Smarter"
+const tagline = "The AI Shell"
 
 export const PageTitle = {
   HOME: tagline,

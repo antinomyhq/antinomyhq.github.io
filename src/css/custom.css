@@ -34,7 +34,7 @@
 
 :root {
   /* Font and Dimension Tokens */
-  --ifm-font-family-base: "Space Grotesk", sans-serif;
+  --ifm-font-family-base: "Space Mono", monospace;
   --header-height: 6.5rem;
   --ifm-navbar-height: 6.5rem;
   --ifm-navbar-height-sm: 4.5rem;
@@ -719,10 +719,6 @@ div[class*="codeBlockContent"] div[class*="buttonGroup"] {
 
 span.token.tag.script.language-javascript {
   color: #fff !important;
-}
-
-.customer-container {
-  background: url("../../static/images/home/bg-map.png") no-repeat;
 }
 
 .customer-feedback-card {
