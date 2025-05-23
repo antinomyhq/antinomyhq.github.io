@@ -1,6 +1,6 @@
 ---
 slug: claude-4-initial-impressions-anthropic-ai-coding-breakthrough
-title: "Claude 4 First Impressions: Anthropic’s AI Models Redefine Coding Excellence"
+title: "Claude 4 First Impressions"
 authors: [forge]
 tags: ["Claude 4", "Anthropic", "models"]
 date: 2025-05-23
@@ -54,19 +54,32 @@ What struck me most about this experience was the precision and confidence with 
 
 Interestingly, when I ran similar tests with Claude Sonnet 4, the results were nearly indistinguishable from Opus 4. Both models demonstrated the same level of precision and understanding, which suggests that Anthropic has achieved remarkable consistency across their model family. I suspect that only extended use with increasingly complex scenarios will reveal the subtle differences between these two variants.
 
+### Performance Comparison Across Claude Models
+
+The contrast in performance between different Claude models was striking when tackling this complex refactoring challenge. Here's how each model performed:
+
+| Model                 | Time Taken      | Cost  | Issue Resolution   | Solution Quality                       | Prompts Required |
+| --------------------- | --------------- | ----- | ------------------ | -------------------------------------- | ---------------- |
+| **Claude Opus 4**     | 9 mins          | $3.99 | ✅ Fixed correctly | ✅ Comprehensive fixes                 | 1                |
+| **Claude Sonnet 4**   | 6 mins 13 secs  | $1.03 | ✅ Fixed correctly | ✅ Comprehensive fixes + Code Comments | 1                |
+| **Claude Sonnet 3.7** | 17 mins 16 secs | $3.35 | ❌ Failed to fix   | ❌ Modified tests instead of code      | 4                |
+
+
 ## Key Features That Signal a New Era of AI Collaboration
 
 Several specific capabilities in Claude 4 have already started shifting how I think about AI-assisted development, even in this short time frame. These features represent more than incremental improvements—they suggest a fundamental evolution in how AI can participate in professional software development workflows.
+
+### Reduced Reward Hacking: Reliable Engineering Practices
+
+Perhaps most importantly, I noticed what Anthropic describes as reduced "reward hacking"—the tendency for AI models to find shortcuts or exploit loopholes rather than solving problems properly. In my testing, Claude 4 consistently chose approaches that were not just correct but also maintainable and aligned with software engineering best practices.
+
+> **Critical Differentiator:** This is the core differentiator in my test as Opus 4 and Sonnet 4 both stuck to my instruction to not change the test but Sonnet 3.5 even after constant feedback in the end changed the test for making them pass.
 
 ### Transformative Precision in Multi-Stage Problem Solving
 
 The level of precision I witnessed isn't just useful—it's transformative. Claude 4's ability to handle complex, multi-stage fixes in a single iteration represents a fundamental shift from the iterative, trial-and-error approach that characterizes most AI coding tools. When you're working within sophisticated development environments like Forge, this capability becomes even more pronounced.
 
 What particularly impressed me was how Claude 4 models, seem specifically tuned for recursive, test-driven development workflows. The way they approach problem-solving mirrors the methodical, systematic thinking that defines engineering-grade development practices. Rather than treating each issue in isolation, they demonstrate understanding of how changes ripple through complex systems and anticipate the downstream effects of their modifications.
-
-### Reduced Reward Hacking: Reliable Engineering Practices
-
-Perhaps most importantly, I noticed what Anthropic describes as reduced "reward hacking"—the tendency for AI models to find shortcuts or exploit loopholes rather than solving problems properly. In my testing, Claude 4 consistently chose approaches that were not just correct but also maintainable and aligned with software engineering best practices.
 
 ### Agentic Coding Capabilities: Where Claude 4 Excels
 
@@ -77,6 +90,8 @@ This distinction becomes particularly pronounced in environments designed around
 ### System-Level Thinking: The Architectural Advantage
 
 My comparison reinforced my growing sense that Claude 4 excels at system-level thinking. Rather than treating each problem in isolation, it maintains awareness of broader architectural concerns and long-term maintainability. This suggests that while combining Claude 4 with other AI tools might create a more comprehensive approach to code quality, Claude 4 is increasingly capable of serving as the primary intelligence in complex development scenarios.
+
+![Comparison](../static/blog/model_comparison.svg)
 
 ### Availability and Access
 
