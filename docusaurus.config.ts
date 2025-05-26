@@ -30,23 +30,24 @@ export default {
     {
       tagName: "script",
       attributes: {
-        id: "chatbotscript",
-        "data-accountid": "CZPG9aVdtk59Tjz4SMTu8w==",
-        "data-websiteid": "75VGI0NlBqessD4BQn2pFg==",
-        src: "https://app.robofy.ai/bot/js/common.js?v=" + new Date().getTime(),
-      },
-    },
-    {
-      tagName: "script",
-      attributes: {
         type: "application/ld+json",
       },
       innerHTML: JSON.stringify({
         "@context": "https://schema.org/",
         "@type": "WebSite",
-        name: "Antinomy",
-        url: "https://antinomy.ai/",
+        name: "ForgeCode",
+        url: "https://forgecode.dev/",
       }),
+    },
+    {
+      tagName: "script",
+      attributes: {},
+      innerHTML: `!function(s,n,i,t,c,h){s.SnitchObject=i;s[i]||(s[i]=function(){
+    (s[i].q=s[i].q||[]).push(arguments)});s[i].l=+new Date;c=n.createElement(t);
+    h=n.getElementsByTagName(t)[0];c.src='//snid.snitcher.com/8432087.js';
+    h.parentNode.insertBefore(c,h)}(window,document,'snid','script');
+        
+    snid('verify', '8432087');`,
     },
   ],
   url: "https://antinomyhq.github.io",
@@ -120,7 +121,7 @@ export default {
     navbar: {
       hideOnScroll: true,
       logo: {
-        alt: "Antinomy",
+        alt: "ForgeCode",
         src: "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
       },
       items: [
