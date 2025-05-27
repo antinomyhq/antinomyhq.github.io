@@ -37,16 +37,16 @@
     
     <!-- Axis labels positioned outside the grid -->
     <text x="0" y="-170" class="axis-label">Code Quality</text>
-    <text x="145" y="-65" class="axis-label">Instruction</text>
-    <text x="145" y="-50" class="axis-label">Following</text>
+    <text x="165" y="-65" class="axis-label">Instruction</text>
+    <text x="165" y="-50" class="axis-label">Following</text>
     <text x="145" y="85" class="axis-label">Execution</text>
     <text x="145" y="100" class="axis-label">Speed</text>
     <text x="0" y="175" class="axis-label">Architecture</text>
     <text x="0" y="190" class="axis-label">Understanding</text>
     <text x="-145" y="85" class="axis-label">Error</text>
     <text x="-145" y="100" class="axis-label">Handling</text>
-    <text x="-145" y="-65" class="axis-label">Scope</text>
-    <text x="-145" y="-50" class="axis-label">Management</text>
+    <text x="-165" y="-65" class="axis-label">Scope</text>
+    <text x="-165" y="-50" class="axis-label">Management</text>
     
     <!-- Scale labels -->
     <text x="5" y="-28" class="metric-label">20%</text>
