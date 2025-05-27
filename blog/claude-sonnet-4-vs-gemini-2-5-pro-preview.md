@@ -1,6 +1,6 @@
 ---
 slug: claude-sonnet-4-vs-gemini-2-5-pro-preview-coding-comparison
-title: "Claude Sonnet 4 vs Gemini 2.5 Pro Preview: A Developer's Head-to-Head Comparison"
+title: "Claude 4 vs Gemini 2.5 Pro: A Developer's Deep Dive Comparison"
 authors: [forge]
 tags:
   [
