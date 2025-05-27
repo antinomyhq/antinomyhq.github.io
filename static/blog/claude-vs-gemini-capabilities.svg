@@ -1,0 +1,103 @@
+<svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 18px sans-serif; text-anchor: middle; fill: #1f2937; }
+      .axis-label { font: bold 12px sans-serif; text-anchor: middle; fill: #374151; }
+      .metric-label { font: 11px sans-serif; fill: #4b5563; }
+      .claude-area { stroke: #2563eb; stroke-width: 3; fill: #2563eb; fill-opacity: 0.3; }
+      .gemini-area { stroke: #dc2626; stroke-width: 3; fill: #dc2626; fill-opacity: 0.3; }
+      .grid-line { stroke: #d1d5db; stroke-width: 1; fill: none; }
+      .axis-line { stroke: #6b7280; stroke-width: 2; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="600" fill="white" stroke="#e5e7eb" stroke-width="2"/>
+  
+  <!-- Title -->
+  <text x="300" y="25" class="title">Technical Capabilities Radar Comparison</text>
+  
+  <!-- Center the radar at 300,250 -->
+  <g transform="translate(300,250)">
+    
+    <!-- Grid circles (concentric) -->
+    <circle cx="0" cy="0" r="30" class="grid-line"/>
+    <circle cx="0" cy="0" r="60" class="grid-line"/>
+    <circle cx="0" cy="0" r="90" class="grid-line"/>
+    <circle cx="0" cy="0" r="120" class="grid-line"/>
+    <circle cx="0" cy="0" r="150" class="grid-line"/>
+    
+    <!-- Axis lines (6 axes, 60 degrees apart) -->
+    <line x1="0" y1="0" x2="0" y2="-150" class="axis-line"/> <!-- Code Quality (top) -->
+    <line x1="0" y1="0" x2="130" y2="-75" class="axis-line"/> <!-- Instruction Following -->
+    <line x1="0" y1="0" x2="130" y2="75" class="axis-line"/> <!-- Speed -->
+    <line x1="0" y1="0" x2="0" y2="150" class="axis-line"/> <!-- Architecture (bottom) -->
+    <line x1="0" y1="0" x2="-130" y2="75" class="axis-line"/> <!-- Error Handling -->
+    <line x1="0" y1="0" x2="-130" y2="-75" class="axis-line"/> <!-- Scope Management -->
+    
+    <!-- Axis labels positioned outside the grid -->
+    <text x="0" y="-170" class="axis-label">Code Quality</text>
+    <text x="145" y="-65" class="axis-label">Instruction</text>
+    <text x="145" y="-50" class="axis-label">Following</text>
+    <text x="145" y="85" class="axis-label">Execution</text>
+    <text x="145" y="100" class="axis-label">Speed</text>
+    <text x="0" y="175" class="axis-label">Architecture</text>
+    <text x="0" y="190" class="axis-label">Understanding</text>
+    <text x="-145" y="85" class="axis-label">Error</text>
+    <text x="-145" y="100" class="axis-label">Handling</text>
+    <text x="-145" y="-65" class="axis-label">Scope</text>
+    <text x="-145" y="-50" class="axis-label">Management</text>
+    
+    <!-- Scale labels -->
+    <text x="5" y="-28" class="metric-label">20%</text>
+    <text x="5" y="-58" class="metric-label">40%</text>
+    <text x="5" y="-88" class="metric-label">60%</text>
+    <text x="5" y="-118" class="metric-label">80%</text>
+    <text x="5" y="-148" class="metric-label">100%</text>
+    
+    <!-- Claude performance data (scaled to 150px max radius) -->
+    <!-- Code Quality: 95% = 142.5, Instruction: 95% = 142.5, Speed: 90% = 135,
+         Architecture: 85% = 127.5, Error: 90% = 135, Scope: 95% = 142.5 -->
+    <polygon points="0,-142.5 123,-71.25 117,67.5 0,127.5 -117,67.5 -123,-71.25" 
+             class="claude-area"/>
+    
+    <!-- Gemini performance data -->
+    <!-- Code Quality: 65% = 97.5, Instruction: 50% = 75, Speed: 40% = 60,
+         Architecture: 75% = 112.5, Error: 60% = 90, Scope: 30% = 45 -->
+    <polygon points="0,-97.5 65,-37.5 52,30 0,112.5 -78,45 -39,-37.5" 
+             class="gemini-area"/>
+    
+    <!-- Data point markers for Claude -->
+    <circle cx="0" cy="-142.5" r="4" fill="#2563eb" stroke="white" stroke-width="2"/>
+    <circle cx="123" cy="-71.25" r="4" fill="#2563eb" stroke="white" stroke-width="2"/>
+    <circle cx="117" cy="67.5" r="4" fill="#2563eb" stroke="white" stroke-width="2"/>
+    <circle cx="0" cy="127.5" r="4" fill="#2563eb" stroke="white" stroke-width="2"/>
+    <circle cx="-117" cy="67.5" r="4" fill="#2563eb" stroke="white" stroke-width="2"/>
+    <circle cx="-123" cy="-71.25" r="4" fill="#2563eb" stroke="white" stroke-width="2"/>
+    
+    <!-- Data point markers for Gemini -->
+    <circle cx="0" cy="-97.5" r="4" fill="#dc2626" stroke="white" stroke-width="2"/>
+    <circle cx="65" cy="-37.5" r="4" fill="#dc2626" stroke="white" stroke-width="2"/>
+    <circle cx="52" cy="30" r="4" fill="#dc2626" stroke="white" stroke-width="2"/>
+    <circle cx="0" cy="112.5" r="4" fill="#dc2626" stroke="white" stroke-width="2"/>
+    <circle cx="-78" cy="45" r="4" fill="#dc2626" stroke="white" stroke-width="2"/>
+    <circle cx="-39" cy="-37.5" r="4" fill="#dc2626" stroke="white" stroke-width="2"/>
+    
+  </g>
+  
+  <!-- Legend -->
+  <rect x="50" y="520" width="200" height="60" fill="white" stroke="#d1d5db" stroke-width="1"/>
+  <text x="150" y="540" class="axis-label">Model Performance</text>
+  
+  <line x1="70" y1="550" x2="95" y2="550" stroke="#2563eb" stroke-width="3"/>
+  <text x="100" y="554" class="metric-label">Claude Sonnet 4</text>
+  
+  <line x1="70" y1="565" x2="95" y2="565" stroke="#dc2626" stroke-width="3"/>
+  <text x="100" y="569" class="metric-label">Gemini 2.5 Pro Preview</text>
+  
+  <!-- Performance Summary -->
+  <rect x="350" y="520" width="200" height="60" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="450" y="540" class="axis-label">Key Differences</text>
+  <text x="360" y="555" class="metric-label">Claude: Consistently high performance</text>
+  <text x="360" y="570" class="metric-label">Gemini: Variable across capabilities</text>
+</svg>

@@ -1,0 +1,69 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font: bold 18px sans-serif; text-anchor: middle; fill: #1f2937; }
+      .axis-label { font: bold 14px sans-serif; text-anchor: middle; fill: #374151; }
+      .bar-label { font: bold 12px sans-serif; text-anchor: middle; fill: white; }
+      .legend { font: 11px sans-serif; fill: #4b5563; }
+      .claude-bar { fill: #2563eb; stroke: #1d4ed8; stroke-width: 1; }
+      .gemini-bar { fill: #dc2626; stroke: #b91c1c; stroke-width: 1; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="white" stroke="#e5e7eb" stroke-width="1"/>
+  
+  <!-- Title -->
+  <text x="300" y="30" class="title">Execution Time vs Cost Comparison</text>
+  
+  <!-- Time Chart -->
+  <text x="150" y="60" class="axis-label">Execution Time (minutes)</text>
+  
+  <!-- Claude Time Bar -->
+  <rect x="50" y="80" width="61" height="30" class="claude-bar"/>
+  <text x="80" y="100" class="bar-label" fill="white">6.1m</text>
+  <text x="80" y="125" class="legend">Claude Sonnet 4</text>
+  
+  <!-- Gemini Time Bar -->
+  <rect x="130" y="80" width="170" height="30" class="gemini-bar"/>
+  <text x="215" y="100" class="bar-label" fill="white">17.0m</text>
+  <text x="215" y="125" class="legend">Gemini 2.5 Pro Preview</text>
+  
+  <!-- Cost Chart -->
+  <text x="150" y="180" class="axis-label">Cost (USD)</text>
+  
+  <!-- Claude Cost Bar -->
+  <rect x="50" y="200" width="117" height="30" class="claude-bar"/>
+  <text x="108" y="220" class="bar-label" fill="white">$5.85</text>
+  <text x="108" y="245" class="legend">Claude Sonnet 4</text>
+  
+  <!-- Gemini Cost Bar -->
+  <rect x="180" y="200" width="46" height="30" class="gemini-bar"/>
+  <text x="203" y="220" class="bar-label" fill="white">$2.30</text>
+  <text x="203" y="245" class="legend">Gemini 2.5 Pro Preview</text>
+  
+  <!-- Success Rate Indicators -->
+  <text x="150" y="300" class="axis-label">Task Completion</text>
+  
+  <!-- Claude Success -->
+  <circle cx="100" cy="320" r="15" fill="#22c55e"/>
+  <text x="100" y="325" class="bar-label" fill="white">✓</text>
+  <text x="100" y="350" class="legend">Complete</text>
+  
+  <!-- Gemini Success -->
+  <circle cx="200" cy="320" r="15" fill="#ef4444"/>
+  <text x="200" y="325" class="bar-label" fill="white">✗</text>
+  <text x="200" y="350" class="legend">Incomplete</text>
+  
+  <!-- Legend -->
+  <rect x="350" y="70" width="200" height="100" fill="none" stroke="#d1d5db" stroke-width="1"/>
+  <text x="450" y="90" class="axis-label">Performance Summary</text>
+  
+  <rect x="360" y="100" width="15" height="10" class="claude-bar"/>
+  <text x="380" y="109" class="legend">Claude Sonnet 4: Fast, Complete</text>
+  
+  <rect x="360" y="120" width="15" height="10" class="gemini-bar"/>
+  <text x="380" y="129" class="legend">Gemini 2.5 Pro: Slow, Incomplete</text>
+  
+  <text x="380" y="149" class="legend">Winner: Claude Sonnet 4</text>
+</svg>
