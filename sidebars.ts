@@ -28,7 +28,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Basic Features", // Renamed from "Core Features" for better hierarchy
       collapsed: false,
-      items: ["commands", "operation-modes", "custom-rules"],
+      items: ["commands", "operating-agents", "custom-rules"],
     },
     {
       type: "category",

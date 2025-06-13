@@ -1,0 +1,115 @@
+---
+title: Operating Agents
+sidebar_position: 2
+description: "Understanding the different specialized agents in Forge and when to use each."
+sidebar_label: Operating Agents
+---
+
+# Agents Within Forge
+
+Forge uses different specialized agents to provide flexible assistance based on your needs. These agents implement different capabilities and interaction models, allowing you to choose the right type of assistance for your specific task and security requirements.
+
+## Forge Agent (Default)
+
+The Forge Agent is the default when you start Forge and is empowered to directly implement changes to your codebase and execute commands. This agent provides full read-write capabilities within your environment.
+
+### Capabilities of the Forge Agent
+
+- **Full Execution**: Forge can modify files, create new ones, and execute shell commands
+- **Implementation**: Directly implements the solutions it proposes
+- **Verification**: Performs verification steps to ensure changes work as intended
+- **Feedback Loop**: Provides real-time feedback on changes as they're implemented
+
+### When to Use the Forge Agent
+
+- When you want hands-off implementation of solutions
+- For routine tasks that you're confident about
+- When you need quick fixes that don't require extensive review
+- When working in non-critical environments or with proper version control
+- For tasks where you want to see immediate results
+
+### Example Use Cases
+
+1. **Bug Fixing**: "Fix the null pointer exception in the authentication service"
+2. **Code Generation**: "Create a React component for a user profile page"
+3. **Refactoring**: "Refactor this function to use async/await instead of promises"
+4. **Test Creation**: "Generate unit tests for the payment processor module"
+
+### Activating the Forge Agent
+
+The Forge Agent is active by default, but if you've switched to another agent, you can return to the Forge Agent with:
+
+```bash
+# Switch to Forge Agent within a Forge session
+/act
+
+# Or use the general agent command and then from drop down select `forge` agent
+/agent
+```
+
+## Muse Agent
+
+The Muse Agent analyzes and plans but doesn't modify your codebase. This agent operates in read-only mode, making it perfect for when you want to understand the potential impact of changes before they're made.
+
+### Capabilities of the Muse Agent
+
+- **Read-Only Operations**: Can only read files and run non-destructive commands
+- **Detailed Analysis**: Thoroughly examines code, identifies issues, and proposes solutions
+- **Structured Planning**: Provides step-by-step action plans for implementing changes
+- **Safe Exploration**: Allows exploration of potential solutions without making changes
+
+### When to Use the Muse Agent
+
+- When you want to understand what changes are needed before implementing them yourself
+- When working with critical systems where changes need careful review
+- For learning how specific changes would be implemented
+- When you want to understand the scope and impact of a task
+- For complex refactoring that requires careful planning
+- When collaborating with others and changes need approval
+
+### Example Use Cases
+
+1. **Architecture Planning**: "How would you redesign this API to be more scalable?"
+2. **Security Review**: "Analyze this codebase for security vulnerabilities"
+3. **Performance Analysis**: "Identify potential performance bottlenecks in this application"
+4. **Learning**: "Explain how you would implement pagination for this API"
+
+### Activating the Muse Agent
+
+To switch to the Muse Agent, use:
+
+```bash
+# Switch to Muse Agent within a Forge session
+/plan
+
+# Or use the general agent command and then from drop down select `muse` agent
+/agent 
+```
+
+## Agent Switching Strategy
+
+You can easily switch between agents during a session using the `/muse`, `/forge`, or `/agent` commands. The Muse Agent is especially useful for reviewing potential changes before they're implemented, while the Forge Agent streamlines the development process by handling implementation details for you.
+
+### When to Switch from Forge Agent to Muse Agent
+
+- When you're about to make significant architectural changes
+- Before modifying critical or production code
+- When you want to understand the scope of changes first
+- If you're working in an unfamiliar codebase
+
+### When to Switch from Muse Agent to Forge Agent
+
+- After reviewing and approving the proposed changes
+- When moving from analysis to implementation
+- Once you understand the scope and impact of changes
+- For quick implementation following a planning session
+
+## Best Practices
+
+- **Start Conservative**: Begin with the Muse Agent for critical systems to understand potential changes
+- **Review Before Acting**: Use the Muse Agent to generate a plan, review it, then switch to the Forge Agent for implementation
+- **Iterative Approach**: For complex tasks, alternate between agents - plan first, implement a portion, plan again
+- **Version Control**: Always ensure you have commits or backups before using the Forge Agent for significant changes
+- **Task Specificity**: Be more specific with your requests to the Forge Agent to ensure accurate implementation
+
+<!-- Note: This page focuses on the specialized agents in Forge. For information about built-in commands, see the Commands section. -->
