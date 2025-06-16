@@ -4,7 +4,6 @@
   <ShortName>Forge Code</ShortName>
   <Description>Search Forge Code</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://forgecode.dev/images/favicon-light.ico</Image>
   <Url type="text/html" method="get" template="https://forgecode.dev/search?q={searchTerms}"/>
   <Url type="application/opensearchdescription+xml" rel="self" template="https://forgecode.dev/opensearch.xml" />
   <moz:SearchForm>https://forgecode.dev/</moz:SearchForm>

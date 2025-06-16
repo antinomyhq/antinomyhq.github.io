@@ -6,7 +6,6 @@
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://forgecode.dev/blog/"/>
     <subtitle>Forge Code Blog</subtitle>
-    <icon>https://forgecode.dev/images/favicon-light.ico</icon>
     <rights>Copyright © 2025 Tailcall, Inc.</rights>
     <entry>
         <title type="html"><![CDATA[When Google Sneezes, the Whole World Catches a Cold]]></title>
