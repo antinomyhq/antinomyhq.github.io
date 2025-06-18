@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[9291],{3024:e=>{e.exports=JSON.parse('{"authors":[{"name":"Forge","title":"The Forge Team","url":"https://github.com/antinomyhq/forge","imageURL":"/icons/companies/github.svg","key":"forge","page":null,"count":7}]}')}}]);
