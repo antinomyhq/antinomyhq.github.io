@@ -43,7 +43,7 @@
 <hr>
 <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="chapter-2-the-line-jumping-attack---when-descriptions-become-weapons">Chapter 2: The "Line Jumping" Attack - When Descriptions Become Weapons<a href="https://forgecode.dev/blog/prevent-attacks-on-mcp/#chapter-2-the-line-jumping-attack---when-descriptions-become-weapons" class="hash-link" aria-label="Direct link to Chapter 2: The &quot;Line Jumping&quot; Attack - When Descriptions Become Weapons" title="Direct link to Chapter 2: The &quot;Line Jumping&quot; Attack - When Descriptions Become Weapons">​</a></h2>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="the-mcp-vulnerability-that-changes-everything">The MCP Vulnerability That Changes Everything<a href="https://forgecode.dev/blog/prevent-attacks-on-mcp/#the-mcp-vulnerability-that-changes-everything" class="hash-link" aria-label="Direct link to The MCP Vulnerability That Changes Everything" title="Direct link to The MCP Vulnerability That Changes Everything">​</a></h3>
-<p>Here's a vulnerability that should make every developer's blood run cold: <strong>line jumping</strong>. This attack allows a malicious MCP server to inject instructions that the AI follows without user permission - essentially hijacking the conversation.⁵</p>
+<p>Here's a vulnerability that should make every developer's blood run cold: <strong>line jumping</strong>. This attack allows a malicious MCP server to inject instructions that the AI follows without user permission, essentially hijacking the conversation.⁵</p>
 <p>Here's exactly how it works:</p>
 <ol>
 <li>User requests a seemingly innocent tool like "weather checker"</li>
