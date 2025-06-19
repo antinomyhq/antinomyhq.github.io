@@ -145,7 +145,7 @@ export default {
       hideOnScroll: true,
       logo: {
         alt: "ForgeCode",
-        src: "/images/home/logo.svg",
+        src: "/images/home/logo-dark.svg",
       },
       items: [
         {to: "/", label: "Home", position: "left", activeBaseRegex: "^/$"},
