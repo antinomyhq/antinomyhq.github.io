@@ -150,7 +150,8 @@
             <guid>https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/</guid>
             <pubDate>Tue, 17 Jun 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Learn from nuclear safety failures to build comprehensive MCP security. Part 2: Practical defense strategies, monitoring systems, and prevention frameworks.]]></description>
-            <content:encoded><![CDATA[<blockquote>
+            <content:encoded><![CDATA[<div class="undefined"><div id="elevenlabs-audionative-widget" data-height="90" data-width="100%" data-frameborder="no" data-scrolling="no" data-publicuserid="96e32731df14f1442beaf5041eec1125596de23ef9ff6ef5d151d28a1464da1b" data-playerurl="https://elevenlabs.io/player/index.html" data-small="True" data-textcolor="rgba(0, 0, 0, 1.0)" data-backgroundcolor="rgba(255, 255, 255, 1.0)" data-projectid="FL20t82047nA1Q6o6V15">Elevenlabs AudioNative Player</div></div>
+<blockquote>
 <p><strong>TL;DR</strong>: Thirty-eight years after Chernobyl, we learned that the disaster was preventable. Today's MCP security crisis is different - we have the opportunity to build proper safeguards before disaster strikes. This is your complete guide to building bulletproof MCP security systems.</p>
 </blockquote>
 <p><em>This is Part 2 of a two-part series. <a href="https://forgecode.dev/blog/prevent-attacks-on-mcp/">← Read Part 1: The Digital Chernobyl We're Racing Toward</a></em></p>
