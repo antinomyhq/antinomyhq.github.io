@@ -17,7 +17,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"ForgeCode","url":"https://forgecode.dev/"}</script>
 <script>!function(e,n,t,i,c,s){e.SnitchObject=t,e[t]||(e[t]=function(){(e[t].q=e[t].q||[]).push(arguments)}),e[t].l=+new Date,c=n.createElement(i),s=n.getElementsByTagName(i)[0],c.src="//snid.snitcher.com/8432087.js",s.parentNode.insertBefore(c,s)}(window,document,"snid","script"),snid("verify","8432087")</script>
 <script>!function(){var t=window.reb2b=window.reb2b||[];if(!t.invoked){t.invoked=!0,t.methods=["identify","collect"],t.factory=function(e){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(e),t.push(r),t}};for(var e=0;e<t.methods.length;e++){var r=t.methods[e];t[r]=t.factory(r)}t.load=function(t){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://s3-us-west-2.amazonaws.com/b2bjsstore/b/"+t+"/0OV0VHL3P56Z.js.gz";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(e,r)},t.SNIPPET_VERSION="1.0.1",t.load("0OV0VHL3P56Z")}}()</script><link rel="stylesheet" href="/assets/css/styles.bf1f4512.css">
-<script src="/assets/js/runtime~main.e4364867.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.a4437da4.js" defer="defer"></script>
 <script src="/assets/js/main.6e02f965.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -100,22 +100,22 @@
 <p>Based on nuclear safety principles and hard-learned lessons from recent incidents, here&#x27;s what actually works:</p>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1-credential-isolation-defense-layer-1">1. <strong>Credential Isolation</strong> (Defense Layer 1)<a href="#1-credential-isolation-defense-layer-1" class="hash-link" aria-label="Direct link to 1-credential-isolation-defense-layer-1" title="Direct link to 1-credential-isolation-defense-layer-1">​</a></h3>
 <p>Never give MCP tools your production credentials. Use dedicated service accounts with minimal permissions.</p>
-<p><em>Why this works</em>: Even if a tool is compromised, the blast radius stays contained. The GitHub Gist shows how to set up proper OAuth scoping for MCP servers, each tool gets only the permissions it absolutely needs.</p>
+<p><em>Why this works</em>: Even if a tool is compromised, the blast radius stays contained.</p>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="2-tool-verification-defense-layer-2">2. <strong>Tool Verification</strong> (Defense Layer 2)<a href="#2-tool-verification-defense-layer-2" class="hash-link" aria-label="Direct link to 2-tool-verification-defense-layer-2" title="Direct link to 2-tool-verification-defense-layer-2">​</a></h3>
 <p>Implement cryptographic verification for all MCP tools before execution.</p>
-<p><em>Why this works</em>: Supply chain attacks become much harder when you can verify tool integrity. The verification code in our repository demonstrates HMAC-based tool signing that prevents tampering.</p>
+<p><em>Why this works</em>: Supply chain attacks become much harder when you can verify tool integrity.</p>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="3-execution-sandboxing-defense-layer-3">3. <strong>Execution Sandboxing</strong> (Defense Layer 3)<a href="#3-execution-sandboxing-defense-layer-3" class="hash-link" aria-label="Direct link to 3-execution-sandboxing-defense-layer-3" title="Direct link to 3-execution-sandboxing-defense-layer-3">​</a></h3>
 <p>Run MCP tools in isolated containers with strict resource limits.</p>
-<p><em>Why this works</em>: Contains both security breaches and economic attacks. Our Docker configuration examples show how to limit CPU, memory, and network access per tool.</p>
+<p><em>Why this works</em>: Contains both security breaches and economic attacks.</p>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="4-prompt-filtering-defense-layer-4">4. <strong>Prompt Filtering</strong> (Defense Layer 4)<a href="#4-prompt-filtering-defense-layer-4" class="hash-link" aria-label="Direct link to 4-prompt-filtering-defense-layer-4" title="Direct link to 4-prompt-filtering-defense-layer-4">​</a></h3>
 <p>Deploy semantic analysis to detect injection attempts before they reach the AI.</p>
-<p><em>Why this works</em>: Catches &quot;line jumping&quot; and other prompt injection attacks. The filtering implementation uses entropy analysis and pattern matching to identify malicious instructions.</p>
+<p><em>Why this works</em>: Catches &quot;line jumping&quot; and other prompt injection attacks.</p>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="5-continuous-monitoring-defense-layer-5">5. <strong>Continuous Monitoring</strong> (Defense Layer 5)<a href="#5-continuous-monitoring-defense-layer-5" class="hash-link" aria-label="Direct link to 5-continuous-monitoring-defense-layer-5" title="Direct link to 5-continuous-monitoring-defense-layer-5">​</a></h3>
 <p>Log everything, analyze patterns, alert on anomalies.</p>
-<p><em>Why this works</em>: Provides visibility into attacks that bypass other layers. Our monitoring setup tracks tool usage patterns and flags suspicious behavior.</p>
+<p><em>Why this works</em>: Provides visibility into attacks that bypass other layers.</p>
 <p><strong>Implementation Reality Check:</strong></p>
 <p>I know what you&#x27;re thinking: &quot;This sounds like a lot of work.&quot; You&#x27;re right. But consider the alternative: explaining to your board why your AI system just transferred significant funds to a Bitcoin wallet or leaked your entire customer database.</p>
-<p>The code examples provided here demonstrate practical approaches to address some of these security challenges. However, the MCP security landscape needs a comprehensive open-source solution that the community can build together.</p>
+<p>The code examples provided above demonstrate practical approaches to address some of these security challenges. However, the MCP security landscape needs a comprehensive open-source solution that the community can build together.</p>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="building-a-security-first-mcp-culture">Building a Security-First MCP Culture<a href="#building-a-security-first-mcp-culture" class="hash-link" aria-label="Direct link to Building a Security-First MCP Culture" title="Direct link to Building a Security-First MCP Culture">​</a></h3>
 <p><strong>Organizational Changes That Work:</strong></p>
 <ol>
