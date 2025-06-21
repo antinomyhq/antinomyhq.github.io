@@ -148,12 +148,12 @@ export default {
         src: "/images/home/logo-dark.svg",
       },
       items: [
-        {to: "/", label: "Home", position: "left", activeBaseRegex: "^/$"},
+        // {to: "/", label: "Home", position: "left", activeBaseRegex: "^/$"},
         // {to: "/about", label: "About", position: "left"},
         // {to: "/enterprise", label: "Enterprise", position: "left"},
-        {to: "/docs", label: "Docs", position: "left"},
-        {to: "/blog", label: "Blogs", position: "left"},
-        {to: "/releases", label: "Releases", position: "left"},
+        // {to: "/docs", label: "Docs", position: "left"},
+        // {to: "/blog", label: "Blogs", position: "left"},
+        // {to: "/releases", label: "Releases", position: "left"},
         // {
         //   label: "Developers",
         //   position: "left",
@@ -164,11 +164,11 @@ export default {
         //     },
         //   ],
         // },
-        {
-          type: "search",
-          position: "right",
-          className: "hidden lg:flex search-icon-navbar",
-        },
+        // {
+        //   type: "search",
+        //   position: "right",
+        //   className: "hidden lg:flex search-icon-navbar",
+        // },
       ],
     },
     prism: {

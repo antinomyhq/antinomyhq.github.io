@@ -609,6 +609,69 @@ export enum CookiePreferenceCategory {
   MARKETING = "Marketing",
 }
 
+export const NavbarItems = ["Docs", "Releases", "Plans", "Blog", "Testimonials", "Contact"]
+
+export const StatsForDevelopers = [
+  {
+    title: "Active Developers",
+    stat: "50,000+",
+  },
+  {
+    title: "Accuracy Rate",
+    stat: "99.7%",
+  },
+
+  {
+    title: "Github Star",
+    stat: "3554",
+  },
+]
+
+export const TechDetails = [
+  {
+    title: "Backend - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["1", "2", "3"],
+  },
+  {
+    title: "Backend - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["1", "2", "3"],
+  },
+  {
+    title: "Backend - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["1", "2", "3"],
+  },
+]
+
+export const TECHS = ["Backend", "Devops", "Security & infra", "Solo Dev"]
+
+export const BENEFITS = [
+  {
+    title: "Developer-Controlled & Secure",
+    description:
+      "Your code never leaves your machine - Forge runs locally with your own API keys. No cloud processing, no data collection, just private and secure AI assistance that keeps you in complete control.",
+  },
+  {
+    title: "Developer-Controlled & Secure",
+    description:
+      "Your code never leaves your machine - Forge runs locally with your own API keys. No cloud processing, no data collection, just private and secure AI assistance that keeps you in complete control.",
+  },
+]
+
 export const footerItems: FooterItem[] = [
   {
     title: "Developers",
