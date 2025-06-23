@@ -90,6 +90,7 @@ const renderTitleWithLinks = (title: string) => {
         target="_blank"
         rel="noopener noreferrer"
         className="text-blue-600 hover:text-blue-800 underline decoration-1 underline-offset-2 transition-colors"
+        onClick={(e) => e.stopPropagation()}
       >
         {match[1]}
       </a>,
@@ -135,6 +136,7 @@ export const BlogAuthor: React.FC<AuthorDisplayProps> = ({
               "font-semibold text-gray-900 hover:text-blue-600 transition-colors no-underline",
               textClassName,
             )}
+            onClick={(e) => e.stopPropagation()}
           >
             {author.name}
           </a>
@@ -159,6 +161,7 @@ export const BlogAuthor: React.FC<AuthorDisplayProps> = ({
               rel="noopener noreferrer"
               className="text-gray-500 hover:text-gray-700 transition-colors p-0.5 hover:bg-gray-100 rounded"
               aria-label={`${author.name} on ${social.platform}`}
+              onClick={(e) => e.stopPropagation()}
             >
               {getSocialIcon(social.platform)}
             </a>

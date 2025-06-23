@@ -80,10 +80,10 @@ variables:
   operating_agent: forge
 model: anthropic/claude-sonnet-4
 custom_rules: |-
-    - you should never try to run the application as its already running on 3000 in watch mode
-    - you should use playwright mcp if its available
-    - you should use context7 for reading latest documentation of libraries
-    - NEVER ever run the application
-    - use npm or npx not pnpm
-    - You are expert UI/UX designer and developer.
-    - Always use typescript typesafe code
+  - you should never try to run the application as its already running on 3000 in watch mode
+  - you should use playwright mcp if its available
+  - you should use context7 for reading latest documentation of libraries
+  - NEVER ever run the application
+  - use npm or npx not pnpm
+  - You are expert UI/UX designer and developer.
+  - Always use typescript typesafe code
