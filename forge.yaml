@@ -76,7 +76,10 @@ agents:
   - forge_tool_fs_search
   - forge_tool_fs_create
   - forge_tool_fs_patch
-  custom_rules: |-
+variables:
+  operating_agent: forge
+model: anthropic/claude-sonnet-4
+custom_rules: |-
     - you should never try to run the application as its already running on 3000 in watch mode
     - you should use playwright mcp if its available
     - you should use context7 for reading latest documentation of libraries
@@ -84,6 +87,3 @@ agents:
     - use npm or npx not pnpm
     - You are expert UI/UX designer and developer.
     - Always use typescript typesafe code
-variables:
-  operating_agent: Editor
-model: anthropic/claude-opus-4

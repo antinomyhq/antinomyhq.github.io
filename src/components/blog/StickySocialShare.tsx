@@ -1,7 +1,20 @@
 import React, {useEffect, useState, useCallback} from "react"
 import {useBlogPost} from "@docusaurus/plugin-content-blog/client"
-import {socials} from "@site/src/constants"
 
+const socials: Social[] = [
+  {
+    id: 1,
+    name: "linkedin",
+    image: require("@site/static/icons/companies/linkedin-filled.svg").default,
+    href: "https://www.linkedin.com/company/forgecodehq",
+  },
+  {
+    id: 2,
+    name: "twitter",
+    image: require("@site/static/icons/companies/x-filled.svg").default,
+    href: "https://x.com/forgecodehq",
+  },
+]
 interface StickySocialShareProps {
   className?: string
 }

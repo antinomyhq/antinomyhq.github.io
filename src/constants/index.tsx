@@ -208,13 +208,13 @@ export const socials: Social[] = [
   {
     id: 3,
     name: "linkedin",
-    image: require("@site/static/icons/companies/linkedin-filled.svg").default,
+    image: require("@site/static/icons/companies/linkedin-gray.svg").default,
     href: "https://www.linkedin.com/company/forgecodehq",
   },
   {
     id: 4,
     name: "twitter",
-    image: require("@site/static/icons/companies/x-filled.svg").default,
+    image: require("@site/static/icons/companies/x-gray.svg").default,
     href: "https://x.com/forgecodehq",
   },
 ]
