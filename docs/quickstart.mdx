@@ -1,0 +1,308 @@
+---
+title: "Getting Started with Forge"
+description: "Complete quickstart guide to get up and running with Forge in minutes"
+sidebar_position: 1
+---
+
+import { CheckCircle, Lightbulb, AlertCircle, Terminal, Zap, Settings } from 'lucide-react';
+import { Step } from '@site/src/components/shared/Step';
+
+# Getting Started with Forge
+
+Welcome to Forge! This quickstart guide will have you up and running in just a few minutes. Forge is an AI-powered development assistant that helps you build, debug, and enhance your projects with intelligent automation.
+
+<div style={{
+  padding: '1rem 1.5rem',
+  backgroundColor: '#e3f2fd',
+  borderLeft: '4px solid #2196f3',
+  borderRadius: '4px',
+  marginBottom: '2rem'
+}}>
+  <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem'}}>
+    <Lightbulb size={20} style={{color: '#1976d2'}} />
+    <strong style={{color: '#1976d2'}}>Quick Start</strong>
+  </div>
+  <p style={{margin: 0, color: '#1565c0'}}>
+    New to Forge? Follow these 7 steps to get started in under 10 minutes.
+  </p>
+</div>
+
+---
+
+<Step number={1} title="Install Forge">
+
+Choose your preferred installation method:
+
+**Option A: NPM (Recommended)**
+```bash
+npm install -g @forge-ai/cli
+```
+
+**Option B: Homebrew (macOS)**
+```bash
+brew install forge-ai
+```
+
+**Option C: Direct Download**
+Download the latest release from our [GitHub releases page](https://github.com/forge-ai/forge/releases).
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** Run `forge --version` to confirm installation.
+
+</Step>
+
+<Step number={2} title="Verify Installation">
+
+Test that Forge is properly installed and accessible:
+
+```bash
+forge --version
+```
+
+You should see output similar to:
+```
+Forge AI Assistant v2.1.0
+```
+
+If you encounter any issues:
+- **Path not found:** Restart your terminal or add Forge to your PATH
+- **Permission denied:** Run with `sudo` on Unix systems or as Administrator on Windows
+- **Command not found:** Ensure the installation completed successfully
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** Version number displays correctly.
+
+</Step>
+
+<Step number={3} title="Initialize Your First Project">
+
+Navigate to your project directory and initialize Forge:
+
+```bash
+cd your-project-directory
+forge init
+```
+
+This command will:
+- Create a `.forge` configuration directory
+- Set up default rules and preferences
+- Scan your project structure
+- Generate initial context understanding
+
+**Example output:**
+```
+✓ Analyzing project structure...
+✓ Creating .forge configuration...
+✓ Setting up default rules...
+✓ Project initialized successfully!
+```
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** `.forge` directory created in your project root.
+
+</Step>
+
+<Step number={4} title="Configure Your Preferences">
+
+Set up your development preferences:
+
+```bash
+forge config
+```
+
+Key settings to configure:
+- **Editor:** Your preferred code editor (VS Code, Vim, etc.)
+- **Language:** Primary programming language for the project
+- **Framework:** Web framework if applicable (React, Vue, etc.)
+- **Testing:** Preferred testing framework
+
+**Interactive setup example:**
+```
+? What's your preferred editor? VS Code
+? Primary language for this project? TypeScript
+? Web framework? React
+? Testing framework? Jest
+```
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** Configuration saved to `.forge/config.json`.
+
+</Step>
+
+<Step number={5} title="Start Your First Session">
+
+Launch Forge in interactive mode:
+
+```bash
+forge
+```
+
+You'll see the Forge prompt:
+```
+🔨 Forge AI Assistant
+Type /help for commands, /exit to quit
+
+forge> 
+```
+
+Try your first command:
+```
+forge> help me understand this codebase
+```
+
+Forge will analyze your project and provide insights about:
+- Project structure and architecture
+- Key files and dependencies
+- Potential improvements
+- Development workflow suggestions
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** Interactive session starts and responds to commands.
+
+</Step>
+
+<Step number={6} title="Try Advanced Features">
+
+Explore Forge's powerful capabilities:
+
+**Git Integration:**
+```bash
+forge --git-diff
+```
+Analyzes your current changes and suggests improvements.
+
+**Autonomous Mode:**
+```bash
+forge --agent muse
+```
+Runs Forge in autonomous mode for complex tasks.
+
+**Custom Rules:**
+```bash
+forge --rules custom-rules.md
+```
+Apply project-specific guidelines and constraints.
+
+**File Watching:**
+```bash
+forge --watch
+```
+Monitors file changes and provides real-time assistance.
+
+**<AlertCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Note:** Some features require additional setup or API keys.
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** You can run different Forge modes and see their outputs.
+
+</Step>
+
+<Step number={7} title="Essential Commands Quick Reference" last={true}>
+
+Master these key commands for efficient workflows:
+
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `forge` | Start interactive session | `forge` |
+| `forge --agent muse` | Start in autonomous mode | `forge --agent muse` |
+| `forge --git-diff` | Focus on current changes | `forge --git-diff` |
+| `forge --help` | Show all options | `forge --help` |
+| `/exit` | End current session | `/exit` |
+| `/reset` | Clear conversation history | `/reset` |
+| `/rules` | Show custom rules | `/rules` |
+
+**In-session shortcuts:**
+- `Ctrl+C` - Cancel current operation
+- `Ctrl+D` - Exit session
+- `↑/↓` - Navigate command history
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** You can start different types of sessions and navigate efficiently.
+
+**<Lightbulb size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Pro Tip:** Create aliases for common workflows: `alias forge-review="forge --git-diff"`
+
+</Step>
+
+---
+
+## Next Steps
+
+Congratulations! You've successfully set up Forge and completed your first session. Here's what to explore next:
+
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+  gap: '1.5rem',
+  marginTop: '2rem'
+}}>
+  <div style={{
+    padding: '1.5rem',
+    border: '1px solid #e1e5e9',
+    borderRadius: '8px',
+    backgroundColor: '#f8f9fa'
+  }}>
+    <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem'}}>
+      <Settings size={20} style={{color: '#6f42c1'}} />
+      <h3 style={{margin: 0, fontSize: '1.1rem'}}>Advanced Configuration</h3>
+    </div>
+    <p style={{margin: 0, color: '#6c757d', fontSize: '0.9rem'}}>
+      Learn about custom rules, environment variables, and project-specific settings.
+    </p>
+    <a href="/docs/configuration" style={{
+      display: 'inline-block',
+      marginTop: '1rem',
+      color: '#6f42c1',
+      textDecoration: 'none',
+      fontWeight: '500'
+    }}>
+      Read Configuration Guide →
+    </a>
+  </div>
+
+  <div style={{
+    padding: '1.5rem',
+    border: '1px solid #e1e5e9',
+    borderRadius: '8px',
+    backgroundColor: '#f8f9fa'
+  }}>
+    <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem'}}>
+      <Terminal size={20} style={{color: '#28a745'}} />
+      <h3 style={{margin: 0, fontSize: '1.1rem'}}>Command Reference</h3>
+    </div>
+    <p style={{margin: 0, color: '#6c757d', fontSize: '0.9rem'}}>
+      Complete list of commands, options, and usage examples.
+    </p>
+    <a href="/docs/commands" style={{
+      display: 'inline-block',
+      marginTop: '1rem',
+      color: '#28a745',
+      textDecoration: 'none',
+      fontWeight: '500'
+    }}>
+      View All Commands →
+    </a>
+  </div>
+
+  <div style={{
+    padding: '1.5rem',
+    border: '1px solid #e1e5e9',
+    borderRadius: '8px',
+    backgroundColor: '#f8f9fa'
+  }}>
+    <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem'}}>
+      <Zap size={20} style={{color: '#ffc107'}} />
+      <h3 style={{margin: 0, fontSize: '1.1rem'}}>Best Practices</h3>
+    </div>
+    <p style={{margin: 0, color: '#6c757d', fontSize: '0.9rem'}}>
+      Tips and workflows to maximize your productivity with Forge.
+    </p>
+    <a href="/docs/best-practices" style={{
+      display: 'inline-block',
+      marginTop: '1rem',
+      color: '#ffc107',
+      textDecoration: 'none',
+      fontWeight: '500'
+    }}>
+      Learn Best Practices →
+    </a>
+  </div>
+</div>
+
+## Need Help?
+
+- **Documentation:** Browse our comprehensive [documentation](/docs)
+- **Community:** Join our [Discord community](https://discord.gg/forge-ai)
+- **Issues:** Report bugs on [GitHub](https://github.com/forge-ai/forge/issues)
+- **Support:** Email us at [support@forge-ai.com](mailto:support@forge-ai.com)

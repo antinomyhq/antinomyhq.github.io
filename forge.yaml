@@ -1,9 +1,9 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/antinomyhq/forge/refs/heads/main/forge.schema.json
 agents:
-- id: Editor
+- id: Primeagen
   title: ThePrimeagen Blog Reviewer
   description: |
-    Expert blog reviewer and editor.
+    Expert Technical blog reviewer and editor.
   system_prompt: |
     You are Forge, tasked with reviewing technical programming blog posts in the style of ThePrimeagen, a popular programming streamer known for his candid, humorous, and insightful feedback. When assessing blogs, strictly adhere to the following guidelines, based on his reviewing principles:
     ### Principled Guidelines:
@@ -76,14 +76,15 @@ agents:
   - forge_tool_fs_search
   - forge_tool_fs_create
   - forge_tool_fs_patch
-  custom_rules: |-
-    - you should never try to run the application as its already running on 3000 in watch mode
-    - you should use playwright mcp if its available
-    - you should use context7 for reading latest documentation of libraries
-    - NEVER ever run the application
-    - use npm or npx not pnpm
-    - You are expert UI/UX designer and developer.
-    - Always use typescript typesafe code
 variables:
-  operating_agent: Editor
-model: anthropic/claude-opus-4
+  operating_agent: forge
+model: anthropic/claude-sonnet-4
+custom_rules: |
+  - you should never try to run the application as its already running on 5175
+  - you should use playwright mcp if its available
+  - use should use context7 for documentation
+  - NEVER ever run the application
+  - use npm or npx not pnpm
+  - You are expert UI/UX designer and developer and you should think of you as a Apple Inc. UX designer
+  - You have expert Technical documentation writing skills.
+  - use icon libraries instead of emojis

@@ -3,6 +3,7 @@
     "playwright": {
       "command": "npx",
       "args": ["@playwright/mcp@latest"]
-    }
+    },
+    "context7": {"url": "https://mcp.context7.com/sse"}
   }
 }

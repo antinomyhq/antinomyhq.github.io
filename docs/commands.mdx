@@ -1,168 +1,439 @@
 ---
 title: Built-in Commands
 sidebar_position: 1
-description: "Explore Forge's built-in commands and when to use them."
+description: "Master Forge's built-in commands for maximum productivity."
 sidebar_label: Built-in Commands
 ---
 
+import { CheckCircle } from 'lucide-react';
+
 # Built-in Commands
 
-Forge offers several built-in commands to enhance your interaction. These commands can be entered directly in the Forge CLI by typing the command name preceded by a forward slash.
+Forge offers powerful built-in commands to enhance your development workflow. These commands can be entered directly in the Forge CLI by typing the command name preceded by a forward slash.
 
-## Available Commands
+## Essential Commands Quick Reference
 
-<details>
-<summary><code>/new</code> - Start a new task when you've completed your current one</summary>
+| Command | Purpose | When to Use |
+|---------|---------|-------------|
+| `/forge` | Switch to execution mode | When you want to implement changes |
+| `/muse` | Switch to analysis mode | When you want to plan without modifying files |
+| `/new` | Start fresh conversation | When switching to unrelated tasks |
+| `/info` | View environment details | For troubleshooting or system information |
+| `/model` | Change AI model | To experiment with different model capabilities |
+| `/agent` | Interactive agent selection | When unsure which agent to use |
 
-The `/new` command clears the current conversation context and starts a fresh task. This is useful when you've completed your current task and want to begin something entirely different.
+## Agent Commands
 
-**Usage:**
+### `/forge` - Execution Mode
+
+Switch to Forge Agent for full implementation capabilities:
+
+```
+/forge
+```
+
+**Use when:**
+- Implementing code changes
+- Creating new files
+- Executing shell commands
+- Making project modifications
+
+**Example workflow:**
+```
+/forge
+> Refactor this function to use async/await and add error handling
+```
+
+### `/muse` - Analysis Mode
+
+Switch to Muse Agent for read-only analysis and planning:
+
+```
+/muse
+```
+
+**Use when:**
+- Analyzing code architecture
+- Planning before implementation
+- Understanding complex codebases
+- Getting suggestions without changes
+
+**Example workflow:**
+```
+/muse
+> Analyze this API design and suggest improvements
+/forge
+> Implement the first suggestion you made
+```
+
+### `/agent` - Interactive Agent Selection
+
+Get an interactive menu to choose your agent:
+
+```
+/agent
+```
+
+This displays available agents and lets you switch between them easily.
+
+## Session Management
+
+### `/new` - Fresh Start
+
+Clear conversation context and start a new task:
 
 ```
 /new
 ```
 
-**When to use:** Use this when switching between unrelated tasks to ensure a clean context.
+**Use when:**
+- Switching between unrelated projects
+- Starting a completely different task
+- Clearing context for better focus
 
-</details>
+**Pro tip:** Use this between major task switches to ensure clean context.
 
-<details>
-<summary><code>/info</code> - View environment summary, logs folder location, and command history</summary>
+### `/dump` - Export Conversation
 
-The `/info` command displays information about your environment, including system details, logs location, and command history.
-
-**Usage:**
+Save the current conversation in JSON format:
 
 ```
-/info
+/dump
 ```
 
-This will display information about your environment including:
+**Use when:**
+- Debugging issues with Forge
+- Sharing conversation context with support
+- Analyzing conversation patterns
 
-- Operating system details
-- Current working directory
-- Log file location
-- Application version
-- Available models
+## Configuration Commands
 
-**When to use:** Use this when you need to troubleshoot, find log files, or review your recent commands.
+### `/model` - Select AI Model
 
-</details>
-
-<details>
-<summary><code>/model</code> - Select and set a specific model in your forge.yaml configuration</summary>
-
-The `/model` command allows you to interactively select from available AI models and set your preferred model in the project's forge.yaml configuration file.
-
-**Usage:**
+Interactively choose from available AI models:
 
 ```
 /model
 ```
 
 This will:
+1. Show available models
+2. Let you select your preferred model
+3. Update your `forge.yaml` configuration
+4. Persist the choice for future sessions
 
-1. Display an interactive selection menu with all available models
-2. Update the standard_model anchor in your forge.yaml file with your selection
-3. Confirm the change with a success message
+**Available models vary by provider:**
+- OpenAI: GPT-4, GPT-3.5-turbo
+- Anthropic: Claude 3.7 Sonnet, Claude 3 Haiku
+- OpenRouter: Multiple model options
 
-The model choice will persist between sessions as it's stored in your configuration file.
+### `/info` - Environment Information
 
-**When to use:** Use this when you want to change which AI model Forge uses for processing your requests.
-
-</details>
-
-<details>
-<summary><code>/agent</code> - Select and switch between available agents</summary>
-
-The `/agent` command provides an interactive interface to select and switch between different specialized agents in Forge.
-
-**Usage:**
-
-```
-/agent
-```
-
-This will:
-
-1. Display an interactive selection menu with available agents:
-
-   - **Forge Agent**: Full execution capabilities with read-write access
-   - **Muse Agent**: Read-only analysis and planning mode
-
-2. Switch to the selected agent for the current session
-
-**When to use:** Use this when you want to switch between agents or when you're unsure which agent is currently active. This is an alternative to using the specific `/forge` or `/muse` commands.
-
-</details>
-
-<details>
-<summary><code>/dump</code> - Save the current conversation in JSON format to a file for reference</summary>
-
-The `/dump` command saves the current conversation in JSON format to a file for future reference.
-
-**Usage:**
-
-```
-/dump
-```
-
-**When to use:** Use this when you need to debug issues, inspect the conversation context, or report problems to the development team.
-
-</details>
-
-<details>
-<summary><code>/forge</code> - Switch to Forge Agent (default), where it can execute commands and implement changes.</summary>
-
-The `/forge` command switches to Forge Agent, where it can execute commands and implement changes.
-
-**Usage:**
-
-```
-/forge
-```
-
-**When to use:** This is the default agent. Use this command to switch back to the Forge Agent if you were previously using the Muse Agent.
-
-</details>
-
-<details>
-<summary><code>/muse</code> - Switch to Muse Agent, where it analyzes and plans but doesn't modify files</summary>
-
-The `/muse` command switches to the Muse Agent, where it analyzes and suggests changes without modifying files.
-
-**Usage:**
-
-```
-/muse
-```
-
-**When to use:** Use this when you want to analyze your codebase and suggest changes without actually implementing them. This is useful for understanding what would happen before making changes.
-
-</details>
-
-## Native Shell Commands
-
-Forge allows you to execute native shell commands directly from the CLI by prefixing them with `!`:
-
-```
-!ls -la
-!git status
-!npm install
-```
-
-These commands will be executed in your current working directory, and their output will be displayed in the console.
-
-## Usage Examples
-
-To use any of these commands, simply type them in the Forge CLI:
+Display comprehensive environment details:
 
 ```
 /info
 ```
 
-For native shell commands, prefix with `!`:
+**Shows:**
+- Operating system details
+- Current working directory
+- Log file locations
+- Application version
+- Available models
+- Recent command history
+
+**Use for:**
+- Troubleshooting issues
+- Finding log files
+- Verifying configuration
+- Checking available features
+
+## Shell Integration
+
+### Native Shell Commands
+
+Execute any shell command by prefixing with `!`:
 
 ```
 !git status
+!npm install
+!ls -la
+!docker ps
 ```
+
+**Examples:**
+```
+!git log --oneline -10    # View recent commits
+!npm test                 # Run test suite
+!find . -name "*.js"      # Find JavaScript files
+!ps aux | grep node      # Check running Node processes
+```
+
+**Pro tips:**
+- Combine with Forge analysis: `!npm test` followed by "Help me fix the failing tests"
+- Use for environment setup: `!npm install` then "Explain what these dependencies do"
+- Chain commands: `!git add . && git commit -m "Update docs"`
+
+## Advanced Usage Patterns
+
+### Workflow Combinations
+
+**Planning → Implementation:**
+```
+/muse
+> Analyze this component and suggest performance improvements
+/forge
+> Implement the most impactful suggestion
+```
+
+**Debug → Fix:**
+```
+!npm test
+> The tests are failing. Help me understand and fix the issues
+```
+
+**Explore → Document:**
+```
+> Explain how this authentication system works
+> Now create documentation for other developers
+```
+
+### Context Management
+
+**Project Analysis:**
+```
+/new
+> Give me a comprehensive overview of this codebase
+> What are the main architectural patterns used?
+> Where are potential areas for improvement?
+```
+
+**Feature Development:**
+```
+/new
+> I need to add user authentication to this app
+> What's the best approach given the current architecture?
+> Help me implement it step by step
+```
+
+## Complete Development Workflows
+
+Here are comprehensive workflows that demonstrate how to combine commands effectively:
+
+### Professional Development Workflow
+
+<Step number={1} title="Project Analysis">
+
+Start by understanding your codebase structure and current state:
+
+```
+/muse
+> Give me a comprehensive overview of this codebase
+> What are the main architectural patterns?
+> Identify areas that need improvement
+```
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** You understand the project structure and have a clear improvement plan.
+
+</Step>
+
+<Step number={2} title="Planning Implementation">
+
+Create a detailed implementation plan:
+
+```
+/muse
+> Based on your analysis, create a step-by-step plan for the most critical improvements
+> What's the safest order to implement these changes?
+```
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** You have a prioritized action plan with clear next steps.
+
+</Step>
+
+<Step number={3} title="Environment Setup">
+
+Prepare your development environment:
+
+```
+!git status
+!npm test
+> Check if there are any immediate issues to address before starting
+```
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** Environment is clean and tests are passing.
+
+</Step>
+
+<Step number={4} title="Implementation">
+
+Switch to execution mode and implement changes:
+
+```
+/forge
+> Implement the first improvement from our plan
+> Make sure to include appropriate tests
+```
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** Changes implemented with tests and documentation.
+
+</Step>
+
+<Step number={5} title="Testing & Validation">
+
+Verify your changes work correctly:
+
+```
+!npm test
+!npm run build
+> Review the test results and help me fix any issues
+```
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** All tests pass and build succeeds.
+
+</Step>
+
+<Step number={6} title="Code Review">
+
+Review your changes before committing:
+
+```
+!git diff
+/muse
+> Review these changes for code quality, security, and best practices
+```
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** Code review complete with any issues addressed.
+
+</Step>
+
+<Step number={7} title="Documentation & Commit">
+
+Document changes and commit:
+
+```
+/forge
+> Help me write clear commit messages and update relevant documentation
+!git add .
+!git commit -m "feat: implement performance improvements"
+```
+
+**<CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Success Check:** Changes committed with clear documentation.
+
+</Step>
+
+## Pro Tips for Command Usage
+
+### 1. **Start with Analysis**
+Use `/muse` first to understand before implementing:
+```
+/muse
+> What would happen if I refactor this module?
+/forge
+> Proceed with the refactoring
+```
+
+### 2. **Use `/new` Strategically**
+Clear context between major task switches:
+```
+/new
+> Now let's work on the database schema
+```
+
+### 3. **Combine Shell Commands**
+Mix shell commands with AI assistance:
+```
+!git diff
+> Explain these changes and suggest improvements
+```
+
+### 4. **Model Selection for Tasks**
+Choose models based on task complexity:
+- **Complex reasoning**: Claude 3.7 Sonnet
+- **Quick tasks**: Claude 3 Haiku
+- **Code generation**: GPT-4
+
+### 5. **Information Gathering**
+Use `/info` when troubleshooting:
+```
+/info
+> I'm having issues with the installation
+```
+
+## Common Command Sequences
+
+### Starting a New Project
+```
+/new
+> Help me set up a new React TypeScript project with best practices
+!npm create react-app my-app --template typescript
+> Now help me configure ESLint and Prettier
+```
+
+### Code Review Process
+```
+/muse
+> Review this pull request and identify potential issues
+> What are the security implications?
+/forge
+> Fix the critical issues you identified
+```
+
+### Debugging Workflow
+```
+!npm test
+> Tests are failing. Let's debug this step by step
+/muse
+> Analyze the test failures and suggest debugging approaches
+/forge
+> Implement the fixes for the failing tests
+```
+
+### Refactoring Session
+```
+/muse
+> Analyze this legacy code and suggest modernization approaches
+> What's the safest refactoring strategy?
+/forge
+> Start with the lowest-risk improvements
+```
+
+## Getting Help
+
+### In-Session Help
+```
+> What commands are available?
+> How do I switch between agents?
+> Show me examples of what you can do
+```
+
+### Command Documentation
+```
+> Explain the difference between /forge and /muse
+> When should I use /new vs continuing the conversation?
+> What models are available with /model?
+```
+
+## Troubleshooting Commands
+
+### Common Issues
+
+**Command not recognized:**
+- Ensure you're using `/` prefix for Forge commands
+- Use `!` prefix for shell commands
+- Check spelling and syntax
+
+**Agent confusion:**
+- Use `/agent` to see current agent
+- Switch explicitly with `/forge` or `/muse`
+- Use `/info` to verify environment
+
+**Context issues:**
+- Use `/new` to clear context
+- Use `/dump` to export for debugging
+- Restart Forge session if needed
+
+---
+
+**Master these commands** and you'll be productive with Forge immediately. The key is understanding when to use each agent mode and how to combine commands for powerful workflows.

@@ -2,52 +2,128 @@
 title: Introduction to Forge
 slug: /
 sidebar_position: 1
-description: "Discover Forge, an AI-powered interactive shell that enhances your development workflow."
+description: "Discover Forge, an AI-powered interactive shell that enhances your development workflow with lightning-fast AI assistance."
 sidebar_label: Introduction
 ---
 
+import { Rocket, Brain, Wrench, Shield, Link, Package, Zap, Target } from 'lucide-react';
+
 # Introduction to Forge
 
-Forge is an advanced AI-enhanced terminal development environment that integrates seamlessly with your existing workflow, providing sophisticated programming assistance without compromising efficiency or requiring significant changes to your development practices.
+Forge is your AI pair programming partner that lives in the terminal. Get instant coding assistance, debug complex issues, and accelerate your development workflow—all without leaving your command line.
+
+## Quick Start
+
+Get up and running in under 2 minutes:
+
+```bash
+# Install Forge
+npm install -g @antinomyhq/forge
+
+# Start your first session
+forge
+
+# Ask your first question
+> Help me refactor this function to be more readable
+```
+
+That's it! Forge understands your codebase and provides intelligent assistance for any development task.
+
+## Why Forge?
+
+### <Rocket size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Lightning Fast**
+Sub-50ms startup times mean you're never waiting for the tool. Forge is built for developers who value speed and efficiency.
+
+### <Brain size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Context-Aware Intelligence**
+Forge understands your entire project context—files, Git history, dependencies, and environment. No need to explain your codebase repeatedly.
+
+### <Wrench size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Multi-Agent Architecture**
+Switch between specialized AI agents:
+- **Forge Agent**: Full execution mode for implementing changes
+- **Muse Agent**: Analysis mode for planning and review without modifications
+
+### <Shield size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Secure by Design**
+Optional restricted shell mode protects your system while providing powerful AI assistance.
+
+### <Link size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Seamless Integration**
+Works with your existing tools and workflows. Combine with Git, npm, Docker, and any Unix command through pipes and redirections.
+
+## What Can Forge Do?
+
+### Code Development
+- Write, refactor, and optimize code based on your specifications
+- Generate comprehensive test suites for existing codebases
+- Debug complex issues through systematic error analysis
+- Review code and suggest improvements
+
+### Project Management
+- Analyze project structure and suggest architectural improvements
+- Generate documentation and technical specifications
+- Set up new projects with best practices
+- Integrate with version control workflows
+
+### Daily Workflows
+- Execute complex multi-step development tasks
+- Automate repetitive coding patterns
+- Navigate and understand large codebases
+- Troubleshoot environment and dependency issues
 
 ## Why Shell-Based?
 
-Forge leverages the shell environment rather than a web interface or IDE plugin because:
+Forge leverages the terminal environment rather than a web interface or IDE plugin because:
 
-- **Speed & Efficiency**: Terminal interfaces provide sub-50ms startup and direct system access
-- **Rich Context**: Your shell session already contains your complete development context (files, directories, environment variables)
-- **Tool Ecosystem**: Seamlessly combines with the powerful Unix tool ecosystem through pipes and redirections
-- **Composability**: Follows Unix philosophy of combining specialized tools to solve complex problems
+- **Rich Context**: Your shell session contains your complete development context
+- **Tool Ecosystem**: Seamlessly combines with the powerful Unix tool ecosystem
+- **Composability**: Follows Unix philosophy of combining specialized tools
+- **Speed**: Direct system access without UI overhead
 
-This approach enables Forge to fit into your existing workflow rather than requiring you to adapt to a new environment. For developers who already work in the terminal, Forge feels like a natural extension of your tools rather than a separate application.
+This approach enables Forge to fit into your existing workflow rather than requiring you to adapt to a new environment.
 
-## Key Capabilities
+## Key Features
 
-- **Advanced AI Coding Assistant**: Comprehensive understanding, planning, and execution of complex development tasks
-- **Lightning-Fast Performance**: Sub-50ms startup times ensure you're never waiting for the tool
-- **Seamless Integration**: Works with existing Unix tools and workflows without disruption
-- **Context-Aware Assistance**: Understands your development environment and workflows
+- **Advanced AI Coding Assistant**: Powered by Claude 3.7 Sonnet for state-of-the-art capabilities
 - **Natural Language Interface**: Communicate with your system using everyday language
-- **Enhanced Security**: Optional restricted shell mode protects your system
-- **Multi-Agent Architecture**: Orchestrates specialized AI agents to solve complex problems collaboratively
-- **Powered by Claude 3.7 Sonnet**: State-of-the-art AI capabilities for optimal assistance
-- **Automatic Context Compaction**: Smart management of conversation history for unlimited interactions
+- **Automatic Context Compaction**: Smart conversation history management for unlimited interactions
 - **Rich Terminal Output**: Formatted markdown display for improved readability
 - **Resilient Operations**: Automatic retries with exponential backoff for reliable execution
 - **Fine-Tuned Agent Behavior**: Control creativity and determinism with temperature settings
-
-## Complete Coding Agent
-
-Forge functions as a comprehensive development assistant with capabilities to:
-
-- Write, refactor, and optimize code based on specifications
-- Debug complex issues through systematic error analysis
-- Generate test suites for existing codebases
-- Document code and generate technical specifications
-- Propose architectural improvements and optimizations
+- **MCP Integration**: Connect with external tools and services through Model Context Protocol
 
 ## Next Steps
 
-- [Installation](./installation): Learn how to install Forge on your system
-- [Commands](./commands): Discover the built-in commands to enhance your workflow
-<!-- Note: This introduction sets up the core concepts and capabilities that users will learn more about in subsequent documentation pages -->
+Ready to get started? Follow these steps to begin using Forge:
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem', margin: '2rem 0'}}>
+
+<div style={{border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', padding: '1.5rem', backgroundColor: 'var(--ifm-background-surface-color)'}}>
+
+### <Package size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Install Forge**
+Set up Forge on your system with npm, Homebrew, or direct download.
+
+[**Get Started →**](./installation)
+
+</div>
+
+<div style={{border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', padding: '1.5rem', backgroundColor: 'var(--ifm-background-surface-color)'}}>
+
+### <Zap size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Quick Tutorial**
+Complete your first task with Forge in under 10 minutes.
+
+[**Try the Quickstart →**](./quickstart)
+
+</div>
+
+<div style={{border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', padding: '1.5rem', backgroundColor: 'var(--ifm-background-surface-color)'}}>
+
+### <Target size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Essential Commands**
+Learn the key commands to be productive immediately.
+
+[**View Commands →**](./commands)
+
+</div>
+
+</div>
+
+---
+
+**Ready to transform your development workflow?** Install Forge and experience AI-powered coding assistance that feels like a natural extension of your terminal.

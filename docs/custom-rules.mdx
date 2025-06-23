@@ -6,6 +6,8 @@ description: "Learn how to define custom rules and guidelines for AI agents in F
 sidebar_label: Custom Rules
 ---
 
+import { XCircle, CheckCircle } from 'lucide-react';
+
 # Custom Rules
 
 Custom rules allow you to define specific guidelines and instructions that shape how AI agents behave in Forge. These rules act as specialized knowledge or constraints that influence how agents interpret tasks, generate code, and formulate responses.
@@ -136,11 +138,11 @@ custom_rules: |
 ### Be Specific and Clear
 
 ```yaml
-# ❌ Too vague
+# <XCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Too vague
 custom_rules: |
   Write good code.
 
-# ✅ Clear and specific
+# <CheckCircle size={16} style={{verticalAlign: 'middle', marginRight: 6}} /> Clear and specific
 custom_rules: |
   Code Quality Guidelines:
   - Functions should do one thing and have a clear purpose
@@ -169,8 +171,6 @@ custom_rules: |
       throw error;
     }
   }
-````
-
 ````
 
 ### Prioritize Important Rules
