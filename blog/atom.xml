@@ -322,7 +322,7 @@
 <p>At 10:50 AM a bug in a single Google Cloud service took down authentication worldwide. Within half an hour that failure reached Cloudflare and Anthropic. By 1:30 PM everything was green again, but not before reminding the internet just how tangled our dependencies are.</p>
 <p>Keep an eye out for the official RCAs. Meanwhile, update your incident playbooks, test your failovers and remember that sometimes the cloud’s biggest danger is a bad config on a Tuesday.</p>]]></content>
         <author>
-            <name>The Forge Team</name>
+            <name>Forge Team</name>
             <uri>https://github.com/antinomyhq/forge</uri>
         </author>
         <category label="Cloud" term="Cloud"/>
@@ -464,7 +464,7 @@ This system managed all the computer's tasks in tiny, 20ms time slots. A key fea
 <p><strong>Footnotes:</strong></p>
 <p>¹ AGC word = 15 bits; 2 kWords ≈ 3.75 KB</p>]]></content>
         <author>
-            <name>The Forge Team</name>
+            <name>Forge Team</name>
             <uri>https://github.com/antinomyhq/forge</uri>
         </author>
         <category label="Coding" term="Coding"/>
@@ -631,7 +631,7 @@ This system managed all the computer's tasks in tiny, 20ms time slots. A key fea
 <p>Plan first, test everything, review like your production system depends on it (because it does), and remember: the AI is your intern, not your architect.</p>
 <p>The future of coding isn't human vs AI it's humans with AI vs humans without it. Choose your side wisely.</p>]]></content>
         <author>
-            <name>The Forge Team</name>
+            <name>Forge Team</name>
             <uri>https://github.com/antinomyhq/forge</uri>
         </author>
         <category label="AI Coding" term="AI Coding"/>
@@ -748,7 +748,7 @@ DeepSeek-R1-0528 is now available! This latest reasoning model shows substantial
 <p>For architectural planning where you can afford to wait? <strong>Absolutely worth it.</strong></p>
 <p>For rapid iteration? <strong>Not quite there yet.</strong></p>]]></content>
         <author>
-            <name>The Forge Team</name>
+            <name>Forge Team</name>
             <uri>https://github.com/antinomyhq/forge</uri>
         </author>
         <category label="DeepSeek" term="DeepSeek"/>
@@ -941,7 +941,7 @@ DeepSeek-R1-0528 is now available! This latest reasoning model shows substantial
 <p>Gemini 2.5 Pro Preview's creative capabilities and extensive context window make it valuable for specific use cases, but its tendency toward scope expansion requires careful consideration in production workflows where predictability and constraint adherence are paramount.</p>
 <p>The choice ultimately depends on whether your development context prioritizes creative exploration or reliable execution within defined parameters.</p>]]></content>
         <author>
-            <name>The Forge Team</name>
+            <name>Forge Team</name>
             <uri>https://github.com/antinomyhq/forge</uri>
         </author>
         <category label="Claude 4" term="Claude 4"/>
@@ -1027,7 +1027,7 @@ DeepSeek-R1-0528 is now available! This latest reasoning model shows substantial
 <p>The true test will be whether Claude 4 maintains these capabilities under extended use while proving reliable for mission-critical development work. Based on initial evidence, we may be witnessing the beginning of a new era in AI-assisted software engineering.</p>
 <p>Claude 4 delivers on its ambitious promises with measurable impact on development productivity and code quality. For teams serious about AI-assisted development, this release warrants immediate evaluation.</p>]]></content>
         <author>
-            <name>The Forge Team</name>
+            <name>Forge Team</name>
             <uri>https://github.com/antinomyhq/forge</uri>
         </author>
         <category label="Claude 4" term="Claude 4"/>
