@@ -1,81 +1,73 @@
 ---
-title: Installing Forge
+title: Installation & Setup
 sidebar_position: 2
 description: "Learn how to install Forge on different operating systems."
 sidebar_label: Installation
 ---
 
-# Installing Forge
+import Steps, { Step } from '../components/Steps'
+import { Zap, Target, Settings } from 'lucide-react';
 
-Before installing Forge, you'll need to sign up for an account to get started.
+# Installation & Setup
 
-## Sign Up for Forge
+Get Forge running on your system in under 5 minutes. This guide covers installation, authentication setup, and project initialization.
 
-1. [**Sign up**](https://app.forgecode.dev/app/)
-2. **Create your account**: You can sign up using your Google or GitHub account for quick authentication
-3. **Create API Key**: Once logged in, generate your Forge API key from your account dashboard
-4. **Set up environment**: Create a `.env` file in your home directory and add your API key:
-   ```bash
-   # ~/.env or in your project directory
-   FORGE_KEY=your_forge_api_key_here
-   ```
+## System Requirements
 
-Once you have your account and API key set up, you can proceed with the installation.
+Before installing Forge, ensure your system meets these requirements:
 
-## Installation
+### Operating Systems
+- **macOS**: 10.14 (Mojave) or later
+- **Linux**: Ubuntu 18.04+, CentOS 7+, or equivalent distributions
+- **Windows**: Windows 10 or later
 
-Forge can be installed on Windows, macOS, and Linux operating systems. The recommended method is using npm, which works consistently across all platforms.
+### Dependencies
+- **Node.js**: Version 16.0 or later
+- **npm**: Version 7.0 or later (comes with Node.js)
+- **Git**: For version control integration
+- **Terminal**: Any terminal application
 
-## NPM Installation (Recommended)
+### Hardware
+- **RAM**: Minimum 4GB, 8GB+ recommended
+- **Storage**: 100MB for installation, additional space for project files
+- **Network**: Internet connection for AI model access
 
-The recommended way to install Forge is using npm, which works consistently across **all platforms** (Windows, macOS, and Linux):
+## Authenticate and install
+<Steps>
+  <Step title="Sign Up for Forge">
 
-```bash
-# Install Forge globally using npm
-npx forgecode@latest
-```
-
-This method provides a consistent installation experience across all operating systems.
-
-## Alternative Installation Methods
-
-<details>
-<summary>macOS: Homebrew</summary>
-
-Using Homebrew (macOS package manager):
+- [**Sign up**](https://app.forgecode.dev/app/)
+- **Create your account:** You can sign up using your Google or GitHub account for quick authentication.
+- **Create API Key:** Once logged in, generate your Forge API key from your account dashboard.
+- **Set up environment:** Create a `.env` file in your home directory and add your API key:
 
 ```bash
-# Add Code-Forge's package repository to Homebrew
-brew tap antinomyhq/code-forge
-
-# Install Code-Forge
-brew install code-forge
+# ~/.env or in your project directory
+FORGE_KEY=your_forge_api_key_here
 ```
 
-If you don't have Homebrew installed, you can install it by following the instructions at [brew.sh](https://brew.sh/).
+<div className="mt-2 text-[15px] text-gray-600">
+  Once you have your account and API key set up, you can proceed with the installation.
+</div>
 
-</details>
+  </Step>
+  
+  <Step title="Install Forge (NPM Recommended)">
 
-<details>
-<summary>Linux Installation</summary>
-
-Choose either of these methods to install Forge on Linux:
-
-#### Using curl
+Forge can be installed on Windows, macOS, and Linux operating systems. The recommended method is using npm, which works consistently across all platforms:
 
 ```bash
-curl -L https://raw.githubusercontent.com/antinomyhq/forge/main/install.sh | bash
+npm i -g forgecode@latest
 ```
 
-#### Using wget
+<div className="rounded-md border border-amber-300 bg-amber-50 px-4 py-2 mt-3 text-amber-900 text-sm flex items-start gap-2">
+  <span className="mt-1 mr-2">⚠️</span>
+  <span>Do <strong>not</strong> use <code>sudo npm install -g</code> as this can lead to permission issues and security risks. If you encounter permission errors, see our <a href="/docs/npm-troubleshooting" className="underline hover:no-underline">Node.js & npm Troubleshooting</a> guide for safe solutions including npm directory configuration and Node.js version managers like nvm.</span>
+</div>
 
-```bash
-wget -qO- https://raw.githubusercontent.com/antinomyhq/forge/main/install.sh | bash
-```
-
-</details>
-
-## Verifying Your Installation
+  </Step>
+  
+  <Step title="Verify Installation">
 
 After installation, verify that Forge is installed correctly by checking the version:
 
@@ -85,40 +77,73 @@ forge --version
 
 You should see output displaying the version of Forge that you've installed.
 
-## Updating Forge
+Alternatively, you can install and use directly with npx:
+
+```bash
+npx forgecode@latest
+```
+
+  </Step>
+  
+  <Step title="Update Forge">
 
 To update Forge to the latest version using npm:
 
 ```bash
 # Update globally installed package
-npm update -g @antinomyhq/forge
+npm update -g forgecode
 ```
 
-<details>
-<summary>Alternative Update Methods</summary>
+  </Step>
+  
+  <Step title="Project Context Setup">
 
-### macOS: Homebrew
+For best results, always start Forge from your project's root directory. This provides Forge with complete context about your project structure, dependencies, and Git history.
 
 ```bash
-brew upgrade code-forge
+cd /path/to/your/project
+forge
 ```
 
-### Linux
+**Why this matters:** 
 
-Run the same installation command again to get the latest version:
+Running Forge from the project root allows it to analyze your project and dependencies, access Git history and branch information, understand your project's file structure, and provide more accurate code suggestions.
 
-```bash
-curl -L https://raw.githubusercontent.com/antinomyhq/forge/main/install.sh | bash
-```
-
-</details>
-
-## Project Context
-
-Start Forge from your project's root directory to give it the full context of your project structure.
+  </Step>
+  
+</Steps>
 
 ## BYOK (Bring Your Own Key)
 
-After installing Forge, you can also configure other AI providers. Follow the [Provider Configuration](../custom-providers) guide to set up alternative providers like OpenAI, Anthropic, or OpenRouter.
+After installing Forge, you can configure additional AI providers beyond the default. Follow the [Provider Configuration](../custom-providers) guide to set up alternative providers like OpenAI, Anthropic, or OpenRouter.
 
-<!-- Note: This page focuses specifically on installation. Environment setup is covered in the Quick Setup guide. -->
+## Next Steps
+
+import NextSteps from '../src/components/NextSteps';
+
+<NextSteps
+  items={[
+    {
+      logo: <Zap size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
+      title: 'Quick Start Tutorial',
+      subtitle: 'Complete your first task with Forge in under 10 minutes.',
+      link: './quickstart',
+    },
+    {
+      logo: <Target size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
+      title: 'Essential Commands',
+      subtitle: 'Learn the core commands for productive development workflows.',
+      link: './commands',
+    },
+    {
+      logo: <Settings size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
+      title: 'Provider Configuration',
+      subtitle: 'Configure additional AI providers and customize your setup.',
+      link: './custom-providers',
+    },
+  ]}
+/>
+
+---
+
+**Installation complete!** You're ready to start using Forge for AI-assisted development in your terminal.
