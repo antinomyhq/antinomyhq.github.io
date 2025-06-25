@@ -52,38 +52,31 @@ Forge supports major AI providers. Use your existing API keys and credits. For c
 
 ## Next Steps
 
-Follow these steps to begin using Forge:
+import NextSteps from '../src/components/NextSteps';
 
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem', margin: '2rem 0'}}>
+<NextSteps
+  items={[
+    {
+      logo: <Package size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
+      title: 'Install Forge',
+      subtitle: 'Set up Forge on your system with npm, Homebrew, or direct download.',
+      link: './installation',
+    },
+    {
+      logo: <Zap size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
+      title: 'Tutorial',
+      subtitle: 'Complete your first task with Forge in under 10 minutes.',
+      link: './quickstart',
+    },
+    {
+      logo: <Target size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
+      title: 'Commands',
+      subtitle: 'Learn the essential commands for productive development.',
+      link: './commands',
+    },
+  ]}
+/>
 
-<div style={{border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', padding: '1.5rem', backgroundColor: 'var(--ifm-background-surface-color)'}}>
-
-### <Package size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Install Forge**
-Set up Forge on your system with npm, Homebrew, or direct download.
-
-[**Get Started →**](./installation)
-
-</div>
-
-<div style={{border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', padding: '1.5rem', backgroundColor: 'var(--ifm-background-surface-color)'}}>
-
-### <Zap size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Tutorial**
-Complete your first task with Forge in under 10 minutes.
-
-[**Try the Quickstart →**](./quickstart)
-
-</div>
-
-<div style={{border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', padding: '1.5rem', backgroundColor: 'var(--ifm-background-surface-color)'}}>
-
-### <Target size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Commands**
-Learn the essential commands for productive development.
-
-[**View Commands →**](./commands)
-
-</div>
-
-</div>
 
 ---
 
