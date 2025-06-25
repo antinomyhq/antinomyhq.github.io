@@ -174,7 +174,7 @@ export default {
     },
     prism: {
       theme: prismTheme,
-      darkTheme: prismThemes.dracula,
+      darkTheme: prismTheme,
       additionalLanguages: ["protobuf", "json", "diff"],
     },
     colorMode: {

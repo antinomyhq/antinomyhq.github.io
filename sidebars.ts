@@ -21,6 +21,7 @@ const sidebars: SidebarsConfig = {
       items: [
         "introduction",
         "installation",
+        // "quickstart",
         "custom-providers", // New combined document replacing quick-setup and shell-integration
       ],
     },

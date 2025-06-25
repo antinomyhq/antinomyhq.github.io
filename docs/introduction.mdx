@@ -1,53 +1,90 @@
 ---
-title: Introduction to Forge
+title: Forge Code overview
 slug: /
 sidebar_position: 1
-description: "Discover Forge, an AI-powered interactive shell that enhances your development workflow."
-sidebar_label: Introduction
+description: "Forge is an AI pair programmer that enhances development workflows with intelligent code assistance in your terminal."
+sidebar_label: Overview
 ---
 
-# Introduction to Forge
+import { Rocket, Brain, Wrench, Shield, Link, Package, Zap, Target } from 'lucide-react';
 
-Forge is an advanced AI-enhanced terminal development environment that integrates seamlessly with your existing workflow, providing sophisticated programming assistance without compromising efficiency or requiring significant changes to your development practices.
+# Forge Code overview
 
-## Why Shell-Based?
+Forge Code is an AI software engineering agent that runs in your terminal. It understands your codebase and helps you write code using natural language instructions.
 
-Forge leverages the shell environment rather than a web interface or IDE plugin because:
+## Basic usage
 
-- **Speed & Efficiency**: Terminal interfaces provide sub-50ms startup and direct system access
-- **Rich Context**: Your shell session already contains your complete development context (files, directories, environment variables)
-- **Tool Ecosystem**: Seamlessly combines with the powerful Unix tool ecosystem through pipes and redirections
-- **Composability**: Follows Unix philosophy of combining specialized tools to solve complex problems
+Get started in under 2 minutes:
 
-This approach enables Forge to fit into your existing workflow rather than requiring you to adapt to a new environment. For developers who already work in the terminal, Forge feels like a natural extension of your tools rather than a separate application.
+```bash
+cd path/to/your/project/directory
+npx forgecode
+```
 
-## Key Capabilities
+For detailed installation instructions, see [Setup Forge](/docs/installation).
 
-- **Advanced AI Coding Assistant**: Comprehensive understanding, planning, and execution of complex development tasks
-- **Lightning-Fast Performance**: Sub-50ms startup times ensure you're never waiting for the tool
-- **Seamless Integration**: Works with existing Unix tools and workflows without disruption
-- **Context-Aware Assistance**: Understands your development environment and workflows
-- **Natural Language Interface**: Communicate with your system using everyday language
-- **Enhanced Security**: Optional restricted shell mode protects your system
-- **Multi-Agent Architecture**: Orchestrates specialized AI agents to solve complex problems collaboratively
-- **Powered by Claude 3.7 Sonnet**: State-of-the-art AI capabilities for optimal assistance
-- **Automatic Context Compaction**: Smart management of conversation history for unlimited interactions
-- **Rich Terminal Output**: Formatted markdown display for improved readability
-- **Resilient Operations**: Automatic retries with exponential backoff for reliable execution
-- **Fine-Tuned Agent Behavior**: Control creativity and determinism with temperature settings
+![img](/docs/forge_start.png)
 
-## Complete Coding Agent
+You can interact with Forge directly from the interactive REPL session.
 
-Forge functions as a comprehensive development assistant with capabilities to:
+For complete usage instructions, see [Quickstart](/docs/quickstart).
 
-- Write, refactor, and optimize code based on specifications
-- Debug complex issues through systematic error analysis
-- Generate test suites for existing codebases
-- Document code and generate technical specifications
-- Propose architectural improvements and optimizations
+## Features
+
+### <Rocket size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Fast Startup**
+Sub-50ms startup times ensure minimal wait time when launching the tool.
+
+### <Brain size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Context Awareness**
+Forge analyzes your project files, Git history, dependencies, and environment to understand your codebase without requiring repeated explanations.
+
+### <Wrench size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Multi-Agent Architecture**
+Switch between specialized AI agents:
+- **Forge Agent**: Full execution mode for implementing changes
+- **Muse Agent**: Analysis mode for planning and review without modifications
+
+### <Shield size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Security**
+- Optional restricted shell mode provides system protection while maintaining AI functionality
+- Code and indexes remain on your local machine
+- Direct terminal operation with real file editing and Git commit capabilities
+
+### <Link size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **AI Provider Integration**
+Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see [Different providers](/docs/custom-providers).
 
 ## Next Steps
 
-- [Installation](./installation): Learn how to install Forge on your system
-- [Commands](./commands): Discover the built-in commands to enhance your workflow
-<!-- Note: This introduction sets up the core concepts and capabilities that users will learn more about in subsequent documentation pages -->
+Follow these steps to begin using Forge:
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1rem', margin: '2rem 0'}}>
+
+<div style={{border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', padding: '1.5rem', backgroundColor: 'var(--ifm-background-surface-color)'}}>
+
+### <Package size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Install Forge**
+Set up Forge on your system with npm, Homebrew, or direct download.
+
+[**Get Started →**](./installation)
+
+</div>
+
+<div style={{border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', padding: '1.5rem', backgroundColor: 'var(--ifm-background-surface-color)'}}>
+
+### <Zap size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Tutorial**
+Complete your first task with Forge in under 10 minutes.
+
+[**Try the Quickstart →**](./quickstart)
+
+</div>
+
+<div style={{border: '1px solid var(--ifm-color-emphasis-200)', borderRadius: '8px', padding: '1.5rem', backgroundColor: 'var(--ifm-background-surface-color)'}}>
+
+### <Target size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Commands**
+Learn the essential commands for productive development.
+
+[**View Commands →**](./commands)
+
+</div>
+
+</div>
+
+---
+
+**Ready to get started?** Install Forge and integrate AI assistance into your terminal workflow.

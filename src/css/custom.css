@@ -80,19 +80,20 @@ body {
 
   /* Code Settings */
   --ifm-font-family-monospace: "Space Mono";
-  --ifm-code-background: rgb(246, 247, 248);
+  --ifm-code-background: #181818;
   --ifm-code-border-radius: var(--ifm-global-radius);
   --ifm-code-font-size: 0.9eem;
   --ifm-code-padding-horizontal: 0.1em;
   --ifm-code-padding-vertical: 0em;
   --ifm-pre-background: var(--ifm-code-background);
-  --docusaurus-highlighted-code-line-bg: #ffeaea;
+  --docusaurus-highlighted-code-line-bg: #282828;
 }
 
 code {
-  border: 1px solid #eee;
+  border: 1px solid #555;
   letter-spacing: 0.00001px;
   vertical-align: baseline;
+  color: #e6e6e6;
 }
 
 input[type="radio"] {
@@ -766,12 +767,16 @@ span.token-line.theme-code-block-highlighted-line {
   background: #545454;
 }
 
+pre[class*="language-"],
+.codeBlock,
+.code-block,
+.theme-code-block {
+  border-radius: 0 !important;
+}
+
 .theme-code-block,
 pre.prism-code {
-  border-top-right-radius: 0 !important;
-  border-top-left-radius: 0 !important;
-  border-bottom-right-radius: 1.5rem !important;
-  border-bottom-left-radius: 1.5rem !important;
+  border-radius: 0 !important;
 }
 
 [class*="codeBlockTitle"] {
