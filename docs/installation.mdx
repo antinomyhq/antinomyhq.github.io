@@ -5,8 +5,8 @@ description: "Learn how to install Forge on different operating systems."
 sidebar_label: Installation
 ---
 
-import Steps, { Step } from '../components/Steps'
-import { Zap, Target, Settings } from 'lucide-react';
+import Steps, {Step} from "../components/Steps"
+import {Zap, Target, Settings} from "lucide-react"
 
 # Installation & Setup
 
@@ -17,22 +17,26 @@ Get Forge running on your system in under 5 minutes. This guide covers installat
 Before installing Forge, ensure your system meets these requirements:
 
 ### Operating Systems
+
 - **macOS**: 10.14 (Mojave) or later
 - **Linux**: Ubuntu 18.04+, CentOS 7+, or equivalent distributions
 - **Windows**: Windows 10 or later
 
 ### Dependencies
+
 - **Node.js**: Version 16.0 or later
 - **npm**: Version 7.0 or later (comes with Node.js)
 - **Git**: For version control integration
 - **Terminal**: Any terminal application
 
 ### Hardware
+
 - **RAM**: Minimum 4GB, 8GB+ recommended
 - **Storage**: 100MB for installation, additional space for project files
 - **Network**: Internet connection for AI model access
 
 ## Authenticate and install
+
 <Steps>
   <Step title="Sign Up for Forge">
 
@@ -62,7 +66,14 @@ npm i -g forgecode@latest
 
 <div className="rounded-md border border-amber-300 bg-amber-50 px-4 py-2 mt-3 text-amber-900 text-sm flex items-start gap-2">
   <span className="mt-1 mr-2">⚠️</span>
-  <span>Do <strong>not</strong> use <code>sudo npm install -g</code> as this can lead to permission issues and security risks. If you encounter permission errors, see our <a href="/docs/npm-troubleshooting" className="underline hover:no-underline">Node.js & npm Troubleshooting</a> guide for safe solutions including npm directory configuration and Node.js version managers like nvm.</span>
+  <span>
+    Do <strong>not</strong> use <code>sudo npm install -g</code> as this can lead to permission issues and security
+    risks. If you encounter permission errors, see our{" "}
+    <a href="/docs/npm-troubleshooting" className="underline hover:no-underline">
+      Node.js & npm Troubleshooting
+    </a>{" "}
+    guide for safe solutions including npm directory configuration and Node.js version managers like nvm.
+  </span>
 </div>
 
   </Step>
@@ -105,7 +116,7 @@ cd /path/to/your/project
 forge
 ```
 
-**Why this matters:** 
+**Why this matters:**
 
 Running Forge from the project root allows it to analyze your project and dependencies, access Git history and branch information, understand your project's file structure, and provide more accurate code suggestions.
 
@@ -119,27 +130,27 @@ After installing Forge, you can configure additional AI providers beyond the def
 
 ## Next Steps
 
-import NextSteps from '../src/components/NextSteps';
+import NextSteps from "../src/components/NextSteps"
 
 <NextSteps
   items={[
     {
-      logo: <Zap size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
-      title: 'Quick Start Tutorial',
-      subtitle: 'Complete your first task with Forge in under 10 minutes.',
-      link: '/docs/quickstart',
+      logo: <Zap size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      title: "Quick Start Tutorial",
+      subtitle: "Complete your first task with Forge in under 10 minutes.",
+      link: "/docs/quickstart",
     },
     {
-      logo: <Target size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
-      title: 'Essential Commands',
-      subtitle: 'Learn the core commands for productive development workflows.',
-      link: '/docs/commands',
+      logo: <Target size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      title: "Essential Commands",
+      subtitle: "Learn the core commands for productive development workflows.",
+      link: "/docs/commands",
     },
     {
-      logo: <Settings size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
-      title: 'Provider Configuration',
-      subtitle: 'Configure additional AI providers and customize your setup.',
-      link: '/docs/custom-providers',
+      logo: <Settings size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      title: "Provider Configuration",
+      subtitle: "Configure additional AI providers and customize your setup.",
+      link: "/docs/custom-providers",
     },
   ]}
 />

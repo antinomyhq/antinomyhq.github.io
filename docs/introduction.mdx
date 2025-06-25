@@ -6,7 +6,7 @@ description: "Forge is an AI pair programmer that enhances development workflows
 sidebar_label: Overview
 ---
 
-import { Rocket, Brain, Wrench, Shield, Link, Package, Zap, Target } from 'lucide-react';
+import {Rocket, Brain, Wrench, Shield, Link, Package, Zap, Target} from "lucide-react"
 
 # Forge Code overview
 
@@ -32,51 +32,56 @@ For complete usage instructions, see [Quickstart](/docs/quickstart).
 ## Features
 
 ### <Rocket size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Fast Startup**
+
 Sub-50ms startup times ensure minimal wait time when launching the tool.
 
 ### <Brain size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Context Awareness**
+
 Forge analyzes your project files, Git history, dependencies, and environment to understand your codebase without requiring repeated explanations.
 
 ### <Wrench size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Multi-Agent Architecture**
+
 Switch between specialized AI agents:
+
 - **Forge Agent**: Full execution mode for implementing changes
 - **Muse Agent**: Analysis mode for planning and review without modifications
 
 ### <Shield size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Security**
+
 - Optional restricted shell mode provides system protection while maintaining AI functionality
 - Code and indexes remain on your local machine
 - Direct terminal operation with real file editing and Git commit capabilities
 
 ### <Link size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **AI Provider Integration**
+
 Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see [Different providers](/docs/custom-providers).
 
 ## Next Steps
 
-import NextSteps from '../src/components/NextSteps';
+import NextSteps from "../src/components/NextSteps"
 
 <NextSteps
   items={[
     {
-      logo: <Package size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
-      title: 'Install Forge',
-      subtitle: 'Set up Forge on your system with npm, Homebrew, or direct download.',
-      link: './installation',
+      logo: <Package size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      title: "Install Forge",
+      subtitle: "Set up Forge on your system with npm, Homebrew, or direct download.",
+      link: "./installation",
     },
     {
-      logo: <Zap size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
-      title: 'Tutorial',
-      subtitle: 'Complete your first task with Forge in under 10 minutes.',
-      link: './quickstart',
+      logo: <Zap size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      title: "Tutorial",
+      subtitle: "Complete your first task with Forge in under 10 minutes.",
+      link: "./quickstart",
     },
     {
-      logo: <Target size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
-      title: 'Commands',
-      subtitle: 'Learn the essential commands for productive development.',
-      link: './commands',
+      logo: <Target size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      title: "Commands",
+      subtitle: "Learn the essential commands for productive development.",
+      link: "./commands",
     },
   ]}
 />
-
 
 ---
 

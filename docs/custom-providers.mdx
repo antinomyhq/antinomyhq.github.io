@@ -5,8 +5,8 @@ description: "Configure Forge to work with your preferred AI provider and unders
 sidebar_label: API Providers
 ---
 
-import Steps, { Step } from '../components/Steps'
-import { Key, Settings, Layers } from 'lucide-react';
+import Steps, {Step} from "../components/Steps"
+import {Key, Settings, Layers} from "lucide-react"
 
 # Configuring API Providers
 
@@ -17,6 +17,7 @@ Configure Forge to work with your preferred AI provider. This guide covers provi
 Forge supports multiple AI providers, each with unique capabilities and pricing models:
 
 ### Provider Overview
+
 - **Forge Provider** (`FORGE_KEY`): Forgecode's managed service with optimized models
 - **OpenRouter** (`OPENROUTER_API_KEY`): Access to 300+ models from multiple providers
 - **OpenAI** (`OPENAI_API_KEY`): Official OpenAI models (GPT-4, o3-mini, etc.)
@@ -89,8 +90,9 @@ OPENAI_URL=your_provider_url
 ```
 
 **Where to get API keys:**
+
 - [Forge Provider](https://app.forgecode.dev/app/) - Sign up for Antinomy account
-- [OpenRouter](https://openrouter.ai/) - Aggregated access to multiple models  
+- [OpenRouter](https://openrouter.ai/) - Aggregated access to multiple models
 - [OpenAI](https://platform.openai.com/) - Official OpenAI platform
 - [Anthropic](https://console.anthropic.com/) - Official Anthropic console
 - [Google Vertex AI](https://cloud.google.com/vertex-ai) - Google Cloud AI platform
@@ -98,18 +100,21 @@ OPENAI_URL=your_provider_url
 - [Amazon Bedrock](https://aws.amazon.com/bedrock/) - AWS managed AI service
 
 **Example setup with Forge Provider (recommended):**
+
 ```bash
 # ~/.env
 FORGE_KEY=your_forge_api_key_here
 ```
 
 **Example setup with OpenRouter:**
+
 ```bash
-# ~/.env  
+# ~/.env
 OPENROUTER_API_KEY=your_openrouter_key_here
 ```
 
 **Example setup with Groq:**
+
 ```bash
 # ~/.env
 OPENAI_API_KEY=your_groq_api_key
@@ -117,6 +122,7 @@ OPENAI_URL=https://api.groq.com/openai/v1
 ```
 
 **Example setup with Amazon Bedrock:**
+
 ```bash
 # ~/.env
 OPENAI_API_KEY=your_bedrock_gateway_api_key
@@ -124,7 +130,8 @@ OPENAI_URL=your_bedrock_gateway_base_url
 ```
 
 <div className="mt-2 text-[15px] text-gray-600">
-  <strong>Note:</strong> Amazon Bedrock requires setting up the <a href="https://github.com/aws-samples/bedrock-access-gateway">Bedrock Access Gateway</a> first.
+  <strong>Note:</strong> Amazon Bedrock requires setting up the{" "}
+  <a href="https://github.com/aws-samples/bedrock-access-gateway">Bedrock Access Gateway</a> first.
 </div>
 
   </Step>
@@ -162,11 +169,13 @@ Forge searches for `.env` files in this order and merges them:
 3. **Home directory** (`~/.env`)
 
 **Merge behavior:**
+
 - Variables in closer directories override those in parent directories
 - Project-level `.env` takes precedence over global `~/.env`
 - First found variable wins (no overriding within same file)
 
 **Example scenario:**
+
 ```bash
 # ~/.env (global)
 OPENAI_API_KEY=global_openai_key
@@ -183,27 +192,27 @@ OPENAI_API_KEY=project_openai_key
 
 ## Next Steps
 
-import NextSteps from '../src/components/NextSteps';
+import NextSteps from "../src/components/NextSteps"
 
 <NextSteps
   items={[
     {
-      logo: <Key size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
-      title: 'Essential Commands',
-      subtitle: 'Learn core commands for productive development workflows.',
-      link: '/docs/commands',
+      logo: <Key size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      title: "Essential Commands",
+      subtitle: "Learn core commands for productive development workflows.",
+      link: "/docs/commands",
     },
     {
-      logo: <Settings size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
-      title: 'Custom Commands',
-      subtitle: 'Create your own commands and automate repetitive tasks.',
-      link: '/docs/custom-commands',
+      logo: <Settings size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      title: "Custom Commands",
+      subtitle: "Create your own commands and automate repetitive tasks.",
+      link: "/docs/custom-commands",
     },
     {
-      logo: <Layers size={28} style={{verticalAlign: 'middle', marginRight: 6}} />,
-      title: 'Operating Agents',
-      subtitle: 'Understand different modes and agent capabilities.',
-      link: '/docs/operating-agents',
+      logo: <Layers size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      title: "Operating Agents",
+      subtitle: "Understand different modes and agent capabilities.",
+      link: "/docs/operating-agents",
     },
   ]}
 />

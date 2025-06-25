@@ -955,3 +955,63 @@ pre.main-install-command {
   border-radius: 1rem;
   font-family: var(--ifm-font-family-monospace);
 }
+/* Fix details element background to match theme */
+details {
+  background-color: transparent !important;
+  border: 1px solid var(--ifm-color-brand-light-400);
+  border-radius: 8px;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+details summary {
+  background-color: #ede9d8;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 0;
+  font-weight: var(--ifm-font-weight-semibold);
+  border-bottom: 1px dotted #ccc;
+}
+
+details[open] summary {
+  border-radius: 0;
+}
+
+details > div {
+  background-color: #ede9d8;
+  padding: 1rem;
+  border-radius: 0;
+}
+
+details summary:hover {
+  background-color: #e5ddc5;
+}
+/* Override details sections blue coloring */
+details {
+  --ifm-alert-foreground-color: #666 !important;
+  border: 1px dotted #ccc !important;
+  border-radius: 0 !important;
+}
+
+details summary {
+  color: #333 !important;
+  border-radius: 0 !important;
+}
+
+details[open] summary {
+  border-radius: 0 !important;
+}
+
+details > div {
+  border-radius: 0 !important;
+}
+
+/* Override any blue text in details content */
+details code {
+  color: #333 !important;
+}
+
+details .admonition-heading code,
+details .admonition-content code {
+  color: #333 !important;
+}

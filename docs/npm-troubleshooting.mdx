@@ -18,12 +18,13 @@ If you encounter permission errors when installing Forge globally, here are the 
 Using a Node.js version manager like nvm is the safest and most reliable approach:
 
 **For macOS and Linux:**
+
 ```bash
 # Install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 
 # Restart your terminal or reload your profile
-source ~/.bashrc  # or ~/.zshrc for zsh users
+source ~/.bashrc # or ~/.zshrc for zsh users
 
 # Install and use the latest Node.js
 nvm install node
@@ -34,6 +35,7 @@ npm i -g forgecode@latest
 ```
 
 **For Windows:**
+
 ```bash
 # Install nvm-windows from: https://github.com/coreybutler/nvm-windows
 # Then in a new command prompt:
@@ -58,7 +60,7 @@ echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc
 # For zsh users, use ~/.zshrc instead of ~/.bashrc
 
 # Reload your profile
-source ~/.bashrc  # or source ~/.zshrc
+source ~/.bashrc # or source ~/.zshrc
 
 # Now install Forge
 npm i -g forgecode@latest
@@ -67,6 +69,7 @@ npm i -g forgecode@latest
 ### What NOT to Do
 
 ❌ **Never use `sudo npm install -g`** - This can lead to:
+
 - Permission issues with future npm operations
 - Security vulnerabilities
 - Ownership conflicts with system files
@@ -77,6 +80,7 @@ npm i -g forgecode@latest
 If the `forge` command is not recognized after installation:
 
 ### Check Your Installation
+
 ```bash
 # Verify npm installed the package
 npm list -g forgecode
@@ -86,6 +90,7 @@ npm config get prefix
 ```
 
 ### Fix PATH Issues
+
 ```bash
 # Check if npm's global bin directory is in your PATH
 echo $PATH
@@ -98,7 +103,9 @@ export PATH=$(npm config get prefix)/bin:$PATH
 ```
 
 ### Alternative: Use npx
+
 If you continue having PATH issues, you can always use npx:
+
 ```bash
 npx forgecode@latest
 ```
@@ -106,19 +113,23 @@ npx forgecode@latest
 ## Node.js Version Issues
 
 ### Check Your Node.js Version
+
 ```bash
 node --version
 npm --version
 ```
 
 Forge requires:
+
 - **Node.js**: Version 16.0 or later
 - **npm**: Version 7.0 or later
 
 ### Update Node.js
+
 If your Node.js version is too old:
 
 **Using nvm (recommended):**
+
 ```bash
 nvm install --lts
 nvm use --lts
@@ -145,6 +156,7 @@ npm i -g forgecode@latest
 ## Network and Proxy Issues
 
 ### Corporate Networks
+
 If you're behind a corporate firewall:
 
 ```bash
@@ -157,6 +169,7 @@ npm config set proxy http://username:password@proxy.company.com:8080
 ```
 
 ### Registry Issues
+
 If you're having trouble reaching the npm registry:
 
 ```bash
@@ -173,15 +186,18 @@ npm config set registry https://registry.npmmirror.com/
 ## Platform-Specific Issues
 
 ### Windows
+
 - Ensure you're using Command Prompt or PowerShell as Administrator if needed
 - Consider using Windows Subsystem for Linux (WSL) for a more Unix-like environment
 - Make sure Windows Defender isn't blocking npm operations
 
 ### macOS
+
 - If using Homebrew-installed Node.js, ensure proper permissions
 - Check that Xcode Command Line Tools are installed: `xcode-select --install`
 
 ### Linux
+
 - Ensure you have build tools installed: `sudo apt-get install build-essential` (Ubuntu/Debian)
 - Check that you have proper permissions for the installation directory
 
