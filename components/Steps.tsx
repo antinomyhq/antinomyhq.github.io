@@ -1,12 +1,12 @@
-import React, { ReactNode } from 'react';
+import React, {ReactNode} from "react"
 
 export interface StepProps {
-  title: string;
-  children: ReactNode;
-  number: number;
+  title: string
+  children: ReactNode
+  number: number
 }
 
-export const Step = ({ title, children, number }: StepProps) => (
+export const Step = ({title, children, number}: StepProps) => (
   <div className="flex gap-4 mb-8">
     <div className="flex-shrink-0">
       <div className="h-7 w-7 rounded-full bg-gray-100 border border-gray-300 flex items-center justify-center text-gray-700 font-semibold text-base">
@@ -18,21 +18,23 @@ export const Step = ({ title, children, number }: StepProps) => (
       <div className="text-base text-gray-800">{children}</div>
     </div>
   </div>
-);
+)
 
 export interface StepsProps {
-  children: ReactNode[];
+  children: ReactNode[]
 }
 
-export const Steps = ({ children }: StepsProps) => {
+export const Steps = ({children}: StepsProps) => {
   // Number the Step children automatically
-  const steps = React.Children.toArray(children).filter(Boolean).map((child, i) => {
-    if (React.isValidElement(child)) {
-      return React.cloneElement(child, { number: i + 1 });
-    }
-    return child;
-  });
-  return <div>{steps}</div>;
-};
+  const steps = React.Children.toArray(children)
+    .filter(Boolean)
+    .map((child, i) => {
+      if (React.isValidElement(child)) {
+        return React.cloneElement(child, {number: i + 1})
+      }
+      return child
+    })
+  return <div>{steps}</div>
+}
 
-export default Steps;
+export default Steps
