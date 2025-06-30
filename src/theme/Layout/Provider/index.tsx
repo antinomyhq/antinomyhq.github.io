@@ -37,7 +37,7 @@ const LayoutProvider = ({children}: LayoutProviderProps) => {
   return (
     <Provider>
       {children}
-      <Footer />
+      {/* <Footer /> */}
     </Provider>
   )
 }

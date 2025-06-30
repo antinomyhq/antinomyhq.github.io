@@ -644,6 +644,103 @@ export enum CookiePreferenceCategory {
   MARKETING = "Marketing",
 }
 
+export const NavbarItems = [
+  {
+    name: "Docs",
+    link: "/docs",
+  },
+  {
+    name: "Releases",
+    link: "/releases",
+  },
+  {
+    name: "Plans",
+    link: "/pricing",
+  },
+  {
+    name: "Blog",
+    link: "/blog",
+  },
+  {
+    name: "Testimonials",
+    link: "/#",
+  },
+  {
+    name: "Contact",
+    link: "/#",
+  },
+]
+
+export const StatsForDevelopers = [
+  {
+    title: "Active Developers",
+    stat: "50,000+",
+  },
+  {
+    title: "Accuracy Rate",
+    stat: "99.7%",
+  },
+
+  {
+    title: "Github Star",
+    stat: "3554",
+  },
+]
+
+export const TechDetails = [
+  {
+    title: "Backend - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["1", "2", "3"],
+  },
+  {
+    title: "Devops - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["1", "2", "3"],
+  },
+  {
+    title: "Security & infra - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["1", "2", "3"],
+  },
+  {
+    title: "Solo dev - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["1", "2", "3"],
+  },
+]
+
+export const TECHS = ["Backend", "Devops", "Security & infra", "Solo Dev"]
+
+export const BENEFITS = [
+  {
+    title: "Developer-Controlled & Secure",
+    description:
+      "Your code never leaves your machine - Forge runs locally with your own API keys. No cloud processing, no data collection, just private and secure AI assistance that keeps you in complete control.",
+  },
+  {
+    title: "Developer-Secure",
+    description:
+      "Your code never leaves your machine - Forge runs locally with your own API keys. No cloud processing, no data collection, just private and secure AI assistance that keeps you in complete control.",
+  },
+]
+
 export const footerItems: FooterItem[] = [
   {
     title: "Developers",
@@ -653,12 +750,29 @@ export const footerItems: FooterItem[] = [
         link: pageLinks.docs,
       },
       {
-        name: "Blogs",
-        link: pageLinks.blog,
-      },
-      {
         name: "Releases",
         link: pageLinks.releases,
+      },
+      {
+        name: "Report a Bug",
+        link: "",
+      },
+      {
+        name: "Contributors",
+        link: "",
+      },
+    ],
+  },
+  {
+    title: "Legal",
+    items: [
+      {
+        name: "Privacy Policy",
+        link: pageLinks.privacyPolicy,
+      },
+      {
+        name: "Terms",
+        link: "",
       },
     ],
   },
@@ -666,16 +780,34 @@ export const footerItems: FooterItem[] = [
     title: "Company",
     items: [
       {
+        name: "Contact",
+        link: "",
+      },
+      {
+        name: "Testimonials",
+        link: "",
+      },
+      {
+        name: "Hiring",
+        link: "https://forms.gle/F8dQkLqtCsFwctLa6",
+      },
+    ],
+  },
+  {
+    title: "Resources",
+    items: [
+      {
+        name: "Blogs",
+        link: pageLinks.blog,
+      },
+    ],
+  },
+  {
+    title: "Plans",
+    items: [
+      {
         name: "Pricing",
         link: pageLinks.pricing,
-      },
-      {
-        name: "Privacy Policy",
-        link: pageLinks.privacyPolicy,
-      },
-      {
-        name: "We're Hiring",
-        link: "https://forms.gle/F8dQkLqtCsFwctLa6",
       },
     ],
   },

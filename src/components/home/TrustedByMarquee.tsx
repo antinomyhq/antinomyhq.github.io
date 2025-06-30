@@ -18,7 +18,7 @@ interface TrustedByMarqueeProps {
 }
 
 const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
-  title = "Used By",
+  title,
   logos,
   onClick,
   titleClassName = "text-content-small font-bold sm:text-title-tiny lg:text-title-small text-tailCall-light-600 text-center space-x-1",
@@ -68,10 +68,12 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
 
   return (
     <section className={`px-10 md:px-0 ${onClick ? "cursor-pointer" : ""}`} onClick={handleClick}>
-      <div className={titleClassName}>
-        <GreaterThanUnderscoreIcon className="h-4 w-6" />
-        <span>{title}</span>
-      </div>
+      {title ? (
+        <div className={titleClassName}>
+          <GreaterThanUnderscoreIcon className="h-4 w-6" />
+          <span>{title}</span>
+        </div>
+      ) : null}
 
       <Marquee autoFill>
         <div className={desktopClassName}>{logos.map(renderLogo)}</div>
