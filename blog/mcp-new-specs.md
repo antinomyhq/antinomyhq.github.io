@@ -1,14 +1,14 @@
 ---
 slug: mcp-spec-updates
-title: "MCP Security is Broken: Here's How to Fix It"
+title: "MCP 2.0 Spec Update: Security, Structured Output & Elicitation"
 authors: [anmol]
 tags: [ "Security", "MCP", "MCP Spec Updates", "Best Practices", "Vulnerabilities",]
-date: 2025-06-17
+date: 2025-07-1
 description: "Real talk about MCP Spec update (v2025-06-18), including important changes, security implications and what developers should actually care about."
 hide_table_of_contents: false
 ---
 
-The Model Context Protocol has faced significant criticism due to its security vulnerabilities. Been digging into their new Spec update (MCP v2025-06-18), especially around security<sup><a id="ref-1" href="#footnote-1">1</a></a></sup>. Here are the important changes you should know.
+The Model Context Protocol has faced significant criticism due to its security vulnerabilities. Been digging into their new Spec update (MCP v2025-06-18), especially around security<sup><a id="ref-1" href="#footnote-1">1</a></sup>. Here are the important changes you should know.
 
 ---
 
