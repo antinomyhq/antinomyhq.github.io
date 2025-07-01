@@ -421,11 +421,9 @@ You should review the revised MCP documentation and apply these changes if you a
 
 <a id="footnote-2"></a>**2.** Anthropic. "Model Context Protocol." GitHub Repository. [https://github.com/modelcontextprotocol/modelcontextprotocol](https://github.com/modelcontextprotocol/modelcontextprotocol) [↩](#ref-2)
 
-
 <a id="footnote-3"></a>**3.** Forge. "MCP Security is Broken: Here's How to Fix It". [https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/](https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/) [↩](#ref-3)
 
-<a id="footnote-4"></a>**4.** IETF. “Protected Resource Metadata.” RFC 9728. [https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/](https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/) [↩](#ref-4)
-https://datatracker.ietf.org/doc/html/rfc9728
+<a id="footnote-4"></a>**4.** IETF. “Protected Resource Metadata.” RFC 9728. [https://datatracker.ietf.org/doc/html/rfc9728](https://datatracker.ietf.org/doc/html/rfc9728) [↩](#ref-4)
 
 <a id="footnote-5"></a>**5.** Anthropic. “Authorization Server Discovery.” MCP Spec: Authorization. [https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery) [↩](#ref-5)
 
