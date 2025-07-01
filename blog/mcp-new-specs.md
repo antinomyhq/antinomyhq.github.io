@@ -2,7 +2,14 @@
 slug: mcp-spec-updates
 title: "MCP 2025-06-18 Spec Update: Security, Structured Output & Elicitation"
 authors: [anmol]
-tags: [ "Security", "MCP", "MCP Spec Updates", "Best Practices", "Vulnerabilities"]
+tags:
+  [
+    "Security",
+    "MCP",
+    "MCP Spec Updates",
+    "Best Practices",
+    "Vulnerabilities",
+  ]
 date: 2025-07-1
 description: "Real talk about MCP Spec update (v2025-06-18), including important changes, security implications and what developers should actually care about."
 hide_table_of_contents: false
@@ -18,13 +25,14 @@ MCP (Model Context Protocol) is Anthropic's attempt at standardizing how applica
 
 MCP helps you build agents and complex workflows on top of LLMs. Tasks that once required switching between 5+ apps can now happen in a single conversation with your agent.
 
-The spec was pretty straightforward before (using JSON-RPC over stdio or HTTP). Earlier, the authentication part was basically "figure it out yourself", which is why so many skipped it directly. 
+The spec was pretty straightforward before (using JSON-RPC over stdio or HTTP). Earlier, the authentication part was basically "figure it out yourself", which is why so many skipped it directly.
 
-MCP adoption is picking up fast so they tried fixing it now while the ecosystem is still small enough to actually change. 
+MCP adoption is picking up fast so they tried fixing it now while the ecosystem is still small enough to actually change.
 
 There are definitely core security vulnerabilities (tool description injection, supply chain risks) that are still not addressed but you can follow some practical mitigation strategies that might help<sup><a id="ref-3" href="#footnote-3">3</a></sup>.
 
 ![mcp server](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mdh8ztjauqv05yzrk0gj.png)
+
 <figcaption>credit goes to Greg Isenburg on YouTube</figcaption>
 
 ---
@@ -48,6 +56,7 @@ Clients must include a Resource Indicator when requesting tokens (the `resource`
 Binding tokens to a single resource prevents “token mis-redemption” attacks, where a token issued for one resource could be replayed against a different server.
 
 ![auth0 documenting implementation](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/znf66tk04wttzxz7stlh.png)
+
 <figcaption>Credit goes to Auth0 Blog<sup><a id="ref-6" href="#footnote-6">6</a></sup></figcaption>
 
 For example, let's consider a simple scenario where the client is requesting a token specifically to access the `analytics` MCP server.
@@ -198,15 +207,15 @@ Example tool with output schema:
   "inputSchema": {
     "type": "object",
     "properties": {
-      "productId": { "type": "string" }
+      "productId": {"type": "string"}
     },
     "required": ["productId"]
   },
   "outputSchema": {
     "type": "object",
     "properties": {
-      "price": { "type": "number" },
-      "currency": { "type": "string" }
+      "price": {"type": "number"},
+      "currency": {"type": "string"}
     },
     "required": ["price", "currency"]
   }
@@ -238,7 +247,7 @@ Example valid response for this tool:
 
 ## Support for Elicitation (Interactive User Input)
 
-The new update adds elicitation support<sup><a id="ref-10" href="#footnote-10">10</a></sup>. A server can now ask the user for additional information mid-session by sending an `elicitation/create` request with a message and a JSON schema for expected data. 
+The new update adds elicitation support<sup><a id="ref-10" href="#footnote-10">10</a></sup>. A server can now ask the user for additional information mid-session by sending an `elicitation/create` request with a message and a JSON schema for expected data.
 
 The protocol itself does not mandate any specific user interaction model and servers must not use elicitation to request sensitive information.
 
@@ -271,7 +280,7 @@ Request example:
     "requestedSchema": {
       "type": "object",
       "properties": {
-        "email": { "type": "string", "format": "email" }
+        "email": {"type": "string", "format": "email"}
       },
       "required": ["email"]
     }
@@ -294,7 +303,6 @@ Response Example:
 }
 ```
 
-
 ### 2) Schema-Based Input Validation
 
 - Input is guided by a simple JSON Schema (strings, numbers, enums, booleans).
@@ -309,9 +317,10 @@ Clients must return one of three clear actions:
 - `"reject"` : User explicitly declined to provide data
 - `"cancel"` : User dismissed the prompt without responding
 
-Here is the message flow. 
+Here is the message flow.
 
 ![message flow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/uf0z8khnvcc0c6ee9sni.png)
+
 <figcaption>official docs</figcaption>
 
 If you are interested in reading more about response actions, request schema, and more security considerations, read the official docs<sup><a id="ref-10.1" href="#footnote-10">10</a></sup>.
@@ -342,7 +351,7 @@ Resource links allow servers to “point” to files or resources instead of inl
 
 ## Protocol Version Enforcement (HTTP)
 
-After the initial handshake, all HTTP requests to an MCP server must include the agreed-upon version in the `MCP-Protocol-Version: <protocol-version>` HTTP header on all subsequent requests to the MCP server. 
+After the initial handshake, all HTTP requests to an MCP server must include the agreed-upon version in the `MCP-Protocol-Version: <protocol-version>` HTTP header on all subsequent requests to the MCP server.
 
 This tells the server which version of the MCP spec the client is using. If the header contains an invalid or unsupported version, the server must reject the request with a `400 Bad Request`.
 
@@ -374,7 +383,7 @@ For example:
 POST /mcp  [{ "jsonrpc": "2.0", "method": "foo", "id": 1 }, { "jsonrpc": "2.0", "method": "bar", "id": 2 }]
 ```
 
-I was checking the GitHub PR discussion (#416)<sup><a id="ref-12" href="#footnote-12">12</a></sup> and found “no compelling use cases” for actually removing it. 
+I was checking the GitHub PR discussion (#416)<sup><a id="ref-12" href="#footnote-12">12</a></sup> and found “no compelling use cases” for actually removing it.
 
 The official JSON-RPC documentation explicitly says a client “MAY send an Array” of requests and the server “SHOULD respond with an Array” of results. MCP’s new rule essentially forbids that. Several reviewers pointed out this break with the standard but the spec authors chose to make the change explicit.
 
@@ -392,7 +401,7 @@ I think removing JSON-RPC batching support when the protocol version is `>= 2025
 
 Several new fields were added for flexibility:
 
-- `_meta` was added to various interface objects for implementation metadata. 
+- `_meta` was added to various interface objects for implementation metadata.
 
 - `context` was added to `CompletionRequest` to allow sending previously resolved variables along with completion requests.
 
@@ -404,7 +413,7 @@ They also changed `SHOULD` to `MUST` in Lifecycle Operation which says both pa
 
 ## The Bottom Line
 
-These updates are a step forward for the MCP ecosystem. Made MCP integrations much more secure (using OAuth 2.0 conventions and token binding) and more capable because of structured data and user prompts. 
+These updates are a step forward for the MCP ecosystem. Made MCP integrations much more secure (using OAuth 2.0 conventions and token binding) and more capable because of structured data and user prompts.
 
 You should review the revised MCP documentation and apply these changes if you are building or upgrading your MCP clients/servers.
 
