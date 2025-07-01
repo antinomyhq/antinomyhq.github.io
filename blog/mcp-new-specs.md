@@ -59,7 +59,7 @@ Because the `resource` parameter is included, the authorization server will issu
 
 That token cannot be used to access any other endpoint or server, such as `https://mcp.example.com/payments` or `https://mcp.example.com/notifications`, even if they are part of the same MCP deployment.
 
-```json
+```
 POST /oauth/token
 {
   "grant_type": "client_credentials",
@@ -150,10 +150,12 @@ Tools can now return structured JSON output in a new `structuredContent` field. 
 For instance, this is easier for apps to consume than parsing a plain string like `"22.5°C, partly cloudy, humidity 65%"`.
 
 ```json
-"structuredContent": {
-  "temperature": 22.5,
-  "conditions": "Partly cloudy",
-  "humidity": 65
+{
+  "structuredContent": {
+    "temperature": 22.5,
+    "conditions": "Partly cloudy",
+    "humidity": 65
+  }
 }
 ```
 
@@ -165,12 +167,14 @@ To ensure older clients can still work without changes:
 - This dual output strategy makes structured content opt-in without breaking existing workflows.
 
 ```json
-"content": [
- {
-    "type": "text",
-    "text": "{\"temperature\": 22.5, \"conditions\": \"Partly cloudy\", \"humidity\": 65}"
- }
-]
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\"temperature\": 22.5, \"conditions\": \"Partly cloudy\", \"humidity\": 65}"
+    }
+  ]
+}
 ```
 
 ### 3) Output Schema Support (Optional)
@@ -191,24 +195,24 @@ Example tool with output schema:
 
 ```json
 {
-  "name": "get_price",
-  "title": "Price Checker",
-  "description": "Get current price of a product",
-  "inputSchema": {
-    "type": "object",
-    "properties": {
-      "productId": { "type": "string" }
- },
-    "required": ["productId"]
- },
-  "outputSchema": {
-    "type": "object",
-    "properties": {
-      "price": { "type": "number" },
-      "currency": { "type": "string" }
- },
-    "required": ["price", "currency"]
- }
+  "name": "get_price",
+  "title": "Price Checker",
+  "description": "Get current price of a product",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "productId": { "type": "string" }
+    },
+    "required": ["productId"]
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "price": { "type": "number" },
+      "currency": { "type": "string" }
+    },
+    "required": ["price", "currency"]
+  }
 }
 ```
 
@@ -216,20 +220,20 @@ Example valid response for this tool:
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "id": 42,
-  "result": {
-    "content": [
- {
-        "type": "text",
-        "text": "{\"price\": 199.99, \"currency\": \"USD\"}"
- }
- ],
-    "structuredContent": {
-      "price": 199.99,
-      "currency": "USD"
- }
- }
+  "jsonrpc": "2.0",
+  "id": 42,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"price\": 199.99, \"currency\": \"USD\"}"
+      }
+    ],
+    "structuredContent": {
+      "price": 199.99,
+      "currency": "USD"
+    }
+  }
 }
 ```
 
@@ -243,7 +247,7 @@ The protocol itself does not mandate any specific user interaction model and ser
 
 Clients that support elicitation must declare the `elicitation` capability during initialization.
 
-```json
+```
 {
   "capabilities": {
     "elicitation": {}
@@ -264,17 +268,17 @@ Request example:
 
 ```json
 {
-  "method": "elicitation/create",
-  "params": {
-    "message": "Please enter your email",
-    "requestedSchema": {
-      "type": "object",
-      "properties": {
-        "email": { "type": "string", "format": "email" }
- },
-      "required": ["email"]
- }
- }
+  "method": "elicitation/create",
+  "params": {
+    "message": "Please enter your email",
+    "requestedSchema": {
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" }
+      },
+      "required": ["email"]
+    }
+  }
 }
 ```
 
@@ -282,14 +286,14 @@ Response Example:
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": {
-    "action": "accept",
-    "content": {
-      "email": "user@example.com"
- }
- }
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "action": "accept",
+    "content": {
+      "email": "user@example.com"
+    }
+  }
 }
 ```
 
@@ -327,11 +331,11 @@ For example:
 
 ```json
 {
-  "type": "resource_link",
-  "uri": "file:///project/src/main.rs",
-  "name": "main.rs",
-  "description": "Primary application entry point",
-  "mimeType": "text/x-rust"
+  "type": "resource_link",
+  "uri": "file:///project/src/main.rs",
+  "name": "main.rs",
+  "description": "Primary application entry point",
+  "mimeType": "text/x-rust"
 }
 ```
 
@@ -371,7 +375,7 @@ The spec no longer supports JSON-RPC 2.0 batching<sup><a id="ref-11" href="#foot
 
 For example:
 
-```json
+```
 POST /mcp  [{ "jsonrpc": "2.0", "method": "foo", "id": 1 }, { "jsonrpc": "2.0", "method": "bar", "id": 2 }]
 ```
 
