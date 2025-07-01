@@ -18,7 +18,7 @@ Custom commands fix this. They let you turn repeated, detailed tasks into a sing
 
 I'm using [this](https://github.com/lencx/ChatGPT) Rust repository for the example. Let's open our code and run Forge to give it the full context of the codebase:
 
-![](../static/blog/start.png)
+![](../static/blog/start.gif)
 
 Now what we want to do in this example is to analyze the technical debt before committing so that we can maybe try to reduce it or plan how to deal with it. To create a basic custom command, open the newly created `forge.yaml` file. Add the `commands` property and create a new command:
 
@@ -56,7 +56,7 @@ This will look for things like use depreceated APIs and outdated libraries, or e
 
 To run this command, just type `/tech-debt` in the Forge terminal, and you are good to go:
 
-![](../static/blog/tech-debt.png)
+![](../static/blog/techdebt.gif)
 
 ## Fixing Bad Code
 
@@ -72,9 +72,7 @@ commands:
 
 Run `/stack-overflows` and it lists all the places which need your attention.
 
-![](../static/blog/stack-overflow-start.png)
-![](../static/blog/stack-overflow1.png)
-![](../static/blog/stack-overflow2.png)
+![](../static/blog/overflow.gif)
 
 This even recommends you which places to work on. If you add it to the prompt, it would even write detailed recommendations, but what if you want full control? Maybe you want to use a separate model for generating recommendations, ensure it follows your organization's code guidelines, or even change the temperature of the model. You can make your own agents and make them subscribe to a command's output.
 
@@ -147,8 +145,7 @@ prompt: go through each file, find code that might cause stack overflows, list a
 
 When we run `/stack-overflows`, it will first list all the places which might cause a stack overflow, then our agent will generate the remediation plan for those places:
 
-![](../static/blog/stack-overflow3.png)
-![](../static/blog/stack-overflow4.png)
+![](../static/blog/commandwithagent.gif)
 
 ## Fixing Outdated Documentation
 
@@ -173,7 +170,7 @@ commands:
 
 Just do `/outdated`, and it will find all the places that need to be updated.
 
-![](../static/blog/outdated-docs.png)
+![](../static/blog/outdated.gif)
 
 You can even go a step further and ask it to update the documentation.
 
