@@ -27,7 +27,6 @@ There are definitely core security vulnerabilities (tool description injection, 
 ![mcp server](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mdh8ztjauqv05yzrk0gj.png)
 <figcaption>credit goes to Greg Isenburg on YouTube</figcaption>
 
-
 ---
 
 ## OAuth 2.0 Resource Server Classification
@@ -50,8 +49,6 @@ Binding tokens to a single resource prevents “token mis-redemption” attacks,
 
 ![auth0 documenting implementation](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/znf66tk04wttzxz7stlh.png)
 <figcaption>Credit goes to Auth0 Blog<sup><a id="ref-6" href="#footnote-6">6</a></sup></figcaption>
-
-&nbsp;
 
 For example, let's consider a simple scenario where the client is requesting a token specifically to access the `analytics` MCP server.
 
@@ -316,8 +313,6 @@ Here is the message flow.
 
 ![message flow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/uf0z8khnvcc0c6ee9sni.png)
 <figcaption>official docs</figcaption>
-
-&nbsp;
 
 If you are interested in reading more about response actions, request schema, and more security considerations, read the official docs<sup><a id="ref-10.1" href="#footnote-10">10</a></sup>.
 
