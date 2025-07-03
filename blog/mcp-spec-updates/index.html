@@ -17,7 +17,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"ForgeCode","url":"https://forgecode.dev/"}</script>
 <script>!function(e,n,t,i,c,s){e.SnitchObject=t,e[t]||(e[t]=function(){(e[t].q=e[t].q||[]).push(arguments)}),e[t].l=+new Date,c=n.createElement(i),s=n.getElementsByTagName(i)[0],c.src="//snid.snitcher.com/8432087.js",s.parentNode.insertBefore(c,s)}(window,document,"snid","script"),snid("verify","8432087")</script>
 <script>!function(){var t=window.reb2b=window.reb2b||[];if(!t.invoked){t.invoked=!0,t.methods=["identify","collect"],t.factory=function(e){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(e),t.push(r),t}};for(var e=0;e<t.methods.length;e++){var r=t.methods[e];t[r]=t.factory(r)}t.load=function(t){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://s3-us-west-2.amazonaws.com/b2bjsstore/b/"+t+"/0OV0VHL3P56Z.js.gz";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(e,r)},t.SNIPPET_VERSION="1.0.1",t.load("0OV0VHL3P56Z")}}()</script><link rel="stylesheet" href="/assets/css/styles.c166ad05.css">
-<script src="/assets/js/runtime~main.15b7bbfc.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.4b1bd7c7.js" defer="defer"></script>
 <script src="/assets/js/main.dbfc78a4.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -61,7 +61,7 @@
 <p>At its core, MCP follows a client-server architecture where a host application can connect to multiple servers. Here are the core components:</p>
 <ul>
 <li>
-<p><code>MCP hosts</code> - apps like Claude Desktop, Cursor, Windsurf or AI tools that want to access data via MCP.</p>
+<p><code>MCP hosts</code> - apps like, <a href="https://github.com/antinomyhq/forge" target="_blank" rel="noopener noreferrer">Forge</a>, Claude Desktop, Cursor, Windsurf or AI tools that want to access data via MCP.</p>
 </li>
 <li>
 <p><code>MCP Clients</code> - protocol clients that maintain 1:1 connections with MCP servers, acting as the communication bridge.</p>
@@ -155,7 +155,7 @@
 </ul>
 <p>As per official docs, this section should be read alongside the MCP Authorization specification and OAuth 2.0 security best practices<sup><a id="ref-10" href="#footnote-10">10</a></sup>.</p>
 <hr>
-<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="structured-tool-output">Structured Tool Output<a href="#structured-tool-output" class="hash-link" aria-label="Direct link to Structured Tool Output" title="Direct link to Structured Tool Output">​</a></h2>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="structured-tool-output">Structured Tool Output<a href="#structured-tool-output" class="hash-link" aria-label="Direct link to Structured Tool Output" title="Direct link to Structured Tool Output"> ​</a></h2>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="1-structured-vs-unstructured-output">1) Structured vs. Unstructured Output<a href="#1-structured-vs-unstructured-output" class="hash-link" aria-label="Direct link to 1) Structured vs. Unstructured Output" title="Direct link to 1) Structured vs. Unstructured Output">​</a></h3>
 <p>Tools can now return structured JSON output in a new <code>structuredContent</code> field. With structured results, clients can parse responses programmatically (such as JSON objects). Previously, only unstructured plain text was allowed in the <code>content</code> field.</p>
 <p>For instance, this is easier for apps to consume than parsing a plain string like <code>&quot;22.5°C, partly cloudy, humidity 65%&quot;</code>.</p>

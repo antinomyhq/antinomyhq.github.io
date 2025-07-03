@@ -53,7 +53,7 @@
 <p>At its core, MCP follows a client-server architecture where a host application can connect to multiple servers. Here are the core components:</p>
 <ul>
 <li>
-<p><code>MCP hosts</code> - apps like Claude Desktop, Cursor, Windsurf or AI tools that want to access data via MCP.</p>
+<p><code>MCP hosts</code> - apps like, <a href="https://github.com/antinomyhq/forge" target="_blank" rel="noopener noreferrer">Forge</a>, Claude Desktop, Cursor, Windsurf or AI tools that want to access data via MCP.</p>
 </li>
 <li>
 <p><code>MCP Clients</code> - protocol clients that maintain 1:1 connections with MCP servers, acting as the communication bridge.</p>
