@@ -15,37 +15,70 @@ description: "Real talk about MCP Spec update (v2025-06-18), including important
 hide_table_of_contents: false
 ---
 
-The Model Context Protocol has faced significant criticism due to its security vulnerabilities. Been digging into their new Spec update (MCP v2025-06-18), especially around security<sup><a id="ref-1" href="#footnote-1">1</a></sup>. Here are the important changes you should know.
+The Model Context Protocol has faced significant criticism in the past due to its security vulnerabilities. They recently released a new specification update (MCP v2025-06-18) and I have been reviewing it, especially around security<sup><a id="ref-1" href="#footnote-1">1</a></a></sup>. Here are the important changes you should know.
+
+---
+
+## TL;DR
+
+Here's a quick summary of everything new in MCP Spec v2025-06-18:
+
+- MCP servers are classified as OAuth 2.0 Resource Servers.
+
+- Clients must include a `resource` parameter (RFC 8707) when requesting tokens, this explicitly binds each access token to a specific MCP server.
+
+- Structured JSON tool output is now supported (`structuredContent`).
+
+- Servers can now ask users for input mid-session by sending an `elicitation/create` request with a message and a JSON schema.
+
+- “Security Considerations” have been added to prevent token theft, PKCE, redirect URIs, confused deputy issues.
+
+- Newly added Security best practices page addresses threats like token passthrough, confused deputy, session hijacking, proxy misuse with concrete countermeasures.
+
+- All HTTP requests must include the `MCP-Protocol-Version` header. If the header is missing and the version can’t be inferred, servers should default to `2025-06-18` for backward compatibility.
+
+- New `resource_link` type lets tools point to URIs instead of inlining everything. The client can then subscribe to or fetch this URI as needed.
+
+- Removed support for JSON-RPC batching (breaking change).
 
 ---
 
 ## What's MCP and Why Should I Care?
 
-MCP (Model Context Protocol) is Anthropic's attempt at standardizing how applications provide context and tools to LLMs<sup><a id="ref-2" href="#footnote-2">2</a></sup>. Think of it as a universal connector for AI.
+MCP (Model Context Protocol) is Anthropic's attempt at standardizing how applications provide context and tools to LLMs<sup><a id="ref-2" href="#footnote-2">2</a></sup>. Like USB‑C for hardware, MCP is a universal interface for AI models to “plug in” to data sources and tools.
 
-MCP helps you build agents and complex workflows on top of LLMs. Tasks that once required switching between 5+ apps can now happen in a single conversation with your agent.
+Instead of writing custom integrations (GitHub, Slack, databases, file systems), MCP lets a host dynamically discover available tools (`tools/list`), invoke them (`tools/call`) and get back structured results. This mimics function-calling APIs but works across platforms and services.
 
-The spec was pretty straightforward before (using JSON-RPC over stdio or HTTP). Earlier, the authentication part was basically "figure it out yourself", which is why so many skipped it directly.
+At its core, MCP follows a client-server architecture where a host application can connect to multiple servers. Here are the core components:
 
-MCP adoption is picking up fast so they tried fixing it now while the ecosystem is still small enough to actually change.
+- `MCP hosts` - apps like Claude Desktop, Cursor, Windsurf or AI tools that want to access data via MCP.
 
-There are definitely core security vulnerabilities (tool description injection, supply chain risks) that are still not addressed but you can follow some practical mitigation strategies that might help<sup><a id="ref-3" href="#footnote-3">3</a></sup>.
+- `MCP Clients` - protocol clients that maintain 1:1 connections with MCP servers, acting as the communication bridge.
 
-![mcp server](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mdh8ztjauqv05yzrk0gj.png)
+- `MCP Servers` - lightweight programs that each expose specific capabilities (like reading files, querying databases...) through the standardized Model Context Protocol.
 
-<figcaption>credit goes to Greg Isenburg on YouTube</figcaption>
+- `Local Data Sources` - files, databases and services on your computer that MCP servers can securely access. For instance, a browser automation MCP server needs access to your browser to work.
+
+- `Remote Services` - External APIs and cloud-based systems that MCP servers can connect to.
+
+![mcp server](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4qblsimyt39tbg619b84.png)
+<figcaption>Credit goes to ByteByteGo<sup><a id="ref-3" href="#footnote-3">3</a></sup></figcaption>
+
+The spec was fairly minimal before (using JSON-RPC over stdio or HTTP). Authentication wasn’t clearly defined, which is why many implementations skipped it altogether.
+
+Now that MCP adoption is growing, the team is addressing these gaps while the ecosystem is still early enough to make meaningful changes.
+
+There are definitely core security vulnerabilities (tool description injection, supply chain risks) that are still not addressed but you can follow some practical mitigation strategies that might help<sup><a id="ref-4" href="#footnote-4">4</a></sup>.
 
 ---
 
 ## OAuth 2.0 Resource Server Classification
 
-MCP servers (the systems that protect your data or services) are now officially classified as OAuth 2.0 Resource Servers. This means an MCP server must indicate the location of its authorization server using protected resource metadata (RFC9728)<sup><a id="ref-4" href="#footnote-4">4</a></sup>.
+MCP servers (the systems that protect your data or services) are now officially classified as OAuth 2.0 Resource Servers. This isn't a new idea conceptually since many developers already treated MCP servers as protected resources but the spec now formalizes this with explicit OAuth 2.0 classification.
 
-In simple terms, when your app wants to access something protected (like your data), it needs permission (a token). To get that token, it has to know where to ask. Before, this process could be a bit confusing. But now, each MCP server can simply say `Hey, here is the right place to get a token for me!`.
+Each MCP server must now indicate the location of its authorization server using protected resource metadata (RFC9728)<sup><a id="ref-5" href="#footnote-5">5</a></sup>. By embedding an authorization endpoint URL in the MCP server’s metadata, ambiguity is removed and token requests are securely directed to the intended issuer.
 
-By embedding an authorization endpoint URL in the MCP server’s metadata, ambiguity is removed and token requests are securely directed to the intended issuer.
-
-Read more about Authorization Server Location<sup><a id="ref-5" href="#footnote-5">5</a></sup>.
+Read more about Authorization Server Location<sup><a id="ref-6" href="#footnote-6">6</a></sup>. Token binding is explained in detail in the next section.
 
 ---
 
@@ -57,7 +90,7 @@ Binding tokens to a single resource prevents “token mis-redemption” attacks,
 
 ![auth0 documenting implementation](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/znf66tk04wttzxz7stlh.png)
 
-<figcaption>Credit goes to Auth0 Blog<sup><a id="ref-6" href="#footnote-6">6</a></sup></figcaption>
+<figcaption>Credit goes to Auth0 Blog<sup><a id="ref-7" href="#footnote-7">7</a></sup></figcaption>
 
 For example, let's consider a simple scenario where the client is requesting a token specifically to access the `analytics` MCP server.
 
@@ -79,12 +112,11 @@ POST /oauth/token
 
 ## Updated Security Documentation
 
-The spec now includes clarified Security Considerations<sup><a id="ref-7" href="#footnote-7">7</a></sup>. It's very detailed so I have given the links in case you want to read more and summed it up.
+The spec now includes clarified Security Considerations<sup><a id="ref-8" href="#footnote-8">8</a></sup>.
 
 ### 1) Resource Indicators & Audience Binding (discussed earlier)
 
-- Clients must include the `resource` parameter in token requests (RFC 8707).
-- Tokens are now bound to specific MCP servers and cannot be reused across services.
+- Tokens are now bound to specific MCP servers using `resource` indicators
 - Servers must `validate the audience` of each token before accepting it.
 
 ### 2) Preventing Token Theft
@@ -136,14 +168,14 @@ This vulnerability has two critical dimensions: Audience validation failures & T
 
 ## New Security Best Practices page
 
-They have included a new Security best practices page<sup><a id="ref-8" href="#footnote-8">8</a></sup>. These sections consolidate actionable advice (explicit consent flows, minimal data scopes, human-in-the-loop prompts, etc.) for MCP implementers. It outlines security guidance for developers and implementers working with MCP. Here are all the things covered:
+They have included a new Security best practices page<sup><a id="ref-9" href="#footnote-9">9</a></sup>. These sections consolidate actionable advice (explicit consent flows, minimal data scopes, human-in-the-loop prompts, etc.) for MCP implementers. It outlines security guidance for developers and implementers working with MCP. Here are all the things covered:
 
 - Includes threats such as confused deputy, token passthrough, and session hijacking, each followed by explicit countermeasures.
 - Describes proxy misuse when static client IDs and consent cookies allow unauthorized token redemptions.
 - Details the risks of forwarding invalidated tokens and mandates strict rejection of tokens not specifically issued for the MCP server.
 - Also covers session-ID compromise scenarios including prompt injection and impersonation attacks.
 
-As per official docs, this section should be read alongside the MCP Authorization specification and OAuth 2.0 security best practices<sup><a id="ref-9" href="#footnote-9">9</a></sup>.
+As per official docs, this section should be read alongside the MCP Authorization specification and OAuth 2.0 security best practices<sup><a id="ref-10" href="#footnote-10">10</a></sup>.
 
 ---
 
@@ -247,7 +279,7 @@ Example valid response for this tool:
 
 ## Support for Elicitation (Interactive User Input)
 
-The new update adds elicitation support<sup><a id="ref-10" href="#footnote-10">10</a></sup>. A server can now ask the user for additional information mid-session by sending an `elicitation/create` request with a message and a JSON schema for expected data.
+The new update adds elicitation support<sup><a id="ref-11" href="#footnote-11">11</a></sup>. A server can now ask the user for additional information mid-session by sending an `elicitation/create` request with a message and a JSON schema for expected data.
 
 The protocol itself does not mandate any specific user interaction model and servers must not use elicitation to request sensitive information.
 
@@ -323,7 +355,7 @@ Here is the message flow.
 
 <figcaption>official docs</figcaption>
 
-If you are interested in reading more about response actions, request schema, and more security considerations, read the official docs<sup><a id="ref-10.1" href="#footnote-10">10</a></sup>.
+If you are interested in reading more about response actions, request schema, and more security considerations, check the official docs.
 
 ---
 
@@ -375,7 +407,9 @@ For backward compatibility, if the server doesn’t get the `MCP-Protocol-Versio
 
 ## JSON-RPC batching removed
 
-The spec no longer supports JSON-RPC 2.0 batching<sup><a id="ref-11" href="#footnote-11">11</a></sup>. It means each JSON-RPC call must be sent as its own message (one JSON object per request) rather than an array of calls.
+The spec no longer supports JSON-RPC 2.0 batching<sup><a id="ref-12" href="#footnote-12">12</a></sup>. It means each JSON-RPC call must be sent as its own message (one JSON object per request) rather than an array of calls.
+
+If your SDK or application was sending multiple JSON-RPC calls in a single batch request (an array), it will now break as MCP servers will reject it starting with version `2025-06-18`.
 
 For example:
 
@@ -383,17 +417,19 @@ For example:
 POST /mcp  [{ "jsonrpc": "2.0", "method": "foo", "id": 1 }, { "jsonrpc": "2.0", "method": "bar", "id": 2 }]
 ```
 
-I was checking the GitHub PR discussion (#416)<sup><a id="ref-12" href="#footnote-12">12</a></sup> and found “no compelling use cases” for actually removing it.
+Update your client logic to send one request per call. This might involve disabling batching in your JSON-RPC library or restructuring your request pipeline.
+
+I was checking the GitHub PR discussion (#416)<sup><a id="ref-13" href="#footnote-13">13</a></sup> and found “no compelling use cases” for actually removing it.
 
 The official JSON-RPC documentation explicitly says a client “MAY send an Array” of requests and the server “SHOULD respond with an Array” of results. MCP’s new rule essentially forbids that. Several reviewers pointed out this break with the standard but the spec authors chose to make the change explicit.
 
 Not supporting batching breaks away from JSON-RPC. Any SDK that's using a JSON-RPC library under the hood might run into problems with turning off batching.
 
-You should know, that this change is also not backward compatible (breaking for older clients/servers) which means that an MCP client that supports `2025-03-26` might not work with an MCP server that only supports `2025-06-18`.
-
 ![removing JSON-RPC batching support](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ktaimnavo5nq2836a7ri.png)
 
 I think removing JSON-RPC batching support when the protocol version is `>= 2025-06-18` would have made much more sense.
+
+This change is also not backward compatible (breaking for older clients/servers) so any MCP client that supports `2025-03-26` might not work with an MCP server that only supports `2025-06-18`.
 
 ---
 
@@ -407,15 +443,17 @@ Several new fields were added for flexibility:
 
 - `title` fields were introduced on many objects to hold human-friendly display names (separate from the machine `name`).
 
-They also changed `SHOULD` to `MUST` in Lifecycle Operation which says both parties must respect the negotiated protocol version<sup><a id="ref-13" href="#footnote-13">13</a></sup>.
+They also changed `SHOULD` to `MUST` in Lifecycle Operation which says both parties must respect the negotiated protocol version<sup><a id="ref-14" href="#footnote-14">14</a></sup>.
 
 ---
 
 ## The Bottom Line
 
-These updates are a step forward for the MCP ecosystem. Made MCP integrations much more secure (using OAuth 2.0 conventions and token binding) and more capable because of structured data and user prompts.
+These updates are a step forward for the MCP ecosystem. These directly affect how secure, stable and forward-compatible your MCP integrations will be. Ignoring them could lead to broken client-server interactions, token misuse or rejected requests.
 
-You should review the revised MCP documentation and apply these changes if you are building or upgrading your MCP clients/servers.
+This made MCP integrations much more secure (using OAuth 2.0 conventions and token binding) and more capable because of structured data and user prompts.
+
+All these changes are active as of `2025-06-18`. Any MCP server or client that doesn’t adopt the updated practices risks non-compliance with the current spec and future compatibility issues.
 
 ---
 
@@ -425,24 +463,26 @@ You should review the revised MCP documentation and apply these changes if you a
 
 <a id="footnote-2"></a>**2.** Anthropic. "Model Context Protocol." GitHub Repository. [https://github.com/modelcontextprotocol/modelcontextprotocol](https://github.com/modelcontextprotocol/modelcontextprotocol) [↩](#ref-2)
 
-<a id="footnote-3"></a>**3.** Forge. "MCP Security is Broken: Here's How to Fix It". [https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/](https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/) [↩](#ref-3)
+<a id="footnote-3"></a>**3.** ByteByteGo. "What is MCP?" Blog. [https://blog.bytebytego.com/p/ep154-what-is-mcp](https://blog.bytebytego.com/p/ep154-what-is-mcp) [↩](#ref-3)
 
-<a id="footnote-4"></a>**4.** IETF. “Protected Resource Metadata.” RFC 9728. [https://datatracker.ietf.org/doc/html/rfc9728](https://datatracker.ietf.org/doc/html/rfc9728) [↩](#ref-4)
+<a id="footnote-4"></a>**4.** Forge. "MCP Security is Broken: Here's How to Fix It". [https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/](https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/) [↩](#ref-4)
 
-<a id="footnote-5"></a>**5.** Anthropic. “Authorization Server Discovery.” MCP Spec: Authorization. [https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery) [↩](#ref-5)
+<a id="footnote-5"></a>**5.** IETF. “Protected Resource Metadata.” RFC 9728. [https://datatracker.ietf.org/doc/html/rfc9728](https://datatracker.ietf.org/doc/html/rfc9728) [↩](#ref-5)
 
-<a id="footnote-6"></a>**6.** Auth0. “MCP Specs Update: All About Auth.” Auth0 Blog. [https://auth0.com/blog/mcp-specs-update-all-about-auth/](https://auth0.com/blog/mcp-specs-update-all-about-auth/) [↩](#ref-6)
+<a id="footnote-6"></a>**6.** Anthropic. “Authorization Server Discovery.” MCP Spec: Authorization. [https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery) [↩](#ref-6)
 
-<a id="footnote-7"></a>**7.** Anthropic. “Security Considerations.” MCP June Spec. [https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#security-considerations](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#security-considerations) [↩](#ref-7)
+<a id="footnote-7"></a>**7.** Auth0. “MCP Specs Update: All About Auth.” Auth0 Blog. [https://auth0.com/blog/mcp-specs-update-all-about-auth/](https://auth0.com/blog/mcp-specs-update-all-about-auth/) [↩](#ref-7)
 
-<a id="footnote-8"></a>**8.** Anthropic. “Security Best Practices.” MCP Spec. [https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices) [↩](#ref-8)
+<a id="footnote-8"></a>**8.** Anthropic. “Security Considerations.” MCP June Spec. [https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#security-considerations](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#security-considerations) [↩](#ref-8)
 
-<a id="footnote-9"></a>**9.** IETF. “JSON Web Token (JWT) Profile for OAuth 2.0 Access Tokens.” RFC 9700. [https://datatracker.ietf.org/doc/html/rfc9700](https://datatracker.ietf.org/doc/html/rfc9700) [↩](#ref-9)
+<a id="footnote-9"></a>**9.** Anthropic. “Security Best Practices.” MCP Spec. [https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices) [↩](#ref-9)
 
-<a id="footnote-10"></a>**10.** Anthropic. “Elicitation.” MCP Spec: Client Capabilities. [https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation](https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation) [↩](#ref-10)
+<a id="footnote-10"></a>**10.** IETF. “JSON Web Token (JWT) Profile for OAuth 2.0 Access Tokens.” RFC 9700. [https://datatracker.ietf.org/doc/html/rfc9700](https://datatracker.ietf.org/doc/html/rfc9700) [↩](#ref-10)
 
-<a id="footnote-11"></a>**11.** JSON-RPC. “Batching.” JSON-RPC 2.0 Specification. [https://www.jsonrpc.org/specification#batch](https://www.jsonrpc.org/specification#batch) [↩](#ref-11)
+<a id="footnote-11"></a>**11.** Anthropic. “Elicitation.” MCP Spec: Client Capabilities. [https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation](https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation) [↩](#ref-11)
 
-<a id="footnote-12"></a>**12.** Anthropic. “Pull Request #416: Add Protocol Version Header Enforcement.” GitHub PR. [https://github.com/modelcontextprotocol/modelcontextprotocol/pull/416](https://github.com/modelcontextprotocol/modelcontextprotocol/pull/416) [↩](#ref-12)
+<a id="footnote-12"></a>**12.** JSON-RPC. “Batching.” JSON-RPC 2.0 Specification. [https://www.jsonrpc.org/specification#batch](https://www.jsonrpc.org/specification#batch) [↩](#ref-12)
 
-<a id="footnote-13"></a>**13.** Anthropic. “Operation Lifecycle.” MCP Spec: Lifecycle. [https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle#operation](https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle#operation) [↩](#ref-13)
+<a id="footnote-13"></a>**13.** Anthropic. “Pull Request #416: Add Protocol Version Header Enforcement.” GitHub PR. [https://github.com/modelcontextprotocol/modelcontextprotocol/pull/416](https://github.com/modelcontextprotocol/modelcontextprotocol/pull/416) [↩](#ref-13)
+
+<a id="footnote-14"></a>**14.** Anthropic. “Operation Lifecycle.” MCP Spec: Lifecycle. [https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle#operation](https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle#operation) [↩](#ref-14)
