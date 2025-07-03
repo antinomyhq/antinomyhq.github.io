@@ -15,7 +15,8 @@
             <guid>https://forgecode.dev/blog/mcp-spec-updates/</guid>
             <pubDate>Tue, 01 Jul 2025 00:00:00 GMT</pubDate>
             <description><![CDATA[Real talk about MCP Spec update (v2025-06-18), including important changes, security implications and what developers should actually care about.]]></description>
-            <content:encoded><![CDATA[<p>The Model Context Protocol has faced significant criticism in the past due to its security vulnerabilities. Anthropic recently released a new specification update (MCP v2025-06-18)<sup><a id="ref-1" href="https://forgecode.dev/blog/mcp-spec-updates/#footnote-1">1</a></sup> and I have been reviewing it, especially around security. Here are the important changes you should know.</p>
+            <content:encoded><![CDATA[<div class="undefined"><div id="elevenlabs-audionative-widget" data-height="90" data-width="100%" data-frameborder="no" data-scrolling="no" data-publicuserid="96e32731df14f1442beaf5041eec1125596de23ef9ff6ef5d151d28a1464da1b" data-playerurl="https://elevenlabs.io/player/index.html" data-small="True" data-textcolor="rgba(0, 0, 0, 1.0)" data-backgroundcolor="#f5f3eb" data-projectid="oMLCQFUnhC7GqCsM0Rvv">Elevenlabs AudioNative Player</div></div>
+<p>The Model Context Protocol has faced significant criticism in the past due to its security vulnerabilities. Anthropic recently released a new specification update (MCP v2025-06-18)<sup><a id="ref-1" href="https://forgecode.dev/blog/mcp-spec-updates/#footnote-1">1</a></sup> and I have been reviewing it, especially around security. Here are the important changes you should know.</p>
 <hr>
 <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="tldr">TL;DR<a href="https://forgecode.dev/blog/mcp-spec-updates/#tldr" class="hash-link" aria-label="Direct link to TL;DR" title="Direct link to TL;DR">​</a></h2>
 <p>Here's a quick summary of everything new in MCP Spec v2025-06-18:</p>
