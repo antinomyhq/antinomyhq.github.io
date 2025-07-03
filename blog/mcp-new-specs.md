@@ -61,9 +61,9 @@ At its core, MCP follows a client-server architecture where a host application c
 
 - `Remote Services` - External APIs and cloud-based systems that MCP servers can connect to.
 
-![mcp server](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4qblsimyt39tbg619b84.png)
+<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4qblsimyt39tbg619b84.png" alt="mcp server" width="100%" />
 
-<figcaption>Credit goes to ByteByteGo<sup><a id="ref-3" href="#footnote-3">3</a></sup></figcaption>
+<figcaption><i>credit: ByteByteGo</i><sup><a id="ref-3" href="#footnote-3">3</a></sup></figcaption>
 
 The spec was fairly minimal before (using JSON-RPC over stdio or HTTP). Authentication wasn’t clearly defined, which is why many implementations skipped it altogether.
 
@@ -89,9 +89,9 @@ Clients must include a Resource Indicator when requesting tokens (the `resource`
 
 Binding tokens to a single resource prevents “token mis-redemption” attacks, where a token issued for one resource could be replayed against a different server.
 
-![auth0 documenting implementation](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/znf66tk04wttzxz7stlh.png)
+<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/znf66tk04wttzxz7stlh.png" alt="auth0 documenting implementation" width="100%" />
 
-<figcaption>Credit goes to Auth0 Blog<sup><a id="ref-7" href="#footnote-7">7</a></sup></figcaption>
+<figcaption><i>credit: Auth0 Blog</i><sup><a id="ref-7" href="#footnote-7">7</a></sup></figcaption>
 
 For example, let's consider a simple scenario where the client is requesting a token specifically to access the `analytics` MCP server.
 
@@ -294,7 +294,7 @@ Clients that support elicitation must declare the `elicitation` capability du
 }
 ```
 
-### 1 Creating Elicitation Requests
+### 1) Creating Elicitation Requests
 
 Servers can send an `elicitation/create` request with:
 
@@ -352,7 +352,7 @@ Clients must return one of three clear actions:
 
 Here is the message flow.
 
-![message flow](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/uf0z8khnvcc0c6ee9sni.png)
+<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/uf0z8khnvcc0c6ee9sni.png" alt="message flow" width="100%" />
 
 <figcaption>official docs</figcaption>
 
@@ -426,7 +426,7 @@ The official JSON-RPC documentation explicitly says a client “MAY send an Arra
 
 Not supporting batching breaks away from JSON-RPC. Any SDK that's using a JSON-RPC library under the hood might run into problems with turning off batching.
 
-![removing JSON-RPC batching support](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ktaimnavo5nq2836a7ri.png)
+<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ktaimnavo5nq2836a7ri.png" alt="removing JSON-RPC batching support" width="100%" />
 
 I think removing JSON-RPC batching support when the protocol version is `>= 2025-06-18` would have made much more sense.
 
