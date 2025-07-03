@@ -286,15 +286,15 @@ The protocol itself does not mandate any specific user interaction model and ser
 
 Clients that support elicitation must declare the `elicitation` capability during initialization.
 
-```
+```json
 {
-  "capabilities": {
-    "elicitation": {}
- }
+  "capabilities": {
+    "elicitation": {}
+  }
 }
 ```
 
-### 1) Creating Elicitation Requests
+### 1 Creating Elicitation Requests
 
 Servers can send an `elicitation/create` request with:
 
