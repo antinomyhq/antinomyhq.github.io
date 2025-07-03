@@ -95,7 +95,7 @@ agents:
     model: anthropic/claude-3.7-sonnet
     system_prompt: "{{> system-prompt-git-commit.hbs }}"
     tools:
-      - tool_forge_process_shell
+      - forge_tool_process_shell
     subscribe:
       - commit # This agent subscribes to the 'commit' custom command
 ```
@@ -121,7 +121,7 @@ agents:
     system_prompt: "{{> system-prompt-git-commit.hbs }}"
     user_prompt: "{{event.value}}"
     tools:
-      - tool_forge_process_shell
+      - forge_tool_process_shell
     subscribe:
       - commit
 ```
@@ -132,20 +132,20 @@ Incorporate the event value into a structured template:
 
 ```yaml
 commands:
-  - name: summarize
-    description: Summarize a file with specific focus
+  - name: analyze
+    description: Analyze a file with specific focus
 
 agents:
-  - id: summarizer
+  - id: file-analyzer
     model: anthropic/claude-3.7-sonnet
-    system_prompt: "{{> system-prompt-summarizer.hbs }}"
+    system_prompt: "{{> forge-system-prompt-engineer-act.hbs }}"
     user_prompt: |
-      <task>Summarize the following file in detail</task>
+      <task>Analyze the following file in detail</task>
       <focus>{{event.value}}</focus>
     tools:
-      - tool_forge_fs_read
+      - forge_tool_fs_read
     subscribe:
-      - summarize
+      - analyze
 ```
 
 ## Example Custom Commands
