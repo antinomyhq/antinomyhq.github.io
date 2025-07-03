@@ -15,7 +15,7 @@ description: "Real talk about MCP Spec update (v2025-06-18), including important
 hide_table_of_contents: false
 ---
 
-The Model Context Protocol has faced significant criticism in the past due to its security vulnerabilities. They recently released a new specification update (MCP v2025-06-18) and I have been reviewing it, especially around security<sup><a id="ref-1" href="#footnote-1">1</a></a></sup>. Here are the important changes you should know.
+The Model Context Protocol has faced significant criticism in the past due to its security vulnerabilities. Anthropic recently released a new specification update (MCP v2025-06-18)<sup><a id="ref-1" href="#footnote-1">1</a></sup> and I have been reviewing it, especially around security. Here are the important changes you should know.
 
 ---
 
@@ -35,7 +35,7 @@ Here's a quick summary of everything new in MCP Spec v2025-06-18:
 
 - Newly added Security best practices page addresses threats like token passthrough, confused deputy, session hijacking, proxy misuse with concrete countermeasures.
 
-- All HTTP requests must include the `MCP-Protocol-Version` header. If the header is missing and the version can’t be inferred, servers should default to `2025-06-18` for backward compatibility.
+- All HTTP requests must include the `MCP-Protocol-Version` header. If the header is missing and the version can’t be inferred, servers should default to `2025-03-26` for backward compatibility.
 
 - New `resource_link` type lets tools point to URIs instead of inlining everything. The client can then subscribe to or fetch this URI as needed.
 
@@ -45,7 +45,7 @@ Here's a quick summary of everything new in MCP Spec v2025-06-18:
 
 ## What's MCP and Why Should I Care?
 
-MCP (Model Context Protocol) is Anthropic's attempt at standardizing how applications provide context and tools to LLMs<sup><a id="ref-2" href="#footnote-2">2</a></sup>. Like USB‑C for hardware, MCP is a universal interface for AI models to “plug in” to data sources and tools.
+MCP (Model Context Protocol) is Anthropic's attempt at standardizing how applications provide context and tools to LLMs<sup><a id="ref-2" href="#footnote-2">2</a></sup>. Think of it like HTTP for AI models - a standardized protocol for AI models to “plug in” to data sources and tools.
 
 Instead of writing custom integrations (GitHub, Slack, databases, file systems), MCP lets a host dynamically discover available tools (`tools/list`), invoke them (`tools/call`) and get back structured results. This mimics function-calling APIs but works across platforms and services.
 
@@ -62,6 +62,7 @@ At its core, MCP follows a client-server architecture where a host application c
 - `Remote Services` - External APIs and cloud-based systems that MCP servers can connect to.
 
 ![mcp server](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4qblsimyt39tbg619b84.png)
+
 <figcaption>Credit goes to ByteByteGo<sup><a id="ref-3" href="#footnote-3">3</a></sup></figcaption>
 
 The spec was fairly minimal before (using JSON-RPC over stdio or HTTP). Authentication wasn’t clearly defined, which is why many implementations skipped it altogether.
@@ -401,7 +402,7 @@ Host: api.example.com
 MCP-Protocol-Version: 2025-06-18
 ```
 
-For backward compatibility, if the server doesn’t get the `MCP-Protocol-Version` header and can’t detect the version in any other way (by relying on the protocol version negotiated during initialization), it should assume the version is `2025-06-18`.
+For backward compatibility, if the server doesn’t get the `MCP-Protocol-Version` header and can’t detect the version in any other way (by relying on the protocol version negotiated during initialization), it should assume the version is `2025-03-26`.
 
 ---
 
