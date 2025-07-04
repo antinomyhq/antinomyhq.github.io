@@ -1,6 +1,6 @@
 ---
 slug: forge-vs-claude-vs-gemini-comparison
-title: "Claude 4 vs Forge Code vs Gemini CLI: Real Coding Test"
+title: "Claude code vs Forge Code vs Gemini CLI: Real Coding Test"
 authors: [forge]
 tags: ["Claude Code", "Gemini CLI", "CLI"]
 date: 2025-06-01
