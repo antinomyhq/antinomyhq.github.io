@@ -6,7 +6,7 @@ description: Configure workflow settings for your Forge instance
 
 # Workflow Configuration
 
-This page documents the root-level configuration options in your `forge.yaml` file. These settings control workflow behavior and apply globally to your entire Forge instance.
+Forge provides comprehensive workflow configuration options through your `forge.yaml` file. These root-level settings control workflow behavior and apply globally to your entire Forge instance.
 
 ## Configuration Structure
 
@@ -29,7 +29,7 @@ max_walker_depth: 1
 #### `max_requests_per_turn`
 - **Type**: `number`
 - **Default**: `50`
-- **Description**: Maximum number of requests that can be made in a single conversation turn. This helps prevent runaway operations and controls resource usage.
+- **Description**: Sets the maximum number of requests that can be made in a single conversation turn. This prevents runaway operations and controls resource usage.
 
 ```yaml
 max_requests_per_turn: 50
@@ -38,7 +38,7 @@ max_requests_per_turn: 50
 #### `tool_max_failure_limit`
 - **Type**: `number`
 - **Default**: `3`
-- **Description**: Maximum number of consecutive tool failures allowed before the agent stops attempting to use tools. This prevents infinite retry loops when tools are consistently failing.
+- **Description**: Defines the maximum number of consecutive tool failures allowed before the agent stops attempting to use tools. This prevents infinite retry loops when tools are consistently failing.
 
 ```yaml
 tool_max_failure_limit: 3
@@ -68,7 +68,7 @@ top_k: 30
 #### `max_tokens`
 - **Type**: `number`
 - **Default**: `20480`
-- **Description**: Maximum number of tokens the model can generate in a single response. This controls the length of responses and helps manage costs.
+- **Description**: Sets the maximum number of tokens the model can generate in a single response. This controls the length of responses and helps manage costs.
 
 ```yaml
 max_tokens: 20480
@@ -79,7 +79,7 @@ max_tokens: 20480
 #### `max_walker_depth`
 - **Type**: `number`
 - **Default**: `1`
-- **Description**: Maximum depth for file system traversal operations. Controls how deep Forge will recursively explore directory structures to prevent excessive resource usage.
+- **Description**: Sets the maximum depth for file system traversal operations. Controls how deep Forge will recursively explore directory structures to prevent excessive resource usage.
 
 ```yaml
 max_walker_depth: 1
@@ -89,7 +89,7 @@ max_walker_depth: 1
 
 #### `variables`
 - **Type**: `object`
-- **Description**: Define global variables that can be referenced throughout your configuration using Handlebars syntax.
+- **Description**: Defines global variables that can be referenced throughout your configuration using Handlebars syntax.
 
 ```yaml
 variables:
@@ -100,7 +100,7 @@ variables:
 
 #### `updates`
 - **Type**: `object`
-- **Description**: Configure automatic update behavior for Forge.
+- **Description**: Configures automatic update behavior for Forge.
 
 ```yaml
 updates:
