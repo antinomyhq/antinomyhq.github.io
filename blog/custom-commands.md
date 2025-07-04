@@ -10,9 +10,11 @@ hide_table_of_contents: false
 
 <!-- truncate -->
 
-Forge helps you plan, build, and maintain your codebase with AI. But running the same tasks over and over, and manually writing prompts each time, gets tiring quickly.
+When is the last you saw someone manually click copy instead of using CTRL + C ? You don't remember because no one does that, no one presses right click and select paste instead of CTRL + V, so why on earth do we still build on-the-spot prompts to make sure our AI agent understands exactly what to do ? What if you had shortcuts for that too. ? Like do `/outdated` and boom! it fixes all the outdated documentation start to finish following all the rules, do `/deploy` and it bumped all the version numbers without messing up some random thing.
 
-Custom commands fix this. They let you turn repeated, detailed tasks into a single, reusable one-liner, saving you and your team time while keeping your workflow clean. Let's explore how.
+**TL;DR**: Stop typing the same tedious prompts over and over. Cut the chase, make shortcuts for every big workflow, configure them however you like, and make your life a lot easier
+
+Forge's custom commands turn repetitive pain into single `/command_name` shortcuts that are configured once in your `forge.yaml` and work forever. No more "let me add this and that to make a detailed prompt" moments.
 
 ## Getting Started
 
@@ -172,7 +174,7 @@ Just do `/outdated`, and it will find all the places that need to be updated.
 
 ![](../static/blog/outdated.gif)
 
-You can even go a step further and ask it to update the documentation.
+Want to take it even further? You can extend this command to automatically update the documentation files. Just modify the prompt to include "and fix the outdated references" at the end, and Forge will handle both detection and remediation in one go. This turns a tedious manual process into a single command that keeps your docs fresh with every feature update.
 
 ## Final Thoughts
 
