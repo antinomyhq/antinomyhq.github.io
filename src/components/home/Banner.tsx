@@ -22,18 +22,18 @@ const Banner = (): JSX.Element => {
 
           <div className="flex flex-col sm:flex-row justify-center items-center mt-SPACE_06 sm:mt-SPACE_10 space-y-SPACE_04 sm:space-y-0 sm:space-x-SPACE_06">
             <LinkButton
+              title="Sign up"
+              href={pageLinks.signup}
+              theme={Theme.Gray}
+              width="medium"
+              onClick={() => analyticsHandler("Home Page", "Click", "Get Early Access")}
+            />
+            <LinkButton
               title="Get Started"
               href={pageLinks.installation}
               theme={Theme.Light}
-              width="small"
+              width="medium"
               onClick={() => analyticsHandler("Home Page", "Click", "Get Started")}
-            />
-            <LinkButton
-              title="🎉 Sign up"
-              href={pageLinks.signup}
-              theme={Theme.Gray}
-              width="small"
-              onClick={() => analyticsHandler("Home Page", "Click", "Get Early Access")}
             />
           </div>
 
