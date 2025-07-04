@@ -94,7 +94,7 @@ Getting started with a dev tool should feel smooth, not like reading a manual. S
 
 Gemini CLI can be used instantly via `npx` or installed with this command 👇
 
-```jsx
+```bash
 npm install -g @google/gemini-cli
 ```
 
