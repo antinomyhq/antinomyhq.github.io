@@ -4,7 +4,7 @@ title: "Claude code vs Forge Code vs Gemini CLI: Real Coding Test"
 authors: [forge]
 tags: ["Claude Code", "Gemini CLI", "CLI"]
 date: 2025-06-01
-description: "We tested Claude 4, Forge Code, and Gemini CLI on real coding tasks: project builds, bug fixes, Git, and architecture planning. Here’s how these AI dev tools actually perform in your terminal."
+description: "We tested Claude code, Forge Code, and Gemini CLI on real coding tasks: project builds, bug fixes, Git, and architecture planning. Here’s how these AI dev tools actually perform in your terminal."
 hide_table_of_contents: false
 ---
 
