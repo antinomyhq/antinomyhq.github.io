@@ -174,7 +174,7 @@ Just do `/outdated`, and it will find all the places that need to be updated.
 
 ![](../static/blog/outdated.gif)
 
-Want to take it even further? You can extend this command to automatically update the documentation files. Just modify the prompt to include "and fix the outdated references" at the end, and Forge will handle both detection and remediation in one go. This turns a tedious manual process into a single command that keeps your docs fresh with every feature update.
+You can even go a step further and ask it to update the documentation.
 
 ## Final Thoughts
 
