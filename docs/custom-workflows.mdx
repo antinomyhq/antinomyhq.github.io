@@ -60,17 +60,18 @@ Each agent needs tools to perform tasks, configured in the `tools` field:
 
 #### Built-in Tools
 
-- `tool_forge_fs_read` - Read from the filesystem
-- `tool_forge_fs_create` - Create or overwrite files
-- `tool_forge_fs_remove` - Remove files
-- `tool_forge_fs_search` - Search for patterns in files
-- `tool_forge_fs_list` - List files in a directory
-- `tool_forge_fs_info` - Get file metadata
-- `tool_forge_process_shell` - Execute shell commands
-- `tool_forge_process_think` - Perform internal reasoning
-- `tool_forge_net_fetch` - Fetch data from the internet
-- `tool_forge_event_dispatch` - Dispatch events to other agents
-- `tool_forge_fs_patch` - Patch existing files
+- `forge_tool_display_show_user` - Display formatted markdown content to the user in the terminal.
+- `forge_tool_fs_read` - Read from the filesystem
+- `forge_tool_fs_create` - Create or overwrite files
+- `forge_tool_fs_remove` - Remove files
+- `forge_tool_fs_search` - Search for patterns in files
+- `forge_tool_fs_list` - List files in a directory
+- `forge_tool_fs_info` - Get file metadata
+- `forge_tool_process_shell` - Execute shell commands
+- `forge_tool_process_think` - Perform internal reasoning
+- `forge_tool_net_fetch` - Fetch data from the internet
+- `forge_tool_event_dispatch` - Dispatch events to other agents
+- `forge_tool_fs_patch` - Patch existing files
 
 ### Agent Configuration Options
 
@@ -91,11 +92,10 @@ Each agent needs tools to perform tasks, configured in the `tools` field:
 
 Forge provides templates to simplify system prompt creation:
 
-- `system-prompt-engineer.hbs` - Template for engineering tasks
-- `system-prompt-title-generator.hbs` - Template for generating descriptive titles
-- `system-prompt-advocate.hbs` - Template for user advocacy and explanation
-- `partial-tool-information.hbs` - Tool documentation for agents
-- `partial-tool-examples.hbs` - Usage examples for tools
+- `forge-system-prompt-engineer-plan.hbs` - Template for planning engineering tasks
+- `forge-system-prompt-engineer-act.hbs` - Template for executing engineering tasks
+- `forge-partial-tool-information.hbs` - Tool documentation for agents
+- `forge-partial-tool-use-example.hbs` - Usage examples for tools
 
 Use these templates with the syntax: `{{> name-of-the-template.hbs }}`
 
@@ -111,11 +111,11 @@ agents:
   - id: title_generation_worker
     model: *efficiency_model
     tools:
-      - tool_forge_event_dispatch
+      - forge_tool_event_dispatch
     subscribe:
       - user_task_init
     tool_supported: false # Force XML-based tool call formatting
-    system_prompt: "{{> system-prompt-title-generator.hbs }}"
+    system_prompt: "{{> forge-system-prompt-engineer-plan.hbs }}"
     user_prompt: <technical_content>{{event.value}}</technical_content>
 
   - id: background_researcher
@@ -123,25 +123,25 @@ agents:
     temperature: 0.3 # Lower temperature for more deterministic responses
     hide_content: true # Responses won't appear in console
     tools:
-      - tool_forge_net_fetch
-      - tool_forge_event_dispatch
-      - tool_forge_process_think
+      - forge_tool_net_fetch
+      - forge_tool_event_dispatch
+      - forge_tool_process_think
     subscribe:
       - research_request
-    system_prompt: "{{> system-prompt-researcher.hbs }}"
+    system_prompt: "{{> forge-system-prompt-engineer-plan.hbs }}"
 
   - id: developer
     model: *advanced_model
     temperature: 0.7 # Balanced creativity and determinism
     tools:
-      - tool_forge_fs_read
-      - tool_forge_fs_create
-      - tool_forge_fs_remove
-      - tool_forge_fs_patch
-      - tool_forge_process_shell
-      - tool_forge_net_fetch
-      - tool_forge_fs_search
-      - tool_forge_display_show_user # Rich markdown display tool
+      - forge_tool_fs_read
+      - forge_tool_fs_create
+      - forge_tool_fs_remove
+      - forge_tool_fs_patch
+      - forge_tool_process_shell
+      - forge_tool_net_fetch
+      - forge_tool_fs_search
+      - forge_tool_display_show_user # Rich markdown display tool
     subscribe:
       - user_task_init
       - user_task_update
@@ -152,11 +152,13 @@ agents:
       token_threshold: 80000 # When to trigger compaction
       model: *efficiency_model
       retention_window: 6 # Recent messages to preserve
+      prompt: "{{> forge-system-prompt-context-summarizer.hbs }}"
     ephemeral: false
     tool_supported: true # Use model's native tool call format (default)
-    system_prompt: "{{> system-prompt-engineer.hbs }}"
+    system_prompt: "{{> forge-system-prompt-engineer-act.hbs }}"
     user_prompt: |
       <task>{{event.value}}</task>
+
 ```
 
 This example workflow creates three agents:
@@ -180,7 +182,7 @@ agents:
       token_threshold: 80000 # When to trigger compaction
       model: google/gemini-2.0-flash-001 # Fast model for summarization
       retention_window: 6 # Recent messages to preserve
-      prompt: "{{> system-prompt-context-summarizer.hbs }}" # Custom prompt
+      prompt: "{{> forge-system-prompt-context-summarizer.hbs }}" # Custom prompt
 ```
 
 ### Temperature Configuration
@@ -231,7 +233,7 @@ agents:
   - id: presenter
     model: anthropic/claude-3.5-sonnet
     tools:
-      - tool_forge_display_show_user # Required for rich display
+      - forge_tool_display_show_user # Required for rich display
       # Other tools...
 ```
 

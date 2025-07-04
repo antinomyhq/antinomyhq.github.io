@@ -24,15 +24,15 @@ const Banner = (): JSX.Element => {
             <LinkButton
               title="Get Started"
               href={pageLinks.installation}
-              theme={Theme.Gray}
-              width="medium"
+              theme={Theme.Light}
+              width="small"
               onClick={() => analyticsHandler("Home Page", "Click", "Get Started")}
             />
             <LinkButton
-              title="🎉 Early Access"
+              title="🎉 Sign up"
               href={pageLinks.signup}
-              theme={Theme.Light}
-              width="medium"
+              theme={Theme.Gray}
+              width="small"
               onClick={() => analyticsHandler("Home Page", "Click", "Get Early Access")}
             />
           </div>

@@ -14,7 +14,7 @@ Forge provides a comprehensive set of built-in tools that enable AI agents to in
 
 ## User Interface Tools
 
-### tool_forge_display_show_user
+### forge_tool_display_show_user
 
 Displays formatted markdown content to the user in the terminal.
 
@@ -43,7 +43,7 @@ Agents use this tool when they need to present:
 
 ## File System Tools
 
-### tool_forge_fs_read
+### forge_tool_fs_read
 
 Reads file contents at a specified path.
 
@@ -53,7 +53,7 @@ Reads file contents at a specified path.
 | --------- | ------ | -------- | ------------------------- |
 | `path`    | string | Yes      | Absolute path to the file |
 
-### tool_forge_fs_create
+### forge_tool_fs_create
 
 Creates or overwrites a file with specified content.
 
@@ -65,7 +65,7 @@ Creates or overwrites a file with specified content.
 | `content`   | string  | Yes      | Content to write to the file                         |
 | `overwrite` | boolean | No       | Whether to overwrite if file exists (default: false) |
 
-### tool_forge_fs_patch
+### forge_tool_fs_patch
 
 Modifies files with targeted text operations on matched patterns.
 
@@ -85,7 +85,7 @@ Modifies files with targeted text operations on matched patterns.
 | `replace` | Replace the matched text with new content   |
 | `swap`    | Exchange the matched text with another text |
 
-### tool_forge_fs_remove
+### forge_tool_fs_remove
 
 Removes a file at a specified path.
 
@@ -95,7 +95,7 @@ Removes a file at a specified path.
 | --------- | ------ | -------- | ------------------------- |
 | `path`    | string | Yes      | Absolute path to the file |
 
-### tool_forge_fs_list
+### forge_tool_fs_list
 
 Lists files and directories at a specified path.
 
@@ -105,7 +105,7 @@ Lists files and directories at a specified path.
 | --------- | ------ | -------- | ------------------------------ |
 | `path`    | string | Yes      | Absolute path to the directory |
 
-### tool_forge_fs_info
+### forge_tool_fs_info
 
 Retrieves metadata about a file or directory.
 
@@ -115,7 +115,7 @@ Retrieves metadata about a file or directory.
 | --------- | ------ | -------- | -------------------------------------- |
 | `path`    | string | Yes      | Absolute path to the file or directory |
 
-### tool_forge_fs_search
+### forge_tool_fs_search
 
 Searches for text patterns across files using regex.
 
@@ -129,7 +129,7 @@ Searches for text patterns across files using regex.
 
 ## Network Tools
 
-### tool_forge_net_fetch
+### forge_tool_net_fetch
 
 Retrieves content from URLs as markdown or raw text.
 
@@ -144,7 +144,7 @@ Retrieves content from URLs as markdown or raw text.
 
 ## Process Tools
 
-### tool_forge_process_shell
+### forge_tool_process_shell
 
 Executes shell commands with safety measures.
 

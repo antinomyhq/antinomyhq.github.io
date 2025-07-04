@@ -23,3 +23,15 @@ tushar:
       url: https://twitter.com/tusharmath
     - platform: linkedin
       url: https://linkedin.com/in/tusharmath
+
+anmol:
+  name: Anmol
+  url: https://github.com/Anmol-Baranwal
+  image_url: https://avatars.githubusercontent.com/u/74038190?v=4
+  social:
+    - platform: github
+      url: https://github.com/Anmol-Baranwal
+    - platform: twitter
+      url: https://twitter.com/Anmol_Codes
+    - platform: linkedin
+      url: https://www.linkedin.com/in/Anmol-Baranwal/

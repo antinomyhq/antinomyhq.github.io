@@ -27,7 +27,7 @@ Custom commands are defined in the `commands` section of your `forge.yaml` file:
 commands:
   - name: commit
     description: Commit changes with a standard prefix
-    value: |
+    prompt: |
       Understand the diff produced and commit using the 'conventional commit' standard
 
   - name: branch
@@ -35,7 +35,7 @@ commands:
 
   - name: pull-request
     description: Create a pull request with standard template
-    value: |
+    prompt: |
       Understand the diff with respect to `main` and create a pull-request.
       Ensure it follows 'conventional commit' standard.
 ```
@@ -46,7 +46,7 @@ commands:
 | ------------- | -------- | -------------------------------------------------------- |
 | `name`        | Yes      | The name of the command (used as `/name` in the CLI)     |
 | `description` | Yes      | A description of what the command does (shown in help)   |
-| `value`       | No       | Default prompt value used when no arguments are provided |
+| `prompt`       | No       | Default prompt value used when no arguments are provided |
 
 ## Using Custom Commands
 
@@ -95,7 +95,7 @@ agents:
     model: anthropic/claude-3.7-sonnet
     system_prompt: "{{> system-prompt-git-commit.hbs }}"
     tools:
-      - tool_forge_process_shell
+      - forge_tool_process_shell
     subscribe:
       - commit # This agent subscribes to the 'commit' custom command
 ```
@@ -112,7 +112,7 @@ Pass the event value directly to the agent as complete instructions:
 commands:
   - name: commit
     description: Commit changes with a standard prefix
-    value: |
+    prompt: |
       Understand the diff and commit using the 'conventional commit' standard
 
 agents:
@@ -121,7 +121,7 @@ agents:
     system_prompt: "{{> system-prompt-git-commit.hbs }}"
     user_prompt: "{{event.value}}"
     tools:
-      - tool_forge_process_shell
+      - forge_tool_process_shell
     subscribe:
       - commit
 ```
@@ -132,20 +132,20 @@ Incorporate the event value into a structured template:
 
 ```yaml
 commands:
-  - name: summarize
-    description: Summarize a file with specific focus
+  - name: analyze
+    description: Analyze a file with specific focus
 
 agents:
-  - id: summarizer
+  - id: file-analyzer
     model: anthropic/claude-3.7-sonnet
-    system_prompt: "{{> system-prompt-summarizer.hbs }}"
+    system_prompt: "{{> forge-system-prompt-engineer-act.hbs }}"
     user_prompt: |
-      <task>Summarize the following file in detail</task>
+      <task>Analyze the following file in detail</task>
       <focus>{{event.value}}</focus>
     tools:
-      - tool_forge_fs_read
+      - forge_tool_fs_read
     subscribe:
-      - summarize
+      - analyze
 ```
 
 ## Example Custom Commands
@@ -156,7 +156,7 @@ agents:
 commands:
   - name: commit
     description: Commit changes with a standard prefix
-    value: |
+    prompt: |
       Analyze changes and create a commit message following conventional commit format
 
   - name: branch
@@ -164,7 +164,7 @@ commands:
 
   - name: pr
     description: Create a pull request for current branch
-    value: |
+    prompt: |
       Create a detailed pull request description based on the changes in this branch
 ```
 
@@ -174,7 +174,7 @@ commands:
 commands:
   - name: review
     description: Review code for bugs and improvements
-    value: |
+    prompt: |
       Review the code for bugs, security issues, performance problems, and suggest improvements
 
   - name: document
@@ -182,7 +182,7 @@ commands:
 
   - name: test
     description: Generate unit tests for a file or function
-    value: |
+    prompt: |
       Create comprehensive unit tests with good coverage for the specified code
 ```
 
@@ -192,12 +192,12 @@ commands:
 commands:
   - name: fixme
     description: Looks for all the fixme comments in the code and attempts to fix them
-    value: |
+    prompt: |
       Find all the FIXME comments in source-code files and attempt to fix them.
 
   - name: deploy
     description: Prepare deployment package and update version numbers
-    value: |
+    prompt: |
       Update version numbers and prepare the project for deployment
 ```
 
