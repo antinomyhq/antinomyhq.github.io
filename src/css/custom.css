@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono&family=Rubik:ital,wght@0,400;0,500;0,700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -984,6 +986,11 @@ span.token.tag.script.language-javascript {
   background-size: 60px 60px;
   background-position: 3px 23px;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 /* Blog page sticky navbar styles */
 .blog-sticky-navbar .navbar {
   position: sticky !important;

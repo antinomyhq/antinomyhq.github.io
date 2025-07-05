@@ -55,9 +55,5 @@ export default function Navbar(props: any): JSX.Element {
     }
   }, [isBlogPage, location.pathname])
 
-  return (
-    <div className={navbarClasses}>
-      <OriginalNavbar {...props} />
-    </div>
-  )
+  return <div className={navbarClasses}>{location.pathname !== "/" && <OriginalNavbar {...props} />}</div>
 }

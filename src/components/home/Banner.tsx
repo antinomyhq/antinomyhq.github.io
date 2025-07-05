@@ -10,7 +10,7 @@ import {Star, Github} from "lucide-react"
 
 const Banner = (): JSX.Element => {
   return (
-    <main className="grid justify-center">
+    <main className="grid justify-center bg-tailCall-dark-700">
       <Section className="flex flex-col sm:items-center sm:text-center w-full !pb-0">
         <div className="h-full 2xl:min-h-0">
           <Heading
