@@ -1,0 +1,142 @@
+---
+sidebar_position: 1
+title: Workflow Configuration
+description: Configure workflow settings for your Forge instance
+---
+
+# Workflow Configuration
+
+Forge provides comprehensive workflow configuration options through your `forge.yaml` file. These root-level settings control workflow behavior and apply globally to your entire Forge instance.
+
+## Configuration Structure
+
+Root-level configuration options are placed at the top of your `forge.yaml` file.
+
+```yaml
+# Global configuration options
+max_requests_per_turn: 50
+tool_max_failure_limit: 3
+top_p: 0.8
+top_k: 30
+max_tokens: 20480
+max_walker_depth: 1
+```
+
+## Configuration Options
+
+### Request and Turn Management
+
+#### `max_requests_per_turn`
+- **Type**: `number`
+- **Default**: `50`
+- **Description**: Sets the maximum number of requests that can be made in a single conversation turn. This prevents runaway operations and controls resource usage.
+
+```yaml
+max_requests_per_turn: 50
+```
+
+#### `tool_max_failure_limit`
+- **Type**: `number`
+- **Default**: `3`
+- **Description**: Defines the maximum number of consecutive tool failures allowed before the agent stops attempting to use tools. This prevents infinite retry loops when tools are consistently failing.
+
+```yaml
+tool_max_failure_limit: 3
+```
+
+### Model Parameters
+
+#### `top_p`
+- **Type**: `number`
+- **Range**: `0.0` to `1.0`
+- **Default**: `0.8`
+- **Description**: Controls the diversity of the model's responses. Lower values make responses more focused and deterministic, while higher values increase creativity and randomness.
+
+```yaml
+top_p: 0.8
+```
+
+#### `top_k`
+- **Type**: `number`
+- **Default**: `30`
+- **Description**: Limits the model to consider only the top K most likely tokens at each step. Lower values make responses more predictable, while higher values allow for more diverse outputs.
+
+```yaml
+top_k: 30
+```
+
+#### `max_tokens`
+- **Type**: `number`
+- **Default**: `20480`
+- **Description**: Sets the maximum number of tokens the model can generate in a single response. This controls the length of responses and helps manage costs.
+
+```yaml
+max_tokens: 20480
+```
+
+### System Behavior
+
+#### `max_walker_depth`
+- **Type**: `number`
+- **Default**: `1`
+- **Description**: Sets the maximum depth for file system traversal operations. Controls how deep Forge will recursively explore directory structures to prevent excessive resource usage.
+
+```yaml
+max_walker_depth: 1
+```
+
+### Variables
+
+#### `variables`
+- **Type**: `object`
+- **Description**: Defines global variables that can be referenced throughout your configuration using Handlebars syntax.
+
+```yaml
+variables:
+  operating_agent: Forge
+```
+
+### Updates
+
+#### `updates`
+- **Type**: `object`
+- **Description**: Configures automatic update behavior for Forge.
+
+```yaml
+updates:
+  frequency: "daily"  # daily, weekly, always
+  auto_update: false  # true to enable automatic updates
+```
+
+## Example Configuration
+
+Here's a complete example of a well-configured `forge.yaml` file:
+
+```yaml
+# Global variables
+variables:
+  operating_agent: Forge
+
+# Request management
+max_requests_per_turn: 50
+tool_max_failure_limit: 3
+
+# Model parameters
+top_p: 0.8
+top_k: 30
+max_tokens: 20480
+
+# System behavior
+max_walker_depth: 1
+
+# Update configuration
+updates:
+  frequency: "weekly"
+  auto_update: false
+```
+
+## Related Documentation
+
+- [Environment Configuration](./environment-configuration.mdx) - Environment-specific settings
+- [Context Compaction](./context-compaction.mdx) - Memory management and conversation history
+- [MCP Integration](./mcp-integration.mdx) - Model Context Protocol setup
