@@ -1,0 +1,37 @@
+---
+sidebar_position: 6
+toc_max_heading_level: 2
+slug: /
+---
+
+import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
+
+<VersionUpdateCard />
+
+## v0.98.0 
+
+### 🚀 Features
+
+- feat: display reasoning tokens [@laststylebender14](https://github.com/laststylebender14) ([#1025](https://github.com/antinomyhq/forge/pull/1025))
+- feat: implement tool failure limit in orchestrator [@laststylebender14](https://github.com/laststylebender14) ([#1024](https://github.com/antinomyhq/forge/pull/1024))
+- feat: ask if user wish to continue or not on `max_request_per_turn` [@laststylebender14](https://github.com/laststylebender14) ([#1014](https://github.com/antinomyhq/forge/pull/1014))
+- feat: implement login and logout functionality [@ssddOnTop](https://github.com/ssddOnTop) ([#838](https://github.com/antinomyhq/forge/pull/838))
+- feat: add replace-all variant to patch tool [@laststylebender14](https://github.com/laststylebender14) ([#1011](https://github.com/antinomyhq/forge/pull/1011))
+
+### 🐛 Bug Fixes
+
+- fix: remove Rust toolchain update step from CI jobs and add rust-toolchain [@amitksingh1490](https://github.com/amitksingh1490) ([#1032](https://github.com/antinomyhq/forge/pull/1032))
+- refactor: correct limit [@tusharmath](https://github.com/tusharmath) ([#1030](https://github.com/antinomyhq/forge/pull/1030))
+- fix: stop spinner after login completion [@ssddOnTop](https://github.com/ssddOnTop) ([#1029](https://github.com/antinomyhq/forge/pull/1029))
+- fix: ask agent to self reflect on errors [@laststylebender14](https://github.com/laststylebender14) ([#1023](https://github.com/antinomyhq/forge/pull/1023))
+- fix: add citation rule for code references in prompts [@laststylebender14](https://github.com/laststylebender14) ([#1017](https://github.com/antinomyhq/forge/pull/1017))
+- fix: read larger chunks whenever possible [@laststylebender14](https://github.com/laststylebender14) ([#1009](https://github.com/antinomyhq/forge/pull/1009))
+- fix: report more readable errors back to LLM [@laststylebender14](https://github.com/laststylebender14) ([#1016](https://github.com/antinomyhq/forge/pull/1016))
+- chore: add tracker for panic hook [@tusharmath](https://github.com/tusharmath) ([#1022](https://github.com/antinomyhq/forge/pull/1022))
+- fix: display retry events on cli [@laststylebender14](https://github.com/laststylebender14) ([#1010](https://github.com/antinomyhq/forge/pull/1010))
+- fix: replace panic with proper error handling in API key resolution [@echozyr2001](https://github.com/echozyr2001) ([#1013](https://github.com/antinomyhq/forge/pull/1013))
+
+### 🧰 Maintenance
+
+- chore: use standard ignore filters in walker [@laststylebender14](https://github.com/laststylebender14) ([#1015](https://github.com/antinomyhq/forge/pull/1015))
+- chore: add `Requesty` as a Provider [@Thibault00](https://github.com/Thibault00) ([#1018](https://github.com/antinomyhq/forge/pull/1018))
