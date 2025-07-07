@@ -17,7 +17,7 @@
 <script type="application/ld+json">{"@context":"https://schema.org/","@type":"WebSite","name":"ForgeCode","url":"https://forgecode.dev/"}</script>
 <script>!function(e,n,t,i,c,s){e.SnitchObject=t,e[t]||(e[t]=function(){(e[t].q=e[t].q||[]).push(arguments)}),e[t].l=+new Date,c=n.createElement(i),s=n.getElementsByTagName(i)[0],c.src="//snid.snitcher.com/8432087.js",s.parentNode.insertBefore(c,s)}(window,document,"snid","script"),snid("verify","8432087")</script>
 <script>!function(){var t=window.reb2b=window.reb2b||[];if(!t.invoked){t.invoked=!0,t.methods=["identify","collect"],t.factory=function(e){return function(){var r=Array.prototype.slice.call(arguments);return r.unshift(e),t.push(r),t}};for(var e=0;e<t.methods.length;e++){var r=t.methods[e];t[r]=t.factory(r)}t.load=function(t){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://s3-us-west-2.amazonaws.com/b2bjsstore/b/"+t+"/0OV0VHL3P56Z.js.gz";var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(e,r)},t.SNIPPET_VERSION="1.0.1",t.load("0OV0VHL3P56Z")}}()</script><link rel="stylesheet" href="/assets/css/styles.79b71e5d.css">
-<script src="/assets/js/runtime~main.63c665bc.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.2e98801f.js" defer="defer"></script>
 <script src="/assets/js/main.4bd6ad35.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -33,11 +33,11 @@
 <li>Authorize the app</li>
 <li>Return to terminal - authentication is complete</li>
 </ol>
-<img src="/images/blog/login_newuser.gif" alt="Browser Authentication Flow" style="width:100%;max-width:800px">
+<img src="/images/blog/login-newuser.gif" alt="Browser Authentication Flow" style="width:100%;max-width:800px">
 <p><em>Complete authentication setup in under 30 seconds</em></p>
 <p>The system waits for the authentication server until login completes.</p>
-<img src="/images/blog/login*progress.png" alt="Terminal Authentication Progress" style="width:100%;max-width:800px">
-<p>_Terminal shows authentication progress with clear status updates*</p>
+<img src="/images/blog/login-progress.png" alt="Terminal Authentication Progress" style="width:100%;max-width:800px">
+<p><em>Terminal shows authentication progress with clear status updates</em></p>
 <h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="migration-from-api-keys">Migration from API Keys<a href="#migration-from-api-keys" class="hash-link" aria-label="Direct link to Migration from API Keys" title="Direct link to Migration from API Keys">​</a></h4>
 <p><strong>Existing users</strong>: Your current API key configuration will continue working. The browser-based auth is optional and can be used alongside existing setups.</p>
 <p><strong>For automation/CI</strong>: API key authentication remains available for scripts and automated environments where browser access isn&#x27;t available.</p>
@@ -50,8 +50,8 @@
 <strong>What happens:</strong> Forge asks: &quot;Do you want to continue anyway?&quot;</p>
 <div class="relative overflow-hidden"><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#fff;--prism-background-color:#181818"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#fff;background-color:#181818"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#fff"><span class="token plain">Tool execution failure limit exceeded - terminating conversation</span><br></span><span class="token-line" style="color:#fff"><span class="token plain">to prevent infinite retry loops.</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><button aria-label="Copy code" class="absolute top-[12px] right-4 z-20 bg-[rgba(24,24,24,0.85)] border-none rounded-none px-2 py-1 flex items-center cursor-pointer text-white font-sans"><img src="/icons/basic/copy-icon.svg" alt="Copy Icon" class="w-4 h-4 [filter:brightness(2)] ml-0.5"></button></div>
 <p><strong>Key point:</strong> This counter resets when any tool succeeds. It only cares about failures happening back-to-back.</p>
-<img src="/images/blog/tool*call_limit.gif" alt="Tool Failure Limit Dialog" style="width:100%;max-width:800px">
-<p>_Hard stop when consecutive failures hit the limit*</p>
+<img src="/images/blog/tool-call-limit.gif" alt="Tool Failure Limit Dialog" style="width:100%;max-width:800px">
+<p><em>Hard stop when consecutive failures hit the limit</em></p>
 <h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="system-2-overall-turn-limits-user-intervention">System 2: Overall Turn Limits (User Intervention)<a href="#system-2-overall-turn-limits-user-intervention" class="hash-link" aria-label="Direct link to System 2: Overall Turn Limits (User Intervention)" title="Direct link to System 2: Overall Turn Limits (User Intervention)">​</a></h4>
 <p><strong>What it does:</strong> Monitors the total activity in a single conversation turn and asks if you want to continue when limits are hit.</p>
 <p><strong>Default limits:</strong></p>
@@ -70,8 +70,8 @@
 <p>The file patching system now supports <code>replace_all</code> operations for comprehensive refactoring tasks.</p>
 <p><strong>Previous behavior</strong>: <code>replace</code> operation only modified the first occurrence
 <strong>New behavior</strong>: <code>replace_all</code> operation modifies all occurrences in the target file</p>
-<img src="/images/blog/replace*all.gif" alt="Replace All Operation Demo" style="width:100%;max-width:800px">
-<p>_Replace-all operation updating multiple function names across a file*</p>
+<img src="/images/blog/replace-all.gif" alt="Replace All Operation Demo" style="width:100%;max-width:800px">
+<p>Replace-all operation updating multiple function names across a file</p>
 <p>This is particularly useful for:</p>
 <ul>
 <li>Variable and function renaming</li>
