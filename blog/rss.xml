@@ -4,11 +4,106 @@
         <title>Forge Code Blog</title>
         <link>https://forgecode.dev/blog/</link>
         <description>Forge Code Blog</description>
-        <lastBuildDate>Tue, 01 Jul 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 07 Jul 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>Copyright © 2025 Tailcall, Inc.</copyright>
+        <item>
+            <title><![CDATA[Forge v0.98.0: Integrated Authentication and Developer Experience Improvements]]></title>
+            <link>https://forgecode.dev/blog/forge-v0.98.0-release-article/</link>
+            <guid>https://forgecode.dev/blog/forge-v0.98.0-release-article/</guid>
+            <pubDate>Mon, 07 Jul 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Forge v0.98.0 introduces browser-based authentication, tool failure limits, and enhanced file operations to improve reliability and user experience.]]></description>
+            <content:encoded><![CDATA[<p><em>July 6, 2025</em> - Forge v0.98.0 introduces browser-based authentication, tool failure limits, and enhanced file operations to improve reliability and user experience.</p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="whats-new">What's New<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#whats-new" class="hash-link" aria-label="Direct link to What's New" title="Direct link to What's New">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="browser-based-authentication">Browser-Based Authentication<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#browser-based-authentication" class="hash-link" aria-label="Direct link to Browser-Based Authentication" title="Direct link to Browser-Based Authentication">​</a></h3>
+<p>v0.98.0 replaces manual API key configuration with browser-based authentication that integrates with <code>app.forgecode.dev</code>.</p>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="setup-process">Setup Process<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#setup-process" class="hash-link" aria-label="Direct link to Setup Process" title="Direct link to Setup Process">​</a></h4>
+<ol>
+<li>Run <code>npx forgecode@latest</code></li>
+<li>Forge opens your browser to <code>app.forgecode.dev</code></li>
+<li>Sign in with Google or GitHub</li>
+<li>Authorize the app</li>
+<li>Return to terminal - authentication is complete</li>
+</ol>
+<img src="https://forgecode.dev/images/blog/login_newuser.gif" alt="Browser Authentication Flow" style="width:100%;max-width:800px">
+<p><em>Complete authentication setup in under 30 seconds</em></p>
+<p>The system waits for the authentication server until login completes.</p>
+<img src="https://forgecode.dev/images/blog/login*progress.png" alt="Terminal Authentication Progress" style="width:100%;max-width:800px">
+<p>_Terminal shows authentication progress with clear status updates*</p>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="migration-from-api-keys">Migration from API Keys<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#migration-from-api-keys" class="hash-link" aria-label="Direct link to Migration from API Keys" title="Direct link to Migration from API Keys">​</a></h4>
+<p><strong>Existing users</strong>: Your current API key configuration will continue working. The browser-based auth is optional and can be used alongside existing setups.</p>
+<p><strong>For automation/CI</strong>: API key authentication remains available for scripts and automated environments where browser access isn't available.</p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="safety-limits-and-auto-stop">Safety Limits and Auto-Stop<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#safety-limits-and-auto-stop" class="hash-link" aria-label="Direct link to Safety Limits and Auto-Stop" title="Direct link to Safety Limits and Auto-Stop">​</a></h3>
+<p>Forge now includes automatic safety limits to prevent infinite loops and runaway processes. There are two separate systems that work together to keep things under control.</p>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="system-1-consecutive-tool-failure-limit-hard-stop">System 1: Consecutive Tool Failure Limit (Hard Stop)<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#system-1-consecutive-tool-failure-limit-hard-stop" class="hash-link" aria-label="Direct link to System 1: Consecutive Tool Failure Limit (Hard Stop)" title="Direct link to System 1: Consecutive Tool Failure Limit (Hard Stop)">​</a></h4>
+<p><strong>What it does:</strong> Tracks tool failures in a row and terminates the conversation when too many happen consecutively.</p>
+<p><strong>Default limit:</strong> 5 consecutive failures
+<strong>What triggers it:</strong> File permission errors, invalid parameters, network issues - anything that makes tools fail repeatedly
+<strong>What happens:</strong> Forge asks: "Do you want to continue anyway?"</p>
+<div class="relative overflow-hidden"><div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#fff;--prism-background-color:#181818"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#fff;background-color:#181818"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#fff"><span class="token plain">Tool execution failure limit exceeded - terminating conversation</span><br></span><span class="token-line" style="color:#fff"><span class="token plain">to prevent infinite retry loops.</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><button aria-label="Copy code" class="absolute top-[12px] right-4 z-20 bg-[rgba(24,24,24,0.85)] border-none rounded-none px-2 py-1 flex items-center cursor-pointer text-white font-sans"><img src="https://forgecode.dev/icons/basic/copy-icon.svg" alt="Copy Icon" class="w-4 h-4 [filter:brightness(2)] ml-0.5"></button></div>
+<p><strong>Key point:</strong> This counter resets when any tool succeeds. It only cares about failures happening back-to-back.</p>
+<img src="https://forgecode.dev/images/blog/tool*call_limit.gif" alt="Tool Failure Limit Dialog" style="width:100%;max-width:800px">
+<p>_Hard stop when consecutive failures hit the limit*</p>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="system-2-overall-turn-limits-user-intervention">System 2: Overall Turn Limits (User Intervention)<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#system-2-overall-turn-limits-user-intervention" class="hash-link" aria-label="Direct link to System 2: Overall Turn Limits (User Intervention)" title="Direct link to System 2: Overall Turn Limits (User Intervention)">​</a></h4>
+<p><strong>What it does:</strong> Monitors the total activity in a single conversation turn and asks if you want to continue when limits are hit.</p>
+<p><strong>Default limits:</strong></p>
+<ul>
+<li>50 total requests per turn</li>
+</ul>
+<p><strong>What happens:</strong> Forge asks: "Do you want to continue anyway?"</p>
+<p><strong>Configuration in forge.yaml:</strong></p>
+<div class="relative overflow-hidden"><div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#fff;--prism-background-color:#181818"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#fff;background-color:#181818"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#fff"><span class="token key atrule" style="color:#b76b01">max_requests_per_turn</span><span class="token punctuation" style="color:#fff">:</span><span class="token plain"> </span><span class="token number" style="color:#C586C0">50</span><span class="token plain"> </span><span class="token comment" style="color:#30C26D;font-style:italic"># Total requests before asking user</span><span class="token plain"></span><br></span><span class="token-line" style="color:#fff"><span class="token plain"></span><span class="token key atrule" style="color:#b76b01">max_tool_failure_per_turn</span><span class="token punctuation" style="color:#fff">:</span><span class="token plain"> </span><span class="token number" style="color:#C586C0">3</span><span class="token plain"> </span><span class="token comment" style="color:#30C26D;font-style:italic"># Total failures before asking user</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><button aria-label="Copy code" class="absolute top-[12px] right-4 z-20 bg-[rgba(24,24,24,0.85)] border-none rounded-none px-2 py-1 flex items-center cursor-pointer text-white font-sans"><img src="https://forgecode.dev/icons/basic/copy-icon.svg" alt="Copy Icon" class="w-4 h-4 [filter:brightness(2)] ml-0.5"></button></div>
+<p><strong>Problem solved:</strong> Prevents scenarios where agents get stuck in retry cycles due to environmental issues, permission problems, or invalid parameters that require human intervention rather than continued automated attempts.</p>
+<blockquote>
+<p><em>Safety mechanism activates when operational limits are reached</em></p>
+</blockquote>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="enhanced-file-operations">Enhanced File Operations<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#enhanced-file-operations" class="hash-link" aria-label="Direct link to Enhanced File Operations" title="Direct link to Enhanced File Operations">​</a></h3>
+<h4 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="replace-all-patch-operation">Replace-All Patch Operation<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#replace-all-patch-operation" class="hash-link" aria-label="Direct link to Replace-All Patch Operation" title="Direct link to Replace-All Patch Operation">​</a></h4>
+<p>The file patching system now supports <code>replace_all</code> operations for comprehensive refactoring tasks.</p>
+<p><strong>Previous behavior</strong>: <code>replace</code> operation only modified the first occurrence
+<strong>New behavior</strong>: <code>replace_all</code> operation modifies all occurrences in the target file</p>
+<img src="https://forgecode.dev/images/blog/replace*all.gif" alt="Replace All Operation Demo" style="width:100%;max-width:800px">
+<p>_Replace-all operation updating multiple function names across a file*</p>
+<p>This is particularly useful for:</p>
+<ul>
+<li>Variable and function renaming</li>
+<li>Import statement updates</li>
+<li>Consistent refactoring across large files</li>
+</ul>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="breaking-changes">Breaking Changes<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#breaking-changes" class="hash-link" aria-label="Direct link to Breaking Changes" title="Direct link to Breaking Changes">​</a></h2>
+<p><strong>None</strong>. v0.98.0 maintains backward compatibility with existing API key configurations.</p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="troubleshooting">Troubleshooting<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#troubleshooting" class="hash-link" aria-label="Direct link to Troubleshooting" title="Direct link to Troubleshooting">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="authentication-issues">Authentication Issues<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#authentication-issues" class="hash-link" aria-label="Direct link to Authentication Issues" title="Direct link to Authentication Issues">​</a></h3>
+<p><strong>Browser doesn't open</strong>: Manually navigate to the URL displayed in the terminal
+<strong>Login timeout</strong>: Check network connectivity and retry
+<strong>Permission errors</strong>: Ensure Forge has permission to write to config directory</p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="safety-limits-and-auto-stop-1">Safety Limits and Auto-Stop<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#safety-limits-and-auto-stop-1" class="hash-link" aria-label="Direct link to Safety Limits and Auto-Stop" title="Direct link to Safety Limits and Auto-Stop">​</a></h3>
+<p><strong>Frequent limit hits</strong>: Check file permissions.
+<strong>Need higher limits</strong>: Adjust configuration in <code>forge.yaml</code>
+<strong>Unexpected failures</strong>: Review error messages for specific tool issues</p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="getting-started">Getting Started<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#getting-started" class="hash-link" aria-label="Direct link to Getting Started" title="Direct link to Getting Started">​</a></h2>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="new-users">New Users<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#new-users" class="hash-link" aria-label="Direct link to New Users" title="Direct link to New Users">​</a></h3>
+<div class="relative overflow-hidden"><div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#fff;--prism-background-color:#181818"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#fff;background-color:#181818"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#fff"><span class="token plain">npx forgecode@latest</span><br></span><span class="token-line" style="color:#fff"><span class="token plain"></span><span class="token comment" style="color:#30C26D;font-style:italic"># Follow browser authentication prompts</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><button aria-label="Copy code" class="absolute top-[12px] right-4 z-20 bg-[rgba(24,24,24,0.85)] border-none rounded-none px-2 py-1 flex items-center cursor-pointer text-white font-sans"><img src="https://forgecode.dev/icons/basic/copy-icon.svg" alt="Copy Icon" class="w-4 h-4 [filter:brightness(2)] ml-0.5"></button></div>
+<p><em>Complete setup experience for first-time users</em></p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="existing-users">Existing Users<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#existing-users" class="hash-link" aria-label="Direct link to Existing Users" title="Direct link to Existing Users">​</a></h3>
+<div class="relative overflow-hidden"><div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#fff;--prism-background-color:#181818"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#fff;background-color:#181818"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#fff"><span class="token plain">npx forgecode@latest</span><br></span><span class="token-line" style="color:#fff"><span class="token plain"></span><span class="token comment" style="color:#30C26D;font-style:italic"># Optionally set up browser auth (by removing API keys from .env)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#fff"><span class="token plain"></span><span class="token comment" style="color:#30C26D;font-style:italic"># Continue using existing API key if preferred</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><button aria-label="Copy code" class="absolute top-[12px] right-4 z-20 bg-[rgba(24,24,24,0.85)] border-none rounded-none px-2 py-1 flex items-center cursor-pointer text-white font-sans"><img src="https://forgecode.dev/icons/basic/copy-icon.svg" alt="Copy Icon" class="w-4 h-4 [filter:brightness(2)] ml-0.5"></button></div>
+<p><em>Smooth transition options for users with existing API key setups</em></p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="automationci">Automation/CI<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#automationci" class="hash-link" aria-label="Direct link to Automation/CI" title="Direct link to Automation/CI">​</a></h3>
+<p>Continue using API key authentication for automated environments:</p>
+<div class="relative overflow-hidden"><div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#fff;--prism-background-color:#181818"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#fff;background-color:#181818"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#fff"><span class="token builtin class-name" style="color:#C586C0">export</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#E36209">FORGE_KEY</span><span class="token operator" style="color:#8DFFF8">=</span><span class="token plain">your_key</span><br></span><span class="token-line" style="color:#fff"><span class="token plain">npx forgecode@latest</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div><button aria-label="Copy code" class="absolute top-[12px] right-4 z-20 bg-[rgba(24,24,24,0.85)] border-none rounded-none px-2 py-1 flex items-center cursor-pointer text-white font-sans"><img src="https://forgecode.dev/icons/basic/copy-icon.svg" alt="Copy Icon" class="w-4 h-4 [filter:brightness(2)] ml-0.5"></button></div>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="resources">Resources<a href="https://forgecode.dev/blog/forge-v0.98.0-release-article/#resources" class="hash-link" aria-label="Direct link to Resources" title="Direct link to Resources">​</a></h2>
+<ul>
+<li><a href="https://forgecode.dev/docs" target="_blank" rel="noopener noreferrer">Documentation</a> - Setup guides and API reference</li>
+<li><a href="https://github.com/antinomyhq/forge" target="_blank" rel="noopener noreferrer">GitHub Repository</a> - Source code and issues</li>
+<li><a href="https://discord.gg/kRZBPpkgwq" target="_blank" rel="noopener noreferrer">Discord Community</a> - Support and discussions</li>
+<li><a href="https://github.com/antinomyhq/forge/releases/tag/v0.98.0" target="_blank" rel="noopener noreferrer">Release Notes</a> - Complete changelog</li>
+</ul>
+<hr>
+<p>v0.98.0 focuses on reliability and ease of use while maintaining the flexibility developers need for various workflows. The browser-based authentication removes setup friction for new users while preserving API key support for automation and power users.</p>]]></content:encoded>
+            <category>Release</category>
+        </item>
         <item>
             <title><![CDATA[MCP 2025-06-18 Spec Update: Security, Structured Output & Elicitation]]></title>
             <link>https://forgecode.dev/blog/mcp-spec-updates/</link>
