@@ -5,213 +5,81 @@ sidebar_position: 3
 description: "Create and configure your own custom commands in Forge to streamline workflows"
 sidebar_label: Custom Commands
 ---
+# custom commands
 
-# Custom Commands
+When using AI in development, teams often face the hassle of executing standard tasks, such as updating documentation or analyzing technical debt, which require detailed prompts each time. This repetitive process can be time-consuming and may lead to inconsistencies.
 
-Forge allows you to define and use custom commands that extend its functionality and streamline your workflow. These commands can be executed within the Forge CLI using the `/command_name` syntax and are configured in your `forge.yaml` file.
+Forge’s custom commands solve that: they allow you to create **pre-configured shortcuts** in your codebase with prompts that include all the necessary instructions.
 
-## What Are Custom Commands?
-
-Custom commands are user-defined shortcuts that trigger specific actions or workflows. They enable you to:
-
-- Create project-specific automation
-- Standardize common workflows across your team
-- Simplify complex operations into single commands
-- Integrate Forge with your development processes
+![using custom commands](../static/docs/custom_command_basic.gif)
 
 ## Configuring Custom Commands
 
-Custom commands are defined in the `commands` section of your `forge.yaml` file:
+Custom commands are defined in the commands section of your forge.yaml file.
+
+Let's examine each property in the commands section:
+
+### name (required)
+
+The name property defines the command identifier that users will type to execute the command. For example, if name is set to "outdated-docs", users will run it by typing `/outdated-docs` in Forge.
 
 ```yaml
 commands:
-  - name: commit
-    description: Commit changes with a standard prefix
-    prompt: |
-      Understand the diff produced and commit using the 'conventional commit' standard
-
-  - name: branch
-    description: Create and checkout a new branch
-
-  - name: pull-request
-    description: Create a pull request with standard template
-    prompt: |
-      Understand the diff with respect to `main` and create a pull-request.
-      Ensure it follows 'conventional commit' standard.
+  - name: outdated-docs
 ```
 
-### Configuration Options
+### description (required)
 
-| Option        | Required | Description                                              |
-| ------------- | -------- | -------------------------------------------------------- |
-| `name`        | Yes      | The name of the command (used as `/name` in the CLI)     |
-| `description` | Yes      | A description of what the command does (shown in help)   |
-| `prompt`      | No       | Default prompt value used when no arguments are provided |
-
-## Using Custom Commands
-
-Once configured, you can use custom commands in the Forge CLI in two ways:
-
-### Basic Command Execution
-
-To execute a command with its default value (if provided):
-
-```bash
-/commit
-```
-
-This executes the `commit` command with the default instructions defined in its `value` field.
-
-### Command with Arguments
-
-To override the default value or provide instructions for commands without a default:
-
-```bash
-/commit Create a detailed commit message for the login feature
-```
-
-```bash
-/branch feature/new-auth
-```
-
-## How Custom Commands Work
-
-When a custom command is executed, it follows this event flow:
-
-1. **Command Execution**: User types a command like `/commit feat: add user authentication`
-2. **Event Dispatch**: Forge dispatches an event with:
-   - **Name**: The command name (e.g., `commit`)
-   - **Value**: The provided argument or default value (e.g., `feat: add user authentication`)
-3. **Agent Subscription**: Any agent that has subscribed to this event name receives the event
-4. **Event Processing**: The agent processes the event according to its configuration
-
-## Agent Configuration for Custom Commands
-
-For an agent to respond to a custom command, it must explicitly subscribe to the event with the same name as the command:
-
-```yaml
-agents:
-  - id: git-commit
-    model: anthropic/claude-3.7-sonnet
-    system_prompt: "{{> system-prompt-git-commit.hbs }}"
-    tools:
-      - forge_tool_process_shell
-    subscribe:
-      - commit # This agent subscribes to the 'commit' custom command
-```
-
-## Command Handling Approaches
-
-There are two main approaches for handling custom command events in agents:
-
-### 1. Using Event Value as Instructions
-
-Pass the event value directly to the agent as complete instructions:
+This provides a brief explanation of what the command does. This description appears in help menus and command listings to help users understand the purpose of each command.
 
 ```yaml
 commands:
-  - name: commit
-    description: Commit changes with a standard prefix
-    prompt: |
-      Understand the diff and commit using the 'conventional commit' standard
-
-agents:
-  - id: git-commit
-    model: anthropic/claude-3.7-sonnet
-    system_prompt: "{{> system-prompt-git-commit.hbs }}"
-    user_prompt: "{{event.value}}"
-    tools:
-      - forge_tool_process_shell
-    subscribe:
-      - commit
+  - name: outdated-docs
+    description: Find all the outdated documentation in the codebase
 ```
 
-### 2. Using Event Value as Data in a Template
+### prompt (optional)
 
-Incorporate the event value into a structured template:
+The prompt value that will be used when the command is executed.
 
 ```yaml
 commands:
-  - name: analyze
-    description: Analyze a file with specific focus
-
-agents:
-  - id: file-analyzer
-    model: anthropic/claude-3.7-sonnet
-    system_prompt: "{{> forge-system-prompt-engineer-act.hbs }}"
-    user_prompt: |
-      <task>Analyze the following file in detail</task>
-      <focus>{{event.value}}</focus>
-    tools:
-      - forge_tool_fs_read
-    subscribe:
-      - analyze
+  - name: outdated-docs
+    description: Find all the outdated documentation in the codebase
+    prompt: Scan through all documentation files and identify content that appears outdated, references deprecated features, or contains information that conflicts with current implementations.
 ```
 
-## Example Custom Commands
-
-### Git Workflow Commands
+You can also set a default value to allow users to pass their own argument:
 
 ```yaml
 commands:
-  - name: commit
-    description: Commit changes with a standard prefix
+  - name: outdated-docs
+    description: Find all the outdated documentation in the codebase
+    ## users can pass their own prompt this way
     prompt: |
-      Analyze changes and create a commit message following conventional commit format
-
-  - name: branch
-    description: Create and checkout a new branch from the current changes
-
-  - name: pr
-    description: Create a pull request for current branch
-    prompt: |
-      Create a detailed pull request description based on the changes in this branch
+        Scan through all documentation files and identify content that appears outdated, references deprecated features, or contains information that conflicts with current implementations.
 ```
 
-### Development Workflow Commands
+Start Forge:
 
-```yaml
-commands:
-  - name: review
-    description: Review code for bugs and improvements
-    prompt: |
-      Review the code for bugs, security issues, performance problems, and suggest improvements
+![starting Forge](../static/docs/start.gif)
 
-  - name: document
-    description: Generate documentation for a file
+Enter `/outdated-docs` to run the command:
 
-  - name: test
-    description: Generate unit tests for a file or function
-    prompt: |
-      Create comprehensive unit tests with good coverage for the specified code
-```
+![starting Forge](../static/docs/outdated_docs.gif)
 
-### Project-Specific Commands
+## When not to use custom commands
 
-```yaml
-commands:
-  - name: fixme
-    description: Looks for all the fixme comments in the code and attempts to fix them
-    prompt: |
-      Find all the FIXME comments in source-code files and attempt to fix them.
-
-  - name: deploy
-    description: Prepare deployment package and update version numbers
-    prompt: |
-      Update version numbers and prepare the project for deployment
-```
+Custom commands, if executed in a conversation, may cause the context to slowly deviate from the original version and focus on the tasks carried out by the commands. This might influence the responses for other unrelated tasks in the future. To reduce this deviation, avoid over-using the custom commands, start a new conversation or [raise an issue on GitHub](https://github.com/antinomyhq/forge/issues/new) if you would like it to have a different behavior.
 
 ## Best Practices
 
-1. **Descriptive Names**: Use clear, action-oriented names for commands
-2. **Helpful Descriptions**: Write descriptions that explain both the purpose and expected outcome
-3. **Default Values**: Provide default values for commands that can work without specific arguments
-4. **Specialized Agents**: Configure agents specifically for handling particular commands
-5. **Command Organization**: Group related commands in your configuration for easier management
-6. **Documentation**: Document custom commands for your team in a project README
+- Use **short** and **self-explanatory** names for commands, should not be too long to type.
+- Write **helpful descriptions** that explain the purpose of the command effectively.
+- **Document** your custom commands for the team and contributors.
+- Provide **default values** for commands that can work without specific arguments.
 
-## Related Documentation
+## Related Features
 
-- [Custom Workflows](../custom-workflows) - Learn how to create sophisticated workflows with multiple agents
-- [Agent Configuration](../agent-configuration) - Configure agents to respond to custom commands
-- [Commands](../commands) - Learn about Forge's built-in commands
+- [Agent Configuration](../agent-configuration) - Learn about agent configuration options
+- [Workflow Configuration](../workflow-config) - Learn about configuring workflows
