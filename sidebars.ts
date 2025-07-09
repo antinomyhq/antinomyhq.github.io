@@ -33,6 +33,18 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Guides",
+      collapsed: false,
+      items: [
+        {
+          type: "doc",
+          id: "plan-and-act-guide",
+          label: "Plan First, Then Act"
+        }
+      ],
+    },
+    {
+      type: "category",
       label: "Tools & Resources", // New category specifically for tools
       collapsed: false,
       items: [

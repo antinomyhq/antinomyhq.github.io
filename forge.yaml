@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/antinomyhq/forge/refs/heads/main/forge.schema.json
 agents:
-- id: bob,
+- id: bob
   title: Bob the Builder
   description: |
     Bob is a versatile agent capable of handling various tasks, from coding to writing.
