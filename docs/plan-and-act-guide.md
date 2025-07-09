@@ -16,6 +16,7 @@ Muse operates in **read-only mode**, making it perfect for analysis and planning
 - Reviews code for security, performance, and architecture concerns
 
 **When to use Muse:**
+
 - Before making significant changes to critical systems
 - When you need to understand the scope and impact of a task
 - For architecture planning.
@@ -31,6 +32,7 @@ Forge has **full read-write access** and handles the actual implementation:
 - Provides real-time feedback as changes are made
 
 **When to use Forge:**
+
 - After reviewing and approving a plan from Muse
 - For routine tasks you're confident about
 - When you want hands-off implementation
@@ -51,7 +53,7 @@ Ask Muse to create a detailed plan:
 ```
 Write a plan for adding rate limiting to our API. Include:
 - Which endpoints need protection
-- Storage mechanism for rate data  
+- Storage mechanism for rate data
 - Error responses and status codes
 - Integration points with existing middleware
 
@@ -99,14 +101,15 @@ Switch back to Muse if you encounter complex decisions, then return to Forge for
 You can easily switch during any session:
 
 ```bash
-/muse    # Switch to planning mode
-/forge   # Switch to implementation mode  
-/agent   # Open agent selector dropdown
+/muse  # Switch to planning mode
+/forge # Switch to implementation mode
+/agent # Open agent selector dropdown
 ```
 
 ## Real Example: Adding Authentication
 
 **With Muse (Planning):**
+
 ```
 Analyze our current user system and create a plan for adding JWT authentication. Consider:
 - Token generation and validation
@@ -116,6 +119,7 @@ Analyze our current user system and create a plan for adding JWT authentication.
 ```
 
 **With Forge (Implementation):**
+
 ```
 Following our JWT authentication plan in `@plan-jwt.md`, start by implementing the token generation service in @src/auth/jwt.rs
 ```
