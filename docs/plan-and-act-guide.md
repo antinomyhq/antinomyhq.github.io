@@ -62,7 +62,7 @@ Now critique this plan. What did you miss?
 
 ### 2. Review and Refine the Plan
 
-Muse will provide a structured plan and then critique it for gaps. Review this carefully - a good plan eliminates 80% of implementation confusion later.
+Muse will provide a structured plan and then critique it for gaps. Review this carefully - a good plan eliminates most of implementation confusion later.
 
 ### 3. Switch to Forge for Implementation
 
@@ -73,7 +73,7 @@ Muse will provide a structured plan and then critique it for gaps. Review this c
 Reference the plan and start implementation:
 
 ```
-Following the rate limiting plan we discussed, implement the Redis-based rate limiter for the /api/auth endpoints first.
+Following the `@rate-limiting-plan.md` we discussed, implement the Redis-based rate limiter for the /api/auth endpoints first in `@src/auth`.
 ```
 
 ### 4. Iterate as Needed
@@ -127,3 +127,25 @@ Following our JWT authentication plan in `@plan-jwt.md`, start by implementing t
 This workflow has proven to increase development velocity while reducing bugs and rework. Try it on your next feature - plan with Muse, implement with Forge, and experience the difference structured AI development makes.
 
 Remember: You're the architect, Muse is your strategic advisor, and Forge is your implementation partner. Use each for what they do best.
+
+## Troubleshooting
+
+When things go wrong or you encounter unexpected behavior, here's how to get help:
+
+### Getting Context for Support
+
+1. **Export your session context** by running in your forge session:
+
+   ```bash
+   /dump html
+   ```
+
+   This command generates a readable HTML file containing all the context being sent to the AI, which helps our team understand exactly what happened.
+
+2. **Share with our team** - Send the exported context file to us via:
+   - **Discord**: [Join our Discord community](https://discord.gg/kRZBPpkgwq)
+   - **Twitter/X**: Send us a DM [@forgecodehq](https://x.com/forgecodehq)
+
+Our team will be happy to help diagnose the issue and provide a fix. The context export helps us reproduce the problem and understand the full conversation flow.
+
+We're committed to making your AI development experience smooth and productive!

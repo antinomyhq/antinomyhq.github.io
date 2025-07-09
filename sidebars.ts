@@ -39,8 +39,8 @@ const sidebars: SidebarsConfig = {
         {
           type: "doc",
           id: "plan-and-act-guide",
-          label: "Plan First, Then Act"
-        }
+          label: "Plan First, Then Act",
+        },
       ],
     },
     {
