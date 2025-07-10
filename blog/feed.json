@@ -12,8 +12,8 @@
             "summary": "I pitted Claude 4 Opus against Grok 4 in a series of challenging coding tasks. The results highlight trade-offs in speed, cost, accuracy, and frustration factors that every dev should know.",
             "date_modified": "2025-07-10T00:00:00.000Z",
             "author": {
-                "name": "Forge Team",
-                "url": "https://github.com/antinomyhq/forge"
+                "name": "Tushar",
+                "url": "https://github.com/tusharmath"
             },
             "tags": [
                 "Claude 4 Opus",
