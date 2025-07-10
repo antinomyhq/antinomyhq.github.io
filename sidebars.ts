@@ -22,6 +22,7 @@ const sidebars: SidebarsConfig = {
         "introduction",
         "installation",
         "quickstart",
+        "forge-yaml",
         "custom-providers", // New combined document replacing quick-setup and shell-integration
       ],
     },

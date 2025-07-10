@@ -1,0 +1,177 @@
+---
+title: What is a forge.yaml?
+description: "What is a forge.yaml and how to modify Forge's behaviour using it"
+sidebar_label: Forge.yaml 
+---
+
+# What is a forge.yaml?
+
+**TL;DR:** `forge.yaml` is Forge's configuration file that controls everything from which AI model to use, to custom agents, templates, and behavior settings.
+
+Like other config files in the ecosystem (`tsconfig.json`, `config.toml`), `forge.yaml` marks the root of a Forge project and is automatically created when you run `forge` in a directory. Forge itself uses [`forge.default.yaml`](https://github.com/antinomyhq/forge/blob/main/forge.default.yaml) internally for default functionality and the built-in **Muse** and **Forge** agents.
+
+## Exploring the fields in a forge.yaml
+
+### `model`
+
+```yaml
+model: anthropic/claude-sonnet-4
+```
+
+This is used to define the model being used for responses. It stays persistent across conversations and can be changed by the `/model` built-in command.
+
+### `templates`
+
+```yaml
+templates: ./myTemplates
+```
+
+```bash
+## directory structure of the project
+
+├── Cargo.toml
+├── forge.yaml
+├── index.html
+├── myTemplates
+│   ├── summarizer-template.hbs
+│   └── report-template.hbs
+└── vite.config.ts
+```
+
+**Used to register your custom templates in Forge** on startup, so that they can be used by agents. Requires a glob pattern pointing to the directory that contains your templates. An agent won't recognize your template unless its directory has been registered using this field.
+
+### `agents`
+
+```yaml
+agents:
+  - id: file-analyzer
+    model: anthropic/claude-3.7-sonnet
+    system_prompt: "{{> forge-system-prompt-engineer-act.hbs }}"
+    tools:
+      - forge_tool_fs_read
+      
+  - id: summarizer
+    model: openai/o4-mini
+    system_prompt: "{{> summarizer-template.hbs }}"
+    tools:
+      - forge_tool_fs_read
+```
+
+Use this to create custom agents that extend beyond Forge's built-in **Muse** and **Forge** agents, giving you complete control over their functionality and behavior.
+
+### `custom_rules`
+
+```yaml
+custom_rules: |
+  Code Review Guidelines:
+  - Check for proper error handling in all functions
+  - Ensure proper documentation for public APIs
+  - Verify input validation for all user-provided data
+```
+
+Define guidelines that shape how models behave in Forge. Rules defined here are used in conjunction with the individual rules of each agent.
+
+### `commands`
+
+```yaml
+commands:
+  - name: stack-overflows
+    description: find potential stack overflows in the code
+    prompt: go through each file, find code that might cause stack overflows, list all instances along with their severity.
+  
+  - name: outdated-docs
+    description: Find all the outdated documentation in the codebase
+    prompt: Scan through all documentation files and identify content that appears outdated, references deprecated features, or contains information that conflicts with current implementations.
+```
+
+Define custom commands as shortcuts that can be used to carry out repeated tasks.
+
+### `temperature`
+
+```yaml
+temperature: 0.8
+```
+
+Temperature controls the randomness in a model's output. Must be a number between `0` and `2`.
+
+- Use lower values like `0.3` to make responses more focused and deterministic.
+- Use medium values like `0.4` and `1.1` for balanced creativity and consistency.
+- Use higher values like `1.5` for highly creative and out-of-the-box thinking.
+
+### `max_requests_per_turn`
+
+```yaml
+max_requests_per_turn: 50
+```
+
+The maximum number of requests Forge can make in a conversation before confirming to continue or terminate the response. Defaults to `50`. **Helpful in cases where it gets stuck in a cycle of retries** due to some error in the environment which requires human intervention.
+
+### `max_tool_failure_per_turn`
+
+```yaml
+max_tool_failure_per_turn: 3
+```
+
+The maximum number of **back-to-back tool failures** (like filesystem read error, permission error or any failure caused by one of the tools) before Forge stops the processing and asks whether to continue or terminate, similar to `max_requests_per_turn`. The counter resets if a tool does not produce a failure, since it breaks the consecutive sequence of failures.
+
+### `top_p`
+
+```yaml
+top_p: 0.8
+```
+
+This determines the diversity of the set of candidate tokens. Must be a number between `0` and `1`. A smaller value means that response will be highly consistent and predictable. A bigger value of `top_p` means that the response will be more creative, and may include more unconventional elements.
+
+### `top_k`
+
+```yaml
+top_k: 30
+```
+
+Very similar to `top_p` except that `top_p` takes the smallest number of tokens that have a cumulative probability *p*, while `top_k` takes *k* number of highest probability tokens, where *k* is the value provided. Value of *k* must be between `1` and `1000`. If it is not specified, each agent's individual setting or the model provider's default will be used.
+
+### `max_tokens`
+
+```yaml
+max_tokens: 20480
+```
+
+The number of tokens generated by the model. Must be a value between `1` and `100000`. The larger the value, the longer the response.
+
+### `max_walker_depth`
+
+```yaml
+max_walker_depth: 3
+```
+
+This controls the maximum depth of directory traversal during file operations, so that Forge does not keep walking deep directory trees. Defaults to `1`, falls back to agent-specific settings if not set here.
+
+### `tool_supported`
+
+```yaml
+tool_supported: false
+```
+
+Some models don't have tool capabilities, so Forge adds tool processing functionality to them. Defaults to `false` which means that tools are not supported and Forge should add the tool functionality. Set this to `true` in your agent or main workflow (`forge.yaml`) if you know that your model supports tools (like **Claude, Gemini** and **GPT** models) and there is no need for Forge to handle that.
+
+### `updates`
+
+```yaml
+updates: 
+  frequency: always
+  auto_update: false
+```
+
+Used to configure how Forge handles updates and version checking.
+
+**`frequency`** controls how often Forge checks for updates, it can be one of `daily`, `monthly` and `always`.
+
+**`auto_update`** determines whether Forge automatically downloads and installs updates when found. If set to `true`, Forge will automatically update based on the defined `frequency`. Defaults to `false` for safety, requiring manual confirmation before updating.
+
+
+## Related Documentation
+
+- [Custom Rules](../custom-rules) - Define guidelines and instructions for your agents
+- [Custom Commands](../custom-commands) - Create your own commands for specialized tasks
+- [Agent Configuration](../agent-configuration) - Configure custom agents
+- [Commands](../commands) - Learn about Forge's built-in commands
