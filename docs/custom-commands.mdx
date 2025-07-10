@@ -5,9 +5,19 @@ sidebar_position: 3
 description: "Create and configure your own custom commands in Forge to streamline workflows"
 sidebar_label: Custom Commands
 ---
-# custom commands
+# Custom Commands
+## TL;DR
 
-When using AI in development, teams often face the hassle of executing standard tasks, such as updating documentation or analyzing technical debt, which require detailed prompts each time. This repetitive process can be time-consuming and may lead to inconsistencies.
+Create reusable AI command shortcuts in `forge.yaml` to eliminate repetitive prompting. Define a name, description, and prompt - then run with `/command-name`.
+
+```yaml
+commands:
+  - name: test
+    description: Generate unit tests for selected code
+    prompt: Create comprehensive unit tests with edge cases
+```
+
+When using AI in development, teams often face the hassle of executing repetitive tasks, such as updating documentation or writing tests, which require detailed prompts each time. This repetitive process can be time-consuming.
 
 Forge’s custom commands solve that: they allow you to create **pre-configured shortcuts** in your codebase with prompts that include all the necessary instructions.
 
@@ -15,7 +25,7 @@ Forge’s custom commands solve that: they allow you to create **pre-configured 
 
 ## Configuring Custom Commands
 
-Custom commands are defined in the commands section of your forge.yaml file.
+Custom commands are defined in the commands section of your `forge.yaml` file.
 
 Let's examine each property in the commands section:
 
@@ -60,6 +70,11 @@ commands:
         Scan through all documentation files and identify content that appears outdated, references deprecated features, or contains information that conflicts with current implementations.
 ```
 
+this way the user can pass their own prompt:
+```shell 
+/outdated-docs go through each API reference in the documentation, and identify references that appear to be outdated or different in any way with their actual implementation
+```
+
 Start Forge:
 
 ![starting Forge](../static/docs/start.gif)
@@ -68,16 +83,59 @@ Enter `/outdated-docs` to run the command:
 
 ![starting Forge](../static/docs/outdated_docs.gif)
 
-## When not to use custom commands
+## Trade-offs to Consider
 
-Custom commands, if executed in a conversation, may cause the context to slowly deviate from the original version and focus on the tasks carried out by the commands. This might influence the responses for other unrelated tasks in the future. To reduce this deviation, avoid over-using the custom commands, start a new conversation or [raise an issue on GitHub](https://github.com/antinomyhq/forge/issues/new) if you would like it to have a different behavior.
+Custom commands, if executed in a conversation, may cause the context to slowly get filled with the tasks carried out by the commands. This might influence the responses for other unrelated tasks in the future. To reduce this deviation:
+- start a new conversation by running `/new`
+- [raise an issue on GitHub](https://github.com/antinomyhq/forge/issues/new) if you would like it to have a different behavior.
 
 ## Best Practices
 
-- Use **short** and **self-explanatory** names for commands, should not be too long to type.
-- Write **helpful descriptions** that explain the purpose of the command effectively.
-- **Document** your custom commands for the team and contributors.
-- Provide **default values** for commands that can work without specific arguments.
+### Good Examples
+
+```yaml
+commands:
+  # Short, clear name that's easy to type
+  - name: test
+    description: Generate unit tests for the current file
+    prompt: Create comprehensive unit tests with edge cases and mocks
+  
+  # Descriptive but concise
+  - name: refactor
+    description: Refactor selected code for better readability
+    prompt: Improve code structure, naming, and remove duplication while preserving functionality
+  
+  # Specific use case with helpful context
+  - name: api-docs
+    description: Generate API documentation from code comments
+    prompt: Create detailed API documentation including parameters, return values, and usage examples
+```
+
+### Bad Examples
+
+```yaml
+commands:
+  # Too long and awkward to type, defies the whole purpose of custom commands
+  - name: generate-comprehensive-unit-tests-for-current-file
+    description: Tests
+    prompt: Make tests
+  
+  # Vague description and useless prompt
+  - name: thing
+    description: Does stuff with code
+    prompt: Do something good
+  
+  # Missing context - what kind of documentation?
+  - name: docs
+    description: Make docs
+    prompt: Write documentation for this
+```
+
+### Key Guidelines
+
+- **Names**: 1-2 words max, use hyphens for multiple words
+- **Descriptions**: Be specific about what the command does and where it applies
+- **Document your commands** in your team's README or wiki
 
 ## Related Features
 
