@@ -4,149 +4,42 @@ sidebar_position: 1
 description: "Explore Forge's built-in commands and when to use them."
 sidebar_label: Built-in Commands
 ---
-
 # Built-in Commands
 
-Forge offers several built-in commands to enhance your interaction. These commands can be entered directly in the Forge CLI by typing the command name preceded by a forward slash.
-
-## /new
-
-Start a new conversation while preserving history.
-
-The `/new` command clears the current conversation context and starts a fresh task. This is useful when you've completed your current task and want to begin something entirely different.
-
-**When to use:** Use this when switching between unrelated tasks to ensure a clean context.
-
-## /info
-
-Display system environment information.
-
-The `/info` command displays information about your environment, including system details, logs location, and command history.
-
-This will display information about your environment including:
-
-- Operating system details
-- Current working directory
-- Log file location
-- Application version
-- Available models
-
-**When to use:** Use this when you need to troubleshoot, find log files, or review your recent commands.
-
-## /model
-
-Switch to a different model.
-
-The `/model` command allows you to interactively select from available AI models and set your preferred model in the project's forge.yaml configuration file.
-
-This will:
-
-1. Display an interactive selection menu with all available models
-2. Update the standard_model anchor in your forge.yaml file with your selection
-3. Confirm the change with a success message
-
-The model choice will persist between sessions as it's stored in your configuration file.
-
-**When to use:** Use this when you want to change which AI model Forge uses for processing your requests.
-
-## /agent
-
-Switch between different AI agents.
-
-The `/agent` command provides an interactive interface to select and switch between different specialized agents in Forge. Use this command to change which agent handles your requests and see available options.
-
-This will:
-
-1. Display an interactive selection menu with available agents:
-
-   - **Forge Agent**: Full execution capabilities with read-write access
-   - **Muse Agent**: Read-only analysis and planning mode
-
-2. Switch to the selected agent for the current session
-
-**When to use:** Use this when you want to switch between agents or when you're unsure which agent is currently active. This is an alternative to using the specific `/forge` or `/muse` commands.
-
-## /dump
-
-Save conversation as JSON or HTML.
-
-The `/dump` command saves the current conversation to a file for future reference. By default, it saves in JSON format, but you can specify HTML format using `/dump html`.
-
-**Usage:**
-
-- `/dump` - Saves as JSON format
-- `/dump html` - Saves as HTML format
-
-**When to use:** Use this when you need to debug issues, inspect the conversation context, or report problems to the development team.
-
-## /forge
-
-Enable implementation mode with code changes.
-
-The `/forge` command (also available as `/act`) switches to Forge Agent, where it can execute commands and implement changes.
-
-**When to use:** This is the default agent. Use this command to switch back to the Forge Agent if you were previously using the Muse Agent.
-
-## /muse
-
-Enable planning mode without code changes.
-
-The `/muse` command (also available as `/plan`) switches to the Muse Agent, where it analyzes and suggests changes without modifying files.
-
-**When to use:** Use this when you want to analyze your codebase and suggest changes without actually implementing them. This is useful for understanding what would happen before making changes.
-
-## /compact
-
-Compact the conversation context.
-
-The `/compact` command reduces the conversation context by summarizing or removing older messages to optimize memory usage and performance.
-
-**When to use:** Use this when you have a long conversation and want to reduce context size while preserving important information.
-
-## /help
-
-Display all available commands.
-
-The `/help` command prints a list of all available Forge commands with their descriptions, providing a quick reference for command usage.
-
-**When to use:** Use this when you need to see what commands are available or want a quick reference of Forge's built-in functionality.
-
-## /tools
-
-List all available tools with their descriptions and schema.
-
-The `/tools` command displays a comprehensive list of all available tools, including their descriptions and schema information.
-
-**When to use:** Use this when you want to see what tools are available or need to understand tool capabilities and parameters.
-
-## /update
-
-Updates to the latest compatible version of forge.
-
-The `/update` command updates Forge to the latest compatible version available.
-
-**When to use:** Use this when you want to update to the newest version of Forge with the latest features and bug fixes.
-
-## /login
-
-Log into the Forge provider.
-
-The `/login` command authenticates you with the default Forge provider.
-
-**When to use:** Use this when you need to authenticate with the Forge service or when your session has expired.
-
-## /logout
-
-Logout of the current session.
-
-The `/logout` command ends your current authenticated session with the Forge provider.
-
-**When to use:** Use this when you want to end your current session or switch to a different account.
-
-## /exit
-
-Exit the application.
-
-The `/exit` command terminates the Forge application.
-
-**When to use:** Use this when you want to quit Forge completely.
+![built-in commands](../static/docs/builtin_commands.gif)
+*list all commands using the TAB key*
+
+## Commands
+Use these commands to interact with Forge and manage your workflow
+
+
+| Command | Purpose | Information |
+| --- | --- | --- |
+| `/new `| start a new conversation, use when starting a new unrelated task. | switches the context for better responses. |
+| `/info `| see important information like usage, environment and model. |  |
+| `/model` | switch to a different model | Use `/model` to see available options. See model recommendations below. |
+| `/agent` | display a list of all available agents, including custom agents, that you can switch to. | Agents are specialized AI assistants optimized for different tasks (coding, planning, etc.). Read more about [agents in Forge](../operating-agents). |
+| `/forge` | switch to the built-in **Forge** agent, which is good for executing tasks. |  |
+| `/muse` | switch to the built-in **Muse** agent, which is good for long planning sessions. |  |
+| `/dump` | use as `/dump` or `/dump html` to save current conversation context to JSON or HTML format.  | requires existing conversation content to dump. |
+| `/compact` | reduce conversation context by summarizing or removing older messages.  | useful when conversations become lengthy after handling multiple tasks. |
+| `/help` | display all available commands and shortcuts. |  |
+| `/tools` | display all the tools that can be used with agents. |  |
+| `/update` | update Forge. |  |
+| `/login` | login to Forge using browser. | login using the browser instead of setting the API key in the env variables. |
+| `/logout` | logout of current forge session. | has no effect if API key is set in the env variables. |
+| `/exit` | exit Forge terminal app. |  |
+
+## Model Selection
+
+Use the `/model` command to switch between different AI models based on your needs:
+
+- **GPT-4.1** and **Claude's Sonnet** models for highly consistent results.
+- **Qwen 235B** has a huge memory, ideal for advanced tasks.
+- **OpenAI o4-mini** and **codex-mini** have the fastest response times.
+
+## Related Documentation
+
+- [Custom Commands](../custom-commands) - Create your own commands for specialized tasks
+- [Context Compaction](../context-compaction) - Learn how to optimize context management
+- [Agent Configuration](../agent-configuration) - Detailed reference for agent configuration options
