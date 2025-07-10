@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_website=self.webpackChunkmy_website||[]).push([[529],{1344:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/blog","page":1,"postsPerPage":12,"totalPages":1,"totalCount":12,"blogDescription":"List of blog posts on ForgeCode blog","blogTitle":"Feed of ForgeCode blogs"}}')}}]);
