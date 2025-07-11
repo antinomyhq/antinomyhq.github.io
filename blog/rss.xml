@@ -44,8 +44,8 @@
 <p><strong>Claude 4 Opus</strong></p>
 <ul>
 <li>Context Window: 200,000 tokens</li>
-<li>Input Cost: ~$3/1M tokens</li>
-<li>Output Cost: ~$15/1M tokens</li>
+<li>Input Cost: ~$15/1M tokens</li>
+<li>Output Cost: ~$75/1M tokens</li>
 <li>Tool Calling: Native support</li>
 </ul>
 <p><strong>Grok 4</strong></p>
