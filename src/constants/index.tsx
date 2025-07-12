@@ -31,6 +31,14 @@ import ClearTaxClientLogo from "@site/static/icons/client/cleartax.svg"
 import CommvaultClientLogo from "@site/static/icons/client/commvault.svg"
 import CoreEdgeClientLogo from "@site/static/icons/client/coreedge.svg"
 
+import Dream11ClientLogoLight from "@site/static/icons/client/dream11-light.svg"
+import AgodaClientLogoLight from "@site/static/icons/client/agoda-light.svg"
+import AmazonClientLogoLight from "@site/static/icons/client/amazon-light.svg"
+import BranchClientLogoLight from "@site/static/icons/client/branch-light.svg"
+import ClearTaxClientLogoLight from "@site/static/icons/client/cleartax-light.svg"
+import CommvaultClientLogoLight from "@site/static/icons/client/commvault-light.svg"
+import CoreEdgeClientLogoLight from "@site/static/icons/client/coreedge-light.svg"
+
 export const companies: PartnerImage[] = [
   {name: "Dream11", logo: Dream11Logo},
   {name: "Agoda", logo: AgodaLogo},
@@ -41,6 +49,15 @@ export const companies: PartnerImage[] = [
   {name: "CoreEdge", logo: CoreEdgeLogo},
 ]
 
+export const companiesLight: PartnerImage[] = [
+  {name: "Dream11", logo: Dream11ClientLogoLight},
+  {name: "Agoda", logo: AgodaClientLogoLight},
+  {name: "Amazon", logo: AmazonClientLogoLight},
+  {name: "Branch", logo: BranchClientLogoLight},
+  {name: "ClearTax", logo: ClearTaxClientLogoLight},
+  {name: "Commvault", logo: CommvaultClientLogoLight},
+  {name: "CoreEdge", logo: CoreEdgeClientLogoLight},
+]
 export const clientLogos: PartnerImage[] = [
   {name: "Dream11", logo: Dream11ClientLogo},
   {name: "Agoda", logo: AgodaClientLogo},
@@ -644,6 +661,163 @@ export enum CookiePreferenceCategory {
   MARKETING = "Marketing",
 }
 
+export const NavbarItems = [
+  {
+    name: "Pricing",
+    link: "/pricing",
+  },
+  {
+    name: "Docs",
+    link: "/docs",
+  },
+  {
+    name: "Blog",
+    link: "/blog",
+  },
+  {
+    name: "Releases",
+    link: "/releases",
+  },
+]
+
+export const StatsForDevelopers = [
+  {
+    title: "Active Developers",
+    stat: 50000,
+    suffix: "+",
+  },
+  {
+    title: "Accuracy Rate",
+    stat: 99.7,
+    suffix: "%",
+    decimals: 1,
+  },
+
+  {
+    title: "Github Star",
+    stat: 3554,
+  },
+]
+
+export const TechDetails = [
+  {
+    title: "Backend - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["/images/home/avatar1.svg", "/images/home/avatar2.svg", "/images/home/avatar3.svg"],
+  },
+  {
+    title: "Devops - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["/images/home/avatar1.svg", "/images/home/avatar2.svg", "/images/home/avatar3.svg"],
+  },
+  {
+    title: "Security & infra - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["/images/home/avatar1.svg", "/images/home/avatar2.svg", "/images/home/avatar3.svg"],
+  },
+  {
+    title: "Solo dev - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["/images/home/avatar1.svg", "/images/home/avatar2.svg", "/images/home/avatar3.svg"],
+  },
+]
+
+export const TECHS = ["Backend", "Devops", "Security & infra", "Solo Dev"]
+
+export const BENEFITS = [
+  {
+    imageUrl: "/icons/basic/gear.svg",
+    imageLightUrl: "/icons/basic/gear-light.svg",
+    title: "Use your favorite IDE",
+    smallText: true,
+    description:
+      "Forge works natively with your CLI, so you don't need to switch IDEs. Whether you use VS Code, Xcode, Neovim, IntelliJ, Android Studio, or any other IDE, Forge integrates seamlessly with your shell and can access all the CLI tools you already have.",
+  },
+  {
+    imageUrl: "/icons/basic/target.svg",
+    imageLightUrl: "/icons/basic/target-light.svg",
+    title: "Control speed vs accuracy",
+    smallText: true,
+    description:
+      "Pick the right model for each task. Need to plan something complex? Use a thinking model. Want quick code changes? Use a fast model. Working with large files? Choose a big context model. You can even mix models - plan with one, then code with",
+  },
+  {
+    imageUrl: "/icons/basic/puzzlePiece.svg",
+    imageLightUrl: "/icons/basic/puzzlePiece-light.svg",
+    title: "Work with your existing AI providers",
+    smallText: false,
+    description:
+      "Already have API keys and credits? Forge gives enterprise teams complete control over where your codebase goes - use self-hosted LLMs, cloud providers, while maintaining full visibility and governance.",
+  },
+  {
+    imageUrl: "/icons/basic/robot.svg",
+    imageLightUrl: "/icons/basic/robot-light.svg",
+    title: "Create and share specialized agents",
+    smallText: false,
+    description:
+      "You can build and share agents specific for your usecase, for example you can build a Frontend agent, Backend agent, DevOps agent, etc. You can also share these agents with your team members.",
+  },
+  {
+    imageUrl: "/icons/basic/swap.svg",
+    imageLightUrl: "/icons/basic/swap-light.svg",
+    title: "Handle massive refactors",
+    smallText: true,
+    description:
+      "Handle codebase migrations and large-scale refactors with built-in task management, progress tracking, and intelligent context management without worrying about going out of context.",
+  },
+]
+
+export const CARDS_DATA = [
+  {
+    imageUrl: "/images/home/people1.png",
+    title: "Forge feels like pair programming with someone who actually understands my stack.",
+    author: "Raj, Full-Stack Developer",
+  },
+  {
+    imageUrl: "/images/home/people2.png",
+    title: "Forge feels like pair programming with someone who actually understands my stack.",
+    author: "Raj, Full-Stack Developer",
+  },
+  {
+    imageUrl: "/images/home/people3.png",
+    title: "Forge feels like pair programming with someone who actually understands my stack.",
+    author: "Raj, Full-Stack Developer",
+  },
+  {
+    imageUrl: "/images/home/people4.png",
+    title: "Forge feels like pair programming with someone who actually understands my stack.",
+    author: "Raj, Full-Stack Developer",
+  },
+  {
+    imageUrl: "/images/home/people1.png",
+    title: "Forge feels like pair programming with someone who actually understands my stack.",
+    author: "Raj, Full-Stack Developer",
+  },
+  {
+    imageUrl: "/images/home/people2.png",
+    title: "Forge feels like pair programming with someone who actually understands my stack.",
+    author: "Raj, Full-Stack Developer",
+  },
+]
+
+export const FORGE_CODE_INSTALL_COMMAND = "npx forgecode@latest"
+
 export const footerItems: FooterItem[] = [
   {
     title: "Developers",
@@ -653,29 +827,68 @@ export const footerItems: FooterItem[] = [
         link: pageLinks.docs,
       },
       {
-        name: "Blogs",
-        link: pageLinks.blog,
-      },
-      {
         name: "Releases",
         link: pageLinks.releases,
       },
+      // {
+      //   name: "Report a Bug",
+      //   link: "",
+      // },
+      // {
+      //   name: "Contributors",
+      //   link: "",
+      // },
     ],
   },
   {
-    title: "Company",
+    title: "Legal",
     items: [
-      {
-        name: "Pricing",
-        link: pageLinks.pricing,
-      },
       {
         name: "Privacy Policy",
         link: pageLinks.privacyPolicy,
       },
+      // {
+      //   name: "Terms",
+      //   link: "",
+      // },
       {
-        name: "We're Hiring",
-        link: "https://forms.gle/F8dQkLqtCsFwctLa6",
+        name: "Cookie Settings",
+        link: "",
+      },
+    ],
+  },
+  // {
+  //   title: "Company",
+  //   items: [
+  //     {
+  //       name: "Contact",
+  //       link: "",
+  //     },
+  //     {
+  //       name: "Testimonials",
+  //       link: "",
+  //     },
+  //     {
+  //       name: "Hiring",
+  //       link: "https://forms.gle/F8dQkLqtCsFwctLa6",
+  //     },
+  //   ],
+  // },
+  {
+    title: "Resources",
+    items: [
+      {
+        name: "Blogs",
+        link: pageLinks.blog,
+      },
+    ],
+  },
+  {
+    title: "Plans",
+    items: [
+      {
+        name: "Pricing",
+        link: pageLinks.pricing,
       },
     ],
   },
@@ -688,3 +901,64 @@ export const gtagScriptContent = `
 
   gtag('config', 'G-FLJBT3GYVJ');
 `
+
+export const COMMANDS = [
+  {
+    command: "> what are the main components and how do they interact?",
+    output: [
+      "⏺ [12:15:22] Read README.md",
+      "⏺ [12:15:22] Read package.json",
+      "⏺ [12:15:22] Search at src",
+      "-  Now let me examine the main configuration files and key entry points:",
+      "⏺ [21:39:59] Read docusaurus.config.ts",
+      "⏺ [21:40:00] Read src/pages/index.tsx",
+      "⏺ [21:40:01] Read src/components/home/index.tsx",
+      "synthesizing 20s ctrl+C to interrupt",
+      "- Based on my analysis of the codebase, here are the main components and how they interact:",
+      "Main Components Overview",
+      "- This is a Docusaurus 2 based website for Forge Code - an AI coding platform. The architecture follows a modern React/TypeScript pattern with custom theming and components.",
+    ],
+  },
+  {
+    command: "> how do I update?",
+    output: [
+      "- I need clarification on what you'd like to update. Here are the common update scenarios for this Docusaurus website:",
+      "1. Update Website Content",
+      "1. Update Dependencies",
+      "2. Update Docusaurus Framework",
+      "3. Deploy Updates",
+      "4. Update Configuration",
+    ],
+  },
+  {
+    command: "> /muse",
+    output: ["[21:40:20] - Switched to agent MUSE"],
+  },
+  {
+    command: "> /exit",
+    output: ["[21:40:40] - Exiting session...", "Goodbye."],
+  },
+]
+
+export const GUIDES = [
+  {
+    title: "New Conversation",
+    details: "/new",
+  },
+  {
+    title: "Get started",
+    details: "/info, /help",
+  },
+  {
+    title: "Switch agent",
+    details: "/forge or /muse",
+  },
+  {
+    title: "update",
+    details: "/update",
+  },
+  {
+    title: "quit",
+    details: "/exit or <CTRL+D>",
+  },
+]

@@ -12,6 +12,7 @@ import DocItemContent from "@theme/DocItem/Content"
 import DocBreadcrumbs from "@theme/DocBreadcrumbs"
 import styles from "./styles.module.css"
 import Giscus from "@giscus/react"
+import {useThemeContext} from "../../ThemeProvider/ThemeProvider"
 
 interface DocItemLayoutProps {
   children: React.JSX.Element
@@ -32,6 +33,7 @@ function useDocTOC() {
 }
 
 export default function DocItemLayout({children}: DocItemLayoutProps) {
+  const {theme} = useThemeContext()
   const docTOC = useDocTOC()
   const giscus = (
     <div className="min-h-[450px]">
@@ -47,7 +49,7 @@ export default function DocItemLayout({children}: DocItemLayoutProps) {
         reactionsEnabled="1"
         emitMetadata="1"
         inputPosition="top"
-        theme={"https://forgecode.dev/css/giscus-theme.css"}
+        theme={theme === "dark" ? "dark" : "light"}
         lang="en"
         strict="0"
         loading="lazy"
@@ -55,8 +57,8 @@ export default function DocItemLayout({children}: DocItemLayoutProps) {
     </div>
   )
   return (
-    <div className="row">
-      <div className={clsx("col", !docTOC.hidden && styles.docItemCol)}>
+    <div className="row pb-10">
+      <div className={clsx("col pt-2 md:pt-6 xl:pt-2", !docTOC.hidden && styles.docItemCol)}>
         <DocVersionBanner />
         <div className={styles.docItemContainer}>
           <article>

@@ -1,6 +1,6 @@
 import React, {useEffect} from "react"
-import OriginalNavbar from "@theme-original/Navbar"
 import {useLocation} from "@docusaurus/router"
+import NewNavbar from "@site/src/components/shared/Navbar"
 
 export default function Navbar(props: any): JSX.Element {
   const location = useLocation()
@@ -15,7 +15,6 @@ export default function Navbar(props: any): JSX.Element {
   const hasAnnouncement = currentDate < targetDate
 
   // Calculate navbar classes for sticky behavior on blog pages
-  const navbarClasses = isBlogPage ? "sticky top-0 z-50" : ""
 
   // Override Docusaurus hideOnScroll behavior ONLY for blog pages
   useEffect(() => {
@@ -55,9 +54,5 @@ export default function Navbar(props: any): JSX.Element {
     }
   }, [isBlogPage, location.pathname])
 
-  return (
-    <div className={navbarClasses}>
-      <OriginalNavbar {...props} />
-    </div>
-  )
+  return <div>{location.pathname !== "/" ? <NewNavbar /> : null}</div>
 }

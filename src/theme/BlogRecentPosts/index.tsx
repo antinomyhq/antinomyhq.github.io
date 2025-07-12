@@ -20,7 +20,9 @@ export default function BlogRecentPosts({sidebar}: {sidebar: Props["sidebar"]}):
       <div className="row justify-center">
         <div className="col col--7">
           <hr className="h-[1px] !bg-tailCall-light-300" />
-          <h1 className=" text-title-medium">Recent Blog Posts</h1>
+          <h1 className="text-[22px] text-tailCall-lightMode---primary-600 dark:text-tailCall-darkMode---primary-400 font-medium">
+            Recent Blog Posts
+          </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-3 mb-10 md:mb-20">
             {recentBlogPostsMetadata?.map((item: RecentBlogPostItem) => {
               const {permalink, date, title, description, authors} = item
