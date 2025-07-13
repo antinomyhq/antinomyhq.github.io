@@ -117,13 +117,3 @@ Export session context to see what rules are active:
 ```
 
 This shows exactly what context (including custom rules) is sent to the AI.
-
-## API Reference
-
-| Field          | Type                          | Description                                 |
-| -------------- | ----------------------------- | ------------------------------------------- |
-| `custom_rules` | `string`                      | Multi-line text containing rule definitions |
-| Global scope   | Root level                    | Rules applied to all agents                 |
-| Agent scope    | Under `agents[].custom_rules` | Rules for specific agent                    |
-
-For detailed examples, see the [Custom Rules Guide](/guides/custom-rules-guide).
