@@ -4,259 +4,331 @@ Every development team has its own way of doing things. Code style preferences, 
 
 Forge's custom rules feature solves this by letting you embed your team's standards directly into every AI interaction. Instead of repeating the same guidelines in every conversation, you define them once and Forge ensures every agent follows them automatically.
 
-:::info Quick Reference
-For technical implementation details and API reference, see the [Custom Rules feature documentation](/custom-rules).
-:::
-
 ## What Are Custom Rules?
 
 Custom rules are persistent instructions that get injected into every AI conversation. Think of them as your team's coding constitution - fundamental principles that should guide every decision the AI makes in your codebase.
 
-When you define custom rules, they become part of the AI's system prompt, meaning they're always active and take priority over default behaviors. Global rules take priority over agent-specific rules when both are defined.
+When you define custom rules, they become part of the AI's system prompt, meaning they're always active and take priority over default behaviors.
+
+:::info Quick Reference
+For technical implementation details and API reference, see the [Custom Rules feature documentation](/custom-rules).
+:::
+
+## Quick Start: Your First Custom Rule
+
+Let's start with something simple. Add this to your `forge.yaml` file:
+
+```yaml
+# forge.yaml
+custom_rules: |
+  - Add error handling to all functions
+  - Include unit tests for new code
+  - Use meaningful variable names
+```
+
+That's it! Now every AI interaction will follow these three basic principles. Let's see how this works in practice.
+
+### Before Custom Rules
+
+```
+User: "Create a function to calculate user age"
+AI: [Creates basic function without error handling or tests]
+User: "Add error handling and tests please"
+AI: [Adds basic validation]
+```
+
+### After Custom Rules
+
+```
+User: "Create a function to calculate user age"
+AI: [Creates function with error handling, input validation, and comprehensive tests]
+User: "Perfect!"
+```
 
 ## Setting Up Custom Rules
 
-### Global Rules (Recommended)
+### Global Rules (Recommended for Teams)
 
 Add rules to your `forge.yaml` file to apply them across all agents:
 
 ```yaml
 # forge.yaml
 custom_rules: |
-  Error Handling:
-  - Use `anyhow::Result` for error handling in services
-  - Create domain errors using `thiserror`
-  - Never implement `From` for converting domain errors
-
-  Testing Standards:
-  - All tests must use `pretty_assertions::assert_eq`
-  - Write tests in three steps: fixture, actual, expected
-  - Keep tests in the same file as source code
-  - Use `insta` for snapshot testing
-
-  Code Style:
-  - Use camelCase for variables, PascalCase for classes
-  - Add comprehensive error handling to all functions
-  - Include unit tests for all new functions
+  - Use TypeScript strict mode
+  - Add error handling to all functions
+  - Include unit tests for new code
+  - Use meaningful variable names
 ```
 
 ### Agent-Specific Rules
 
-You can also define rules for individual agents:
+You can also define rules for individual agents when you need specialized behavior:
 
 ```yaml
 # forge.yaml
 agents:
-  - id: frontend-specialist
+  - id: frontend-dev
     custom_rules: |
-      - Use TypeScript strict mode
-      - Prefer functional components with hooks
-      - Include accessibility attributes (aria-label, role)
-      - Use CSS modules for styling
-      - Add PropTypes for all component props
+      - Use React functional components
+      - Add accessibility attributes
+      - Include PropTypes for components
 
-  - id: backend-specialist
+  - id: backend-dev
     custom_rules: |
-      - Use dependency injection for services
-      - Add request/response logging to all endpoints
-      - Validate all input with Joi schemas
-      - Use database transactions for multi-step operations
+      - Use dependency injection
+      - Add request logging to endpoints
+      - Validate all input with schemas
 ```
 
-## Why Custom Rules Transform Your Workflow
+:::important Rule Priority
+Global rules override agent-specific rules when both are defined. This means your team-wide standards always take precedence over individual agent configurations.
+:::
 
-### Before Custom Rules: Constant Repetition
+## Progressive Learning Path
 
-```
-User: "Add a new API endpoint for user registration"
-AI: [Creates endpoint without validation, error handling, or tests]
-User: "Add input validation, proper error responses, and unit tests"
-AI: [Adds basic validation]
-User: "Use our standard error format and add integration tests too"
-AI: [Finally matches team standards after 3 rounds]
-```
+### Level 1: Basic Standards (Start Here)
 
-### After Custom Rules: Consistent Quality
-
-```
-User: "Add a new API endpoint for user registration"
-AI: [Creates endpoint with validation, standardized error handling,
-     comprehensive tests, and logging - all following team standards]
-User: "Perfect, ship it!"
-```
-
-## Real-World Custom Rules Examples
-
-### For React/TypeScript Teams
+Perfect for teams just getting started with custom rules:
 
 ```yaml
 custom_rules: |
-  Component Standards:
-  - Use TypeScript strict mode with explicit return types
-  - Prefer functional components with React hooks
-  - Include JSDoc comments for all props interfaces
-  - Use React.memo for performance optimization when appropriate
-  - Add data-testid attributes for testing
-
-  State Management:
-  - Use Zustand for global state, useState for local state
-  - Keep state as close to usage as possible
-  - Use custom hooks for complex state logic
-
-  Testing Requirements:
-  - Write tests using React Testing Library
-  - Test user interactions, not implementation details
-  - Mock external dependencies consistently
-  - Achieve 80%+ test coverage for new components
+  - Add error handling to all functions
+  - Include unit tests for new code
+  - Use meaningful variable names
+  - Add comments for complex logic
 ```
 
-### For Python/Django Projects
+### Level 2: Language-Specific Patterns
+
+Once comfortable with basic rules, add language-specific conventions:
 
 ```yaml
 custom_rules: |
-  Code Organization:
-  - Follow Django's app structure conventions
-  - Use type hints for all function parameters and returns
-  - Keep views thin, put business logic in services
-  - Use dataclasses for data transfer objects
+  TypeScript:
+  - Use explicit type annotations
+  - Prefer interfaces over type aliases
+  - Use React.memo for performance optimization
 
-  Database Practices:
-  - Always use database transactions for multi-model operations
-  - Add database indexes for frequently queried fields
-  - Use select_related and prefetch_related to avoid N+1 queries
-  - Write database migrations that are reversible
+  Python:
+  - Use type hints for all functions
+  - Follow PEP 8 naming conventions
+  - Use dataclasses for data objects
+```
 
-  Testing Standards:
-  - Use pytest with factory_boy for test data
-  - Mock external API calls with responses library
+### Level 3: Team-Specific Architecture
+
+Advanced rules for established teams with specific patterns:
+
+```yaml
+custom_rules: |
+  Architecture:
+  - Use repository pattern for data access
+  - Implement command/query separation
+  - Apply dependency injection for services
+
+  Testing:
+  - Use arrange-act-assert pattern
+  - Mock external dependencies
   - Test both happy path and error conditions
-  - Use parametrized tests for multiple input scenarios
 ```
 
-### For DevOps/Infrastructure Teams
+## Real-World Examples by Tech Stack
+
+### React/TypeScript Teams
 
 ```yaml
 custom_rules: |
-  Infrastructure as Code:
-  - Use Terraform for all infrastructure provisioning
-  - Include resource tags for cost tracking and environment identification
-  - Store sensitive values in HashiCorp Vault or AWS Secrets Manager
-  - Version all infrastructure changes through Git
-
-  Security Requirements:
-  - Enable encryption at rest and in transit for all data stores
-  - Use least-privilege access principles for all IAM policies
-  - Implement network segmentation with security groups
-  - Add monitoring and alerting for all critical resources
-
-  Deployment Standards:
-  - Use blue-green deployments for zero-downtime updates
-  - Include health checks for all services
-  - Implement automatic rollback on deployment failures
-  - Document runbook procedures for incident response
+  - Use TypeScript strict mode
+  - Prefer functional components with hooks
+  - Add data-testid attributes for testing
+  - Use React Testing Library for tests
+  - Include JSDoc comments for props
 ```
 
-## How Custom Rules Work Under the Hood
+### Python/Django Projects
+
+```yaml
+custom_rules: |
+  - Use type hints for all functions
+  - Keep views thin, logic in services
+  - Use database transactions for multi-model operations
+  - Write tests using pytest with factory_boy
+  - Follow Django app structure conventions
+```
+
+### Node.js/Express APIs
+
+```yaml
+custom_rules: |
+  - Use async/await instead of callbacks
+  - Add input validation with Joi schemas
+  - Include request/response logging
+  - Use dependency injection for services
+  - Write integration tests for all endpoints
+```
+
+## How Custom Rules Work
 
 When you start a Forge session, the system:
 
 1. **Loads your `forge.yaml` configuration**
-2. **Merges global and agent-specific rules (global rules override agent-specific rules)**
+2. **Merges global and agent-specific rules**
 3. **Injects rules into the AI's system prompt**
 4. **Applies rules to every response throughout the session**
 
 The rules become part of the AI's "personality" for that session, influencing every decision it makes about your code.
 
-## Advanced Rule Strategies
+## Advanced Strategies
 
-### Conditional Rules Based on File Types
+### Conditional Rules by File Type
 
 ```yaml
 custom_rules: |
-  For TypeScript files (.ts, .tsx):
-  - Use explicit type annotations for function parameters
-  - Prefer interfaces over type aliases for object shapes
+  For .ts/.tsx files:
+  - Use explicit type annotations
   - Add JSDoc comments for public APIs
 
-  For Python files (.py):
+  For .py files:
   - Use type hints following PEP 484
   - Format with black and sort imports with isort
-  - Follow PEP 8 naming conventions
 
-  For SQL files (.sql):
+  For .sql files:
   - Use uppercase for SQL keywords
-  - Include meaningful table and column aliases
   - Add comments explaining complex queries
 ```
 
-### Progressive Rule Complexity
-
-Start simple and add complexity as your team's practices evolve:
+### Environment-Specific Rules
 
 ```yaml
-# Week 1: Basic standards
 custom_rules: |
-  - Add error handling to all functions
-  - Include unit tests for new code
-  - Use meaningful variable names
+  Development:
+  - Include detailed logging and debug information
+  - Add comprehensive error messages
 
-# Month 1: More specific patterns
-custom_rules: |
-  Error Handling:
-  - Use Result<T, E> pattern for fallible operations
-  - Log errors with structured context
-  - Provide user-friendly error messages
-
-  Testing:
-  - Write tests before implementation (TDD)
-  - Use arrange-act-assert pattern
-  - Mock external dependencies
-  - Test edge cases and error conditions
-
-# Month 3: Team-specific conventions
-custom_rules: |
-  [Previous rules plus:]
-
-  Architecture Patterns:
-  - Use repository pattern for data access
-  - Implement command/query separation
-  - Apply dependency injection for services
-  - Use event-driven architecture for cross-service communication
+  Production:
+  - Use structured logging with correlation IDs
+  - Implement graceful error handling
+  - Add performance monitoring
 ```
 
-## Viewing Your Active Rules
+## Troubleshooting
 
-Want to see what rules are currently active? Use the context export feature:
+### Common Issues and Solutions
+
+**Problem: Rules aren't being applied**
+
+- Check your `forge.yaml` syntax with a YAML validator
+- Ensure the file is in your project root
+- Restart your Forge session after making changes
+
+**Problem: Rules conflict with each other**
+
+- Global rules override agent-specific rules
+- Later rules in the same section override earlier ones
+- Be specific about when rules apply (file types, contexts)
+
+**Problem: Rules are too vague**
+
+```yaml
+# Too vague
+custom_rules: |
+  - Write good code
+  - Add tests
+
+# Better
+custom_rules: |
+  - Add error handling with try/catch blocks
+  - Include unit tests with arrange-act-assert pattern
+```
+
+**Problem: Too many rules causing confusion**
+
+- Start with 3-5 core rules
+- Add new rules gradually as patterns emerge
+- Group related rules under clear categories
+
+### Debugging Your Rules
+
+View what rules are currently active:
 
 ```bash
 /dump html
 ```
 
-This generates an HTML file showing exactly what context (including your custom rules) is being sent to the AI. Perfect for debugging or sharing with team members.
+This generates an HTML file showing exactly what context (including your custom rules) is being sent to the AI.
 
-## Getting Started
+### Performance Tips
 
-1. **Start simple** - Add 3-5 basic rules your team always follows
-2. **Test with a small feature** - See how the AI applies your rules
-3. **Iterate and refine** - Add more specific rules as you identify patterns
-4. **Share with your team** - Get everyone using the same standards
+- Keep rules concise and specific
+- Use bullet points for better readability
+- Group related rules under clear headings
+- Avoid duplicate or contradictory rules
+
+## Best Practices
+
+### Writing Effective Rules
+
+**Do:**
+
+- Be specific about what you want
+- Use action-oriented language ("Add", "Use", "Include")
+- Group related rules together
+- Start simple and iterate
+
+**Don't:**
+
+- Write vague guidelines ("write good code")
+- Create conflicting rules
+- Add too many rules at once
+- Forget to test your rules
+
+### Team Adoption
+
+1. **Start with team consensus** - Get buy-in on 3-5 core rules
+2. **Document the why** - Explain reasoning behind each rule
+3. **Review regularly** - Update rules as practices evolve
+4. **Share examples** - Show before/after comparisons
+
+## Getting Started Checklist
+
+- [ ] Create a `forge.yaml` file in your project root
+- [ ] Add 3-5 basic custom rules
+- [ ] Test with a small feature implementation
+- [ ] Check the HTML context dump
+- [ ] Iterate based on results
+- [ ] Gradually add more specific rules
+
+---
+
+## Need Help?
+
+### Export Your Session Context
+
+```bash
+/dump html
+```
+
+### Get Support
+
+- **Discord**: [Join our Discord community](https://discord.gg/kRZBPpkgwq)
+- **Twitter/X**: Send us a DM [@forgecodehq](https://x.com/forgecodehq)
+
+---
+
+### Common Questions
+
+**Q: Can I have different rules for different projects?**
+A: Yes! Each project's `forge.yaml` file can have its own custom rules.
+
+**Q: How many rules can I add?**
+A: There's no hard limit, but we recommend starting with 5-10 rules and growing gradually.
+
+**Q: Do rules apply to all AI models?**
+A: Yes, custom rules work with all supported AI models in Forge.
+
+**Q: Can I share rules between projects?**
+A: You can copy rules between `forge.yaml` files, or create a template for your organization.
+
+---
 
 Custom rules transform AI coding from a series of corrections into a smooth, standards-compliant workflow. Your AI learns your team's way of doing things once, then applies that knowledge consistently across every project.
-
----
-
-### Need Help?
-
-If you're experiencing issues with Forge:
-
-1. **Export your session context:**
-
-   ```bash
-   /dump html
-   ```
-
-2. **Share with our team:**
-   - **Discord**: [Join our Discord community](https://discord.gg/kRZBPpkgwq)
-   - **Twitter/X**: Send us a DM [@forgecodehq](https://x.com/forgecodehq)
-
----

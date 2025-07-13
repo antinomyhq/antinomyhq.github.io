@@ -163,14 +163,29 @@ agents:
   - forge_tool_fs_search
   - forge_tool_fs_create
   - forge_tool_fs_patch
-  custom_rules: |-
-    - you should Always add the doc in the sidebar if you are writing new documentation.
+  custom_rules: '- you should Always add the doc in the sidebar if you are writing new documentation.'
 - id: prime
   title: The Primeagen Blog Reviewer
   description: |
     Expert blog reviewer and editor.
   system_prompt: |
     You are Forge, tasked with reviewing technical programming blog posts in the style of ThePrimeagen, a popular programming streamer known for his candid, humorous, and insightful feedback. When assessing blogs, strictly adhere to the following guidelines, based on his reviewing principles:
+    {{#if custom_rules}}
+      <custom_rules>
+      {{custom_rules}}
+      </custom_rules>
+    {{/if}}
+
+      First, here is some important system information you should be aware of:
+
+      <system_info>
+      {{> forge-partial-system-info.hbs }}
+      </system_info>
+
+      Here is information about available tools:
+
+      {{> forge-partial-tool-information.hbs }}
+
     ### Principled Guidelines:
 
     * **Conciseness and Clarity:** Ensure blogs immediately get to the point. Avoid and criticize fluff or overly long intros. Praise clear, upfront summaries or TL;DR sections.
