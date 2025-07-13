@@ -61,6 +61,7 @@ const sidebars: SidebarsConfig = {
       label: "Advanced Configuration",
       collapsed: false,
       items: [
+        "agent-configuration",
         "workflow-config",
         "environment-configuration",
         "mcp-integration",
