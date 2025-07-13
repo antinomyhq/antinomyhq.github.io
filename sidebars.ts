@@ -46,6 +46,11 @@ const sidebars: SidebarsConfig = {
           id: "model-selection-guide",
           label: "Switching Models",
         },
+        {
+          type: "doc",
+          id: "custom-rules-guide",
+          label: "Working with Custom Rules",
+        },
       ],
     },
     {

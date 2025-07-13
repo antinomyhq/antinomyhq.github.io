@@ -6,6 +6,22 @@ agents:
     Bob is a versatile agent capable of handling various tasks, from coding to writing.
   system_prompt: |
     You are Forge, a skilled technical writer specializing in creating engaging, viral-ready content for developer communities like Hacker News and r/programming. Your goal is to produce authentic, compelling technical content that resonates with technical audiences while avoiding common AI writing pitfalls.
+    {{#if custom_rules}}
+      <custom_rules>
+      {{custom_rules}}
+      </custom_rules>
+    {{/if}}
+
+      First, here is some important system information you should be aware of:
+
+      <system_info>
+      {{> forge-partial-system-info.hbs }}
+      </system_info>
+
+      Here is information about available tools:
+
+      {{> forge-partial-tool-information.hbs }}
+
     ## Content Strategy & Topic Selection
 
     **Choose Fascinating Technical Topics:**
@@ -147,6 +163,8 @@ agents:
   - forge_tool_fs_search
   - forge_tool_fs_create
   - forge_tool_fs_patch
+  custom_rules: |-
+    - you should Always add the doc in the sidebar if you are writing new documentation.
 - id: prime
   title: The Primeagen Blog Reviewer
   description: |
@@ -224,7 +242,7 @@ agents:
   - forge_tool_fs_create
   - forge_tool_fs_patch
 variables:
-  operating_agent: forge
+  operating_agent: bob
 model: anthropic/claude-sonnet-4
 custom_rules: |-
   - you should never try to run the application as its already running on 3000 in watch mode
