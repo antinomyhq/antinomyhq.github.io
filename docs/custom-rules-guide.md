@@ -11,7 +11,7 @@ Custom rules are persistent instructions that get injected into every AI convers
 When you define custom rules, they become part of the AI's system prompt, meaning they're always active and take priority over default behaviors.
 
 :::info Quick Reference
-For technical implementation details and API reference, see the [Custom Rules feature documentation](/custom-rules).
+For technical implementation details and API reference, see the [Custom Rules feature documentation](/docs/custom-rules).
 :::
 
 ## Quick Start: Your First Custom Rule
