@@ -33,8 +33,8 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
   const rightUsers = users.slice(5, 10);
 
   const renderTable = (userData: LeaderboardUser[], isMobile: boolean = false) => (
-    <div className="overflow-x-auto">
-      <div className="min-w-full">
+    <div className="w-full">
+      <div className="w-full">
         {isMobile ? (
           // Mobile: Table layout with consistent columns
           <>
@@ -42,15 +42,15 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
               <div 
                 className="grid py-2 sm:py-3" 
                 style={{ 
-                  gridTemplateColumns: '45px 32px 1fr 65px 75px',
-                  gap: '6px 8px'
+                  gridTemplateColumns: '40px 28px 1fr 55px 65px',
+                  gap: '4px 6px'
                 }}
               >
                 <div className="text-left text-tailCall-white font-semibold text-xs">Rank</div>
                 <div className="text-left text-tailCall-white font-semibold text-xs"></div>
                 <div className="text-left text-tailCall-white font-semibold text-xs">Name</div>
-                <div className="text-left text-tailCall-white font-semibold text-xs">Requests</div>
-                <div className="text-left text-tailCall-white font-semibold text-xs">Lines of Code</div>
+                <div className="text-left text-tailCall-white font-semibold text-xs">Req</div>
+                <div className="text-left text-tailCall-white font-semibold text-xs">LoC</div>
               </div>
             </div>
             <div className="space-y-1 sm:space-y-2">
@@ -59,8 +59,8 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
                   key={user.serialNumber} 
                   className="grid py-2 sm:py-3 transition-colors hover:bg-tailCall-dark-500/30 rounded-lg" 
                   style={{ 
-                    gridTemplateColumns: '45px 32px 1fr 65px 75px',
-                    gap: '6px 8px'
+                    gridTemplateColumns: '40px 28px 1fr 55px 65px',
+                    gap: '4px 6px'
                   }}
                 >
                   <div className="text-tailCall-light-300 text-xs font-medium">
@@ -97,8 +97,8 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
               <div 
                 className="grid py-2 sm:py-3" 
                 style={{ 
-                  gridTemplateColumns: '50px 35px 1fr 80px 90px',
-                  gap: '8px 12px'
+                  gridTemplateColumns: '45px 32px 1fr 70px 80px',
+                  gap: '6px 10px'
                 }}
               >
                 <div className="text-left text-tailCall-white font-semibold text-xs sm:text-sm">Rank</div>
@@ -114,8 +114,8 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
                   key={user.serialNumber} 
                   className="grid py-2 sm:py-3 transition-colors hover:bg-tailCall-dark-500/30 rounded-lg" 
                   style={{ 
-                    gridTemplateColumns: '50px 35px 1fr 80px 90px',
-                    gap: '8px 12px'
+                    gridTemplateColumns: '45px 32px 1fr 70px 80px',
+                    gap: '6px 10px'
                   }}
                 >
                   <div className="text-tailCall-light-300 text-xs sm:text-sm font-medium">
@@ -161,8 +161,8 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
       </Section>
 
       {/* Expanded container for tables to prevent horizontal scrolling */}
-      <div className="w-full px-8 md:px-24 lg:px-36">
-        <div className="w-full max-w-none mx-auto">
+      <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+        <div className="w-full max-w-7xl mx-auto">
           {/* Mobile: Single list view (xs to sm) */}
           <div className="md:hidden">
             <div className="p-3 sm:p-4">
@@ -175,7 +175,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
 
           {/* Tablet: Single list view with better spacing (md to lg) */}
           <div className="hidden md:block lg:hidden">
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <h2 className="text-title-small font-bold text-tailCall-white mb-4">
                 Top 10 Users
               </h2>
