@@ -5,6 +5,7 @@ import Benefits from "./Benefits"
 import Configuration from "./Configuration"
 import IntroductionGif from "./IntroductionGif"
 import WhyChooseForge from "./WhyChooseForge"
+import Leaderboard from "./Leaderboard"
 import FinalCTA from "./FinalCTA"
 
 const HomePage = (): JSX.Element => {
@@ -15,6 +16,7 @@ const HomePage = (): JSX.Element => {
       <Configuration />
       {/* <WhyChooseForge /> */}
       <Benefits />
+      <Leaderboard />
       <FinalCTA />
     </div>
   )
