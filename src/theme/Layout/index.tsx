@@ -44,11 +44,12 @@ export default function Layout(props: Props): JSX.Element {
       {hasAnnouncement && (
         <div className="sticky top-0 z-50">
           <Announcement
-            text="⚡ Stop paying $20/month for AI coding – Forge Code is 100% FREE"
             refLink="https://app.forgecode.dev/app/"
             refText="Get Started →"
             variant="gradient"
-          />
+          >
+            <i className="fas fa-trophy"></i> <i className="fas fa-code"></i> #1 CLI Coding Agent on open router
+          </Announcement>
         </div>
       )}
 
