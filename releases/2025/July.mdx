@@ -8,6 +8,77 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 <VersionUpdateCard />
 
+## v0.99.1 
+
+### 📝 Documentation
+
+- docs: update readme for `max_requests_per_turn` and `tool_max_failure_limit` [@laststylebender14](https://github.com/laststylebender14) ([#1027](https://github.com/antinomyhq/forge/pull/1027))
+
+### 🐛 Bug Fixes
+
+- fix: update HTTP-Referer header to point to the new forgecode.dev URL [@amitksingh1490](https://github.com/amitksingh1490) ([#1080](https://github.com/antinomyhq/forge/pull/1080))
+- fix: improve LLM caching [@tusharmath](https://github.com/tusharmath) ([#1088](https://github.com/antinomyhq/forge/pull/1088))
+- fix: use `max_completion_tokens` instead of `max_tokens` for open-ai compatible providers [@laststylebender14](https://github.com/laststylebender14) ([#1086](https://github.com/antinomyhq/forge/pull/1086))
+- fix: use blocking thread to readline [@tusharmath](https://github.com/tusharmath) ([#1085](https://github.com/antinomyhq/forge/pull/1085))
+
+### 🧰 Maintenance
+
+- chore: remove forge\_domain direct dependency on crates [@tusharmath](https://github.com/tusharmath) ([#1084](https://github.com/antinomyhq/forge/pull/1084))
+- chore: update labels.yml [@ssddOnTop](https://github.com/ssddOnTop) ([#1082](https://github.com/antinomyhq/forge/pull/1082))
+-  chore: add permissions to GitHub Label Sync workflow  [@ssddOnTop](https://github.com/ssddOnTop) ([#1078](https://github.com/antinomyhq/forge/pull/1078))
+- chore: add GitHub label sync workflow and related tests [@ssddOnTop](https://github.com/ssddOnTop) ([#1077](https://github.com/antinomyhq/forge/pull/1077))
+
+
+---
+## v0.99.0 
+
+### 🚀 Features
+
+- chore: integrate `provider_auth_id` [@ssddOnTop](https://github.com/ssddOnTop) ([#1072](https://github.com/antinomyhq/forge/pull/1072))
+- feat(provider): implement model caching with cache-first pattern [@tusharmath](https://github.com/tusharmath) ([#1071](https://github.com/antinomyhq/forge/pull/1071))
+- feat: enhance conversation compaction with per-trigger thresholds and turn-end support [@tusharmath](https://github.com/tusharmath) ([#1068](https://github.com/antinomyhq/forge/pull/1068))
+- feat: add x.ai provider support with API integration [@amitksingh1490](https://github.com/amitksingh1490) ([#1066](https://github.com/antinomyhq/forge/pull/1066))
+
+### 🐛 Bug Fixes
+
+- fix: reasoning with compaction [@laststylebender14](https://github.com/laststylebender14) ([#1059](https://github.com/antinomyhq/forge/pull/1059))
+- fix: `/dump` Errors when there's no `ConversationId` [@Achyutha](https://github.com/Achyutha) ([#1065](https://github.com/antinomyhq/forge/pull/1065))
+- fix: increase default connect timeout [@ssddOnTop](https://github.com/ssddOnTop) ([#1070](https://github.com/antinomyhq/forge/pull/1070))
+- fix: run chat request and compaction in parallel [@ssddOnTop](https://github.com/ssddOnTop) ([#1067](https://github.com/antinomyhq/forge/pull/1067))
+
+### 🧰 Maintenance
+
+- chore: integrate `provider_auth_id` [@ssddOnTop](https://github.com/ssddOnTop) ([#1072](https://github.com/antinomyhq/forge/pull/1072))
+
+
+---
+## v0.98.3 
+
+### 🐛 Bug Fixes
+
+- fix: update default `read_timeout` to 5 minutes [@tusharmath](https://github.com/tusharmath) ([#1064](https://github.com/antinomyhq/forge/pull/1064))
+- fix: cache posthog client [@tusharmath](https://github.com/tusharmath) ([#1063](https://github.com/antinomyhq/forge/pull/1063))
+- fix: remove auto compaction after each turn [@tusharmath](https://github.com/tusharmath) ([#1062](https://github.com/antinomyhq/forge/pull/1062))
+
+
+---
+## v0.98.2 
+
+### 🐛 Bug Fixes
+
+- fix: error tracing before exiting [@amitksingh1490](https://github.com/amitksingh1490) ([#1058](https://github.com/antinomyhq/forge/pull/1058))
+- fix: add JSON parse error handling to retry logic [@ssddOnTop](https://github.com/ssddOnTop) ([#1056](https://github.com/antinomyhq/forge/pull/1056))
+- fix: use `auth_provider_id` instead of `email` [@ssddOnTop](https://github.com/ssddOnTop) ([#1054](https://github.com/antinomyhq/forge/pull/1054))
+- fix: panic while writing app config without parent dirs [@ssddOnTop](https://github.com/ssddOnTop) ([#1057](https://github.com/antinomyhq/forge/pull/1057))
+- fix: add new line when appending [@laststylebender14](https://github.com/laststylebender14) ([#1052](https://github.com/antinomyhq/forge/pull/1052))
+- fix(deps): update rust crate thiserror to v2 @[renovate[bot]](https://github.com/apps/renovate) (#1043)
+
+### 🧰 Maintenance
+
+- chore: add login event [@ssddOnTop](https://github.com/ssddOnTop) ([#1035](https://github.com/antinomyhq/forge/pull/1035))
+
+
+---
 ## v0.98.1 
 
 - Update README.md [@amitksingh1490](https://github.com/amitksingh1490) ([#1036](https://github.com/antinomyhq/forge/pull/1036))
