@@ -14,7 +14,7 @@ Reference any file in your project using `@` followed by part of the filename, t
 > Help me debug @auth [Tab]
 ```
 
-![File tagging autocomplete in action](/docs/autocomplete.gif)
+<img src="/docs/autocomplete.gif" alt="File tagging autocomplete in action" style={{"width": "100%"}} />
 
 You'll see matching files:
 
