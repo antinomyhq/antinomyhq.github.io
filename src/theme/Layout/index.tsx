@@ -45,8 +45,8 @@ export default function Layout(props: Props): JSX.Element {
 
       {hasAnnouncement && (
         <div>
-          <Announcement refLink="https://openrouter.ai/rankings" refText={<>View Rankings →</>} variant="gradient">
-            <i className="fas fa-trophy mr-1"></i> #1 CLI Coding Agent on OpenRouter • Over 1 billion tokens processed
+          <Announcement variant="gradient">
+            <i className="fas fa-trophy mr-1"></i> #1 CLI Coding Agent on OpenRouter • Over 1 Billion tokens processed
             every day.
           </Announcement>
         </div>
