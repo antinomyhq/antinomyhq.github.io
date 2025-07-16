@@ -4,7 +4,7 @@ import React, {useEffect, useReducer, useRef, useState} from "react"
 import clsx from "clsx"
 
 import algoliaSearchHelper from "algoliasearch-helper"
-import algoliaSearch from "algoliasearch/lite"
+import {liteClient as algoliaSearch} from "algoliasearch/lite"
 
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment"
 import Head from "@docusaurus/Head"
@@ -387,7 +387,7 @@ function SearchPageContent(): JSX.Element {
   return (
     <Layout>
       <Head>
-        <title>{useTitleFormatter(getTitle())}</title>
+        <title>{useTitleFormatter().format(getTitle())}</title>
         {/*
          We should not index search pages
           See https://github.com/facebook/docusaurus/pull/3233
