@@ -4,7 +4,7 @@ interface AnnouncementProps {
   text?: string
   children?: React.ReactNode
   refLink?: string
-  refText?: string
+  refText?: React.ReactNode
   variant?: "default" | "gradient"
 }
 
