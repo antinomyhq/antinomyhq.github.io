@@ -1,6 +1,6 @@
 ---
 slug: grok-4-initial-impression
-title: "Grok 4 Just Beat Every AI Model—Is AGI Next?"
+title: "Everything You Need to Know About Grok 4"
 authors: [arindam]
 tags:
   [
@@ -26,28 +26,46 @@ Without any further ado, let's jump in!
 
 ## Brief on Grok 4
 
-Grok 4 is a reasoning model and the most intelligent model so far. To be honest, this model not only competes with other AI models but also with humans, making it the first of its kind (we'll discuss this shortly).
-
-It comes with a 256k token context window, which is quite low compared to the recent Gemini 2.5 Pro with a 1M token context window. It's just a bit ahead of the Claude 4 lineup, which has about 200k tokens.
+Grok 4 is a reasoning model and the most intelligent model so far, as you can see in the benchmark below. To be honest, this model not only competes with other AI models but also with humans, making it the first of its kind (we'll discuss this shortly).
 
 ![grok4_card.png](/blog/grok4_card.png)
 
-Grok 4 pricing is not in the expensive tier. It's the same as the pricing for Grok 3 at $3/million input tokens and $15/million output tokens.
+As shown in the chart above, it has excellent scores in Intelligence, Speed, and Pricing compared to recent AI models. It ranks at the top of the artificial intelligence chart, but if we look closely, it's a bit slower in generating responses. Grok 4 has about 13.58 seconds of latency (Time to First Token), which measures the time to receive the first part of the response from an AI model. This is just below the OpenAI o4-mini-high and equal to the Claude Sonnet 4 model.
 
-### Some key benchmarking results of Grok 4:
+I have **100 times** more training data than Grok 2, which is the first public AI model by xAI, and approximately **10 times** more reinforcement learning compute than any other AI models available in the market right now.
+
+It comes with a 256k token context window (the amount of information the model can read and remember at once), which is quite low compared to the recent Gemini 2.5 Pro with a 1M token context window. It's just a bit ahead of the Claude 4 lineup, which has about 200k tokens.
+
+Grok 4 pricing is pretty standard but comes with a catch. It's the same as the pricing for Grok 3 at $3 per million input tokens (doubles after 128k) and $15 per million output tokens (doubles after 128k).
+
+### Key Benchmarking Results of Grok 4:
 
 1. This model scores an all-time high in GPQA Diamond with 88%, which is a big win over the 86% from Gemini 2.5 Pro.
+    
+    *(GPQA Diamond tests the model’s ability to answer graduate-level, expert-domain questions (e.g., physics, law, medicine))*
+    
 2. It achieves an all-time high score in the Humanity Last Exam with 24%, beating Gemini 2.5 Pro's previous score of 21%.
+    
+    *(Humanity Last Exam tests the capabilities of large language models (LLMs) at the frontier of human knowledge)*
+    
 3. It has the joint highest score for MMLU-Pro and AIME 2024 at 87% and 94%, respectively.
-4. As you guessed, it also crushes the coding benchmarks, ranking **#1 in the LiveCodeBench** with 79.4%, where the second best is 74.2%.
+    
+    *(MMLU-Pro tests the model across 57+ professional-level subjects, including law, engineering, medicine, and more. AIME 2024 measures the model's performance on high school olympiad-level math problems)*
+    
+4. It also crushes the coding benchmarks, ranking #1 in the LiveCodeBench with 79.4%, where the second best is 74.2%.
+    
+    *(LiveCodeBench is a real-time coding benchmark that tests models in live, interactive programming tasks and not just in static code generation)*
 
-Yeah, there are a few other benchmarks where it leads all the models, but these are pretty much the most interesting ones. You can find all of them on the internet.
+Yeah, there are a few other benchmarks where it leads all the models, but these are pretty much the most interesting ones. You can find all of them [here](https://artificialanalysis.ai/models/grok-4).
 
 ![grok_bench.jpg](/blog/grok_bench.jpg)
 
-So all in all, currently, if you take any benchmarks, most probably Grok 4 is leading all of them. Yes...🥴
+So, all in all, currently, if you take any benchmarks, most likely Grok 4 is leading all of them.
 
 But how do you access it? It's available via both API and a paid subscription. You can access it on SuperGrok for $30/month or $300/year, which gives you access to standard Grok 4. However, to access **Grok 4 Heavy**, you need to subscribe to the SuperGrok Heavy plan, which costs $300/month or $3000/year.
+
+- **Grok 4:** This is the standard generalist model fine-tuned for a range of tasks like problem-solving, general conversation, and writing. It's the default that comes in the Grok 4 lineup.
+- **Grok 4 Heavy:** This is the specialized version in the Grok 4 lineup. It uses multi-agents, i.e., runs several AI agents in parallel to analyze and solve a problem and come up with the best solution. This really helps with accuracy and is mainly built for heavy research, data analysis, and basically anything that requires extensive thinking.
 
 ![supergrok_pricing.png](/blog/supergrok_pricing.png)
 
@@ -55,31 +73,29 @@ Even better, if you just want to test the models, it's also available on [OpenRo
 
 ---
 
-## Does it achieve AGI?
+## Does Grok 4 Achieve AGI?
 
 If you're not sure what AGI (Artificial General Intelligence) is, let me give you a brief idea. Basically, Generative AI, which we use, like the OpenAI models, Claude Sonnet models, and others, generates content based on learned patterns or what they've been trained on.
 
-However, AGI generates content consciously, with creativity comparable to human intelligence. 🤯
+However, AGI generates content consciously, with creativity comparable to human intelligence.
 
 And let me tell you, my friend, this is not something you can build out of nowhere just like that, no. Here we're talking about reaching artificial intelligence equivalent to the human brain, and that's not easily achieved.
 
-Even if you don't feel like it (and I know you do, just kidding! 😆), your brain is super powerful, and trying to take something **artificial** to that level is super out of this world.
-
-Now back to the topic, it has not yet achieved AGI, but it is one leap forward in the race to AGI, and the first model to cross the **15% score** in the ARC-AGI benchmark.
+Now back to the topic, it has not yet achieved AGI, but it is one leap forward in the race to AGI and the first model to cross the **15% score** in the ARC-AGI benchmark, all at a lower cost.
 
 ![arc_agi_grok4.jpg](/blog/arc_agi_grok4.jpg)
 
-There's no comparison between Grok 4 and the other AI models here, and it's doing it all at a lower price. So yeah, this is one great step to AGI, but simply not there yet.
+xAI also tested Grok 4 in a real-world simulation called Vending Bench. Basically, in this benchmark, the idea is to see whether a model can manage a small business over time and handle everything that comes with it, like restocking inventory, working with suppliers, adjusting prices, and more. This is a very interesting benchmark to test an AI model in a real-world scenario, and it did a pretty good job at it.
+
+![vending_bench.jpg](/blog/grok_vending_bench.png)
+
+As you can see, Grok 4 is generating more than twice the revenue and scale compared to the top competitor, Claude Opus 4.
+
+There's no comparison between Grok 4 and the other AI models here, and it's doing it all at a lower price. So yeah, this is a great step toward AGI, but it's simply not there yet.
 
 ---
 
-## How good it really is and is it even worth it?
-
-Grok 4 is officially the most intelligent AI model on earth right now! I guess that gives you your answer.
-
-![grok4_highest_int.jpg](/blog/grok4_highest_int.jpg)
-
-Most of us mainly care about the model's performance in coding tests, and let me tell you, I've tested it myself; it works pretty well, but I didn't find it much better than the Claude 4 lineup. However, it's good.
+## Community Impressions and Future Plans from xAI
 
 Musk himself has claimed that you can copy and paste your entire source code into a query, and it will fix bugs or add features for you, just like that. It's also claimed to work **"better than Cursor"**.
 
@@ -96,21 +112,29 @@ It literally one-shotted something that crazy, and if that's not enough, it's li
 
 <TweetEmbed tweetId="1943161993315389554" />
 
+On the release of this model, they gave a quick idea of what to expect next from xAI, and here's what that looks like:
+
+![whats_next.jpg](/blog/grok4_whats_next.png)
+
+We're expected to see the following in the coming months:
+
+- Grok code - release next month
+- Grok multi-modal, or browsing agent release in September
+- Grok Video generation in late October
+
+So, if your main purpose with an AI model is coding, it might be worth waiting one more month to see if that's even better for your use case.
+
 ---
 
-## When would you want to use Grok 4?
+## Pros and Cons of Grok 4
 
-Based on the benchmarks we have and the community impressions so far, it seems like it's a one-stop place for anything you'd want to go for.
+Grok 4 has about 99% accuracy in picking the right tools and making tool calls with proper arguments almost every single time.
 
-But still, I wouldn't recommend you use this model for minimal basic stuff.
+It's designed to be agentic, which means that with single or multiple agents working behind the scenes, it can easily handle multiple tasks. It's an academic wizard, as you can see in the benchmarks we've discussed above, and one of the first AI models to break the 10% barrier in the ARC-AGI benchmark, which enables it to make decisive decisions and plans, making it a very capable model.
 
-Also, there have been recorded cases where it actually can cause some trouble, and by that, I mean that this model is recorded to have the highest "snitch rate" of any LLM ever released.
+However, when it comes to multimodal capabilities, especially with image generation and analysis, it's not much better and performs poorer than the top multimodal capabilities AI models like o3, Claude 4, etc. Although this will significantly improve in the coming days.
 
-![grok4_snitch.jpg](/blog/grok4_snitch.jpg)
-
-It could try contacting the government or the media, so use it with caution. 😬
-
-Make sure that you don't give this model access to unnecessary tool calls and mainly use it for research or other intelligent tasks because, as you guessed, it's the most intelligent model.
+Another thing I really hate about this model is the rate limit that's implemented on top of xAI. Almost every 2-3 continuous prompts, you get rate limited for a few minutes, and that's really frustrating, especially considering that you'd be using this model in a more research-based situation where you'll likely be making multiple prompts to the model to get the answer you expect.
 
 ---
 
