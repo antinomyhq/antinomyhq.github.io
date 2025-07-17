@@ -38,7 +38,7 @@ It has **100 times** more training data than Grok 2, which is the first public A
 
 It comes with a 256k token context window (the amount of information the model can read and remember at once), which is quite low compared to the recent Gemini 2.5 Pro with a 1M token context window. It's just a bit ahead of the Claude 4 lineup, which has about 200k tokens.
 
-Grok 4 pricing is pretty standard but comes with a catch. It's the same as the pricing for Grok 3 at $3 per million input tokens (doubles after 128k) and $15 per million output tokens (doubles after 128k).
+Grok 4 pricing is pretty standard, but comes with a catch. It's the same as the pricing for Grok 3 at $3 per million input tokens (doubles after 128k) and $15 per million output tokens (doubles after 128k).
 
 ### Key Benchmarking Results of Grok 4:
 
@@ -81,9 +81,9 @@ If you're not sure what AGI (Artificial General Intelligence) is, let me give yo
 
 However, AGI generates content consciously, with creativity comparable to human intelligence.
 
-And let me tell you, my friend, this is not something you can build out of nowhere just like that, no. Here we're talking about reaching artificial intelligence equivalent to the human brain, and that's not easily achieved.
+And let me tell you, my friend, this is not something you can build out of nowhere just like that, no. Here we're talking about reaching an artificial intelligence equivalent to the human brain, and that's not easily achieved.
 
-Now back to the topic, it has not yet achieved AGI, but it is one leap forward in the race to AGI and the first model to cross the **15% score** in the ARC-AGI benchmark, all at a lower cost.
+Now, back to the topic, it has not yet achieved AGI, but it is one leap forward in the race to AGI and the first model to cross the **15% score** in the ARC-AGI benchmark, all at a lower cost.
 
 ![arc_agi_grok4.jpg](/blog/arc_agi_grok4.jpg)
 
@@ -142,7 +142,7 @@ Another thing I really hate about this model is the rate limit that's implemente
 
 ## Conclusion
 
-If I have to summarize everything we've read so far, it's definitely the best model available for reasoning, heavy research and data analysis (at least for now!). Grok 4 is not really meant for coding, so it’s better to wait one more month for a coding-tuned model.
+If I have to summarize everything we've read so far, it's definitely the best model available for reasoning, heavy research, and data analysis (at least for now!). Grok 4 is not really meant for coding, so it’s better to wait one more month for a coding-tuned model.
 
 This one's definitely the biggest breakthrough in the AI world so far, with the claim that it's supposedly the closest model to reach AGI so far. So yeah, there's definitely a lot of potential in this model, so use it with caution.
 
