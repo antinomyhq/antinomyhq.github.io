@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, {useState, useEffect} from "react"
 import Heading from "@theme/Heading"
 import CustomerFeedbackCard from "./CustomerFeedbackCard"
 import Section from "../shared/Section"
@@ -30,7 +30,7 @@ const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [cardsPerView, setCardsPerView] = useState(1)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-  
+
   if (config.testimonials === TestimonialDisplay.Hide) {
     return null
   }
@@ -50,8 +50,8 @@ const Testimonials = () => {
     }
 
     updateCardsPerView()
-    window.addEventListener('resize', updateCardsPerView)
-    return () => window.removeEventListener('resize', updateCardsPerView)
+    window.addEventListener("resize", updateCardsPerView)
+    return () => window.removeEventListener("resize", updateCardsPerView)
   }, [])
 
   // Auto-play functionality
@@ -72,18 +72,14 @@ const Testimonials = () => {
 
   const nextSlide = () => {
     setIsAutoPlaying(false) // Pause auto-play when user interacts
-    setCurrentIndex((prevIndex) => 
-      prevIndex >= maxIndex ? 0 : prevIndex + 1
-    )
+    setCurrentIndex((prevIndex) => (prevIndex >= maxIndex ? 0 : prevIndex + 1))
     // Resume auto-play after 8 seconds of inactivity
     setTimeout(() => setIsAutoPlaying(true), 8000)
   }
 
   const prevSlide = () => {
     setIsAutoPlaying(false) // Pause auto-play when user interacts
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? maxIndex : prevIndex - 1
-    )
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? maxIndex : prevIndex - 1))
     // Resume auto-play after 8 seconds of inactivity
     setTimeout(() => setIsAutoPlaying(true), 8000)
   }
@@ -110,19 +106,19 @@ const Testimonials = () => {
           <span className="bg-tailCall-yellow rounded-lg text-black px-SPACE_01 ml-SPACE_02">FORGE CODE</span>
         </Heading>
       </div>
-      
+
       {/* Carousel Container */}
       <div className="relative max-w-7xl mx-auto mt-SPACE_18 px-4">
         {/* Carousel Wrapper */}
-        <div 
+        <div
           className="overflow-hidden"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
         >
-          <div 
+          <div
             className="flex transition-transform duration-500 ease-in-out gap-10 items-start"
-            style={{ 
-              transform: `translateX(-${translateX}px)`
+            style={{
+              transform: `translateX(-${translateX}px)`,
             }}
           >
             {testimonials.map((testimonial) => (
@@ -149,7 +145,7 @@ const Testimonials = () => {
               aria-label="Previous testimonial"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
               </svg>
             </button>
 
@@ -159,7 +155,7 @@ const Testimonials = () => {
               aria-label="Next testimonial"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+                <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
               </svg>
             </button>
           </>
@@ -168,14 +164,12 @@ const Testimonials = () => {
         {/* Dots Indicator */}
         {maxIndex > 0 && (
           <div className="flex justify-center mt-8 space-x-2">
-            {Array.from({ length: maxIndex + 1 }, (_, index) => (
+            {Array.from({length: maxIndex + 1}, (_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                  index === currentIndex 
-                    ? 'bg-tailCall-yellow' 
-                    : 'bg-gray-600 hover:bg-gray-500'
+                  index === currentIndex ? "bg-tailCall-yellow" : "bg-gray-600 hover:bg-gray-500"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
