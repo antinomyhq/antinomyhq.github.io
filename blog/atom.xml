@@ -2,11 +2,125 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://forgecode.dev/blog/</id>
     <title>Forge Code Blog</title>
-    <updated>2025-07-10T00:00:00.000Z</updated>
+    <updated>2025-07-14T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://forgecode.dev/blog/"/>
     <subtitle>Forge Code Blog</subtitle>
     <rights>Copyright © 2025 Tailcall, Inc.</rights>
+    <entry>
+        <title type="html"><![CDATA[Everything You Need to Know About Grok 4]]></title>
+        <id>https://forgecode.dev/blog/grok-4-initial-impression/</id>
+        <link href="https://forgecode.dev/blog/grok-4-initial-impression/"/>
+        <updated>2025-07-14T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Grok 4 is the most intelligent AI model so far, beating every other model in benchmarks. Is it worth using? Let's find out.]]></summary>
+        <content type="html"><![CDATA[<p>You might have already heard about the release of Grok 4, the latest breakthrough from Elon Musk’s xAI team.</p>
+<p>In this post, we'll do a deep dive into what this model is, its stats, whether it is any good or just another regular AI model, if it achieves AGI, and overall community impressions so far.</p>
+<p>By the end of this post, you'll have all the information you need to decide whether you want to use Grok 4 or not.</p>
+<p>Without any further ado, let's jump in!</p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="brief-on-grok-4">Brief on Grok 4<a href="https://forgecode.dev/blog/grok-4-initial-impression/#brief-on-grok-4" class="hash-link" aria-label="Direct link to Brief on Grok 4" title="Direct link to Brief on Grok 4">​</a></h2>
+<p>Grok 4 is a reasoning model and the most intelligent model so far, as you can see in the benchmark below. To be honest, this model not only competes with other AI models but also with humans, making it the first of its kind (we'll discuss this shortly).</p>
+<p><img decoding="async" loading="lazy" alt="highlights" src="https://forgecode.dev/assets/images/grok4_highlights-1a19bed8dc0c350ac86eb42a4ade549e.png" width="1799" height="609" class="img_ev3q"></p>
+<p>As shown in the chart above, it has excellent scores in Intelligence, Speed, and Pricing compared to recent AI models. It ranks at the top of the artificial intelligence chart, but if we look closely, it's a bit slower in generating responses. Grok 4 has about <strong>13.58 seconds of latency</strong> (Time to First Token), which measures the time to receive the first part of the response from an AI model. This is just below the OpenAI o4-mini-high and equal to the Claude Sonnet 4 model.</p>
+<p>It has <strong>100 times</strong> more training data than Grok 2, which is the first public AI model by xAI, and approximately <strong>10 times</strong> more reinforcement learning compute than any other AI model available in the market right now.</p>
+<p><img decoding="async" loading="lazy" alt="rate_of_progress" src="https://forgecode.dev/assets/images/grok4_rate_of_progress-545aaaccc01de84520945911388ca80f.png" width="1428" height="683" class="img_ev3q"></p>
+<p>It comes with a 256k token context window (the amount of information the model can read and remember at once), which is quite low compared to the recent Gemini 2.5 Pro with a 1M token context window. It's just a bit ahead of the Claude 4 lineup, which has about 200k tokens.</p>
+<p>Grok 4 pricing is pretty standard, but comes with a catch. It's the same as the pricing for Grok 3 at $3 per million input tokens (doubles after 128k) and $15 per million output tokens (doubles after 128k).</p>
+<h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="key-benchmarking-results-of-grok-4">Key Benchmarking Results of Grok 4:<a href="https://forgecode.dev/blog/grok-4-initial-impression/#key-benchmarking-results-of-grok-4" class="hash-link" aria-label="Direct link to Key Benchmarking Results of Grok 4:" title="Direct link to Key Benchmarking Results of Grok 4:">​</a></h3>
+<ol>
+<li>
+<p>This model scores an all-time high in GPQA Diamond with 88%, which is a big win over the 86% from Gemini 2.5 Pro.</p>
+<p><em>(GPQA Diamond tests the model’s ability to answer graduate-level, expert-domain questions (e.g., physics, law, medicine))</em></p>
+</li>
+<li>
+<p>It achieves an all-time high score in the Humanity Last Exam with 24%, beating Gemini 2.5 Pro's previous score of 21%.</p>
+<p><em>(Humanity Last Exam tests the capabilities of large language models (LLMs) at the frontier of human knowledge)</em></p>
+</li>
+<li>
+<p>It has the joint highest score for MMLU-Pro and AIME 2024 at 87% and 94%, respectively.</p>
+<p><em>(MMLU-Pro tests the model across 57+ professional-level subjects, including law, engineering, medicine, and more. AIME 2024 measures the model's performance on high school olympiad-level math problems)</em></p>
+</li>
+<li>
+<p>It also crushes the coding benchmarks, ranking #1 in the LiveCodeBench with 79.4%, where the second best is 74.2%.</p>
+<p><em>(LiveCodeBench is a real-time coding benchmark that tests models in live, interactive programming tasks and not just in static code generation)</em></p>
+</li>
+</ol>
+<p>Yeah, there are a few other benchmarks where it leads all the models, but these are pretty much the most interesting ones.</p>
+<p><img decoding="async" loading="lazy" alt="grok_bench.jpg" src="https://forgecode.dev/assets/images/grok_bench-bbbbcfcd0e86945ea4390f38bd741ac5.jpg" width="1205" height="799" class="img_ev3q"></p>
+<p>So, all in all, currently, if you take any benchmarks, most likely Grok 4 is leading all of them.</p>
+<p>But how do you access it? It's available via both API and a paid subscription. You can access it on SuperGrok for $30/month or $300/year, which gives you access to standard Grok 4. However, to access <strong>Grok 4 Heavy</strong>, you need to subscribe to the SuperGrok Heavy plan, which costs $300/month or $3000/year.</p>
+<ul>
+<li><strong>Grok 4:</strong> This is the standard generalist model fine-tuned for a range of tasks like problem-solving, general conversation, and writing. It's the default that comes in the Grok 4 lineup.</li>
+<li><strong>Grok 4 Heavy:</strong> This is the specialized version in the Grok 4 lineup. It uses multi-agents, i.e., runs several AI agents in parallel to analyze and solve a problem and come up with the best solution. This really helps with accuracy and is mainly built for heavy research, data analysis, and basically anything that requires extensive thinking.</li>
+</ul>
+<p><img decoding="async" loading="lazy" alt="supergrok_pricing.png" src="https://forgecode.dev/assets/images/supergrok_pricing-afe1ecd4e6377e3f40f0a85e51850f35.png" width="1247" height="851" class="img_ev3q"></p>
+<p>Even better, if you just want to test the models, it's also available on OpenRouter, so if you have an API key, you're good to go.</p>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="does-grok-4-achieve-agi">Does Grok 4 Achieve AGI?<a href="https://forgecode.dev/blog/grok-4-initial-impression/#does-grok-4-achieve-agi" class="hash-link" aria-label="Direct link to Does Grok 4 Achieve AGI?" title="Direct link to Does Grok 4 Achieve AGI?">​</a></h2>
+<p>If you're not sure what AGI (Artificial General Intelligence) is, let me give you a brief idea. Basically, Generative AI, which we use, like the OpenAI models, Claude Sonnet models, and others, generates content based on learned patterns or what they've been trained on.</p>
+<p>However, AGI generates content consciously, with creativity comparable to human intelligence.</p>
+<p>And let me tell you, my friend, this is not something you can build out of nowhere just like that, no. Here we're talking about reaching an artificial intelligence equivalent to the human brain, and that's not easily achieved.</p>
+<p>Now, back to the topic, it has not yet achieved AGI, but it is one leap forward in the race to AGI and the first model to cross the <strong>15% score</strong> in the ARC-AGI benchmark, all at a lower cost.</p>
+<p><img decoding="async" loading="lazy" alt="arc_agi_grok4.jpg" src="https://forgecode.dev/assets/images/arc_agi_grok4-270437e88b9f432574b6fed9893ad858.jpg" width="1770" height="982" class="img_ev3q"></p>
+<p>xAI also tested Grok 4 in a real-world simulation called Vending Bench. Basically, in this benchmark, the idea is to see whether a model can manage a small business over time and handle everything that comes with it, like restocking inventory, working with suppliers, adjusting prices, and more. This is a very interesting benchmark to test an AI model in a real-world scenario, and it did a pretty good job at it.</p>
+<p><img decoding="async" loading="lazy" alt="vending_bench.jpg" src="https://forgecode.dev/assets/images/grok_vending_bench-78b7742cbf51f05a61bb7538ae7ad380.png" width="872" height="469" class="img_ev3q"></p>
+<p>As you can see, Grok 4 is generating more than twice the revenue and scale compared to the top competitor, Claude Opus 4.</p>
+<p>There's no comparison between Grok 4 and the other AI models here, and it's doing it all at a lower price. So yeah, this is a great step toward AGI, but it's simply not there yet.</p>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="community-impressions-and-future-plans-from-xai">Community Impressions and Future Plans from xAI<a href="https://forgecode.dev/blog/grok-4-initial-impression/#community-impressions-and-future-plans-from-xai" class="hash-link" aria-label="Direct link to Community Impressions and Future Plans from xAI" title="Direct link to Community Impressions and Future Plans from xAI">​</a></h2>
+<p>Musk himself has claimed that you can copy and paste your entire source code into a query, and it will fix bugs or add features for you, just like that. It's also claimed to work "better than Cursor".</p>
+<p><img decoding="async" loading="lazy" alt="Grok &amp;quot;better than Cursor&amp;quot; claim" src="https://forgecode.dev/assets/images/grok-better-than-cursor-claim-d8b82b2bf8dd76eaa1fba68cf5b96d84.png" width="786" height="352" class="img_ev3q"></p>
+<p>And again, that seems to be true enough. The community is building a lot of stuff with this model since it was released less than a week ago, and the results we're getting are insane.</p>
+<div class="my-6 flex justify-center"><div class="w-full max-w-xl"><div class="react-tweet-theme root_D3qd root_Y6tr"><article class="article_kRZ8"><span class="skeleton_FMR8" style="height:3rem;margin-bottom:0.75rem"></span><span class="skeleton_FMR8" style="height:6rem;margin:0.5rem 0"></span><div style="border-top:var(--tweet-border);margin:0.5rem 0"></div><span class="skeleton_FMR8" style="height:2rem"></span><span class="skeleton_FMR8" style="height:2rem;border-radius:9999px;margin-top:0.5rem"></span></article></div></div></div>
+<p>It literally one-shotted something that crazy, and if that's not enough, it's literally said to be better than PhD levels in every subject. Let that sink in.</p>
+<blockquote>
+<p>🗣️ "With respect to academic questions, Grok 4 is better than PhD levels in every subject. No exceptions." - Elon Musk</p>
+</blockquote>
+<div class="my-6 flex justify-center"><div class="w-full max-w-xl"><div class="react-tweet-theme root_D3qd root_Y6tr"><article class="article_kRZ8"><span class="skeleton_FMR8" style="height:3rem;margin-bottom:0.75rem"></span><span class="skeleton_FMR8" style="height:6rem;margin:0.5rem 0"></span><div style="border-top:var(--tweet-border);margin:0.5rem 0"></div><span class="skeleton_FMR8" style="height:2rem"></span><span class="skeleton_FMR8" style="height:2rem;border-radius:9999px;margin-top:0.5rem"></span></article></div></div></div>
+<p>On the release of this model, they gave a quick idea of what to expect next from xAI, and here's what that looks like:</p>
+<p><img decoding="async" loading="lazy" alt="whats_next.jpg" src="https://forgecode.dev/assets/images/grok4_whats_next-6c763b1ba41d4c896df1f6479b3a8bc6.png" width="1407" height="651" class="img_ev3q"></p>
+<p>We're expected to see the following in the coming months:</p>
+<ul>
+<li>Grok code - release next month</li>
+<li>Grok multi-modal, or browsing agent release in September</li>
+<li>Grok Video generation in late October</li>
+</ul>
+<p>So, if your main purpose with an AI model is coding, it might be worth waiting one more month to see if that's even better for your use case.</p>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="pros-and-cons-of-grok-4">Pros and Cons of Grok 4<a href="https://forgecode.dev/blog/grok-4-initial-impression/#pros-and-cons-of-grok-4" class="hash-link" aria-label="Direct link to Pros and Cons of Grok 4" title="Direct link to Pros and Cons of Grok 4">​</a></h2>
+<p>Grok 4 has about 99% accuracy in picking the right tools and making tool calls with proper arguments almost every single time.</p>
+<p>It's designed to be agentic, which means that with single or multiple agents working behind the scenes, it can easily handle multiple tasks. It's an academic wizard, as you can see in the benchmarks we've discussed above, and one of the first AI models to break the 10% barrier in the ARC-AGI benchmark, which enables it to make decisive decisions and plans, making it a very capable model.</p>
+<p>However, when it comes to multi-modal capabilities, especially with image generation and analysis, it's not much better and performs poorer than the top multi-modal capabilities AI models like o3, Claude 4, etc. Although this will significantly improve in the coming days.</p>
+<p>Another thing I really hate about this model is the rate limit that's implemented on top of xAI. Almost every 2-3 continuous prompts, you get rate limited for a few minutes, and that's really frustrating, especially considering that you'd be using this model in a more research-based situation where you'll likely be making multiple prompts to the model to get the answer you expect.</p>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="conclusion">Conclusion<a href="https://forgecode.dev/blog/grok-4-initial-impression/#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion">​</a></h2>
+<p>If I have to summarize everything we've read so far, it's definitely the best model available for reasoning, heavy research, and data analysis (at least for now!). Grok 4 is not really meant for coding, so it’s better to wait one more month for a coding-tuned model.</p>
+<p>This one's definitely the biggest breakthrough in the AI world so far, with the claim that it's supposedly the closest model to reach AGI so far. So yeah, there's definitely a lot of potential in this model, so use it with caution.</p>
+<p>With great power comes great responsibility! 😉</p>
+<p>Let me know what you think of Grok 4 so far, and if you've tested it yourself, how it performed. Let me know in the comments below!</p>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="try-grok-4-on-forge">Try Grok 4 on Forge<a href="https://forgecode.dev/blog/grok-4-initial-impression/#try-grok-4-on-forge" class="hash-link" aria-label="Direct link to Try Grok 4 on Forge" title="Direct link to Try Grok 4 on Forge">​</a></h2>
+<p>We've recently added support for Grok 4 on Forge. If this sounds interesting to you, you'll definitely want to try it on Forge. You can <a href="https://app.forgecode.dev/" target="_blank" rel="noopener noreferrer">create an account</a> and get started in just a minute. See for yourself if it performs as well as the benchmarks suggest and if you’d like to add this model to your daily workflow.</p>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="related-posts">Related Posts<a href="https://forgecode.dev/blog/grok-4-initial-impression/#related-posts" class="hash-link" aria-label="Direct link to Related Posts" title="Direct link to Related Posts">​</a></h2>
+<ol>
+<li><a href="https://forgecode.dev/blog/claude-4-opus-vs-grok-4-comparison-full" target="_blank" rel="noopener noreferrer">Claude Opus 4 vs. Grok 4 Coding Comparison</a></li>
+<li><a href="https://forgecode.dev/blog/claude-sonnet-4-vs-gemini-2-5-pro-preview-coding-comparison" target="_blank" rel="noopener noreferrer">Claude Opus 4 vs. Gemini 2.5 Pro</a></li>
+<li><a href="https://forgecode.dev/blog/claude-4-initial-impressions-anthropic-ai-coding-breakthrough" target="_blank" rel="noopener noreferrer">First Look at Claude 4</a></li>
+</ol>
+<hr>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="footnotes">Footnotes<a href="https://forgecode.dev/blog/grok-4-initial-impression/#footnotes" class="hash-link" aria-label="Direct link to Footnotes" title="Direct link to Footnotes">​</a></h2>
+<p><a id="footnote-1"></a><strong>1.</strong> Artificial Analysis. “Grok 4 Model Card.” <a href="https://artificialanalysis.ai/models/grok-4" target="_blank" rel="noopener noreferrer">https://artificialanalysis.ai/models/grok-4</a> <a href="https://forgecode.dev/blog/grok-4-initial-impression/#ref-1">↩</a></p>
+<p><a id="footnote-2"></a><strong>2.</strong> OpenRouter. “OpenRouter: Access LLMs via a Unified API.” <a href="https://openrouter.ai/" target="_blank" rel="noopener noreferrer">https://openrouter.ai</a> <a href="https://forgecode.dev/blog/grok-4-initial-impression/#ref-2">↩</a></p>
+<p><a id="footnote-3"></a><strong>3.</strong> xAI. “Grok 4 Launch &amp; Benchmarks Livestream.” Twitter/X Post. <a href="https://x.com/xai/status/1943158495588815072" target="_blank" rel="noopener noreferrer">https://x.com/xai/status/1943158495588815072</a> <a href="https://forgecode.dev/blog/grok-4-initial-impression/#ref-3">↩</a></p>
+<p><a id="footnote-4"></a><strong>4.</strong> Andon Labs. “Vending Bench: A Real-World AGI Simulation.” <a href="https://andonlabs.com/" target="_blank" rel="noopener noreferrer">https://andonlabs.com</a> <a href="https://forgecode.dev/blog/grok-4-initial-impression/#ref-4">↩</a></p>
+<p><a id="footnote-5"></a><strong>5.</strong> Grok. “Subscribe to Grok and SuperGrok Plans.” <a href="https://grok.com/#subscribe" target="_blank" rel="noopener noreferrer">https://grok.com/#subscribe</a> <a href="https://forgecode.dev/blog/grok-4-initial-impression/#ref-5">↩</a></p>]]></content>
+        <author>
+            <name>Arindam Majumder</name>
+            <uri>https://github.com/Arindam200</uri>
+        </author>
+        <category label="Grok 4" term="Grok 4"/>
+        <category label="Model" term="Model"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Claude 4 Opus vs Grok 4: Which Model Dominates Complex Coding Tasks?]]></title>
         <id>https://forgecode.dev/blog/claude-4-opus-vs-grok-4-comparison-full/</id>
