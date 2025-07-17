@@ -27,7 +27,7 @@ export default function Layout(props: Props): JSX.Element {
 
   useKeyboardNavigation()
 
-  const targetDate = new Date("2025-12-31T23:59:59-08:00") // Dec 31, 2025 - announcement visible until end of year
+  const targetDate = new Date("2024-12-31T23:59:59-08:00") // Dec 31, 2025 - announcement visible until end of year
   const currentDate = new Date()
   const hasAnnouncement = currentDate < targetDate
 
