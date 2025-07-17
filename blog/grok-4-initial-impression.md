@@ -8,6 +8,13 @@ description: "Grok 4 is the most intelligent AI model so far, beating every othe
 hide_table_of_contents: false
 ---
 
+import ElevenLabsAudioPlayer from '@site/src/components/shared/ElevenLabsAudioPlayer';
+
+<ElevenLabsAudioPlayer 
+  publicUserId="96e32731df14f1442beaf5041eec1125596de23ef9ff6ef5d151d28a1464da1b"
+  projectId="15L6uidD4wBXiCiCW3Qp" 
+/>
+
 import TweetEmbed from '@site/src/components/blog/TweetEmbed';
 
 You might have already heard about the release of Grok 4, the latest breakthrough from Elon Musk’s xAI team.
