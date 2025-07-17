@@ -2,11 +2,7 @@
 slug: grok-4-initial-impression
 title: "Everything You Need to Know About Grok 4"
 authors: [arindam]
-tags:
-  [
-    "Grok 4",
-    "Model",
-  ]
+tags: ["Grok 4", "Model"]
 date: 2025-07-14
 description: "Grok 4 is the most intelligent AI model so far, beating every other model in benchmarks. Is it worth using? Let's find out."
 hide_table_of_contents: false
@@ -21,8 +17,8 @@ In this post, we'll do a deep dive into what this model is, its stats, whether i
 By the end of this post, you'll have all the information you need to decide whether you want to use Grok 4 or not.
 
 Without any further ado, let's jump in!
-<!-- truncate -->
 
+<!-- truncate -->
 
 ## Brief on Grok 4
 
@@ -43,20 +39,20 @@ Grok 4 pricing is pretty standard, but comes with a catch. It's the same as the 
 ### Key Benchmarking Results of Grok 4:
 
 1. This model scores an all-time high in GPQA Diamond with 88%, which is a big win over the 86% from Gemini 2.5 Pro.
-    
-    *(GPQA Diamond tests the model’s ability to answer graduate-level, expert-domain questions (e.g., physics, law, medicine))*
-    
+
+   _(GPQA Diamond tests the model’s ability to answer graduate-level, expert-domain questions (e.g., physics, law, medicine))_
+
 2. It achieves an all-time high score in the Humanity Last Exam with 24%, beating Gemini 2.5 Pro's previous score of 21%.
-    
-    *(Humanity Last Exam tests the capabilities of large language models (LLMs) at the frontier of human knowledge)*
-    
+
+   _(Humanity Last Exam tests the capabilities of large language models (LLMs) at the frontier of human knowledge)_
+
 3. It has the joint highest score for MMLU-Pro and AIME 2024 at 87% and 94%, respectively.
-    
-    *(MMLU-Pro tests the model across 57+ professional-level subjects, including law, engineering, medicine, and more. AIME 2024 measures the model's performance on high school olympiad-level math problems)*
-    
+
+   _(MMLU-Pro tests the model across 57+ professional-level subjects, including law, engineering, medicine, and more. AIME 2024 measures the model's performance on high school olympiad-level math problems)_
+
 4. It also crushes the coding benchmarks, ranking #1 in the LiveCodeBench with 79.4%, where the second best is 74.2%.
-    
-    *(LiveCodeBench is a real-time coding benchmark that tests models in live, interactive programming tasks and not just in static code generation)*
+
+   _(LiveCodeBench is a real-time coding benchmark that tests models in live, interactive programming tasks and not just in static code generation)_
 
 Yeah, there are a few other benchmarks where it leads all the models, but these are pretty much the most interesting ones.
 
@@ -110,7 +106,6 @@ And again, that seems to be true enough. The community is building a lot of stuf
 It literally one-shotted something that crazy, and if that's not enough, it's literally said to be better than PhD levels in every subject. Let that sink in.
 
 > 🗣️ "With respect to academic questions, Grok 4 is better than PhD levels in every subject. No exceptions." - Elon Musk
-> 
 
 <TweetEmbed tweetId="1943161993315389554" />
 
