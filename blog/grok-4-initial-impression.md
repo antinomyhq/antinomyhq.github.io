@@ -56,7 +56,7 @@ Grok 4 pricing is pretty standard but comes with a catch. It's the same as the p
     
     *(LiveCodeBench is a real-time coding benchmark that tests models in live, interactive programming tasks and not just in static code generation)*
 
-Yeah, there are a few other benchmarks where it leads all the models, but these are pretty much the most interesting ones. You can find all of them [here](https://artificialanalysis.ai/models/grok-4).
+Yeah, there are a few other benchmarks where it leads all the models, but these are pretty much the most interesting ones.
 
 ![grok_bench.jpg](/blog/grok_bench.jpg)
 
@@ -69,7 +69,7 @@ But how do you access it? It's available via both API and a paid subscription. Y
 
 ![supergrok_pricing.png](/blog/supergrok_pricing.png)
 
-Even better, if you just want to test the models, it's also available on [OpenRouter](https://openrouter.ai/), so if you have an API key, you're good to go.
+Even better, if you just want to test the models, it's also available on OpenRouter, so if you have an API key, you're good to go.
 
 ---
 
@@ -140,7 +140,7 @@ Another thing I really hate about this model is the rate limit that's implemente
 
 ## Conclusion
 
-If I have to summarize everything we've read so far, it's definitely the best model available that you can get for any task (at least for now!).
+If I have to summarize everything we've read so far, it's definitely the best model available for reasoning, heavy research and data analysis (at least for now!). Grok 4 is not really meant for coding, so it’s better to wait one more month or so for a coding-tuned model.
 
 This one's definitely the biggest breakthrough in the AI world so far, with the claim that it's supposedly the closest model to reach AGI so far. So yeah, there's definitely a lot of potential in this model, so use it with caution.
 
@@ -161,3 +161,17 @@ We've recently added support for Grok 4 on Forge. If this sounds interesting to 
 1. [Claude Opus 4 vs. Grok 4 Coding Comparison](https://forgecode.dev/blog/claude-4-opus-vs-grok-4-comparison-full)
 2. [Claude Opus 4 vs. Gemini 2.5 Pro](https://forgecode.dev/blog/claude-sonnet-4-vs-gemini-2-5-pro-preview-coding-comparison)
 3. [First Look at Claude 4](https://forgecode.dev/blog/claude-4-initial-impressions-anthropic-ai-coding-breakthrough)
+
+---
+
+## Footnotes
+
+<a id="footnote-1"></a>**1.** Artificial Analysis. “Grok 4 Model Card.” [https://artificialanalysis.ai/models/grok-4](https://artificialanalysis.ai/models/grok-4) [↩](#ref-1)
+
+<a id="footnote-2"></a>**2.** OpenRouter. “OpenRouter: Access LLMs via a Unified API.” [https://openrouter.ai](https://openrouter.ai/) [↩](#ref-2)
+
+<a id="footnote-3"></a>**3.** xAI. “Grok 4 Launch & Benchmarks Livestream.” Twitter/X Post. [https://x.com/xai/status/1943158495588815072](https://x.com/xai/status/1943158495588815072) [↩](#ref-3)
+
+<a id="footnote-4"></a>**4.** Andon Labs. “Vending Bench: A Real-World AGI Simulation.” [https://andonlabs.com](https://andonlabs.com/) [↩](#ref-4)
+
+<a id="footnote-5"></a>**5.** Grok. “Subscribe to Grok and SuperGrok Plans.” [https://grok.com/#subscribe](https://grok.com/#subscribe) [↩](#ref-5)
