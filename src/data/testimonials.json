@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Ashish",
+    "designation": "VP Engineering, The Souled Store",
+    "profilePicture": "/images/testimonials/people.png",
+    "text": "Forge keeps improving with every release. It's now part of my daily workflow. Super useful."
+  },
+  {
+    "id": 2,
+    "name": "Rahul",
+    "designation": "Lead Software Engineer, Agoda",
+    "profilePicture": "/images/testimonials/people1.png",
+    "text": "Forge set a strong example by enabling AI pair programming. Looking forward to similar support in Rust"
+  },
+  {
+    "id": 3,
+    "name": "Shouvik Ghosh,",
+    "designation": "Software Developer, Mosaic Wellness",
+    "profilePicture": "/images/testimonials/people2.png",
+    "text": "Forge feels like pair programming with someone who actually understands my stack."
+  },
+  {
+    "id": 4,
+    "name": "Hammond Pereira",
+    "designation": "Head of Engineering, Augnito",
+    "profilePicture": "/images/testimonials/people3.png",
+    "text": "This is absolutely amazing. I would genuinely love lifetime access to this platform."
+  },
+  {
+    "id": 5,
+    "name": " ",
+    "designation": "Profiteer",
+    "profilePicture": "/images/testimonials/people4.png",
+    "text": "The Muse + Forge combo works great it really helps validate plans before execution."
+  }
+]
