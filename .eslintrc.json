@@ -5,13 +5,11 @@
     "sourceType": "module",
     "requireConfigFile": false
   },
-  "extends": ["plugin:@docusaurus/recommended", "plugin:@typescript-eslint/recommended"],
-  "plugins": ["@docusaurus", "@typescript-eslint"],
+  "extends": ["plugin:@docusaurus/recommended"],
+  "plugins": ["@docusaurus"],
   "rules": {
     "@docusaurus/string-literal-i18n-messages": "error",
-    "@docusaurus/no-html-links": "error",
-    "@typescript-eslint/no-explicit-any": ["error", {"ignoreRestArgs": true}]
-    // Add other TypeScript rules as needed
+    "@docusaurus/no-html-links": "error"
   },
   "ignorePatterns": ["node_modules/", "build/"]
 }
