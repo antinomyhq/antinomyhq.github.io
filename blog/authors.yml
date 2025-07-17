@@ -35,3 +35,14 @@ anmol:
       url: https://twitter.com/Anmol_Codes
     - platform: linkedin
       url: https://www.linkedin.com/in/Anmol-Baranwal/
+arindam:
+  name: Arindam Majumder
+  url: https://github.com/Arindam200
+  image_url: https://avatars.githubusercontent.com/u/109217591?v=4
+  social:
+    - platform: github
+      url: https://github.com/Arindam200
+    - platform: twitter
+      url: https://x.com/Arindam_1729
+    - platform: linkedin
+      url: https://www.linkedin.com/in/arindam2004/
