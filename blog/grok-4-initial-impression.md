@@ -14,9 +14,9 @@ hide_table_of_contents: false
 
 import TweetEmbed from '@site/src/components/blog/TweetEmbed';
 
-You might have already heard about the release of the new xAI model, Grok 4, another groundbreaking model from Elon Musk.
+You might have already heard about the release of Grok 4, the latest breakthrough from Elon Musk’s xAI team.
 
-In this post, we'll do a deep dive into what this model is, its stats, whether it is any good or just another regular AI model, if it achieves AGI, and if it’s even worth giving a shot.
+In this post, we'll do a deep dive into what this model is, its stats, whether it is any good or just another regular AI model, if it achieves AGI, and overall community impressions so far.
 
 By the end of this post, you'll have all the information you need to decide whether you want to use Grok 4 or not.
 
@@ -28,11 +28,13 @@ Without any further ado, let's jump in!
 
 Grok 4 is a reasoning model and the most intelligent model so far, as you can see in the benchmark below. To be honest, this model not only competes with other AI models but also with humans, making it the first of its kind (we'll discuss this shortly).
 
-![grok4_card.png](/blog/grok4_card.png)
+![highlights](/blog/grok4_highlights.png)
 
-As shown in the chart above, it has excellent scores in Intelligence, Speed, and Pricing compared to recent AI models. It ranks at the top of the artificial intelligence chart, but if we look closely, it's a bit slower in generating responses. Grok 4 has about 13.58 seconds of latency (Time to First Token), which measures the time to receive the first part of the response from an AI model. This is just below the OpenAI o4-mini-high and equal to the Claude Sonnet 4 model.
+As shown in the chart above, it has excellent scores in Intelligence, Speed, and Pricing compared to recent AI models. It ranks at the top of the artificial intelligence chart, but if we look closely, it's a bit slower in generating responses. Grok 4 has about **13.58 seconds of latency** (Time to First Token), which measures the time to receive the first part of the response from an AI model. This is just below the OpenAI o4-mini-high and equal to the Claude Sonnet 4 model.
 
-I have **100 times** more training data than Grok 2, which is the first public AI model by xAI, and approximately **10 times** more reinforcement learning compute than any other AI models available in the market right now.
+It has **100 times** more training data than Grok 2, which is the first public AI model by xAI, and approximately **10 times** more reinforcement learning compute than any other AI model available in the market right now.
+
+![rate_of_progress](/blog/grok4_rate_of_progress.png)
 
 It comes with a 256k token context window (the amount of information the model can read and remember at once), which is quite low compared to the recent Gemini 2.5 Pro with a 1M token context window. It's just a bit ahead of the Claude 4 lineup, which has about 200k tokens.
 
@@ -97,7 +99,7 @@ There's no comparison between Grok 4 and the other AI models here, and it's doin
 
 ## Community Impressions and Future Plans from xAI
 
-Musk himself has claimed that you can copy and paste your entire source code into a query, and it will fix bugs or add features for you, just like that. It's also claimed to work **"better than Cursor"**.
+Musk himself has claimed that you can copy and paste your entire source code into a query, and it will fix bugs or add features for you, just like that. It's also claimed to work "better than Cursor".
 
 ![Grok "better than Cursor" claim](/blog/grok-better-than-cursor-claim.png)
 
@@ -132,7 +134,7 @@ Grok 4 has about 99% accuracy in picking the right tools and making tool calls w
 
 It's designed to be agentic, which means that with single or multiple agents working behind the scenes, it can easily handle multiple tasks. It's an academic wizard, as you can see in the benchmarks we've discussed above, and one of the first AI models to break the 10% barrier in the ARC-AGI benchmark, which enables it to make decisive decisions and plans, making it a very capable model.
 
-However, when it comes to multimodal capabilities, especially with image generation and analysis, it's not much better and performs poorer than the top multimodal capabilities AI models like o3, Claude 4, etc. Although this will significantly improve in the coming days.
+However, when it comes to multi-modal capabilities, especially with image generation and analysis, it's not much better and performs poorer than the top multi-modal capabilities AI models like o3, Claude 4, etc. Although this will significantly improve in the coming days.
 
 Another thing I really hate about this model is the rate limit that's implemented on top of xAI. Almost every 2-3 continuous prompts, you get rate limited for a few minutes, and that's really frustrating, especially considering that you'd be using this model in a more research-based situation where you'll likely be making multiple prompts to the model to get the answer you expect.
 
@@ -140,7 +142,7 @@ Another thing I really hate about this model is the rate limit that's implemente
 
 ## Conclusion
 
-If I have to summarize everything we've read so far, it's definitely the best model available for reasoning, heavy research and data analysis (at least for now!). Grok 4 is not really meant for coding, so it’s better to wait one more month or so for a coding-tuned model.
+If I have to summarize everything we've read so far, it's definitely the best model available for reasoning, heavy research and data analysis (at least for now!). Grok 4 is not really meant for coding, so it’s better to wait one more month for a coding-tuned model.
 
 This one's definitely the biggest breakthrough in the AI world so far, with the claim that it's supposedly the closest model to reach AGI so far. So yeah, there's definitely a lot of potential in this model, so use it with caution.
 
