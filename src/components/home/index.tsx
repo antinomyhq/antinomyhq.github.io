@@ -6,6 +6,7 @@ import Configuration from "./Configuration"
 import IntroductionGif from "./IntroductionGif"
 import WhyChooseForge from "./WhyChooseForge"
 import FinalCTA from "./FinalCTA"
+import Stats from "./Stats"
 
 const HomePage = (): JSX.Element => {
   return (
@@ -13,6 +14,7 @@ const HomePage = (): JSX.Element => {
       <Banner />
       {/* <IntroductionGif /> */}
       <Configuration />
+      <Stats />
       {/* <WhyChooseForge /> */}
       <Benefits />
       <FinalCTA />

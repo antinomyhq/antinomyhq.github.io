@@ -1,13 +1,14 @@
 import React from "react"
 
 interface AnnouncementProps {
-  text: string
+  text?: string
+  children?: React.ReactNode
   refLink?: string
-  refText?: string
+  refText?: React.ReactNode
   variant?: "default" | "gradient"
 }
 
-const Announcement: React.FC<AnnouncementProps> = ({text, refLink, refText, variant = "default"}) => {
+const Announcement: React.FC<AnnouncementProps> = ({text, children, refLink, refText, variant = "default"}) => {
   const isGradient = variant === "gradient"
 
   return (
@@ -18,12 +19,12 @@ const Announcement: React.FC<AnnouncementProps> = ({text, refLink, refText, vari
     >
       <div className="text-center">
         <span className={`text-sm sm:text-base md:text-lg font-bold ${isGradient ? "tracking-wide" : ""}`}>
-          {text}
+          {children || text}
           {refLink && refText && (
             <a
               className={`font-bold ml-2 ${
                 isGradient
-                  ? "text-tailCall-white bg-white/10 backdrop-blur px-4 py-2 rounded-lg transition hover:bg-white/20 hover:text-tailCall-yellow no-underline inline-block"
+                  ? "text-tailCall-yellow hover:text-white transition-colors underline"
                   : "text-tailCall-yellow"
               }`}
               href={refLink}

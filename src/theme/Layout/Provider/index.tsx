@@ -10,7 +10,6 @@ import {
 import {DocsPreferredVersionContextProvider} from "@docusaurus/plugin-content-docs/client"
 import GithubStarsProvider from "@site/src/components/shared/GithubStarsProvider"
 import Footer from "@site/src/components/shared/Footer"
-import Announcement from "@site/src/components/shared/Announcement"
 import WrappedCookiesProvider from "@site/src/components/shared/WrappedCookiesProvider"
 import {CookieConsentProvider} from "@site/src/components/shared/CookieConsentProvider"
 

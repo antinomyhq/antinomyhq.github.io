@@ -51,6 +51,11 @@ const sidebars: SidebarsConfig = {
           id: "custom-rules-guide",
           label: "Working with Custom Rules",
         },
+        {
+          type: "doc",
+          id: "file-tagging-guide",
+          label: "File Tagging with @",
+        },
       ],
     },
     {

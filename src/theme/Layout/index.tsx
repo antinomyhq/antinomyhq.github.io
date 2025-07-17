@@ -27,7 +27,7 @@ export default function Layout(props: Props): JSX.Element {
 
   useKeyboardNavigation()
 
-  const targetDate = new Date("2025-05-30T20:00:00-08:00") // Nov 25, 6:00 PM - 8:00 PM PST
+  const targetDate = new Date("2024-12-31T23:59:59-08:00") // Dec 31, 2025 - announcement visible until end of year
   const currentDate = new Date()
   const hasAnnouncement = currentDate < targetDate
 
@@ -41,18 +41,16 @@ export default function Layout(props: Props): JSX.Element {
 
       <AnnouncementBar />
 
+      <Navbar />
+
       {hasAnnouncement && (
-        <div className="sticky top-0 z-50">
-          <Announcement
-            text="⚡ Stop paying $20/month for AI coding – Forge Code is 100% FREE"
-            refLink="https://app.forgecode.dev/app/"
-            refText="Get Started →"
-            variant="gradient"
-          />
+        <div>
+          <Announcement variant="gradient">
+            <i className="fas fa-trophy mr-1"></i> #1 CLI Coding Agent on OpenRouter • Over 1 Billion tokens processed
+            every day.
+          </Announcement>
         </div>
       )}
-
-      <Navbar />
 
       <div
         id={SkipToContentFallbackId}
