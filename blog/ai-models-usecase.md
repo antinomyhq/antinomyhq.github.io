@@ -93,13 +93,13 @@ For high-stakes tasks (medical, legal, financial), prefer models with better hal
 
 ## AI Models Covered in this list
 
-- `GPT‑4o / o3 variants (OpenAI)` : reliable generalist, fully multimodal
-- `Claude 3 (Opus / Sonnet / Haiku)` : excels at reasoning, long text, safe completion
-- `Gemini 2.5 Pro (Google)` : multimodal, huge context (1M+ tokens)
-- `Grok 4 / SuperGrok (xAI)` : agent‑oriented, strong in coding & reasoning
-- `DeepSeek R1‑0528` (open source) : advanced reasoning, math & code benchmarks
-- `LLaMA 3, Mistral, Mixtral, DBRX` : open weights for on‑premises/custom use
-- `Cohere Command R+` : RAG-ready open model for retrieval applications
+- `GPT‑4o / o3 variants (OpenAI)` : reliable generalist, fully multimodal.
+- `Claude 3 (Opus / Sonnet / Haiku)` : excels at reasoning, long text, safe completion.
+- `Gemini 2.5 Pro (Google)` : multimodal, huge context (1M+ tokens).
+- `Grok 4 / SuperGrok (xAI)` : agent‑oriented, strong in coding & reasoning.
+- `DeepSeek R1‑0528` (open source) : advanced reasoning, math & code benchmarks.
+- `LLaMA 3, Mistral, Mixtral, DBRX` : open weights for on‑premises/custom use.
+- `Cohere Command R+` : RAG-ready open model for retrieval applications.
 
 Next are the specific tasks and what model is great at which use case.
 
@@ -107,7 +107,7 @@ Next are the specific tasks and what model is great at which use case.
 
 ## General Reasoning & Chat
 
-**Use cases:** Having intelligent conversations, asking complex questions, general productivity
+**Use cases:** Having intelligent conversations, asking complex questions, general productivity.
 
 **Top Models:**
 
@@ -131,7 +131,7 @@ Choose GPT-4o if you want highly adaptive, fast and multimodal interactions (128
 
 ## Coding & General developer Tasks
 
-**Use cases:** Writing code, debugging, multi-file refactoring
+**Use cases:** Writing code, debugging, multi-file refactoring.
 
 **Top Models:**
 
@@ -154,19 +154,19 @@ GPT‑4o delivers easier integration with developer tools and clean code. Claude
 
 ## Summarization & Long Document Work
 
-**Use cases:** Meeting transcripts, reports, contracts, PDFs
+**Use cases:** Meeting transcripts, reports, contracts, PDFs.
 
 **Top Models:**
 
-- `Claude 3 Opus` : handles up to ~200K tokens, coherent summaries
-- `Gemini 2.5 Pro` : supports document visuals (charts, tables) in summaries
-- `GPT‑4o` : reliable for short texts but limited to ~128K tokens
-- `DeepSeek R1-0528` : strong general reasoning, works well with indexing/RAG pipelines<sup><a id="ref-7" href="#footnote-7">7</a></sup>
+- `Claude 3 Opus` : handles up to ~200K tokens, coherent summaries.
+- `Gemini 2.5 Pro` : supports document visuals (charts, tables) in summaries.
+- `GPT‑4o` : reliable for short texts but limited to ~128K tokens.
+- `DeepSeek R1-0528` : strong general reasoning, works well with indexing/RAG pipelines<sup><a id="ref-7" href="#footnote-7">7</a></sup>.
 
 **Benchmarks**:
 
-- `Gemini 2.5 Pro`: 91.5% on MRCR long-context reading comprehension for 128K context length<sup><a id="ref-8" href="#footnote-8">8</a></sup>
-- `Claude 3 models`: near perfect recall on "Needle in the Haystack", excel at maintaining coherence across long documents<sup><a id="ref-9" href="#footnote-9">9</a></sup>
+- `Gemini 2.5 Pro`: 91.5% on MRCR long-context reading comprehension for 128K context length<sup><a id="ref-8" href="#footnote-8">8</a></sup>.
+- `Claude 3 models`: near perfect recall on "Needle in the Haystack", excel at maintaining coherence across long documents<sup><a id="ref-9" href="#footnote-9">9</a></sup>.
 
 <img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rybgvob3uiq2hew5xwav.png" alt="claude 3 opus recall accuracy" width="100%" />
 
@@ -178,20 +178,20 @@ Gemini 2.5 Pro currently leads for enormous document analysis, especially when v
 
 ## Tutoring, Education & Interactive Q&A
 
-**Use cases:** Learning, explanations, homework help
+**Use cases:** Learning, explanations, homework help.
 
 **Top Models:**
 
-- `Claude 3 Haiku/Sonnet` : teacher-like tone, iterative Q&A
-- `GPT‑4o` : supports diagrams, clear step-by-step help
-- `DeepSeek R1` : superior reasoning chains make it strong for math/science queries
-- `Grok 4` : truth seeking makes it effective for factual tutoring
+- `Claude 3 Haiku/Sonnet` : teacher-like tone, iterative Q&A.
+- `GPT‑4o` : supports diagrams, clear step-by-step help.
+- `DeepSeek R1` : superior reasoning chains make it strong for math/science queries.
+- `Grok 4` : truth seeking makes it effective for factual tutoring.
 
 **Benchmarks**:
 
-- `Claude 3 Haiku` : 88.9% GSM8K for grade school math
-- `DeepSeek R1` : 97.3% on MATH-500 for advanced mathematical problems<sup><a id="ref-10" href="#footnote-10">10</a></sup>
-- `Grok 4`: 94.0% AIME 2024 for competition-level mathematics
+- `Claude 3 Haiku` : 88.9% GSM8K for grade school math.
+- `DeepSeek R1` : 97.3% on MATH-500 for advanced mathematical problems<sup><a id="ref-10" href="#footnote-10">10</a></sup>.
+- `Grok 4`: 94.0% AIME 2024 for competition-level mathematics.
 
 Why choose which?
 
@@ -215,7 +215,7 @@ Claude models offer clear, structured, “teacher-like” explanations with cost
 
 - `Grok 4` : hits 72–75% pass@1 on SWE‑bench for software engineering tasks, competitive with leading models. 
 
-- `DeepSeek R1` : 49.2% on SWE-bench Verified, 96.3% Codeforces percentile
+- `DeepSeek R1` : 49.2% on SWE-bench Verified, 96.3% Codeforces percentile.
 
 Why choose which?
 
@@ -225,11 +225,11 @@ Grok 4 sets the pace for advanced, real-world code and bug finding, especially i
 
 ## Refactoring & Multi-File Projects
 
-- `Grok 4` : Great for analyzing large codebases without context loss
+- `Grok 4` : Great for analyzing large codebases without context loss.
 
-- `DeepSeek R1‑0528` : Supports function calling and JSON output. Practical for extracting or reshaping code snippets programmatically
+- `DeepSeek R1‑0528` : Supports function calling and JSON output. Practical for extracting or reshaping code snippets programmatically.
 
-- `Gemini 2.5 Pro` : 1M token context makes it good for massive codebases
+- `Gemini 2.5 Pro` : 1M token context makes it good for massive codebases.
 
 Why choose which?
 
@@ -239,22 +239,22 @@ When you need to refactor or analyze huge codebases, Grok 4’s extended memory 
 
 ### Agents, Tool Use, Function Calling
 
-**Use cases**: Plugin systems, API agents, automated workflows
+**Use cases**: Plugin systems, API agents, automated workflows.
 
 **Top Models**:
 
-- `GPT‑4o` : native support for function calls, browsing, plugins
-- `Grok 4 Heavy` : multi-agent system built for structured workflows
-- `Cohere Command R+` : open retrieval-first architecture
-- `DeepSeek and LLaMA/Mistral`: self-hostable and integrable via LangChain-like frameworks
+- `GPT‑4o` : native support for function calls, browsing, plugins.
+- `Grok 4 Heavy` : multi-agent system built for structured workflows.
+- `Cohere Command R+` : open retrieval-first architecture.
+- `DeepSeek and LLaMA/Mistral`: self-hostable and integrable via LangChain-like frameworks.
 
 **Pricing per 1M tokens**:
 
-- `GPT-4o` : $2.50 input / $10.00 output
-- `Claude 3 Sonnet` : $3.00 input / $15.00 output
-- `Gemini 2.5 Pro`: $1.25 input / $10.00 output (≤200K tokens)
-- `DeepSeek R1` : $0.55 input / $2.19 output
-- `Grok 4` : $3.00 input / $15.00 output
+- `GPT-4o` : $2.50 input / $10.00 output.
+- `Claude 3 Sonnet` : $3.00 input / $15.00 output.
+- `Gemini 2.5 Pro`: $1.25 input / $10.00 output (≤200K tokens).
+- `DeepSeek R1` : $0.55 input / $2.19 output.
+- `Grok 4` : $3.00 input / $15.00 output.
 
 Why choose which?
 
@@ -277,14 +277,14 @@ Claude’s clarity in logic explanation stands out in beginner tutorials. GPT-4o
 
 ## On-Premises, Private Deploy, Sensitive Code Use
 
-**Use cases:** Enterprise deployment, compliance, air-gapped systems
+**Use cases:** Enterprise deployment, compliance, air-gapped systems.
 
 **Top Models**:
 
-- `DeepSeek R1‑0528` : open source reasoning model, high accuracy with ~95% cost savings vs OpenAI<sup><a id="ref-11" href="#footnote-11">11</a></sup>
-- `LLaMA 3, Mistral, DBRX` : open weights, flexible for fine-tuning & local hosting
-- `Cohere Command R+` : open-source and RAG-ready
-- `Grok, Claude, GPT` : not self-hostable, only via API
+- `DeepSeek R1‑0528` : open source reasoning model, high accuracy with ~95% cost savings vs OpenAI<sup><a id="ref-11" href="#footnote-11">11</a></sup>.
+- `LLaMA 3, Mistral, DBRX` : open weights, flexible for fine-tuning & local hosting.
+- `Cohere Command R+` : open-source and RAG-ready.
+- `Grok, Claude, GPT` : not self-hostable, only via API.
 
 **Pricing Comparison (Open Source)**:
 
