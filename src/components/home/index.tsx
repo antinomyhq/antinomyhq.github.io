@@ -12,9 +12,9 @@ const HomePage = (): JSX.Element => {
   return (
     <div>
       <Banner />
-      {/* <IntroductionGif /> */}
-      <Configuration />
       <Stats />
+      <Configuration />
+
       {/* <WhyChooseForge /> */}
       <Benefits />
       <FinalCTA />

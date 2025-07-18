@@ -1,48 +1,58 @@
 import React from "react"
-import Heading from "@theme/Heading"
 import Section from "../shared/Section"
-import SectionTitle from "../shared/SectionTitle"
 import AnimatedCounter from "../shared/AnimatedCounter"
-import {Info} from "lucide-react"
+import {Info, Coins, Code} from "lucide-react"
+
+const formatNumber = (num: number): string => {
+  if (num >= 1000000000) {
+    return (num / 1000000000).toFixed(1) + "B"
+  }
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1) + "M"
+  }
+  if (num >= 1000) {
+    return (num / 1000).toFixed(1) + "K"
+  }
+  return num.toString()
+}
 
 const Stats = (): JSX.Element => {
   const stats = [
     {
-      value: 1000000000,
+      value: 1790000000,
       suffix: "+",
       label: "Tokens Consumed",
       description: "/ day",
       infoLink: "https://openrouter.ai/apps?url=https%3A%2F%2Fforgecode.dev%2F",
+      icon: Coins,
     },
     {
-      value: 1000000,
+      value: 1400000,
       suffix: "+",
       label: "Lines of Code Generated",
       description: "/ day",
+      icon: Code,
     },
   ]
 
   return (
     <Section>
-      <div>
-        <SectionTitle title="Stats" />
-        <div className="h-fit sm:flex-row sm:items-center sm:space-x-SPACE_10 lg:space-x-SPACE_20">
-          <Heading as="h3" className="text-title-large sm:text-display-tiny lg:text-display-small md:w-[65%]">
-            Accelerating Development Worldwide
-          </Heading>
-        </div>
-        <p className="text-content-small sm:text-content-medium text-slate-600 mt-2">
-          #1 CLI Coding Agent on OpenRouter
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full">
+      <div className="flex flex-wrap justify-center items-start gap-4 w-full max-w-4xl mx-auto">
         {stats.map((stat, index) => (
-          <div key={index} className="group p-6 flex flex-col items-start cursor-pointer">
-            <div className="flex-grow">
-              <div className="mb-2">
-                <AnimatedCounter end={stat.value} suffix={stat.suffix} className="text-black block" />
-                <span className="text-content-tiny sm:text-content-small text-slate-600 block">
+          <div
+            key={index}
+            className="group p-2 flex flex-col items-center cursor-pointer text-center min-w-0 flex-1 max-w-sm"
+          >
+            <div className="flex items-baseline">
+              <stat.icon className="w-10 h-10 text-slate-500" />
+              <div>
+                <AnimatedCounter
+                  end={stat.value}
+                  suffix={stat.suffix}
+                  formatter={formatNumber}
+                  aria-label={stat.value.toLocaleString()}
+                />
+                <span className="text-content-tiny sm:text-content-small text-slate-600 ml-2">
                   {stat.label} {stat.description}
                   {stat.infoLink && (
                     <Info
