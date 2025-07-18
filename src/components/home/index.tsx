@@ -14,8 +14,6 @@ const HomePage = (): JSX.Element => {
       <Banner />
       <Stats />
       <Configuration />
-
-      {/* <WhyChooseForge /> */}
       <Benefits />
       <FinalCTA />
     </div>

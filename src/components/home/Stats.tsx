@@ -2,6 +2,8 @@ import React from "react"
 import Section from "../shared/Section"
 import AnimatedCounter from "../shared/AnimatedCounter"
 import {Info, Coins, Code} from "lucide-react"
+import TrustedByMarquee from "./TrustedByMarquee"
+import {clientLogos} from "@site/src/constants"
 
 const formatNumber = (num: number): string => {
   if (num >= 1000000000) {
@@ -65,6 +67,9 @@ const Stats = (): JSX.Element => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="mt-5">
+        <TrustedByMarquee title="Trusted by developers at" logos={clientLogos} />
       </div>
     </Section>
   )
