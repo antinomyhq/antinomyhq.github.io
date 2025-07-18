@@ -1,6 +1,6 @@
 ---
 slug: ai-models-usecase
-title: "Which AI Model is Best for Which Use Case"
+title: "Which model works best for which usecase"
 authors: [anmol]
 tags:
   [
