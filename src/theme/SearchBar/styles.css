@@ -63,6 +63,7 @@
 
 .DocSearch-Button:hover {
   box-shadow: none;
+  background: transparent !important;
 }
 
 .DocSearch-Container {
@@ -306,7 +307,6 @@
 
   .search-icon-navbar:hover,
   .DocSearch-Button:hover {
-    background: #f3f3f3;
     color: var(--ifm-color-gray-900);
     border-radius: 6px;
   }

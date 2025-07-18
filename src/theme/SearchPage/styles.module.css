@@ -4,7 +4,6 @@
   border: 2px solid var(--ifm-toc-border-color);
   padding: 0.8rem;
   width: 100%;
-  background: var(--docsearch-searchbox-focus-background);
   transition: border var(--ifm-transition-fast) ease;
 }
 
