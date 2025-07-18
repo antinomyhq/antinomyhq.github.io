@@ -47,7 +47,7 @@ const Banner = (): JSX.Element => {
               >
                 <Github size={28} />
                 <Star size={28} className="text-yellow-500" />
-                <span className="font-medium text-base">3.6k on GitHub</span>
+                <span className="font-medium text-base">3.8k on GitHub</span>
               </a>
             </div>
           </div>

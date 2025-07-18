@@ -129,8 +129,13 @@ export default {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: "tc-og-2.png",
+    metadata: [
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:image', content: '/images/opengraph.png' },
+      { property: 'og:image', content: 'https://forgecode.dev/images/opengraph.png' },
+      { property: 'og:image:width', content: '1200' },
+      { property: 'og:image:height', content: '630' },
+    ],
     algolia: {
       appId: "748OFOGLOE",
       apiKey: "878290b0384a15f677fb6a4f94fe34cb",
