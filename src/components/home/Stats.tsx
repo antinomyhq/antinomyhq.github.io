@@ -47,36 +47,52 @@ const Stats = (): JSX.Element => {
 
   return (
     <Section>
-      <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-8 w-full max-w-5xl mx-auto">
-        {stats.map((stat, index) => (
-          <div
-            key={index}
-            className="group p-2 flex flex-col items-center text-center w-full sm:w-auto"
-            style={{minWidth: "180px"}}
-          >
-            {stat.infoLink ? (
-              <a href={stat.infoLink} target="_blank" rel="noopener noreferrer" className="cursor-pointer">
-                <stat.icon className="w-10 h-10 text-slate-500" />
-              </a>
-            ) : (
+      <div className="flex flex-col sm:flex-row flex-wrap justify-center items-baseline gap-8 w-full max-w-5xl mx-auto">
+        {stats.map((stat, index) => {
+          const isGithub = stat.label === "GitHub Stars"
+
+          let Wrapper: React.ElementType = "div"
+          const props: any = {
+            key: index,
+            className: "group p-2 flex flex-col items-center text-center w-full sm:w-auto",
+            style: {minWidth: "180px"},
+          }
+
+          if (isGithub) {
+            Wrapper = "a"
+            props.href = stat.infoLink
+            props.target = "_blank"
+            props.rel = "noopener noreferrer"
+            props.className += " no-underline hover:no-underline text-inherit"
+          }
+
+          return (
+            <Wrapper {...props}>
               <stat.icon className="w-10 h-10 text-slate-500" />
-            )}
-            <div className="mt-2 text-3xl font-bold">
-              <AnimatedCounter
-                end={stat.value}
-                suffix={stat.suffix}
-                formatter={formatNumber}
-                aria-label={stat.value.toLocaleString()}
-              />
-            </div>
-            <div className="text-content-tiny sm:text-content-small text-slate-600 mt-1 h-8 flex flex-col justify-center">
-              <div>
-                {stat.label} {stat.description}
-                {stat.infoLink && <Info className="inline-block w-3 h-3 ml-1 text-slate-500" />}
+              <div className="mt-2 text-3xl font-bold text-slate-900">
+                <AnimatedCounter
+                  end={stat.value}
+                  suffix={stat.suffix}
+                  formatter={formatNumber}
+                  aria-label={stat.value.toLocaleString()}
+                />
               </div>
-            </div>
-          </div>
-        ))}
+              <div className="text-content-tiny sm:text-content-small text-slate-600 mt-1 h-8 flex flex-col justify-center">
+                <div>
+                  {stat.label} {stat.description}
+                  {stat.infoLink &&
+                    (isGithub ? (
+                      <Info className="inline-block w-3 h-3 ml-1 text-slate-500" />
+                    ) : (
+                      <a href={stat.infoLink} target="_blank" rel="noopener noreferrer">
+                        <Info className="inline-block w-3 h-3 ml-1 text-slate-500" />
+                      </a>
+                    ))}
+                </div>
+              </div>
+            </Wrapper>
+          )
+        })}
       </div>
       <div className="mt-5">
         <TrustedByMarquee title="Trusted by developers at" logos={clientLogos} />
