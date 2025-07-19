@@ -3,6 +3,7 @@ slug: forge-incident-12-july-2025-rca-2
 title: "Root Cause Analysis: Forge Quality Degradation on July 12"
 authors: [tushar]
 date: 2025-07-18
+description: "A detailed analysis of the Forge quality issues that occurred on July 12, 2025, including root cause, impact, and steps taken to prevent future incidents."
 tags: ["incident", "forge", "RCA"]
 ---
 
@@ -11,6 +12,8 @@ tags: ["incident", "forge", "RCA"]
 On July 12, 2025, we released v0.99.0, which included [PR #1068](https://github.com/antinomyhq/forge/pull/1068) introducing aggressive conversation compaction to reduce LLM costs. While successful at cutting costs by 40-50%, it significantly degraded response quality by removing crucial conversation context.
 
 Users reported quality issues within 2 days. After internal testing confirmed the problem, we immediately released v0.100.0 on July 14 with the compaction feature reverted.
+
+<!-- truncate -->
 
 ## Root Cause
 
