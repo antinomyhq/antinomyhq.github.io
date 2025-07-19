@@ -4,11 +4,51 @@
         <title>Forge Code Blog</title>
         <link>https://forgecode.dev/blog/</link>
         <description>Forge Code Blog</description>
-        <lastBuildDate>Mon, 14 Jul 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 18 Jul 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>Copyright © 2025 Tailcall, Inc.</copyright>
+        <item>
+            <title><![CDATA[Root Cause Analysis: Forge Quality Degradation on July 12]]></title>
+            <link>https://forgecode.dev/blog/forge-incident-12-july-2025-rca-2/</link>
+            <guid>https://forgecode.dev/blog/forge-incident-12-july-2025-rca-2/</guid>
+            <pubDate>Fri, 18 Jul 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[A detailed analysis of the Forge quality issues that occurred on July 12, 2025, including root cause, impact, and steps taken to prevent future incidents.]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="what-happened">What Happened<a href="https://forgecode.dev/blog/forge-incident-12-july-2025-rca-2/#what-happened" class="hash-link" aria-label="Direct link to What Happened" title="Direct link to What Happened">​</a></h2>
+<p>On July 12, 2025, we released v0.99.0, which included <a href="https://github.com/antinomyhq/forge/pull/1068" target="_blank" rel="noopener noreferrer">PR #1068</a> introducing aggressive conversation compaction to reduce LLM costs. While successful at cutting costs by 40-50%, it significantly degraded response quality by removing crucial conversation context.</p>
+<p>Users reported quality issues within 2 days. After internal testing confirmed the problem, we immediately released v0.100.0 on July 14 with the compaction feature reverted.</p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="root-cause">Root Cause<a href="https://forgecode.dev/blog/forge-incident-12-july-2025-rca-2/#root-cause" class="hash-link" aria-label="Direct link to Root Cause" title="Direct link to Root Cause">​</a></h2>
+<p><strong>Our evaluation system only tested single prompts, missing multi-turn conversation quality.</strong></p>
+<p>The compaction feature triggered after every user message (<code>on_turn_end: true</code>), stripping context that our models needed for quality responses. In multi-turn scenarios (where users provide additional feedback after the agent completes work), the conversation context was getting compacted away, leading to poor quality responses.</p>
+<p>Our evals never caught this because they focused on single prompts and judged the results of the agent loop, not ongoing conversations where users
+give feedback in the same conversation and context accumulation is critical.</p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="why-we-did-this">Why We Did This<a href="https://forgecode.dev/blog/forge-incident-12-july-2025-rca-2/#why-we-did-this" class="hash-link" aria-label="Direct link to Why We Did This" title="Direct link to Why We Did This">​</a></h2>
+<p>Higher than expected early access signups created cost pressure. Rather than implementing waitlists, we chose aggressive optimization to keep the service open to all users. The feature worked perfectly for its intended purpose, just at the cost of quality we didn't anticipate.</p>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="what-weve-done">What We've Done<a href="https://forgecode.dev/blog/forge-incident-12-july-2025-rca-2/#what-weve-done" class="hash-link" aria-label="Direct link to What We've Done" title="Direct link to What We've Done">​</a></h2>
+<ul>
+<li><strong>Immediate</strong>: Reverted the feature in v0.100.0 (2 days after user reports)</li>
+<li><strong>Long-term</strong>: Building multi-turn evaluation system to catch these issues before deployment</li>
+</ul>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="what-were-changing">What We're Changing<a href="https://forgecode.dev/blog/forge-incident-12-july-2025-rca-2/#what-were-changing" class="hash-link" aria-label="Direct link to What We're Changing" title="Direct link to What We're Changing">​</a></h2>
+<ol>
+<li><strong>Multi-turn evals</strong> - Testing conversation quality across 3-5 message exchanges, not just single responses</li>
+<li><strong>Quality gates</strong> - Conversation quality scores must pass thresholds before any context affecting feature ships</li>
+<li><strong>Gradual rollouts</strong> - Canary releases for any feature touching core conversation logic</li>
+</ol>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="known-issues">Known Issues<a href="https://forgecode.dev/blog/forge-incident-12-july-2025-rca-2/#known-issues" class="hash-link" aria-label="Direct link to Known Issues" title="Direct link to Known Issues">​</a></h2>
+<ul>
+<li>Bash terminal still has issues on windows, but we are working on it.</li>
+</ul>
+<h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="our-ask">Our Ask<a href="https://forgecode.dev/blog/forge-incident-12-july-2025-rca-2/#our-ask" class="hash-link" aria-label="Direct link to Our Ask" title="Direct link to Our Ask">​</a></h2>
+<p>We messed up by prioritizing cost optimization over quality validation. The latest Forge version (v0.100.5) has the issue fixed plus significant stability improvements.</p>
+<p><strong>Please give Forge another shot.</strong> We've learned our lesson about shipping features that affect conversation quality without proper testing coverage.</p>
+<hr>
+<p><em>Questions? Reach out through our community channels. We're committed to transparency about what went wrong and how we're fixing it.</em></p>]]></content:encoded>
+            <category>incident</category>
+            <category>forge</category>
+            <category>RCA</category>
+        </item>
         <item>
             <title><![CDATA[Everything You Need to Know About Grok 4]]></title>
             <link>https://forgecode.dev/blog/grok-4-initial-impression/</link>
