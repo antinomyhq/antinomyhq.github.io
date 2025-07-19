@@ -1,22 +1,27 @@
 import React from "react"
 
-import Banner from "./Banner"
-import Benefits from "./Benefits"
-import Configuration from "./Configuration"
-import IntroductionGif from "./IntroductionGif"
-import WhyChooseForge from "./WhyChooseForge"
-import FinalCTA from "./FinalCTA"
-import Stats from "./Stats"
+import Navbar from "../shared/Navbar"
+import Banner from "./NewBanner"
+import GetStarted from "./GetStarted"
+import WhyForge from "./WhyForge"
+import TheBenefits from "./TheBenefits"
+import BuiltFor from "./BuiltFor"
+import TheTeams from "./TheTeams"
+import {ThemeProvider} from "@site/src/theme/ThemeProvider/ThemeProvider"
 
 const HomePage = (): JSX.Element => {
   return (
-    <div>
-      <Banner />
-      <Stats />
-      <Configuration />
-      <Benefits />
-      <FinalCTA />
-    </div>
+    <ThemeProvider>
+      <div className="relative flex flex-col dark:bg-tailCall-dark-700 bg-[#F1F1F1]">
+        <Navbar />
+        <Banner />
+        <GetStarted />
+        <WhyForge />
+        <TheBenefits />
+        <BuiltFor />
+        {/* <TheTeams /> */}
+      </div>
+    </ThemeProvider>
   )
 }
 

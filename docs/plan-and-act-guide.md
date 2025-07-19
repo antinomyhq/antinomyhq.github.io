@@ -1,3 +1,5 @@
+import CustomLink from '@site/src/components/shared/CustomLink'
+
 # Plan First, Then Act: Your Guide to Smarter AI Development with Forge
 
 One of the biggest mistakes developers make with AI coding tools is jumping straight into implementation. After analyzing thousands of successful AI-assisted development sessions, we've learned that the most productive workflow follows a simple pattern: **Plan first, then act**.
@@ -143,8 +145,8 @@ When things go wrong or you encounter unexpected behavior, here's how to get hel
    This command generates a readable HTML file containing all the context being sent to the AI, which helps our team understand exactly what happened.
 
 2. **Share with our team** - Send the exported context file to us via:
-   - **Discord**: [Join our Discord community](https://discord.gg/kRZBPpkgwq)
-   - **Twitter/X**: Send us a DM [@forgecodehq](https://x.com/forgecodehq)
+   - **Discord**: <CustomLink href="https://discord.gg/kRZBPpkgwq">Join our Discord community</CustomLink>
+   - **Twitter/X**: Send us a DM <CustomLink href="https://x.com/forgecodehq">@forgecodehq</CustomLink>
 
 Our team will be happy to help diagnose the issue and provide a fix. The context export helps us reproduce the problem and understand the full conversation flow.
 

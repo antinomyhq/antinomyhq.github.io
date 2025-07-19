@@ -15,13 +15,15 @@ description: "Two months ago, a 13-year-old video taught me why AI agents get st
 hide_table_of_contents: false
 ---
 
+import CustomLink from '@site/src/components/shared/CustomLink'
+
 > **TL;DR**: AI agents can generate code that passes tests and looks familiar, but the last 10% of understanding, review, and maintenance becomes impossible. By applying Rich Hickey's principles from his talk "Simple Made Easy", Our team constrained our architecture to leave only one way to solve each problem, making AI-generated code easy to review and maintain.
 
-Two months ago, YouTube's recommendation algorithm served me Rich Hickey's 2011 QCon talk ["Simple Made Easy"](https://www.youtube.com/watch?v=SxdOUGdseq4).
+Two months ago, YouTube's recommendation algorithm served me Rich Hickey's 2011 QCon talk <CustomLink href="https://www.youtube.com/watch?v=SxdOUGdseq4">"Simple Made Easy"</CustomLink>.
 
 :::tip
 If you haven't seen it, I highly recommend watching it. It's a 13-year-old talk that feels more relevant today than ever.
-["Simple Made Easy"](https://www.youtube.com/watch?v=SxdOUGdseq4)
+<CustomLink href="https://www.youtube.com/watch?v=SxdOUGdseq4">"Simple Made Easy"</CustomLink>
 :::
 
 We've all experienced this with AI coding agents, what I now call **the AI 90/10 problem**: Agents can generate syntactically correct, test passing code that gets us 90% of the way there incredibly fast, but that last 10%, the part where humans have to understand, review, and maintain the code, becomes impossible.
@@ -136,7 +138,7 @@ Coordination between services happens only through event queues. When services c
 
 ## How Constraints Teach AI Better Patterns
 
-What's interesting is that our architectural constraints don't just make code review faster, they actively teach our Agent to generate better code. Every time agent sees our patterns, it learns and add them in memory. In [Forge](https://github.com/antinomyhq/forge) we call it [custom rules](/docs/custom-rules/). Other agents call them memory, rules etc.
+What's interesting is that our architectural constraints don't just make code review faster, they actively teach our Agent to generate better code. Every time agent sees our patterns, it learns and add them in memory. In <CustomLink href="https://github.com/antinomyhq/forge">Forge</CustomLink> we call it <CustomLink href="/docs/custom-rules/">custom rules</CustomLink>. Other agents call them memory, rules etc.
 
 - **Separation of concerns** prevents feature entanglement
 - **Explicit dependencies** make testing trivial
@@ -183,7 +185,7 @@ When your architecture constrains AI behavior through design, AI becomes your pa
 Good code has one defining characteristic: it's very easy to review. When you design constraints that leave only one way to solve each problem, review becomes pattern matching instead of archaeology.
 
 <details>
-<summary>For teams ready to solve their own AI 90/10 problem, here's how we implemented each principle in our [Forge](https://github.com/antinomyhq/forge) architecture:</summary>
+<summary>For teams ready to solve their own AI 90/10 problem, here's how we implemented each principle in our <CustomLink href="https://github.com/antinomyhq/forge">Forge</CustomLink> architecture:</summary>
 
 ### Domain Layer: Pure Information (Principles 1, 2, 3)
 
@@ -333,6 +335,6 @@ mod tests {
 }
 ```
 
-When [Forge](https://github.com/antinomyhq/forge) generates new code, it naturally follows these structures because there's no other way to express solutions in our architecture. AI generated code that's easier to review than human written code, because our constraints make complexity impossible to express.
+When <CustomLink href="https://github.com/antinomyhq/forge">Forge</CustomLink> generates new code, it naturally follows these structures because there's no other way to express solutions in our architecture. AI generated code that's easier to review than human written code, because our constraints make complexity impossible to express.
 
 </details>

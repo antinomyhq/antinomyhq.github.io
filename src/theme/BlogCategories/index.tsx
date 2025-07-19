@@ -26,7 +26,7 @@ export function BlogCategories({items, onCategoryClick, activeCategory}: BlogCat
   }, [items])
 
   return (
-    <div className="mb-4 md:mb-5 flex items-center space-x-4 border-b border-gray-200">
+    <div className="mb-4 mt-4 md:mb-5 flex items-center space-x-4 border-b border-solid border-transparent border-b-[#dbdbdb] dark:border-b-[#4b4b4b]">
       {Object.entries(categories).map(([name, count]) => (
         <div
           aria-role="button"
@@ -35,9 +35,11 @@ export function BlogCategories({items, onCategoryClick, activeCategory}: BlogCat
           onClick={() => onCategoryClick(name === activeCategory ? "All" : name)}
           className={clsx(
             "text-content-small md:text-title-tiny cursor-pointer appearance-none border-none bg-transparent px-1",
-            activeCategory === name
-              ? "!font-medium text-black border-b-solid border-b-2 border-black"
-              : "!font-normal text-tailCall-dark-200 hover:text-gray-700",
+            name === "All" && activeCategory === "All"
+              ? "!font-medium text-[22px] text-tailCall-lightMode---primary-700 dark:text-tailCall-darkMode---primary-400 border-b-solid border-b-[1px] border-tailCall-lightMode---primary-600 dark:border-tailCall-darkMode---primary-400"
+              : activeCategory === name
+                ? "!font-medium text-black border-b-solid border-b-2 border-black"
+                : "!font-normal text-tailCall-dark-200 hover:text-gray-700",
           )}
         >
           {name}

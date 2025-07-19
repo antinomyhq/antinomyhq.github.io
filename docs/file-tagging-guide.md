@@ -1,3 +1,5 @@
+import CustomLink from '@site/src/components/shared/CustomLink'
+
 # File Tagging with @: Your Guide to Better AI Context
 
 One of the biggest challenges with AI coding assistants is providing the right context. Instead of copy-pasting code or Agent searching for where to start repeatedly, Forge's file tagging system lets you reference any project file with simple `@filename` syntax and tab completion.
@@ -251,8 +253,8 @@ File tagging only sees your current project. External packages and microservices
    ```
 
 2. **Connect with us**:
-   - **Discord**: [Join our Discord](https://discord.gg/kRZBPpkgwq)
-   - **Twitter/X**: [@forgecodehq](https://x.com/forgecodehq)
+   - **Discord**: <CustomLink href="https://discord.gg/kRZBPpkgwq">Join our Discord</CustomLink>
+   - **Twitter/X**: <CustomLink href="https://x.com/forgecodehq">@forgecodehq</CustomLink>
 
 ---
 

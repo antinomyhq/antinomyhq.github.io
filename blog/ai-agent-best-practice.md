@@ -15,6 +15,8 @@ date: 2025-06-01
 image: /images/blog/ai-pair-programmer.png
 ---
 
+import CustomLink from '@site/src/components/shared/CustomLink'
+
 After 6 months of daily AI pair programming across multiple codebases, here's what actually moves the needle. Skip the hype this is what works in practice.
 
 ## TL;DR
@@ -156,7 +158,7 @@ Most AI editors support references like `@src/database.rs`. Use them instead of 
 - Smaller token usage = better accuracy
 - Less prompt clutter
 
-**Note:** Syntax varies by tool ([Forge](https://github.com/antinomyhq/forge) uses `@`, some use `#`, etc.)
+**Note:** Syntax varies by tool (<CustomLink href="https://github.com/antinomyhq/forge">Forge</CustomLink> uses `@`, some use `#`, etc.)
 
 ---
 

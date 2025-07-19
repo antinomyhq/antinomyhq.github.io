@@ -31,6 +31,14 @@ import ClearTaxClientLogo from "@site/static/icons/client/cleartax.svg"
 import CommvaultClientLogo from "@site/static/icons/client/commvault.svg"
 import CoreEdgeClientLogo from "@site/static/icons/client/coreedge.svg"
 
+import Dream11ClientLogoLight from "@site/static/icons/client/dream11-light.svg"
+import AgodaClientLogoLight from "@site/static/icons/client/agoda-light.svg"
+import AmazonClientLogoLight from "@site/static/icons/client/amazon-light.svg"
+import BranchClientLogoLight from "@site/static/icons/client/branch-light.svg"
+import ClearTaxClientLogoLight from "@site/static/icons/client/cleartax-light.svg"
+import CommvaultClientLogoLight from "@site/static/icons/client/commvault-light.svg"
+import CoreEdgeClientLogoLight from "@site/static/icons/client/coreedge-light.svg"
+
 export const companies: PartnerImage[] = [
   {name: "Dream11", logo: Dream11Logo},
   {name: "Agoda", logo: AgodaLogo},
@@ -41,6 +49,15 @@ export const companies: PartnerImage[] = [
   {name: "CoreEdge", logo: CoreEdgeLogo},
 ]
 
+export const companiesLight: PartnerImage[] = [
+  {name: "Dream11", logo: Dream11ClientLogoLight},
+  {name: "Agoda", logo: AgodaClientLogoLight},
+  {name: "Amazon", logo: AmazonClientLogoLight},
+  {name: "Branch", logo: BranchClientLogoLight},
+  {name: "ClearTax", logo: ClearTaxClientLogoLight},
+  {name: "Commvault", logo: CommvaultClientLogoLight},
+  {name: "CoreEdge", logo: CoreEdgeClientLogoLight},
+]
 export const clientLogos: PartnerImage[] = [
   {name: "Dream11", logo: Dream11ClientLogo},
   {name: "Agoda", logo: AgodaClientLogo},
@@ -644,6 +661,225 @@ export enum CookiePreferenceCategory {
   MARKETING = "Marketing",
 }
 
+export const NavbarItems = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "Pricing",
+    link: "/pricing",
+  },
+  {
+    name: "Docs",
+    link: "/docs",
+  },
+  {
+    name: "Blog",
+    link: "/blog",
+  },
+]
+
+export const StatsForDevelopers = [
+  {
+    title: "Code Generated",
+    stat: 50000,
+    suffix: "+",
+  },
+  {
+    title: "Consumed Tokens",
+    stat: 99.7,
+    suffix: "%",
+    decimals: 1,
+  },
+
+  {
+    title: "Stars",
+    stat: 3554,
+  },
+]
+
+export const TechDetails = [
+  {
+    title: "Backend - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["/images/home/avatar1.svg", "/images/home/avatar2.svg", "/images/home/avatar3.svg"],
+  },
+  {
+    title: "Devops - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["/images/home/avatar1.svg", "/images/home/avatar2.svg", "/images/home/avatar3.svg"],
+  },
+  {
+    title: "Security & infra - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["/images/home/avatar1.svg", "/images/home/avatar2.svg", "/images/home/avatar3.svg"],
+  },
+  {
+    title: "Solo dev - Code Understanding",
+    descriptions: [
+      "# Set up a GET and POST route in FastAPI",
+      "# Create a Flask API that returns a list of users",
+      "#  Build a JWT-based authentication system using Node.js",
+    ],
+    avatars: ["/images/home/avatar1.svg", "/images/home/avatar2.svg", "/images/home/avatar3.svg"],
+  },
+]
+
+export const TECHS = ["Backend", "Devops", "Security & infra", "Solo Dev"]
+
+export const BENEFITS = [
+  {
+    imageUrl: "/icons/basic/gear.svg",
+    imageLightUrl: "/icons/basic/gear-light.svg",
+    title: "Use your favorite IDE",
+    smallText: true,
+    description:
+      "Forge works natively with your CLI, so you don't need to switch IDEs. Whether you use VS Code, Xcode, Neovim, IntelliJ, Android Studio, or any other IDE, Forge integrates seamlessly with your shell and can access all the CLI tools you already have.",
+  },
+  {
+    imageUrl: "/icons/basic/target.svg",
+    imageLightUrl: "/icons/basic/target-light.svg",
+    title: "Control speed vs accuracy",
+    smallText: true,
+    description:
+      "Pick the right model for each task. Need to plan something complex? Use a thinking model. Want quick code changes? Use a fast model. Working with large files? Choose a big context model. You can even mix models - plan with one, then code with",
+  },
+  {
+    imageUrl: "/icons/basic/puzzlePiece.svg",
+    imageLightUrl: "/icons/basic/puzzlePiece-light.svg",
+    title: "Work with your existing AI providers",
+    smallText: false,
+    description:
+      "Already have API keys and credits? Forge gives enterprise teams complete control over where your codebase goes - use self-hosted LLMs, cloud providers, while maintaining full visibility and governance.",
+  },
+  {
+    imageUrl: "/icons/basic/robot.svg",
+    imageLightUrl: "/icons/basic/robot-light.svg",
+    title: "Create and share specialized agents",
+    smallText: false,
+    description:
+      "You can build and share agents specific for your usecase, for example you can build a Frontend agent, Backend agent, DevOps agent, etc. You can also share these agents with your team members.",
+  },
+  {
+    imageUrl: "/icons/basic/swap.svg",
+    imageLightUrl: "/icons/basic/swap-light.svg",
+    title: "Handle massive refactors",
+    smallText: true,
+    description:
+      "Handle codebase migrations and large-scale refactors with built-in task management, progress tracking, and intelligent context management without worrying about going out of context.",
+  },
+]
+
+export const CARDS_DATA = [
+  {
+    imageUrl: "/images/home/people.png",
+    title: "Forge keeps improving with every release. It's now part of my daily workflow. Super useful.",
+    author: "Ashish,",
+    designation: "VP Engineering, The Souled Store",
+  },
+  {
+    imageUrl: "/images/home/people1.png",
+    title: "Forge set a strong example by enabling AI pair programming. Looking forward to similar support in Rust",
+    author: "Rahul,",
+    designation: "Lead Software Engineer, Agoda",
+  },
+  {
+    imageUrl: "/images/home/people2.png",
+    title: "Forge feels like pair programming with someone who actually understands my stack.",
+    author: "Shouvik Ghosh,",
+    designation: "Software Developer, Mosaic Wellness",
+  },
+  {
+    imageUrl: "/images/home/people3.png",
+    title: "This is absolutely amazing. I would genuinely love lifetime access to this platform.",
+    author: "Hammond Pereira,",
+    designation: "Head of Engineering, Augnito",
+  },
+  {
+    imageUrl: "/images/home/people4.png",
+    title: "The Muse + Forge combo works great it really helps validate plans before execution.",
+    author: "Profiteer",
+    designation: "",
+  },
+]
+
+export const FORGE_CODE_INSTALL_COMMAND = "npx forgecode@latest"
+
+export const JOB_TITLE = [
+  {
+    label: "Software Developer",
+    value: "Software Developer",
+  },
+  {
+    label: "Frontend Developer",
+    value: "Frontend Developer",
+  },
+  {
+    label: "Backend Developer",
+    value: "Backend Developer",
+  },
+  {
+    label: "Full Stack Developer",
+    value: "Full Stack Developer",
+  },
+  {
+    label: "DevOps Engineer",
+    value: "DevOps Engineer",
+  },
+  {
+    label: "Tech Lead",
+    value: "Tech Lead",
+  },
+]
+
+export const COMPANY_STRENGTH = [
+  {
+    value: "2-10",
+    label: "2-10",
+  },
+  {
+    value: "11-25",
+    label: "11-25",
+  },
+  {
+    value: "26-50",
+    label: "26-50",
+  },
+  {
+    value: "51-100",
+    label: "51-100",
+  },
+  {
+    value: "101-250",
+    label: "101-250",
+  },
+  {
+    value: "251-500",
+    label: "251-500",
+  },
+  {
+    value: "501-1000",
+    label: "501-1000",
+  },
+  {
+    value: "1000+",
+    label: "1000+",
+  },
+]
+
 export const footerItems: FooterItem[] = [
   {
     title: "Developers",
@@ -653,29 +889,68 @@ export const footerItems: FooterItem[] = [
         link: pageLinks.docs,
       },
       {
-        name: "Blogs",
-        link: pageLinks.blog,
-      },
-      {
         name: "Releases",
         link: pageLinks.releases,
       },
+      // {
+      //   name: "Report a Bug",
+      //   link: "",
+      // },
+      // {
+      //   name: "Contributors",
+      //   link: "",
+      // },
     ],
   },
   {
-    title: "Company",
+    title: "Legal",
     items: [
-      {
-        name: "Pricing",
-        link: pageLinks.pricing,
-      },
       {
         name: "Privacy Policy",
         link: pageLinks.privacyPolicy,
       },
+      // {
+      //   name: "Terms",
+      //   link: "",
+      // },
       {
-        name: "We're Hiring",
-        link: "https://forms.gle/F8dQkLqtCsFwctLa6",
+        name: "Cookie Settings",
+        link: "",
+      },
+    ],
+  },
+  // {
+  //   title: "Company",
+  //   items: [
+  //     {
+  //       name: "Contact",
+  //       link: "",
+  //     },
+  //     {
+  //       name: "Testimonials",
+  //       link: "",
+  //     },
+  //     {
+  //       name: "Hiring",
+  //       link: "https://forms.gle/F8dQkLqtCsFwctLa6",
+  //     },
+  //   ],
+  // },
+  {
+    title: "Resources",
+    items: [
+      {
+        name: "Blogs",
+        link: pageLinks.blog,
+      },
+    ],
+  },
+  {
+    title: "Plans",
+    items: [
+      {
+        name: "Pricing",
+        link: pageLinks.pricing,
       },
     ],
   },
@@ -688,3 +963,176 @@ export const gtagScriptContent = `
 
   gtag('config', 'G-FLJBT3GYVJ');
 `
+
+export const COMMANDS = [
+  {
+    command: " what are the main components and how do they interact?",
+    output: [
+      "⏺ [12:15:22] Read README.md",
+      "⏺ [12:15:22] Read package.json",
+      "⏺ [12:15:22] Search at src",
+      "-  Now let me examine the main configuration files and key entry points:",
+      "⏺ [21:39:59] Read docusaurus.config.ts",
+      "⏺ [21:40:00] Read src/pages/index.tsx",
+      "⏺ [21:40:01] Read src/components/home/index.tsx",
+      "synthesizing 20s ctrl+C to interrupt",
+      "- Based on my analysis of the codebase, here are the main components and how they interact:",
+      "Main Components Overview",
+      "- This is a Docusaurus 2 based website for Forge Code - an AI coding platform. The architecture follows a modern React/TypeScript pattern with custom theming and components.",
+    ],
+  },
+  {
+    command: " how do I update?",
+    output: [
+      "- I need clarification on what you'd like to update. Here are the common update scenarios for this Docusaurus website:",
+      "1. Update Website Content",
+      "1. Update Dependencies",
+      "2. Update Docusaurus Framework",
+      "3. Deploy Updates",
+      "4. Update Configuration",
+    ],
+  },
+  {
+    command: " /muse",
+    output: ["[21:40:20] - Switched to agent MUSE"],
+  },
+  {
+    command: " /exit",
+    output: ["[21:40:40] - Exiting session...", "Goodbye."],
+  },
+]
+
+export const GUIDES = [
+  {
+    title: "New Conversation",
+    details: "/new",
+  },
+  {
+    title: "Get started",
+    details: "/info, /help",
+  },
+  {
+    title: "Switch agent",
+    details: "/forge or /muse",
+  },
+  {
+    title: "update",
+    details: "/update",
+  },
+  {
+    title: "quit",
+    details: "/exit or <CTRL+D>",
+  },
+]
+
+export const FAQS = [
+  {
+    question: "How do I purchase additional prompts?",
+    answer: `Additional prompts can be purchased directly through your ForgeCode dashboard when you approach your monthly limit.
+              Pro users can buy 250 additional prompts for $10 USD, while Max users (after early access) can purchase 1000 additional prompts for $25 USD.
+              These additional prompts are added to your current month's allowance.`,
+  },
+  {
+    question: "What's the difference between Free, Pro, and Max plans?",
+    answer: `Free ($0): Basic AI model access with limited daily usage, perfect for getting started.
+              Pro ($20/month): Access to premium models (OpenAI, Claude, Gemini) with 500 requests per month and priority support.
+              Max (FREE - normally $200/month): Normally 10,000 prompts per month, but unlimited access during this limited-time early access offer.`,
+  },
+  {
+    question: "What does '20X the Pro plan' mean for Max?",
+    answer: `The Max plan offers 20 times the value of Pro at 10 times the price. While Pro gives you 500 requests
+              per month, Max normally provides 10,000 requests monthly. During this limited-time early access, Max
+              users get unlimited requests with no restrictions, plus exclusive early access features and priority support.`,
+  },
+  {
+    question: "What are 'top tier' models?",
+    answer: `Top tier models include the most advanced AI models like GPT-4, Claude-4, and Gemini 2.5 - the premium
+              models from each provider that offer the best performance for complex coding tasks.`,
+  },
+  {
+    question: "How does the Max plan unlimited usage work?",
+    answer: `Max plan users get truly unlimited access to all AI models during this limited-time early access
+              offer. Normally, Max provides 10,000 prompts per month, but early access users enjoy unlimited
+              requests with no rate limits, daily caps, or usage restrictions at the special $0/month price (normally $200/month).`,
+  },
+  {
+    question: "What happens when I exceed my prompt limit?",
+    answer: `Free users: Hit daily usage limits and need to wait for reset or upgrade.
+              Pro users: After using your 500 included prompts, you can purchase additional
+              prompts: 250 prompts for $10 USD.
+              Max users: Currently unlimited during early access. After early access ends, you can
+              purchase additional prompts: 1000 prompts for $25 USD.`,
+  },
+  {
+    question: "Is my code secure and private?",
+    answer: `Absolutely. ForgeCode runs entirely on your local machine using your own API keys. Your code never
+              leaves your computer - no cloud processing, no data collection, complete privacy and security.`,
+  },
+  {
+    question: "Can I upgrade or downgrade my plan anytime?",
+    answer: `Yes, you can change your plan at any time. Upgrades take effect immediately, while downgrades apply at
+              your next billing cycle. The Max plan unlimited access is a limited-time early access offer - normally
+              Max provides 10,000 prompts per month.`,
+  },
+  {
+    question: "Do I need my own API keys?",
+    answer: `For Free users, you'll need your own API keys for AI models. Pro and Max users get included access to
+              premium models without needing separate API keys, plus the option to use your own keys for additional providers.`,
+  },
+]
+
+export const tiers = [
+  {
+    name: "Free",
+    price: "$0",
+    period: "/month",
+    description: "Best for personal use",
+    features: [
+      "Access to core CLI features",
+      "Smart command suggestions",
+      "0 AI prompts/day",
+      "Local-only usage, no cloud sync",
+    ],
+    cta: "Get Started",
+    href: pageLinks.signup,
+    popular: true,
+    icons: ["/icons/basic/settings_pricing.svg"],
+  },
+  {
+    name: "Pro",
+    price: "$20",
+    period: "/per month",
+    description: "Most popular for individual developers",
+    features: [
+      "Everything in Free",
+      "Premium AI models (GPT-4, Claude-4, Grok-3, Gemini-2.5)",
+      "500 prompts per month",
+      "Additional prompts: 250 for $10 USD",
+      "Priority support",
+    ],
+    cta: "Get Started",
+    href: pageLinks.signup,
+    popular: true,
+    icons: ["/icons/basic/SketchLogo.svg"],
+  },
+  {
+    name: "Max",
+    price: "$0",
+    originalPrice: "$200",
+    period: "/month",
+    description: "🔥 FREE unlimited now, normally $200/month",
+    features: [
+      "Everything in Pro",
+      "Unlimited requests",
+      "Latest AI models",
+      "24/7 priority support",
+      "Advanced analytics",
+      "Custom integrations",
+    ],
+    cta: "Get Started",
+    href: pageLinks.signup,
+    popular: true,
+    special: true,
+    icons: ["/icons/basic/colorfilter.svg"],
+  },
+]

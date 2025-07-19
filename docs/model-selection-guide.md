@@ -1,3 +1,5 @@
+import CustomLink from '@site/src/components/shared/CustomLink'
+
 # Switching Between AI Models
 
 ## How to Change Models in Forge
@@ -59,5 +61,5 @@ If you're experiencing issues with forge:
    ```
 
 2. **Share with our team:**
-   - **Discord**: [Join our Discord community](https://discord.gg/kRZBPpkgwq)
-   - **Twitter/X**: Send us a DM [@forgecodehq](https://x.com/forgecodehq)
+   - **Discord**: <CustomLink href="https://discord.gg/kRZBPpkgwq">Join our Discord community</CustomLink>
+   - **Twitter/X**: Send us a DM <CustomLink href="https://x.com/forgecodehq">@forgecodehq</CustomLink>

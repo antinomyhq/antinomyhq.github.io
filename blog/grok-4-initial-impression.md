@@ -9,6 +9,7 @@ hide_table_of_contents: false
 ---
 
 import ElevenLabsAudioPlayer from '@site/src/components/shared/ElevenLabsAudioPlayer';
+import CustomLink from '@site/src/components/shared/CustomLink'
 
 <ElevenLabsAudioPlayer 
   publicUserId="96e32731df14f1442beaf5041eec1125596de23ef9ff6ef5d151d28a1464da1b"
@@ -156,26 +157,26 @@ Let me know what you think of Grok 4 so far, and if you've tested it yourself, h
 
 ## Try Grok 4 on Forge
 
-We've recently added support for Grok 4 on Forge. If this sounds interesting to you, you'll definitely want to try it on Forge. You can [create an account](https://app.forgecode.dev/) and get started in just a minute. See for yourself if it performs as well as the benchmarks suggest and if you’d like to add this model to your daily workflow.
+We've recently added support for Grok 4 on Forge. If this sounds interesting to you, you'll definitely want to try it on Forge. You can <CustomLink href="https://app.forgecode.dev/">create an account</CustomLink> and get started in just a minute. See for yourself if it performs as well as the benchmarks suggest and if you’d like to add this model to your daily workflow.
 
 ---
 
 ## Related Posts
 
-1. [Claude Opus 4 vs. Grok 4 Coding Comparison](https://forgecode.dev/blog/claude-4-opus-vs-grok-4-comparison-full)
-2. [Claude Opus 4 vs. Gemini 2.5 Pro](https://forgecode.dev/blog/claude-sonnet-4-vs-gemini-2-5-pro-preview-coding-comparison)
-3. [First Look at Claude 4](https://forgecode.dev/blog/claude-4-initial-impressions-anthropic-ai-coding-breakthrough)
+1. <CustomLink href="https://forgecode.dev/blog/claude-4-opus-vs-grok-4-comparison-full">Claude Opus 4 vs. Grok 4 Coding Comparison</CustomLink>
+2. <CustomLink href="https://forgecode.dev/blog/claude-sonnet-4-vs-gemini-2-5-pro-preview-coding-comparison">Claude Opus 4 vs. Gemini 2.5 Pro</CustomLink>
+3. <CustomLink  href="https://forgecode.dev/blog/claude-4-initial-impressions-anthropic-ai-coding-breakthrough">First Look at Claude 4</CustomLink>
 
 ---
 
 ## Footnotes
 
-<a id="footnote-1"></a>**1.** Artificial Analysis. “Grok 4 Model Card.” [https://artificialanalysis.ai/models/grok-4](https://artificialanalysis.ai/models/grok-4) [↩](#ref-1)
+<a id="footnote-1"></a>**1.** Artificial Analysis. “Grok 4 Model Card.” <CustomLink href="https://artificialanalysis.ai/models/grok-4" external>https://artificialanalysis.ai/models/grok-4</CustomLink> <CustomLink href="#ref-1">↩</CustomLink>
 
-<a id="footnote-2"></a>**2.** OpenRouter. “OpenRouter: Access LLMs via a Unified API.” [https://openrouter.ai](https://openrouter.ai/) [↩](#ref-2)
+<a id="footnote-2"></a>**2.** OpenRouter. “OpenRouter: Access LLMs via a Unified API.” <CustomLink href="https://openrouter.ai/">https://openrouter.ai</CustomLink> <CustomLink href="#ref-2">↩</CustomLink>
 
-<a id="footnote-3"></a>**3.** xAI. “Grok 4 Launch & Benchmarks Livestream.” Twitter/X Post. [https://x.com/xai/status/1943158495588815072](https://x.com/xai/status/1943158495588815072) [↩](#ref-3)
+<a id="footnote-3"></a>**3.** xAI. “Grok 4 Launch & Benchmarks Livestream.” Twitter/X Post. <CustomLink href="https://x.com/xai/status/1943158495588815072">https://x.com/xai/status/1943158495588815072</CustomLink> <CustomLink href="#ref-3">↩</CustomLink>
 
-<a id="footnote-4"></a>**4.** Andon Labs. “Vending Bench: A Real-World AGI Simulation.” [https://andonlabs.com](https://andonlabs.com/) [↩](#ref-4)
+<a id="footnote-4"></a>**4.** Andon Labs. “Vending Bench: A Real-World AGI Simulation.” <CustomLink href="https://andonlabs.com/">https://andonlabs.com</CustomLink> <CustomLink href="#ref-4">↩</CustomLink>
 
-<a id="footnote-5"></a>**5.** Grok. “Subscribe to Grok and SuperGrok Plans.” [https://grok.com/#subscribe](https://grok.com/#subscribe) [↩](#ref-5)
+<a id="footnote-5"></a>**5.** Grok. “Subscribe to Grok and SuperGrok Plans.” <CustomLink href="https://grok.com/#subscribe">https://grok.com/#subscribe</CustomLink> <CustomLink href="#ref-5">↩</CustomLink>

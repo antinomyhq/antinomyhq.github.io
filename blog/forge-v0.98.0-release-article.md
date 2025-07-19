@@ -8,6 +8,8 @@ description: "Forge v0.98.0 introduces browser-based authentication, tool failur
 hide_table_of_contents: false
 ---
 
+import CustomLink from '@site/src/components/shared/CustomLink'
+
 _July 6, 2025_ - Forge v0.98.0 introduces browser-based authentication, tool failure limits, and enhanced file operations to improve reliability and user experience.
 
 <!-- truncate -->
@@ -159,10 +161,10 @@ npx forgecode@latest
 
 ## Resources
 
-- [Documentation](https://forgecode.dev/docs) - Setup guides and API reference
-- [GitHub Repository](https://github.com/antinomyhq/forge) - Source code and issues
-- [Discord Community](https://discord.gg/kRZBPpkgwq) - Support and discussions
-- [Release Notes](https://github.com/antinomyhq/forge/releases/tag/v0.98.0) - Complete changelog
+- <CustomLink href="https://forgecode.dev/docs">Documentation</CustomLink> - Setup guides and API reference
+- <CustomLink href="https://github.com/antinomyhq/forge">GitHub Repository</CustomLink> - Source code and issues
+- <CustomLink href="https://discord.gg/kRZBPpkgwq">Discord Community</CustomLink> - Support and discussions
+- <CustomLink href="https://github.com/antinomyhq/forge/releases/tag/v0.98.0">Release Notes</CustomLink> - Complete changelog
 
 ---
 

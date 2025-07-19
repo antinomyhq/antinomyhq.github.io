@@ -159,6 +159,7 @@ type RecentBlogPostItem = {
   description: string
   authors: Author[]
   permalink: string
+  tags: TagMetadata[]
 }
 
 type FooterLink = {

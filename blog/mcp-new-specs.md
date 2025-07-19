@@ -16,6 +16,7 @@ hide_table_of_contents: false
 ---
 
 import ElevenLabsAudioPlayer from '@site/src/components/shared/ElevenLabsAudioPlayer';
+import CustomLink from '@site/src/components/shared/CustomLink'
 
 <ElevenLabsAudioPlayer 
   publicUserId="96e32731df14f1442beaf5041eec1125596de23ef9ff6ef5d151d28a1464da1b"
@@ -60,7 +61,7 @@ Instead of writing custom integrations (GitHub, Slack, databases, file systems),
 
 At its core, MCP follows a client-server architecture where a host application can connect to multiple servers. Here are the core components:
 
-- `MCP hosts` - apps like, [Forge](https://github.com/antinomyhq/forge), Claude Desktop, Cursor, Windsurf or AI tools that want to access data via MCP.
+- `MCP hosts` - apps like, <CustomLink href="https://github.com/antinomyhq/forge">Forge</CustomLink>, Claude Desktop, Cursor, Windsurf or AI tools that want to access data via MCP.
 
 - `MCP Clients` - protocol clients that maintain 1:1 connections with MCP servers, acting as the communication bridge.
 
@@ -469,30 +470,30 @@ All these changes are active as of `2025-06-18`. Any MCP server or client that d
 
 ## Footnotes
 
-<a id="footnote-1"></a>**1.** Anthropic. "Model Context Protocol June Specification Major Changes." Changelog. [https://modelcontextprotocol.io/specification/2025-06-18/changelog](https://modelcontextprotocol.io/specification/2025-06-18/changelog) [↩](#ref-1)
+<a id="footnote-1"></a>**1.** Anthropic. "Model Context Protocol June Specification Major Changes." Changelog. <CustomLink href="https://modelcontextprotocol.io/specification/2025-06-18/changelog">https://modelcontextprotocol.io/specification/2025-06-18/changelog</CustomLink> <CustomLink href="#ref-1">↩</CustomLink>
 
-<a id="footnote-2"></a>**2.** Anthropic. "Model Context Protocol." GitHub Repository. [https://github.com/modelcontextprotocol/modelcontextprotocol](https://github.com/modelcontextprotocol/modelcontextprotocol) [↩](#ref-2)
+<a id="footnote-2"></a>**2.** Anthropic. "Model Context Protocol." GitHub Repository. <CustomLink href="https://github.com/modelcontextprotocol/modelcontextprotocol">https://github.com/modelcontextprotocol/modelcontextprotocol</CustomLink> <CustomLink href="#ref-2">↩</CustomLink>
 
-<a id="footnote-3"></a>**3.** ByteByteGo. "What is MCP?" Blog. [https://blog.bytebytego.com/p/ep154-what-is-mcp](https://blog.bytebytego.com/p/ep154-what-is-mcp) [↩](#ref-3)
+<a id="footnote-3"></a>**3.** ByteByteGo. "What is MCP?" Blog. <CustomLink href="https://blog.bytebytego.com/p/ep154-what-is-mcp">https://blog.bytebytego.com/p/ep154-what-is-mcp</CustomLink> <CustomLink href="#ref-3">↩</CustomLink>
 
-<a id="footnote-4"></a>**4.** Forge. "MCP Security is Broken: Here's How to Fix It". [https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/](https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/) [↩](#ref-4)
+<a id="footnote-4"></a>**4.** Forge. "MCP Security is Broken: Here's How to Fix It". <CustomLink href="https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/">https://forgecode.dev/blog/prevent-attacks-on-mcp-part2/</CustomLink> <CustomLink href="#ref-4">↩</CustomLink>
 
-<a id="footnote-5"></a>**5.** IETF. “Protected Resource Metadata.” RFC 9728. [https://datatracker.ietf.org/doc/html/rfc9728](https://datatracker.ietf.org/doc/html/rfc9728) [↩](#ref-5)
+<a id="footnote-5"></a>**5.** IETF. “Protected Resource Metadata.” RFC 9728. <CustomLink href="https://datatracker.ietf.org/doc/html/rfc9728">https://datatracker.ietf.org/doc/html/rfc9728</CustomLink> <CustomLink href="#ref-5">↩</CustomLink>
 
-<a id="footnote-6"></a>**6.** Anthropic. “Authorization Server Discovery.” MCP Spec: Authorization. [https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery) [↩](#ref-6)
+<a id="footnote-6"></a>**6.** Anthropic. “Authorization Server Discovery.” MCP Spec: Authorization. <CustomLink href="https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery">https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#authorization-server-discovery</CustomLink> <CustomLink href="#ref-6">↩</CustomLink>
 
-<a id="footnote-7"></a>**7.** Auth0. “MCP Specs Update: All About Auth.” Auth0 Blog. [https://auth0.com/blog/mcp-specs-update-all-about-auth/](https://auth0.com/blog/mcp-specs-update-all-about-auth/) [↩](#ref-7)
+<a id="footnote-7"></a>**7.** Auth0. “MCP Specs Update: All About Auth.” Auth0 Blog. <CustomLink href="https://auth0.com/blog/mcp-specs-update-all-about-auth/">https://auth0.com/blog/mcp-specs-update-all-about-auth/</CustomLink> <CustomLink href="#ref-7">↩</CustomLink>
 
-<a id="footnote-8"></a>**8.** Anthropic. “Security Considerations.” MCP June Spec. [https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#security-considerations](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#security-considerations) [↩](#ref-8)
+<a id="footnote-8"></a>**8.** Anthropic. “Security Considerations.” MCP June Spec. <CustomLink href="https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#security-considerations">https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization#security-considerations</CustomLink> <CustomLink href="#ref-8">↩</CustomLink>
 
-<a id="footnote-9"></a>**9.** Anthropic. “Security Best Practices.” MCP Spec. [https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices) [↩](#ref-9)
+<a id="footnote-9"></a>**9.** Anthropic. “Security Best Practices.” MCP Spec. <CustomLink href="https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices">https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices</CustomLink> <CustomLink href="#ref-9">↩</CustomLink>
 
-<a id="footnote-10"></a>**10.** IETF. “JSON Web Token (JWT) Profile for OAuth 2.0 Access Tokens.” RFC 9700. [https://datatracker.ietf.org/doc/html/rfc9700](https://datatracker.ietf.org/doc/html/rfc9700) [↩](#ref-10)
+<a id="footnote-10"></a>**10.** IETF. “JSON Web Token (JWT) Profile for OAuth 2.0 Access Tokens.” RFC 9700. <CustomLink href="https://datatracker.ietf.org/doc/html/rfc9700">https://datatracker.ietf.org/doc/html/rfc9700</CustomLink> <CustomLink href="#ref-10">↩</CustomLink>
 
-<a id="footnote-11"></a>**11.** Anthropic. “Elicitation.” MCP Spec: Client Capabilities. [https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation](https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation) [↩](#ref-11)
+<a id="footnote-11"></a>**11.** Anthropic. “Elicitation.” MCP Spec: Client Capabilities. <CustomLink href="https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation">https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation</CustomLink> <CustomLink href="#ref-11">↩</CustomLink>
 
-<a id="footnote-12"></a>**12.** JSON-RPC. “Batching.” JSON-RPC 2.0 Specification. [https://www.jsonrpc.org/specification#batch](https://www.jsonrpc.org/specification#batch) [↩](#ref-12)
+<a id="footnote-12"></a>**12.** JSON-RPC. “Batching.” JSON-RPC 2.0 Specification. <CustomLink href="https://www.jsonrpc.org/specification#batch">https://www.jsonrpc.org/specification#batch</CustomLink> <CustomLink href="#ref-12">↩</CustomLink>
 
-<a id="footnote-13"></a>**13.** Anthropic. “Pull Request #416: Add Protocol Version Header Enforcement.” GitHub PR. [https://github.com/modelcontextprotocol/modelcontextprotocol/pull/416](https://github.com/modelcontextprotocol/modelcontextprotocol/pull/416) [↩](#ref-13)
+<a id="footnote-13"></a>**13.** Anthropic. “Pull Request #416: Add Protocol Version Header Enforcement.” GitHub PR. <CustomLink href="https://github.com/modelcontextprotocol/modelcontextprotocol/pull/416">https://github.com/modelcontextprotocol/modelcontextprotocol/pull/416</CustomLink> <CustomLink href="#ref-13">↩</CustomLink>
 
-<a id="footnote-14"></a>**14.** Anthropic. “Operation Lifecycle.” MCP Spec: Lifecycle. [https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle#operation](https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle#operation) [↩](#ref-14)
+<a id="footnote-14"></a>**14.** Anthropic. “Operation Lifecycle.” MCP Spec: Lifecycle. <CustomLink href="https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle#operation">https://modelcontextprotocol.io/specification/2025-06-18/basic/lifecycle#operation</CustomLink> <CustomLink href="#ref-14">↩</CustomLink>

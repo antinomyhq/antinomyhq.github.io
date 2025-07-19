@@ -5,7 +5,7 @@ export const pageLinks = {
   signup: "https://app.forgecode.dev/app/",
   pricing: "/pricing",
   // about: "/about",
-  // contact: "/",
+  // contact: "/contact",
   contributors: "/docs/contribution-guidelines",
   privacyPolicy: "/privacy/",
   // enterprise: "/enterprise",

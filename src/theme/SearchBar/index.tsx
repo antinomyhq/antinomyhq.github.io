@@ -181,6 +181,7 @@ function DocSearch({contextualSearch, externalUrlRegex, ...props}: DocSearchProp
       </Head>
 
       <DocSearchButton
+        className="border-none bg-transparent cursor-pointer"
         onTouchStart={importDocSearchModalIfNeeded}
         onFocus={importDocSearchModalIfNeeded}
         onMouseOver={importDocSearchModalIfNeeded}

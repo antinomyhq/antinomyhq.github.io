@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from "react"
+import React, {useMemo, useState} from "react"
 import styles from "./styles.module.css"
 import clsx from "clsx"
 import {CookiePreferenceCategory} from "@site/src/constants"
@@ -29,8 +29,8 @@ const CookieConsentModal: React.FC<CookieConsentModalProps> = ({open, onAccept, 
 
   const consentOptions: Array<ConsentOption> = [
     {
-      text: "Accept All",
-      onClick: onAccept,
+      text: "Deny",
+      onClick: onDeny,
     },
     ...[
       showPreferences
@@ -46,8 +46,8 @@ const CookieConsentModal: React.FC<CookieConsentModalProps> = ({open, onAccept, 
           },
     ],
     {
-      text: "Deny",
-      onClick: onDeny,
+      text: "Accept All",
+      onClick: onAccept,
     },
   ]
 
@@ -89,18 +89,18 @@ const CookieConsentModal: React.FC<CookieConsentModalProps> = ({open, onAccept, 
           {/* Modal Container */}
           <div
             className={clsx(
-              "flex flex-col xl:flex-row xl:justify-between relative py-6 px-8 gap-4 sm:gap-12 xl:gap-0 font-space-mono bg-black rounded-xl",
+              "flex flex-col xl:flex-row xl:justify-between relative py-6 px-8 gap-4 sm:gap-12 xl:gap-0 font-space-mono bg-tailCall-lightMode---neutral-100 dark:bg-tailCall-darkMode---neutral-900 rounded-xl",
               styles.cookieConsentModal,
             )}
           >
-            <div className="flex flex-col gap-4 text-tailCall-light-300">
+            <div className="flex flex-col gap-4 text-black dark:text-tailCall-light-300">
               <div className="flex flex-col gap-2">
                 <span className="text-content-small font-bold xl:text-title-small">We Value Your Privacy</span>
                 <span className="text-content-tiny xl:text-content-small">
                   This website uses cookies to ensure you receive the best possible experience.{" "}
                   <Link
                     href={pageLinks.privacyPolicy}
-                    className="text-tailCall-light-300 hover:text-tailCall-light-300 underline"
+                    className="text-black dark:text-tailCall-light-300 dark:hover:text-tailCall-light-300 underline"
                   >
                     Learn More
                   </Link>
@@ -114,7 +114,7 @@ const CookieConsentModal: React.FC<CookieConsentModalProps> = ({open, onAccept, 
                         key={index}
                         className={clsx(
                           "flex cursor-pointer text-content-tiny xl:text-content-small gap-2",
-                          preference.selected ? "text-tailCall-light-600" : "",
+                          preference.selected ? "text-black dark:text-tailCall-light-600" : "",
                         )}
                         onClick={() => handlePreferenceToggle(index)}
                       >
@@ -133,29 +133,73 @@ const CookieConsentModal: React.FC<CookieConsentModalProps> = ({open, onAccept, 
                   styles.consentOptionsContainer,
                 )}
               >
-                {consentOptions.map((btn: ConsentOption, index: number) => {
+                {consentOptions.map(({text, onClick}) => {
+                  if (text === "Accept All") {
+                    return (
+                      <button
+                        key={text}
+                        onClick={onClick}
+                        className={`
+                          rounded-[12px]
+                          px-6 py-4
+                          cursor-pointer
+                          transition-all duration-300
+                          text-[16px]
+                          border border-solid border-tailCall-lightMode---primary-700 dark:border-tailCall-lightMode---primary-400
+                          text-white dark:text-black
+                          bg-tailCall-lightMode---primary-700 dark:bg-tailCall-lightMode---primary-400 `}
+                      >
+                        {text}
+                      </button>
+                    )
+                  }
+
+                  if (text === "Deny") {
+                    return (
+                      <button
+                        key={text}
+                        onClick={onClick}
+                        className={`
+                          rounded-[12px]
+                        px-6 py-4
+                        cursor-pointer
+                        transition-all duration-300
+                        text-[16px]
+                        border-none
+                        text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400
+                        bg-transparent`}
+                      >
+                        {text}
+                      </button>
+                    )
+                  }
+
                   return (
-                    <span
-                      key={index}
-                      className={clsx(
-                        "sm:whitespace-nowrap py-1 px-3 text-title-tiny bg-tailCall-dark-400 border border-solid border-tailCall-dark-300 cursor-pointer text-center",
-                        styles.consentOption,
-                      )}
-                      onClick={btn.onClick}
+                    <button
+                      key={text}
+                      onClick={onClick}
+                      className={`
+                        rounded-[12px]
+                        px-6 py-4
+                        cursor-pointer
+                        transition-all duration-300
+                        text-[16px]
+                        border border-solid border-tailCall-lightMode---primary-700 dark:border-tailCall-lightMode---primary-400
+                        text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400
+                        bg-transparent `}
                     >
-                      {btn.text}
-                    </span>
+                        {text}
+                    </button>
                   )
                 })}
               </div>
             </div>
-            <img
-              className={clsx("absolute cursor-pointer", styles.closeBtn)}
-              src={require("@site/static/images/cookie-consent/close-btn.png").default}
-              height={16}
-              width={25}
+            <span
               onClick={handleClose}
-            />
+              className="absolute top-0 right-0 h-4 w-8 cursor-pointer text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400"
+            >
+              [ X ]
+            </span>
           </div>
         </>
       ) : null}

@@ -7,6 +7,7 @@ sidebar_label: API Providers
 
 import Steps, {Step} from "../components/Steps"
 import {Key, Settings, Layers} from "lucide-react"
+import CustomLink from "@site/src/components/shared/CustomLink"
 
 # Configuring API Providers
 
@@ -91,13 +92,13 @@ OPENAI_URL=your_provider_url
 
 **Where to get API keys:**
 
-- [Forge Provider](https://app.forgecode.dev/app/) - Sign up for Antinomy account
-- [OpenRouter](https://openrouter.ai/) - Aggregated access to multiple models
-- [OpenAI](https://platform.openai.com/) - Official OpenAI platform
-- [Anthropic](https://console.anthropic.com/) - Official Anthropic console
-- [Google Vertex AI](https://cloud.google.com/vertex-ai) - Google Cloud AI platform
-- [Groq](https://console.groq.com/) - Ultra-fast inference platform
-- [Amazon Bedrock](https://aws.amazon.com/bedrock/) - AWS managed AI service
+- <CustomLink href="https://app.forgecode.dev/app/">Forge Provider</CustomLink> - Sign up for Antinomy account
+- <CustomLink href="https://openrouter.ai/">OpenRouter</CustomLink> - Aggregated access to multiple models
+- <CustomLink href="https://platform.openai.com/">OpenAI</CustomLink> - Official OpenAI platform
+- <CustomLink href="https://console.anthropic.com/">Anthropic</CustomLink> - Official Anthropic console
+- <CustomLink href="https://cloud.google.com/vertex-ai">Google Vertex AI</CustomLink> - Google Cloud AI platform
+- <CustomLink href="https://console.groq.com/">Groq</CustomLink> - Ultra-fast inference platform
+- <CustomLink href="https://aws.amazon.com/bedrock/">Amazon Bedrock</CustomLink> - AWS managed AI service
 
 **Example setup with Forge Provider (recommended):**
 
@@ -131,7 +132,7 @@ OPENAI_URL=your_bedrock_gateway_base_url
 
 <div className="mt-2 text-[15px] text-gray-600">
   <strong>Note:</strong> Amazon Bedrock requires setting up the{" "}
-  <a href="https://github.com/aws-samples/bedrock-access-gateway">Bedrock Access Gateway</a> first.
+  <CustomLink href="https://github.com/aws-samples/bedrock-access-gateway">Bedrock Access Gateway</CustomLink> first.
 </div>
 
   </Step>
@@ -197,19 +198,19 @@ import NextSteps from "../src/components/NextSteps"
 <NextSteps
   items={[
     {
-      logo: <Key size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      logo: <Key size={28} style={{verticalAlign: "middle"}} />,
       title: "Essential Commands",
       subtitle: "Learn core commands for productive development workflows.",
       link: "/docs/commands",
     },
     {
-      logo: <Settings size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      logo: <Settings size={28} style={{verticalAlign: "middle"}} />,
       title: "Custom Commands",
       subtitle: "Create your own commands and automate repetitive tasks.",
       link: "/docs/custom-commands",
     },
     {
-      logo: <Layers size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      logo: <Layers size={28} style={{verticalAlign: "middle"}} />,
       title: "Operating Agents",
       subtitle: "Understand different modes and agent capabilities.",
       link: "/docs/operating-agents",

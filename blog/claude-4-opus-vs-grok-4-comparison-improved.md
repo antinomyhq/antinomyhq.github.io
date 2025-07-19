@@ -16,6 +16,7 @@ hide_table_of_contents: false
 ---
 
 import ElevenLabsAudioPlayer from '@site/src/components/shared/ElevenLabsAudioPlayer';
+import CustomLink from '@site/src/components/shared/CustomLink'
 
 <ElevenLabsAudioPlayer 
   publicUserId="96e32731df14f1442beaf5041eec1125596de23ef9ff6ef5d151d28a1464da1b"
@@ -42,7 +43,7 @@ I threw both models at actual Rust projects I've been working on, focusing on th
 
 - MacBook Pro M2 Pro, 16GB RAM
 - Network: 500Mbps connection
-- Development Environment: VS Code, with [Forge](/docs/installation) running on integrated Terminal for AI interactions
+- Development Environment: VS Code, with <CustomLink href="/docs/installation">Forge</CustomLink> running on integrated Terminal for AI interactions
 
 **API Configuration:**
 
@@ -136,10 +137,10 @@ Ultimately, Grok 4's value won me over for my specific needs, but definitely tes
 
 ## Try Grok 4 on Forge
 
-We've enabled Grok 4 on Forge! If you're curious to experience the speed and bug-hunting capabilities we discussed, [sign up for Forge](https://app.forgecode.dev) and give it a shot. You can compare it directly with Claude 4 Opus and see which model works better for your specific coding tasks.
+We've enabled Grok 4 on Forge! If you're curious to experience the speed and bug-hunting capabilities we discussed, <CustomLink href="https://app.forgecode.dev">sign up for Forge</CustomLink> and give it a shot. You can compare it directly with Claude 4 Opus and see which model works better for your specific coding tasks.
 
 ## Related posts
 
-1. [Deepseek R1-0528 Coding experience](https://forgecode.dev/blog/deepseek-r1-0528-coding-experience-review/)
-2. [Claude Sonnet 4 vs Gemini 2.5 Pro](https://forgecode.dev/blogclaude-sonnet-4-vs-gemini-2-5-pro-preview-coding-comparison/)
-3. [Claude 4 initial Impression](https://forgecode.dev/blog/claude-4-initial-impressions-anthropic-ai-coding-breakthrough/)
+1. <CustomLink href="https://forgecode.dev/blog/deepseek-r1-0528-coding-experience-review/">Deepseek R1-0528 Coding experience</CustomLink>
+2. <CustomLink href="https://forgecode.dev/blogclaude-sonnet-4-vs-gemini-2-5-pro-preview-coding-comparison/">Claude Sonnet 4 vs Gemini 2.5 Pro</CustomLink>
+3. <CustomLink href="https://forgecode.dev/blog/claude-4-initial-impressions-anthropic-ai-coding-breakthrough/">Claude 4 initial Impression</CustomLink>

@@ -16,6 +16,7 @@ hide_table_of_contents: false
 ---
 
 import ElevenLabsAudioPlayer from '@site/src/components/shared/ElevenLabsAudioPlayer';
+import CustomLink from '@site/src/components/shared/CustomLink'
 
 <ElevenLabsAudioPlayer 
   publicUserId="96e32731df14f1442beaf5041eec1125596de23ef9ff6ef5d151d28a1464da1b"
@@ -24,7 +25,7 @@ import ElevenLabsAudioPlayer from '@site/src/components/shared/ElevenLabsAudioPl
 
 > **TL;DR**: Attackers are stealing convo history via MCP servers—let's stop that. OWASP ranks prompt injection as the top threat. This post shares practical steps to protect your systems.
 
-_This is Part 2. [← Read Part 1 if you missed the carnage](/blog/prevent-attacks-on-mcp)_
+_This is Part 2. <CustomLink href="/blog/prevent-attacks-on-mcp">← Read Part 1 if you missed the carnage</CustomLink>_
 
 <!-- truncate -->
 
@@ -281,32 +282,32 @@ Fix this now, or enjoy the breach headlines later.
 
 ## Footnotes
 
-<a id="footnote-1"></a>**1.** Trail of Bits. "Jumping the Line: How MCP servers can attack you before you ever use them." April 21, 2025. [https://blog.trailofbits.com/2025/04/21/jumping-the-line-how-mcp-servers-can-attack-you-before-you-ever-use-them/](https://blog.trailofbits.com/2025/04/21/jumping-the-line-how-mcp-servers-can-attack-you-before-you-ever-use-them/) [↩](#ref-1)
+<a id="footnote-1"></a>**1.** Trail of Bits. "Jumping the Line: How MCP servers can attack you before you ever use them." April 21, 2025. <CustomLink href="https://blog.trailofbits.com/2025/04/21/jumping-the-line-how-mcp-servers-can-attack-you-before-you-ever-use-them/">https://blog.trailofbits.com/2025/04/21/jumping-the-line-how-mcp-servers-can-attack-you-before-you-ever-use-them/</CustomLink> <CustomLink href="#ref-1">↩</CustomLink>
 
-<a id="footnote-2"></a>**2.** Trail of Bits. "How MCP servers can steal your conversation history." April 23, 2025. [https://blog.trailofbits.com/2025/04/23/how-mcp-servers-can-steal-your-conversation-history/](https://blog.trailofbits.com/2025/04/23/how-mcp-servers-can-steal-your-conversation-history/) [↩](#ref-2)
+<a id="footnote-2"></a>**2.** Trail of Bits. "How MCP servers can steal your conversation history." April 23, 2025. <CustomLink href="https://blog.trailofbits.com/2025/04/23/how-mcp-servers-can-steal-your-conversation-history/">https://blog.trailofbits.com/2025/04/23/how-mcp-servers-can-steal-your-conversation-history/</CustomLink> <CustomLink href="#ref-2">↩</CustomLink>
 
-<a id="footnote-3"></a>**3.** Trail of Bits. "Deceiving users with ANSI terminal codes in MCP." April 29, 2025. [https://blog.trailofbits.com/2025/04/29/deceiving-users-with-ansi-terminal-codes-in-mcp/](https://blog.trailofbits.com/2025/04/29/deceiving-users-with-ansi-terminal-codes-in-mcp/) [↩](#ref-3)
+<a id="footnote-3"></a>**3.** Trail of Bits. "Deceiving users with ANSI terminal codes in MCP." April 29, 2025. <CustomLink href="https://blog.trailofbits.com/2025/04/29/deceiving-users-with-ansi-terminal-codes-in-mcp/">https://blog.trailofbits.com/2025/04/29/deceiving-users-with-ansi-terminal-codes-in-mcp/</CustomLink> <CustomLink href="#ref-3">↩</CustomLink>
 
-<a id="footnote-4"></a>**4.** Trail of Bits. "Insecure credential storage plagues MCP." April 30, 2025. [https://blog.trailofbits.com/2025/04/30/insecure-credential-storage-plagues-mcp/](https://blog.trailofbits.com/2025/04/30/insecure-credential-storage-plagues-mcp/) [↩](#ref-4)
+<a id="footnote-4"></a>**4.** Trail of Bits. "Insecure credential storage plagues MCP." April 30, 2025. <CustomLink href="https://blog.trailofbits.com/2025/04/30/insecure-credential-storage-plagues-mcp/">https://blog.trailofbits.com/2025/04/30/insecure-credential-storage-plagues-mcp/</CustomLink> <CustomLink href="#ref-4">↩</CustomLink>
 
-<a id="footnote-5"></a>**5.** OWASP. "Top 10 for Large Language Model Applications (2025)." [https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/](https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/) [↩](#ref-5)
+<a id="footnote-5"></a>**5.** OWASP. "Top 10 for Large Language Model Applications (2025)." <CustomLink href="https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/">https://genai.owasp.org/resource/owasp-top-10-for-llm-applications-2025/</CustomLink> <CustomLink href="#ref-5">↩</CustomLink>
 
-<a id="footnote-6"></a>**6.** Trail of Bits. "Provisioning cloud infrastructure the wrong way, but faster." August 27, 2024. [https://blog.trailofbits.com/2024/08/27/provisioning-cloud-infrastructure-the-wrong-way-but-faster/](https://blog.trailofbits.com/2024/08/27/provisioning-cloud-infrastructure-the-wrong-way-but-faster/) [↩](#ref-6)
+<a id="footnote-6"></a>**6.** Trail of Bits. "Provisioning cloud infrastructure the wrong way, but faster." August 27, 2024. <CustomLink href="https://blog.trailofbits.com/2024/08/27/provisioning-cloud-infrastructure-the-wrong-way-but-faster/">https://blog.trailofbits.com/2024/08/27/provisioning-cloud-infrastructure-the-wrong-way-but-faster/</CustomLink> <CustomLink href="#ref-6">↩</CustomLink>
 
-<a id="footnote-7"></a>**7.** NIST. "AI Risk Management Framework (AI RMF 1.0)." [https://www.nist.gov/itl/ai-risk-management-framework](https://www.nist.gov/itl/ai-risk-management-framework) [↩](#ref-7)
+<a id="footnote-7"></a>**7.** NIST. "AI Risk Management Framework (AI RMF 1.0)." <CustomLink href="https://www.nist.gov/itl/ai-risk-management-framework">https://www.nist.gov/itl/ai-risk-management-framework</CustomLink> <CustomLink href="#ref-7">↩</CustomLink>
 
-<a id="footnote-8"></a>**8.** OWASP. "Top 10 for LLMs (2025)." [https://owasp.org/www-project-top-10-for-large-language-model-applications/](https://owasp.org/www-project-top-10-for-large-language-model-applications/) [↩](#ref-8)
+<a id="footnote-8"></a>**8.** OWASP. "Top 10 for LLMs (2025)." <CustomLink href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">https://owasp.org/www-project-top-10-for-large-language-model-applications/</CustomLink> <CustomLink href="#ref-8">↩</CustomLink>
 
-<a id="footnote-9"></a>**9.** CVE Database. "Prompt injection vulnerabilities." [https://cve.mitre.org/](https://cve.mitre.org/) [↩](#ref-9)
+<a id="footnote-9"></a>**9.** CVE Database. "Prompt injection vulnerabilities." <CustomLink href="https://cve.mitre.org/">https://cve.mitre.org/</CustomLink> <CustomLink href="#ref-9">↩</CustomLink>
 
-<a id="footnote-10"></a>**10.** Perez et al. "Prompt Injection Attacks Against GPT-3." arXiv:2108.04739. [https://arxiv.org/abs/2108.04739](https://arxiv.org/abs/2108.04739) [↩](#ref-10)
+<a id="footnote-10"></a>**10.** Perez et al. "Prompt Injection Attacks Against GPT-3." arXiv:2108.04739. <CustomLink href="https://arxiv.org/abs/2108.04739">https://arxiv.org/abs/2108.04739</CustomLink> <CustomLink href="#ref-10">↩</CustomLink>
 
-<a id="footnote-11"></a>**11.** Zou et al. "Universal and Transferable Adversarial Attacks on Aligned Language Models." arXiv:2307.15043. [https://arxiv.org/abs/2307.15043](https://arxiv.org/abs/2307.15043) [↩](#ref-11)
+<a id="footnote-11"></a>**11.** Zou et al. "Universal and Transferable Adversarial Attacks on Aligned Language Models." arXiv:2307.15043. <CustomLink href="https://arxiv.org/abs/2307.15043">https://arxiv.org/abs/2307.15043</CustomLink> <CustomLink href="#ref-11">↩</CustomLink>
 
-<a id="footnote-12"></a>**12.** Wei et al. "Jailbroken: How Does LLM Safety Training Fail?" arXiv:2307.02483. [https://arxiv.org/abs/2307.02483](https://arxiv.org/abs/2307.02483) [↩](#ref-12)
+<a id="footnote-12"></a>**12.** Wei et al. "Jailbroken: How Does LLM Safety Training Fail?" arXiv:2307.02483. <CustomLink href="https://arxiv.org/abs/2307.02483">https://arxiv.org/abs/2307.02483</CustomLink> <CustomLink href="#ref-12">↩</CustomLink>
 
 ---
 
-_← [Read Part 1: MCP Security Issues Nobody's Talking About](/blog/prevent-attacks-on-mcp)_
+_← <CustomLink href="/blog/prevent-attacks-on-mcp">Read Part 1: MCP Security Issues Nobody's Talking About</CustomLink>_
 
 _Building MCP security tools or researching AI vulnerabilities? The documented threats are growing faster than the defenses. Let's change that._

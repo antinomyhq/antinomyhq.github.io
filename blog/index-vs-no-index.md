@@ -9,6 +9,8 @@ hide_table_of_contents: false
 image: /images/blog/lunar_module.png
 ---
 
+import CustomLink from '@site/src/components/shared/CustomLink'
+
 **TL;DR:**
 Indexed agents were 22% faster, until stale embeddings crashed the lunar lander.
 
@@ -19,7 +21,7 @@ I tested two AI agents on Apollo 11's actual flight code to see if code indexing
 - Index agent's sync issues during lunar landing revealed hidden complexity of keeping embeddings current
 - Speed gains come with reliability and security trade-offs that can derail productivity
 
-[Skip to experiment](#from-1960s-assembly-to-modern-ai)
+<CustomLink href="#from-1960s-assembly-to-modern-ai">Skip to experiment</CustomLink>
 
 ## Back story about the Apollo 11 mission
 
@@ -123,7 +125,7 @@ Complete the following steps:
 
 After running both agents through all eight challenges, the results revealed something important: both approaches successfully completed every challenge, but they exposed a critical weakness in indexed approaches that rarely gets discussed: synchronization drift.
 
-[Skip to experiment setup](#community-experiment) | [Jump to conclusions](#conclusion-balancing-performance-reliability-and-security)
+<CustomLink href="#community-experiment">Skip to experiment setup</CustomLink> | <CustomLink href="#conclusion-balancing-performance-reliability-and-security">Jump to conclusions</CustomLink>
 
 Here's how they stacked up:
 
@@ -204,7 +206,7 @@ The Apollo 11 guidance computer succeeded because it never worked with stale dat
 
 ## Community Experiment
 
-Want to test this yourself? The complete Apollo 11 challenge suite is available at: [https://github.com/forrestbrazeal/apollo-11-workshop](https://github.com/forrestbrazeal/apollo-11-workshop)
+Want to test this yourself? The complete Apollo 11 challenge suite is available at: <CustomLink href="https://github.com/forrestbrazeal/apollo-11-workshop">https://github.com/forrestbrazeal/apollo-11-workshop</CustomLink>
 
 If you'd like me to run this experiment on your repository, drop the link in the comments. I'm particularly interested in testing this on larger, more modern codebases to see if the patterns scale and whether the "lunar landing" effect appears in other domains.
 
@@ -212,7 +214,7 @@ Have you run similar experiments comparing AI approaches? I'd love to hear about
 
 ## Credits
 
-This experiment was inspired by [@forrestbrazeal](https://twitter.com/forrestbrazeal)'s excellent talk at AI Engineer World Fair 2025. The specific challenges explored here are taken from that talk.
+This experiment was inspired by <CustomLink href="https://twitter.com/forrestbrazeal">@forrestbrazeal</CustomLink>'s excellent talk at AI Engineer World Fair 2025. The specific challenges explored here are taken from that talk.
 
 The AGC code itself remains one of the most remarkable software engineering achievements in history, a testament to what careful planning, rigorous testing, and elegant design can accomplish under the most extreme constraints imaginable. All AGC source code is in the public domain.
 
