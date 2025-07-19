@@ -3,12 +3,12 @@ slug: forge-incident-12-july-2025-rca-2
 title: "Root Cause Analysis: Forge Quality Degradation on July 12"
 authors: [tushar]
 date: 2025-07-18
-tags: ["incident", "transparency", "forge", "ai", "quality"]
+tags: ["incident", "forge", "RCA"]
 ---
 
 ## What Happened
 
-On July 12, 2025, we released v0.99.0 which included [PR #1068](https://github.com/antinomyhq/forge/pull/1068) introducing aggressive conversation compaction to reduce LLM costs. While successful at cutting costs by 40-50%, it significantly degraded response quality by removing crucial conversation context.
+On July 12, 2025, we released v0.99.0, which included [PR #1068](https://github.com/antinomyhq/forge/pull/1068) introducing aggressive conversation compaction to reduce LLM costs. While successful at cutting costs by 40-50%, it significantly degraded response quality by removing crucial conversation context.
 
 Users reported quality issues within 2 days. After internal testing confirmed the problem, we immediately released v0.100.0 on July 14 with the compaction feature reverted.
 
@@ -23,7 +23,7 @@ give feedback in the same conversation and context accumulation is critical.
 
 ## Why We Did This
 
-Higher than expected early access signups created cost pressure. Rather than implement waitlists, we chose aggressive optimization to keep the service open to all users. The feature worked perfectly for its intended purpose, just at the cost of quality we didn't anticipate.
+Higher than expected early access signups created cost pressure. Rather than implementing waitlists, we chose aggressive optimization to keep the service open to all users. The feature worked perfectly for its intended purpose, just at the cost of quality we didn't anticipate.
 
 ## What We've Done
 
@@ -33,9 +33,8 @@ Higher than expected early access signups created cost pressure. Rather than imp
 ## What We're Changing
 
 1. **Multi-turn evals** - Testing conversation quality across 3-5 message exchanges, not just single responses
-2. **Quality gates** - Conversation quality scores must pass thresholds before any context-affecting feature ships
-3. **Gradual rollouts** - Canary deployments for any feature touching core conversation logic
-
+2. **Quality gates** - Conversation quality scores must pass thresholds before any context affecting feature ships
+3. **Gradual rollouts** - Canary releases for any feature touching core conversation logic
 
 ## Known Issues
 
