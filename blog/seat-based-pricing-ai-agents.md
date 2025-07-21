@@ -1,84 +1,96 @@
 ---
 slug: seat-based-pricing-ai-agents
-title: "Token Pricing Is a Tax on Creativity. I'm Repealing It."
+title: "Why Token Pricing for Dev Tools is Broken (And What We're Doing About It)"
 authors: [tushar]
 tags:
   ["AI pricing", "developer tools", "Forge", "SaaS models"]
 date: 2025-07-20
-description: "Why Forge is leaning toward per-seat, fair-use pricing instead of token billing and I want your feedback."
+description: "Why per-seat pricing is the closest we can get to fair, outcome-based pricing for developer tools."
 hide_table_of_contents: false
 ---
 
-### TL;DR
+I've been watching the AI tools space for two years now, and I keep seeing the same pattern: companies launch with simple pricing, then gradually make it more complex and user-hostile. Token-based pricing is the worst offender.
 
-Metered pricing for AI tools is a broken model. It’s a tax on creativity and a recipe for developer distrust. We’re done with it. Forge is moving to a flat, per-seat subscription with a generous fair-use policy. No token counting, no budget anxiety. Just code. We think this is the only sane path forward, and we want to know if you agree.
-
-Until We finalize this pricing model, Forge is free for everyone, unlimited.
+Here's why it's broken, and what we're trying instead with Forge.
 
 ## <!-- truncate -->
 
-## 1. The Industry is Getting This Wrong, and Developers are Paying the Price
+## The Pattern is Getting Predictable
 
-Another week, another AI tool that started with a legion of fans and ended with a self-inflicted PR crisis. We've all seen the pattern: a great tool, a growing community, and then a pricing change that feels like a slap in the face. It’s a textbook case of a vendor passing their infrastructure bill directly to the user, and it needs to stop.
+Every few months, another AI company "optimizes" their pricing:
 
-| Tool                 | The "Big Idea"                                                                         | The Inevitable Backlash                                                                                                                                                                        |
-| -------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Cursor**           | Let's swap our simple Pro plan for a confusing system of "compute packs."              | A full-blown community meltdown, complete with a [public apology from the CEO](https://cursor.com/blog/june-2025-pricing).                                                                     |
-| **Claude Code**      | Let's slash token limits on our most expensive plan, in the middle of a billing cycle. | A mass exodus of users and a [firestorm on Hacker News and GitHub](https://techcrunch.com/2025/07/17/anthropic-tightens-usage-limits-for-claude-code-without-telling-users/).                  |
-| **Copilot Business** | How about a flat $19 per user with a soft quota nobody ever hits?                      | ...silence. Because it [just works](https://docs.github.com/en/billing/managing-billing-for-github-copilot/about-billing-for-github-copilot). Developers are happy to pay a predictable price. |
+| Company            | What They Did                                | How Users Reacted                                                                                                                    |
+| ------------------ | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **Cursor**         | Replace simple Pro plan with "compute packs" | [Community revolt, CEO apology](https://cursor.com/blog/june-2025-pricing)                                                           |
+| **Claude Code**    | Cut token limits mid-billing cycle           | [Mass exodus, HN firestorm](https://techcruch.com/2025/07/17/anthropic-tightens-usage-limits-for-claude-code-without-telling-users/) |
+| **GitHub Copilot** | Flat $19/user, soft quota nobody hits        | Users actually happy to pay                                                                                                          |
 
-The message from the developer community is loud and clear: stop making us do math. Stop making us worry about how many questions we ask. Stop making us feel like we're on a meter.
+Notice the pattern? Developers will pay for value, but they hate metered anxiety.
 
----
+## Token Pricing Breaks the Creative Process
 
-## 2. Pay-Per-Token is a Fundamentally Broken Model for Creative Tools
+When I'm debugging a gnarly issue, I don't care if the solution takes 1,000 tokens or 10,000. I care that the bug gets fixed. But with token pricing, every question becomes a budget calculation.
 
-Let's be blunt: charging per token for a developer tool is a lazy, vendor-first pricing model. It’s a holdover from the early days of API-first AI, and it has no place in a tool that’s supposed to be a seamless part of your workflow.
+"Should I ask for a detailed explanation, or just the quick fix?"
 
-- **You're Buying a Car, Not Paying for Gas by the Mile**
-  When you buy a tool, you're buying a solution to a problem. You're not buying a bucket of API calls. We, the vendor, are responsible for the "engine" - the models, the prompts, the caching. Charging you for every token is like a car company charging you for every piston fire. It’s absurd. For example, imagine debugging a complex issue: with tokens, a long session could cost you $5 in unexpected fees. With seats, it's included.
+"Is this worth burning through my monthly quota?"
 
-- **It Creates a Toxic Relationship**
-  Pay-per-token pricing pits our interests against yours. You want to use the tool as much as possible to get the most value. We, on the other hand, are incentivized to make you use more tokens. That’s a recipe for distrust. We'd rather be incentivized to give you the best answer in the fastest, most efficient way possible.
+"Maybe I should try solving this myself first..."
 
-- **It Kills Creativity and Experimentation**
-  The best ideas often come from playing around, from trying things out, from asking "what if." Token-based pricing puts a tax on that creativity. It makes you second-guess every command, every question. It turns a tool that should be a creative partner into a budget line item to be minimized. Case in point: a developer experimenting with 10 different implementations might rack up $10 in tokens, killing the flow.
+This is backwards. The tool should encourage exploration, not ration it.
 
----
+Token pricing also creates weird incentives. The vendor profits when you use more tokens, so they have no reason to be concise or efficient. Meanwhile, you're trying to minimize usage to control costs. Your goals are misaligned from day one.
 
-## 3. The Forge Pledge: Predictable Pricing, No Surprises
+## What We Actually Want: Outcome-Based Pricing
 
-We’re drawing a line in the sand. Here’s our commitment to you, and how we’re building our pricing to reflect it:
+Ideally, you'd pay based on results. Bugs fixed, features shipped, code quality improvements. That would align everyone's incentives perfectly.
 
-| Our Pledge To You             | How We're Making It Happen                                                                                                                                                                                                                                                                                |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **No More Token Counting**    | A flat $20/month per-seat fee. Use Forge all day, every day. Compare that to token models where a heavy day could cost $15 alone.                                                                                                                                                                         |
-| **Value, Not Volume**         | We'll offer tiers based on features you actually care about, like deeper repository context and advanced team features.                                                                                                                                                                                   |
-| **It's Our Job to Optimize**  | We'll use a mix of models behind the scenes (like Llama 3 for 'Fast' tasks and GPT-4 level for 'Best') to give you optimal performance at the lowest cost to us. You just choose "Fast" or "Best," and we handle the routing intelligently.                                                               |
-| **Fairness, Not Frustration** | A high, transparent "fair use" ceiling (e.g., equivalent to 1M tokens/day). We added this because token pricing exists to prevent abuse - we get that. If you hit it (rare for 99.9% of users), we'll review for abuse like infinite loops; otherwise, we'll work with you to upgrade. No sudden cutoffs. |
-| **Radical Transparency**      | We'll still show you your usage data. Not because it affects your bill, but so you can understand your own workflow. See which models you're using most, and find opportunities to optimize your own work. It's your data, you should have it.                                                            |
+But how do you measure "success" in software development?
 
-![Pricing Comparison Chart](https://example.com/pricing-chart.png)  
-_(Figure 1: Token vs Seat Pricing - A heavy user saves 40% with seats over time)_
+Is a 10-line elegant solution better than a 100-line verbose one? What if the verbose version is easier for your team to maintain? What if the AI taught you something valuable even though the code didn't work?
 
----
+Every developer, every project, every context is different. We'd spend more time arguing about what constitutes "success" than actually building useful tools.
 
-## 4. This Puts the Pressure on Us, Not You
+## Per-Seat Pricing: The Practical Compromise
 
-Let's be clear: this model is better for us because it forces us to be better engineers. When we can't just pass on every token cost, we have to innovate.
+Since outcome-based pricing is nearly impossible to implement fairly, per-seat pricing is the next best thing.
 
-- **You** get to code without fear, using Forge to its full potential.
-- **We** are relentlessly focused on optimizing our stack, from model routing to caching to context engineering to deliver the best performance at the lowest cost. The burden is on us to be efficient, not on you to be a psychic budget forecaster.
-- **Your finance team** sees a single, predictable line item. No drama, no surprises.
+With per-seat pricing, we succeed when you find the tool valuable enough to keep paying. We can't just pass through token costs - we have to get smarter about model selection, caching, and context engineering. The pressure is on us to be efficient, not on you to be conservative.
 
-We know seat pricing isn't perfect - it could subsidize heavy users at the expense of light ones. But data shows most devs are consistent, and it beats the alternative of constant metering anxiety.
+You pay a predictable amount and use the tool however makes you most productive. No mental math before asking a question. No rationing creativity. Your finance team sees a clean line item instead of surprise bills from heavy usage days.
 
----
+## We're Testing This Philosophy Right Now
 
-## 5. What Do You Think? Be Brutal.
+Forge is completely free while we work out the details of our per-seat model. No token counting, no billing, no limits. We're absorbing real costs to prove this approach works.
 
-I’m laying my cards on the table. I believe that the future of AI developer tools is in simple, predictable, per-seat pricing. But I’m not naive enough to think I have all the answers.
+This isn't a marketing stunt. We need to understand actual usage patterns before we can set fair prices. Early data suggests most developers use AI tools pretty consistently - the "heavy usage" days and "light usage" days average out over time.
 
-What am I missing? What are the edge cases I haven't considered? What's the worst-case scenario you can imagine with this model?
+## What We're Still Figuring Out
 
-I'm not looking for pats on the back. I'm looking for a debate. Join me on [Discord](https://discord.gg/kRZBPpkgwq), or yell at me on X @forgecodehq. Your feedback will be instrumental in shaping the future of Forge.
+**Price points.** We're analyzing usage patterns, infrastructure costs, and value delivered to find pricing that works for both light and heavy users.
+
+**Fair usage policies.** We don't want to meter normal usage, but we need protection against abuse. We're working on policies that catch edge cases without affecting typical developers.
+
+**Individual vs team features.** Some features make sense at the individual level, others at the team level. We're mapping out tiers that actually reflect how people work.
+
+## The Risks We're Taking
+
+If our usage projections are wrong, we might end up subsidizing power users who cost more than everyone else pays. But early data suggests usage is more consistent than we expected.
+
+Unlike token pricing, we can't just pass costs through to users. We absorb the pressure to optimize infrastructure. This forces us to be better engineers, but it's a real business risk if costs spike unexpectedly.
+
+Some developers might prefer pay-as-you-go models where they only pay for what they use. We're betting that most prefer predictability over precision, but we could be wrong.
+
+## Help Us Get This Right
+
+We're building this pricing model in the open because it only works if it works for real developers.
+
+What we need to know:
+
+- How do you actually use AI coding tools day-to-day?
+- What would make you choose predictable pricing over metered pricing?
+- What constitutes "fair usage" in your mind?
+
+Join the conversation on [Discord](https://discord.gg/kRZBPpkgwq) or reach out on [X](https://x.com/forgecodehq).
+
+The developer tools industry has trained us to expect billing anxiety. I think that's wrong, and we're betting our company on proving there's a better way.
