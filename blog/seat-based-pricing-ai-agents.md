@@ -77,7 +77,7 @@ This isn't a marketing stunt. We need to understand actual usage patterns before
 
 If our usage projections are wrong, we might end up subsidizing power users who cost more than everyone else pays. But early data suggests usage is more consistent than we expected.
 
-Unlike token pricing, we can't just pass costs through to users. We absorb the pressure to optimize infrastructure. This forces us to be better engineers, but it's a real business risk if costs spike unexpectedly.
+Unlike token pricing, we can't just pass costs through to users. We [absorb the pressure to optimize infrastructure](https://forgecode.dev/blog/forge-incident-12-july-2025-rca-2/). This forces us to be better engineers, but it's a real business risk if costs spike unexpectedly.
 
 Some developers might prefer pay-as-you-go models where they only pay for what they use. We're betting that most prefer predictability over precision, but we could be wrong.
 
