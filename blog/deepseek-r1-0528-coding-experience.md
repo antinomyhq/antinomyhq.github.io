@@ -1,11 +1,7 @@
 ---
 slug: deepseek-r1-0528-coding-experience-review
-title: "First Experience Coding with DeepSeek-R1-0528"
-authors: [forge]
-tags:
-  ["DeepSeek", "Open Source AI", "Coding AI", "OpenRouter"]
-date: 2025-05-30
-description: "I spent time testing DeepSeek-R1-0528's impressive capabilities and challenging latency via OpenRouter API. Here's my analysis of its coding performance, architectural innovations, and why I kept switching back to Sonnet 4."
+title: "DeepSeek-R1-0528: A Detailed Review of its AI Coding Performance & Latency"
+description: "A comprehensive review of DeepSeek-R1-0528's AI coding capabilities, architectural innovations, and significant latency challenges via OpenRouter API. Is this open-source LLM ready for your real-time development workflow?"
 hide_table_of_contents: false
 ---
 

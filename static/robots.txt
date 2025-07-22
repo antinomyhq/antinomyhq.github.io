@@ -1,3 +1,25 @@
 User-agent: *
 Disallow: /docs/contributors/
+
+# Allow AI bots for training and indexing
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: omgili
+Allow: /
+
+User-agent: omgilibot
+Allow: /
+
 # Algolia-Crawler-Verif: 2D8212C5E3F0C107
+
+Sitemap: https://forgecode.dev/sitemap.xml

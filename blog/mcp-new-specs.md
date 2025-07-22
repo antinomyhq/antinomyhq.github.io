@@ -1,6 +1,6 @@
 ---
 slug: mcp-spec-updates
-title: "MCP 2025-06-18 Spec Update: Security, Structured Output & Elicitation"
+title: "MCP 2025-06-18 Spec Update: AI Security, Structured Output, and User Elicitation for LLMs"
 authors: [anmol]
 tags:
   [

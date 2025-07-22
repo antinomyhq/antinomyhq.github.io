@@ -7,11 +7,12 @@ import {getNavDropdownItemHtml} from "./src/utils"
 const title = "Forge Code"
 const organization = "Forge Code"
 const project = "antinomyhq.github.io"
-
+const mainDescription =
+  "AI coding assistant that helps developers write better code faster. Get AI-powered code suggestions, refactoring, and debugging directly in your terminal."
 export default {
   title,
   trailingSlash: true,
-  tagline: "AI for everyone",
+  tagline: "Forge: The AI Coding Assistant for Your Terminal",
   headTags: [
     // Adaptive favicon implementation - automatically switches based on system theme
     {
@@ -59,6 +60,63 @@ export default {
       }),
     },
     {
+      tagName: "meta",
+      attributes: {
+        name: "description",
+        content: mainDescription,
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        name: "keywords",
+        content:
+          "AI coding assistant, terminal AI tool, AI pair programmer, code completion AI, developer productivity tool",
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        property: "og:title",
+        content: title,
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        property: "og:description",
+        content: mainDescription,
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        property: "og:type",
+        content: "website",
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        property: "og:url",
+        content: "https://forgecode.dev",
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        name: "twitter:title",
+        content: title,
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        name: "twitter:description",
+        content: mainDescription,
+      },
+    },
+    {
       tagName: "script",
       attributes: {},
       innerHTML: `!function(s,n,i,t,c,h){s.SnitchObject=i;s[i]||(s[i]=function(){
@@ -72,6 +130,79 @@ export default {
       tagName: "script",
       attributes: {},
       innerHTML: `!function () {var reb2b = window.reb2b = window.reb2b || [];if (reb2b.invoked) return;reb2b.invoked = true;reb2b.methods = ["identify", "collect"];reb2b.factory = function (method) {return function () {var args = Array.prototype.slice.call(arguments);args.unshift(method);reb2b.push(args);return reb2b;};};for (var i = 0; i < reb2b.methods.length; i++) {var key = reb2b.methods[i];reb2b[key] = reb2b.factory(key);}reb2b.load = function (key) {var script = document.createElement("script");script.type = "text/javascript";script.async = true;script.src = "https://s3-us-west-2.amazonaws.com/b2bjsstore/b/" + key + "/0OV0VHL3P56Z.js.gz";var first = document.getElementsByTagName("script")[0];first.parentNode.insertBefore(script, first);};reb2b.SNIPPET_VERSION = "1.0.1";reb2b.load("0OV0VHL3P56Z");}();`,
+    },
+    {
+      tagName: "script",
+      attributes: {
+        type: "application/ld+json",
+      },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org/",
+        "@type": "SoftwareApplication",
+        name: "Forge Code",
+        description: mainDescription,
+        url: "https://forgecode.dev",
+        applicationCategory: "DeveloperApplication",
+        operatingSystem: "Cross-platform",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        featureList: [
+          "AI-powered code completion",
+          "Terminal-based development",
+          "Multi-language support",
+          "Code refactoring assistance",
+          "Debugging help",
+          "Test generation",
+        ],
+        programmingLanguage: ["TypeScript", "JavaScript", "Python", "Go", "Rust", "Java", "C++"],
+        downloadUrl: "https://forgecode.dev/docs/installation",
+        author: {
+          "@type": "Organization",
+          name: "Forge Code",
+          url: "https://forgecode.dev",
+        },
+        datePublished: "2024-01-01",
+        softwareVersion: "0.98.0",
+      }),
+    },
+    {
+      tagName: "script",
+      attributes: {
+        type: "application/ld+json",
+      },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is Forge Code?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Forge Code is an AI coding assistant that runs in your terminal, helping developers write better code faster with AI-powered suggestions, refactoring, and debugging assistance.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How does Forge Code work?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Forge Code integrates with your terminal and IDE, providing AI-powered code suggestions, debugging help, and refactoring assistance based on your codebase and context.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is Forge Code free to use?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Forge Code offers a free tier with basic features, along with paid plans for advanced functionality and team collaboration.",
+            },
+          },
+        ],
+      }),
     },
   ],
   url: "https://forgecode.dev",

@@ -1,10 +1,18 @@
 ---
 slug: forge-incident-12-july-2025-rca-2
-title: "Root Cause Analysis: Forge Quality Degradation on July 12"
+title: "Forge Performance RCA: Root Cause Analysis of Quality Degradation on July 12, 2025"
 authors: [tushar]
 date: 2025-07-18
-description: "A detailed analysis of the Forge quality issues that occurred on July 12, 2025, including root cause, impact, and steps taken to prevent future incidents."
-tags: ["incident", "forge", "RCA"]
+description: "A detailed root cause analysis of the Forge AI coding assistant's quality degradation incident on July 12, 2025, including the impact of aggressive conversation compaction and steps taken for future prevention and stability improvements."
+tags:
+  [
+    "incident",
+    "forge",
+    "RCA",
+    "performance",
+    "AI coding assistant",
+    "quality degradation",
+  ]
 ---
 
 ## What Happened
@@ -52,3 +60,9 @@ We messed up by prioritizing cost optimization over quality validation. The late
 ---
 
 _Questions? Reach out through our community channels. We're committed to transparency about what went wrong and how we're fixing it._
+
+## Related Articles
+
+- [Forge v0.98.0 Release Article: Major Performance and Feature Updates](/blog/forge-v0.98.0-release-article)
+- [AI Agent Best Practices: Maximizing Productivity with Forge](/blog/ai-agent-best-practices)
+- [MCP Security Prevention: Practical Strategies for AI Development - Part 2](/blog/prevent-attacks-on-mcp-part2)

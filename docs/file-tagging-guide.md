@@ -1,4 +1,4 @@
-# File Tagging with @: Your Guide to Better AI Context
+# File Tagging with @: Enhance AI Context for Faster Developer Workflow
 
 One of the biggest challenges with AI coding assistants is providing the right context. Instead of copy-pasting code or Agent searching for where to start repeatedly, Forge's file tagging system lets you reference any project file with simple `@filename` syntax and tab completion.
 
@@ -14,7 +14,7 @@ Reference any file in your project using `@` followed by part of the filename, t
 > Help me debug @auth [Tab]
 ```
 
-<img src="/docs/autocomplete.gif" alt="File tagging autocomplete in action" style={{"width": "100%"}} />
+<img src="/docs/autocomplete.gif" alt="Forge AI coding assistant demonstrating file tagging autocomplete, showing how users can quickly reference project files for better context" style={{"width": "100%"}} />
 
 You'll see matching files:
 
@@ -257,5 +257,11 @@ File tagging only sees your current project. External packages and microservices
 ---
 
 File tagging works best when you understand both its strengths and limitations. Start simple, learn your project's search patterns, and gradually tackle more complex scenarios.
+
+## Related Guides
+
+- [AI Model Selection Guide: Optimize Forge for Your Workflow](/docs/model-selection-guide)
+- [Plan and Act Guide: Automating Complex Workflows with Forge](/docs/plan-and-act-guide)
+- [Custom Rules Guide: Extending Forge's Capabilities](/docs/custom-rules-guide)
 
 The goal isn't to reference every file in your project - it's to give the AI just enough context to provide genuinely helpful, specific advice.

@@ -1,6 +1,6 @@
 ---
 slug: ai-agent-best-practices
-title: "What Actually Works: 12 Lessons from AI Pair Programming"
+title: "AI Agent Best Practices: 12 Lessons from AI Pair Programming for Developers"
 authors: [forge]
 tags:
   [
@@ -8,8 +8,11 @@ tags:
     "Pair Programming",
     "Productivity",
     "Software Engineering",
+    "AI Agent",
+    "Developer Best Practices",
+    "Workflow Optimization",
   ]
-description: "Field-tested practices for productive AI-assisted development. Real lessons from 6 months of daily AI pair programming, including what works, what fails, and why most engineers are doing it wrong."
+description: "Discover field-tested best practices for productive AI-assisted development. Learn 12 crucial lessons from 6 months of daily AI pair programming, covering effective planning, prompt engineering, context management, and common pitfalls to avoid for maximizing developer efficiency."
 hide_table_of_contents: false
 date: 2025-06-01
 image: /images/blog/ai-pair-programmer.png
@@ -276,3 +279,10 @@ AI coding tools can significantly boost productivity, but only if you use them s
 Plan first, test everything, review like your production system depends on it (because it does), and remember: the AI is your intern, not your architect.
 
 The future of coding isn't human vs AI it's humans with AI vs humans without it. Choose your side wisely.
+
+## Related Articles
+
+- [Claude 4 Opus vs Grok 4: AI Model Comparison for Complex Coding Tasks](/blog/slug: claude-4-opus-vs-grok-4-comparison-full)
+- [Claude Sonnet 4 vs Gemini 2.5 Pro Preview: AI Coding Assistant Comparison](/blog/claude-sonnet-4-vs-gemini-2-5-pro-preview-coding-comparison)
+- [Forge Performance RCA: Root Cause Analysis of Quality Degradation on July 12, 2025](/blog/forge-incident-12-july-2025-rca-2)
+- [MCP Security Prevention: Practical Strategies for AI Development - Part 2](/blog/prevent-attacks-on-mcp-part2)

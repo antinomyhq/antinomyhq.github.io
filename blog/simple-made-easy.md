@@ -1,17 +1,7 @@
 ---
 slug: simple-is-not-easy
-title: "Simple Over Easy: Architectural Constraints That Make AI Generated Code Maintainable"
-authors: [tushar]
-tags:
-  [
-    "Software Architecture",
-    "Vibe Coding",
-    "Code Review",
-    "Technical Debt",
-    "Maintainability",
-  ]
-date: 2025-06-26
-description: "Two months ago, a 13-year-old video taught me why AI agents get stuck at 90% and how to architect my way to ~100%"
+title: "Simple Over Easy: Architectural Constraints for Maintainable AI-Generated Code"
+description: "Discover how applying Rich Hickey's 'Simple Made Easy' principles can solve the 'AI 90/10 problem', leading to more maintainable and reviewable AI-generated code by constraining architectural choices."
 hide_table_of_contents: false
 ---
 

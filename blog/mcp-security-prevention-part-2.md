@@ -1,6 +1,8 @@
 ---
 slug: prevent-attacks-on-mcp-part2
-title: "MCP Security is Broken: Here's How to Fix It"
+title: "MCP Security Prevention: Practical Strategies for AI Development - Part 2"
+description: "Dive into real-world MCP security vulnerabilities and discover actionable prevention strategies for AI development, focusing on prompt injection, cost-based attacks, and secure credential handling."
+hide_table_of_contents: false
 authors: [tushar]
 tags:
   [
@@ -9,10 +11,10 @@ tags:
     "AI Safety",
     "Best Practices",
     "Defense",
+    "Prompt Injection",
+    "Cloud Security",
   ]
 date: 2025-06-17
-description: "Real talk about MCP security vulnerabilities and actual solutions that work in production. Part 2: Stop getting owned by prompt injection."
-hide_table_of_contents: false
 ---
 
 import ElevenLabsAudioPlayer from '@site/src/components/shared/ElevenLabsAudioPlayer';
@@ -310,3 +312,9 @@ Fix this now, or enjoy the breach headlines later.
 _← [Read Part 1: MCP Security Issues Nobody's Talking About](/blog/prevent-attacks-on-mcp)_
 
 _Building MCP security tools or researching AI vulnerabilities? The documented threats are growing faster than the defenses. Let's change that._
+
+## Related Articles
+
+- [MCP Security Issues Nobody's Talking About - Part 1](/blog/prevent-attacks-on-mcp)
+- [AI Agent Best Practices: Maximizing Productivity with Forge](/blog/ai-agent-best-practices)
+- [MCP New Specs: AI Agent Capabilities and Security Enhancements](/blog/mcp-spec-updates)

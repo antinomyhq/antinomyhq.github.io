@@ -1,4 +1,4 @@
-# Switching Between AI Models
+# AI Model Selection Guide: Optimize Forge for Your Workflow
 
 ## How to Change Models in Forge
 
@@ -10,7 +10,7 @@ Switching models is quick and intuitive:
 4. **Navigate with keyboard** - use up/down arrow keys to select
 5. **Press Enter** to confirm your selection
 
-![Model Selection Process](../static/docs/change_model.gif)
+![Forge AI model selection process showing a user typing /model and selecting from a dropdown menu of available AI models like Opus, Sonnet, and Grok-4](../static/docs/change_model.gif)
 
 The interface shows you model capabilities and pricing so you can make informed decisions.
 
@@ -51,6 +51,12 @@ Remember: The best model is the one that gets your job done efficiently. Start w
 ### Getting Help
 
 If you're experiencing issues with forge:
+
+## Related Guides
+
+- [Custom Rules Guide: Extending Forge's Capabilities](/docs/custom-rules-guide)
+- [Plan and Act Guide: Automating Complex Workflows with Forge](/docs/plan-and-act-guide)
+- [Understanding Forge's Pricing for AI Agents](/blog/seat-based-pricing-ai-agents)
 
 1. **Export your session context:**
 

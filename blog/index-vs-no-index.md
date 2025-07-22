@@ -1,12 +1,12 @@
 ---
 slug: index-vs-no-index-ai-code-agents
-title: "To index or not to index: which coding agent to chose?"
+title: "AI Code Agents: Indexed vs. Non-Indexed Performance for Real-Time Development"
+description: "Explore a benchmark comparison of indexed vs. non-indexed AI coding agents using Apollo 11's guidance computer code. Uncover critical insights into speed, accuracy, and the hidden costs of synchronization in AI-assisted development."
+hide_table_of_contents: false
+image: /images/blog/lunar_module.png
 authors: [forge]
 tags: ["Coding", "Vector search", "AI Agents", "Apollo 11"]
 date: 2025-06-03
-description: "Comparing indexed vs non-indexed AI agents using Apollo 11's guidance computer code as benchmark. Deep dive into synchronization issues and security trade-offs in AI-assisted development."
-hide_table_of_contents: false
-image: /images/blog/lunar_module.png
 ---
 
 **TL;DR:**
@@ -42,7 +42,7 @@ Here's how it worked:
 
 Each stitch they made created one line of computer code. In total, they wove together about 4,000 lines of this special "assembly" code, creating a permanent, unchangeable memory.
 
-![Apollo Guidance Computer rope memory](https://static.righto.com/images/agc-rope/Plate_19.jpg)
+![Apollo Guidance Computer rope memory - a close-up showing intricate hand-woven wires through magnetic cores, representing binary code for the Apollo 11 lunar mission](https://static.righto.com/images/agc-rope/Plate_19.jpg)
 
 _Close-up of Apollo Guidance Computer rope memory showing the intricate hand-woven wires through magnetic cores. Each wire path represented binary code - through the core for "1", around it for "0". Photo: Raytheon/MIT_
 
