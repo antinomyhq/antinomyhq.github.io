@@ -85,6 +85,7 @@ const sidebars: SidebarsConfig = {
       collapsed: true,
       items: [
         "npm-troubleshooting", // Node.js and npm installation issues
+        "windows-troubleshooting", // Windows-specific runtime issues
         "error-handling", // Moved from Advanced Features
         "logging", // Moved from Reference
       ],
