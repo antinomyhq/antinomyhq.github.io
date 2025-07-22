@@ -13,7 +13,8 @@
         <link href="https://forgecode.dev/blog/seat-based-pricing-ai-agents/"/>
         <updated>2025-07-20T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Why per-seat pricing is the closest we can get to fair, outcome-based pricing for developer tools.]]></summary>
-        <content type="html"><![CDATA[<p>I've been watching the AI tools space for two years now, and I keep seeing the same pattern: companies launch with simple pricing, then gradually make it more complex and user-hostile. Token-based pricing is the worst offender.</p>
+        <content type="html"><![CDATA[<div class="undefined"><div id="elevenlabs-audionative-widget" data-height="90" data-width="100%" data-frameborder="no" data-scrolling="no" data-publicuserid="96e32731df14f1442beaf5041eec1125596de23ef9ff6ef5d151d28a1464da1b" data-playerurl="https://elevenlabs.io/player/index.html" data-small="True" data-textcolor="rgba(0, 0, 0, 1.0)" data-backgroundcolor="#f5f3eb" data-projectid="1BZC5A0EIcDSQiNFeZmi">Elevenlabs AudioNative Player</div></div>
+<p>I've been watching the AI tools space for two years now, and I keep seeing the same pattern: companies launch with simple pricing, then gradually make it more complex and user-hostile. Token-based pricing is the worst offender.</p>
 <p>Here's why it's broken, and what we're trying instead with Forge.</p>
 <h2></h2>
 <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="the-pattern-is-getting-predictable">The Pattern is Getting Predictable<a href="https://forgecode.dev/blog/seat-based-pricing-ai-agents/#the-pattern-is-getting-predictable" class="hash-link" aria-label="Direct link to The Pattern is Getting Predictable" title="Direct link to The Pattern is Getting Predictable">​</a></h2>
