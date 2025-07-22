@@ -48,6 +48,7 @@
     "react-fast-marquee": "^1.6.4",
     "react-ga4": "^2.1.0",
     "react-hot-toast": "^2.4.1",
+    "react-hotkeys-hook": "^5.1.0",
     "react-on-screen": "^2.1.1",
     "react-platform-js": "^0.0.1",
     "react-tweet": "^3.2.2",

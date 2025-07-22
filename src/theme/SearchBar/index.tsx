@@ -1,6 +1,6 @@
 import React, {useCallback, useMemo, useRef, useState} from "react"
 import {createPortal} from "react-dom"
-import {DocSearchButton, useDocSearchKeyboardEvents} from "@docsearch/react"
+import {DocSearchButton} from "@docsearch/react"
 import Head from "@docusaurus/Head"
 import Link from "@docusaurus/Link"
 import {useHistory} from "@docusaurus/router"
@@ -9,6 +9,7 @@ import {useAlgoliaContextualFacetFilters, useSearchResultUrlProcessor} from "@do
 import Translate from "@docusaurus/Translate"
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext"
 import translations from "@theme/SearchTranslations"
+import {useHotkeys} from "react-hotkeys-hook"
 
 import type {AutocompleteState} from "@algolia/autocomplete-core"
 import type {DocSearchModal as DocSearchModalType, DocSearchModalProps} from "@docsearch/react"
@@ -163,13 +164,64 @@ function DocSearch({contextualSearch, externalUrlRegex, ...props}: DocSearchProp
     [siteMetadata.docusaurusVersion],
   )
 
-  useDocSearchKeyboardEvents({
-    isOpen,
-    onOpen: openModal,
-    onClose: closeModal,
-    onInput: handleInput,
-    searchButtonRef,
-  })
+  // Use react-hotkeys-hook for cross-platform keyboard shortcuts
+  // This handles Cmd+K on Mac and Ctrl+K on Windows/Linux automatically
+  useHotkeys(
+    "mod+k",
+    (event) => {
+      event.preventDefault()
+      if (!isOpen) {
+        openModal()
+      }
+    },
+    {
+      enableOnFormTags: false, // Don't trigger when typing in forms
+      preventDefault: true,
+    },
+    [isOpen, openModal],
+  )
+
+  // Handle Escape key to close modal
+  useHotkeys(
+    "escape",
+    (event) => {
+      if (isOpen) {
+        event.preventDefault()
+        closeModal()
+      }
+    },
+    {
+      enableOnFormTags: true, // Allow Escape even when in forms
+      preventDefault: false, // Only prevent default if modal is open
+    },
+    [isOpen, closeModal],
+  )
+
+  // Handle single character input to open search (but not when in input fields)
+  useHotkeys(
+    "a-z,0-9",
+    (event) => {
+      // Check if we're not in an input field and modal is not open
+      const activeElement = document.activeElement
+      const isInInput =
+        activeElement &&
+        (activeElement.tagName === "INPUT" ||
+          activeElement.tagName === "TEXTAREA" ||
+          activeElement.hasAttribute("contenteditable"))
+
+      if (!isInInput && !isOpen) {
+        handleInput(event)
+      }
+    },
+    {
+      enableOnFormTags: false,
+      preventDefault: false, // Let the character input be handled by handleInput
+    },
+    [isOpen, handleInput],
+  )
+
+  // Note: We explicitly do NOT handle Cmd+F or Ctrl+F here
+  // This allows the browser's native find functionality to work properly
 
   return (
     <>
