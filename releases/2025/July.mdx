@@ -40,7 +40,7 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 
 ---
-## v0.100.5
+## v0.100.5 
 
 ### 🐛 Bug Fixes
 
@@ -51,9 +51,9 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - refactor: consolidate inquire select functionality into select module [@echozyr2001](https://github.com/echozyr2001) ([#1128](https://github.com/antinomyhq/forge/pull/1128))
 - chore: log file update stats [@laststylebender14](https://github.com/laststylebender14) ([#1118](https://github.com/antinomyhq/forge/pull/1118))
 
----
 
-## v0.100.4
+---
+## v0.100.4 
 
 ### 🐛 Bug Fixes
 
@@ -63,54 +63,52 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 - chore: update edition to 2024 [@tusharmath](https://github.com/tusharmath) ([#1125](https://github.com/antinomyhq/forge/pull/1125))
 
----
 
-## v0.100.3
+---
+## v0.100.3 
 
 ### 🐛 Bug Fixes
 
 - fix: replace tracker error logging with tracing [@tusharmath](https://github.com/tusharmath) ([#1117](https://github.com/antinomyhq/forge/pull/1117))
 
----
 
-## v0.100.2
+---
+## v0.100.2 
 
 ### 🐛 Bug Fixes
-
 - fix: scripts for `npx` for Windows
 
----
 
-## v0.100.1
+---
+## v0.100.1 
 
 ### 🛠️ Refactors
 
-- refactor: consolidate `forge_api_url` usage @tusharmath, @autofix-ci\[bot] (#1104)
+* refactor: consolidate `forge_api_url` usage @tusharmath, @autofix-ci\[bot] (#1104)
 
 ### 🐛 Bug Fixes
 
-- fix: output reasoning tokens only if supported by model [@laststylebender14](https://github.com/laststylebender14) ([#1105](https://github.com/antinomyhq/forge/pull/1105))
-- fix: update HTTP-Referer header to point to the new forgecode.dev URL [@amitksingh1490](https://github.com/amitksingh1490) ([#1080](https://github.com/antinomyhq/forge/pull/1080))
-- fix: improve LLM caching [@tusharmath](https://github.com/tusharmath) ([#1088](https://github.com/antinomyhq/forge/pull/1088))
-- fix: use `max_completion_tokens` instead of `max_tokens` for open-ai compatible providers [@laststylebender14](https://github.com/laststylebender14) ([#1086](https://github.com/antinomyhq/forge/pull/1086))
-- fix: use blocking thread to readline [@tusharmath](https://github.com/tusharmath) ([#1085](https://github.com/antinomyhq/forge/pull/1085))
+* fix: output reasoning tokens only if supported by model [@laststylebender14](https://github.com/laststylebender14) ([#1105](https://github.com/antinomyhq/forge/pull/1105))
+* fix: update HTTP-Referer header to point to the new forgecode.dev URL [@amitksingh1490](https://github.com/amitksingh1490) ([#1080](https://github.com/antinomyhq/forge/pull/1080))
+* fix: improve LLM caching [@tusharmath](https://github.com/tusharmath) ([#1088](https://github.com/antinomyhq/forge/pull/1088))
+* fix: use `max_completion_tokens` instead of `max_tokens` for open-ai compatible providers [@laststylebender14](https://github.com/laststylebender14) ([#1086](https://github.com/antinomyhq/forge/pull/1086))
+* fix: use blocking thread to readline [@tusharmath](https://github.com/tusharmath) ([#1085](https://github.com/antinomyhq/forge/pull/1085))
 
 ### 🧰 Maintenance
-
-- fix: share release builds between channels [@tusharmath](https://github.com/tusharmath) ([#1114](https://github.com/antinomyhq/forge/pull/1114))
-- fix: regenerate binaries on publish [@laststylebender14](https://github.com/laststylebender14) ([#1113](https://github.com/antinomyhq/forge/pull/1113))
-- chore: remove `forge_domain` direct dependency on crates [@tusharmath](https://github.com/tusharmath) ([#1084](https://github.com/antinomyhq/forge/pull/1084))
-- chore: update labels.yml [@ssddOnTop](https://github.com/ssddOnTop) ([#1082](https://github.com/antinomyhq/forge/pull/1082))
-- chore: add permissions to GitHub Label Sync workflow [@ssddOnTop](https://github.com/ssddOnTop) ([#1078](https://github.com/antinomyhq/forge/pull/1078))
-- chore: add GitHub Label Sync workflow and related tests [@ssddOnTop](https://github.com/ssddOnTop) ([#1077](https://github.com/antinomyhq/forge/pull/1077))
+* fix: share release builds between channels [@tusharmath](https://github.com/tusharmath) ([#1114](https://github.com/antinomyhq/forge/pull/1114))
+* fix: regenerate binaries on publish [@laststylebender14](https://github.com/laststylebender14) ([#1113](https://github.com/antinomyhq/forge/pull/1113))
+* chore: remove `forge_domain` direct dependency on crates [@tusharmath](https://github.com/tusharmath) ([#1084](https://github.com/antinomyhq/forge/pull/1084))
+* chore: update labels.yml [@ssddOnTop](https://github.com/ssddOnTop) ([#1082](https://github.com/antinomyhq/forge/pull/1082))
+* chore: add permissions to GitHub Label Sync workflow [@ssddOnTop](https://github.com/ssddOnTop) ([#1078](https://github.com/antinomyhq/forge/pull/1078))
+* chore: add GitHub Label Sync workflow and related tests [@ssddOnTop](https://github.com/ssddOnTop) ([#1077](https://github.com/antinomyhq/forge/pull/1077))
 
 ### 📝 Documentation
 
-- docs: update readme for `max_requests_per_turn` and `tool_max_failure_limit` [@laststylebender14](https://github.com/laststylebender14) ([#1027](https://github.com/antinomyhq/forge/pull/1027))
+* docs: update readme for `max_requests_per_turn` and `tool_max_failure_limit` [@laststylebender14](https://github.com/laststylebender14) ([#1027](https://github.com/antinomyhq/forge/pull/1027))
+
 
 ---
-
-## v0.100.0
+## v0.100.0 
 
 ### 📝 Documentation
 
@@ -125,14 +123,14 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 ### 🧰 Maintenance
 
-- chore: remove forge_domain direct dependency on crates [@tusharmath](https://github.com/tusharmath) ([#1084](https://github.com/antinomyhq/forge/pull/1084))
+- chore: remove forge\_domain direct dependency on crates [@tusharmath](https://github.com/tusharmath) ([#1084](https://github.com/antinomyhq/forge/pull/1084))
 - chore: update labels.yml [@ssddOnTop](https://github.com/ssddOnTop) ([#1082](https://github.com/antinomyhq/forge/pull/1082))
-- chore: add permissions to GitHub Label Sync workflow [@ssddOnTop](https://github.com/ssddOnTop) ([#1078](https://github.com/antinomyhq/forge/pull/1078))
+-  chore: add permissions to GitHub Label Sync workflow  [@ssddOnTop](https://github.com/ssddOnTop) ([#1078](https://github.com/antinomyhq/forge/pull/1078))
 - chore: add GitHub label sync workflow and related tests [@ssddOnTop](https://github.com/ssddOnTop) ([#1077](https://github.com/antinomyhq/forge/pull/1077))
 
----
 
-## v0.99.0
+---
+## v0.99.0 
 
 ### 🚀 Features
 
@@ -152,9 +150,9 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 - chore: integrate `provider_auth_id` [@ssddOnTop](https://github.com/ssddOnTop) ([#1072](https://github.com/antinomyhq/forge/pull/1072))
 
----
 
-## v0.98.3
+---
+## v0.98.3 
 
 ### 🐛 Bug Fixes
 
@@ -162,9 +160,9 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - fix: cache posthog client [@tusharmath](https://github.com/tusharmath) ([#1063](https://github.com/antinomyhq/forge/pull/1063))
 - fix: remove auto compaction after each turn [@tusharmath](https://github.com/tusharmath) ([#1062](https://github.com/antinomyhq/forge/pull/1062))
 
----
 
-## v0.98.2
+---
+## v0.98.2 
 
 ### 🐛 Bug Fixes
 
@@ -179,9 +177,9 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 - chore: add login event [@ssddOnTop](https://github.com/ssddOnTop) ([#1035](https://github.com/antinomyhq/forge/pull/1035))
 
----
 
-## v0.98.1
+---
+## v0.98.1 
 
 - Update README.md [@amitksingh1490](https://github.com/amitksingh1490) ([#1036](https://github.com/antinomyhq/forge/pull/1036))
 
@@ -196,9 +194,9 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - chore(deps): update rust crate syn to v2.0.104 @[renovate[bot]](https://github.com/apps/renovate) (#1042)
 - chore(deps): update rust crate anyhow to v1.0.98 @[renovate[bot]](https://github.com/apps/renovate) (#1041)
 
----
 
-## v0.98.0
+---
+## v0.98.0 
 
 ### 🚀 Features
 
