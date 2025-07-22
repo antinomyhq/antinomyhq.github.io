@@ -165,7 +165,10 @@ Each MCP server configuration can use one of two formats:
 MCP configurations are read from two locations in the following order of precedence:
 
 1. **Local configuration** (project-specific): `.mcp.json` in your current project directory
-2. **User configuration** (user-specific): Global configuration in your user directory
+2. **User configuration** (user-specific): Global configuration defined in the Forge configuration directory
+
+> **Note**: The configuration directory is automatically determined by Forge.
+> You can always find the exact path by running `/info` in the Forge Shell.
 
 Local configurations take precedence over user configurations, allowing you to have project-specific MCP setups while maintaining global defaults.
 
