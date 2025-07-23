@@ -1,0 +1,107 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #333; }
+      .label { font-family: Arial, sans-serif; font-size: 12px; fill: #666; }
+      .bar-kimi-auto { fill: #4CAF50; }
+      .bar-kimi-guided { fill: #FFC107; }
+      .bar-qwen-auto { fill: #FF6B6B; }
+      .bar-qwen-guided { fill: #2196F3; }
+      .legend { font-family: Arial, sans-serif; font-size: 11px; fill: #333; }
+    </style>
+  </defs>
+  
+  <!-- Background (transparent) -->
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" class="title">Task Completion: Autonomous vs Guided Success Rates</text>
+  
+  <!-- Y-axis -->
+  <line x1="80" y1="60" x2="80" y2="420" stroke="#333" stroke-width="2"/>
+  
+  <!-- X-axis -->
+  <line x1="80" y1="420" x2="720" y2="420" stroke="#333" stroke-width="2"/>
+  
+  <!-- Y-axis labels -->
+  <text x="70" y="425" text-anchor="end" class="label">0%</text>
+  <text x="70" y="345" text-anchor="end" class="label">25%</text>
+  <text x="70" y="265" text-anchor="end" class="label">50%</text>
+  <text x="70" y="185" text-anchor="end" class="label">75%</text>
+  <text x="70" y="105" text-anchor="end" class="label">100%</text>
+  
+  <!-- Grid lines -->
+  <line x1="80" y1="340" x2="720" y2="340" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="80" y1="260" x2="720" y2="260" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="80" y1="180" x2="720" y2="180" stroke="#e0e0e0" stroke-width="1"/>
+  <line x1="80" y1="100" x2="720" y2="100" stroke="#e0e0e0" stroke-width="1"/>
+  
+  <!-- Pointed File Changes (4 tasks each) -->
+  <!-- Kimi K2: 4/4 autonomous -->
+  <rect x="100" y="100" width="40" height="320" class="bar-kimi-auto"/>
+  <text x="120" y="90" text-anchor="middle" class="label">100%</text>
+  
+  <!-- Qwen-3: 3/4 guided -->
+  <rect x="150" y="180" width="40" height="240" class="bar-qwen-guided"/>
+  <text x="170" y="170" text-anchor="middle" class="label">75%</text>
+  
+  <text x="165" y="445" text-anchor="middle" class="label">Pointed File Changes</text>
+  
+  <!-- Bug Detection & Fixing (5 tasks each) -->
+  <!-- Kimi K2: 4/5 autonomous -->
+  <rect x="250" y="164" width="40" height="256" class="bar-kimi-auto"/>
+  <text x="270" y="154" text-anchor="middle" class="label">80%</text>
+  
+  <!-- Qwen-3: 1/5 guided -->
+  <rect x="300" y="356" width="40" height="64" class="bar-qwen-guided"/>
+  <text x="320" y="346" text-anchor="middle" class="label">20%</text>
+  
+  <text x="315" y="445" text-anchor="middle" class="label">Bug Detection</text>
+  
+  <!-- Feature Implementation (4 tasks each) -->
+  <!-- Kimi K2: 2/4 autonomous, 2/4 guided -->
+  <rect x="400" y="260" width="40" height="160" class="bar-kimi-auto"/>
+  <rect x="400" y="100" width="40" height="160" class="bar-kimi-guided"/>
+  <text x="420" y="90" text-anchor="middle" class="label">100%</text>
+  
+  <!-- Qwen-3: 2/4 guided -->
+  <rect x="450" y="260" width="40" height="160" class="bar-qwen-guided"/>
+  <text x="470" y="250" text-anchor="middle" class="label">50%</text>
+  
+  <text x="465" y="445" text-anchor="middle" class="label">Feature Implementation</text>
+  
+  <!-- Frontend Refactor (2 tasks each) -->
+  <!-- Kimi K2: 1/2 autonomous, 1/2 guided -->
+  <rect x="550" y="260" width="40" height="160" class="bar-kimi-auto"/>
+  <rect x="550" y="100" width="40" height="160" class="bar-kimi-guided"/>
+  <text x="570" y="90" text-anchor="middle" class="label">100%</text>
+  
+  <!-- Qwen-3: 1/2 guided -->
+  <rect x="600" y="260" width="40" height="160" class="bar-qwen-guided"/>
+  <text x="620" y="250" text-anchor="middle" class="label">50%</text>
+  
+  <text x="615" y="445" text-anchor="middle" class="label">Frontend Refactor</text>
+  
+  <!-- Legend -->
+  <rect x="450" y="70" width="15" height="15" class="bar-kimi-auto"/>
+  <text x="475" y="82" class="legend">Kimi K2 Autonomous</text>
+  <rect x="580" y="70" width="15" height="15" class="bar-kimi-guided"/>
+  <text x="605" y="82" class="legend">Kimi K2 Guided</text>
+  
+  <rect x="450" y="50" width="15" height="15" class="bar-qwen-auto"/>
+  <text x="475" y="62" class="legend">Qwen-3 Autonomous</text>
+  <rect x="580" y="50" width="15" height="15" class="bar-qwen-guided"/>
+  <text x="605" y="62" class="legend">Qwen-3 Guided</text>
+  
+  <!-- Y-axis title -->
+  <text x="25" y="240" text-anchor="middle" class="label" transform="rotate(-90 25 240)">Success Rate (%)</text>
+  
+  <!-- Model labels -->
+  <text x="120" y="470" text-anchor="middle" class="legend" font-weight="bold">Kimi K2</text>
+  <text x="170" y="470" text-anchor="middle" class="legend" font-weight="bold">Qwen-3</text>
+  <text x="270" y="470" text-anchor="middle" class="legend" font-weight="bold">Kimi K2</text>
+  <text x="320" y="470" text-anchor="middle" class="legend" font-weight="bold">Qwen-3</text>
+  <text x="420" y="470" text-anchor="middle" class="legend" font-weight="bold">Kimi K2</text>
+  <text x="470" y="470" text-anchor="middle" class="legend" font-weight="bold">Qwen-3</text>
+  <text x="570" y="470" text-anchor="middle" class="legend" font-weight="bold">Kimi K2</text>
+  <text x="620" y="470" text-anchor="middle" class="legend" font-weight="bold">Qwen-3</text>
+</svg>
