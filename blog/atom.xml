@@ -13,9 +13,9 @@
         <link href="https://forgecode.dev/blog/kimi-k2-vs-qwen-3-coder-rust-development-comparison/"/>
         <updated>2025-07-23T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[I tested Kimi K2 and Qwen-3 Coder on 13 Rust development tasks across a 38k-line codebase and 2 Frontend refactor tasks. The results reveal differences in code quality, instruction following, and development capabilities.]]></summary>
-        <content type="html"><![CDATA[<p>After spending 12 hours testing Kimi K2 and Qwen-3 Coder on identical Rust development tasks and Frontend Refactor tasks, I discovered something that benchmark scores don't reveal: in this testing environment, one model consistently delivered working code while the other struggled with basic instruction following. These findings challenge the hype around Qwen-3 Coder's benchmark performance and show why testing on your own codebase matters more than synthetic scores.</p>
+        <content type="html"><![CDATA[<p>After spending 12 hours testing Kimi K2 and Qwen-3 Coder on identical Rust development tasks and Frontend Refactor tasks, I discovered something that benchmark scores don't reveal: In this testing environment, one model consistently delivered working code while the other struggled with basic instruction following. These findings challenge the hype around Qwen-3 Coder's benchmark performance and show why testing on your codebase matters more than synthetic scores.</p>
 <h2 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="testing-methodology-real-development-scenarios">Testing Methodology: Real Development Scenarios<a href="https://forgecode.dev/blog/kimi-k2-vs-qwen-3-coder-rust-development-comparison/#testing-methodology-real-development-scenarios" class="hash-link" aria-label="Direct link to Testing Methodology: Real Development Scenarios" title="Direct link to Testing Methodology: Real Development Scenarios">​</a></h2>
-<p>I designed this comparison around actual development scenarios that mirror daily Rust development work. No synthetic benchmarks or toy problems, just 13 challenging Rust tasks across a mature 38,000 line Rust codebase with complex async patterns, error handling, and architectural constraints, plus 2 frontend refactoring tasks across a 12,000 line React codebase.</p>
+<p>I designed this comparison around actual development scenarios that mirror daily Rust development work. No synthetic benchmarks or toy problems, just 13 challenging Rust tasks across a mature 38,000-line Rust codebase with complex async patterns, error handling, and architectural constraints, plus 2 frontend refactoring tasks across a 12,000-line React codebase.</p>
 <h3 class="anchor anchorWithHideOnScrollNavbar_WYt5" id="test-environment-specifications">Test Environment Specifications<a href="https://forgecode.dev/blog/kimi-k2-vs-qwen-3-coder-rust-development-comparison/#test-environment-specifications" class="hash-link" aria-label="Direct link to Test Environment Specifications" title="Direct link to Test Environment Specifications">​</a></h3>
 <p><strong>Project Context:</strong></p>
 <ul>
@@ -25,7 +25,7 @@
 <li>Extensive use of traits, generics, and async/await patterns</li>
 <li>Comprehensive test suite with integration tests</li>
 <li>React frontend with 12,000 lines using modern hooks and component patterns</li>
-<li>Well documented coding guidelines (provided as <a href="https://forgecode.dev/docs/custom-rules-guide/">custom rules</a>/ cursor rules/ claude rules etc in different coding agents)</li>
+<li>Well-documented coding guidelines (provided as <a href="https://forgecode.dev/docs/custom-rules-guide/">custom rules</a>/ cursor rules/ claude rules, in different coding agents)</li>
 </ul>
 <p><strong>Testing Categories:</strong></p>
 <ol>
