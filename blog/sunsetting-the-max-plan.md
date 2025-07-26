@@ -15,9 +15,9 @@ description: "An explanation of why we've paused our early access Max plan, our 
 hide_table_of_contents: false
 ---
 
-A few weeks ago, we launched an early access "Max" plan for Forge. The idea was simple: give a handful of early adopters unlimited access to help us kick the tires and prepare for our official launch. We wanted to see what you’d build, and you didn’t disappoint.
+First, a huge thank you. When we launched our early access, we hoped a few pioneers like you would help us test our limits. You did that and more, leading to a 5x surge in signups and a 20x spike in usage.
 
-What we didn’t expect was the sheer scale of the response. We saw 10x more signups than our most optimistic forecasts. Even more staggering was the usage, which shot up to 20x what we had modeled. It was both thrilling and, frankly, a bit terrifying.
+This explosive growth is the best problem a startup can have, and it’s given us a clear signal: it’s time to build a more sustainable platform. The "unlimited" early access plan was a great experiment, but it’s not built for this scale, especially when our most active users are driving over $500/day in costs.
 
 <!-- truncate -->
 
@@ -27,7 +27,7 @@ We quickly discovered a pattern that many platforms face: a small fraction of us
 
 While we were blown away by what they were accomplishing, we had to face a hard reality: this wasn’t sustainable. More importantly, it wasn’t fair to the thousands of other users on the waitlist and those who were trying to get a feel for the platform. The firehose of usage from a few accounts was beginning to impact the experience for everyone.
 
-Our goal has always been to build a tool that adds real value to your development workflow. We also believe that developers should be able to try before they buy. You need to get your hands on the product, integrate it into your process, and see the benefits for yourself. An unlimited free-for-all was paradoxically making that *harder* for the majority of our users.
+Our goal has always been to build a tool that adds real value to your development workflow. We also believe that developers should be able to try before they buy. You need to get your hands on the product, integrate it into your process, and see the benefits for yourself. An unlimited free-for-all was paradoxically making that _harder_ for the majority of our users.
 
 ### Our Solution: A Fair Free Tier for Everyone
 
