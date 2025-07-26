@@ -1,90 +1,71 @@
 ---
-title: Windows Runtime Issues
+title: "Windows: Troubleshooting Issues"
 sidebar_position: 4
-description: "Resolve Windows-specific runtime errors including missing vcruntime140.dll and other Visual C++ Redistributable issues."
-sidebar_label: Windows Runtime Issues
+description: "Resolve common Windows runtime errors, like a missing vcruntime140.dll or other issues, by installing the Microsoft Visual C++ Redistributable."
+sidebar_label: "Windows: Missing vcruntime140.dll"
 ---
 
-# Windows Runtime Issues
 
-This guide helps you resolve common Windows runtime errors that may occur when running Forge or its dependencies on Windows systems.
+If you are on Windows and `forge` fails to run, you might have an error about a missing `vcruntime140.dll`, or the program might show no output at all. This usually means your system is missing an essential runtime library from Microsoft.
 
-## Missing vcruntime140.dll Error
+The `vcruntime140.dll` file is part of the **Microsoft Visual C++ Redistributable**, which is required to run many applications, including some of Forge's dependencies.
 
-If you encounter the error **"The program can't start because vcruntime140.dll is missing from your computer. Try reinstalling the program to fix the problem."**, this indicates that your system is missing the Microsoft Visual C++ Redistributable packages.
+## Solution: Install the Visual C++ Redistributable
 
-### What is vcruntime140.dll?
+The solution is to download and install the official package from Microsoft.
 
-The `vcruntime140.dll` file is part of the Microsoft Visual C++ Redistributable for Visual Studio 2015-2022. This library contains essential runtime components required by many applications built with Microsoft Visual C++, including some Node.js native modules that Forge may depend on.
+### Step 1: Determine Your System Architecture
 
-### Solution: Install Visual C++ Redistributable
+First, identify your Windows system architecture:
 
-The recommended solution is to download and install the appropriate Visual C++ Redistributable package for your system architecture.
+1.  Press `Windows + R` to open the Run dialog.
+2.  Type `msinfo32` and press Enter.
+3.  In the System Information window, find the "System Type". It will tell you if you have an **x64**, **x86**, or **ARM64** based PC.
 
-#### Step 1: Determine Your System Architecture
-
-First, identify whether you're running a 32-bit (x86) or 64-bit (x64) version of Windows:
-
-1. Press `Windows + R` to open the Run dialog
-2. Type `msinfo32` and press Enter
-3. Look for "System Type" in the System Information window:
-   - **x64-based PC**: You have a 64-bit system
-   - **x86-based PC**: You have a 32-bit system
-
-#### Step 2: Download the Correct Redistributable
+### Step 2: Download the Correct Redistributable
 
 Visit the official Microsoft download page:
 
-**[Microsoft Visual C++ Redistributable Downloads](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170)**
+**[Latest Supported Visual C++ Redistributable Downloads](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170)**
 
-Download the appropriate version for your system:
+Download the correct file(s) for your system:
 
-- **For 64-bit Windows**: Download `vc_redist.x64.exe`
-- **For 32-bit Windows**: Download `vc_redist.x86.exe`
-- **For ARM64 Windows**: Download `vc_redist.arm64.exe`
+- **For x64-based PC**: Download `vc_redist.x64.exe`
+- **For x86-based PC**: Download `vc_redist.x86.exe`
+- **For ARM64-based PC**: Download `vc_redist.arm64.exe`
 
 <div className="rounded-md border border-blue-300 bg-blue-50 px-4 py-2 mt-3 text-blue-900 text-sm flex items-start gap-2">
   <span className="mt-1 mr-2">💡</span>
   <span>
-    <strong>Tip:</strong> If you're unsure about your architecture, it's safe to install both x86 and x64 versions. 
-    The x64 version includes both 64-bit and 32-bit libraries, but installing both ensures maximum compatibility.
+    <strong>Tip:</strong> A 64-bit Windows installation can run both 64-bit and 32-bit applications. To ensure maximum
+    compatibility, it is recommended to install both the `x64` and `x86` redistributables on a 64-bit system.
   </span>
 </div>
 
-#### Step 3: Install the Redistributable
+### Step 3: Install the Redistributable
 
-1. **Run as Administrator**: Right-click the downloaded file and select "Run as administrator"
-2. **Accept the License**: Read and accept the Microsoft Software License Terms
-3. **Complete Installation**: Click "Install" and wait for the process to complete
-4. **Restart if Required**: Restart your computer if prompted
+1.  **Run as Administrator**: Right-click the downloaded file(s) and select "Run as administrator".
+2.  **Accept the License**: Agree to the license terms and click "Install".
+3.  **Restart if Required**: Restart your computer if prompted after installation.
 
-#### Step 4: Verify the Installation
+### Step 4: Verify the Fix
 
-After installation, try running Forge again:
+Return to the command prompt or application where you first saw the error and try running the command again. For example, if you were trying to run `forge --version`, try it again in the same terminal.
 
-```bash
-forge --version
-```
-
-If the error persists, proceed to the additional troubleshooting steps below.
-
-
+If the error is gone, you've fixed the problem!
 
 ## Still Having Issues?
 
-If the solutions above don't resolve your vcruntime140.dll error, please reach out to us on our social channels for personalized assistance:
+If installing the redistributable didn't solve the problem, please reach out for more help:
 
-- **Join our [Discord community](https://discord.gg/kRZBPpkgwq)** for real-time support
-- **Check our [GitHub Issues](https://github.com/antinomyhq/forge/issues)** for similar problems
-- **Create a new issue** with your system details and error messages
-
-Our community and support team can help diagnose more complex Windows runtime issues specific to your system configuration.
+- **Join our [Discord community](https://discord.gg/kRZBPpkgwq)** for real-time support.
+- **Check our [GitHub Issues](https://github.com/antinomyhq/forge/issues)** for similar problems.
+- **Create a new issue** with your system details and the exact error message.
 
 <div className="rounded-md border border-amber-300 bg-amber-50 px-4 py-2 mt-3 text-amber-900 text-sm flex items-start gap-2">
   <span className="mt-1 mr-2">⚠️</span>
   <span>
-    <strong>Security Note:</strong> Always download Visual C++ Redistributables directly from Microsoft's official 
-    website or through official package managers. Avoid third-party download sites that may bundle malware with 
-    legitimate software.
+    <strong>Security Note:</strong> Always download Visual C++ Redistributables directly from Microsoft's official
+    website. Avoid third-party download sites, which may bundle malware.
   </span>
 </div>
