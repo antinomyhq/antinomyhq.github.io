@@ -1,3 +1,6 @@
+import CustomLink from '@site/src/components/shared/CustomLink'
+import Card from '@site/src/components/shared/Card'
+
 # Working with Custom Rules: AI-Driven Code Standards for Development Teams
 
 Every development team has its own way of doing things. Code style preferences, testing patterns, error handling approaches, naming conventions - the list goes on. The problem? AI coding assistants don't know your team's specific practices unless you tell them.
@@ -10,9 +13,10 @@ Custom rules are persistent instructions that get injected into every AI convers
 
 When you define custom rules, they become part of the AI's system prompt, meaning they're always active and take priority over default behaviors.
 
-:::info Quick Reference
-For technical implementation details and API reference, see the [Custom Rules feature documentation](/docs/custom-rules).
-:::
+<Card variant="information">
+  <p><strong>Quick Reference</strong></p>
+  <span>For technical implementation details and API reference, see the <CustomLink href="/docs/custom-rules">Custom Rules feature documentation</CustomLink>.</span>
+</Card>
 
 ## Quick Start: Your First Custom Rule
 
@@ -80,9 +84,10 @@ agents:
       - Validate all input with schemas
 ```
 
-:::important Rule Priority
-Global rules override agent-specific rules when both are defined. This means your team-wide standards always take precedence over individual agent configurations.
-:::
+<Card variant="information">
+  <p><strong>Rule Priority</strong></p>
+  <span>Global rules override agent-specific rules when both are defined. This means your team-wide standards always take precedence over individual agent configurations.</span>
+</Card>
 
 ## Progressive Learning Path
 
@@ -298,8 +303,6 @@ This generates an HTML file showing exactly what context (including your custom 
 - [ ] Iterate based on results
 - [ ] Gradually add more specific rules
 
----
-
 ## Need Help?
 
 ### Export Your Session Context
@@ -310,8 +313,8 @@ This generates an HTML file showing exactly what context (including your custom 
 
 ### Get Support
 
-- **Discord**: [Join our Discord community](https://discord.gg/kRZBPpkgwq)
-- **Twitter/X**: Send us a DM [@forgecodehq](https://x.com/forgecodehq)
+- **Discord**: <CustomLink href="https://discord.gg/kRZBPpkgwq">Join our Discord community</CustomLink>
+- **Twitter/X**: Send us a DM <CustomLink href="https://x.com/forgecodehq">@forgecodehq</CustomLink>
 
 ---
 
@@ -337,6 +340,6 @@ Custom rules transform AI coding from a series of corrections into a smooth, sta
 
 To maximize your team's productivity with Forge, explore these complementary guides:
 
-- **[Model Selection Guide](/docs/model-selection-guide)** - Choose the right AI models for your specific development tasks
-- **[File Tagging Guide](/docs/file-tagging-guide)** - Use @ mentions to provide better context for AI code generation
-- **[Plan and Act Guide](/docs/plan-and-act-guide)** - Structure your development workflow with AI planning before implementation
+- **<CustomLink href="/docs/model-selection-guide">Model Selection Guide</CustomLink>** - Choose the right AI models for your specific development tasks
+- **<CustomLink href="/docs/file-tagging-guide">File Tagging Guide</CustomLink>** - Use @ mentions to provide better context for AI code generation
+- **<CustomLink href="/docs/plan-and-act-guide">Plan and Act Guide</CustomLink>** - Structure your development workflow with AI planning before implementation

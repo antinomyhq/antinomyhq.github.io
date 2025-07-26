@@ -11,7 +11,10 @@ export default function BlogPostItemContent({children, className}: Props): JSX.E
     <div
       // This ID is used for the feed generation to locate the main content
       id={isBlogPostPage ? blogPostContainerID : undefined}
-      className={clsx("markdown", className)}
+      className={clsx(
+        "markdown text-tailCall-lightMode---neutral-700 dark:text-tailCall-darkMode---neutral-300",
+        className,
+      )}
     >
       <MDXContent>{children}</MDXContent>
     </div>

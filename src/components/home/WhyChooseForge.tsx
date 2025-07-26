@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import Heading from "@theme/Heading"
 import Section from "../shared/Section"
-import TrustedByMarquee from "./TrustedByMarquee"
+import {TrustedByMarquee} from "./components"
 import {companies, useCases} from "@site/src/constants"
 
 const WhyChooseForge = (): JSX.Element => {

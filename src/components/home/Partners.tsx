@@ -1,4 +1,4 @@
-import TrustedByMarquee from "@site/src/components/home/TrustedByMarquee"
+import TrustedByMarquee from "@site/src/components/home/components/TrustedByMarquee"
 import {partnerImages} from "@site/src/constants"
 import React from "react"
 

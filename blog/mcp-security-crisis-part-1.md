@@ -18,6 +18,7 @@ hide_table_of_contents: false
 ---
 
 import ElevenLabsAudioPlayer from '@site/src/components/shared/ElevenLabsAudioPlayer';
+import CustomLink from '@site/src/components/shared/CustomLink'
 
 <ElevenLabsAudioPlayer 
   publicUserId="96e32731df14f1442beaf5041eec1125596de23ef9ff6ef5d151d28a1464da1b"
@@ -26,7 +27,7 @@ import ElevenLabsAudioPlayer from '@site/src/components/shared/ElevenLabsAudioPl
 
 Been digging into Model Context Protocol implementations lately and found some stuff that's keeping me up at night. Not because it's earth-shattering, but because it's the kind of boring security debt that bites you when you least expect it.
 
-_This is Part 1 of a two-part series. [Read Part 2: Actually Fixing This Mess →](/blog/prevent-attacks-on-mcp-part2)_
+_This is Part 1 of a two-part series. <CustomLink href="/blog/prevent-attacks-on-mcp-part2">Read Part 2: Actually Fixing This Mess →</CustomLink>_
 
 <!-- truncate -->
 
@@ -157,22 +158,20 @@ Part 2 will cover specific mitigation strategies and some tools I've been buildi
 
 If you're building MCP tools or have seen other security issues, let me know. This ecosystem is still small enough that we can actually fix problems before they become disasters.
 
----
-
 ## Footnotes
 
 ## Related Articles
 
-- [MCP Security Prevention: Practical Strategies for AI Development - Part 2](/blog/prevent-attacks-on-mcp-part2)
-- [MCP New Specs: AI Agent Capabilities and Security Enhancements](/blog/mcp-spec-updates)
-- [AI Agent Best Practices: Maximizing Productivity with Forge](/blog/ai-agent-best-practices)
+- <CustomLink href="/blog/prevent-attacks-on-mcp-part2">MCP Security Prevention: Practical Strategies for AI Development - Part 2</CustomLink>
+- <CustomLink href="/blog/mcp-spec-updates">MCP New Specs: AI Agent Capabilities and Security Enhancements</CustomLink>
+- <CustomLink href="/blog/ai-agent-best-practices">AI Agent Best Practices: Maximizing Productivity with Forge</CustomLink>
 
-<a id="footnote-1"></a>**1.** Anthropic. "Model Context Protocol Specification." GitHub Repository. [https://github.com/modelcontextprotocol/specification](https://github.com/modelcontextprotocol/specification) [↩](#ref-1)
+<a id="footnote-1"></a>**1.** Anthropic. "Model Context Protocol Specification." GitHub Repository. <CustomLink href="https://github.com/modelcontextprotocol/specification">https://github.com/modelcontextprotocol/specification</CustomLink> <CustomLink href="#ref-1">↩</CustomLink>
 
-<a id="footnote-2"></a>**2.** OWASP. "Prompt Injection." OWASP Top 10 for Large Language Model Applications, 2023. [https://owasp.org/www-project-top-10-for-large-language-model-applications/](https://owasp.org/www-project-top-10-for-large-language-model-applications/) [↩](#ref-2)
+<a id="footnote-2"></a>**2.** OWASP. "Prompt Injection." OWASP Top 10 for Large Language Model Applications, 2023. <CustomLink href="https://owasp.org/www-project-top-10-for-large-language-model-applications/">https://owasp.org/www-project-top-10-for-large-language-model-applications/</CustomLink> <CustomLink href="#ref-2">↩</CustomLink>
 
-<a id="footnote-3"></a>**3.** Google Cloud Platform. "Cloud Run MCP Implementation." GitHub Repository. [https://github.com/GoogleCloudPlatform/cloud-run-mcp/commit/a49ce276eaa148c8031e912c79bbb60116e8273e](https://github.com/GoogleCloudPlatform/cloud-run-mcp/commit/a49ce276eaa148c8031e912c79bbb60116e8273e) [↩](#ref-3)
+<a id="footnote-3"></a>**3.** Google Cloud Platform. "Cloud Run MCP Implementation." GitHub Repository. <CustomLink href="https://github.com/GoogleCloudPlatform/cloud-run-mcp/commit/a49ce276eaa148c8031e912c79bbb60116e8273e">https://github.com/GoogleCloudPlatform/cloud-run-mcp/commit/a49ce276eaa148c8031e912c79bbb60116e8273e</CustomLink> <CustomLink href="#ref-3">↩</CustomLink>
 
 ---
 
-_Continue reading: [Part 2 - Actually Fixing This Mess →](/blog/prevent-attacks-on-mcp-part2)_
+_Continue reading: <CustomLink href="/blog/prevent-attacks-on-mcp-part2">Part 2 - Actually Fixing This Mess →</CustomLink>_

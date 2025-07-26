@@ -10,10 +10,55 @@ const project = "antinomyhq.github.io"
 const mainDescription =
   "AI coding assistant that helps developers write better code faster. Get AI-powered code suggestions, refactoring, and debugging directly in your terminal."
 export default {
+  // Configuration updated to fix duplicate descriptions
   title,
   trailingSlash: true,
   tagline: "Forge: The AI Coding Assistant for Your Terminal",
   headTags: [
+    // Bulletproof theme script - prevents any interference from the start
+    {
+      tagName: "script",
+      attributes: {},
+      innerHTML: `
+        (function() {
+          // Immediately apply theme before anything else loads
+          try {
+            var match = document.cookie.match(/theme-preference=(dark|light)/);
+            var theme = match ? match[1] : 'dark';
+            
+            // Force apply theme
+            document.documentElement.classList.remove('dark', 'light');
+            if (theme === 'dark') {
+              document.documentElement.classList.add('dark');
+            } else {
+              document.documentElement.classList.add('light');
+            }
+            document.documentElement.setAttribute('data-theme', theme);
+            document.documentElement.style.setProperty('--theme-mode', theme);
+            
+            // Prevent any other scripts from changing theme
+            var originalSetAttribute = document.documentElement.setAttribute;
+            document.documentElement.setAttribute = function(name, value) {
+              if (name === 'class' || name === 'data-theme') {
+                // Only allow theme changes if they match our stored preference
+                var storedTheme = document.cookie.match(/theme-preference=(dark|light)/);
+                if (storedTheme && storedTheme[1] === theme) {
+                  originalSetAttribute.call(this, name, value);
+                }
+              } else {
+                originalSetAttribute.call(this, name, value);
+              }
+            };
+            
+          } catch (e) {
+            console.warn('Theme application failed:', e);
+            // Fallback to dark theme
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        })();
+      `,
+    },
     // Adaptive favicon implementation - automatically switches based on system theme
     {
       tagName: "link",
@@ -59,13 +104,7 @@ export default {
         url: "https://forgecode.dev/",
       }),
     },
-    {
-      tagName: "meta",
-      attributes: {
-        name: "description",
-        content: mainDescription,
-      },
-    },
+
     {
       tagName: "meta",
       attributes: {
@@ -81,13 +120,7 @@ export default {
         content: title,
       },
     },
-    {
-      tagName: "meta",
-      attributes: {
-        property: "og:description",
-        content: mainDescription,
-      },
-    },
+
     {
       tagName: "meta",
       attributes: {
@@ -109,13 +142,7 @@ export default {
         content: title,
       },
     },
-    {
-      tagName: "meta",
-      attributes: {
-        name: "twitter:description",
-        content: mainDescription,
-      },
-    },
+
     {
       tagName: "script",
       attributes: {},
@@ -278,34 +305,12 @@ export default {
     },
 
     navbar: {
-      hideOnScroll: true,
-      logo: {
-        alt: "ForgeCode",
-        src: "/images/home/logo-dark.svg",
-      },
+      hideOnScroll: false,
       items: [
-        {to: "/", label: "Home", position: "left", activeBaseRegex: "^/$"},
-        // {to: "/about", label: "About", position: "left"},
-        // {to: "/enterprise", label: "Enterprise", position: "left"},
+        {to: "/", label: "Home", position: "left"},
         {to: "/pricing", label: "Pricing", position: "left"},
         {to: "/docs", label: "Docs", position: "left"},
         {to: "/blog", label: "Blogs", position: "left"},
-
-        // {
-        //   label: "Developers",
-        //   position: "left",
-        //   items: [
-        //     {
-        //       to: "/docs",
-        //       html: getNavDropdownItemHtml("/images/home/book.svg", "Docs Icon", "Docs"),
-        //     },
-        //   ],
-        // },
-        {
-          type: "search",
-          position: "right",
-          className: "hidden lg:flex search-icon-navbar",
-        },
       ],
     },
     prism: {

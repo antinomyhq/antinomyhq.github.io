@@ -1,3 +1,5 @@
+import CustomLink from '@site/src/components/shared/CustomLink'
+
 # File Tagging with @: Enhance AI Context for Faster Developer Workflow
 
 One of the biggest challenges with AI coding assistants is providing the right context. Instead of copy-pasting code or Agent searching for where to start repeatedly, Forge's file tagging system lets you reference any project file with simple `@filename` syntax and tab completion.
@@ -251,8 +253,8 @@ File tagging only sees your current project. External packages and microservices
    ```
 
 2. **Connect with us**:
-   - **Discord**: [Join our Discord](https://discord.gg/kRZBPpkgwq)
-   - **Twitter/X**: [@forgecodehq](https://x.com/forgecodehq)
+   - **Discord**: <CustomLink href="https://discord.gg/kRZBPpkgwq">Join our Discord</CustomLink>
+   - **Twitter/X**: <CustomLink href="https://x.com/forgecodehq">@forgecodehq</CustomLink>
 
 ---
 
@@ -260,8 +262,8 @@ File tagging works best when you understand both its strengths and limitations. 
 
 ## Related Guides
 
-- [AI Model Selection Guide: Optimize Forge for Your Workflow](/docs/model-selection-guide)
-- [Plan and Act Guide: Automating Complex Workflows with Forge](/docs/plan-and-act-guide)
-- [Custom Rules Guide: Extending Forge's Capabilities](/docs/custom-rules-guide)
+- <CustomLink href="/docs/model-selection-guide">AI Model Selection Guide: Optimize Forge for Your Workflow</CustomLink>
+- <CustomLink href="/docs/plan-and-act-guide">Plan and Act Guide: Automating Complex Workflows with Forge</CustomLink>
+- <CustomLink href="/docs/custom-rules-guide">Custom Rules Guide: Extending Forge's Capabilities</CustomLink>
 
 The goal isn't to reference every file in your project - it's to give the AI just enough context to provide genuinely helpful, specific advice.

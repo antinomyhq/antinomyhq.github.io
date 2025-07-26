@@ -5,13 +5,18 @@ description: "Execute native shell commands directly from Forge CLI."
 sidebar_label: Shell Commands
 ---
 
+import Card from "@site/src/components/shared/Card"
+
 # Shell Commands
 
 Forge allows you to execute native shell commands directly from the CLI by prefixing them with `!` without switching context. These commands are executed immediately without being processed by the AI, providing a fast way to run system operations without leaving the Forge environment.
 
-:::info Direct Execution
-Commands that start with `!` bypass the AI and are executed directly in your shell. This ensures immediate execution and allows you to seamlessly integrate shell operations into your Forge workflow.
-:::
+<Card variant="information">
+  <span>
+    Commands that start with `!` bypass the AI and are executed directly in your shell. This ensures immediate execution
+    and allows you to seamlessly integrate shell operations into your Forge workflow.
+  </span>
+</Card>
 
 ## Usage
 
@@ -79,9 +84,16 @@ Changing the directory will only be applicable until the command executes and wi
 ! cd /path/to/project && npm install # Install dependencies in specific directory
 ```
 
-:::tip Purpose of Shell Commands
-The `!` shortcut is designed for quick execution of individual commands without context switching, not as a replacement for your preferred shell environment. For complex shell workflows, interactive sessions, or shell-specific features, continue using your native ZSH, PowerShell, or bash terminal alongside Forge.
-:::
+<Card variant="tip">
+  <p>
+    <strong>Purpose of Shell Commands</strong>
+  </p>
+  <span>
+    The `!` shortcut is designed for quick execution of individual commands without context switching, not as a
+    replacement for your preferred shell environment. For complex shell workflows, interactive sessions, or
+    shell-specific features, continue using your native ZSH, PowerShell, or bash terminal alongside Forge.
+  </span>
+</Card>
 
 ## Platform Considerations
 

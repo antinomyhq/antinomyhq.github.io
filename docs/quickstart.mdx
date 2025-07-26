@@ -6,6 +6,7 @@ sidebar_label: Quickstart
 ---
 
 import {Terminal, Code, GitBranch, Bug, Lightbulb, Zap} from "lucide-react"
+import CustomLink from "@site/src/components/shared/CustomLink"
 
 # Quickstart
 
@@ -26,7 +27,7 @@ cd /path/to/your/project
 npx forgecode@latest
 ```
 
-This will run Forge. When you first run it, Forge will open your browser to [app.forgecode.dev](https://app.forgecode.dev/app) for authorization. Complete the OAuth process to authenticate.
+This will run Forge. When you first run it, Forge will open your browser to <CustomLink href="https://app.forgecode.dev/app">app.forgecode.dev</CustomLink> for authorization. Complete the OAuth process to authenticate.
 
 You'll see the Forge prompt inside a new interactive session:
 
@@ -212,19 +213,19 @@ import NextSteps from "../src/components/NextSteps"
 <NextSteps
   items={[
     {
-      logo: <Terminal size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      logo: <Terminal size={28} style={{verticalAlign: "middle"}} />,
       title: "Commands Reference",
       subtitle: "Master all commands and options",
       link: "/docs/commands",
     },
     {
-      logo: <Zap size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      logo: <Zap size={28} style={{verticalAlign: "middle"}} />,
       title: "Custom Providers",
       subtitle: "Configure different AI providers",
       link: "/docs/custom-providers",
     },
     {
-      logo: <GitBranch size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      logo: <GitBranch size={28} style={{verticalAlign: "middle"}} />,
       title: "Advanced Configuration",
       subtitle: "Customize Forge for your workflow",
       link: "/docs/environment-configuration",
@@ -236,7 +237,7 @@ import NextSteps from "../src/components/NextSteps"
 
 - **In Forge**: Type `/help` or ask "how do I..."
 - **Documentation**: Browse these guides for detailed information
-- **Community**: Join our [Discord](https://discord.gg/kRZBPpkgwq) for tips and support
+- **Community**: Join our <CustomLink href="https://discord.gg/kRZBPpkgwq">Discord</CustomLink> for tips and support
 
 ---
 

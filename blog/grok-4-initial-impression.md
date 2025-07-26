@@ -6,6 +6,7 @@ hide_table_of_contents: false
 ---
 
 import ElevenLabsAudioPlayer from '@site/src/components/shared/ElevenLabsAudioPlayer';
+import CustomLink from '@site/src/components/shared/CustomLink'
 
 <ElevenLabsAudioPlayer 
   publicUserId="96e32731df14f1442beaf5041eec1125596de23ef9ff6ef5d151d28a1464da1b"
@@ -73,8 +74,6 @@ But how do you access it? It's available via both API and a paid subscription. Y
 
 Even better, if you just want to test the models, it's also available on OpenRouter, so if you have an API key, you're good to go.
 
----
-
 ## Does Grok 4 Achieve AGI?
 
 If you're not sure what AGI (Artificial General Intelligence) is, let me give you a brief idea. Basically, Generative AI, which we use, like the OpenAI models, Claude Sonnet models, and others, generates content based on learned patterns or what they've been trained on.
@@ -94,8 +93,6 @@ xAI also tested Grok 4 in a real-world simulation called Vending Bench. Basicall
 As you can see, Grok 4 is generating more than twice the revenue and scale compared to the top competitor, Claude Opus 4.
 
 There's no comparison between Grok 4 and the other AI models here, and it's doing it all at a lower price. So yeah, this is a great step toward AGI, but it's simply not there yet.
-
----
 
 ## Community Impressions and Future Plans from xAI
 
@@ -125,8 +122,6 @@ We're expected to see the following in the coming months:
 
 So, if your main purpose with an AI model is coding, it might be worth waiting one more month to see if that's even better for your use case.
 
----
-
 ## Pros and Cons of Grok 4
 
 Grok 4 has about 99% accuracy in picking the right tools and making tool calls with proper arguments almost every single time.
@@ -136,8 +131,6 @@ It's designed to be agentic, which means that with single or multiple agents wor
 However, when it comes to multi-modal capabilities, especially with image generation and analysis, it's not much better and performs poorer than the top multi-modal capabilities AI models like o3, Claude 4, etc. Although this will significantly improve in the coming days.
 
 Another thing I really hate about this model is the rate limit that's implemented on top of xAI. Almost every 2-3 continuous prompts, you get rate limited for a few minutes, and that's really frustrating, especially considering that you'd be using this model in a more research-based situation where you'll likely be making multiple prompts to the model to get the answer you expect.
-
----
 
 ## Conclusion
 
@@ -149,30 +142,24 @@ With great power comes great responsibility! 😉
 
 Let me know what you think of Grok 4 so far, and if you've tested it yourself, how it performed. Let me know in the comments below!
 
----
-
 ## Try Grok 4 on Forge
 
-We've recently added support for Grok 4 on Forge. If this sounds interesting to you, you'll definitely want to try it on Forge. You can [create an account](https://app.forgecode.dev/) and get started in just a minute. See for yourself if it performs as well as the benchmarks suggest and if you’d like to add this model to your daily workflow.
-
----
+We've recently added support for Grok 4 on Forge. If this sounds interesting to you, you'll definitely want to try it on Forge. You can <CustomLink href="https://app.forgecode.dev/">create an account</CustomLink> and get started in just a minute. See for yourself if it performs as well as the benchmarks suggest and if you’d like to add this model to your daily workflow.
 
 ## Related Posts
 
-1. [Claude Opus 4 vs. Grok 4 Coding Comparison](https://forgecode.dev/blog/claude-4-opus-vs-grok-4-comparison-full)
-2. [Claude Opus 4 vs. Gemini 2.5 Pro](https://forgecode.dev/blog/claude-sonnet-4-vs-gemini-2-5-pro-preview-coding-comparison)
-3. [First Look at Claude 4](https://forgecode.dev/blog/claude-4-initial-impressions-anthropic-ai-coding-breakthrough)
-
----
+1. <CustomLink href="/blog/claude-4-opus-vs-grok-4-comparison-full">Claude Opus 4 vs. Grok 4 Coding Comparison</CustomLink>
+2. <CustomLink href="/blog/claude-sonnet-4-vs-gemini-2-5-pro-preview-coding-comparison">Claude Opus 4 vs. Gemini 2.5 Pro</CustomLink>
+3. <CustomLink  href="/blog/claude-4-initial-impressions-anthropic-ai-coding-breakthrough">First Look at Claude 4</CustomLink>
 
 ## Footnotes
 
-<a id="footnote-1"></a>**1.** Artificial Analysis. “Grok 4 Model Card.” [https://artificialanalysis.ai/models/grok-4](https://artificialanalysis.ai/models/grok-4) [↩](#ref-1)
+<a id="footnote-1"></a>**1.** Artificial Analysis. “Grok 4 Model Card.” <CustomLink href="https://artificialanalysis.ai/models/grok-4" external>https://artificialanalysis.ai/models/grok-4</CustomLink> <CustomLink href="#ref-1">↩</CustomLink>
 
-<a id="footnote-2"></a>**2.** OpenRouter. “OpenRouter: Access LLMs via a Unified API.” [https://openrouter.ai](https://openrouter.ai/) [↩](#ref-2)
+<a id="footnote-2"></a>**2.** OpenRouter. “OpenRouter: Access LLMs via a Unified API.” <CustomLink href="https://openrouter.ai/">https://openrouter.ai</CustomLink> <CustomLink href="#ref-2">↩</CustomLink>
 
-<a id="footnote-3"></a>**3.** xAI. “Grok 4 Launch & Benchmarks Livestream.” Twitter/X Post. [https://x.com/xai/status/1943158495588815072](https://x.com/xai/status/1943158495588815072) [↩](#ref-3)
+<a id="footnote-3"></a>**3.** xAI. “Grok 4 Launch & Benchmarks Livestream.” Twitter/X Post. <CustomLink href="https://x.com/xai/status/1943158495588815072">https://x.com/xai/status/1943158495588815072</CustomLink> <CustomLink href="#ref-3">↩</CustomLink>
 
-<a id="footnote-4"></a>**4.** Andon Labs. “Vending Bench: A Real-World AGI Simulation.” [https://andonlabs.com](https://andonlabs.com/) [↩](#ref-4)
+<a id="footnote-4"></a>**4.** Andon Labs. “Vending Bench: A Real-World AGI Simulation.” <CustomLink href="https://andonlabs.com/">https://andonlabs.com</CustomLink> <CustomLink href="#ref-4">↩</CustomLink>
 
-<a id="footnote-5"></a>**5.** Grok. “Subscribe to Grok and SuperGrok Plans.” [https://grok.com/#subscribe](https://grok.com/#subscribe) [↩](#ref-5)
+<a id="footnote-5"></a>**5.** Grok. “Subscribe to Grok and SuperGrok Plans.” <CustomLink href="https://grok.com/#subscribe">https://grok.com/#subscribe</CustomLink> <CustomLink href="#ref-5">↩</CustomLink>

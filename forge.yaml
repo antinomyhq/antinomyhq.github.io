@@ -258,7 +258,7 @@ agents:
   - forge_tool_fs_patch
 variables:
   operating_agent: forge
-model: anthropic/claude-3.5-haiku
+model: anthropic/claude-sonnet-4
 custom_rules: |-
   - you should never try to run the application as its already running on 3000 in watch mode
   - you should use playwright mcp if its available
