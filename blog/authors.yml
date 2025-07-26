@@ -35,6 +35,7 @@ anmol:
       url: https://twitter.com/Anmol_Codes
     - platform: linkedin
       url: https://www.linkedin.com/in/Anmol-Baranwal/
+
 arindam:
   name: Arindam Majumder
   url: https://github.com/Arindam200
@@ -46,3 +47,15 @@ arindam:
       url: https://x.com/Arindam_1729
     - platform: linkedin
       url: https://www.linkedin.com/in/arindam2004/
+
+shrijal:
+  name: Shrijal Acharya
+  url: https://github.com/shricodev
+  image_url: https://avatars.githubusercontent.com/u/76906722?v=4
+  social:
+    - platform: github
+      url: https://github.com/shricodev
+    - platform: twitter
+      url: https://x.com/shricodev
+    - platform: linkedin
+      url: https://www.linkedin.com/in/iamshrijal
