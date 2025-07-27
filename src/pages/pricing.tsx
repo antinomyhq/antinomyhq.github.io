@@ -182,7 +182,7 @@ const PricingPage = (): JSX.Element => {
             <div className="bg-gradient-border h-[1px] w-full"></div>
           </div>
 
-          {/* <div className="grid grid-cols-1 xl:grid-cols-[300px_1fr] xl:gap-32 items-start">
+          <div className="grid grid-cols-1 xl:grid-cols-[300px_1fr] xl:gap-32 items-start">
             <div className="items-start mt-10">
               <Heading
                 as="h2"
@@ -191,8 +191,7 @@ const PricingPage = (): JSX.Element => {
                 Frequently Asked Questions
               </Heading>
               <div className="text-content-small md:text-question-title text-[#A1A1A1] !font-[275] dark:text-tailCall-border-light-300 font-kanit mt-5">
-                Select from best plan, ensuring a perfect match. Need more or less? Customize your subscription for a
-                seamless fit!
+                Get answers to common questions about our pricing plans and features.
               </div>
             </div>
 
@@ -233,7 +232,7 @@ const PricingPage = (): JSX.Element => {
                 </div>
               ))}
             </div>
-          </div> */}
+          </div>
           {/* CTA Section */}
         </Section>
         {/* <FinalCTA showPricingButton={false} /> */}
