@@ -954,10 +954,10 @@ export const footerItems: FooterItem[] = [
         name: "Privacy Policy",
         link: pageLinks.privacyPolicy,
       },
-      // {
-      //   name: "Terms",
-      //   link: "",
-      // },
+      {
+        name: "Terms & Conditions",
+        link: pageLinks.terms,
+      },
       {
         name: "Cookie Settings",
         link: "",
