@@ -46,8 +46,6 @@ Already live, and a lot of our most active users have already jumped on board. F
 **Max Plan**
 The best part? Now live and built for the power users we saw who were completely hooked on Forge. For $100 a month, you get up to 5,000 AI requests a day. It's for those of you who've realized you can't go back to your old workflow because you love using Forge that much.
 
-![OpenRouter Integration](../static/blog/openrouter.png)
-
 ### The Numbers Speak for Themselves
 
 The data from our early access says it all:
