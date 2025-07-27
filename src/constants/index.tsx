@@ -1148,11 +1148,11 @@ export const tiers = [
   },
   {
     name: "Max",
-    price: "$200",
+    price: "$100",
     // originalPrice: "$200",
     period: "/month",
     description: "Best for power users",
-    features: ["Coming Soon"],
+    features: ["Everything in Pro", "Up to 5000 AI requests daily"],
     // cta: "Coming Soon",
     // href: pageLinks.signup,
     popular: false,
