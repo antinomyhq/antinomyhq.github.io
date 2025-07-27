@@ -102,7 +102,22 @@ export default {
         "@type": "WebSite",
         name: "ForgeCode",
         url: "https://forgecode.dev/",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://forgecode.dev/images/home/logo-dark.svg",
+          width: "200",
+          height: "50",
+        },
+        sameAs: ["https://github.com/antinomyhq"],
       }),
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "alternate",
+        type: "application/ld+json",
+        href: "/organization-schema.json",
+      },
     },
 
     {
@@ -133,6 +148,27 @@ export default {
       attributes: {
         property: "og:url",
         content: "https://forgecode.dev",
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        property: "og:description",
+        content: mainDescription,
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        property: "og:logo",
+        content: "https://forgecode.dev/images/home/logo-dark.svg",
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        name: "twitter:description",
+        content: mainDescription,
       },
     },
     {
@@ -169,6 +205,13 @@ export default {
         name: "Forge Code",
         description: mainDescription,
         url: "https://forgecode.dev",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://forgecode.dev/images/home/logo-dark.svg",
+          width: "200",
+          height: "50",
+        },
+        image: "https://forgecode.dev/images/opengraph.png",
         applicationCategory: "DeveloperApplication",
         operatingSystem: "Cross-platform",
         offers: {
@@ -184,15 +227,19 @@ export default {
           "Debugging help",
           "Test generation",
         ],
-        programmingLanguage: ["TypeScript", "JavaScript", "Python", "Go", "Rust", "Java", "C++"],
+        programmingLanguage: ["Rust", "JavaScript", "Python", "Go", "TypeScript", "Java", "C++"],
         downloadUrl: "https://forgecode.dev/docs/installation",
         author: {
           "@type": "Organization",
           name: "Forge Code",
           url: "https://forgecode.dev",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://forgecode.dev/images/home/logo-dark.svg",
+          },
         },
         datePublished: "2024-01-01",
-        softwareVersion: "0.98.0",
+        softwareVersion: "0.101.1",
       }),
     },
     {
@@ -290,9 +337,14 @@ export default {
     metadata: [
       {name: "twitter:card", content: "summary_large_image"},
       {name: "twitter:image", content: "/images/opengraph.png"},
+      {name: "twitter:site", content: "@forgecode"},
+      {name: "twitter:creator", content: "@forgecode"},
       {property: "og:image", content: "https://forgecode.dev/images/opengraph.png"},
       {property: "og:image:width", content: "1200"},
       {property: "og:image:height", content: "630"},
+      {property: "og:image:type", content: "image/png"},
+      {name: "msapplication-TileImage", content: "/images/home/logo-dark.svg"},
+      {name: "apple-touch-icon", content: "/images/home/logo-dark.svg"},
     ],
     algolia: {
       appId: "748OFOGLOE",
