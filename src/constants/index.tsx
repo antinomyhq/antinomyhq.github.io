@@ -1082,6 +1082,13 @@ export const FAQS = [
               <br/><br/>So <strong>one user interaction can consume multiple requests</strong> as our agents work intelligently to deliver the best results for your coding tasks.`,
   },
   {
+    question: "How can I check my daily usage?",
+    answer: `You can monitor your daily request usage in two ways:
+              <br/><br/>• <strong>Within ForgeCode:</strong> Use the <code>/info</code> command to check your current daily usage and remaining requests
+              <br/>• <strong>Dashboard:</strong> Login to the Forge dashboard at <a href="https://app.forgecode.dev/app" target="_blank" rel="noopener noreferrer">app.forgecode.dev/app</a> to view usage statistics and account information
+              <br/><br/>Both methods show your usage for Forge's provided models. Remember, requests made with your own API keys (BYOK) don't count against these limits.`,
+  },
+  {
     question: "What's the difference between Pro vs Max plans?",
     answer: `<strong>Pro Plan ($20/month):</strong>
               <br/>• Access to premium AI models (GPT-4, Claude-4, Grok-4, Gemini-2.5)
@@ -1125,8 +1132,17 @@ export const FAQS = [
   {
     question: "Can I upgrade or downgrade my plan anytime?",
     answer: `Yes, you can change your plan at any time through your ForgeCode dashboard. 
-              <br/>• <strong>Upgrades:</strong> Take effect immediately with instant access to new features and higher limits
+              <br/>• <strong>Upgrades:</strong> Take effect immediately with instant access to new features and higher limits. Prices are adjusted automatically on a prorated basis (e.g., if you upgrade from Pro to Max, the amount will be adjusted proportionally for the remaining billing period)
               <br/>• <strong>Downgrades:</strong> Apply at your next billing cycle to ensure you get full value from your current plan`,
+  },
+  {
+    question: "Can I use my same account on more than 1 device?",
+    answer: `Yes, you can use the same ForgeCode account on up to <strong>two devices</strong>. Your daily usage limits will be calculated based on the combined usage from both devices.
+              <br/><br/><strong>Important requirements:</strong>
+              <br/>• Only you (the account holder) can use the account - no sharing credentials with others
+              <br/>• Usage limits apply to combined activity across both devices
+              <br/>• Both devices must be used exclusively by the account holder
+              <br/><br/><strong>Policy violation:</strong> Using your account on more than two devices violates our Fair Usage Policy and may result in account suspension.`,
   },
   {
     question: "Can we use Forge's API like any other AI provider for other apps?",

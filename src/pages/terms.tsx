@@ -51,7 +51,7 @@ const TermsPage = (): JSX.Element => {
                   </h2>
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold text-tailCall-darkMode---neutral-600 dark:text-white mb-3">
-                      1.1 Prohibited Uses of Forge's API
+                      Prohibited Uses of Forge's API
                     </h3>
                     <p className="text-tailCall-darkMode---neutral-600 dark:text-tailCall-light-800 mb-2">
                       Forge's API and services are intended to be used only by the account holder within the ForgeCode
@@ -80,7 +80,7 @@ const TermsPage = (): JSX.Element => {
                   </h2>
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold text-tailCall-darkMode---neutral-600 dark:text-white mb-3">
-                      2.1 Personal Use Only
+                      Personal Use Only
                     </h3>
                     <p className="text-tailCall-darkMode---neutral-600 dark:text-tailCall-light-800 mb-2">
                       Your ForgeCode account and any associated API keys are for your personal use only and cannot be
@@ -100,6 +100,29 @@ const TermsPage = (): JSX.Element => {
                       will be provided.
                     </p>
                   </div>
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold text-tailCall-darkMode---neutral-600 dark:text-white mb-3">
+                      Multi-Device Usage Policy
+                    </h3>
+                    <p className="text-tailCall-darkMode---neutral-600 dark:text-tailCall-light-800 mb-2">
+                      Account holders may use their ForgeCode account on up to two (2) devices simultaneously, subject
+                      to the following conditions:
+                    </p>
+                    <ul className="text-tailCall-darkMode---neutral-600 dark:text-tailCall-light-800 ml-4 mb-4">
+                      <li>Both devices must be used exclusively by the account holder</li>
+                      <li>Daily usage limits apply to the combined usage across all devices</li>
+                      <li>Account credentials must not be shared with any third parties</li>
+                      <li>All devices must comply with the same terms and restrictions outlined in this policy</li>
+                    </ul>
+                    <p className="text-tailCall-darkMode---neutral-600 dark:text-tailCall-light-800 mb-2">
+                      <strong>Device Limit Violation:</strong> Using your account on more than two devices constitutes a
+                      violation of our Fair Usage Policy and may result in immediate account suspension without refund.
+                    </p>
+                    <p className="text-tailCall-darkMode---neutral-600 dark:text-tailCall-light-800 font-semibold">
+                      <strong>Monitoring:</strong> We monitor device usage patterns to ensure compliance with this
+                      policy.
+                    </p>
+                  </div>
                 </div>
 
                 <div className="mb-8">
@@ -108,7 +131,7 @@ const TermsPage = (): JSX.Element => {
                   </h2>
                   <div className="mb-6">
                     <h3 className="text-lg font-semibold text-tailCall-darkMode---neutral-600 dark:text-white mb-3">
-                      3.1 Permitted Uses
+                      Permitted Uses
                     </h3>
                     <p className="text-tailCall-darkMode---neutral-600 dark:text-tailCall-light-800 mb-2">
                       The following uses are explicitly permitted for the account holder:
