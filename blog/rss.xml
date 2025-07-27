@@ -4,11 +4,53 @@
         <title>Forge Code Blog</title>
         <link>https://forgecode.dev/blog/</link>
         <description>Forge Code Blog</description>
-        <lastBuildDate>Wed, 23 Jul 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 27 Jul 2025 23:07:01 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>Copyright © 2025 Tailcall, Inc.</copyright>
+        <item>
+            <title><![CDATA[Graduating from Early Access: New Pricing Tiers Now Available]]></title>
+            <link>https://forgecode.dev/blog/graduating-from-early-access-new-pricing-tiers-available/</link>
+            <guid>https://forgecode.dev/blog/graduating-from-early-access-new-pricing-tiers-available/</guid>
+            <pubDate>Sun, 27 Jul 2025 23:07:01 GMT</pubDate>
+            <description><![CDATA[How our explosive early access growth shaped our pricing strategy and what's now available for developers at every scale.]]></description>
+            <content:encoded><![CDATA[<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0">What started as a small early access experiment blew up in the best way possible. Thanks to you, our incredible community, we saw a 17x surge in signups and a 10x spike in usage in just a few days - results that validated our hypothesis about developer demand for AI-powered development tools.</p>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0"><img decoding="async" loading="lazy" alt="Sign-up Growth During Early Access" src="https://forgecode.dev/assets/images/sign_ups-0fb64a13835edd57e4e262c0fb780e29.png" width="614" height="378" class="img_CujE"></p>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0">This explosive growth was the ultimate validation. It taught us exactly what different kinds of developers need from Forge. Our most active users were making thousands of AI requests every day, racking up over $500/day in AI inference costs and showing us just how powerful this thing can be.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7 text-[24px] font-medium !mb-0 !mt-9 text-tailCall-lightMode---neutral-900 dark:text-tailCall-darkMode---neutral-50" id="what-we-learned-different-devs-different-needs">What We Learned: Different Devs, Different Needs<a href="https://forgecode.dev/blog/graduating-from-early-access-new-pricing-tiers-available/#what-we-learned-different-devs-different-needs" class="hash-link" aria-label="Direct link to What We Learned: Different Devs, Different Needs" title="Direct link to What We Learned: Different Devs, Different Needs">​</a></h3>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0">Our early access taught us something fascinating: developers use Forge in wildly different ways. Some were kicking the tires with small projects, while our power users were making thousands of AI requests a day and weaving Forge into their core workflows.</p>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0"><img decoding="async" loading="lazy" alt="API Usage Patterns" src="https://forgecode.dev/assets/images/api_calls-9ad3ea4e94159a62affee9d008841953.png" width="1466" height="688" class="img_CujE"></p>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0">This was exactly what we hoped to see. Our top 1% of users weren't just pushing the limits; they were showing that developers could get hooked on Forge for everything from quick experiments to marathon coding sessions. That level of engagement and reliance on our tool told us we were onto something special.</p>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0">The unlimited early access plan did its job. We got a crash course in how people use Forge in the real world, and it proved that this tool is genuinely useful for all kinds of developers.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7 text-[24px] font-medium !mb-0 !mt-9 text-tailCall-lightMode---neutral-900 dark:text-tailCall-darkMode---neutral-50" id="new-tiers-for-every-kind-of-developer">New Tiers for Every Kind of Developer<a href="https://forgecode.dev/blog/graduating-from-early-access-new-pricing-tiers-available/#new-tiers-for-every-kind-of-developer" class="hash-link" aria-label="Direct link to New Tiers for Every Kind of Developer" title="Direct link to New Tiers for Every Kind of Developer">​</a></h3>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0">Based on what we learned, we've rolled out a new pricing structure that makes sense for how people actually use Forge:</p>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0"><strong>Free Tier</strong>
+Comes with a <strong>dynamic request limit</strong> that adjusts based on server load (usually 10-50 requests a day). It's a permanent free tier, not a limited trial, so you can really get a feel for how Forge works.</p>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0"><strong>Pro Plan</strong>
+Already live, and a lot of our most active users have already jumped on board. For $20 a month, you get up to 1,000 AI requests a day. It's for developers who are using Forge regularly and want to scale up their usage without worrying about limits.</p>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0"><strong>Max Plan</strong>
+The best part? Now live and built for the power users we saw who were completely hooked on Forge. For $100 a month, you get up to 5,000 AI requests a day. It's for those of you who've realized you can't go back to your old workflow because you love using Forge that much.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7 text-[24px] font-medium !mb-0 !mt-9 text-tailCall-lightMode---neutral-900 dark:text-tailCall-darkMode---neutral-50" id="the-numbers-speak-for-themselves">The Numbers Speak for Themselves<a href="https://forgecode.dev/blog/graduating-from-early-access-new-pricing-tiers-available/#the-numbers-speak-for-themselves" class="hash-link" aria-label="Direct link to The Numbers Speak for Themselves" title="Direct link to The Numbers Speak for Themselves">​</a></h3>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0">The data from our early access says it all:</p>
+<ul>
+<li class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit">17x growth in developer signups</li>
+<li class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit">10x increase in token usage</li>
+<li class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit">Hundreds of developers successfully upgrading to Pro</li>
+</ul>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0"><img decoding="async" loading="lazy" alt="Top Applications on OpenRouter" src="https://forgecode.dev/assets/images/open_router_top_apps-3535e27bd66bfb65984a3f945fb49dc6.png" width="1050" height="852" class="img_CujE"></p>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0">These aren't just numbers on a screen; they represent real developers solving real problems and building cool stuff with Forge.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7 text-[24px] font-medium !mb-0 !mt-9 text-tailCall-lightMode---neutral-900 dark:text-tailCall-darkMode---neutral-50" id="all-tiers-are-live">All Tiers Are Live<a href="https://forgecode.dev/blog/graduating-from-early-access-new-pricing-tiers-available/#all-tiers-are-live" class="hash-link" aria-label="Direct link to All Tiers Are Live" title="Direct link to All Tiers Are Live">​</a></h3>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0">We've poured all this momentum into our full pricing lineup. The Max plan is built on everything we learned about heavy usage, and our whole pricing structure is designed around how developers actually work..</p>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0">This is more than a pricing update; it's a new chapter for Forge, driven by the incredible things you've built. Thank you for being part of our story.</p>
+<p class="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0">Join us on <a href="https://discord.com/invite/kRZBPpkgwq" class="text-tailCall-lightMode---primary-600 dark:text-tailCall-darkMode---primary-400 hover:text-tailCall-lightMode---primary-700 dark:hover:text-tailCall-darkMode---primary-300 transition-colors duration-300" target="_blank" rel="noopener noreferrer">Discord</a> to see what's next and show us what you're building.</p>]]></content:encoded>
+            <category>Forge</category>
+            <category>Launch</category>
+            <category>Scaling</category>
+            <category>Growth</category>
+            <category>Developer Tools</category>
+            <category>Product Update</category>
+        </item>
         <item>
             <title><![CDATA[Kimi K2 vs Qwen-3 Coder: Testing Two AI Models on Coding Tasks]]></title>
             <link>https://forgecode.dev/blog/kimi-k2-vs-qwen-3-coder-coding-comparison/</link>
