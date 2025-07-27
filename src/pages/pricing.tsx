@@ -66,7 +66,7 @@ const PricingPage = (): JSX.Element => {
               />
             </div>
             <span className="block mt-2 md:mt-0 max-w-[500px] xl:mt-20 font-kanit !font-normal lg:leading-8 xl:leading-[32px] text-[16px] md:text-title-small lg:text-[20px] xl:text-[22px] text-tailCall-darkMode---neutral-500 tracking-normal">
-              No credit card required.No lock-in. <br />
+              No credit card required. No lock-in. <br />
               Just productivity from day one
             </span>
           </div>
@@ -112,11 +112,6 @@ const PricingPage = (): JSX.Element => {
                           <span className="text-content-tiny text-tailCall-darkMode---neutral-600 dark:text-white">
                             {tier.period}
                           </span>
-                          {/* {tier.name === "Max" && (
-                            <span className="text-content-medium leading-[14px] font-kanit font-light text-tailCall-darkMode---neutral-600 dark:text-tailCall-darkMode---neutral-400 line-through decoration-from-font">
-                              $200/month
-                            </span>
-                          )} */}
                         </div>
                       </div>
                       {tier.description && (
@@ -163,26 +158,7 @@ const PricingPage = (): JSX.Element => {
               </div>
             ))}
           </div>
-
-          <div className="flex flex-col gap-10 xl:my-20">
-            <div className="bg-gradient-border h-[1px] w-full"></div>
-            <div className="flex flex-col items-center text-center xl:mt-10">
-              <span className="font-kanit text-[32px] lg:text-[37px] text-display-tiny font-normal text-tailCall-darkMode---neutral-800 dark:text-white">
-                Works with every model offered by leading AI providers.
-              </span>
-              <span className="font-kanit text-[16px] lg:text-[26px] text-question-title text-tailCall-darkMode---neutral-400 font-light max-w-[50rem] text-center">
-                Seamlessly integrate with OpenAI, Anthropic, Google, xAI, Meta, Mistral, and Deepseek models.
-              </span>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 max-w-5xl mx-auto xl:mb-10">
-              {AI_PROVIDERS.map(({title, lightLogoUrl, darkLogoUrl}) => (
-                <AIProviderCard title={title} lightLogoUrl={lightLogoUrl} darkLogoUrl={darkLogoUrl} />
-              ))}
-            </div>
-            <div className="bg-gradient-border h-[1px] w-full"></div>
-          </div>
-
-          {/* <div className="grid grid-cols-1 xl:grid-cols-[300px_1fr] xl:gap-32 items-start">
+          <div className="grid grid-cols-1 xl:grid-cols-[300px_1fr] xl:gap-32 items-start">
             <div className="items-start mt-10">
               <Heading
                 as="h2"
@@ -191,8 +167,7 @@ const PricingPage = (): JSX.Element => {
                 Frequently Asked Questions
               </Heading>
               <div className="text-content-small md:text-question-title text-[#A1A1A1] !font-[275] dark:text-tailCall-border-light-300 font-kanit mt-5">
-                Select from best plan, ensuring a perfect match. Need more or less? Customize your subscription for a
-                seamless fit!
+                Get answers to common questions about our pricing plans and features.
               </div>
             </div>
 
@@ -233,7 +208,23 @@ const PricingPage = (): JSX.Element => {
                 </div>
               ))}
             </div>
-          </div> */}
+          </div>
+          <div className="flex flex-col gap-10 xl:my-20">
+            <div className="bg-gradient-border h-[1px] w-full"></div>
+            <div className="flex flex-col items-center text-center xl:mt-10">
+              <span className="font-kanit text-[32px] lg:text-[37px] text-display-tiny font-normal text-tailCall-darkMode---neutral-800 dark:text-white">
+                Works with every model offered by leading AI providers.
+              </span>
+              <span className="font-kanit text-[16px] lg:text-[26px] text-question-title text-tailCall-darkMode---neutral-400 font-light max-w-[50rem] text-center">
+                Seamlessly integrate with OpenAI, Anthropic, Google, xAI, Meta, Mistral, and Deepseek models.
+              </span>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 max-w-5xl mx-auto xl:mb-10">
+              {AI_PROVIDERS.map(({title, lightLogoUrl, darkLogoUrl}) => (
+                <AIProviderCard title={title} lightLogoUrl={lightLogoUrl} darkLogoUrl={darkLogoUrl} />
+              ))}
+            </div>
+          </div>
           {/* CTA Section */}
         </Section>
         {/* <FinalCTA showPricingButton={false} /> */}

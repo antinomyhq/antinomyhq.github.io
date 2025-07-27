@@ -4,6 +4,7 @@ export const pageLinks = {
   installation: "/docs/installation",
   signup: "https://app.forgecode.dev/app/",
   pricing: "/pricing",
+  terms: "/terms",
   // about: "/about",
   // contact: "/contact",
   contributors: "/docs/contribution-guidelines",
