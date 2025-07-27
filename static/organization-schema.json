@@ -1,0 +1,21 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Forge Code",
+  "url": "https://forgecode.dev",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://forgecode.dev/images/home/logo-dark.svg",
+    "width": "200",
+    "height": "50",
+    "contentUrl": "https://forgecode.dev/images/home/logo-dark.svg"
+  },
+  "sameAs": ["https://github.com/antinomyhq", "https://twitter.com/forgecodehq"],
+  "description": "AI coding assistant that helps developers write better code faster. Get AI-powered code suggestions, refactoring, and debugging directly in your terminal.",
+  "foundingDate": "2024-01-01",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "url": "https://forgecode.dev"
+  }
+}
