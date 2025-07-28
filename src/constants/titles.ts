@@ -5,5 +5,5 @@ export const PageTitle = {
 }
 
 export const PageDescription = {
-  HOME: "Forge is a non-intrusive light-weight AI coding assistant for the terminal. ",
+  HOME: "AI coding assistant that helps developers write better code faster. Get AI-powered code suggestions, refactoring, and debugging directly in your terminal.",
 }

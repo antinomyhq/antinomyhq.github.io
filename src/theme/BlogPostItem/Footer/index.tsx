@@ -27,9 +27,9 @@ export default function BlogPostItemFooter(): JSX.Element | null {
 
     return (
       <footer className="docusaurus-mt-lg">
-        <h1 className="text-[12px] text-tailCall-lightMode---neutral-400 dark:text-tailCall-darkMode---neutral-400">
+        <h2 className="text-[12px] text-tailCall-lightMode---neutral-400 dark:text-tailCall-darkMode---neutral-400">
           Posted By
-        </h1>
+        </h2>
         <BlogPostItemHeaderAuthors textClassName="text-tailCall-lightMode---neutral-400 dark:text-tailCall-darkMode---neutral-400" />
         {canDisplayEditMetaRow && (
           <EditMetaRow

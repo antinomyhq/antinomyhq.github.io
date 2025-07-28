@@ -77,7 +77,23 @@ export default {
         media: "(prefers-color-scheme: dark)",
       },
     },
-
+    {
+      tagName: "link",
+      attributes: {
+        rel: "apple-touch-icon",
+        href: "/images/favicon-light.svg",
+        type: "image/svg+xml",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "apple-touch-icon",
+        href: "/images/favicon-dark.svg",
+        type: "image/svg+xml",
+        media: "(prefers-color-scheme: dark)",
+      },
+    },
     {
       tagName: "script",
       attributes: {
@@ -116,14 +132,6 @@ export default {
     {
       tagName: "meta",
       attributes: {
-        property: "og:title",
-        content: title,
-      },
-    },
-
-    {
-      tagName: "meta",
-      attributes: {
         property: "og:type",
         content: "website",
       },
@@ -139,7 +147,7 @@ export default {
       tagName: "meta",
       attributes: {
         name: "twitter:title",
-        content: title,
+        content: "The AI Coding Assistant for Your Terminal | Forge Code",
       },
     },
 
@@ -331,8 +339,9 @@ export default {
       {
         path: "blog",
         editLocalizedFiles: false,
-        blogTitle: "Feed of ForgeCode blogs",
-        blogDescription: "List of blog posts on ForgeCode blog",
+        blogTitle: "ForgeCode Blog Feed – Terminal Dev Tips & AI Insights",
+        blogDescription:
+          "Discover helpful blog posts on terminal productivity, AI coding tools, and updates from the ForgeCode team.",
         blogSidebarCount: 10,
         blogSidebarTitle: "Recent Blog Posts",
         routeBasePath: "blog",

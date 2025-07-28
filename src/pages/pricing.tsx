@@ -49,7 +49,10 @@ const PricingPage = (): JSX.Element => {
   }
 
   return (
-    <Layout title="Pricing" description="Simple, transparent pricing for ForgeCode">
+    <Layout
+      title="ForgeCode Plans & Pricing – Built for Terminal Power Users"
+      description="Simple and transparent pricing for ForgeCode — built to scale with your terminal workflow, no hidden costs."
+    >
       <div className="max-w-[1320px] mx-auto w-full">
         <div className=" py-12 dark:bg-black bg-tailCall-light-1200 border-b border-solid border-transparent border-b-[#dbdbdb] dark:border-b-[#4b4b4b]">
           <div className="flex flex-col lg:gap-0 items-start xl:items-center xl:flex-row justify-between w-full py-5 px-2">

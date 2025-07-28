@@ -164,10 +164,16 @@ const WhyForge = (): JSX.Element => {
                     >
                       <div className="flex flex-col justify-between h-full gap-3">
                         <div className="flex flex-col gap-3">
-                          <img src={card.imageUrl} alt="Feedback" height={80} width={80} className="grayscale" />
-                          <span className="text-tailCall-darkMode---neutral-700 dark:text-white font-kanit text-title-small font-light break-words text-left">
+                          <img
+                            src={card.imageUrl}
+                            alt={`feedback-${card.title}`}
+                            height={80}
+                            width={80}
+                            className="grayscale"
+                          />
+                          <p className="text-tailCall-darkMode---neutral-700 dark:text-white font-kanit text-title-small font-light break-words text-left">
                             {card.title}
-                          </span>
+                          </p>
                         </div>
                         <div className="flex flex-col">
                           <span className="text-tailCall-darkMode---neutral-500 dark:text-white dark:opacity-50 text-title-tiny font-normal">
@@ -189,10 +195,16 @@ const WhyForge = (): JSX.Element => {
                   <div className="px-8 py-8 h-[100%] rounded-[12px] w-full md:w-[380px] border-[11px] border-tailCall-lightMode---neutral-50 dark:border-[#181D27] border-solid bg-transparent shadow-[0px_0px_4px_0px_#088C8C] dark:shadow-[0px_0px_4px_0px_#30EDE6] hover:cursor-pointer hover:bg-custom-radial-light hover:dark:bg-custom-radial transition-all duration-500 overflow-hidden ease-in">
                     <div className="flex flex-col justify-between h-full gap-3">
                       <div className="flex flex-col gap-3">
-                        <img src={card.imageUrl} alt="Feedback" height={80} width={80} className="grayscale" />
-                        <span className="text-tailCall-darkMode---neutral-700 dark:text-white font-kanit text-title-small font-light whitespace-normal break-words text-left">
+                        <img
+                          src={card.imageUrl}
+                          alt={`Feedback-${card.title}`}
+                          height={80}
+                          width={80}
+                          className="grayscale"
+                        />
+                        <p className="text-tailCall-darkMode---neutral-700 dark:text-white font-kanit text-title-small font-light whitespace-normal break-words text-left">
                           {card.title}
-                        </span>
+                        </p>
                       </div>
                       <div className="flex flex-col">
                         <span className="text-tailCall-darkMode---neutral-500 dark:text-white dark:opacity-50 text-title-tiny font-normal">

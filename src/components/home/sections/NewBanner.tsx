@@ -32,9 +32,9 @@ const Banner = (): JSX.Element => {
       <div className="max-w-[1440px] relative px-7 pt:5 lg:pt-0 flex lg:justify-center flex-col w-full">
         <div className="flex justify-around flex-col lg:flex-row gap-4 md:gap-0 lg:gap-40 xl:gap-64 md:pt-0 xl:pt-auto">
           <div className="flex md:hidden lg:flex flex-col">
-            <p className="text-tailCall-lightMode---neutral-800 dark:text-white text-[26px] font-light lg:font-light text-title-medium lg:text-display-tiny opacity-80 max-w-[500px] md:mt-24 font-kanit">
+            <h1 className="text-tailCall-lightMode---neutral-800 dark:text-white text-[26px] font-light lg:font-light text-title-medium lg:text-display-tiny opacity-80 max-w-[500px] md:mt-24 font-kanit">
               Forge is a non-intrusive light-weight AI assistant for the terminal.
-            </p>
+            </h1>
             <div id="header-title-section" className="relative flex flex-col">
               <SpotlightSpan showHighlighted text="AI PAIR" className={clsx(sharedClasses, "-top-5")} />
               <SpotlightSpan
