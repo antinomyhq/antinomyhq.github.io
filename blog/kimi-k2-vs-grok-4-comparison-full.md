@@ -2,7 +2,14 @@
 slug: kimi-k2-vs-grok-4-comparison-full
 title: "Kimi K2 vs Grok 4: Which AI Model Codes Better?"
 authors: [shrijal]
-tags: ["Kimi K2", "Grok 4", "Model Comparison", "AI Coding", "Developer Tools"]
+tags:
+  [
+    "Kimi K2",
+    "Grok 4",
+    "Model Comparison",
+    "AI Coding",
+    "Developer Tools",
+  ]
 date: 2025-07-26
 description: "A deep dive into Kimi K2 and Grok 4 for real-world coding, comparing their performance across bug fixing, feature implementation, tool use, and cost efficiency. See which model stands out and when to choose each for your dev workflow."
 hide_table_of_contents: false
@@ -179,4 +186,3 @@ Both Kimi K2 and Grok 4 have been recently added and are live on Forge. If this 
 <a id="footnote-5"></a>**5.** Artificial Analysis. “Kimi K2 Model Card." [https://artificialanalysis.ai/models/kimi-k2](https://artificialanalysis.ai/models/kimi-k2) [↩](#ref-5)
 
 <a id="footnote-6"></a>**6.** Artificial Analysis. "Grok 4 Model Card." [https://artificialanalysis.ai/models/grok-4](https://artificialanalysis.ai/models/grok-4) [↩](#ref-6)
-
