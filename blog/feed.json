@@ -73,7 +73,17 @@
             "title": "Grok 4 Initial Impressions: Is xAI's New LLM the Most Intelligent AI Model Yet?",
             "summary": "A deep dive into Grok 4's benchmarks, architecture, and community impressions. Is xAI's latest LLM a breakthrough towards AGI, and is it worth integrating into your AI development workflow?",
             "date_modified": "2025-07-17T18:43:52.000Z",
-            "tags": []
+            "author": {
+                "name": "Arindam Majumder",
+                "url": "https://github.com/Arindam200"
+            },
+            "tags": [
+                "AI",
+                "LLM",
+                "xAI",
+                "Grok 4",
+                "Model Review"
+            ]
         },
         {
             "id": "https://forgecode.dev/blog/claude-4-opus-vs-grok-4-comparison-full/",
@@ -135,7 +145,15 @@
             "title": "Simple Over Easy: Architectural Constraints for Maintainable AI-Generated Code",
             "summary": "Discover how applying Rich Hickey's 'Simple Made Easy' principles can solve the 'AI 90/10 problem', leading to more maintainable and reviewable AI-generated code by constraining architectural choices.",
             "date_modified": "2025-06-27T01:42:35.000Z",
-            "tags": []
+            "author": {
+                "name": "Amit Singh",
+                "url": "https://github.com/amitksingh1490"
+            },
+            "tags": [
+                "AI",
+                "Architecture",
+                "Developer Tools"
+            ]
         },
         {
             "id": "https://forgecode.dev/blog/prevent-attacks-on-mcp/",
@@ -243,7 +261,17 @@
             "title": "DeepSeek-R1-0528: A Detailed Review of its AI Coding Performance & Latency",
             "summary": "A comprehensive review of DeepSeek-R1-0528's AI coding capabilities, architectural innovations, and significant latency challenges via OpenRouter API. Is this open-source LLM ready for your real-time development workflow?",
             "date_modified": "2025-05-30T15:18:40.000Z",
-            "tags": []
+            "author": {
+                "name": "Amit Singh",
+                "url": "https://github.com/amitksingh1490"
+            },
+            "tags": [
+                "AI",
+                "LLM",
+                "DeepSeek",
+                "Coding Experience",
+                "Model Review"
+            ]
         },
         {
             "id": "https://forgecode.dev/blog/claude-sonnet-4-vs-gemini-2-5-pro-preview-coding-comparison/",
