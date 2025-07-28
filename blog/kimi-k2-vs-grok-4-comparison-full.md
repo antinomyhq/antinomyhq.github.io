@@ -43,6 +43,26 @@ I've used the same prompts for both of these models to keep things fair and cons
 - The time taken to complete the given task.
 - Finally, one of the most important factors I'll consider is the overall token efficiency.
 
+### Chat Agent in Action
+
+Curious how the final agents turned out? Check out the demo below:
+
+- **Kimi K2 - Building a Chat Agent**
+
+Here's the agent in action:
+
+<img src="/images/blog/kimi-k2-chat-agent.gif" alt="Chat Agent with MCP integration built by the Kimi K2 AI Model" style={{width: "100%", maxWidth: "800px"}} />
+
+As you can see, it works perfectly fine. Tool calls with the integrations work great. However, this was not the output on the very first attempt. I had to do some iterations with the prompt to get this result. But it all works, and that's what matters.
+
+- **Grok 4 - Building the Same Agent**
+
+Here's the agent in action:
+
+<img src="/images/blog/grok-4-chat-agent.gif" alt="Chat Agent with MCP integration built by the Grok 4 AI Model" style={{width: "100%", maxWidth: "800px"}} />
+
+This one looks even better in the UI, and the implementation is also better. I ran three attempts for a single task to ensure consistency for both models, and the best part is that it worked perfectly on the very first attempt. Grok 4 pretty much one-shotted this beautiful-looking entire chat agent in a single prompt.
+
 ---
 
 ## Performance Analysis
@@ -67,13 +87,15 @@ Here's the performance comparison between Kimi K2 and Grok 4 across 9 tasks:
 **Test Sample:** 9 tasks, repeated 3 times for consistency
 **Confidence Level:** High, based on manual verification
 
-Overall, both models felt solid in my test, but Grok 4 has a slight edge, as you can see above. It was more accurate with tool use, caught more bugs, and fixed them all with really great code and better test cases. Kimi K2 did really well too, but at times it wrote code with many unused variables, had a slight problem with prompt following, and was a bit slower. In short, Grok 4 was a bit more polished, but we can't undermine the fact that Kimi K2 comes with this great performance at a fraction of the cost of Grok 4, so that's something to consider here.
+Overall, both models felt solid in my test, but Grok 4 has a slight edge, as you can see above. It was more accurate with tool use, caught more bugs, and fixed them all with really great code and better test cases.
+
+Kimi K2 did really well too, but at times it wrote code with many unused variables (I don't know why that is the case, but almost in every single task it declared some unused variables), had a slight problem with prompt following, and was a bit slower. In short, Grok 4 was a bit more polished, but we can't undermine the fact that Kimi K2 comes with this great performance at a fraction of the cost of Grok 4, so that's something to consider here.
 
 ---
 
 ## Speed and Overall Token Usage
 
-When it comes to the response speed of both models, I didn't notice much difference. Both models are quite slow at generating responses. Considering an average coding prompt with about 1,000 tokens, Grok outputs around 50 tokens per second, while Kimi K2 outputs about 47 tokens per second.
+When it comes to the response speed of both models, I didn't notice much difference. Both models are **quite slow** at generating responses. Considering an average coding prompt with about 1,000 tokens, Grok outputs around 50 tokens per second, while Kimi K2 outputs about 47 tokens per second.
 
 :::note
 Many providers, like Groq<sup><a id="ref-2" href="#footnote-2">2</a></sup>, offer high output speed (tokens per second), but here we're focusing on a standard use case with a typical provider.
@@ -106,10 +128,6 @@ But, isn't the Grok 4 pricing of $5.80 more than what it should be for 200k toke
 ![Grok 4 pricing](/blog/grok_4_pricing.png)
 
 Kimi K2 comes with $0.15 per million input tokens and $2.50 per million output tokens, and it stays flat no matter the token usage.
-
-The best part is that you can access the free tier of Kimi K2 on OpenRouter<sup><a id="ref-4" href="#footnote-4">4</a></sup>. This is perfect for testing with smaller projects, allowing you to experiment before fully committing to the model.
-
-![Kimi K2 free tier on OpenRouter](/blog/kimi_k2_free_openrouter.png)
 
 ---
 
@@ -181,8 +199,6 @@ Both Kimi K2 and Grok 4 have been recently added and are live on Forge. If this 
 
 <a id="footnote-3"></a>**3.** xAI. "AI Research Company." [https://x.ai/](https://x.ai/) [↩](#ref-3)
 
-<a id="footnote-4"></a>**4.** OpenRouter. “OpenRouter: Access LLMs via a Unified API.” [https://openrouter.ai](https://openrouter.ai) [↩](#ref-4)
+<a id="footnote-4"></a>**4.** Artificial Analysis. “Kimi K2 Model Card." [https://artificialanalysis.ai/models/kimi-k2](https://artificialanalysis.ai/models/kimi-k2) [↩](#ref-4)
 
-<a id="footnote-5"></a>**5.** Artificial Analysis. “Kimi K2 Model Card." [https://artificialanalysis.ai/models/kimi-k2](https://artificialanalysis.ai/models/kimi-k2) [↩](#ref-5)
-
-<a id="footnote-6"></a>**6.** Artificial Analysis. "Grok 4 Model Card." [https://artificialanalysis.ai/models/grok-4](https://artificialanalysis.ai/models/grok-4) [↩](#ref-6)
+<a id="footnote-5"></a>**5.** Artificial Analysis. "Grok 4 Model Card." [https://artificialanalysis.ai/models/grok-4](https://artificialanalysis.ai/models/grok-4) [↩](#ref-5)
