@@ -1,4 +1,7 @@
-export {default as SpotlightCursor} from "./SpotlightCursor"
+export {default as SpotlightSpan} from "./SpotlightCursor"
 export {default as Stats} from "./Stats"
 export {default as ThemeToggle} from "./ThemeToggle"
 export {default as TrustedByMarquee} from "./TrustedByMarquee"
+export {default as UserFeedbackCard} from "./UserFeedbackCard"
+export {default as CTAButtons} from "./CTAButtons"
+export {default as CopyCodeBox} from "./CopyCodeBox"

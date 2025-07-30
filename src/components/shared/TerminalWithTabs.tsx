@@ -90,7 +90,7 @@ const TerminalWithTabs = (): JSX.Element => {
     return (
       <div
         key={idx}
-        className="text-tailCall-darkMode---neutral-700 dark:text-tailCall-darkMode---neutral-400 max-[480px]:text-[14px]"
+        className="text-tailCall-darkMode---neutral-700 dark:text-tailCall-darkMode---neutral-300 max-[480px]:text-[14px]"
       >
         <span className="!font-normal font-space text-content-small !leading-3">
           {isSynthLine ? (

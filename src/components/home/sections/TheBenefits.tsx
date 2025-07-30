@@ -10,7 +10,34 @@ import BenefitsCard from "../../shared/BenefitsCard"
 
 gsap.registerPlugin(ScrollTrigger)
 const VISIBLE_HEIGHT = 0.8 // 60% of viewport height
-const HEADING_HEIGHT = 120
+const HEADING_HEIGHT = 130
+
+const BackgroundImages = () => {
+  return (
+    <div className="relative flex items-center justify-center xl:-top-[75px]">
+      <img
+        src="/images/home/Black-Circle.svg"
+        alt="ellipse"
+        className={clsx("circle-logo", "w-[75%] h-screen dark:block hidden")}
+      />
+      <img
+        src="/images/home/Light-Circle.svg"
+        alt="ellipse"
+        className={clsx("circle-logo", "w-[75%] h-screen block dark:hidden")}
+      />
+      <img
+        src="/images/home/code-logo.svg"
+        alt="code"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block dark:hidden w-[20%] md:w-auto"
+      />
+      <img
+        src="/images/home/code-logo-dark.svg"
+        alt="code"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 dark:block hidden w-[20%] md:w-auto"
+      />
+    </div>
+  )
+}
 
 const TheBenefits = (): JSX.Element => {
   const [focusedIdx, setFocusedIdx] = useState(0)
@@ -29,29 +56,21 @@ const TheBenefits = (): JSX.Element => {
   }, [])
 
   useEffect(() => {
-    // Only run animation if not mobile and isMobile is known
-    if (isMobile === undefined) return
     if (isMobile) {
-      // Clean up all ScrollTriggers and transforms on mobile
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
-      if (cardsRef.current) {
-        gsap.set(cardsRef.current, {clearProps: "all"})
-      }
-      if (sectionRef.current) {
-        sectionRef.current.style.height = ""
-      }
-      return
+      const section = sectionRef.current
+      if (!section) return
+      section.style.height = "auto"
     }
-    const section = sectionRef.current
-    const cards = cardsRef.current
-    if (!section || !cards) return
-    function getViewportHeight() {
-      return window.visualViewport?.height || window.innerHeight
-    }
-    function setupScrollTrigger() {
+    if (isMobile === undefined) return
+
+    let ctx: gsap.Context | null = null
+
+    const setup = () => {
+      const section = sectionRef.current
+      const cards = cardsRef.current
       if (!section || !cards) return
-      const isMobile = window.innerWidth < 768
-      const viewportHeight = getViewportHeight()
+
+      const viewportHeight = window.visualViewport?.height || window.innerHeight
       const visibleHeight = isMobile ? viewportHeight * 0.8 : viewportHeight * 0.6
       const cardHeight = cards.children[0]?.clientHeight || 1
       const gap = 32
@@ -60,14 +79,23 @@ const TheBenefits = (): JSX.Element => {
       const extraScroll = isMobile ? visibleHeight * 0.8 : 0
       const totalScroll = cards.scrollHeight - visibleHeight + lastCardOffset + extraScroll
       section.style.height = `${visibleHeight + totalScroll}px`
-      const ctx = gsap.context(() => {
+
+      if (isMobile) {
+        ctx?.revert()
+        section.style.height = "auto"
+        gsap.set(cards, {clearProps: "all"}) // remove gsap `y` transforms
+        return
+      }
+
+      // Create context to isolate ScrollTriggers to this component
+      ctx = gsap.context(() => {
         gsap.to(cards, {
           y: `-${totalScroll}px`,
           ease: "none",
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: () => `+=${totalScroll}`,
+            end: `+=${totalScroll}`,
             scrub: true,
             pin: true,
             anticipatePin: 1,
@@ -95,28 +123,38 @@ const TheBenefits = (): JSX.Element => {
             },
           },
         })
+
         gsap.to(".circle-logo", {
           rotation: 360,
           ease: "none",
           scrollTrigger: {
             trigger: section,
             start: "top top",
-            end: () => `+=${totalScroll}`,
+            end: `+=${totalScroll}`,
             scrub: true,
           },
         })
       }, section)
     }
-    setupScrollTrigger()
-    window.addEventListener("resize", setupScrollTrigger)
-    window.addEventListener("orientationchange", setupScrollTrigger)
-    window.addEventListener("resize", () => ScrollTrigger.refresh())
-    window.addEventListener("orientationchange", () => ScrollTrigger.refresh())
+
+    const debouncedResize = () => {
+      clearTimeout((debouncedResize as any)._t)
+      ;(debouncedResize as any)._t = setTimeout(() => {
+        if (ctx) ctx.revert()
+        setup()
+        ScrollTrigger.refresh()
+      }, 150)
+    }
+
+    setup()
+
+    window.addEventListener("resize", debouncedResize)
+    window.addEventListener("orientationchange", debouncedResize)
+
     return () => {
-      window.removeEventListener("resize", setupScrollTrigger)
-      window.removeEventListener("orientationchange", setupScrollTrigger)
-      window.removeEventListener("resize", () => ScrollTrigger.refresh())
-      window.removeEventListener("orientationchange", () => ScrollTrigger.refresh())
+      if (ctx) ctx.revert()
+      window.removeEventListener("resize", debouncedResize)
+      window.removeEventListener("orientationchange", debouncedResize)
     }
   }, [isMobile])
 
@@ -127,11 +165,30 @@ const TheBenefits = (): JSX.Element => {
     "-tracking-normal",
   )
 
+  const SpotlightText = () => {
+    return (
+      <>
+        <SpotlightSpan
+          showHighlighted
+          text="THE"
+          className={clsx(spotlightHeadingClasses, "absolute top-20 left-8 xl:left-28")}
+        />
+        <SpotlightSpan
+          text="BENEFITS"
+          className={clsx(
+            spotlightHeadingClasses,
+            "absolute top-36 md:top-[10.5rem] md:left-28 xl:top-52 left-24 xl:left-60",
+          )}
+        />
+      </>
+    )
+  }
+
   return (
     <div className="flex justify-center z-0">
       <div
         ref={sectionRef}
-        className="xl:max-w-[1440px] relative w-full h-[110vh] md:h-[120vh] flex flex-col pt-10 z-10 xl:pt-24 overflow-hidden mb-0 md:mb-64"
+        className="xl:max-w-[1440px] relative w-full h-[110vh] md:h-[120vh] flex flex-col pb-10 md:pb-0 z-10 xl:pt-24 overflow-hidden mb-0 md:mb-64"
       >
         <div
           className="sticky top-0 flex flex-col items-center bg-[#F1F1F1] dark:bg-black"
@@ -141,40 +198,8 @@ const TheBenefits = (): JSX.Element => {
             zIndex: 2,
           }}
         >
-          <div className="relative flex items-center justify-center xl:-top-[75px]">
-            <img
-              src="/images/home/Black-Circle.svg"
-              alt="ellipse"
-              className={clsx("circle-logo", "w-[75%] h-screen dark:block hidden")}
-            />
-            <img
-              src="/images/home/Light-Circle.svg"
-              alt="ellipse"
-              className={clsx("circle-logo", "w-[75%] h-screen block dark:hidden")}
-            />
-            <img
-              src="/images/home/code-logo.svg"
-              alt="code"
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block dark:hidden w-[20%] md:w-auto"
-            />
-            <img
-              src="/images/home/code-logo-dark.svg"
-              alt="code"
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 dark:block hidden w-[20%] md:w-auto"
-            />
-          </div>
-          <SpotlightSpan
-            showHighlighted
-            text="THE"
-            className={clsx(spotlightHeadingClasses, "absolute top-20 left-8 xl:left-28")}
-          />
-          <SpotlightSpan
-            text="BENEFITS"
-            className={clsx(
-              spotlightHeadingClasses,
-              "absolute top-36 md:top-[10.5rem] md:left-28 xl:top-52 left-24 xl:left-60",
-            )}
-          />
+          <BackgroundImages />
+          <SpotlightText />
           <div
             className={clsx(
               "absolute md:left-auto md:right-10 xl:left-[850px] w-full md:w-auto lg:right-20 top-[500px] flex flex-col md:items-center",

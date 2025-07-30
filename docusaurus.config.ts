@@ -303,7 +303,6 @@ export default {
         facetFilters: [],
       },
     },
-
     navbar: {
       hideOnScroll: false,
       items: [

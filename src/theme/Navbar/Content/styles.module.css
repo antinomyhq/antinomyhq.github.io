@@ -5,6 +5,15 @@ Hide color mode toggle in small viewports
   .colorModeToggle {
     display: none;
   }
+  .showSidebarToggle {
+    display: flex;
+  }
+}
+
+@media (min-width: 997px) {
+  .showSidebarToggle {
+    display: none;
+  }
 }
 
 /*

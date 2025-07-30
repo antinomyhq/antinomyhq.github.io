@@ -5,6 +5,7 @@ import {useThemeContext} from "@site/src/theme/ThemeProvider/ThemeProvider"
 
 interface LogoItem {
   logo: React.ComponentType<React.SVGProps<SVGSVGElement>> | string
+  lightLogo?: React.ComponentType<React.SVGProps<SVGSVGElement>> | string
   name: string
   link?: string
 }
@@ -47,9 +48,10 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
 }) => {
   const handleClick = () => onClick?.()
   const {theme} = useThemeContext()
-  const renderLogo = ({logo, name, link}: LogoItem) => {
-    const content = <LogoRenderer logo={logo} alt={name} />
 
+  const renderLogo = ({logo, lightLogo, name, link}: LogoItem) => {
+    const clientLogo = theme === "dark" ? logo : lightLogo ?? logo
+    const content = <LogoRenderer logo={clientLogo} alt={name} />
     return (
       <div key={name} className="h-12 flex items-center justify-center px-8">
         {link ? (

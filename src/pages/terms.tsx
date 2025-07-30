@@ -179,7 +179,7 @@ const TermsPage = (): JSX.Element => {
                 </div>
 
                 <div className="border-t border-tailCall-darkMode---neutral-300 dark:border-tailCall-darkMode---neutral-700 pt-6">
-                  <p className="text-tailCall-darkMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 text-sm">
+                  <p className="text-tailCall-darkMode---neutral-500 dark:text-tailCall-darkMode---neutral-300 text-sm">
                     <strong>Last updated:</strong> July 2025
                     <br />
                     <strong>Effective date:</strong> These terms apply to all current and future ForgeCode users.

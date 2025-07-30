@@ -109,7 +109,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
             <li
               key={option.value}
               onClick={() => handleSelect(option)}
-              className={`cursor-pointer py-2 px-3 text-tailCall-darkMode---neutral-600 dark:text-tailCall-darkMode---neutral-300 hover:bg-tailCall-darkMode---neutral-200 hover:dark:bg-tailCall-darkMode---neutral-800 ${
+              className={`cursor-pointer py-2 px-3 text-tailCall-darkMode---neutral-600 dark:text-tailCall-darkMode---neutral-200 hover:bg-tailCall-darkMode---neutral-200 hover:dark:bg-tailCall-darkMode---neutral-800 ${
                 selected.value === option.value
                   ? "text-tailCall-darkMode---neutral-800 dark:text-tailCall-darkMode---neutral-50 bg-tailCall-darkMode---neutral-200 dark:bg-tailCall-darkMode---neutral-800 font-medium"
                   : ""

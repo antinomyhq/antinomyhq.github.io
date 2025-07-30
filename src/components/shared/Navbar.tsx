@@ -32,7 +32,7 @@ const NavLink = ({href, label}: {href: string; label: string}) => {
   const activeClass =
     "font-medium text-tailCall-lightMode---primary-700 dark:text-tailCall-darkMode---primary-400 opacity-100"
   const inactiveClass =
-    "text-tailCall-darkMode---neutral-600 dark:text-tailCall-darkMode---neutral-400 hover:opacity-100"
+    "text-tailCall-darkMode---neutral-600 dark:text-tailCall-darkMode---neutral-300 hover:opacity-100"
 
   return (
     <Link

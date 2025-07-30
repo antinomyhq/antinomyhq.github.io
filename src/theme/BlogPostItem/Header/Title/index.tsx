@@ -14,7 +14,7 @@ export default function BlogPostItemHeaderTitle({className}: Props): JSX.Element
     <TitleHeading
       className={clsx(
         styles.title,
-        "text-tailCall-lightMode---neutral-600 dark:text-tailCall-darkMode---neutral-300",
+        "text-tailCall-lightMode---neutral-600 dark:text-tailCall-darkMode---neutral-200",
         className,
       )}
     >
