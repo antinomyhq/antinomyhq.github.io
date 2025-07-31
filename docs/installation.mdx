@@ -8,7 +8,6 @@ sidebar_label: Installation
 import Steps, {Step} from "../components/Steps"
 import {Zap, Target, Settings} from "lucide-react"
 import CustomLink from "@site/src/components/shared/CustomLink"
-import Card from "@site/src/components/shared/Card"
 
 # Installation & Setup
 
@@ -24,14 +23,12 @@ Get Forge running on your system in under 5 minutes. This guide covers installat
     npm install -g forgecode@latest
     ```
 
-<Card variant="warning">
-  <span>
+:::caution
     Do <strong>not</strong> use <code>sudo npm install -g</code> as this can lead to permission issues and security
     risks. If you encounter permission errors, see our{" "}
     <CustomLink href="/docs/npm-troubleshooting">Node.js & npm Troubleshooting</CustomLink>
     guide for safe solutions including npm directory configuration and Node.js version managers like nvm.
-  </span>
-</Card>
+:::
 
   </Step>
   

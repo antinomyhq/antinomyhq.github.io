@@ -33,9 +33,6 @@ import CoreEdgeClientLogo from "@site/static/icons/client/coreedge.svg"
 import AirbnbLogo from "@site/static/icons/client/airbnb-dark.svg"
 import DeelLogo from "@site/static/icons/client/deel-dark.svg"
 import DoordashLogo from "@site/static/icons/client/doordash-dark.svg"
-import GoogleLogo from "@site/static/icons/client/google-dark.svg"
-import MetaLogo from "@site/static/icons/client/meta-dark.svg"
-import NetflixLogo from "@site/static/icons/client/netflix-dark.svg"
 import RedditLogo from "@site/static/icons/client/reddit-dark.svg"
 import SalesforceLogo from "@site/static/icons/client/salesforce-dark.svg"
 import XLogo from "@site/static/icons/client/x-dark.svg"
@@ -50,55 +47,30 @@ import CoreEdgeClientLogoLight from "@site/static/icons/client/coreedge-light.sv
 import AirbnbLogoLight from "@site/static/icons/client/airbnb.svg"
 import DeelLogoLight from "@site/static/icons/client/deel.svg"
 import DoordashLogoLight from "@site/static/icons/client/doordash.svg"
-import GoogleLogoLight from "@site/static/icons/client/google.svg"
-import MetaLogoLight from "@site/static/icons/client/meta.svg"
-import NetflixLogoLight from "@site/static/icons/client/netflix.svg"
 import RedditLogoLight from "@site/static/icons/client/reddit.svg"
 import SalesforceLogoLight from "@site/static/icons/client/salesforce.svg"
 import XLogoLight from "@site/static/icons/client/x.svg"
 
-export const companies: PartnerImage[] = [
-  {name: "Airbnb", logo: AirbnbLogoLight},
+export const companies: ClientImage[] = [
+  {name: "Airbnb", logo: AirbnbLogo, lightLogo: AirbnbLogoLight},
   // {name: "Apple", logo: "/icons/client/apple.svg"},
-  {name: "Deel", logo: DeelLogoLight},
-  {name: "Doordash", logo: DoordashLogoLight},
+  {name: "Deel", logo: DeelLogo, lightLogo: DeelLogoLight},
+  {name: "Doordash", logo: DoordashLogo, lightLogo: DoordashLogoLight},
   // {name: "Google", logo: GoogleLogoLight},
-  {name: "Instacart", logo: "/icons/client/instacart.svg"},
+  {name: "Instacart", logo: "/icons/client/instacart-dark.svg", lightLogo: "/icons/client/instacart.svg"},
   // {name: "Meta", logo: MetaLogoLight},
   // {name: "Microsoft", logo: "/icons/client/microsoft.svg"},
   // {name: "Netflix", logo: NetflixLogoLight},
-  {name: "Reddit", logo: RedditLogoLight},
-  {name: "Salesforce", logo: SalesforceLogoLight},
-  {name: "X", logo: XLogoLight},
-  {name: "Dream11", logo: Dream11Logo},
-  {name: "Agoda", logo: AgodaLogo},
-  {name: "Amazon", logo: AmazonLogo},
-  {name: "Branch", logo: BranchLogo},
-  {name: "ClearTax", logo: ClearTaxLogo},
-  {name: "Commvault", logo: CommvaultLogo},
-  {name: "CoreEdge", logo: CoreEdgeLogo},
-]
-
-export const companiesLight: PartnerImage[] = [
-  {name: "Airbnb", logo: AirbnbLogo},
-  {name: "Apple", logo: "/icons/client/apple-dark.svg"},
-  {name: "Deel", logo: DeelLogo},
-  {name: "Doordash", logo: DoordashLogo},
-  {name: "Google", logo: GoogleLogo},
-  {name: "Instacart", logo: "/icons/client/instacart-dark.svg"},
-  {name: "Meta", logo: MetaLogo},
-  {name: "Microsoft", logo: "/icons/client/microsoft-dark.svg"},
-  {name: "Netflix", logo: NetflixLogo},
-  {name: "Reddit", logo: RedditLogo},
-  {name: "Salesforce", logo: SalesforceLogo},
-  {name: "X", logo: XLogo},
-  {name: "Dream11", logo: Dream11ClientLogoLight},
-  {name: "Agoda", logo: AgodaClientLogoLight},
-  {name: "Amazon", logo: AmazonClientLogoLight},
-  {name: "Branch", logo: BranchClientLogoLight},
-  {name: "ClearTax", logo: ClearTaxClientLogoLight},
-  {name: "Commvault", logo: CommvaultClientLogoLight},
-  {name: "CoreEdge", logo: CoreEdgeClientLogoLight},
+  {name: "Reddit", logo: RedditLogo, lightLogo: RedditLogoLight},
+  {name: "Salesforce", logo: SalesforceLogo, lightLogo: SalesforceLogoLight},
+  {name: "X", logo: XLogo, lightLogo: XLogoLight},
+  {name: "Dream11", logo: Dream11Logo, lightLogo: Dream11ClientLogoLight},
+  {name: "Agoda", logo: AgodaLogo, lightLogo: AgodaClientLogoLight},
+  {name: "Amazon", logo: AmazonLogo, lightLogo: AmazonClientLogoLight},
+  {name: "Branch", logo: BranchLogo, lightLogo: BranchClientLogoLight},
+  {name: "ClearTax", logo: ClearTaxLogo, lightLogo: ClearTaxClientLogoLight},
+  {name: "Commvault", logo: CommvaultLogo, lightLogo: CommvaultClientLogoLight},
+  {name: "CoreEdge", logo: CoreEdgeLogo, lightLogo: CoreEdgeClientLogoLight},
 ]
 
 export const clientLogos: PartnerImage[] = [
@@ -726,19 +698,19 @@ export const NavbarItems = [
 export const StatsForDevelopers = [
   {
     title: "Tokens / day",
-    stat: 2.9,
+    stat: 9.5,
     suffix: "B+",
     decimals: 1,
   },
   {
     title: "Lines of code / day",
-    stat: 2.3,
+    stat: 6.1,
     suffix: "M+",
     decimals: 1,
   },
   {
     title: "Github Stars",
-    stat: 3.8,
+    stat: 3.9,
     suffix: "K+",
     decimals: 1,
   },
@@ -954,10 +926,10 @@ export const footerItems: FooterItem[] = [
         name: "Privacy Policy",
         link: pageLinks.privacyPolicy,
       },
-      // {
-      //   name: "Terms",
-      //   link: "",
-      // },
+      {
+        name: "Terms & Conditions",
+        link: pageLinks.terms,
+      },
       {
         name: "Cookie Settings",
         link: "",
@@ -1072,46 +1044,91 @@ export const GUIDES = [
 
 export const FAQS = [
   {
-    question: "How do I purchase additional prompts?",
-    answer: `Additional prompts can be purchased directly through your ForgeCode dashboard when you approach your
-              monthly limit.<strong>Pro users</strong> can buy 250 additional prompts for $10 USD, while These additional prompts are added to
-              your current month's allowance.`,
+    question: "What does a 'request' mean? Is it prompts or actual LLM calls?",
+    answer: `A <strong>'request'</strong> refers to each individual API call that our AI agents make to the language models on your behalf. 
+              <br/><br/>When you interact with ForgeCode, you might make one action (like asking for code generation), but our AI agents may need to make multiple API calls to complete your task:
+              <br/>• Initial analysis of your code/request
+              <br/>• Planning and reasoning steps
+              <br/>• Code generation or refactoring calls
+              <br/>• Validation and optimization passes
+              <br/><br/>So <strong>one user interaction can consume multiple requests</strong> as our agents work intelligently to deliver the best results for your coding tasks.`,
   },
   {
-    question: "What's the difference between Free, Pro, and Max plans?",
-    answer: `<strong>Free ($0):</strong> Basic AI model access with limited daily usage, perfect for getting started.<br/>
-              <strong>Pro ($20/month):</strong> Access to premium models (OpenAI, Claude, Gemini) with 500 requests per month and priority support.<br/>
-              <strong>Max ($200/month):</strong> Unlimited access.`,
+    question: "How can I check my daily usage?",
+    answer: `You can monitor your daily request usage in two ways:
+              <br/><br/>• <strong>Within ForgeCode:</strong> Use the <code>/info</code> command to check your current daily usage and remaining requests
+              <br/>• <strong>Dashboard:</strong> Login to the Forge dashboard at <a href="https://app.forgecode.dev/app" target="_blank" rel="noopener noreferrer">app.forgecode.dev/app</a> to view usage statistics and account information
+              <br/><br/>Both methods show your usage for Forge's provided models. Remember, requests made with your own API keys (BYOK) don't count against these limits.`,
   },
   {
-    question: "What are 'top tier' models?",
-    answer: `Top tier models include the most advanced AI models like GPT-4, Claude-4, and Gemini 2.5 - the premium models
-              from each provider that offer the best performance for complex coding tasks.`,
+    question: "What's the difference between Pro vs Max plans?",
+    answer: `<strong>Pro Plan ($20/month):</strong>
+              <br/>• Access to premium AI models (GPT-4, Claude-4, Grok-4, Gemini-2.5)
+              <br/>• Up to 1,000 AI requests daily
+              <br/><br/><strong>Max Plan ($100/month):</strong>
+              <br/>• Everything in Pro plan
+              <br/>• Up to 5,000 AI requests daily (5x more than Pro)
+              <br/>• Best for power users and heavy development workflows
+              <br/>• Ideal for developers working on multiple projects`,
   },
   {
-    question: "How does the Max plan unlimited usage work?",
-    answer: `Max plan users get truly unlimited access to all AI models during this limited-time early access
-              offer. Normally, Max provides 10,000 prompts per month, but early access users enjoy unlimited
-              requests with no rate limits, daily caps, or usage restrictions at $200/month price.`,
+    question: "How many requests do I get in the Free plan?",
+    answer: `The Free plan includes a <strong>dynamic request limit</strong> that adjusts based on server load and availability. 
+              This typically ranges from 10-50 requests per day, but may vary depending on system capacity.
+              <br/><br/><strong>Important:</strong> These limits only apply to Forge's provided models. When you use <strong>BYOK (Bring Your Own Key)</strong> with your own API keys from providers like OpenAI, Anthropic, Google, and others, those requests don't count against your daily limits.
+              <br/><br/>Learn how to set up custom providers: <a href="/docs/custom-providers" target="_blank" rel="noopener noreferrer">Custom Provider Documentation</a>`,
   },
   {
-    question: "What happens when I exceed my monthly prompt limit?",
-    answer: `<strong>Free users:</strong> Hit daily usage limits and need to wait for reset or upgrade.<br/>
-            <strong>Pro users:</strong> After using your 500 included prompts, you can purchase additional prompts: 250 prompts for $10 USD.`,
+    question: "Can I use my own provider keys like Anthropic, OpenAI etc to use Forge?",
+    answer: `<strong>Yes, absolutely!</strong> You can use your own API keys from any supported provider (OpenAI, Anthropic, Google, xAI, Meta, Mistral, Deepseek, and more) across all plans.
+              <br/><br/>When you use your own API keys (BYOK), these requests don't count against your daily limits. The limits only apply to Forge's provided models.
+              <br/><br/>Setup guide: <a href="/docs/custom-providers" target="_blank" rel="noopener noreferrer">Custom Provider Documentation</a>`,
   },
   {
-    question: "Is my code secure and private?",
-    answer: `Absolutely. ForgeCode runs entirely on your local machine using your own API keys. Your code never 
-              leaves your computer - no cloud processing, complete privacy and security.`,
+    question: "What happens when I exceed my daily request limit?",
+    answer: `
+              <br/><br/><strong>When you exceed Forge provider limits:</strong>
+              <br/>• <strong>Free users:</strong> Wait for next day's reset, upgrade to a pro or max plan.
+              <br/>• <strong>Pro users:</strong> Wait for next day's reset, upgrade to Max for higher limits.
+              <br/>• <strong>Max users:</strong> Wait for next day's reset`,
+  },
+  {
+    question: "What are 'premium AI models'?",
+    answer: `Premium AI models include the most advanced and capable models from leading providers:
+              <br/>• <strong>GPT 4 series</strong> (OpenAI) - Advanced reasoning and code generation
+              <br/>• <strong>Claude Sonnet</strong> (Anthropic) - Excellent for complex analysis and safety
+              <br/>• <strong>Grok 4</strong> (xAI) - Fast and efficient processing
+              <br/>• <strong>Gemini 2.5</strong> (Google) - Multimodal capabilities and reasoning
+              <br/><br/>These models offer superior performance for complex coding tasks compared to basic models.`,
   },
   {
     question: "Can I upgrade or downgrade my plan anytime?",
-    answer: `Yes, you can change your plan at any time. Upgrades take effect immediately, while downgrades apply at your next billing cycle.`,
+    answer: `Yes, you can change your plan at any time through your ForgeCode dashboard. 
+              <br/>• <strong>Upgrades:</strong> Take effect immediately with instant access to new features and higher limits. Prices are adjusted automatically on a prorated basis (e.g., if you upgrade from Pro to Max, the amount will be adjusted proportionally for the remaining billing period)
+              <br/>• <strong>Downgrades:</strong> Apply at your next billing cycle to ensure you get full value from your current plan`,
   },
   {
-    question: "Do I need my own API keys?",
-    answer: `For Free users, you'll need your own API keys for AI models. Pro and Max users get included access to premium
-             models without needing separate API keys, plus the option to use your own keys for additional providers.`,
+    question: "Can I use my same account on more than 1 device?",
+    answer: `Yes, you can use the same ForgeCode account on up to <strong>two devices</strong>. Your daily usage limits will be calculated based on the combined usage from both devices.
+              <br/><br/><strong>Important requirements:</strong>
+              <br/>• Only you (the account holder) can use the account - no sharing credentials with others
+              <br/>• Usage limits apply to combined activity across both devices
+              <br/>• Both devices must be used exclusively by the account holder
+              <br/><br/><strong>Policy violation:</strong> Using your account on more than two devices violates our Fair Usage Policy and may result in account suspension.`,
+  },
+  {
+    question: "Can we use Forge's API like any other AI provider for other apps?",
+    answer: `<strong>No, this is strictly prohibited.</strong> Forge's API and services are intended solely for use within the ForgeCode application.
+              <br/><br/>Using Forge's API to power other applications, services, or tools is against our Terms and Conditions. 
+              <br/><br/><strong>Violation consequences:</strong> Your account will be permanently barred with no refund provided.
+              <br/><br/>For full details, see our <a href="/terms" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>.`,
+  },
+  {
+    question: "Can we share API keys or account access with others?",
+    answer: `<strong>No, absolutely not.</strong> Your ForgeCode account and any associated API keys are for your personal use only and cannot be shared with others.
+              <br/><br/>Sharing your account credentials, API keys, or allowing others to use your account is strictly prohibited under our Terms and Conditions.
+              <br/><br/><strong>Violation consequences:</strong> Your account will be immediately suspended and no refund will be provided.
+              <br/><br/>For full details, see our <a href="/terms" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>.`,
   },
 ]
 
@@ -1120,8 +1137,12 @@ export const tiers = [
     name: "Free",
     price: "$0",
     period: "forever",
-    description: "Best for personal use",
-    features: ["Limited AI requests per day", "Community support", "BYOK (Bring Your Own Key)"],
+    description: "Try before you commit",
+    features: [
+      "Dynamic request limit (adjusts based on server load)",
+      "Community support",
+      "BYOK (Bring Your Own Key)",
+    ],
     cta: "Get Started Free",
     href: pageLinks.signup,
     popular: true,
@@ -1132,7 +1153,11 @@ export const tiers = [
     price: "$20",
     period: "/month",
     description: "Most popular for individual developers",
-    features: ["Everything in Free", "Premium AI models (GPT-4, Claude-4, Grok-4, Gemini-2.5)", "10x More AI requests"],
+    features: [
+      "Everything in Free",
+      "Premium AI models (GPT-4, Claude-4, Grok-4, Gemini-2.5)",
+      "Up to 1000 AI requests daily",
+    ],
     cta: "Start Pro Plan",
     href: pageLinks.signup,
     popular: true,
@@ -1140,13 +1165,13 @@ export const tiers = [
   },
   {
     name: "Max",
-    price: "$200",
+    price: "$100",
     // originalPrice: "$200",
     period: "/month",
     description: "Best for power users",
-    features: ["Coming Soon"],
-    // cta: "Coming Soon",
-    // href: pageLinks.signup,
+    features: ["Everything in Pro", "Up to 5000 AI requests daily"],
+    cta: "Start Max Plan",
+    href: pageLinks.signup,
     popular: false,
     special: true,
     icons: ["/icons/basic/colorfilter.svg"],

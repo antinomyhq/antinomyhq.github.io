@@ -57,7 +57,7 @@ const NewLinkButton = ({
         h-10 sm:h-8
         px-4 py-4 sm:px-6 lg:px-8 sm:py-5 lg:py-6
         cursor-pointer
-        transition-all duration-300
+        transition-all duration-700
         text-sm sm:text-base
         hover:no-underline
         text-content-tiny

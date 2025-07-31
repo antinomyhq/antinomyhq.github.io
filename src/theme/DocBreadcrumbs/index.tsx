@@ -24,7 +24,7 @@ function BreadcrumbsItemLink({
     return (
       <span
         className={
-          className + "!text-tailCall-lightMode---neutral-300 !dark:text-tailCall-darkMode---neutral-300 font-bold"
+          className + "!text-tailCall-lightMode---neutral-300 !dark:text-tailCall-darkMode---neutral-200 font-bold"
         }
         itemProp="name"
       >
@@ -73,7 +73,7 @@ function BreadcrumbsItem({
         itemType: "https://schema.org/ListItem",
       })}
       className={clsx("breadcrumbs__item", {
-        "breadcrumbs__item--active !text-tailCall-lightMode---neutral-500 !dark:text-tailCall-darkMode---neutral-300":
+        "breadcrumbs__item--active !text-tailCall-lightMode---neutral-500 !dark:text-tailCall-darkMode---neutral-200":
           active,
       })}
     >

@@ -8,6 +8,77 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 <VersionUpdateCard />
 
+## v0.104.1 
+
+### 🐛 Bug Fixes
+
+- fix: support TLS version configuration via env variables [@tusharmath](https://github.com/tusharmath) ([#1299](https://github.com/antinomyhq/forge/pull/1299))
+
+
+---
+## v0.104.0 
+
+### 🚀 Features
+
+- fix: integrate JSON repair [@ssddOnTop](https://github.com/ssddOnTop) ([#1292](https://github.com/antinomyhq/forge/pull/1292))
+- feat: added info command (#1273) [@manthanabc](https://github.com/manthanabc) ([#1275](https://github.com/antinomyhq/forge/pull/1275))
+
+### 📝 Documentation
+
+- fix: update tool use formatting rules to clarify JSON structure [@amitksingh1490](https://github.com/amitksingh1490) ([#1291](https://github.com/antinomyhq/forge/pull/1291))
+
+### 🐛 Bug Fixes
+
+- fix: sort the models based on the names [@Achyutha](https://github.com/Achyutha) ([#1284](https://github.com/antinomyhq/forge/pull/1284))
+- fix: integrate JSON repair [@ssddOnTop](https://github.com/ssddOnTop) ([#1292](https://github.com/antinomyhq/forge/pull/1292))
+
+### 🧰 Maintenance
+
+- fix: consolidate HTTP client implementations and use TLS configurators [@tusharmath](https://github.com/tusharmath) ([#1288](https://github.com/antinomyhq/forge/pull/1288))
+
+
+---
+## v0.103.0 
+
+### 🚀 Features
+
+- feat: Support for `/retry` [@jayantpranjal0](https://github.com/jayantpranjal0) ([#1262](https://github.com/antinomyhq/forge/pull/1262))
+
+### 🐛 Bug Fixes
+
+- fix: mcp `ToolName` sanitization [@tusharmath](https://github.com/tusharmath) ([#1274](https://github.com/antinomyhq/forge/pull/1274))
+- fix: add `Cross.toml` for build environment configuration [@ssddOnTop](https://github.com/ssddOnTop) ([#1272](https://github.com/antinomyhq/forge/pull/1272))
+
+### 🧰 Maintenance
+
+- refactor: simplify tracking logic [@tusharmath](https://github.com/tusharmath) ([#1276](https://github.com/antinomyhq/forge/pull/1276))
+
+
+---
+## v0.102.2 
+
+### 🐛 Bug Fixes
+
+- fix: update error element to `tool_call_error` in templates [@tusharmath](https://github.com/tusharmath) ([#1254](https://github.com/antinomyhq/forge/pull/1254))
+- Revert "fix: drop reasoning normalizer" [@laststylebender14](https://github.com/laststylebender14) ([#1245](https://github.com/antinomyhq/forge/pull/1245))
+- fix: show usage information [@ssddOnTop](https://github.com/ssddOnTop) ([#1250](https://github.com/antinomyhq/forge/pull/1250))
+
+
+---
+## v0.102.1 
+
+### 🐛 Bug Fixes
+
+- fix: update provider state after successful login [@ssddOnTop](https://github.com/ssddOnTop) ([#1234](https://github.com/antinomyhq/forge/pull/1234))
+- fix: enhance path formatting for display [@ssddOnTop](https://github.com/ssddOnTop) ([#1233](https://github.com/antinomyhq/forge/pull/1233))
+
+### 🧰 Maintenance
+
+- chore: add `cached_tokens` usage to tracing [@jayantpranjal0](https://github.com/jayantpranjal0) ([#1200](https://github.com/antinomyhq/forge/pull/1200))
+- chore: add FORGE\_SUPPRESS\_RETRY\_ERRORS env variable to hide retry error [@ssddOnTop](https://github.com/ssddOnTop) ([#1231](https://github.com/antinomyhq/forge/pull/1231))
+
+
+---
 ## v0.102.0 
 
 ### 🚀 Features
@@ -83,6 +154,7 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - chore(deps): update strum monorepo to v0.27.2 @[renovate[bot]](https://github.com/apps/renovate) (#1145)
 
 
+---
 ## v0.100.6 
 
 ### 🐛 Bug Fixes
@@ -95,6 +167,7 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - chore: add forge\_main\_neo [@tusharmath](https://github.com/tusharmath) ([#998](https://github.com/antinomyhq/forge/pull/998))
 
 
+---
 ## v0.100.5 
 
 ### 🐛 Bug Fixes
@@ -107,6 +180,7 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - chore: log file update stats [@laststylebender14](https://github.com/laststylebender14) ([#1118](https://github.com/antinomyhq/forge/pull/1118))
 
 
+---
 ## v0.100.4 
 
 ### 🐛 Bug Fixes
@@ -118,6 +192,7 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - chore: update edition to 2024 [@tusharmath](https://github.com/tusharmath) ([#1125](https://github.com/antinomyhq/forge/pull/1125))
 
 
+---
 ## v0.100.3 
 
 ### 🐛 Bug Fixes
@@ -125,12 +200,14 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - fix: replace tracker error logging with tracing [@tusharmath](https://github.com/tusharmath) ([#1117](https://github.com/antinomyhq/forge/pull/1117))
 
 
+---
 ## v0.100.2 
 
 ### 🐛 Bug Fixes
 - fix: scripts for `npx` for Windows
 
 
+---
 ## v0.100.1 
 
 ### 🛠️ Refactors
@@ -158,6 +235,7 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 * docs: update readme for `max_requests_per_turn` and `tool_max_failure_limit` [@laststylebender14](https://github.com/laststylebender14) ([#1027](https://github.com/antinomyhq/forge/pull/1027))
 
 
+---
 ## v0.100.0 
 
 ### 📝 Documentation
@@ -179,6 +257,7 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - chore: add GitHub label sync workflow and related tests [@ssddOnTop](https://github.com/ssddOnTop) ([#1077](https://github.com/antinomyhq/forge/pull/1077))
 
 
+---
 ## v0.99.0 
 
 ### 🚀 Features
@@ -200,6 +279,7 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - chore: integrate `provider_auth_id` [@ssddOnTop](https://github.com/ssddOnTop) ([#1072](https://github.com/antinomyhq/forge/pull/1072))
 
 
+---
 ## v0.98.3 
 
 ### 🐛 Bug Fixes
@@ -209,6 +289,7 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - fix: remove auto compaction after each turn [@tusharmath](https://github.com/tusharmath) ([#1062](https://github.com/antinomyhq/forge/pull/1062))
 
 
+---
 ## v0.98.2 
 
 ### 🐛 Bug Fixes
@@ -225,6 +306,7 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - chore: add login event [@ssddOnTop](https://github.com/ssddOnTop) ([#1035](https://github.com/antinomyhq/forge/pull/1035))
 
 
+---
 ## v0.98.1 
 
 - Update README.md [@amitksingh1490](https://github.com/amitksingh1490) ([#1036](https://github.com/antinomyhq/forge/pull/1036))
@@ -241,6 +323,7 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - chore(deps): update rust crate anyhow to v1.0.98 @[renovate[bot]](https://github.com/apps/renovate) (#1041)
 
 
+---
 ## v0.98.0 
 
 ### 🚀 Features

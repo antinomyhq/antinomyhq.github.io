@@ -9,7 +9,7 @@ import clsx from "clsx"
 export default function TOCItems({
   toc,
   className = "table-of-contents table-of-contents__left-border",
-  linkClassName = "table-of-contents__link text-tailCall-lightMode---neutral-700 dark:text-tailCall-darkMode---neutral-300",
+  linkClassName = "table-of-contents__link text-tailCall-lightMode---neutral-700 dark:text-tailCall-darkMode---neutral-200",
   linkActiveClassName = "table-of-contents__link--active",
   minHeadingLevel: minHeadingLevelOption,
   maxHeadingLevel: maxHeadingLevelOption,
@@ -44,7 +44,7 @@ export default function TOCItems({
 
   return (
     <div className="flex flex-col gap-1 pt-0 bg-tailCall-light-1200 dark:bg-black p-2">
-      <span className="inline-block pl-[8px] font-kanit uppercase text-[22px] font-medium text-[#737373]">
+      <span className="inline-block pl-[8px] font-kanit uppercase text-[22px] font-medium text-[#737373] dark:text-tailCall-darkMode---neutral-200">
         On this page
       </span>
       <TOCItemTree toc={tocTree} className={className} linkClassName={linkClassName} {...props} />

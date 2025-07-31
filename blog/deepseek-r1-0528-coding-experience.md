@@ -1,5 +1,14 @@
 ---
 slug: deepseek-r1-0528-coding-experience-review
+authors: [amit]
+tags:
+  [
+    "AI",
+    "LLM",
+    "DeepSeek",
+    "Coding Experience",
+    "Model Review",
+  ]
 title: "DeepSeek-R1-0528: A Detailed Review of its AI Coding Performance & Latency"
 description: "A comprehensive review of DeepSeek-R1-0528's AI coding capabilities, architectural innovations, and significant latency challenges via OpenRouter API. Is this open-source LLM ready for your real-time development workflow?"
 hide_table_of_contents: false

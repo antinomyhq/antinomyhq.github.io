@@ -7,8 +7,30 @@ interface CarouselProps {
 const Carousel: React.FC<CarouselProps> = ({children}) => {
   const [currentIndex, setCurrentIndex] = useState(1)
   const [clonedChildren, setClonedChildren] = useState<ReactNode[]>([])
+  const [isMobile, setIsMobile] = useState(false)
+
   const carouselRef = useRef<HTMLDivElement>(null)
   const isTransitioningRef = useRef(false)
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 768)
+      setTimeout(() => {
+        scrollToIndex(1, false)
+      }, 50)
+    }
+    checkScreenSize()
+    window.addEventListener("resize", checkScreenSize)
+    return () => window.removeEventListener("resize", checkScreenSize)
+  }, [])
+
+  useEffect(() => {
+    if (isMobile) {
+      setTimeout(() => {
+        scrollToIndex(1, false)
+      }, 50)
+    }
+  }, [isMobile])
 
   useEffect(() => {
     if (!children || children.length === 0) return
@@ -71,12 +93,14 @@ const Carousel: React.FC<CarouselProps> = ({children}) => {
 
     let startX = 0
 
-    const handleTouchStart = (e: TouchEvent) => {
-      startX = e.touches[0].clientX
+    const handleTouchStart = (e: TouchEvent | MouseEvent) => {
+      startX = "touches" in e ? e.touches[0].clientX : e.clientX
     }
 
-    const handleTouchEnd = (e: TouchEvent) => {
-      const diff = e.changedTouches[0].clientX - startX
+    const handleTouchEnd = (e: TouchEvent | MouseEvent) => {
+      const endX = "changedTouches" in e ? e.changedTouches[0].clientX : e.clientX
+      const diff = endX - startX
+
       if (Math.abs(diff) < 30 || isTransitioningRef.current) return
       if (diff < 0) next()
       else prev()
@@ -84,9 +108,15 @@ const Carousel: React.FC<CarouselProps> = ({children}) => {
 
     carousel.addEventListener("touchstart", handleTouchStart)
     carousel.addEventListener("touchend", handleTouchEnd)
+
+    carousel.addEventListener("mousedown", handleTouchStart)
+    carousel.addEventListener("mouseup", handleTouchEnd)
+
     return () => {
       carousel.removeEventListener("touchstart", handleTouchStart)
       carousel.removeEventListener("touchend", handleTouchEnd)
+      carousel.removeEventListener("mousedown", handleTouchStart)
+      carousel.removeEventListener("mouseup", handleTouchEnd)
     }
   }, [currentIndex])
 

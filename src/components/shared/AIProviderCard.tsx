@@ -8,7 +8,7 @@ type AIProviderCardProps = {
 
 const AIProviderCard = ({title, lightLogoUrl, darkLogoUrl}: AIProviderCardProps) => {
   return (
-    <div className="cursor-pointer p-[1px] bg-transparent group hover:bg-[linear-gradient(180deg,rgba(186,_225,_225,_1)_0%,_rgba(0,_166,_166,_1)_100%)] hover:dark:bg-[linear-gradient(180deg,rgba(48,_237,_230,_1)_0%,_rgba(7,_101,_104,_1)_100%)] rounded-[10px]">
+    <div className="cursor-pointer p-[1px] bg-transparent group hover:bg-gradient-315-light hover:dark:bg-gradient-315 rounded-[10px]">
       <div className="relative px-8 py-4 flex flex-col gap-1 items-center h-full bg-transparent group-hover:bg-white group-hover:dark:bg-black dark:bg-black rounded-[10px]">
         <div className="z-10 w-16 h-16 mb-3">
           {/* Light mode image */}

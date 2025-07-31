@@ -27,10 +27,10 @@ export default function BlogPostItemFooter(): JSX.Element | null {
 
     return (
       <footer className="docusaurus-mt-lg">
-        <h1 className="text-[12px] text-tailCall-lightMode---neutral-400 dark:text-tailCall-darkMode---neutral-400">
+        <h1 className="text-[12px] text-tailCall-lightMode---neutral-400 dark:text-tailCall-darkMode---neutral-200">
           Posted By
         </h1>
-        <BlogPostItemHeaderAuthors textClassName="text-tailCall-lightMode---neutral-400 dark:text-tailCall-darkMode---neutral-400" />
+        <BlogPostItemHeaderAuthors textClassName="text-tailCall-lightMode---neutral-400 dark:text-tailCall-darkMode---neutral-200" />
         {canDisplayEditMetaRow && (
           <EditMetaRow
             className={clsx("margin-top--sm", ThemeClassNames.blog.blogFooterEditMetaRow)}

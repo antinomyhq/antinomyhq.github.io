@@ -1,5 +1,7 @@
 ---
 slug: grok-4-initial-impression
+authors: [arindam]
+tags: ["AI", "LLM", "xAI", "Grok 4", "Model Review"]
 title: "Grok 4 Initial Impressions: Is xAI's New LLM the Most Intelligent AI Model Yet?"
 description: "A deep dive into Grok 4's benchmarks, architecture, and community impressions. Is xAI's latest LLM a breakthrough towards AGI, and is it worth integrating into your AI development workflow?"
 hide_table_of_contents: false

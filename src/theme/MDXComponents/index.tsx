@@ -15,7 +15,7 @@ import type {MDXComponentsObject} from "@theme/MDXComponents"
 
 const CustomTh = (props: ComponentProps<"th">) => (
   <th
-    className="px-4 py-4 text-left !text-tailCall-darkMode---neutral-200 text-sm font-normal border-gray-600 first:rounded-tl-xl last:rounded-tr-xl !border !border-b !border-solid border-b-tailCall-darkMode---neutral-300 dark:border-b-tailCall-darkMode---neutral-700"
+    className="px-4 py-4 text-left text-tailCall-darkMode---neutral-200 text-sm font-normal border-gray-600 first:rounded-tl-xl last:rounded-tr-xl !border !border-b !border-solid border-b-tailCall-darkMode---neutral-300 dark:border-b-tailCall-darkMode---neutral-700"
     {...props}
   />
 )
@@ -83,7 +83,7 @@ const MDXComponents: MDXComponentsObject = {
   mermaid: Mermaid,
   p: (props: ComponentProps<"p">) => (
     <p
-      className="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit !mb-0"
+      className="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-200 font-kanit !mb-0"
       {...props}
     />
   ),

@@ -16,6 +16,7 @@ import styles from "./styles.module.css"
 import {analyticsHandler, getSearchInputRef, setBodyOverflow} from "@site/src/utils"
 import ThemeToggle from "@site/src/components/home/components/ThemeToggle"
 import Button from "@site/src/components/shared/Button"
+import clsx from "clsx"
 
 const useNavbarItems = () => {
   // TODO temporary casting until ThemeConfig type is improved (added by docusaurus)
@@ -194,11 +195,15 @@ const NavbarContent = (): JSX.Element => {
         // TODO stop hardcoding items? (added by docusaurus)
         // Render left navbar items
         <>
-          {mobileSidebar.shouldRender && <Search />}
-          {mobileSidebar.shouldRender && <ThemeToggle />}
+          <div className="flex items-center min-[997px]:hidden">
+            <Search />
+            <ThemeToggle />
+          </div>
 
-          {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
-          <div className="flex items-center lg:ml-48">
+          <div className={styles.showSidebarToggle}>
+            <NavbarMobileSidebarToggle />
+          </div>
+          <div className="flex items-center min-[996px]:ml-48">
             <NavbarLogo />
             <NavbarItems items={leftItems} />
           </div>
@@ -209,16 +214,15 @@ const NavbarContent = (): JSX.Element => {
         // Render right navbar items
         <>
           <NavbarItems items={rightItems} />
-          {/* <NavbarColorModeToggle className={styles.colorModeToggle} /> */}
-          {!mobileSidebar.shouldRender && (
-            <Button variant="navlink" onClick={handleSignUp}>
-              <span className="text-tailCall-lightMode---primary-700 dark:text-tailCall-darkMode---primary-400">
-                Sign up
-              </span>
-            </Button>
-          )}
-          {!mobileSidebar.shouldRender && <Search />}
-          {!mobileSidebar.shouldRender && <ThemeToggle />}
+          <Button className={styles.colorModeToggle} variant="navlink" onClick={handleSignUp}>
+            <span className="text-tailCall-lightMode---primary-700 dark:text-tailCall-darkMode---primary-400">
+              Sign up
+            </span>
+          </Button>
+          <div className={clsx(styles.colorModeToggle, "flex gap-1")}>
+            <Search />
+            <ThemeToggle />
+          </div>
         </>
       }
     />

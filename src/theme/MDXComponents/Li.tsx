@@ -7,7 +7,7 @@ export default function MDXLi(props: Props): ReactNode | undefined {
   useBrokenLinks().collectAnchor(props.id)
   return (
     <li
-      className="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-400 font-kanit"
+      className="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-200 font-kanit"
       {...props}
     />
   )

@@ -29,7 +29,7 @@ const NextSteps: React.FC<NextStepsProps> = ({items, className}) => {
                 </div>
               </div>
               <div className="flex flex-col flex-1 gap-2 mt-6">
-                <span className="text-title-small font-bold line-clamp-2 text-tailCall-lightMode---neutral-600 dark:text-tailCall-darkMode---neutral-300">
+                <span className="text-title-small font-bold line-clamp-2 text-tailCall-lightMode---neutral-600 dark:text-tailCall-darkMode---neutral-200">
                   {item.title}
                 </span>
                 <ul>

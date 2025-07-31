@@ -1,5 +1,7 @@
 ---
 slug: simple-is-not-easy
+authors: [amit]
+tags: ["AI", "Architecture", "Developer Tools"]
 title: "Simple Over Easy: Architectural Constraints for Maintainable AI-Generated Code"
 description: "Discover how applying Rich Hickey's 'Simple Made Easy' principles can solve the 'AI 90/10 problem', leading to more maintainable and reviewable AI-generated code by constraining architectural choices."
 hide_table_of_contents: false

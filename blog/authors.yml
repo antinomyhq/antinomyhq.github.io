@@ -47,6 +47,17 @@ arindam:
       url: https://x.com/Arindam_1729
     - platform: linkedin
       url: https://www.linkedin.com/in/arindam2004/
+amit:
+  name: Amit Singh
+  url: https://github.com/amitksingh1490
+  image_url: https://avatars.githubusercontent.com/u/23661702?v=4
+  social:
+    - platform: github
+      url: https://github.com/amitksingh1490
+    - platform: twitter
+      url: https://x.com/amitksingh1490
+    - platform: linkedin
+      url: https://www.linkedin.com/in/amitksingh1490
 
 shrijal:
   name: Shrijal Acharya
