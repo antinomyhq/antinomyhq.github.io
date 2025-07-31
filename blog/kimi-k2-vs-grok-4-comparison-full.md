@@ -18,7 +18,7 @@ hide_table_of_contents: false
 The recently released AI model, Kimi K2 from Moonshot AI<sup><a id="ref-1" href="#footnote-1">1</a></sup>, is an open-source model that many consider a viable alternative to Claude Sonnet 4.
 
 I couldn't stop myself from conducting real-world coding tests between Kimi K2 and the recently released Grok 4 model. Both of these models are considered top models for coding, and the result is pretty close. One of the models slightly outperformed the other, as it's said the main test comes from using and testing in a real-world scenario rather than blindly following the synthetic metrics shared about the models.
-
+<!--truncate-->
 ---
 
 ## Testing Methodology and Setup
