@@ -6,7 +6,7 @@ import type {Props} from "@theme/NavbarItem/DefaultNavbarItem/Mobile"
 export default function DefaultNavbarItemMobile({className, isDropdownItem, ...props}: Props): ReactNode {
   return (
     <li className="menu__list-item">
-      <NavbarNavLink className={clsx("menu__link", className)} {...props} />
+      <NavbarNavLink className={clsx("menu__link", className, {"hide-chevron": props.to !== "/docs"})} {...props} />
     </li>
   )
 }
