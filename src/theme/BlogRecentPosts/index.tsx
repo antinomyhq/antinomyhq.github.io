@@ -4,6 +4,7 @@ import type {Props} from "@theme/BlogLayout"
 import {isBlogPost} from "@site/src/utils"
 import {usePluginData} from "@docusaurus/useGlobalData"
 import BlogListItem from "@site/src/components/blog/BlogListItem"
+import {assignBgIndices} from "@site/src/utils/blogColorUtils"
 
 export default function BlogRecentPosts({sidebar}: {sidebar: Props["sidebar"]}): JSX.Element {
   const [isBlogPostPage, setIsBlogPostPage] = React.useState(false)
@@ -14,6 +15,9 @@ export default function BlogRecentPosts({sidebar}: {sidebar: Props["sidebar"]}):
   useEffect(() => {
     setIsBlogPostPage(isBlogPost())
   }, [location.pathname])
+
+  const permalink = recentBlogPostsMetadata?.slice(0, 3).map((item: RecentBlogPostItem) => item.permalink)
+  const blogColorMap = assignBgIndices(permalink)
 
   return isBlogPostPage ? (
     <div className="">
@@ -26,7 +30,7 @@ export default function BlogRecentPosts({sidebar}: {sidebar: Props["sidebar"]}):
           <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 md:gap-3 mb-10 md:mb-20">
             {recentBlogPostsMetadata?.slice(0, 3).map((item: RecentBlogPostItem) => {
               const {permalink, date, title, description, authors, tags} = item
-              const randomNumber = Math.floor(Math.random() * 6)
+              const bgIndex = blogColorMap[permalink] ?? 0
               return (
                 <BlogListItem
                   key={permalink}
@@ -36,7 +40,7 @@ export default function BlogRecentPosts({sidebar}: {sidebar: Props["sidebar"]}):
                   authors={authors}
                   permalink={permalink}
                   tags={tags}
-                  bgIndex={randomNumber}
+                  bgIndex={bgIndex}
                 />
               )
             })}

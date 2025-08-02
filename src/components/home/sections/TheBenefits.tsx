@@ -203,19 +203,25 @@ const TheBenefits = (): JSX.Element => {
           <div
             className={clsx(
               "absolute md:left-auto md:right-10 xl:left-[850px] w-full md:w-auto lg:right-20 top-[500px] flex flex-col md:items-center",
-              "max-md:top-[52%]",
+              "max-md:top-[42%]",
             )}
             style={{height: "100%", overflow: "visible"}} // set visible area
           >
             {isMobile ? (
               <Carousel>
-                {BENEFITS.map(({title, description, imageUrl = "", smallText}) => (
-                  <BenefitsCard title={title} description={description} imageUrl={imageUrl} small={smallText} />
+                {BENEFITS.map(({title, description, imageUrl = "", smallText, imageLightUrl}) => (
+                  <BenefitsCard
+                    title={title}
+                    description={description}
+                    imageUrl={imageUrl}
+                    small={smallText}
+                    lightImage={imageLightUrl}
+                  />
                 ))}
               </Carousel>
             ) : (
               <div ref={cardsRef} className="hidden md:flex flex-col gap-8">
-                {BENEFITS.map(({title, description, imageUrl = "", smallText}, idx) => (
+                {BENEFITS.map(({title, description, imageUrl = "", smallText, imageLightUrl}, idx) => (
                   <div
                     key={title}
                     ref={(el) => (cardRefs.current[idx] = el)}
@@ -227,7 +233,13 @@ const TheBenefits = (): JSX.Element => {
                     }}
                   >
                     <div className="flex flex-col h-full">
-                      <BenefitsCard title={title} description={description} imageUrl={imageUrl} small={smallText} />
+                      <BenefitsCard
+                        title={title}
+                        description={description}
+                        imageUrl={imageUrl}
+                        small={smallText}
+                        lightImage={imageLightUrl}
+                      />
                     </div>
                   </div>
                 ))}
