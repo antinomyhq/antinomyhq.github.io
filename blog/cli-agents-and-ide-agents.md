@@ -171,11 +171,11 @@ In general, you should use an IDE agent for “in the zone” coding and switch 
 
 ---
 
-## Benefits of CLI Agents
+## Hidden Benefits of CLI Agents
 
 CLI agents come with a bunch of underrated benefits like parallel subagents, sandboxed shells, git-level isolation, test-gated commits and auditability that IDE agents typically can’t match (or fake at best).
 
-So let's talk about how some of these work and why they matter.
+So let's understand how some of these work and why they matter.
 
 ### Parallel Subagents
 
@@ -187,7 +187,7 @@ As a subagent only attends to narrow tokens related to the task, it has less noi
 
 This leads to massive gains in speed and quality. Since subagents run in parallel, you are not waiting on one step to finish before the next begins. The total completion time stays closer to the **longest subtask** instead of the **sum**. 
 
-![subagents](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/t58caqn1tssjy40u3jln.png)
+<img src="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/t58caqn1tssjy40u3jln.png" alt="subagents in claude code" width="100%" />
 
 Claude Code extensively uses subagents to explore, search the codebase and it's much better than RAG-based approach (Cursor, Windsurf) or simple naive ripgrep search of Cline/RooCode/ZentaraCode.
 
