@@ -1,0 +1,6 @@
+export {default as TheBenefits} from "./TheBenefits"
+export {default as Banner} from "./NewBanner"
+export {default as GetStarted} from "./GetStarted"
+export {default as WhyForge} from "./WhyForge"
+export {default as BuiltFor} from "./BuiltFor"
+export {default as FloatingWidget} from "./FloatingWidget"

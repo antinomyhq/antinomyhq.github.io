@@ -1,0 +1,43 @@
+<svg width="400" height="320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #333; }
+      .label { font-family: Arial, sans-serif; font-size: 12px; fill: #666; }
+      .value-label { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #333; }
+      .metric-label { font-family: Arial, sans-serif; font-size: 11px; fill: #333; }
+      .cost-bar-kimi { fill: #4CAF50; opacity: 0.8; }
+      .cost-bar-qwen { fill: #FF6B6B; opacity: 0.8; }
+      .time-bar-kimi { fill: #2E7D32; }
+      .time-bar-qwen { fill: #D32F2F; }
+    </style>
+  </defs>
+  
+  <!-- Background (transparent) -->
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" class="title">Cost and Time Comparison</text>
+  
+  <!-- Cost Comparison Section -->
+  <text x="50" y="70" class="label">Total Project Cost</text>
+  
+  <!-- Cost bars -->
+  <rect x="50" y="80" width="120" height="35" class="cost-bar-kimi" rx="5"/>
+  <text x="110" y="102" text-anchor="middle" class="value-label" fill="white">$42.50</text>
+  <text x="180" y="102" class="metric-label">Kimi K2</text>
+  
+  <rect x="50" y="125" width="196" height="35" class="cost-bar-qwen" rx="5"/>
+  <text x="148" y="147" text-anchor="middle" class="value-label" fill="white">$69.50</text>
+  <text x="255" y="147" class="metric-label">Qwen-3 Coder</text>
+  
+  <!-- Time Comparison Section -->
+  <text x="50" y="200" class="label">Average Time per Task</text>
+  
+  <!-- Time bars -->
+  <rect x="50" y="210" width="133" height="35" class="time-bar-kimi" rx="5"/>
+  <text x="116" y="232" text-anchor="middle" class="value-label" fill="white">13.3 min</text>
+  <text x="190" y="232" class="metric-label">Kimi K2</text>
+  
+  <rect x="50" y="255" width="180" height="35" class="time-bar-qwen" rx="5"/>
+  <text x="140" y="277" text-anchor="middle" class="value-label" fill="white">18.0 min</text>
+  <text x="240" y="277" class="metric-label">Qwen-3 Coder</text>
+</svg>

@@ -58,7 +58,13 @@ export default function BlogPostItemHeaderInfo({className}: Props): JSX.Element 
   const formatDate = (blogDate: string) => dateTimeFormat.format(new Date(blogDate))
 
   return (
-    <div className={clsx(styles.container, "margin-vert--md", className)}>
+    <div
+      className={clsx(
+        styles.container,
+        "margin-vert--md text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-500",
+        className,
+      )}
+    >
       <DateTime date={date} formattedDate={formatDate(date)} />
       {typeof readingTime !== "undefined" && (
         <>
@@ -73,7 +79,7 @@ export default function BlogPostItemHeaderInfo({className}: Props): JSX.Element 
               <Link
                 key={tag.permalink}
                 to={tag.permalink}
-                className="bg-tailCall-dark-700 !no-underline text-tailCall-light-200 px-3 py-2 rounded-full cursor-pointer"
+                className="border border-1 border-solid border-tailCall-lightMode---primary-600 bg-white dark:bg-tailCall-darkMode---primary-800 text-tailCall-lightMode---neutral-900 dark:text-white !no-underline px-5 py-2 rounded-full cursor-pointer"
               >
                 {tag.label}
               </Link>

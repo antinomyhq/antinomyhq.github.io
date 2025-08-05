@@ -1,12 +1,7 @@
 import React from "react"
 import Heading from "@theme/Heading"
-import CodeBlock from "@theme/CodeBlock"
-import Tabs from "@theme/Tabs"
-import TabItem from "@theme/TabItem"
 import Link from "@docusaurus/Link"
-import {clientLogos} from "@site/src/constants"
 import Section from "../shared/Section"
-import TrustedByMarquee from "./TrustedByMarquee"
 
 const Configuration = (): JSX.Element => {
   return (
@@ -31,9 +26,6 @@ const Configuration = (): JSX.Element => {
           <h4 className="text-lg font-semibold mb-2">Install Forge</h4>
           <pre className="md:min-w-[45rem] min-w-[100%] main-install-command">npx forgecode@latest</pre>
         </div>
-      </div>
-      <div className="mt-5">
-        <TrustedByMarquee title="Trusted by developers at" logos={clientLogos} />
       </div>
     </Section>
   )

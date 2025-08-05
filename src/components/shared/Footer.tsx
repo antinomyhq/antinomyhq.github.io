@@ -8,7 +8,7 @@ const Footer = (): JSX.Element => {
   const {openCookieConsentModal} = useCookieConsentManager()
   const year = new Date().getFullYear()
   return (
-    <footer className="flex flex-col relative w-full relative px-4 py-8 lg:px-40 lg:pt-20 lg:pb-0 bg-tailCall-dark-700 grid-dark gap-4 lg:gap-8">
+    <footer className="flex flex-col relative w-full px-4 py-8 lg:px-40 lg:pt-20 lg:pb-0 bg-tailCall-dark-700 dark:bg-[#171717] grid-dark gap-4 lg:gap-8">
       <div className="grid grid-cols-2 gap-8 lg:flex lg:gap-32 xl:gap-64 w-full z-10">
         <span className="text-2xl font-semibold text-tailCall-white col-span-2 h-10 flex items-center">
           <img src="/images/home/logo-light.svg" alt="footer logo" height={30} />

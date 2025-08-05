@@ -6,6 +6,8 @@ description: "Comprehensive guide for configuring AI agents in Forge"
 sidebar_label: Agent Configuration
 ---
 
+import CustomLink from "@site/src/components/shared/CustomLink"
+
 # Agent Configuration
 
 Forge provides extensive configuration options for AI agents, allowing you to tailor their behavior to your specific needs. This guide covers all available agent configuration options with examples and best practices.
@@ -23,14 +25,14 @@ agents:
 
 ### Basic Configuration Parameters
 
-| Parameter          | Required | Description                                                           |
-| ------------------ | -------- | --------------------------------------------------------------------- |
-| `id`               | Yes      | Unique identifier for the agent                                       |
-| `model`            | Yes      | AI model to use (e.g., anthropic/claude-3.5-sonnet)                   |
-| `system_prompt`    | Yes      | System prompt or template reference                                   |
-| `subscribe`        | No       | List of commands the agent should respond to                          |
-| `max_walker_depth` | No       | Maximum directory/file depth for exploration                          |
-| `custom_rules`     | No       | Custom instructions or rules (see [Custom Rules](/docs/custom-rules)) |
+| Parameter          | Required | Description                                                                                        |
+| ------------------ | -------- | -------------------------------------------------------------------------------------------------- |
+| `id`               | Yes      | Unique identifier for the agent                                                                    |
+| `model`            | Yes      | AI model to use (e.g., anthropic/claude-3.5-sonnet)                                                |
+| `system_prompt`    | Yes      | System prompt or template reference                                                                |
+| `subscribe`        | No       | List of commands the agent should respond to                                                       |
+| `max_walker_depth` | No       | Maximum directory/file depth for exploration                                                       |
+| `custom_rules`     | No       | Custom instructions or rules (see <CustomLink href="/docs/custom-rules">Custom Rules</CustomLink>) |
 
 ## Temperature Configuration
 
@@ -55,12 +57,14 @@ The temperature parameter accepts values between 0.0 and 2.0:
 ### When to Adjust Temperature
 
 - **Lower Temperature (0.0 - 0.3)** when you need:
+
   - Precise, reproducible code
   - Factual, consistent responses
   - Technical documentation
   - Structured data outputs
 
 - **Medium Temperature (0.4 - 0.7)** when you need:
+
   - Balanced responses for everyday tasks
   - Natural-sounding text with reasonable variation
   - Problem-solving with some creativity
@@ -86,7 +90,7 @@ agents:
       retention_window: 6
 ```
 
-For detailed information about context compaction settings, see the [Context Compaction](../context-compaction) documentation.
+For detailed information about context compaction settings, see the <CustomLink href="../context-compaction">Context Compaction</CustomLink> documentation.
 
 ## Agent Visibility Control
 
@@ -136,6 +140,6 @@ When `hide_content` is set to `true`:
 
 ## Related Documentation
 
-- [Context Compaction](../context-compaction) - Detailed guide on context management
-- [Custom Workflows](../custom-workflows) - Learn how to create specialized workflows
-- [Tools Reference](../tools-reference) - Available tools for agents to use
+- <CustomLink href="../context-compaction">Context Compaction</CustomLink> - Detailed guide on context management
+- <CustomLink href="../custom-workflows">Custom Workflows</CustomLink> - Learn how to create specialized workflows
+- <CustomLink href="../tools-reference">Tools Reference</CustomLink> - Available tools for agents to use

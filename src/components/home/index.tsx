@@ -1,23 +1,16 @@
 import React from "react"
-
-import Banner from "./Banner"
-import Benefits from "./Benefits"
-import Configuration from "./Configuration"
-import IntroductionGif from "./IntroductionGif"
-import WhyChooseForge from "./WhyChooseForge"
-import FinalCTA from "./FinalCTA"
-import Stats from "./Stats"
+import {Banner, TheBenefits, BuiltFor, GetStarted, WhyForge} from "./sections"
 
 const HomePage = (): JSX.Element => {
   return (
-    <div>
+    <div className="relative flex flex-col dark:bg-tailCall-dark-700 bg-tailCall-light-1200">
       <Banner />
-      {/* <IntroductionGif /> */}
-      <Configuration />
-      <Stats />
-      {/* <WhyChooseForge /> */}
-      <Benefits />
-      <FinalCTA />
+      <GetStarted />
+      <TheBenefits />
+      <WhyForge />
+      <BuiltFor />
+      {/* <FloatingWidget /> */}
+      {/* <TheTeams /> */}
     </div>
   )
 }

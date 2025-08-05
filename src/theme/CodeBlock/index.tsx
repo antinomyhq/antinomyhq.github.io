@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import CodeBlock from "@theme-original/CodeBlock"
 import type CodeBlockType from "@theme/CodeBlock"
 import type {WrapperProps} from "@docusaurus/types"
+import {Copy, CopyCheck} from "lucide-react"
 
 type Props = WrapperProps<typeof CodeBlockType>
 
@@ -22,19 +23,22 @@ export default function CodeBlockWrapper(props: Props): JSX.Element {
   }
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden cursor-pointer" onClick={handleCopy}>
       <CodeBlock {...props} />
       <button
-        onClick={handleCopy}
         aria-label="Copy code"
-        className="absolute top-[12px] right-4 z-20 bg-[rgba(24,24,24,0.85)] border-none rounded-none px-2 py-1 flex items-center cursor-pointer text-white font-sans"
+        className="absolute top-[35px] right-[10px] z-20 bg-transparent border-none rounded-none flex items-center cursor-pointer text-white font-sans"
       >
-        {copied && <span className="text-xs mr-1.5 text-[#b6ffbe] opacity-85 font-sans">Copied!</span>}
-        <img
-          src="/icons/basic/copy-icon.svg"
-          alt="Copy Icon"
-          className={`w-4 h-4 [filter:brightness(2)] ${copied ? "ml-0" : "ml-0.5"}`}
-        />
+        {copied && (
+          <span className="text-xs mr-1.5 text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400 opacity-85 font-sans">
+            Text Copied!
+          </span>
+        )}
+        {copied ? (
+          <CopyCheck className="h-5 w-5 text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400" />
+        ) : (
+          <Copy className="h-5 w-5 text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400" />
+        )}
       </button>
     </div>
   )

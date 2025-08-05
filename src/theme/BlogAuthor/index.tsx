@@ -119,7 +119,7 @@ export const BlogAuthor: React.FC<AuthorDisplayProps> = ({
       <img
         src={author.imageURL}
         alt={author.name}
-        className="w-10 h-10 rounded-full object-cover border-2 border-gray-100 shadow-sm"
+        className="w-10 h-10 !rounded-full object-cover border-2 border-gray-100 shadow-sm"
       />
     </div>
 
@@ -133,7 +133,7 @@ export const BlogAuthor: React.FC<AuthorDisplayProps> = ({
             target="_blank"
             rel="noopener noreferrer"
             className={clsx(
-              "font-semibold text-gray-900 hover:text-blue-600 transition-colors no-underline",
+              "font-semibold text-gray-900 hover:text-tailCall-lightMode---primary-700 dark:hover:text-tailCall-darkMode---primary-400 transition-colors no-underline",
               textClassName,
             )}
             onClick={(e) => e.stopPropagation()}
@@ -159,7 +159,7 @@ export const BlogAuthor: React.FC<AuthorDisplayProps> = ({
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-gray-700 transition-colors p-0.5 hover:bg-gray-100 rounded"
+              className="text-gray-500 hover:text-gray-500 transition-colors p-0.5 rounded"
               aria-label={`${author.name} on ${social.platform}`}
               onClick={(e) => e.stopPropagation()}
             >

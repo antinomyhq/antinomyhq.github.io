@@ -138,7 +138,7 @@ const CustomSearch = () => {
 // Wrapper component combining Sidebar with CustomSearch
 const SidebarWrapper = (props: SidebarConfig) => {
   return (
-    <div className="sidebar-search-container place-items-center flex flex-col lg:mb-[100px]">
+    <div className="sidebar-search-container place-items-center flex flex-col lg:mb-[100px] bg-tailCall-light-1200 dark:bg-black width-[20%]">
       <Sidebar {...props} />
     </div>
   )

@@ -36,21 +36,6 @@ const Banner = (): JSX.Element => {
               onClick={() => analyticsHandler("Home Page", "Click", "Get Started")}
             />
           </div>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8 pt-6 border-t border-gray-200">
-            <div className="flex justify-center">
-              <a
-                href="https://github.com/antinomyhq/forge"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white hover:bg-gray-100 rounded-full text-sm font-medium text-gray-700 transition-all duration-200 hover:no-underline shadow-lg"
-                onClick={() => analyticsHandler("Home Page", "Click", "GitHub Badge")}
-              >
-                <Github size={28} />
-                <Star size={28} className="text-yellow-500" />
-                <span className="font-medium text-base">3.6k on GitHub</span>
-              </a>
-            </div>
-          </div>
         </div>
       </Section>
     </main>

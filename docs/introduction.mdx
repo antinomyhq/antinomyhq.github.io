@@ -7,10 +7,12 @@ sidebar_label: Overview
 ---
 
 import {Rocket, Brain, Wrench, Shield, Link, Package, Zap, Target} from "lucide-react"
+import CustomLink from "@site/src/components/shared/CustomLink"
 
 # Forge Code overview
 
-Forge Code is an AI software engineering agent that runs in your terminal. It understands your codebase and helps you write code using natural language instructions.
+Forge Code is an AI software engineering agent that runs in your terminal. It understands your codebase and helps you
+write code using natural language instructions.
 
 ## Basic usage
 
@@ -21,13 +23,13 @@ cd path/to/your/project/directory
 npx forgecode@latest
 ```
 
-For detailed installation instructions, see [Setup Forge](/docs/installation).
+For detailed installation instructions, see <CustomLink href="/docs/installation">Setup Forge</CustomLink>.
 
-![img](/docs/forge_start.png)
+![img](/docs/forge_image.png)
 
 You can interact with Forge directly from the interactive REPL session.
 
-For complete usage instructions, see [Quickstart](/docs/quickstart).
+For complete usage instructions, see <CustomLink href="/docs/quickstart">Quickstart</CustomLink>.
 
 ## Features
 
@@ -54,7 +56,7 @@ Switch between specialized AI agents:
 
 ### <Link size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **AI Provider Integration**
 
-Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see [Different providers](/docs/custom-providers).
+Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see <CustomLink href="/docs/custom-providers">Different providers</CustomLink>.
 
 ## Next Steps
 
@@ -63,19 +65,19 @@ import NextSteps from "../src/components/NextSteps"
 <NextSteps
   items={[
     {
-      logo: <Package size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      logo: <Package size={28} style={{verticalAlign: "middle"}} />,
       title: "Install Forge",
       subtitle: "Set up Forge on your system with npm, Homebrew, or direct download.",
       link: "./installation",
     },
     {
-      logo: <Zap size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      logo: <Zap size={28} style={{verticalAlign: "middle"}} />,
       title: "Tutorial",
       subtitle: "Complete your first task with Forge in under 10 minutes.",
       link: "./quickstart",
     },
     {
-      logo: <Target size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      logo: <Target size={28} style={{verticalAlign: "middle"}} />,
       title: "Commands",
       subtitle: "Learn the essential commands for productive development.",
       link: "./commands",

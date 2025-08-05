@@ -1,6 +1,7 @@
 import React from "react"
 import type {Props} from "@theme/BlogListPage"
 import BlogListItem from "@site/src/components/blog/BlogListItem"
+import {assignBgIndices} from "@site/src/utils/blogColorUtils"
 
 function EmptyState(): JSX.Element {
   return (
@@ -45,11 +46,14 @@ function BlogPostList({items}: {items: Props["items"]}): JSX.Element {
     return <EmptyState />
   }
 
+  const permalinks = items.map((item) => item.content.metadata.permalink)
+  const blogColorMap = assignBgIndices(permalinks)
+
   return (
     <div className="grid grid-cols-1 gap-4 md:gap-3 md:grid-cols-2 lg:grid-cols-3">
       {items.map((item) => {
-        const {permalink, date, title, description, authors} = item.content.metadata
-
+        const {permalink, date, title, description, authors, tags, readingTime} = item.content.metadata
+        const bgIndex = blogColorMap[permalink] ?? 0
         return (
           <BlogListItem
             key={permalink}
@@ -58,6 +62,9 @@ function BlogPostList({items}: {items: Props["items"]}): JSX.Element {
             description={description}
             authors={authors}
             permalink={permalink}
+            tags={tags}
+            bgIndex={bgIndex}
+            readingTime={readingTime}
           />
         )
       })}

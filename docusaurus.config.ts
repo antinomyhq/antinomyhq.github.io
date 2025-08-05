@@ -7,12 +7,147 @@ import {getNavDropdownItemHtml} from "./src/utils"
 const title = "Forge Code"
 const organization = "Forge Code"
 const project = "antinomyhq.github.io"
-
+const mainDescription =
+  "AI coding assistant that helps developers write better code faster. Get AI-powered code suggestions, refactoring, and debugging directly in your terminal."
 export default {
+  // Configuration updated to fix duplicate descriptions
   title,
   trailingSlash: true,
-  tagline: "AI for everyone",
+  tagline: "Forge: The AI Coding Assistant for Your Terminal",
   headTags: [
+    // Anti-flicker theme script - completely prevents theme flickering
+    {
+      tagName: "script",
+      attributes: {},
+      innerHTML: `
+        (function() {
+          // Get theme preference immediately
+          function getThemePreference() {
+            try {
+              var match = document.cookie.match(/theme-preference=(dark|light)/);
+              return match ? match[1] : 'dark';
+            } catch (e) {
+              return 'dark';
+            }
+          }
+          
+          // Apply theme with maximum priority
+          function applyThemeImmediate(theme) {
+            var html = document.documentElement;
+            
+            // Remove all possible theme classes
+            html.classList.remove('dark', 'light', 'theme-dark', 'theme-light');
+            html.removeAttribute('data-theme');
+            html.removeAttribute('data-color-mode');
+            
+            // Apply our theme
+            html.classList.add(theme);
+            html.setAttribute('data-theme', theme);
+            html.style.setProperty('--theme-mode', theme);
+            
+            // Prevent Docusaurus from overriding
+            html.style.setProperty('--ifm-color-mode', theme);
+            
+            // Store theme preference
+            try {
+              document.cookie = 'theme-preference=' + theme + ';path=/;max-age=31536000;SameSite=Strict';
+            } catch (e) {}
+          }
+          
+          // Get and apply theme immediately
+          var theme = getThemePreference();
+          applyThemeImmediate(theme);
+          
+          // Override all possible theme-changing methods
+          var originalSetAttribute = document.documentElement.setAttribute;
+          var originalSetProperty = document.documentElement.style.setProperty;
+          var originalAdd = document.documentElement.classList.add;
+          var originalRemove = document.documentElement.classList.remove;
+          
+          // Protect against attribute changes
+          document.documentElement.setAttribute = function(name, value) {
+            if (name === 'data-theme' || name === 'data-color-mode') {
+              var currentTheme = getThemePreference();
+              if (value !== currentTheme) {
+                return; // Block unwanted theme changes
+              }
+            }
+            return originalSetAttribute.call(this, name, value);
+          };
+          
+          // Protect against class changes
+          document.documentElement.classList.add = function() {
+            var args = Array.prototype.slice.call(arguments);
+            var currentTheme = getThemePreference();
+            
+            // Filter out conflicting theme classes
+            args = args.filter(function(cls) {
+              if (cls === 'dark' || cls === 'light') {
+                return cls === currentTheme;
+              }
+              return true;
+            });
+            
+            if (args.length > 0) {
+              return originalAdd.apply(this, args);
+            }
+          };
+          
+          // Monitor for any attempts to change theme
+          var observer = new MutationObserver(function(mutations) {
+            var currentTheme = getThemePreference();
+            var needsReapply = false;
+            
+            mutations.forEach(function(mutation) {
+              if (mutation.type === 'attributes') {
+                var target = mutation.target;
+                if (target === document.documentElement) {
+                  if (mutation.attributeName === 'data-theme' && target.getAttribute('data-theme') !== currentTheme) {
+                    needsReapply = true;
+                  }
+                  if (mutation.attributeName === 'class') {
+                    var hasCorrectTheme = target.classList.contains(currentTheme);
+                    var hasWrongTheme = target.classList.contains(currentTheme === 'dark' ? 'light' : 'dark');
+                    if (!hasCorrectTheme || hasWrongTheme) {
+                      needsReapply = true;
+                    }
+                  }
+                }
+              }
+            });
+            
+            if (needsReapply) {
+              applyThemeImmediate(currentTheme);
+            }
+          });
+          
+          observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['class', 'data-theme', 'data-color-mode']
+          });
+          
+          // Reapply theme after DOM is ready
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+              applyThemeImmediate(getThemePreference());
+            });
+          }
+          
+          // Store references for cleanup
+          window.__themeGuard = {
+            observer: observer,
+            cleanup: function() {
+              observer.disconnect();
+              document.documentElement.setAttribute = originalSetAttribute;
+              document.documentElement.style.setProperty = originalSetProperty;
+              document.documentElement.classList.add = originalAdd;
+              document.documentElement.classList.remove = originalRemove;
+            }
+          };
+          
+        })();
+      `,
+    },
     // Adaptive favicon implementation - automatically switches based on system theme
     {
       tagName: "link",
@@ -58,6 +193,45 @@ export default {
         url: "https://forgecode.dev/",
       }),
     },
+
+    {
+      tagName: "meta",
+      attributes: {
+        name: "keywords",
+        content:
+          "AI coding assistant, terminal AI tool, AI pair programmer, code completion AI, developer productivity tool",
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        property: "og:title",
+        content: title,
+      },
+    },
+
+    {
+      tagName: "meta",
+      attributes: {
+        property: "og:type",
+        content: "website",
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        property: "og:url",
+        content: "https://forgecode.dev",
+      },
+    },
+    {
+      tagName: "meta",
+      attributes: {
+        name: "twitter:title",
+        content: title,
+      },
+    },
+
     {
       tagName: "script",
       attributes: {},
@@ -72,6 +246,79 @@ export default {
       tagName: "script",
       attributes: {},
       innerHTML: `!function () {var reb2b = window.reb2b = window.reb2b || [];if (reb2b.invoked) return;reb2b.invoked = true;reb2b.methods = ["identify", "collect"];reb2b.factory = function (method) {return function () {var args = Array.prototype.slice.call(arguments);args.unshift(method);reb2b.push(args);return reb2b;};};for (var i = 0; i < reb2b.methods.length; i++) {var key = reb2b.methods[i];reb2b[key] = reb2b.factory(key);}reb2b.load = function (key) {var script = document.createElement("script");script.type = "text/javascript";script.async = true;script.src = "https://s3-us-west-2.amazonaws.com/b2bjsstore/b/" + key + "/0OV0VHL3P56Z.js.gz";var first = document.getElementsByTagName("script")[0];first.parentNode.insertBefore(script, first);};reb2b.SNIPPET_VERSION = "1.0.1";reb2b.load("0OV0VHL3P56Z");}();`,
+    },
+    {
+      tagName: "script",
+      attributes: {
+        type: "application/ld+json",
+      },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org/",
+        "@type": "SoftwareApplication",
+        name: "Forge Code",
+        description: mainDescription,
+        url: "https://forgecode.dev",
+        applicationCategory: "DeveloperApplication",
+        operatingSystem: "Cross-platform",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "USD",
+        },
+        featureList: [
+          "AI-powered code completion",
+          "Terminal-based development",
+          "Multi-language support",
+          "Code refactoring assistance",
+          "Debugging help",
+          "Test generation",
+        ],
+        programmingLanguage: ["TypeScript", "JavaScript", "Python", "Go", "Rust", "Java", "C++"],
+        downloadUrl: "https://forgecode.dev/docs/installation",
+        author: {
+          "@type": "Organization",
+          name: "Forge Code",
+          url: "https://forgecode.dev",
+        },
+        datePublished: "2024-01-01",
+        softwareVersion: "0.98.0",
+      }),
+    },
+    {
+      tagName: "script",
+      attributes: {
+        type: "application/ld+json",
+      },
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is Forge Code?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Forge Code is an AI coding assistant that runs in your terminal, helping developers write better code faster with AI-powered suggestions, refactoring, and debugging assistance.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How does Forge Code work?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Forge Code integrates with your terminal and IDE, providing AI-powered code suggestions, debugging help, and refactoring assistance based on your codebase and context.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is Forge Code free to use?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Forge Code offers a free tier with basic features, along with paid plans for advanced functionality and team collaboration.",
+            },
+          },
+        ],
+      }),
     },
   ],
   url: "https://forgecode.dev",
@@ -129,8 +376,13 @@ export default {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    image: "tc-og-2.png",
+    metadata: [
+      {name: "twitter:card", content: "summary_large_image"},
+      {name: "twitter:image", content: "/images/opengraph.png"},
+      {property: "og:image", content: "https://forgecode.dev/images/opengraph.png"},
+      {property: "og:image:width", content: "1200"},
+      {property: "og:image:height", content: "630"},
+    ],
     algolia: {
       appId: "748OFOGLOE",
       apiKey: "878290b0384a15f677fb6a4f94fe34cb",
@@ -142,34 +394,12 @@ export default {
     },
 
     navbar: {
-      hideOnScroll: true,
-      logo: {
-        alt: "ForgeCode",
-        src: "/images/home/logo-dark.svg",
-      },
+      hideOnScroll: false,
       items: [
-        {to: "/", label: "Home", position: "left", activeBaseRegex: "^/$"},
-        // {to: "/about", label: "About", position: "left"},
-        // {to: "/enterprise", label: "Enterprise", position: "left"},
+        {to: "/", label: "Home", position: "left"},
         {to: "/pricing", label: "Pricing", position: "left"},
         {to: "/docs", label: "Docs", position: "left"},
         {to: "/blog", label: "Blogs", position: "left"},
-
-        // {
-        //   label: "Developers",
-        //   position: "left",
-        //   items: [
-        //     {
-        //       to: "/docs",
-        //       html: getNavDropdownItemHtml("/images/home/book.svg", "Docs Icon", "Docs"),
-        //     },
-        //   ],
-        // },
-        {
-          type: "search",
-          position: "right",
-          className: "hidden lg:flex search-icon-navbar",
-        },
       ],
     },
     prism: {

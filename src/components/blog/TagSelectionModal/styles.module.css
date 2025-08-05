@@ -7,3 +7,7 @@
 .modalOverlay {
   z-index: calc(var(--ifm-z-index-fixed) + 1);
 }
+
+[data-theme="dark"] .modalContainer {
+  box-shadow: -56px 32px 48px 0px rgba(255, 255, 255, 0.08);
+}

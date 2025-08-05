@@ -4,6 +4,8 @@ title: Workflow Configuration
 description: Configure workflow settings for your Forge instance
 ---
 
+import CustomLink from "@site/src/components/shared/CustomLink"
+
 # Workflow Configuration
 
 Forge provides comprehensive workflow configuration options through your `forge.yaml` file. These root-level settings control workflow behavior and apply globally to your entire Forge instance.
@@ -15,7 +17,7 @@ Root-level configuration options are placed at the top of your `forge.yaml` file
 ```yaml
 # Global configuration options
 max_requests_per_turn: 50
-tool_max_failure_limit: 3
+max_tool_failure_per_turn: 3
 top_p: 0.8
 top_k: 30
 max_tokens: 20480
@@ -36,14 +38,14 @@ max_walker_depth: 1
 max_requests_per_turn: 50
 ```
 
-#### `tool_max_failure_limit`
+#### `max_tool_failure_per_turn`
 
 - **Type**: `number`
 - **Default**: `3`
 - **Description**: Defines the maximum number of consecutive tool failures allowed before the agent stops attempting to use tools. This prevents infinite retry loops when tools are consistently failing.
 
 ```yaml
-tool_max_failure_limit: 3
+max_tool_failure_per_turn: 3
 ```
 
 ### Model Parameters
@@ -127,7 +129,7 @@ variables:
 
 # Request management
 max_requests_per_turn: 50
-tool_max_failure_limit: 3
+max_tool_failure_per_turn: 3
 
 # Model parameters
 top_p: 0.8
@@ -145,6 +147,8 @@ updates:
 
 ## Related Documentation
 
-- [Environment Configuration](./environment-configuration.mdx) - Environment-specific settings
-- [Context Compaction](./context-compaction.mdx) - Memory management and conversation history
-- [MCP Integration](./mcp-integration.mdx) - Model Context Protocol setup
+- <CustomLink href="/docs/environment-configuration">Environment Configuration</CustomLink> - Environment-specific
+  settings
+- <CustomLink href="/docs/context-compaction">Context Compaction</CustomLink> - Memory management and conversation
+  history
+- <CustomLink href="/docs/mcp-integration">MCP Integration</CustomLink> - Model Context Protocol setup

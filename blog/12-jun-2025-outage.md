@@ -47,7 +47,7 @@ image: /images/blog/outage-cover.jpeg
 
 GCP’s **Identity and Access Management (IAM)** is the front door every API call must pass. When the fleet that issues and validates OAuth and service account tokens misbehaves, the blast radius reaches storage, compute, control planes essentially everything.
 
-> ![Screenshot of GCP status dashboard at 11:30 AM PT showing red for IAM, Cloud Storage, Bigtable](/images/blog/google-creative.png)
+> ![Screenshot of Google Cloud status dashboard at 11:30 AM PT during the June 12, 2025 outage, showing red indicators for IAM, Cloud Storage, and Bigtable, signifying widespread service degradation.](/images/blog/google-creative.png)
 >
 > _Figure 1: GCP status page during the first hour_
 
@@ -68,7 +68,7 @@ GCP’s **Identity and Access Management (IAM)** is the front door every API cal
 
 Cloudflare’s **Workers KV** stores billions of key‑value entries and replicates them across 270+ edge locations. The hot path is in Cloudflare’s own data centers, but the **persistent back‑end** is a multi‑region database hosted on Google Cloud. When IAM refused new tokens, Writes and eventually Reads to the backing store timed out.
 
-![Cloudflare status excerpt highlighting Access, KV and WARP as degraded](/images/blog/cloudflare-creative.png)
+![Cloudflare status excerpt during the June 12, 2025 Google Cloud outage, highlighting degraded status for Access, Workers KV, and WARP services, indicating cascading failures.](/images/blog/cloudflare-creative.png)
 
 > _Figure 2: Cloudflare status excerpt highlighting Access, KV and WARP as degraded_
 
@@ -104,7 +104,7 @@ Anthropic throttled traffic to keep the service partially usable, then restored 
 - Google will publish a postmortem once internal review wraps expect details on the faulty rollout, scope of blast radius and planned guardrails.
 - Cloudflare traditionally ships a forensic blog within a week. Watch for specifics on Workers KV architecture and new redundancy layers.
 
-![GIF of refreshing Cloudflare status page ](/images/blog/refresh-meme.png)
+![Animated GIF of a person frantically refreshing a web page, humorously depicting the typical behavior of an SRE during a widespread cloud outage, such as the June 12, 2025 Google Cloud incident.](/images/blog/refresh-meme.png)
 
 > _Figure 3: What every SRE did for two hours straight_
 
