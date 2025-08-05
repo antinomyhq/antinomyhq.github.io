@@ -81,10 +81,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Troubleshooting & Maintenance", // New category for operational concerns
+      label: "Troubleshooting", // New category for operational concerns
       collapsed: true,
       items: [
         "npm-troubleshooting", // Node.js and npm installation issues
+        "windows-troubleshooting", // Windows-specific runtime issues
         "error-handling", // Moved from Advanced Features
         "logging", // Moved from Reference
       ],

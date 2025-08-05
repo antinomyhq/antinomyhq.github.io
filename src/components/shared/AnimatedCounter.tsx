@@ -1,13 +1,20 @@
 import React, {useState, useEffect} from "react"
-
+import Heading from "@theme/Heading"
 interface AnimatedCounterProps {
   end: number
   suffix?: string
   duration?: number
   className?: string
+  formatter?: (num: number) => string
 }
 
-const AnimatedCounter: React.FC<AnimatedCounterProps> = ({end, suffix = "", duration = 2500, className = ""}) => {
+const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
+  end,
+  suffix = "",
+  duration = 2500,
+  className = "",
+  formatter,
+}) => {
   const [count, setCount] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -48,14 +55,17 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({end, suffix = "", dura
   }, [end, duration, isVisible])
 
   const formatNumber = (num: number): string => {
+    if (formatter) {
+      return formatter(num)
+    }
     return num.toLocaleString("en-US")
   }
 
   return (
-    <span className="tabular-nums text-title-small sm:text-title-large text-gray-900 font-bold block letter-spacing-[0.1em] transition-all duration-500 ease-in-out">
+    <Heading as="h2" className="text-title-large sm:text-display-tiny lg:text-display-small">
       {formatNumber(count)}
       {suffix}
-    </span>
+    </Heading>
   )
 }
 

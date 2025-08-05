@@ -1,4 +1,4 @@
-const tagline = "The AI Shell"
+const tagline = "The AI Coding Assistant for Your Terminal"
 
 export const PageTitle = {
   HOME: tagline,

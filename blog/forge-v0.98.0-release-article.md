@@ -4,9 +4,11 @@ title: "Forge v0.98.0: Integrated Authentication and Developer Experience Improv
 authors: [forge]
 tags: ["Release"]
 date: 2025-07-07
-description: "Forge v0.98.0 introduces browser-based authentication, tool failure limits, and enhanced file operations to improve reliability and user experience."
+description: "Forge v0.98.0 release brings browser-based authentication, AI safety limits, and enhanced file operations for AI coding assistants. Streamline your terminal development workflow with improved reliability and developer experience."
 hide_table_of_contents: false
 ---
+
+import CustomLink from '@site/src/components/shared/CustomLink'
 
 _July 6, 2025_ - Forge v0.98.0 introduces browser-based authentication, tool failure limits, and enhanced file operations to improve reliability and user experience.
 
@@ -26,7 +28,7 @@ v0.98.0 replaces manual API key configuration with browser-based authentication 
 4. Authorize the app
 5. Return to terminal - authentication is complete
 
-<img src="/images/blog/login-newuser.gif" alt="Browser Authentication Flow" style={{width: "100%", maxWidth: "800px"}} />
+<img src="/images/blog/login-newuser.gif" alt="Forge Code browser authentication setup - AI coding assistant terminal login process showing seamless Google and GitHub integration" style={{width: "100%", maxWidth: "800px"}} />
 
 _Complete authentication setup in under 30 seconds_
 
@@ -159,10 +161,10 @@ npx forgecode@latest
 
 ## Resources
 
-- [Documentation](https://forgecode.dev/docs) - Setup guides and API reference
-- [GitHub Repository](https://github.com/antinomyhq/forge) - Source code and issues
-- [Discord Community](https://discord.gg/kRZBPpkgwq) - Support and discussions
-- [Release Notes](https://github.com/antinomyhq/forge/releases/tag/v0.98.0) - Complete changelog
+- <CustomLink href="/docs">Documentation</CustomLink> - Setup guides and API reference
+- <CustomLink href="https://github.com/antinomyhq/forge">GitHub Repository</CustomLink> - Source code and issues
+- <CustomLink href="https://discord.gg/kRZBPpkgwq">Discord Community</CustomLink> - Support and discussions
+- <CustomLink href="https://github.com/antinomyhq/forge/releases/tag/v0.98.0">Release Notes</CustomLink> - Complete changelog
 
 ---
 

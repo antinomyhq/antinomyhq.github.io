@@ -1,13 +1,324 @@
 ---
 sidebar_position: 6
 toc_max_heading_level: 2
-slug: /
 ---
 
 import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 <VersionUpdateCard />
 
+## v0.104.2 
+
+### 🐛 Bug Fixes
+
+- fix: improve error message handling [@tusharmath](https://github.com/tusharmath) ([#1302](https://github.com/antinomyhq/forge/pull/1302))
+- fix: use antinomy domain [@tusharmath](https://github.com/tusharmath) ([#1300](https://github.com/antinomyhq/forge/pull/1300))
+
+### 🧰 Maintenance
+
+- refactor: move common event parsing logic outside [@tusharmath](https://github.com/tusharmath) ([#1303](https://github.com/antinomyhq/forge/pull/1303))
+
+
+---
+## v0.104.1 
+
+### 🐛 Bug Fixes
+
+- fix: support TLS version configuration via env variables [@tusharmath](https://github.com/tusharmath) ([#1299](https://github.com/antinomyhq/forge/pull/1299))
+
+
+---
+## v0.104.0 
+
+### 🚀 Features
+
+- fix: integrate JSON repair [@ssddOnTop](https://github.com/ssddOnTop) ([#1292](https://github.com/antinomyhq/forge/pull/1292))
+- feat: added info command (#1273) [@manthanabc](https://github.com/manthanabc) ([#1275](https://github.com/antinomyhq/forge/pull/1275))
+
+### 📝 Documentation
+
+- fix: update tool use formatting rules to clarify JSON structure [@amitksingh1490](https://github.com/amitksingh1490) ([#1291](https://github.com/antinomyhq/forge/pull/1291))
+
+### 🐛 Bug Fixes
+
+- fix: sort the models based on the names [@Achyutha](https://github.com/Achyutha) ([#1284](https://github.com/antinomyhq/forge/pull/1284))
+- fix: integrate JSON repair [@ssddOnTop](https://github.com/ssddOnTop) ([#1292](https://github.com/antinomyhq/forge/pull/1292))
+
+### 🧰 Maintenance
+
+- fix: consolidate HTTP client implementations and use TLS configurators [@tusharmath](https://github.com/tusharmath) ([#1288](https://github.com/antinomyhq/forge/pull/1288))
+
+
+---
+## v0.103.0 
+
+### 🚀 Features
+
+- feat: Support for `/retry` [@jayantpranjal0](https://github.com/jayantpranjal0) ([#1262](https://github.com/antinomyhq/forge/pull/1262))
+
+### 🐛 Bug Fixes
+
+- fix: mcp `ToolName` sanitization [@tusharmath](https://github.com/tusharmath) ([#1274](https://github.com/antinomyhq/forge/pull/1274))
+- fix: add `Cross.toml` for build environment configuration [@ssddOnTop](https://github.com/ssddOnTop) ([#1272](https://github.com/antinomyhq/forge/pull/1272))
+
+### 🧰 Maintenance
+
+- refactor: simplify tracking logic [@tusharmath](https://github.com/tusharmath) ([#1276](https://github.com/antinomyhq/forge/pull/1276))
+
+
+---
+## v0.102.2 
+
+### 🐛 Bug Fixes
+
+- fix: update error element to `tool_call_error` in templates [@tusharmath](https://github.com/tusharmath) ([#1254](https://github.com/antinomyhq/forge/pull/1254))
+- Revert "fix: drop reasoning normalizer" [@laststylebender14](https://github.com/laststylebender14) ([#1245](https://github.com/antinomyhq/forge/pull/1245))
+- fix: show usage information [@ssddOnTop](https://github.com/ssddOnTop) ([#1250](https://github.com/antinomyhq/forge/pull/1250))
+
+
+---
+## v0.102.1 
+
+### 🐛 Bug Fixes
+
+- fix: update provider state after successful login [@ssddOnTop](https://github.com/ssddOnTop) ([#1234](https://github.com/antinomyhq/forge/pull/1234))
+- fix: enhance path formatting for display [@ssddOnTop](https://github.com/ssddOnTop) ([#1233](https://github.com/antinomyhq/forge/pull/1233))
+
+### 🧰 Maintenance
+
+- chore: add `cached_tokens` usage to tracing [@jayantpranjal0](https://github.com/jayantpranjal0) ([#1200](https://github.com/antinomyhq/forge/pull/1200))
+- chore: add FORGE\_SUPPRESS\_RETRY\_ERRORS env variable to hide retry error [@ssddOnTop](https://github.com/ssddOnTop) ([#1231](https://github.com/antinomyhq/forge/pull/1231))
+
+
+---
+## v0.102.0 
+
+### 🚀 Features
+
+- feat: use fuzzy find in autocomplete [@ssddOnTop](https://github.com/ssddOnTop) ([#1214](https://github.com/antinomyhq/forge/pull/1214))
+
+### 🐛 Bug Fixes
+
+- fix: use custom binary file detector [@laststylebender14](https://github.com/laststylebender14) ([#1225](https://github.com/antinomyhq/forge/pull/1225))
+- fix: drop reasoning normalizer [@laststylebender14](https://github.com/laststylebender14) ([#1216](https://github.com/antinomyhq/forge/pull/1216))
+- fix: use cross for musl build [@ssddOnTop](https://github.com/ssddOnTop) ([#1210](https://github.com/antinomyhq/forge/pull/1210))
+
+### 🧰 Maintenance
+
+- chore: rename provider to openai [@tusharmath](https://github.com/tusharmath) ([#1199](https://github.com/antinomyhq/forge/pull/1199))
+
+
+---
+## v0.101.1 
+
+### 🐛 Bug Fixes
+
+- fix: ensure reasoning config is dropped [@tusharmath](https://github.com/tusharmath) ([#1198](https://github.com/antinomyhq/forge/pull/1198))
+
+
+---
+## v0.101.0 
+
+### 🚀 Features
+
+- fix: remove reasoning tokens after compaction [@tusharmath](https://github.com/tusharmath) ([#1196](https://github.com/antinomyhq/forge/pull/1196))
+- feat: support for current working directory [@tusharmath](https://github.com/tusharmath) ([#1174](https://github.com/antinomyhq/forge/pull/1174))
+
+### 🧰 Maintenance
+
+- feat: support for current working directory [@tusharmath](https://github.com/tusharmath) ([#1174](https://github.com/antinomyhq/forge/pull/1174))
+
+
+---
+## v0.100.8 
+
+### 🐛 Bug Fixes
+
+- fix: use actual usage data for compaction [@tusharmath](https://github.com/tusharmath) ([#1176](https://github.com/antinomyhq/forge/pull/1176))
+- fix: update binary extensions [@tusharmath](https://github.com/tusharmath) ([#1193](https://github.com/antinomyhq/forge/pull/1193))
+- fix: always skip searching through binary files in fs\_search [@laststylebender14](https://github.com/laststylebender14) ([#1187](https://github.com/antinomyhq/forge/pull/1187))
+- fix: add support for viewing MCP responses [@tusharmath](https://github.com/tusharmath) ([#1175](https://github.com/antinomyhq/forge/pull/1175))
+- fix: update token reporting logic in ForgePrompt [@tusharmath](https://github.com/tusharmath) ([#1179](https://github.com/antinomyhq/forge/pull/1179))
+- fix: drop hickory dns resolver [@laststylebender14](https://github.com/laststylebender14) ([#1190](https://github.com/antinomyhq/forge/pull/1190))
+- fix: change default option to continue in confirmation prompt [@laststylebender14](https://github.com/laststylebender14) ([#1186](https://github.com/antinomyhq/forge/pull/1186))
+
+### 🧰 Maintenance
+
+- chore: add label for OnlyDust Wave Hackathon [@amitksingh1490](https://github.com/amitksingh1490) ([#1191](https://github.com/antinomyhq/forge/pull/1191))
+
+
+---
+## v0.100.7 
+
+### 📝 Documentation
+
+- doc: update the setting name (max\_tool\_failure\_per\_turn) [@laststylebender14](https://github.com/laststylebender14) ([#1154](https://github.com/antinomyhq/forge/pull/1154))
+
+### 🐛 Bug Fixes
+
+- fix: use ranges in file attachments [@tusharmath](https://github.com/tusharmath) ([#1162](https://github.com/antinomyhq/forge/pull/1162))
+- fix: use `hickory-dns` resolver instead of Gai [@laststylebender14](https://github.com/laststylebender14) ([#1130](https://github.com/antinomyhq/forge/pull/1130))
+- fix: signature is not required for summarization [@laststylebender14](https://github.com/laststylebender14) ([#1158](https://github.com/antinomyhq/forge/pull/1158))
+- fix: skip binary files while searching [@laststylebender14](https://github.com/laststylebender14) ([#1157](https://github.com/antinomyhq/forge/pull/1157))
+
+### 🧰 Maintenance
+
+- chore(deps): update strum monorepo to v0.27.2 @[renovate[bot]](https://github.com/apps/renovate) (#1145)
+
+
+---
+## v0.100.6 
+
+### 🐛 Bug Fixes
+
+- fix: kimi2 tool call errors [@ssddOnTop](https://github.com/ssddOnTop) ([#1144](https://github.com/antinomyhq/forge/pull/1144))
+- fix: use search directory for relative paths in search results instead of CWD [@tusharmath](https://github.com/tusharmath) ([#1139](https://github.com/antinomyhq/forge/pull/1139))
+
+### 🧰 Maintenance
+
+- chore: add forge\_main\_neo [@tusharmath](https://github.com/tusharmath) ([#998](https://github.com/antinomyhq/forge/pull/998))
+
+
+---
+## v0.100.5 
+
+### 🐛 Bug Fixes
+
+- fix: file search invalid utf8 issue [@ssddOnTop](https://github.com/ssddOnTop) ([#1132](https://github.com/antinomyhq/forge/pull/1132))
+
+### 🧰 Maintenance
+
+- refactor: consolidate inquire select functionality into select module [@echozyr2001](https://github.com/echozyr2001) ([#1128](https://github.com/antinomyhq/forge/pull/1128))
+- chore: log file update stats [@laststylebender14](https://github.com/laststylebender14) ([#1118](https://github.com/antinomyhq/forge/pull/1118))
+
+
+---
+## v0.100.4 
+
+### 🐛 Bug Fixes
+
+- fix: handle tool calls from Kimi2 [@tusharmath](https://github.com/tusharmath) ([#1121](https://github.com/antinomyhq/forge/pull/1121))
+
+### 🧰 Maintenance
+
+- chore: update edition to 2024 [@tusharmath](https://github.com/tusharmath) ([#1125](https://github.com/antinomyhq/forge/pull/1125))
+
+
+---
+## v0.100.3 
+
+### 🐛 Bug Fixes
+
+- fix: replace tracker error logging with tracing [@tusharmath](https://github.com/tusharmath) ([#1117](https://github.com/antinomyhq/forge/pull/1117))
+
+
+---
+## v0.100.2 
+
+### 🐛 Bug Fixes
+- fix: scripts for `npx` for Windows
+
+
+---
+## v0.100.1 
+
+### 🛠️ Refactors
+
+* refactor: consolidate `forge_api_url` usage @tusharmath, @autofix-ci\[bot] (#1104)
+
+### 🐛 Bug Fixes
+
+* fix: output reasoning tokens only if supported by model [@laststylebender14](https://github.com/laststylebender14) ([#1105](https://github.com/antinomyhq/forge/pull/1105))
+* fix: update HTTP-Referer header to point to the new forgecode.dev URL [@amitksingh1490](https://github.com/amitksingh1490) ([#1080](https://github.com/antinomyhq/forge/pull/1080))
+* fix: improve LLM caching [@tusharmath](https://github.com/tusharmath) ([#1088](https://github.com/antinomyhq/forge/pull/1088))
+* fix: use `max_completion_tokens` instead of `max_tokens` for open-ai compatible providers [@laststylebender14](https://github.com/laststylebender14) ([#1086](https://github.com/antinomyhq/forge/pull/1086))
+* fix: use blocking thread to readline [@tusharmath](https://github.com/tusharmath) ([#1085](https://github.com/antinomyhq/forge/pull/1085))
+
+### 🧰 Maintenance
+* fix: share release builds between channels [@tusharmath](https://github.com/tusharmath) ([#1114](https://github.com/antinomyhq/forge/pull/1114))
+* fix: regenerate binaries on publish [@laststylebender14](https://github.com/laststylebender14) ([#1113](https://github.com/antinomyhq/forge/pull/1113))
+* chore: remove `forge_domain` direct dependency on crates [@tusharmath](https://github.com/tusharmath) ([#1084](https://github.com/antinomyhq/forge/pull/1084))
+* chore: update labels.yml [@ssddOnTop](https://github.com/ssddOnTop) ([#1082](https://github.com/antinomyhq/forge/pull/1082))
+* chore: add permissions to GitHub Label Sync workflow [@ssddOnTop](https://github.com/ssddOnTop) ([#1078](https://github.com/antinomyhq/forge/pull/1078))
+* chore: add GitHub Label Sync workflow and related tests [@ssddOnTop](https://github.com/ssddOnTop) ([#1077](https://github.com/antinomyhq/forge/pull/1077))
+
+### 📝 Documentation
+
+* docs: update readme for `max_requests_per_turn` and `tool_max_failure_limit` [@laststylebender14](https://github.com/laststylebender14) ([#1027](https://github.com/antinomyhq/forge/pull/1027))
+
+
+---
+## v0.100.0 
+
+### 📝 Documentation
+
+- docs: update readme for `max_requests_per_turn` and `tool_max_failure_limit` [@laststylebender14](https://github.com/laststylebender14) ([#1027](https://github.com/antinomyhq/forge/pull/1027))
+
+### 🐛 Bug Fixes
+
+- fix: update HTTP-Referer header to point to the new forgecode.dev URL [@amitksingh1490](https://github.com/amitksingh1490) ([#1080](https://github.com/antinomyhq/forge/pull/1080))
+- fix: improve LLM caching [@tusharmath](https://github.com/tusharmath) ([#1088](https://github.com/antinomyhq/forge/pull/1088))
+- fix: use `max_completion_tokens` instead of `max_tokens` for open-ai compatible providers [@laststylebender14](https://github.com/laststylebender14) ([#1086](https://github.com/antinomyhq/forge/pull/1086))
+- fix: use blocking thread to readline [@tusharmath](https://github.com/tusharmath) ([#1085](https://github.com/antinomyhq/forge/pull/1085))
+
+### 🧰 Maintenance
+
+- chore: remove forge\_domain direct dependency on crates [@tusharmath](https://github.com/tusharmath) ([#1084](https://github.com/antinomyhq/forge/pull/1084))
+- chore: update labels.yml [@ssddOnTop](https://github.com/ssddOnTop) ([#1082](https://github.com/antinomyhq/forge/pull/1082))
+-  chore: add permissions to GitHub Label Sync workflow  [@ssddOnTop](https://github.com/ssddOnTop) ([#1078](https://github.com/antinomyhq/forge/pull/1078))
+- chore: add GitHub label sync workflow and related tests [@ssddOnTop](https://github.com/ssddOnTop) ([#1077](https://github.com/antinomyhq/forge/pull/1077))
+
+
+---
+## v0.99.0 
+
+### 🚀 Features
+
+- chore: integrate `provider_auth_id` [@ssddOnTop](https://github.com/ssddOnTop) ([#1072](https://github.com/antinomyhq/forge/pull/1072))
+- feat(provider): implement model caching with cache-first pattern [@tusharmath](https://github.com/tusharmath) ([#1071](https://github.com/antinomyhq/forge/pull/1071))
+- feat: enhance conversation compaction with per-trigger thresholds and turn-end support [@tusharmath](https://github.com/tusharmath) ([#1068](https://github.com/antinomyhq/forge/pull/1068))
+- feat: add x.ai provider support with API integration [@amitksingh1490](https://github.com/amitksingh1490) ([#1066](https://github.com/antinomyhq/forge/pull/1066))
+
+### 🐛 Bug Fixes
+
+- fix: reasoning with compaction [@laststylebender14](https://github.com/laststylebender14) ([#1059](https://github.com/antinomyhq/forge/pull/1059))
+- fix: `/dump` Errors when there's no `ConversationId` [@Achyutha](https://github.com/Achyutha) ([#1065](https://github.com/antinomyhq/forge/pull/1065))
+- fix: increase default connect timeout [@ssddOnTop](https://github.com/ssddOnTop) ([#1070](https://github.com/antinomyhq/forge/pull/1070))
+- fix: run chat request and compaction in parallel [@ssddOnTop](https://github.com/ssddOnTop) ([#1067](https://github.com/antinomyhq/forge/pull/1067))
+
+### 🧰 Maintenance
+
+- chore: integrate `provider_auth_id` [@ssddOnTop](https://github.com/ssddOnTop) ([#1072](https://github.com/antinomyhq/forge/pull/1072))
+
+
+---
+## v0.98.3 
+
+### 🐛 Bug Fixes
+
+- fix: update default `read_timeout` to 5 minutes [@tusharmath](https://github.com/tusharmath) ([#1064](https://github.com/antinomyhq/forge/pull/1064))
+- fix: cache posthog client [@tusharmath](https://github.com/tusharmath) ([#1063](https://github.com/antinomyhq/forge/pull/1063))
+- fix: remove auto compaction after each turn [@tusharmath](https://github.com/tusharmath) ([#1062](https://github.com/antinomyhq/forge/pull/1062))
+
+
+---
+## v0.98.2 
+
+### 🐛 Bug Fixes
+
+- fix: error tracing before exiting [@amitksingh1490](https://github.com/amitksingh1490) ([#1058](https://github.com/antinomyhq/forge/pull/1058))
+- fix: add JSON parse error handling to retry logic [@ssddOnTop](https://github.com/ssddOnTop) ([#1056](https://github.com/antinomyhq/forge/pull/1056))
+- fix: use `auth_provider_id` instead of `email` [@ssddOnTop](https://github.com/ssddOnTop) ([#1054](https://github.com/antinomyhq/forge/pull/1054))
+- fix: panic while writing app config without parent dirs [@ssddOnTop](https://github.com/ssddOnTop) ([#1057](https://github.com/antinomyhq/forge/pull/1057))
+- fix: add new line when appending [@laststylebender14](https://github.com/laststylebender14) ([#1052](https://github.com/antinomyhq/forge/pull/1052))
+- fix(deps): update rust crate thiserror to v2 @[renovate[bot]](https://github.com/apps/renovate) (#1043)
+
+### 🧰 Maintenance
+
+- chore: add login event [@ssddOnTop](https://github.com/ssddOnTop) ([#1035](https://github.com/antinomyhq/forge/pull/1035))
+
+
+---
 ## v0.98.1 
 
 - Update README.md [@amitksingh1490](https://github.com/amitksingh1490) ([#1036](https://github.com/antinomyhq/forge/pull/1036))

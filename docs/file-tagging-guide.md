@@ -1,4 +1,6 @@
-# File Tagging with @: Your Guide to Better AI Context
+import CustomLink from '@site/src/components/shared/CustomLink'
+
+# File Tagging with @: Enhance AI Context for Faster Developer Workflow
 
 One of the biggest challenges with AI coding assistants is providing the right context. Instead of copy-pasting code or Agent searching for where to start repeatedly, Forge's file tagging system lets you reference any project file with simple `@filename` syntax and tab completion.
 
@@ -14,7 +16,7 @@ Reference any file in your project using `@` followed by part of the filename, t
 > Help me debug @auth [Tab]
 ```
 
-<img src="/docs/autocomplete.gif" alt="File tagging autocomplete in action" style={{"width": "100%"}} />
+<img src="/docs/autocomplete.gif" alt="Forge AI coding assistant demonstrating file tagging autocomplete, showing how users can quickly reference project files for better context" style={{"width": "100%"}} />
 
 You'll see matching files:
 
@@ -251,11 +253,17 @@ File tagging only sees your current project. External packages and microservices
    ```
 
 2. **Connect with us**:
-   - **Discord**: [Join our Discord](https://discord.gg/kRZBPpkgwq)
-   - **Twitter/X**: [@forgecodehq](https://x.com/forgecodehq)
+   - **Discord**: <CustomLink href="https://discord.gg/kRZBPpkgwq">Join our Discord</CustomLink>
+   - **Twitter/X**: <CustomLink href="https://x.com/forgecodehq">@forgecodehq</CustomLink>
 
 ---
 
 File tagging works best when you understand both its strengths and limitations. Start simple, learn your project's search patterns, and gradually tackle more complex scenarios.
+
+## Related Guides
+
+- <CustomLink href="/docs/model-selection-guide">AI Model Selection Guide: Optimize Forge for Your Workflow</CustomLink>
+- <CustomLink href="/docs/plan-and-act-guide">Plan and Act Guide: Automating Complex Workflows with Forge</CustomLink>
+- <CustomLink href="/docs/custom-rules-guide">Custom Rules Guide: Extending Forge's Capabilities</CustomLink>
 
 The goal isn't to reference every file in your project - it's to give the AI just enough context to provide genuinely helpful, specific advice.

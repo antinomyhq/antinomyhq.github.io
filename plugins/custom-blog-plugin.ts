@@ -37,7 +37,8 @@ async function blogPluginEnhanced(context: LoadContext, options: PluginOptions) 
           permalink,
         }
       })
-      setGlobalData({recentBlogPostsMetadata})
+      const blogTags = content.blogTags || {}
+      setGlobalData({recentBlogPostsMetadata, blogTags, totalBlogPosts: blogPosts.length})
     },
   }
 }

@@ -1,4 +1,6 @@
-# Switching Between AI Models
+import CustomLink from '@site/src/components/shared/CustomLink'
+
+# AI Model Selection Guide: Optimize Forge for Your Workflow
 
 ## How to Change Models in Forge
 
@@ -10,7 +12,7 @@ Switching models is quick and intuitive:
 4. **Navigate with keyboard** - use up/down arrow keys to select
 5. **Press Enter** to confirm your selection
 
-![Model Selection Process](../static/docs/change_model.gif)
+![Forge AI model selection process showing a user typing /model and selecting from a dropdown menu of available AI models like Opus, Sonnet, and Grok-4](../static/docs/change_model.gif)
 
 The interface shows you model capabilities and pricing so you can make informed decisions.
 
@@ -52,6 +54,11 @@ Remember: The best model is the one that gets your job done efficiently. Start w
 
 If you're experiencing issues with forge:
 
+## Related Guides
+
+- <CustomLink href="/docs/custom-rules-guide">Custom Rules Guide: Extending Forge's Capabilities</CustomLink>
+- <CustomLink href="/docs/plan-and-act-guide">Plan and Act Guide: Automating Complex Workflows with Forge</CustomLink>
+
 1. **Export your session context:**
 
    ```bash
@@ -59,5 +66,5 @@ If you're experiencing issues with forge:
    ```
 
 2. **Share with our team:**
-   - **Discord**: [Join our Discord community](https://discord.gg/kRZBPpkgwq)
-   - **Twitter/X**: Send us a DM [@forgecodehq](https://x.com/forgecodehq)
+   - **Discord**: <CustomLink href="https://discord.gg/kRZBPpkgwq">Join our Discord community</CustomLink>
+   - **Twitter/X**: Send us a DM <CustomLink href="https://x.com/forgecodehq">@forgecodehq</CustomLink>
