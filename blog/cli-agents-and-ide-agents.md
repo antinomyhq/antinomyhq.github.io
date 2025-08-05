@@ -261,7 +261,7 @@ CLI Agents are not bulletproof. They come with rough edges, especially when you 
 
 **Fix it with:**
 
-- Scope flags (`--dir=src/components`) to limit scope to a subdirectory.
+- Limit scope to specific directories via manual Git commands.
 - Ask for a summary of the diff instead of raw patches.
 - Always preview with `git diff` before letting it commit.
 
@@ -274,7 +274,7 @@ It also helps to explicitly ask the agent for summaries or smaller steps rather 
 **Fix it with:**
 
 - Break large tasks into smaller subtasks.
-- Use planning prompts (`char SPEC → plan`) instead of one big prompt.
+- Use planning prompts (`Plan Mode`) instead of one big prompt.
 - Offload repetitive context (like style guides or goals) into `.CLAUDE.md` so they don’t repeat on every subagent.
 - Watch token stats live using `claude --verbose` and pause when it spikes.
 
@@ -284,7 +284,7 @@ It also helps to explicitly ask the agent for summaries or smaller steps rather 
 
 **Fix it with:**
 
-- Use `/compact` or `--context-window` flags to trim history.
+- Use `/compact` flags to trim history.
 - Use `gptree` to generate a tree and only include the file paths that matter.
 - Add checkpoints. Pause or restart the agent mid-run if it starts failing.
 
