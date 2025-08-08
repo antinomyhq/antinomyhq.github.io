@@ -43,7 +43,7 @@ export const ElevenLabsAudioPlayer = ({
 
   return (
     <div
-      className={`${styles.elevenLabsAudioPlayer} ${className} dark:bg-tailCall-darkMode---neutral-400 rounded-[12px] my-5`}
+      className={`${styles.elevenLabsAudioPlayer} ${className} dark:bg-tailCall-darkMode---neutral-400 rounded-xl my-5`}
     >
       <div
         id="elevenlabs-audionative-widget"

@@ -1,5 +1,6 @@
 import React from "react"
 import clsx from "clsx"
+import {common_styles} from "@site/src/constants/styles"
 
 type PrimaryButtonProps = {
   children: React.ReactNode
@@ -9,6 +10,7 @@ type PrimaryButtonProps = {
 }
 
 const PrimaryButton = ({children, onClick, variant = "solid", className = ""}: PrimaryButtonProps): JSX.Element => {
+  const {theme_border, theme_text} = common_styles
   const baseStyles = `
     rounded-md
     px-1 py-2 md:px-8 md:py-3 min-w-32
@@ -17,7 +19,7 @@ const PrimaryButton = ({children, onClick, variant = "solid", className = ""}: P
     text-[16px]
     font-kanit
     border border-solid
-    border-tailCall-lightMode---primary-700 dark:border-tailCall-lightMode---primary-400
+    ${theme_border}
   `
 
   const solidStyles = `
@@ -26,12 +28,12 @@ const PrimaryButton = ({children, onClick, variant = "solid", className = ""}: P
   `
 
   const outlineStyles = `
-    text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400
+    ${theme_text}
     bg-transparent
   `
 
   const ghostStyles = `
-  text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400
+  ${theme_text}
   bg-transparent
   border-none
 `

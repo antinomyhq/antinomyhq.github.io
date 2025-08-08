@@ -43,11 +43,11 @@ const contact = () => {
   }
   return (
     <Layout title="Contact" description="Contact Us">
-      <div className="flex justify-center">
-        <div className="flex flex-col w-full xl:max-w-[1320px] mx-auto">
-          <div className="flex flex-col items-center px-4 py-7 md:px-14 md:py-7 xl:px-5 xl:py-10">
-            <div className="flex flex-col lg:gap-0 items-start xl:items-center xl:flex-row justify-between w-full py-5 px-2 md:px-0">
-              <div className="flex flex-col mt-2">
+      <div className="flex_column__center">
+        <div className="flex__column w-full xl:max-w-[1320px] mx-auto">
+          <div className="flex__column items-center px-4 py-7 md:px-14 md:py-7 xl:px-5 xl:py-10">
+            <div className="flex__column lg:gap-0 items-start xl:items-center xl:flex-row justify-between w-full py-5 px-2 md:px-0">
+              <div className="flex__column mt-2">
                 <SpotlightSpan
                   className="font-bebas !font-normal text-[45px] md:text-display-small lg:text-display-medium xl:text-display-large-semi tracking-normal"
                   text="Have a questions?"
@@ -64,14 +64,14 @@ const contact = () => {
               </span>
             </div>
           </div>
-          <div className="w-full flex justify-center">
-            <div className="flex xl:justify-evenly lg:items-center justify-center xl:items-center xl:flex-row w-full px-4 py-7 md:px-14 md:py-7 xl:px-0 xl:py-14">
+          <div className="w-full flex__row__center">
+            <div className="flex__row__center xl:justify-evenly lg:items-center xl:items-center xl:flex-row w-full px-4 py-7 md:px-14 md:py-7 xl:px-0 xl:py-14">
               <div className="w-full xl:w-auto">
                 <h1 className="text-tailCall-darkMode---neutral-800 dark:text-white font-kanit text-display-medium !font-normal">
                   Hi
                 </h1>
-                <form className="flex flex-col gap-10 mt-16" onSubmit={handleSubmit(onSubmit)}>
-                  <div className="flex flex-col sm:flex-row gap-8">
+                <form className="flex__column gap-10 mt-16" onSubmit={handleSubmit(onSubmit)}>
+                  <div className="flex__column sm:flex-row gap-8">
                     <LabeledInput
                       label="First Name"
                       name="first_name"
@@ -109,7 +109,7 @@ const contact = () => {
                     leftIcon={<SquarePen />} // Emoji or any React component
                     onChange={(value) => setValue("job_title", value)}
                   />
-                  <div className="flex flex-col sm:flex-row gap-8">
+                  <div className="flex__column sm:flex-row gap-8">
                     <LabeledInput
                       label="Company"
                       name="company"

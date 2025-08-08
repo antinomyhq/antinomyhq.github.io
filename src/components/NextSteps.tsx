@@ -22,7 +22,7 @@ const NextSteps: React.FC<NextStepsProps> = ({items, className}) => {
       {items.map((item, idx) => (
         <Link key={idx} to={item.link} className="flex flex-col overflow-visible !no-underline h-full">
           <div className="relative mt-5 bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep rounded-[13px] min-w-auto 2xl:min-w-72 h-full p-[1px]">
-            <div className="flex flex-col flex-1 p-6 gap-2 bg-white dark:bg-tailCall-dark-800 rounded-[12px] h-full hover:border-tailCall-border-dark-100 transition-colors">
+            <div className="flex flex-col flex-1 p-6 gap-2 bg-white dark:bg-tailCall-dark-800 rounded-xl h-full hover:border-tailCall-border-dark-100 transition-colors">
               <div className="absolute -top-10 mb-2 rounded-full bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] flex items-center justify-center">
                 <div className=" flex items-center justify-center text-tailCall-lightMode---neutral-700 dark:text-tailCall-light-800 bg-[#f1f1f1] dark:bg-black rounded-full p-5">
                   {item.logo}

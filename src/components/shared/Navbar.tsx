@@ -9,6 +9,7 @@ import ThemeToggle from "../home/components/ThemeToggle"
 import {analyticsHandler} from "@site/src/utils"
 import SearchBar from "@site/src/theme/SearchBar"
 import NavbarMobileSidebarToggle from "@theme/Navbar/MobileSidebar/Toggle"
+import {common_styles} from "@site/src/constants/styles"
 
 const Logo = () => (
   <Link href="/" className="flex items-center justify-center">
@@ -29,8 +30,7 @@ const NavLink = ({href, label}: {href: string; label: string}) => {
 
   const baseClass =
     "no-underline hover:no-underline transition-opacity duration-500 cursor-pointer hover:dark:text-tailCall-darkMode---primary-400 hover:text-tailCall-darkMode---primary-600"
-  const activeClass =
-    "font-medium text-tailCall-lightMode---primary-700 dark:text-tailCall-darkMode---primary-400 opacity-100"
+  const activeClass = `font-medium ${common_styles.theme_text} opacity-100`
   const inactiveClass =
     "text-tailCall-darkMode---neutral-600 dark:text-tailCall-darkMode---neutral-300 hover:opacity-100"
 
@@ -103,7 +103,7 @@ const NewNavbar = (): JSX.Element => {
             <Button
               variant="transparent"
               onClick={handeNavbarClose}
-              className="!bg-tailCall-lightMode---primary-700 dark:!bg-tailCall-darkMode---primary-400 rounded p-2 text-white"
+              className={`rounded p-2 text-white ${common_styles.theme_bg_important}`}
             >
               <X className="text-white dark:text-black" />
             </Button>

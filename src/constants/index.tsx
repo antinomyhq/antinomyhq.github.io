@@ -51,16 +51,16 @@ import RedditLogoLight from "@site/static/icons/client/reddit.svg"
 import SalesforceLogoLight from "@site/static/icons/client/salesforce.svg"
 import XLogoLight from "@site/static/icons/client/x.svg"
 
+const InstacartLogoUrl = {
+  darkImage: "/icons/client/instacart-dark.svg",
+  lightImage: "/icons/client/instacart.svg",
+}
+
 export const companies: ClientImage[] = [
   {name: "Airbnb", logo: AirbnbLogo, lightLogo: AirbnbLogoLight},
-  // {name: "Apple", logo: "/icons/client/apple.svg"},
   {name: "Deel", logo: DeelLogo, lightLogo: DeelLogoLight},
   {name: "Doordash", logo: DoordashLogo, lightLogo: DoordashLogoLight},
-  // {name: "Google", logo: GoogleLogoLight},
-  {name: "Instacart", logo: "/icons/client/instacart-dark.svg", lightLogo: "/icons/client/instacart.svg"},
-  // {name: "Meta", logo: MetaLogoLight},
-  // {name: "Microsoft", logo: "/icons/client/microsoft.svg"},
-  // {name: "Netflix", logo: NetflixLogoLight},
+  {name: "Instacart", logo: InstacartLogoUrl.darkImage, lightLogo: InstacartLogoUrl.lightImage},
   {name: "Reddit", logo: RedditLogo, lightLogo: RedditLogoLight},
   {name: "Salesforce", logo: SalesforceLogo, lightLogo: SalesforceLogoLight},
   {name: "X", logo: XLogo, lightLogo: XLogoLight},

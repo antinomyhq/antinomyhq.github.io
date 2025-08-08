@@ -3,6 +3,7 @@ import {useNavbarMobileSidebar} from "@docusaurus/theme-common/internal"
 import {translate} from "@docusaurus/Translate"
 import IconMenu from "@theme/Icon/Menu"
 import {Menu} from "lucide-react"
+import {common_styles} from "@site/src/constants/styles"
 
 export default function MobileSidebarToggle(): ReactNode {
   const {toggle, shown} = useNavbarMobileSidebar()
@@ -15,7 +16,7 @@ export default function MobileSidebarToggle(): ReactNode {
         description: "The ARIA label for hamburger menu button of mobile navigation",
       })}
       aria-expanded={shown}
-      className="navbar__toggle clean-btn !bg-tailCall-lightMode---primary-700 dark:!bg-tailCall-darkMode---primary-400 rounded p-[9px] ml-1"
+      className={`navbar__toggle clean-btn rounded p-[9px] ml-1 ${common_styles.theme_bg_important}`}
       type="button"
     >
       <Menu className="text-white dark:text-black h-5 w-5" />

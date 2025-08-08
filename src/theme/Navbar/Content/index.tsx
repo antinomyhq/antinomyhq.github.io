@@ -17,6 +17,7 @@ import {analyticsHandler, getSearchInputRef, setBodyOverflow} from "@site/src/ut
 import ThemeToggle from "@site/src/components/home/components/ThemeToggle"
 import Button from "@site/src/components/shared/Button"
 import clsx from "clsx"
+import {common_styles} from "@site/src/constants/styles"
 
 const useNavbarItems = () => {
   // TODO temporary casting until ThemeConfig type is improved (added by docusaurus)
@@ -215,9 +216,7 @@ const NavbarContent = (): JSX.Element => {
         <>
           <NavbarItems items={rightItems} />
           <Button className={styles.colorModeToggle} variant="navlink" onClick={handleSignUp}>
-            <span className="text-tailCall-lightMode---primary-700 dark:text-tailCall-darkMode---primary-400">
-              Sign up
-            </span>
+            <span className={common_styles.theme_text}>Sign up</span>
           </Button>
           <div className={clsx(styles.colorModeToggle, "flex gap-1")}>
             <Search />

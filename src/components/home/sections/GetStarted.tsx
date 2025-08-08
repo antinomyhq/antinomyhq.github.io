@@ -122,9 +122,9 @@ const GetStarted = (): JSX.Element => {
   )
 
   return (
-    <div ref={sectionRef} className={clsx("flex justify-center items-center overflow-x-hidden", "get-started-section")}>
+    <div ref={sectionRef} className={clsx("flex__centered overflow-x-hidden", "get-started-section")}>
       <div className="relative max-w-[1440px] w-full px-5 pt-20 md:px-20 lg:pt-20 xl:pt-28 xl:pl-28 xl:pr-24 xl:pb-20 min-h-[500px] h-auto md:min-h-[600px] lg:min-h-[400px] xl:min-h-[800px]">
-        <div className="flex flex-col gap-3 relative">
+        <div className="flex__column gap-3 relative">
           {renderSpotlight({
             text: "GET STARTED",
             ref: getStartedRef,

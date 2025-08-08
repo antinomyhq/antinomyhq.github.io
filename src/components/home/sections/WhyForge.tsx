@@ -151,7 +151,7 @@ const WhyForge = (): JSX.Element => {
 
   const SpotlightText = () => {
     return (
-      <div className="flex flex-col gap-12 px-4 md:px-0">
+      <div className="flex__column gap-12 px-4 md:px-0">
         <div ref={whyRef} className="flex justify-start">
           <SpotlightSpan showHighlighted text="WHY THEY LOVE" className={clsx(headingClasses, "tracking-normal")} />
         </div>
@@ -164,14 +164,14 @@ const WhyForge = (): JSX.Element => {
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex__row__center">
       <div
         ref={sectionRef}
         className="max-w-[1440px] z-0 relative p-0 md:px-20 xl:pl-28 min-h-fit md:min-h-[600px] w-full overflow-hidden flex flex-col justify-center md:pt-20 xl:pt-24"
       >
         <SpotlightText />
-        <div className="flex flex-col gap-2">
-          <div className="flex flex-col gap-4">
+        <div className="flex__column gap-2">
+          <div className="flex__column gap-4">
             <div
               ref={cardsRef}
               className={`card-container md:flex gap-6 p-3 -mt-12 md:-mt-16 xl:-mt-14 hidden`}
