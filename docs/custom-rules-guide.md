@@ -86,6 +86,12 @@ agents:
 
 :::info
 
+  <p><strong>Custom Agent Integration</strong></p>
+  For more advanced agent customization, including markdown-based agent definitions, see the <CustomLink href="/docs/agent-definition-guide">Creating Custom Agents guide</CustomLink>.
+:::
+
+:::info
+
   <p><strong>Rule Priority</strong></p>
   Global rules override agent-specific rules when both are defined. This means your team-wide standards always take precedence over individual agent configurations.
 :::
@@ -341,6 +347,7 @@ Custom rules transform AI coding from a series of corrections into a smooth, sta
 
 To maximize your team's productivity with Forge, explore these complementary guides:
 
+- **<CustomLink href="/docs/agent-definition-guide">Creating Custom Agents</CustomLink>** - Define specialized AI assistants with custom rules and behaviors
 - **<CustomLink href="/docs/model-selection-guide">Model Selection Guide</CustomLink>** - Choose the right AI models for your specific development tasks
 - **<CustomLink href="/docs/file-tagging-guide">File Tagging Guide</CustomLink>** - Use @ mentions to provide better context for AI code generation
 - **<CustomLink href="/docs/plan-and-act-guide">Plan and Act Guide</CustomLink>** - Structure your development workflow with AI planning before implementation
