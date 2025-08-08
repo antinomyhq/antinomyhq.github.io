@@ -221,7 +221,7 @@ hr {
 }
 
 .theme-doc-sidebar-item-link-level-1 {
-  margin-top: 1rem !important;
+  margin-top: 1rem;
 }
 
 .menu__list .menu__list {
@@ -341,13 +341,13 @@ hr {
 
 .pagination-nav {
   grid-gap: 2rem;
-  margin-top: 0 !important;
+  margin-top: 0;
 }
 
 .blogPage-container .pagination-nav {
   border-radius: 12px;
   padding: 24px 12px;
-  margin-top: 20px !important;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 425px) {
@@ -448,7 +448,7 @@ hr {
 }
 
 .navbar-sidebar {
-  width: 85vw !important;
+  width: 85vw;
 }
 
 .navbar-sidebar__item .menu__link:hover {
@@ -684,7 +684,7 @@ aside.theme-doc-sidebar-container {
 pre code,
 code {
   font-family: var(--ifm-font-family-monospace) !important;
-  background-color: var(--ifm-pre-code-background) !important;
+  background-color: var(--ifm-pre-code-background);
 }
 
 nav.menu {
@@ -774,10 +774,10 @@ nav.menu {
 
 @media (max-width: 768px) {
   .navbar__item.navbar__item {
-    display: none !important;
+    display: none;
   }
   .navbar__item {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -1013,8 +1013,8 @@ pre[class*="language-"],
 .codeBlock,
 .code-block,
 .theme-code-block {
-  border-radius: 12px !important;
-  background-color: #f8f8f8 !important;
+  border-radius: 12px;
+  background-color: #f8f8f8;
 }
 
 .theme-code-block pre {
@@ -1023,22 +1023,22 @@ pre[class*="language-"],
 
 .theme-code-block,
 pre.prism-code {
-  border-radius: 12px !important;
-  background-color: #f8f8f8 !important;
+  border-radius: 12px;
+  background-color: #f8f8f8;
   margin-top: 20px;
-  margin-bottom: 20px !important;
+  margin-bottom: 20px;
 }
 
 pre.prism-code code {
-  color: #000 !important;
-  background-color: #f8f8f8 !important;
+  color: #000;
+  background-color: #f8f8f8;
   border-radius: 12px;
 }
 
 [data-theme="dark"] pre.prism-code code {
-  color: #fff !important;
-  background-color: #18171a !important;
-  border: none !important;
+  color: #fff;
+  background-color: #18171a;
+  border: none;
 }
 
 .theme-code-block {
@@ -1523,16 +1523,16 @@ code > span.token-line {
 }
 
 table {
-  margin-top: 10px !important;
+  margin-top: 10px;
 }
 
 table thead {
-  background-color: transparent !important;
+  background-color: transparent;
 }
 
 [data-theme="dark"] table thead tr th {
-  background-color: #262626 !important;
-  color: #e6e6e6 !important;
+  background-color: #262626;
+  color: #e6e6e6;
 }
 
 table tbody tr:last-child td {
@@ -1550,48 +1550,48 @@ table tbody tr:last-child td:last-child {
 }
 
 table tbody tr:nth-child(even) td {
-  background-color: var(--ifm-table-even) !important;
+  background-color: var(--ifm-table-even);
 }
 
 table tbody tr td {
-  background-color: #f5f5f5 !important;
-  border-left: transparent !important;
-  border-right: transparent !important;
+  background-color: #f5f5f5 ;
+  border-left: transparent;
+  border-right: transparent;
 }
 
 table tbody tr td:first-child {
-  border-left: transparent !important;
+  border-left: transparent;
 }
 
 table tbody tr td:last-child {
-  border-right: transparent !important;
+  border-right: transparent;
 }
 
 [data-theme="dark"] table tbody tr td {
-  background-color: #171717 !important;
+  background-color: #171717;
 }
 
 [data-theme="dark"] table tbody tr:nth-child(even) td {
-  background-color: var(--ifm-table-even) !important;
+  background-color: var(--ifm-table-even);
 }
 
 table thead tr th {
   border: transparent !important;
-  background-color: #e5e5e5 !important;
-  color: #171717 !important;
+  background-color: #e5e5e5;
+  color: #171717;
 }
 
 table thead tr {
-  border: 1px solid !important;
+  border: 1px solid;
 }
 
 .faq-answers a {
-  color: var(--ifm-sidebar-menu-link) !important;
+  color: var(--ifm-sidebar-menu-link);
 }
 
 .faq-answers a:hover {
-  color: var(--ifm-navlink-active) !important;
-  text-decoration: none !important;
+  color: var(--ifm-navlink-active);
+  text-decoration: none;
 }
 
 /* Update styling for Admonitions cards */
