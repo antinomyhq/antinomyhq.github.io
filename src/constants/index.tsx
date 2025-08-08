@@ -1065,7 +1065,7 @@ export const FAQS = [
   {
     question: "How many requests do I get in the Free plan?",
     answer: `The Free plan includes a <strong>dynamic request limit</strong> that adjusts based on server load and availability. 
-              This typically ranges from 10-50 requests per day, but may vary depending on system capacity.
+              This typically ranges from 10-50 requests per month, but may vary depending on system capacity.
               <br/><br/><strong>Important:</strong> These limits only apply to Forge's provided models. When you use <strong>BYOK (Bring Your Own Key)</strong> with your own API keys from providers like OpenAI, Anthropic, Google, and others, those requests don't count against your daily limits.
               <br/><br/>Learn how to set up custom providers: <a href="/docs/custom-providers" target="_blank" rel="noopener noreferrer">Custom Provider Documentation</a>`,
   },
