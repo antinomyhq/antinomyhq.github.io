@@ -43,6 +43,11 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "agent-definition-guide",
+          label: "Creating Custom Agents",
+        },
+        {
+          type: "doc",
           id: "model-selection-guide",
           label: "Switching Models",
         },
