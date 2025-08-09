@@ -96,7 +96,7 @@ const NewNavbar = (): JSX.Element => {
       }`}
     >
       {showNavbar ? (
-        <div className="fixed inset-0 w-screen h-screen bg-[#F1F1F1] dark:bg-black z-[998] flex flex-col overflow-hidden">
+        <div className="fixed inset-0 w-screen h-screen bg-tailCall-light-1200 dark:bg-black z-[998] flex flex-col overflow-hidden">
           {/* Mobile Menu Header */}
           <div className="flex justify-between items-center mb-8 p-5 flex-shrink-0">
             <Logo />

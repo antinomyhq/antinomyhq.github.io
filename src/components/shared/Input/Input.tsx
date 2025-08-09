@@ -29,7 +29,7 @@ const LabeledInput: React.FC<LabeledInputProps> = ({
   required = false,
 }) => {
   const baseInputStyles =
-    "font-kanit text-title-tiny font-normal w-full pl-12 pr-3 py-3 border border-solid border-[#545F71] rounded-md bg-white dark:bg-black text-sm dark:text-white focus:outline-none focus:ring-1 focus:ring-tailCall-lightMode---primary-600 focus:hover:ring-tailCall-lightMode---primary-400"
+    "font-kanit text-title-tiny font-normal w-full pl-12 pr-3 py-3 border border-solid border-tailCall-darkMode---neutral-1100 rounded-md bg-white dark:bg-black text-sm dark:text-white focus:outline-none focus:ring-1 focus:ring-tailCall-lightMode---primary-600 focus:hover:ring-tailCall-lightMode---primary-400"
 
   const validation = {
     required: required ? "This field is required" : false,

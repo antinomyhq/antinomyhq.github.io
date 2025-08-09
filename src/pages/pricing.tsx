@@ -62,7 +62,7 @@ const AI_PROVIDERS: AIProvider[] = [
 // CSS Class Constants
 const HERO_CONTAINER_CLASSES = "mx-auto w-full"
 const HERO_SECTION_CLASSES =
-  "px-8 py-16 md:px-24 lg:px-36 lg:py-24  dark:bg-black bg-tailCall-light-1200 border-b border-solid border-transparent border-b-[#dbdbdb] dark:border-b-[#4b4b4b]"
+  "px-8 py-16 md:px-24 lg:px-36 lg:py-24  dark:bg-black bg-tailCall-light-1200 border-b border-solid border-transparent border-b-tailCall-lightMode---neutral-300 dark:border-b-tailCall-darkMode---neutral-700"
 const HERO_CONTENT_CLASSES = "flex flex-col lg:gap-0 items-start xl:items-center xl:flex-row justify-between w-full"
 const HERO_TITLE_CONTAINER_CLASSES = "flex flex-col mt-2"
 const HERO_TITLE_CLASSES =
@@ -103,7 +103,7 @@ const FAQ_HEADER_CLASSES = "items-start mt-10"
 const FAQ_TITLE_CLASSES =
   "text-title-large !font-medium md:text-content-regular text-left mb-1 text-tailCall-lightMode---neutral-900 dark:text-tailCall-white !leading-[65px]"
 const FAQ_SUBTITLE_CLASSES =
-  "text-content-small md:text-question-title text-[#A1A1A1] !font-[275] dark:text-tailCall-border-light-300 font-kanit mt-5"
+  "text-content-small md:text-question-title text-tailCall-lightMode---primary-1300 !font-[275] dark:text-tailCall-border-light-300 font-kanit mt-5"
 const FAQ_ITEM_CLASSES =
   "flex w-full justify-between items-center pt-8 text-left focus:outline-none bg-transparent dark:bg-black border-none cursor-pointer transition-all duration-300"
 const FAQ_QUESTION_CLASSES = "text-content-small md:text-question-title transition-colors duration-300"
@@ -202,7 +202,7 @@ const FAQItem: React.FC<{
       <span
         className={clsx(
           FAQ_QUESTION_CLASSES,
-          isOpen ? "text-[#262626] dark:text-white" : "text-tailCall-lightMode---neutral-500",
+          isOpen ? "text-tailCall-lightMode---primary-1200 dark:text-white" : "text-tailCall-lightMode---neutral-500",
         )}
       >
         {item.question}
@@ -240,7 +240,7 @@ const FAQSection: React.FC<{
 
 const AIProvidersSection: React.FC = () => (
   <div className={AI_PROVIDERS_SECTION_CLASSES}>
-    <div className="bg-[#dbdbdb] dark:bg-[#4b4b4b] h-[1px] w-full" />
+    <div className="bg-tailCall-lightMode---neutral-300 dark:bg-tailCall-darkMode---neutral-700 h-[1px] w-full" />
     <div className={AI_PROVIDERS_HEADER_CLASSES}>
       <span className={AI_PROVIDERS_TITLE_CLASSES}>Works with every model offered by leading AI providers.</span>
       <span className={AI_PROVIDERS_SUBTITLE_CLASSES}>

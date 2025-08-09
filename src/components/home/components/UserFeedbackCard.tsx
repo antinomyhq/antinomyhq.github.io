@@ -9,7 +9,7 @@ type UserFeedbackCardProps = {
 }
 
 const containerClass =
-  "px-8 py-8 rounded-[12px] h-full w-full md:w-[380px] border-[11px] border-tailCall-lightMode---neutral-50 dark:border-[#181D27] border-solid bg-transparent shadow-[0px_0px_4px_0px_#088C8C] dark:shadow-[0px_0px_4px_0px_#30EDE6] hover:cursor-pointer hover:bg-custom-radial-light hover:dark:bg-custom-radial transition-all duration-100 ease-in overflow-hidden"
+  "px-8 py-8 rounded-[12px] h-full w-full md:w-[380px] border-[11px] border-tailCall-lightMode---neutral-50 dark:border-tailCall-darkMode---neutral-1000 border-solid bg-transparent shadow-brand-light dark:shadow-brand-dark hover:cursor-pointer hover:bg-custom-radial-light hover:dark:bg-custom-radial transition-all duration-100 ease-in overflow-hidden"
 
 const innerWrapperClass = "flex flex-col justify-between h-full gap-3"
 const topContentClass = "flex flex-col gap-3"

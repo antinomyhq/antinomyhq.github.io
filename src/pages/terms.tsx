@@ -16,7 +16,7 @@ const TermsPage = (): JSX.Element => {
   return (
     <Layout title="Terms and Conditions" description="Terms and Conditions and Fair Usage Policy for ForgeCode">
       <div className="max-w-[1320px] mx-auto w-full">
-        <div className="py-12 dark:bg-black bg-tailCall-light-1200 border-b border-solid border-transparent border-b-[#dbdbdb] dark:border-b-[#4b4b4b]">
+        <div className="py-12 dark:bg-black bg-tailCall-light-1200 border-b border-solid border-transparent border-b-tailCall-lightMode---neutral-300 dark:border-b-tailCall-darkMode---neutral-700">
           <div className="flex flex-col lg:gap-0 items-start xl:items-center xl:flex-row justify-between w-full py-5 px-2">
             <div className="flex flex-col mt-2">
               <SpotlightSpan

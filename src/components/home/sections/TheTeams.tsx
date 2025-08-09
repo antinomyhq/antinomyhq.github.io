@@ -149,13 +149,13 @@ const TheTeams = (): JSX.Element => {
               <div key={title} className="mb-4 border border-gray-700 rounded overflow-hidden">
                 <button
                   onClick={() => handleTechClick(idx)}
-                  className="border-none rounded-md w-full text-left px-4 py-3 bg-tailCall-darkMode---neutral-500 dark:bg-[#18171A] text-white font-semibold flex justify-between items-center"
+                  className="border-none rounded-md w-full text-left px-4 py-3 bg-tailCall-darkMode---neutral-500 dark:bg-tailCall-dark-1200 text-white font-semibold flex justify-between items-center"
                 >
                   <span className={`font-kanit text-title-tiny font-normal text-white`}>{TECHS[idx]}</span>
                   <span>{isOpen ? <ChevronUp /> : <ChevronDown className="text-white" />}</span>
                 </button>
                 {isOpen && (
-                  <div className="bg-tailCall-darkMode---neutral-500 dark:bg-[#121212] mt-1 rounded-xl">
+                  <div className="bg-tailCall-darkMode---neutral-500 dark:bg-tailCall-dark-600 mt-1 rounded-xl">
                     <TechCard title={title} description={descriptions} avatars={avatars} selected={true} />
                   </div>
                 )}

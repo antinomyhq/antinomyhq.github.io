@@ -5,7 +5,7 @@ const BUTTON_VARIANTS = {
   transparent: "border-none bg-transparent",
   keyboard: "px-9 py-9 bg-tailCall-gray border-r border-r-tailCall-lightGray w-full",
   navlink:
-    "font-kanit bg-transparent text-[#30EDE6] dark:text-[#088C8C] font-normal text-title-tiny cursor-pointer hover:text-shadow-glow hover:text-shadow transition-all duration-300",
+    "font-kanit bg-transparent text-tailCall-darkMode---primary-400 dark:text-tailCall-lightMode---primary-600 font-normal text-title-tiny cursor-pointer hover:text-shadow-glow hover:text-shadow transition-all duration-300",
 } as const
 
 type Variant = keyof typeof BUTTON_VARIANTS

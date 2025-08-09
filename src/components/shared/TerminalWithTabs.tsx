@@ -79,7 +79,7 @@ const TerminalWithTabs = (): JSX.Element => {
       return (
         <div
           key={idx}
-          className="flex items-center gap-2 text-tailCall-darkMode---neutral-500 dark:text-[#B0BEC5] text-[14px] !leading-3"
+          className="flex items-center gap-2 text-tailCall-darkMode---neutral-500 dark:text-tailCall-light-1300 text-[14px] !leading-3"
         >
           <div className="h-2 w-2 rounded-lg bg-tailCall-lightMode---primary-600 dark:bg-tailCall-lightMode---primary-400" />
           <span className="font-space text-content-small font-normal">{content}</span>
@@ -94,7 +94,7 @@ const TerminalWithTabs = (): JSX.Element => {
       >
         <span className="!font-normal font-space text-content-small !leading-3">
           {isSynthLine ? (
-            <span className="text-[#1ECB83] font-bold">{line}</span>
+            <span className="text-tailCall-dark-1400 font-bold">{line}</span>
           ) : (
             <span className="font-normal">{line}</span>
           )}
@@ -104,12 +104,12 @@ const TerminalWithTabs = (): JSX.Element => {
   }
 
   return (
-    <div className="relative bg-tailCall-lightMode---neutral-200 dark:bg-[#1E1C21] p-[1px] dark:bg-custom-diagonal rounded-[12px] w-full max-[375px]:h-[730px] md:w-4/5 lg:w-[450px] h-[685px] xl:h-[720px] flex flex-col font-mono">
+    <div className="relative bg-tailCall-lightMode---neutral-200 dark:bg-tailCall-dark-1900 p-[1px] dark:bg-custom-diagonal rounded-[12px] w-full max-[375px]:h-[730px] md:w-4/5 lg:w-[450px] h-[685px] xl:h-[720px] flex flex-col font-mono">
       {/* Header */}
       <div className="bg-tailCall-lightMode---neutral-100 dark:bg-tailCall-darkMode---neutral-900 w-full rounded-t-xl flex gap-2 items-center p-3">
         <div className="h-4 w-4 rounded-full bg-tailCall-lightMode---primary-600 dark:bg-tailCall-dark-1300 opacity-50" />
         <div className="h-4 w-4 rounded-full bg-tailCall-lightMode---primary-400 dark:bg-tailCall-dark-1400 opacity-50" />
-        <div className="h-4 w-4 rounded-full bg-[#1ceb83] dark:bg-tailCall-darkMode---primary-400 opacity-50" />
+        <div className="h-4 w-4 rounded-full bg-tailCall-lightMode---primary-1000 dark:bg-tailCall-darkMode---primary-400 opacity-50" />
       </div>
 
       {/* Terminal Content */}
@@ -130,10 +130,10 @@ const TerminalWithTabs = (): JSX.Element => {
         <div className="flex w-full flex-col px-4">
           {GUIDES.map(({title, details}) => (
             <div key={title} className="flex w-full">
-              <span className="w-2/5 text-[#525252] dark:text-white font-space text-content-small font-normal max-[480px]:text-[12px]">
+              <span className="w-2/5 text-tailCall-darkMode---neutral-600 dark:text-white font-space text-content-small font-normal max-[480px]:text-[12px]">
                 {title}
               </span>
-              <span className="text-[#018284] dark:text-tailCall-darkMode---primary-400 font-space text-content-small font-normal leading-[150%] -tracking-[0.307px] max-[480px]:text-[12px]">
+              <span className="text-tailCall-lightMode---primary-1100 dark:text-tailCall-darkMode---primary-400 font-space text-content-small font-normal leading-[150%] -tracking-[0.307px] max-[480px]:text-[12px]">
                 {details}
               </span>
             </div>
@@ -147,12 +147,15 @@ const TerminalWithTabs = (): JSX.Element => {
           </div>
 
           {/* Command Line */}
-          <div className="bg-[#E5E5E5] dark:bg-tailCall-dark-1600 rounded-[8px] flex h-[75px] absolute bottom-4 w-[91%] md:w-[94%] lg:w-[93%] border border-solid border-tailCall-dark-1800 dark:border-tailCall-lightMode---primary-400">
-            <div className="flex items-center bg-[#E5E5E5] dark:bg-tailCall-dark-1600 rounded-[8px] px-2">
+          <div className="bg-tailCall-lightMode---neutral-1100 dark:bg-tailCall-dark-1600 rounded-[8px] flex h-[75px] absolute bottom-4 w-[91%] md:w-[94%] lg:w-[93%] border border-solid border-tailCall-dark-1800 dark:border-tailCall-lightMode---primary-400">
+            <div className="flex items-center bg-tailCall-lightMode---neutral-1100 dark:bg-tailCall-dark-1600 rounded-[8px] px-2">
               <div className="flex items-center justify-center">
-                <ChevronRight className="text-[#018284] dark:text-tailCall-lightMode---primary-400" width={24} />
+                <ChevronRight
+                  className="text-tailCall-lightMode---primary-1100 dark:text-tailCall-lightMode---primary-400"
+                  width={24}
+                />
               </div>
-              <span className="py-3 ml-2 text-[#018284] dark:text-tailCall-lightMode---primary-400 font-space text-title-tiny font-normal max-[480px]:text-[14px]">
+              <span className="py-3 ml-2 text-tailCall-lightMode---primary-1100 dark:text-tailCall-lightMode---primary-400 font-space text-title-tiny font-normal max-[480px]:text-[14px]">
                 {typedText}
                 {isTyping && <span className="animate-pulse text-white w-5">|</span>}
               </span>

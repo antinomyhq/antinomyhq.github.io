@@ -76,7 +76,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
         type="button"
         onClick={toggleDropdown}
         ref={buttonRef}
-        className="flex font-kanit text-title-tiny font-normal w-full pr-3 py-2 border border-solid border-[#545F71] rounded-md bg-white dark:bg-black text-sm dark:text-white focus:outline-none focus:ring-1 focus:ring-tailCall-lightMode---primary-600 focus:hover:ring-tailCall-lightMode---primary-400"
+        className="flex font-kanit text-title-tiny font-normal w-full pr-3 py-2 border border-solid border-tailCall-darkMode---neutral-1100 rounded-md bg-white dark:bg-black text-sm dark:text-white focus:outline-none focus:ring-1 focus:ring-tailCall-lightMode---primary-600 focus:hover:ring-tailCall-lightMode---primary-400"
       >
         <div className="flex items-center">
           {leftIcon && <span className="text-gray-500">{leftIcon}</span>}
@@ -101,7 +101,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       {/* Options dropdown */}
       {isOpen && (
         <ul
-          className={`absolute pl-0 list-none z-10 w-full bg-tailCall-darkMode---neutral-50 dark:bg-tailCall-darkMode---neutral-900 border border-solid border-[#262626] shadow-lg overflow-auto text-sm
+          className={`absolute pl-0 list-none z-10 w-full bg-tailCall-darkMode---neutral-50 dark:bg-tailCall-darkMode---neutral-900 border border-solid border-tailCall-lightMode---primary-1200 shadow-lg overflow-auto text-sm
           ${dropdownPosition === "top" ? "bottom-8 rounded-b-none rounded-t-md" : "top-[80px] rounded-t-none rounded-b-md"}
         `}
         >

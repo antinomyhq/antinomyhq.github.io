@@ -44,7 +44,7 @@ export default function TOCItems({
 
   return (
     <div className="flex flex-col gap-1 pt-0 bg-tailCall-light-1200 dark:bg-black p-2">
-      <span className="inline-block pl-[8px] font-kanit uppercase text-[22px] font-medium text-[#737373] dark:text-tailCall-darkMode---neutral-200">
+      <span className="inline-block pl-[8px] font-kanit uppercase text-[22px] font-medium text-tailCall-darkMode---neutral-500 dark:text-tailCall-darkMode---neutral-200">
         On this page
       </span>
       <TOCItemTree toc={tocTree} className={className} linkClassName={linkClassName} {...props} />
