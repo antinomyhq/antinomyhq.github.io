@@ -70,3 +70,15 @@ shrijal:
       url: https://x.com/shricodev
     - platform: linkedin
       url: https://www.linkedin.com/in/iamshrijal
+
+amitesh:
+  name: Amitesh Anand
+  url: https://github.com/Astrodevil
+  image_url: https://avatars.githubusercontent.com/u/73425223?v=4
+  social:
+    - platform: github
+      url: https://github.com/Astrodevil
+    - platform: twitter
+      url: https://x.com/astrodevil_
+    - platform: linkedin
+      url: https://www.linkedin.com/in/amitesh1208/
