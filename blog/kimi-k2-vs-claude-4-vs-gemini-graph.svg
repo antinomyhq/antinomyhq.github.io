@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="24" font-weight="600" fill="#1a1a1a">
+    Model Compare: Key Metrics
+  </text>
+  
+  <!-- Legend -->
+  <g transform="translate(220, 50)">
+    <rect x="0" y="0" width="15" height="15" fill="#06b6d4"/>
+    <text x="20" y="12" font-family="Inter, -apple-system, sans-serif" font-size="14" fill="#374151">Response Time</text>
+    
+    <rect x="130" y="0" width="15" height="15" fill="#ef4444"/>
+    <text x="150" y="12" font-family="Inter, -apple-system, sans-serif" font-size="14" fill="#374151">Cost per Task</text>
+    
+    <rect x="260" y="0" width="15" height="15" fill="#059669"/>
+    <text x="280" y="12" font-family="Inter, -apple-system, sans-serif" font-size="14" fill="#374151">Success Rate</text>
+  </g>
+  
+  <!-- Grid lines -->
+  <g stroke="#e5e7eb" stroke-width="1">
+    <line x1="80" y1="100" x2="720" y2="100"/>
+    <line x1="80" y1="150" x2="720" y2="150"/>
+    <line x1="80" y1="200" x2="720" y2="200"/>
+    <line x1="80" y1="250" x2="720" y2="250"/>
+    <line x1="80" y1="300" x2="720" y2="300"/>
+    <line x1="80" y1="350" x2="720" y2="350"/>
+    <line x1="80" y1="400" x2="720" y2="400"/>
+  </g>
+  
+  <!-- Gemini 2.5 Pro bars -->
+  <g transform="translate(120, 0)">
+    <!-- Response Time: 5.5s (3-8s range) scaled to ~11 units -->
+    <rect x="0" y="389" width="40" height="11" fill="#06b6d4"/>
+    
+    <!-- Cost per Task: $1.65 scaled relative to max $3.19 = ~26 units -->
+    <rect x="45" y="374" width="40" height="26" fill="#ef4444"/>
+    <text x="65" y="435" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#1a1a1a">$1.65</text>
+    
+    <!-- Success Rate: 4/5 = 80% -->
+    <rect x="90" y="240" width="40" height="160" fill="#059669"/>
+    <text x="110" y="230" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1a1a1a">80%</text>
+  </g>
+  
+  <!-- Claude Sonnet 4 bars -->
+  <g transform="translate(320, 0)">
+    <!-- Response Time: 19s (13-25s range) scaled to ~38 units -->
+    <rect x="0" y="362" width="40" height="38" fill="#06b6d4"/>
+    
+    <!-- Cost per Task: $3.19 scaled to ~50 units (max value) -->
+    <rect x="45" y="350" width="40" height="50" fill="#ef4444"/>
+    <text x="65" y="435" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#1a1a1a">$3.19</text>
+    
+    <!-- Success Rate: 5/5 = 100% -->
+    <rect x="90" y="200" width="40" height="200" fill="#059669"/>
+    <text x="110" y="190" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1a1a1a">100%</text>
+  </g>
+  
+  <!-- Kimi K2 bars -->
+  <g transform="translate(520, 0)">
+    <!-- Response Time: 15.5s (11-20s range) scaled to ~31 units -->
+    <rect x="0" y="369" width="40" height="31" fill="#06b6d4"/>
+    
+    <!-- Cost per Task: $0.53 scaled relative to max $3.19 = ~8 units -->
+    <rect x="45" y="392" width="40" height="8" fill="#ef4444"/>
+    <text x="65" y="435" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="11" font-weight="500" fill="#1a1a1a">$0.53</text>
+    
+    <!-- Success Rate: 4/5 = 80% -->
+    <rect x="90" y="240" width="40" height="160" fill="#059669"/>
+    <text x="110" y="230" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="14" font-weight="600" fill="#1a1a1a">80%</text>
+  </g>
+  
+  <!-- Model labels -->
+  <g font-family="Inter, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#1a1a1a" text-anchor="middle">
+    <text x="195" y="460">Gemini 2.5 Pro</text>
+    <text x="395" y="460">Claude Sonnet 4</text>
+    <text x="595" y="460">Kimi K2</text>
+  </g>
+  
+  <!-- X-axis title -->
+  <text x="400" y="485" text-anchor="middle" font-family="Inter, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#374151">Model</text>
+</svg>

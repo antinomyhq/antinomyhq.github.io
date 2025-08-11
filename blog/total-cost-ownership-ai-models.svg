@@ -1,0 +1,98 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 20px; font-weight: 600; fill: #1a1a1a; }
+      .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; fill: #666; }
+      .label { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #333; }
+      .value { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #000; font-weight: 500; }
+      .legend { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; fill: #333; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#fafafa" rx="8"/>
+  
+  <!-- Title -->
+  <text x="400" y="50" text-anchor="middle" class="title">Total Cost of Ownership: AI + Developer Time</text>
+  <text x="400" y="70" text-anchor="middle" class="subtitle">Cost per task including follow-up work ($35/hour junior dev rate)</text>
+  
+  <!-- Chart area -->
+  <g transform="translate(80, 120)">
+    
+    <!-- Y-axis -->
+    <line x1="0" y1="0" x2="0" y2="280" stroke="#ddd" stroke-width="1"/>
+    
+    <!-- Y-axis labels -->
+    <text x="-10" y="285" text-anchor="end" class="label">$0</text>
+    <text x="-10" y="215" text-anchor="end" class="label">$4</text>
+    <text x="-10" y="145" text-anchor="end" class="label">$8</text>
+    <text x="-10" y="75" text-anchor="end" class="label">$12</text>
+    
+    <!-- Grid lines -->
+    <line x1="0" y1="70" x2="600" y2="70" stroke="#f0f0f0" stroke-width="1"/>
+    <line x1="0" y1="140" x2="600" y2="140" stroke="#f0f0f0" stroke-width="1"/>
+    <line x1="0" y1="210" x2="600" y2="210" stroke="#f0f0f0" stroke-width="1"/>
+    <line x1="0" y1="280" x2="600" y2="280" stroke="#f0f0f0" stroke-width="1"/>
+    
+    <!-- Kimi K2 Bar -->
+    <g transform="translate(50, 0)">
+      <!-- AI Cost: $0.53 = 15.1px (0.53/3.5 * 100) -->
+      <rect x="0" y="265.1" width="80" height="14.9" fill="#10b981" opacity="0.8"/>
+      <!-- Dev Cost: $4.67 = 133.4px (4.67/3.5 * 100) -->
+      <rect x="0" y="131.7" width="80" height="133.4" fill="#059669" opacity="0.6"/>
+      <!-- Total: $5.20 = 148.5px -->
+      <text x="40" y="255" text-anchor="middle" class="value">$5.20</text>
+      <text x="40" y="300" text-anchor="middle" class="label">Kimi K2</text>
+      <text x="40" y="315" text-anchor="middle" class="label" style="font-size: 10px; fill: #10b981;">Best Value</text>
+    </g>
+    
+    <!-- Claude Sonnet 4 Bar -->
+    <g transform="translate(200, 0)">
+      <!-- AI Cost: $3.19 = 91.1px (3.19/3.5 * 100) -->
+      <rect x="0" y="188.9" width="80" height="91.1" fill="#3b82f6" opacity="0.8"/>
+      <!-- Dev Cost: $4.67 = 133.4px (4.67/3.5 * 100) -->
+      <rect x="0" y="55.5" width="80" height="133.4" fill="#1d4ed8" opacity="0.6"/>
+      <!-- Total: $7.86 = 224.5px -->
+      <text x="40" y="45" text-anchor="middle" class="value">$7.86</text>
+      <text x="40" y="300" text-anchor="middle" class="label">Claude Sonnet 4</text>
+      <text x="40" y="315" text-anchor="middle" class="label" style="font-size: 10px; fill: #3b82f6;">2nd Place</text>
+    </g>
+    
+    <!-- Gemini 2.5 Pro Bar -->
+    <g transform="translate(350, 0)">
+      <!-- AI Cost: $1.65 = 47.1px (1.65/3.5 * 100) -->
+      <rect x="0" y="232.9" width="80" height="47.1" fill="#f59e0b" opacity="0.8"/>
+      <!-- Dev Cost: $8.75 = 250px (8.75/3.5 * 100) -->
+      <rect x="0" y="-17.1" width="80" height="250" fill="#d97706" opacity="0.6"/>
+      <!-- Total: $10.40 = 297.1px -->
+      <text x="40" y="-30" text-anchor="middle" class="value">$10.40</text>
+      <text x="40" y="300" text-anchor="middle" class="label">Gemini 2.5 Pro</text>
+      <text x="40" y="315" text-anchor="middle" class="label" style="font-size: 10px; fill: #f59e0b;">Most Expensive</text>
+    </g>
+    
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(520, 140)">
+    <text x="0" y="0" class="legend" style="font-weight: 600;">Cost Breakdown:</text>
+    
+    <rect x="0" y="15" width="12" height="12" fill="#10b981" opacity="0.8"/>
+    <text x="20" y="25" class="legend">AI API Cost</text>
+    
+    <rect x="0" y="35" width="12" height="12" fill="#059669" opacity="0.6"/>
+    <text x="20" y="45" class="legend">Developer Time (Follow-ups)</text>
+    
+    <text x="0" y="70" class="legend" style="font-weight: 600;">Follow-up Time:</text>
+    <text x="0" y="85" class="legend">• Kimi K2: 8 minutes</text>
+    <text x="0" y="100" class="legend">• Claude Sonnet 4: 8 minutes</text>
+    <text x="0" y="115" class="legend">• Gemini 2.5 Pro: 15 minutes</text>
+    
+    <text x="0" y="140" class="legend" style="font-weight: 600;">Key Insight:</text>
+    <text x="0" y="155" class="legend">Cheapest AI ≠ Lowest</text>
+    <text x="0" y="170" class="legend">Total Cost</text>
+  </g>
+  
+  <!-- Bottom note -->
+  <text x="400" y="480" text-anchor="middle" class="subtitle">Junior frontend developer rate: $35/hour | Follow-up time includes reviewing, prompting, testing, and integration</text>
+  
+</svg>
