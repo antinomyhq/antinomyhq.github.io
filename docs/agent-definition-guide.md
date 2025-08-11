@@ -22,26 +22,29 @@ Each agent is defined in a markdown file with YAML frontmatter containing config
 
 Forge uses different default locations for the agents directory depending on your operating system:
 
-| Operating System | Agent Directory Path |
-|-----------------|---------------------|
-| **Unix/Linux/macOS** | `~/forge/agents/` |
-| **Windows** | `%USERPROFILE%\forge\agents\` |
+| Operating System     | Agent Directory Path          |
+| -------------------- | ----------------------------- |
+| **Unix/Linux/macOS** | `~/forge/agents/`             |
+| **Windows**          | `%USERPROFILE%\forge\agents\` |
 
 ### Environment Variables
 
 If you need to check your user profile location:
 
 **Unix/Linux/macOS:**
+
 ```bash
 echo $HOME/forge/agents
 ```
 
 **Windows (Command Prompt):**
+
 ```cmd
 echo %USERPROFILE%\forge\agents
 ```
 
 **Windows (PowerShell):**
+
 ```powershell
 Write-Host "$env:USERPROFILE\forge\agents"
 ```
@@ -53,16 +56,19 @@ Create a directory for your agents and add your first agent file:
 ### Creating the Agents Directory
 
 **On Unix/Linux/macOS:**
+
 ```bash
 mkdir -p ~/forge/agents
 ```
 
 **On Windows (Command Prompt):**
+
 ```cmd
 mkdir "%USERPROFILE%\forge\agents"
 ```
 
 **On Windows (PowerShell):**
+
 ```powershell
 New-Item -ItemType Directory -Path "$env:USERPROFILE\forge\agents" -Force
 ```
@@ -94,7 +100,7 @@ max_turns: 50
 temperature: 0.1
 ---
 
-You are Forge, a frontend development expert specializing in React and TypeScript. 
+You are Forge, a frontend development expert specializing in React and TypeScript.
 You focus on writing clean, maintainable, and accessible code that follows modern best practices.
 
 Always consider performance implications and user experience when making recommendations.
@@ -119,8 +125,8 @@ However, for the agent to be useful, you'll typically want to include:
 ```yaml
 ---
 id: unique-agent-identifier
-title: Human Readable Agent Name        # Optional but recommended
-description: Brief description         # Optional but recommended for tool definitions
+title: Human Readable Agent Name # Optional but recommended
+description: Brief description # Optional but recommended for tool definitions
 ---
 ```
 
@@ -142,10 +148,10 @@ title: Backend API Specialist
 description: Expert in REST APIs, databases, and server architecture
 
 # Tool support flag
-tool_supported: true           # Enable/disable tool support (default: true if not specified)
+tool_supported: true # Enable/disable tool support (default: true if not specified)
 
 # Model selection
-model: claude-3-5-sonnet       # Any supported model ID
+model: claude-3-5-sonnet # Any supported model ID
 
 # Custom behavior rules
 custom_rules: |
@@ -168,31 +174,30 @@ subscribe:
   - test_result
 
 # Conversation limits
-max_turns: 100                 # Maximum conversation turns
-max_walker_depth: 3            # Maximum file tree traversal depth
+max_turns: 100 # Maximum conversation turns
+max_walker_depth: 3 # Maximum file tree traversal depth
 
 # Model parameters
-temperature: 0.2               # Creativity level (0.0-2.0)
-top_p: 0.9                    # Nucleus sampling parameter (0.0-1.0)
-top_k: 40                     # Top-k sampling parameter (1-1000)
-max_tokens: 4096              # Maximum response length (1-100000)
+temperature: 0.2 # Creativity level (0.0-2.0)
+top_p: 0.9 # Nucleus sampling parameter (0.0-1.0)
+top_k: 40 # Top-k sampling parameter (1-1000)
+max_tokens: 4096 # Maximum response length (1-100000)
 
 # Advanced features
-compact: false                # Use compact responses (boolean or object)
-reasoning:                    # Reasoning configuration
-  enabled: true              # Enable reasoning mode
-  effort: medium             # Effort level: low, medium, high
-  max_tokens: 2048          # Max tokens for reasoning (> 1024)
-  exclude: false            # Hide reasoning from output
+compact: false # Use compact responses (boolean or object)
+reasoning: # Reasoning configuration
+  enabled: true # Enable reasoning mode
+  effort: medium # Effort level: low, medium, high
+  max_tokens: 2048 # Max tokens for reasoning (> 1024)
+  exclude: false # Hide reasoning from output
 ---
-
 You are Forge, a backend development expert specializing in APIs and server architecture.
 
 Focus on writing production-ready, scalable code with proper error handling, logging, and comprehensive testing. Always consider security best practices and performance optimization.
 
 **Your key responsibilities:**
 - Design RESTful APIs following industry standards
-- Database schema design and optimization  
+- Database schema design and optimization
 - Implement proper authentication and authorization
 - Provide monitoring and observability guidance
 ```
@@ -223,8 +228,9 @@ You are Forge, a testing expert who ensures code quality through comprehensive t
 Focus on test coverage, edge cases, and maintainable test code.
 
 **Your specialization includes:**
+
 - Unit testing strategies
-- Integration testing approaches  
+- Integration testing approaches
 - Test-driven development
 - Mock and stub patterns
 - Performance testing considerations
@@ -265,6 +271,7 @@ max_turns: 50
 You are Forge, a frontend development expert specializing in React and TypeScript.
 
 **Key Focus Areas:**
+
 - Component architecture and reusability
 - Performance optimization
 - Accessibility (WCAG 2.1 compliance)
@@ -301,6 +308,7 @@ max_turns: 75
 You are Forge, a backend development expert specializing in APIs and server architecture.
 
 **Key Responsibilities:**
+
 - Design RESTful APIs following industry standards
 - Database schema design and optimization
 - Security best practices implementation
@@ -335,6 +343,7 @@ reasoning: true
 You are Forge, a security expert focused on identifying and fixing security vulnerabilities in code.
 
 **Security Focus Areas:**
+
 - Input validation and sanitization
 - Authentication and authorization flaws
 - Injection vulnerabilities (SQL, XSS, etc.)
@@ -370,6 +379,7 @@ max_turns: 60
 You are Forge, a testing expert who ensures code quality through comprehensive testing strategies.
 
 **Testing Philosophy:**
+
 - Test behavior, not implementation
 - Write tests first when possible (TDD)
 - Ensure fast feedback loops
@@ -407,6 +417,7 @@ max_turns: 25
 You are Forge, a production deployment expert focused on safe, reliable deployments.
 
 **Deployment Priorities:**
+
 1. Zero-downtime deployments
 2. Comprehensive monitoring and alerting
 3. Quick rollback capabilities
@@ -423,6 +434,7 @@ Always include monitoring, logging, and recovery procedures.
 All markdown files in your agents directory are automatically discovered and loaded when Forge starts. The agents become available in the agent selection interface when you create a new conversation.
 
 **Agent Directory Locations:**
+
 - **Unix/Linux/macOS:** `~/forge/agents/`
 - **Windows:** `%USERPROFILE%\forge\agents\`
 
@@ -431,12 +443,12 @@ All markdown files in your agents directory are automatically discovered and loa
 Forge validates agent definitions on startup:
 
 - **Required fields**: Only `id` is strictly required
-- **Unique IDs**: Each agent must have a unique identifier  
+- **Unique IDs**: Each agent must have a unique identifier
 - **Valid YAML**: Frontmatter must be valid YAML syntax
 - **Supported tools**: Only recognized tools are allowed in the `tools` array
-- **Parameter ranges**: 
+- **Parameter ranges**:
   - `temperature`: 0.0 to 2.0
-  - `top_p`: 0.0 to 1.0  
+  - `top_p`: 0.0 to 1.0
   - `top_k`: 1 to 1000
   - `max_tokens`: 1 to 100,000
   - `reasoning.max_tokens`: Must be > 1024 and < overall `max_tokens`
@@ -451,6 +463,7 @@ All agent definition files must be placed directly in the agents directory. Subd
 **Correct file organization:**
 
 **Unix/Linux/macOS:**
+
 ```
 ~/forge/agents/
 ├── frontend-expert.md
@@ -465,6 +478,7 @@ All agent definition files must be placed directly in the agents directory. Subd
 ```
 
 **Windows:**
+
 ```
 %USERPROFILE%\forge\agents\
 ├── frontend-expert.md
@@ -487,6 +501,7 @@ Do not create subdirectories within the agents directory. Files placed in subdir
 :::
 
 **Naming suggestions for organization:**
+
 - Use prefixes to group related agents: `frontend-expert.md`, `frontend-testing.md`
 - Use descriptive names: `api-security-auditor.md`, `react-specialist.md`
 - Keep agent IDs unique and meaningful: `devops-kubernetes`, `testing-e2e-specialist`
@@ -502,16 +517,19 @@ Do not create subdirectories within the agents directory. Files placed in subdir
 ### Configuration Guidelines
 
 **Temperature Settings:**
+
 - `0.0-0.1`: Precise, deterministic responses (security, production)
 - `0.1-0.3`: Balanced creativity and consistency (general development)
 - `0.3-0.5`: More creative responses (brainstorming, architecture)
 
 **Tool Selection:**
+
 - Include only tools the agent actually needs
 - Security-focused agents might only need read access
 - Development agents typically need file manipulation tools
 
 **Custom Rules:**
+
 - Be specific about coding standards and practices
 - Include testing requirements
 - Specify architectural patterns to follow
@@ -528,6 +546,7 @@ Do not create subdirectories within the agents directory. Files placed in subdir
 ### Common Issues
 
 **Agent not appearing in selection:**
+
 - Check YAML syntax with a validator
 - Ensure the `id` field is present and unique
 - Verify the file is in your agents directory:
@@ -537,12 +556,14 @@ Do not create subdirectories within the agents directory. Files placed in subdir
 - Restart Forge after making changes
 
 **Agent behaving unexpectedly:**
+
 - Review custom rules for conflicts
 - Check temperature settings (too high = unpredictable)
 - Verify tool permissions match intended usage
 - Test with simpler prompts first
 
 **Performance issues:**
+
 - Reduce `max_turns` for focused agents
 - Lower `temperature` for more predictable responses
 - Limit `tools` to only necessary ones
@@ -562,6 +583,7 @@ If you've been manually entering specialized prompts, convert them to agents:
 ### Sharing Agents Across Teams
 
 **Team Agent Repository:**
+
 1. Create a shared `agents` directory in version control
 2. Symlink team agents to individual `~/forge/agents` folders
 3. Use environment variables for team-specific customization
@@ -569,6 +591,7 @@ If you've been manually entering specialized prompts, convert them to agents:
 **Agent Templates:**
 
 **Unix/Linux/macOS:**
+
 ```bash
 # Create team template
 cp ~/forge/agents/frontend-expert.md ~/team-agents/templates/
@@ -578,6 +601,7 @@ cp ~/team-agents/templates/frontend-expert.md ~/forge/agents/my-frontend-expert.
 ```
 
 **Windows (Command Prompt):**
+
 ```cmd
 rem Create team template
 copy "%USERPROFILE%\forge\agents\frontend-expert.md" "%USERPROFILE%\team-agents\templates\"
@@ -587,6 +611,7 @@ copy "%USERPROFILE%\team-agents\templates\frontend-expert.md" "%USERPROFILE%\for
 ```
 
 **Windows (PowerShell):**
+
 ```powershell
 # Create team template
 Copy-Item "$env:USERPROFILE\forge\agents\frontend-expert.md" "$env:USERPROFILE\team-agents\templates\"
@@ -594,4 +619,3 @@ Copy-Item "$env:USERPROFILE\forge\agents\frontend-expert.md" "$env:USERPROFILE\t
 # Customize for individual use
 Copy-Item "$env:USERPROFILE\team-agents\templates\frontend-expert.md" "$env:USERPROFILE\forge\agents\my-frontend-expert.md"
 ```
-
