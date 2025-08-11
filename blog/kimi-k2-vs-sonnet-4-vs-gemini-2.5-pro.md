@@ -97,7 +97,7 @@ Token usage and costs across all tasks:
 | ----------------- | -------------- | ---------------------------- | -------- | ------------------------------------------------------- |
 | Total tokens used | 11,700         | 79,950                       | ~60,200  | Claude consumed large input context and replied tersely |
 | Input tokens      | ~8,200         | 79,665                       | ~54,000  | Gemini used minimal input, needed retries               |
-| Output tokens     | ~3,500         | 285                          | ~6,200   | Claude replies were compact but complete                |
+| Output tokens     | ~3,500         | 2850                         | ~6,200   | Claude replies were compact but complete                |
 | Total cost        | $0.14          | $3.19                        | $0.53    | About 23x gap between Claude and Gemini                 |
 | Cost per task     | $0.028         | $0.638                       | $0.106   | Price reflects iteration count and accuracy             |
 | Token efficiency  | High           | Low (high input, low output) | Moderate | Efficiency does not always equal accuracy               |
