@@ -18,16 +18,19 @@ Get your first custom agent running with these three commands:
 ### Step 1: Create the agents directory
 
 **Unix/Linux/macOS:**
+
 ```bash
 mkdir -p ~/forge/agents
 ```
 
 **Windows (Command Prompt):**
+
 ```cmd
 mkdir "%USERPROFILE%\forge\agents"
 ```
 
 **Windows (PowerShell):**
+
 ```powershell
 New-Item -ItemType Directory -Path "$env:USERPROFILE\forge\agents" -Force
 ```
@@ -160,7 +163,6 @@ reasoning: # Reasoning configuration
 user_prompt: |
   Please analyze the codebase and suggest improvements.
 ---
-
 You are Forge, a backend development expert specializing in APIs and server architecture.
 
 Focus on production-ready, scalable code with proper error handling, logging, and comprehensive testing.
@@ -171,11 +173,13 @@ Focus on production-ready, scalable code with proper error handling, logging, an
 Forge validates agent definitions on startup. Invalid agents are skipped with warning messages.
 
 ### Required Validations
+
 - **Unique IDs**: Each agent must have a unique `id` field
 - **Valid YAML**: Frontmatter must be properly formatted YAML
 - **Recognized Tools**: Only supported tools allowed in `tools` array
 
 ### Parameter Constraints
+
 - **temperature**: 0.0 to 2.0
 - **top_p**: 0.0 to 1.0
 - **top_k**: 1 to 1000
@@ -210,6 +214,7 @@ max_turns: 50
 You are Forge, a frontend development expert specializing in React and TypeScript.
 
 **Key Focus Areas:**
+
 - Component architecture and reusability
 - Performance optimization
 - Accessibility (WCAG 2.1 compliance)
@@ -246,6 +251,7 @@ max_turns: 75
 You are Forge, a backend development expert specializing in APIs and server architecture.
 
 **Key Responsibilities:**
+
 - Design RESTful APIs following industry standards
 - Database schema design and optimization
 - Security best practices implementation
@@ -280,6 +286,7 @@ reasoning: true
 You are Forge, a security expert focused on identifying and fixing security vulnerabilities in code.
 
 **Security Focus Areas:**
+
 - Input validation and sanitization
 - Authentication and authorization flaws
 - Injection vulnerabilities (SQL, XSS, etc.)
@@ -315,6 +322,7 @@ max_turns: 60
 You are Forge, a testing expert who ensures code quality through comprehensive testing strategies.
 
 **Testing Philosophy:**
+
 - Test behavior, not implementation
 - Write tests first when possible (TDD)
 - Ensure fast feedback loops
@@ -329,10 +337,12 @@ Always include test examples and explain testing strategy rationale.
 ### Directory Structure
 
 **Agent Directory Locations:**
+
 - **Unix/Linux/macOS**: `~/forge/agents/`
 - **Windows**: `%USERPROFILE%\forge\agents\`
 
 **Supported Organization:**
+
 ```
 ~/forge/agents/
 ├── frontend-expert.md
@@ -359,16 +369,19 @@ Forge automatically discovers and loads all `.md` files in your agents directory
 Check your agent directory location:
 
 **Unix/Linux/macOS:**
+
 ```bash
 echo $HOME/forge/agents
 ```
 
 **Windows (Command Prompt):**
+
 ```cmd
 echo %USERPROFILE%\forge\agents
 ```
 
 **Windows (PowerShell):**
+
 ```powershell
 Write-Host "$env:USERPROFILE\forge\agents"
 ```
@@ -378,24 +391,28 @@ Write-Host "$env:USERPROFILE\forge\agents"
 ### Common Issues and Solutions
 
 **Agent not appearing in selection**
+
 - Check file is in correct directory (`~/forge/agents/` or `%USERPROFILE%\forge\agents\`)
 - Verify file has `.md` extension
 - Ensure valid YAML frontmatter syntax
 - Confirm unique `id` field exists
 
 **Invalid YAML errors**
+
 - Validate YAML syntax using an online YAML validator
 - Check proper indentation (spaces, not tabs)
 - Ensure strings with special characters are quoted
 - Verify multiline strings use `|` or `>` syntax correctly
 
 **Agent validation warnings**
+
 - Check parameter values are within valid ranges
 - Verify all tools in `tools` array are recognized
 - Ensure `reasoning.max_tokens` is greater than 1024
 - Confirm `description` field exists if agent will be used as a tool
 
 **Agent not behaving as expected**
+
 - Review system prompt clarity and specificity
 - Adjust `temperature` for more/less creative responses
 - Check `custom_rules` are specific and actionable
@@ -411,6 +428,7 @@ Write-Host "$env:USERPROFILE\forge\agents"
 ### Getting Help
 
 If you encounter issues not covered here:
+
 1. Verify your agent file against the working examples
 2. Check the validation rules section for parameter constraints
 3. Test with a minimal agent configuration first
@@ -444,6 +462,7 @@ max_turns: 25
 You are Forge, a production deployment expert focused on safe, reliable deployments.
 
 **Deployment Priorities:**
+
 1. Zero-downtime deployments
 2. Comprehensive monitoring and alerting
 3. Quick rollback capabilities
