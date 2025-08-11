@@ -95,31 +95,30 @@ For typical coding prompts with 1,500-2,000 tokens of context, observed total re
 
 Token usage and costs per task (averages):
 
-| Metric            | Gemini 2.5 Pro | Claude Sonnet 4              | Kimi K2  | Notes                                                   |
-| ----------------- | -------------- | ---------------------------- | -------- | ------------------------------------------------------- |
-| Avg tokens per request | 52,800         | 82,515                       | ~60,200  | Claude consumed large input context and replied tersely |
-| Input tokens      | ~46,200        | 79,665                       | ~54,000  | Gemini used minimal input, needed retries               |
-| Output tokens     | ~6,600         | 2850                         | ~6,200   | Claude replies were compact but complete                |
-| Cost per task       | $1.65          | $3.19                        | $0.53    | About 1.9x gap between Claude and Gemini                |
-
+| Metric                 | Gemini 2.5 Pro | Claude Sonnet 4 | Kimi K2 | Notes                                                   |
+| ---------------------- | -------------- | --------------- | ------- | ------------------------------------------------------- |
+| Avg tokens per request | 52,800         | 82,515          | ~60,200 | Claude consumed large input context and replied tersely |
+| Input tokens           | ~46,200        | 79,665          | ~54,000 | Gemini used minimal input, needed retries               |
+| Output tokens          | ~6,600         | 2850            | ~6,200  | Claude replies were compact but complete                |
+| Cost per task          | $1.65          | $3.19           | $0.53   | About 1.9x gap between Claude and Gemini                |
 
 Note on Claude numbers: 79,665 input + 2850 output = 82,515 total. This matches the observed behavior where Claude reads a lot, then responds concisely.
+
 ## Total cost of ownership: AI + developer time
 
 When you factor in developer time for follow-ups, the cost picture changes significantly. Using a junior frontend developer rate of $35/hour:
 
 ![Total Cost Analysis](../static/blog/total-cost-ownership-ai-models.svg)
 
-| Model           | AI cost | Follow-up time | Dev cost (follow-ups) | Total cost | True cost ranking |
-| --------------- | ------- | -------------- | -------------------- | ---------- | ----------------- |
-| Claude Sonnet 4 | $3.19   | 8 min          | $4.67                | $7.86      | 2nd               |
-| Gemini 2.5 Pro  | $1.65   | 15 min         | $8.75                | $10.40     | 3rd (most expensive) |
-| Kimi K2         | $0.53   | 8 min          | $4.67                | $5.20      | 1st (best value)  |
+| Model           | AI cost | Follow-up time | Dev cost (follow-ups) | Total cost | True cost ranking    |
+| --------------- | ------- | -------------- | --------------------- | ---------- | -------------------- |
+| Claude Sonnet 4 | $3.19   | 8 min          | $4.67                 | $7.86      | 2nd                  |
+| Gemini 2.5 Pro  | $1.65   | 15 min         | $8.75                 | $10.40     | 3rd (most expensive) |
+| Kimi K2         | $0.53   | 8 min          | $4.67                 | $5.20      | 1st (best value)     |
 
 The follow-up time includes reviewing incomplete work, writing clarification prompts, testing partial implementations, and integrating the final pieces. Gemini's speed advantage disappears when you account for the extra iteration cycles needed to complete tasks.
 
 **Analysis:** Claude's premium AI cost is offset by requiring minimal developer intervention. Gemini appears cheapest upfront but becomes the most expensive option when factoring in your time.
-
 
 ## What each model got right and wrong
 
