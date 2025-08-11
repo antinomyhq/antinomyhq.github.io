@@ -104,6 +104,22 @@ Token usage and costs per task (averages):
 
 
 Note on Claude numbers: 79,665 input + 2850 output = 82,515 total. This matches the observed behavior where Claude reads a lot, then responds concisely.
+## Total cost of ownership: AI + developer time
+
+When you factor in developer time for follow-ups, the cost picture changes significantly. Using a junior frontend developer rate of $35/hour:
+
+![Total Cost Analysis](../static/blog/total-cost-ownership-ai-models.svg)
+
+| Model           | AI cost | Follow-up time | Dev cost (follow-ups) | Total cost | True cost ranking |
+| --------------- | ------- | -------------- | -------------------- | ---------- | ----------------- |
+| Claude Sonnet 4 | $3.19   | 8 min          | $4.67                | $7.86      | 2nd               |
+| Gemini 2.5 Pro  | $1.65   | 15 min         | $8.75                | $10.40     | 3rd (most expensive) |
+| Kimi K2         | $0.53   | 8 min          | $4.67                | $5.20      | 1st (best value)  |
+
+The follow-up time includes reviewing incomplete work, writing clarification prompts, testing partial implementations, and integrating the final pieces. Gemini's speed advantage disappears when you account for the extra iteration cycles needed to complete tasks.
+
+**Analysis:** Claude's premium AI cost is offset by requiring minimal developer intervention. Gemini appears cheapest upfront but becomes the most expensive option when factoring in your time.
+
 
 ## What each model got right and wrong
 
@@ -126,15 +142,15 @@ Note on Claude numbers: 79,665 input + 2850 output = 82,515 total. This matches 
 
 ## Final verdict
 
-Claude Sonnet 4 wins for production work, and here's specifically why: it's the only model that consistently understood the full scope of what I was asking for. When I said "implement an organization switcher and scope Velt comments by organization ID," Claude built the complete feature - UI component, state management, Velt integration, error handling, and persistence. Gemini would fix the bugs but ignore the switcher. Kimi would build the switcher but leave the Velt scoping as a TODO.
+The total cost of ownership analysis reveals the real winner here. While Claude Sonnet 4 has the highest AI costs, it requires the least developer time to reach production-ready code. **Kimi K2 emerges as the best overall value** when you factor in the complete picture.
 
-The cost difference matters less when you factor in your time. Claude's $3.19 per task becomes cheaper than Gemini's $1.65 when you account for the extra prompts, debugging, and finishing incomplete work.
+**For cost-conscious development:** Kimi K2 provides the best total value at $5.20 per task. Yes, it needs follow-up prompts, but the total cost including your time is still lowest. Plus it catches performance issues other models miss.
 
-For daily development where speed and cost matter more than perfection, Kimi K2 hits a sweet spot. It catches performance issues other models miss and generally produces good code, even if it needs a follow-up prompt to finish the job.
+**For production deadlines:** Claude Sonnet 4 delivers the most complete implementations on first attempt at $7.86 total cost. When you need code that works right away with minimal debugging, the premium cost pays for itself.
 
-Gemini 2.5 Pro is best for quick experiments and simple fixes where the fast feedback loop outweighs the need for thorough implementation.
+**For quick experiments:** Gemini 2.5 Pro has the fastest response times, but the follow-up overhead makes it surprisingly expensive at $10.40 total cost. Best suited for simple fixes where speed matters more than completeness.
 
-But when it's production code that needs to work right the first time? Claude is the only choice that doesn't waste your time.
+The key insight: looking at AI costs alone is misleading. Factor in your time, and the value proposition completely changes. The "cheapest" AI option often becomes the most expensive when you account for the work needed to finish incomplete implementations.
 
 ---
 
