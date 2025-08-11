@@ -20,11 +20,13 @@ hide_table_of_contents: false
 
 ## TL;DR
 
-- Production changes with low tolerance for mistakes: Claude Sonnet 4. Highest task completion, needed one quick UI follow-up, cost $3.19 per task.
-- Daily dev work and performance fixes: Kimi K2. Found every bug, built a working org switcher, sometimes left TODOs that a second prompt resolved. About $0.53 per task.
-- Fast experiments and small fixes: Gemini 2.5 Pro. 3-8 second replies, cheapest at $0.14 per task, but required multiple prompts for the full feature.
+I tested three AI models on the same Next.js codebase to see which delivers production-ready code with minimal follow-up.
 
-I prefer Claude when reliability matters. It costs more, but I spent the least time fixing mistakes.
+**Claude Sonnet 4:** Highest completion rate and best prompt adherence. Understood complex requirements fully and delivered complete implementations on first attempt. At $3.19 per task, the premium cost translates to significantly less debugging time.
+
+**Kimi K2:** Excellent at identifying performance issues and code quality problems other models missed. Built functional features but occasionally required clarification prompts to complete full scope. Strong value at $0.53 per task for iterative development.
+
+**Gemini 2.5 Pro:** Fastest response times (3-8 seconds) with reliable bug fixes, but struggled with multi-part feature requests. Best suited for targeted fixes rather than comprehensive implementations. $1.65 per task.
 
 <!--truncate-->
 
@@ -89,20 +91,19 @@ For typical coding prompts with 1,500-2,000 tokens of context, observed total re
 - Kimi K2: 11-20 seconds total, began streaming quickly
 - Claude Sonnet 4: 13-25 seconds total, noticeable thinking delay before output
 
-![model comparison graph](../static/blog/kimi-k2-vs-claude-4-vs-gemini-graph.png)
+![model comparison graph](../static/blog/kimi-k2-vs-claude-4-vs-gemini-graph.svg)
 
-Token usage and costs across all tasks:
+Token usage and costs per task (averages):
 
 | Metric            | Gemini 2.5 Pro | Claude Sonnet 4              | Kimi K2  | Notes                                                   |
 | ----------------- | -------------- | ---------------------------- | -------- | ------------------------------------------------------- |
-| Total tokens used | 11,700         | 79,950                       | ~60,200  | Claude consumed large input context and replied tersely |
-| Input tokens      | ~8,200         | 79,665                       | ~54,000  | Gemini used minimal input, needed retries               |
-| Output tokens     | ~3,500         | 2850                         | ~6,200   | Claude replies were compact but complete                |
-| Total cost        | $0.14          | $3.19                        | $0.53    | About 23x gap between Claude and Gemini                 |
-| Cost per task     | $0.028         | $0.638                       | $0.106   | Price reflects iteration count and accuracy             |
-| Token efficiency  | High           | Low (high input, low output) | Moderate | Efficiency does not always equal accuracy               |
+| Avg tokens per request | 52,800         | 82,515                       | ~60,200  | Claude consumed large input context and replied tersely |
+| Input tokens      | ~46,200        | 79,665                       | ~54,000  | Gemini used minimal input, needed retries               |
+| Output tokens     | ~6,600         | 2850                         | ~6,200   | Claude replies were compact but complete                |
+| Cost per task       | $1.65          | $3.19                        | $0.53    | About 1.9x gap between Claude and Gemini                |
 
-Note on Claude numbers: 79,665 input + 285 output = 79,950 total. This matches the observed behavior where Claude reads a lot, then responds concisely.
+
+Note on Claude numbers: 79,665 input + 2850 output = 82,515 total. This matches the observed behavior where Claude reads a lot, then responds concisely.
 
 ## What each model got right and wrong
 
@@ -127,7 +128,7 @@ Note on Claude numbers: 79,665 input + 285 output = 79,950 total. This matches t
 
 Claude Sonnet 4 wins for production work, and here's specifically why: it's the only model that consistently understood the full scope of what I was asking for. When I said "implement an organization switcher and scope Velt comments by organization ID," Claude built the complete feature - UI component, state management, Velt integration, error handling, and persistence. Gemini would fix the bugs but ignore the switcher. Kimi would build the switcher but leave the Velt scoping as a TODO.
 
-The cost difference matters less when you factor in your time. Claude's $3.19 per task becomes cheaper than Gemini's $0.14 when you account for the extra prompts, debugging, and finishing incomplete work.
+The cost difference matters less when you factor in your time. Claude's $3.19 per task becomes cheaper than Gemini's $1.65 when you account for the extra prompts, debugging, and finishing incomplete work.
 
 For daily development where speed and cost matter more than perfection, Kimi K2 hits a sweet spot. It catches performance issues other models miss and generally produces good code, even if it needs a follow-up prompt to finish the job.
 
