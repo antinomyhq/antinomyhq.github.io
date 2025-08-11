@@ -43,7 +43,7 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
   onClick,
   titleClassName = "text-content-small font-bold sm:text-title-tiny lg:text-title-small text-tailCall-light-600 text-center space-x-1",
   desktopClassName = "hidden sm:flex items-center px-8 mt-SPACE_10 overflow-hidden",
-  mobileClassName = "sm:hidden flex items-center justify-around flex-wrap mt-SPACE_06 space-y-SPACE_02",
+  mobileClassName = "sm:hidden flex__column__center justify-around flex-wrap mt-SPACE_06 space-y-SPACE_02",
   isHorizontal = false,
 }) => {
   const handleClick = () => onClick?.()
@@ -53,9 +53,9 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
     const clientLogo = theme === "dark" ? logo : lightLogo ?? logo
     const content = <LogoRenderer logo={clientLogo} alt={name} />
     return (
-      <div key={name} className="h-12 flex items-center justify-center px-8">
+      <div key={name} className="h-12 flex__centered px-8">
         {link ? (
-          <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-full">
+          <a href={link} target="_blank" rel="noopener noreferrer" className="flex__centered h-full">
             {content}
           </a>
         ) : (
@@ -67,14 +67,14 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
 
   if (isHorizontal) {
     return (
-      <div className="flex items-center gap-5">
+      <div className="flex__column__center gap-5">
         {title && (
           <span className="hidden lg:block min-w-[200px] text-tailCall-lightMode---neutral-500 dark:text-tailCall-lightMode---neutral-400 text-title-small font-normal mt-8">
             {title}
           </span>
         )}
         <Marquee gradient gradientColor={theme === "dark" ? "black" : "#F1F1F1"} autoFill>
-          <div className="flex items-center px-8 mt-SPACE_10 overflow-hidden space-x-5 sm:space-x-20">
+          <div className="flex__column__center px-8 mt-SPACE_10 overflow-hidden space-x-5 sm:space-x-20">
             {logos.map(renderLogo)}
           </div>
         </Marquee>

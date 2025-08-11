@@ -5,6 +5,7 @@ import NavbarColorModeToggle from "@theme/Navbar/ColorModeToggle"
 import IconClose from "@theme/Icon/Close"
 import NavbarLogo from "@theme/Navbar/Logo"
 import {X} from "lucide-react"
+import {common_styles} from "@site/src/constants/styles"
 
 function CloseButton() {
   const mobileSidebar = useNavbarMobileSidebar()
@@ -16,7 +17,7 @@ function CloseButton() {
         message: "Close navigation bar",
         description: "The ARIA label for close button of mobile sidebar",
       })}
-      className="clean-btn navbar-sidebar__close !bg-tailCall-lightMode---primary-700 dark:!bg-tailCall-darkMode---primary-400 rounded p-2 text-white"
+      className={`clean-btn navbar-sidebar__close rounded p-2 text-white ${common_styles.theme_bg_important}`}
       onClick={() => mobileSidebar.toggle()}
     >
       <X className="text-white dark:text-black !h-5 !w-5" />

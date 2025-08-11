@@ -63,8 +63,8 @@ const AI_PROVIDERS: AIProvider[] = [
 const HERO_CONTAINER_CLASSES = "mx-auto w-full"
 const HERO_SECTION_CLASSES =
   "px-8 py-16 md:px-24 lg:px-36 lg:py-24  dark:bg-black bg-tailCall-light-1200 border-b border-solid border-transparent border-b-[#dbdbdb] dark:border-b-[#4b4b4b]"
-const HERO_CONTENT_CLASSES = "flex flex-col lg:gap-0 items-start xl:items-center xl:flex-row justify-between w-full"
-const HERO_TITLE_CONTAINER_CLASSES = "flex flex-col mt-2"
+const HERO_CONTENT_CLASSES = "flex__column lg:gap-0 items-start xl:items-center xl:flex-row justify-between w-full"
+const HERO_TITLE_CONTAINER_CLASSES = "flex__column mt-2"
 const HERO_TITLE_CLASSES =
   "font-bebas !font-normal text-[45px] md:text-display-small lg:text-display-medium xl:text-display-large-semi tracking-normal"
 const HERO_SUBTITLE_CLASSES =
@@ -80,7 +80,7 @@ const PRICING_GRID_CLASSES =
   "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-4 max-w-7xl mx-auto pb-12 mb-24"
 const CARD_CONTAINER_CLASSES =
   "bg-gradient-315-light-inactive dark:bg-gradient-315-inactive hover:bg-gradient-315-light hover:dark:bg-gradient-315 rounded-[13px] group p-[1px] relative flex flex-col transition-all duration-700 overflow-visible hover:shadow-2xl"
-const CARD_CONTENT_CLASSES = "p-6 bg-white dark:bg-tailCall-darkMode---neutral-900 rounded-[12px] h-full"
+const CARD_CONTENT_CLASSES = "p-6 bg-white dark:bg-tailCall-darkMode---neutral-900 rounded-xl h-full"
 const CARD_BACKGROUND_CLASSES =
   "absolute left-0 bottom-0 w-full h-[90%] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0 bg-custom-radial-light dark:bg-custom-radial"
 const CARD_TITLE_CLASSES =
@@ -105,13 +105,13 @@ const FAQ_TITLE_CLASSES =
 const FAQ_SUBTITLE_CLASSES =
   "text-content-small md:text-question-title text-[#A1A1A1] !font-[275] dark:text-tailCall-border-light-300 mt-5"
 const FAQ_ITEM_CLASSES =
-  "flex w-full justify-between items-center pt-8 text-left focus:outline-none bg-transparent dark:bg-black border-none cursor-pointer transition-all duration-300"
+  "flex__column__center w-full justify-between pt-8 text-left focus:outline-none bg-transparent dark:bg-black border-none cursor-pointer transition-all duration-300"
 const FAQ_QUESTION_CLASSES = "text-content-small md:text-question-title transition-colors duration-300"
 const FAQ_ANSWER_CLASSES = "overflow-hidden transition-all duration-300"
 const FAQ_ANSWER_TEXT_CLASSES =
-  "text-tailCall-darkMode---neutral-600 dark:text-tailCall-light-800 py-1 text-content-tiny md:text-[23px] leading-7 md:leading-[35px] font-[275]"
-const AI_PROVIDERS_SECTION_CLASSES = "flex flex-col gap-10 xl:my-20"
-const AI_PROVIDERS_HEADER_CLASSES = "flex flex-col items-center text-center xl:mt-10"
+  "text-tailCall-darkMode---neutral-600 dark:text-tailCall-light-800 py-1 font-kanit text-content-tiny md:text-[23px] leading-7 md:leading-[35px] font-[275]"
+const AI_PROVIDERS_SECTION_CLASSES = "flex__column gap-10 xl:my-20"
+const AI_PROVIDERS_HEADER_CLASSES = "flex__column items-center text-center xl:mt-10"
 const AI_PROVIDERS_TITLE_CLASSES =
   "  text-[32px] lg:text-[37px] text-display-tiny font-normal text-tailCall-darkMode---neutral-800 dark:text-white"
 const AI_PROVIDERS_SUBTITLE_CLASSES =
@@ -207,7 +207,7 @@ const FAQItem: React.FC<{
       >
         {item.question}
       </span>
-      <span className="text-tailCall-darkMode---primary-700 dark:text-white flex items-center justify-center">
+      <span className="text-tailCall-darkMode---primary-700 dark:text-white flex__centered">
         {isOpen ? <Minus size={20} /> : <Plus size={20} />}
       </span>
     </div>

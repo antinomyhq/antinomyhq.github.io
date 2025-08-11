@@ -16,6 +16,7 @@ import {FrontMatter} from "@theme/BlogPostPage"
 import {useLocation} from "@docusaurus/router"
 import ReactGA from "react-ga4"
 import SpotlightSpan from "@site/src/components/home/components/SpotlightCursor"
+import {common_styles} from "@site/src/constants/styles"
 
 function BlogListPageMetadata(props: Props): JSX.Element {
   const {metadata} = props
@@ -34,20 +35,22 @@ function BlogListPageMetadata(props: Props): JSX.Element {
 }
 
 function LoadMoreButton({handleLoadMore}: {handleLoadMore: () => void}): JSX.Element {
+  const {theme_border, theme_text, theme_hover_bg} = common_styles
   return (
     <div className="flex justify-center">
       <button
         onClick={handleLoadMore}
         className={`
           mt-10
-          rounded-[12px]
+          rounded-xl
           px-4 py-3 sm:px-6 lg:px-8 sm:py-5 lg:py-6
           cursor-pointer
           transition-all duration-300
           text-[18px]
-          border border-solid border-tailCall-lightMode---primary-700 dark:border-tailCall-lightMode---primary-400
-          text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400 hover:text-white hover:dark:text-black
-          bg-transparent hover:bg-tailCall-lightMode---primary-700 hover:dark:bg-tailCall-lightMode---primary-400 
+          font-kanit
+          border border-solid
+         hover:text-white hover:dark:text-black
+          bg-transparent ${theme_text} ${theme_border} ${theme_hover_bg}
         `}
       >
         Load More Blogs

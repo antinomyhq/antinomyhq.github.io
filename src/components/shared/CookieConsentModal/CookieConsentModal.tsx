@@ -150,7 +150,7 @@ const CookieConsentModal: React.FC<CookieConsentModalProps> = ({open, onAccept, 
                         key={text}
                         onClick={onClick}
                         variant="ghost"
-                        className="rounded-[12px] px-3 py-4 w-[100px]"
+                        className="rounded-xl px-3 py-4 w-[100px]"
                       >
                         {text}
                       </PrimaryButton>

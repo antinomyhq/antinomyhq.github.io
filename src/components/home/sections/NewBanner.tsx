@@ -8,24 +8,26 @@ const spotlightBase = "absolute -tracking-normal text-[118px] opacity-90 font-be
 const sharedClasses =
   "-tracking-normal font-normal absolute opacity-90 font-bebas text-[64px] min-[390px]:text-[75px] sm:text-[75px] lg:text-[120px] xl:text-[180px]"
 
+const FLEX_COLUMN = "flex__column"
+const FLEX_ROW_CENTER = "flex__row__center"
 // Tailwind class constants
-const outerWrapper = "flex justify-center md:mt-auto"
-const container = "max-w-[1440px] relative px-7 pt:5 lg:pt-0 flex lg:justify-center flex-col w-full"
-const contentLayout = "flex justify-around flex-col lg:flex-row gap-4 md:gap-0 lg:gap-40 xl:gap-64 md:pt-0 xl:pt-auto"
+const outerWrapper = `${FLEX_ROW_CENTER} md:mt-auto`
+const container = `max-w-[1440px] relative px-7 pt:5 lg:pt-0 ${FLEX_COLUMN} lg:justify-center w-full`
+const contentLayout = `${FLEX_COLUMN} justify-around lg:flex-row gap-4 md:gap-0 lg:gap-40 xl:gap-64 md:pt-0 xl:pt-auto`
 
-const mobileTextWrapper = "flex md:hidden lg:flex flex-col"
+const mobileTextWrapper = `${FLEX_COLUMN} md:hidden lg:flex`
 const descriptionText =
-  "text-tailCall-lightMode---neutral-800 dark:text-white text-[26px] font-light lg:font-light text-title-medium lg:text-display-tiny opacity-80 max-w-[500px] md:mt-24"
-const headerSection = "relative flex flex-col"
+  "text-tailCall-lightMode---neutral-800 dark:text-white text-[26px] font-light lg:font-light text-title-medium lg:text-display-tiny opacity-80 max-w-[500px] md:mt-24 font-kanit"
+const headerSection = `relative ${FLEX_COLUMN}`
 const mobileCTAButtons = "mt-36 ml-5 lg:mt-60 xl:mt-[22rem] xl:ml-20"
 
 const tabletWrapper = "relative hidden md:flex lg:hidden flex-col"
-const tabletHeaderSection = "relative flex flex-col"
+const tabletHeaderSection = `relative ${FLEX_COLUMN}`
 const tabletDescriptionText =
   "absolute left-80 -top-20 text-tailCall-lightMode---neutral-800 dark:text-white font-light text-title-semi-large lg:text-display-tiny opacity-80 max-w-[500px] mt-24"
 const tabletCTAButtons = "md:mx-auto md:mt-64"
 
-const terminalWrapper = "flex justify-center md:mt-8 md:ml-8"
+const terminalWrapper = `${FLEX_ROW_CENTER} md:mt-8 md:ml-8`
 const marqueeWrapper = "w-full px-0 mt-10"
 
 const Banner = (): JSX.Element => {

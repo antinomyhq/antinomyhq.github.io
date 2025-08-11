@@ -79,7 +79,7 @@ const TerminalWithTabs = (): JSX.Element => {
       return (
         <div
           key={idx}
-          className="flex items-center gap-2 text-tailCall-darkMode---neutral-500 dark:text-[#B0BEC5] text-[14px] !leading-3"
+          className="flex__column__center gap-2 text-tailCall-darkMode---neutral-500 dark:text-[#B0BEC5] text-[14px] !leading-3"
         >
           <div className="h-2 w-2 rounded-lg bg-tailCall-lightMode---primary-600 dark:bg-tailCall-lightMode---primary-400" />
           <span className="font-space text-content-small font-normal">{content}</span>
@@ -104,9 +104,9 @@ const TerminalWithTabs = (): JSX.Element => {
   }
 
   return (
-    <div className="relative bg-tailCall-lightMode---neutral-200 dark:bg-[#1E1C21] p-[1px] dark:bg-custom-diagonal rounded-[12px] w-full max-[375px]:h-[730px] md:w-4/5 lg:w-[450px] h-[685px] xl:h-[720px] flex flex-col font-mono">
+    <div className="relative bg-tailCall-lightMode---neutral-200 dark:bg-[#1E1C21] p-[1px] dark:bg-custom-diagonal rounded-xl w-full max-[375px]:h-[730px] md:w-4/5 lg:w-[450px] h-[685px] xl:h-[720px] flex__column font-mono">
       {/* Header */}
-      <div className="bg-tailCall-lightMode---neutral-100 dark:bg-tailCall-darkMode---neutral-900 w-full rounded-t-xl flex gap-2 items-center p-3">
+      <div className="bg-tailCall-lightMode---neutral-100 dark:bg-tailCall-darkMode---neutral-900 w-full rounded-t-xl flex__column__center gap-2 p-3">
         <div className="h-4 w-4 rounded-full bg-tailCall-lightMode---primary-600 dark:bg-tailCall-dark-1300 opacity-50" />
         <div className="h-4 w-4 rounded-full bg-tailCall-lightMode---primary-400 dark:bg-tailCall-dark-1400 opacity-50" />
         <div className="h-4 w-4 rounded-full bg-[#1ceb83] dark:bg-tailCall-darkMode---primary-400 opacity-50" />
@@ -127,7 +127,7 @@ const TerminalWithTabs = (): JSX.Element => {
         />
 
         {/* Guides */}
-        <div className="flex w-full flex-col px-4">
+        <div className="flex__column w-full px-4">
           {GUIDES.map(({title, details}) => (
             <div key={title} className="flex w-full">
               <span className="w-2/5 text-[#525252] dark:text-white font-space text-content-small font-normal max-[480px]:text-[12px]">
@@ -148,8 +148,8 @@ const TerminalWithTabs = (): JSX.Element => {
 
           {/* Command Line */}
           <div className="bg-[#E5E5E5] dark:bg-tailCall-dark-1600 rounded-[8px] flex h-[75px] absolute bottom-4 w-[91%] md:w-[94%] lg:w-[93%] border border-solid border-tailCall-dark-1800 dark:border-tailCall-lightMode---primary-400">
-            <div className="flex items-center bg-[#E5E5E5] dark:bg-tailCall-dark-1600 rounded-[8px] px-2">
-              <div className="flex items-center justify-center">
+            <div className="flex__column__center bg-[#E5E5E5] dark:bg-tailCall-dark-1600 rounded-[8px] px-2">
+              <div className="flex__centered">
                 <ChevronRight className="text-[#018284] dark:text-tailCall-lightMode---primary-400" width={24} />
               </div>
               <span className="py-3 ml-2 text-[#018284] dark:text-tailCall-lightMode---primary-400 font-space text-title-tiny font-normal max-[480px]:text-[14px]">

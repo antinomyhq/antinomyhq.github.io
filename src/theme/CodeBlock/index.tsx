@@ -3,6 +3,7 @@ import CodeBlock from "@theme-original/CodeBlock"
 import type CodeBlockType from "@theme/CodeBlock"
 import type {WrapperProps} from "@docusaurus/types"
 import {Copy, CopyCheck} from "lucide-react"
+import {common_styles} from "@site/src/constants/styles"
 
 type Props = WrapperProps<typeof CodeBlockType>
 
@@ -12,6 +13,8 @@ interface MetastringData extends Record<string, Primitive> {
   title: string
   showLineNumbers: boolean
 }
+
+const ICON_STYLES = `h-5 w-5 ${common_styles.theme_text}`
 
 export default function CodeBlockWrapper(props: Props): JSX.Element {
   const [copied, setCopied] = useState(false)
@@ -30,15 +33,9 @@ export default function CodeBlockWrapper(props: Props): JSX.Element {
         className="absolute top-[35px] right-[10px] z-20 bg-transparent border-none rounded-none flex items-center cursor-pointer text-white font-sans"
       >
         {copied && (
-          <span className="text-xs mr-1.5 text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400 opacity-85 font-sans">
-            Text Copied!
-          </span>
+          <span className={`text-xs mr-1.5 opacity-85 font-sans ${common_styles.theme_text}`}>Text Copied!</span>
         )}
-        {copied ? (
-          <CopyCheck className="h-5 w-5 text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400" />
-        ) : (
-          <Copy className="h-5 w-5 text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400" />
-        )}
+        {copied ? <CopyCheck className={ICON_STYLES} /> : <Copy className={ICON_STYLES} />}
       </button>
     </div>
   )

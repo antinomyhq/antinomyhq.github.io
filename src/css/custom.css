@@ -135,6 +135,33 @@ button {
   --ifm-table-even: #1d1d1d;
 }
 
+/* Custom classes */
+.flex__column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex__row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex__centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex__row__center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex__column__center {
+  display: flex;
+  align-items: center;
+}
+
 code {
   /* border: 1px dashed #555; */
   letter-spacing: 0.00001px;

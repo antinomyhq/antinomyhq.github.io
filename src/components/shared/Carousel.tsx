@@ -124,13 +124,13 @@ const Carousel: React.FC<CarouselProps> = ({children}) => {
     <div className="overflow-hidden px-[10vw] md:hidden mt-2 pt-1">
       <div ref={carouselRef} className="flex gap-4 transition-transform ease-out duration-300 will-change-transform">
         {clonedChildren.map((child, idx) => (
-          <div key={idx} className="flex-shrink-0 w-[80vw] rounded-xl flex items-center justify-center text-2xl">
+          <div key={idx} className="flex-shrink-0 w-[80vw] rounded-xl flex__centered text-2xl">
             {child}
           </div>
         ))}
       </div>
 
-      <div className="flex justify-center mt-4 gap-2">
+      <div className="flex__row__center mt-4 gap-2">
         {children.map((_, idx) => (
           <button
             key={idx}

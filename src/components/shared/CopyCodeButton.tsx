@@ -3,6 +3,7 @@ import clsx from "clsx"
 import {analyticsHandler} from "@site/src/utils"
 import {FORGE_CODE_INSTALL_COMMAND} from "@site/src/constants"
 import {Copy, CopyCheck} from "lucide-react"
+import {common_styles} from "@site/src/constants/styles"
 
 type LinkButtonProps = {
   title?: string
@@ -17,6 +18,7 @@ const CopyCodeButton = ({
   width = "auto",
   disabled,
 }: LinkButtonProps): JSX.Element => {
+  const {theme_border, theme_text, theme_hover_bg} = common_styles
   const [isCopied, setIsCopied] = useState(false)
   const setButtonWidth = () => {
     switch (width) {
@@ -55,18 +57,18 @@ const CopyCodeButton = ({
       className={clsx(
         `
         group relative
-        flex items-center justify-center
+        flex__centered
         gap-x-2
-        rounded-[12px]
+        rounded-xl
         w-[250px] overflow-hidden
         px-2 py-4 sm:px-6 lg:px-4 sm:py-5 lg:py-6
         cursor-pointer
         transition-all duration-1000
         ease-in-out
         text-lg
-        border border-solid border-tailCall-lightMode---primary-700 dark:border-tailCall-lightMode---primary-400
-        text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400 hover:text-white hover:dark:text-black
-        bg-transparent hover:bg-tailCall-lightMode---primary-700 hover:dark:bg-tailCall-lightMode---primary-400 
+        border border-solid
+        hover:text-white hover:dark:text-black
+        bg-transparent ${theme_text} ${theme_border} ${theme_hover_bg}
         `,
         disabled ? "cursor-not-allowed opacity-20" : "",
       )}
@@ -93,9 +95,13 @@ const CopyCodeButton = ({
       )}
 
       {!isCopied ? (
-        <Copy className="opacity-0 group-hover:opacity-100 -translate-x-[400px] group-hover:translate-x-[95px] stroke-current text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400 group-hover:text-white group-hover:dark:text-black transition-all duration-[1000ms]" />
+        <Copy
+          className={`opacity-0 group-hover:opacity-100 -translate-x-[400px] group-hover:translate-x-[95px] stroke-current ${theme_text} group-hover:text-white group-hover:dark:text-black transition-all duration-[1000ms]`}
+        />
       ) : (
-        <CopyCheck className="opacity-0 group-hover:opacity-100 -translate-x-[400px] group-hover:translate-x-[95px] stroke-current text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400 group-hover:text-white group-hover:dark:text-black transition-all duration-[1000ms]" />
+        <CopyCheck
+          className={`opacity-0 group-hover:opacity-100 -translate-x-[400px] group-hover:translate-x-[95px] stroke-current ${theme_text} group-hover:text-white group-hover:dark:text-black transition-all duration-[1000ms]`}
+        />
       )}
     </button>
   )

@@ -1,3 +1,4 @@
+import {common_styles} from "@site/src/constants/styles"
 import type {Props} from "@theme/BlogListPage"
 import clsx from "clsx"
 import React, {useMemo} from "react"
@@ -36,7 +37,7 @@ export function BlogCategories({items, onCategoryClick, activeCategory}: BlogCat
           className={clsx(
             "text-content-small md:text-title-tiny cursor-pointer appearance-none border-none bg-transparent px-1",
             name === "All" && activeCategory === "All"
-              ? "!font-medium text-[22px] text-tailCall-lightMode---primary-700 dark:text-tailCall-darkMode---primary-400 border-b-solid border-b-[1px] border-tailCall-lightMode---primary-600 dark:border-tailCall-darkMode---primary-400"
+              ? `!font-medium text-[22px] ${common_styles.theme_text} border-b-solid border-b-[1px] border-tailCall-lightMode---primary-600 dark:border-tailCall-darkMode---primary-400`
               : activeCategory === name
                 ? "!font-medium text-black border-b-solid border-b-2 border-black"
                 : "!font-normal text-tailCall-dark-200 hover:text-gray-700",
