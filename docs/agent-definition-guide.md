@@ -7,6 +7,7 @@ Create specialized AI assistants using simple markdown files. Define expert cons
 ## Prerequisites
 
 Before creating custom agents, ensure you have:
+
 - Forge installed and running
 - Access to create directories in your home folder
 - Basic familiarity with YAML syntax
@@ -28,18 +29,21 @@ Follow these steps to create and use a custom agent in under 5 minutes:
 ### Step 1: Create the agents directory
 
 **macOS/Linux:**
+
 ```bash
 mkdir -p ~/forge/agents
-ls -la ~/forge/agents  # Verify directory was created
+ls -la ~/forge/agents # Verify directory was created
 ```
 
 **Windows Command Prompt:**
+
 ```cmd
 mkdir "%USERPROFILE%\forge\agents"
 dir "%USERPROFILE%\forge\agents"
 ```
 
 **Windows PowerShell:**
+
 ```powershell
 New-Item -ItemType Directory -Path "$env:USERPROFILE\forge\agents" -Force
 Get-ChildItem "$env:USERPROFILE\forge\agents"
@@ -156,9 +160,7 @@ max_tokens: 4096        # Maximum response length: 1 to 100,000 tokens
 # ADVANCED FEATURES
 tool_supported: true     # Enable this agent as a tool for other agents (default: true)
 compact: false          # Use compact response format (default: false)
-reasoning:               # Reasoning configuration (optional)
-  enabled: true
-  effort: medium         # Options: low, medium, high
+reasoning: true              # Reasoning configuration (optional)
   max_tokens: 2048       # Must be > 1024 and < overall max_tokens
   exclude: false         # Hide reasoning from output (default: false)
 
@@ -185,14 +187,14 @@ Forge validates all agent definitions during startup. Invalid agents are skipped
 
 ### Parameter Constraints
 
-| Parameter | Valid Range | Default | Notes |
-|-----------|-------------|---------|-------|
-| `temperature` | 0.0 - 2.0 | 0.7 | Higher values increase creativity |
-| `top_p` | 0.0 - 1.0 | 0.9 | Nucleus sampling threshold |
-| `top_k` | 1 - 1000 | 40 | Top-k sampling limit |
-| `max_tokens` | 1 - 100,000 | 4096 | Maximum response length |
-| `max_turns` | 1 - 1000 | 100 | Conversation length limit |
-| `reasoning.max_tokens` | 1024+ | 2048 | Must be less than `max_tokens` |
+| Parameter              | Valid Range | Default | Notes                             |
+| ---------------------- | ----------- | ------- | --------------------------------- |
+| `temperature`          | 0.0 - 2.0   | 0.7     | Higher values increase creativity |
+| `top_p`                | 0.0 - 1.0   | 0.9     | Nucleus sampling threshold        |
+| `top_k`                | 1 - 1000    | 40      | Top-k sampling limit              |
+| `max_tokens`           | 1 - 100,000 | 4096    | Maximum response length           |
+| `max_turns`            | 1 - 1000    | 100     | Conversation length limit         |
+| `reasoning.max_tokens` | 1024+       | 2048    | Must be less than `max_tokens`    |
 
 ## Available Tools
 
@@ -389,6 +391,7 @@ Forge automatically discovers and loads all `.md` files in your agents directory
 **Problem**: Agent not appearing in selection list
 
 **Solutions**:
+
 1. Verify the file is in the correct directory (`~/forge/agents/` or `%USERPROFILE%\forge\agents\`)
 2. Ensure the file has a `.md` extension
 3. Check that the YAML frontmatter is valid
@@ -398,6 +401,7 @@ Forge automatically discovers and loads all `.md` files in your agents directory
 **Problem**: "Invalid YAML" error messages
 
 **Solutions**:
+
 1. Validate YAML syntax using an online YAML validator
 2. Check proper indentation (use spaces, not tabs)
 3. Quote strings containing special characters
@@ -407,6 +411,7 @@ Forge automatically discovers and loads all `.md` files in your agents directory
 **Problem**: Agent validation warnings
 
 **Solutions**:
+
 1. Check parameter values are within valid ranges (see constraints table)
 2. Verify all tools in the `tools` array are recognized
 3. Ensure `reasoning.max_tokens` is greater than 1024 and less than `max_tokens`
@@ -415,6 +420,7 @@ Forge automatically discovers and loads all `.md` files in your agents directory
 **Problem**: Agent not behaving as expected
 
 **Solutions**:
+
 1. Review system prompt for clarity and specificity
 2. Adjust `temperature` value (lower for more consistent responses)
 3. Make `custom_rules` more specific and actionable
@@ -523,9 +529,7 @@ top_p: 0.8
 # For reasoning-heavy tasks
 model: claude-3-5-sonnet-20241022
 temperature: 0.2
-reasoning:
-  enabled: true
-  effort: high
+reasoning: true
 ```
 
 ## Getting Help
