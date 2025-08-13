@@ -119,7 +119,7 @@ export const BlogAuthor: React.FC<AuthorDisplayProps> = ({
       <img
         src={author.imageURL}
         alt={author.name}
-        className="w-10 h-10 !rounded-full object-cover border-2 border-gray-100 shadow-sm"
+        className="!w-10 h-10 !rounded-full object-cover border-2 border-gray-100 shadow-sm"
       />
     </div>
 
