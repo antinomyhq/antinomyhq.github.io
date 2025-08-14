@@ -191,7 +191,7 @@ const TheBenefits = (): JSX.Element => {
         className="xl:max-w-[1440px] relative w-full h-[110vh] md:h-[120vh] flex__column pb-10 md:pb-0 z-10 xl:pt-24 overflow-hidden mb-0 md:mb-64"
       >
         <div
-          className="sticky top-0 flex__column items-center bg-[#F1F1F1] dark:bg-black"
+          className="sticky top-0 flex__column items-center bg-tailCall-light-1200 dark:bg-black"
           style={{
             height: `calc(${VISIBLE_HEIGHT * 100}vh + ${HEADING_HEIGHT}px)`,
             overflow: "visible",

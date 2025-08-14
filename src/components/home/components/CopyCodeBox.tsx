@@ -11,13 +11,13 @@ type Props = {
 const cls = {
   wrapper: "flex__column items-center mt-[200px] sm:mt-[220px] md:mt-[250px] lg:mt-[280px] xl:mt-[450px]",
   outerBox:
-    "w-full max-w-[700px] bg-tailCall-lightMode---neutral-200 dark:bg-gradient-315 rounded-xl p-[1px] cursor-pointer",
-  innerBox: "bg-white dark:bg-[#1E1C21] flex__column rounded-xl relative",
-
-  topBar: "flex__column__center gap-1 px-4 py-3 bg-tailCall-lightMode---neutral-100 dark:bg-[#18171A] rounded-t-2xl",
+    "w-full max-w-[700px] bg-tailCall-lightMode---neutral-200 dark:bg-gradient-315 rounded-[12px] p-[1px] cursor-pointer",
+  innerBox: "bg-white dark:bg-tailCall-dark-1900 flex__column rounded-[12px] relative",
+  topBar:
+    "flex__column__center gap-1 px-4 py-3 bg-tailCall-lightMode---neutral-100 dark:bg-tailCall-dark-1200 rounded-t-2xl",
   dot1: "h-4 w-4 bg-tailCall-lightMode---primary-600 dark:bg-tailCall-dark-1300 rounded-full opacity-50",
   dot2: "h-4 w-4 bg-tailCall-lightMode---primary-400 dark:bg-tailCall-dark-1400 rounded-full opacity-50",
-  dot3: "h-4 w-4 bg-[#1ceb83] dark:bg-tailCall-darkMode---primary-400 rounded-full opacity-50",
+  dot3: "h-4 w-4 bg-tailCall-dark-2000 dark:bg-tailCall-darkMode---primary-400 rounded-full opacity-50",
 
   copyButton: "absolute right-2 top-2 border-none bg-transparent flex__column__center gap-2 cursor-pointer",
   copyText: common_styles.theme_text,
@@ -25,7 +25,7 @@ const cls = {
 
   codeContainer: "pt-4 px-8 pb-2 md:pt-4 md:px-8 md:pb-4 lg:pt-4 lg:px-5 lg:pb-3 xl:pt-4 xl:px-7 xl:pb-4",
   codeText:
-    "text-tailCall-lightMode---primary-700 dark:text-[#30EDE6] block font-space text-content-small md:text-content-large xl:text-title-semi-large xl:font-normal font-normal md:font-normal -tracking-wide",
+    "text-tailCall-lightMode---primary-700 dark:text-tailCall-darkMode---primary-400 block font-space text-content-small md:text-content-large xl:text-title-semi-large xl:font-normal font-normal md:font-normal -tracking-wide",
 }
 
 const CopyCodeBox = ({isCopied, onCopy}: Props) => {

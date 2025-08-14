@@ -22,7 +22,7 @@ const CustomTh = (props: ComponentProps<"th">) => (
 
 const CustomTd = (props: ComponentProps<"td">) => (
   <td
-    className="px-4 py-4 text-sm text-tailCall-lightMode---neutral-600 dark:text-gray-300 border-b border-gray-700 border border-solid border-b-tailCall-darkMode---neutral-300 dark:border-b-[#262626] bg-tailCall-darkMode---neutral-100"
+    className="px-4 py-4 text-sm text-tailCall-lightMode---neutral-600 dark:text-gray-300 border-b border-gray-700 border border-solid border-b-tailCall-darkMode---neutral-300 dark:border-b-tailCall-lightMode---primary-1200 bg-tailCall-darkMode---neutral-100"
     {...props}
   />
 )
@@ -46,7 +46,7 @@ const MDXComponents: MDXComponentsObject = {
   ),
   h2: (props: ComponentProps<"h2">) => (
     <MDXHeading
-      className="text-[28px] font-medium !mb-0 !mt-12 !pt-12 border-t border-t-solid border-t-[#dbdbdb] dark:border-t-[#2B2B2B] text-tailCall-lightMode---neutral-900 dark:text-tailCall-darkMode---neutral-50"
+      className="text-[28px] font-medium !mb-0 !mt-12 !pt-12 border-t border-t-solid border-t-tailCall-lightMode---neutral-300 dark:border-t-tailCall-darkMode---neutral-800 text-tailCall-lightMode---neutral-900 dark:text-tailCall-darkMode---neutral-50"
       as="h2"
       {...props}
     />
