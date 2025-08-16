@@ -705,7 +705,7 @@ export const StatsForDevelopers = [
   },
   {
     title: "Github Stars",
-    stat: 3.9,
+    stat: 4.1,
     suffix: "K+",
     decimals: 1,
   },
