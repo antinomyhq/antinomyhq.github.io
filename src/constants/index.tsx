@@ -1056,11 +1056,22 @@ export const FAQS = [
               <br/><br/>Both methods show your usage for Forge's provided models. Remember, requests made with your own API keys (BYOK) don't count against these limits.`,
   },
   {
+    question: "What are the context limits and how does ForgeCode manage them?",
+    answer: `ForgeCode respects the <strong>context limits provided by each AI provider</strong> (such as OpenAI, Anthropic, Google, etc.). These limits may not be available immediately after a provider changes them, but we make them available as soon as possible.
+              <br/><br/><strong>Configurable Context Management:</strong>
+              <br/>• ForgeCode has a configurable limit that automatically compacts the context when conversations get too long
+              <br/>• This prevents conversations from going out of context and maintains response quality
+              <br/><br/><strong>Why we auto-compact context:</strong>
+              <br/>• <strong>Prevent context overflow:</strong> Ensures conversations stay within model limits
+              <br/>• <strong>Maintain quality:</strong> As context length increases, response quality can degrade - our system optimizes for the best results
+              <br/><br/>This intelligent context management happens automatically, so you can focus on your coding tasks without worrying about hitting context limits.`,
+  },
+  {
     question: "What's the difference between Pro vs Max plans?",
-    answer: `<strong>Pro Plan ($20/month):</strong>
-              <br/>• Access to premium AI models (GPT-4, Claude-4, Grok-4, Gemini-2.5)
+    answer: `<strong>Pro Plan ($200/month):</strong>
+              <br/>• Access to premium AI models (GPT-5, Claude-Sonnet-4, Grok-4, Gemini-2.5)
               <br/>• Up to 1,000 AI requests daily
-              <br/><br/><strong>Max Plan ($100/month):</strong>
+              <br/><br/><strong>Max Plan ($500/month):</strong>
               <br/>• Everything in Pro plan
               <br/>• Up to 5,000 AI requests daily (5x more than Pro)
               <br/>• Best for power users and heavy development workflows
@@ -1145,7 +1156,7 @@ export const tiers = [
   },
   {
     name: "Pro",
-    price: "$20",
+    price: "$200",
     period: "/month",
     description: "Most popular for individual developers",
     features: [
@@ -1160,8 +1171,7 @@ export const tiers = [
   },
   {
     name: "Max",
-    price: "$100",
-    // originalPrice: "$200",
+    price: "$500",
     period: "/month",
     description: "Best for power users",
     features: ["Everything in Pro", "Up to 5000 AI requests daily"],
