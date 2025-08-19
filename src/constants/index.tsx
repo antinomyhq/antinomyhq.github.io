@@ -832,28 +832,36 @@ export const FORGE_CODE_INSTALL_COMMAND = "npx forgecode@latest"
 
 export const JOB_TITLE = [
   {
-    label: "Software Developer",
-    value: "Software Developer",
+    label: "Chief Technology Officer (CTO)",
+    value: "Chief Technology Officer (CTO)",
   },
   {
-    label: "Frontend Developer",
-    value: "Frontend Developer",
+    label: "VP of Engineering",
+    value: "VP of Engineering",
   },
   {
-    label: "Backend Developer",
-    value: "Backend Developer",
+    label: "Director of Engineering",
+    value: "Director of Engineering",
   },
   {
-    label: "Full Stack Developer",
-    value: "Full Stack Developer",
+    label: "Engineering Manager",
+    value: "Engineering Manager",
   },
   {
-    label: "DevOps Engineer",
-    value: "DevOps Engineer",
+    label: "Principal Engineer/Architect",
+    value: "Principal Engineer/Architect",
   },
   {
-    label: "Tech Lead",
-    value: "Tech Lead",
+    label: "Technical Lead/Team Lead",
+    value: "Technical Lead/Team Lead",
+  },
+  {
+    label: "Software Engineer",
+    value: "Software Engineer",
+  },
+  {
+    label: "Other",
+    value: "Other",
   },
 ]
 
@@ -863,28 +871,16 @@ export const COMPANY_STRENGTH = [
     label: "2-10",
   },
   {
-    value: "11-25",
-    label: "11-25",
+    value: "11-50",
+    label: "11-50",
   },
   {
-    value: "26-50",
-    label: "26-50",
+    value: "51-250",
+    label: "51-250",
   },
   {
-    value: "51-100",
-    label: "51-100",
-  },
-  {
-    value: "101-250",
-    label: "101-250",
-  },
-  {
-    value: "251-500",
-    label: "251-500",
-  },
-  {
-    value: "501-1000",
-    label: "501-1000",
+    value: "251-1000",
+    label: "251-1000",
   },
   {
     value: "1000+",
@@ -1142,8 +1138,8 @@ export const tiers = [
   {
     name: "Enterprise",
     price: "Custom",
-    description: "For large teams and enterprises",
-    features: ["Everything in Free", "Codebase Indexing", "Built in Memory for Context", "Priority support"],
+    description: "Built for teams that need security, scale, and governance.",
+    features: ["Everything in Free", "Codebase indexing", "Built-in contextual memory", "Priority support"],
     cta: "Contact Sales",
     href: pageLinks.contact,
     popular: true,

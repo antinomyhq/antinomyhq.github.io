@@ -27,11 +27,12 @@ const LabeledInput: React.FC<LabeledInputProps> = ({
   register,
   error,
   required = false,
+  validation = {},
 }) => {
   const baseInputStyles =
     "font-kanit text-title-tiny font-normal w-full pl-12 pr-3 py-3 border border-solid border-[#545F71] rounded-md bg-white dark:bg-black text-sm dark:text-white focus:outline-none focus:ring-1 focus:ring-tailCall-lightMode---primary-600 focus:hover:ring-tailCall-lightMode---primary-400"
 
-  const validation = {
+  const validationRules = {
     required: required ? "This field is required" : false,
     ...(type === "email" && {
       pattern: {
@@ -39,6 +40,7 @@ const LabeledInput: React.FC<LabeledInputProps> = ({
         message: "Please enter a valid email address",
       },
     }),
+    ...validation, // Merge custom validation rules
   }
 
   return (
@@ -61,11 +63,11 @@ const LabeledInput: React.FC<LabeledInputProps> = ({
           <textarea
             id={name}
             placeholder={placeholder}
-            {...register(name, validation)}
+            {...register(name, validationRules)}
             className={`${baseInputStyles} !pl-3 min-h-[100px] resize-none`}
           />
         ) : type === "select" ? (
-          <select id={name} {...register(name, validation)} className={`${baseInputStyles} appearance-none`}>
+          <select id={name} {...register(name, validationRules)} className={`${baseInputStyles} appearance-none`}>
             <option value="">-- Select --</option>
             {options.map((opt) => (
               <option key={opt} value={opt}>
@@ -78,7 +80,7 @@ const LabeledInput: React.FC<LabeledInputProps> = ({
             type={type}
             id={name}
             placeholder={placeholder}
-            {...register(name, validation)}
+            {...register(name, validationRules)}
             className={baseInputStyles}
           />
         )}
