@@ -18,10 +18,10 @@ export default function CTAButtons({className = ""}: {className?: string}) {
 
   return (
     <div className={`flex gap-4 z-10 ${className}`}>
-      <PrimaryButton onClick={handleSignUp} variant="solid">
+      {/* <PrimaryButton onClick={handleSignUp} variant="solid">
         Sign up
-      </PrimaryButton>
-      <PrimaryButton onClick={handleGetStarted} variant="outline">
+      </PrimaryButton> */}
+      <PrimaryButton onClick={handleGetStarted} variant="solid">
         Get Started
       </PrimaryButton>
     </div>

@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from "react"
 import {ChevronDown} from "lucide-react"
-import {UseFormRegister} from "react-hook-form"
+import {UseFormRegister, FieldError, RegisterOptions} from "react-hook-form"
 
 interface Option {
   label: string
@@ -15,6 +15,9 @@ interface CustomSelectProps {
   leftIcon?: React.ReactNode
   onChange?: (value: string) => void
   register: UseFormRegister<any>
+  error?: FieldError
+  required?: boolean
+  validation?: RegisterOptions
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
@@ -25,6 +28,9 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   leftIcon,
   onChange,
   register,
+  error,
+  required = false,
+  validation = {},
 }) => {
   const [selected, setSelected] = useState<Option>(options.find((o) => o.value === defaultValue) || options[0])
   const [isOpen, setIsOpen] = useState(false)
@@ -70,7 +76,14 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       </label>
 
       {/* Hidden input to register with react-hook-form */}
-      <input type="hidden" {...register(name, {value: selected.value})} value={selected.value} />
+      <input
+        type="hidden"
+        {...register(name, {
+          required: required ? "This field is required" : false,
+          ...validation,
+        })}
+        value={selected.value}
+      />
 
       <button
         type="button"
@@ -120,6 +133,9 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
           ))}
         </ul>
       )}
+
+      {/* Error Message */}
+      {error && <p className="text-sm text-red-500 !m-0">{error.message}</p>}
     </div>
   )
 }
