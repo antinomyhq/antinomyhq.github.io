@@ -125,13 +125,14 @@ const HeroSection: React.FC = () => (
     <div className={HERO_SECTION_CLASSES}>
       <div className={HERO_CONTENT_CLASSES}>
         <div className={HERO_TITLE_CONTAINER_CLASSES}>
-          <SpotlightSpan className={HERO_TITLE_CLASSES} text="start for free." showHighlighted />
-          <SpotlightSpan className={HERO_SUBTITLE_CLASSES} text="scale when you're ready." showHighlighted />
+          <SpotlightSpan className={HERO_TITLE_CLASSES} text="Pricing" showHighlighted />
+          <SpotlightSpan
+            className={HERO_SUBTITLE_CLASSES}
+            text="Free for personal use. Enterprise for teams."
+            showHighlighted
+          />
         </div>
-        <span className={HERO_DESCRIPTION_CLASSES}>
-          No credit card required. No lock-in. <br />
-          Just productivity from day one
-        </span>
+        <span className={HERO_DESCRIPTION_CLASSES}>Pick the plan that fits.</span>
       </div>
     </div>
   </div>
@@ -140,9 +141,9 @@ const HeroSection: React.FC = () => (
 const PricingHeader: React.FC = () => (
   <div className={PRICING_HEADER_CLASSES}>
     <Heading as="h1" className={PRICING_TITLE_CLASSES}>
-      Simple Pricing
+      Pricing
     </Heading>
-    <p className={PRICING_SUBTITLE_CLASSES}>Start free, upgrade when you're ready. No hidden fees.</p>
+    <p className={PRICING_SUBTITLE_CLASSES}>Free for personal use. Enterprise for teams.</p>
   </div>
 )
 
@@ -281,7 +282,7 @@ const PricingPage: React.FC = (): JSX.Element => {
 
   return (
     <Layout title="Pricing" description="Simple, transparent pricing for ForgeCode">
-      <HeroSection />
+      {/* <HeroSection /> */}
       <main>
         <Section className="py-16 lg:py-24 dark:bg-black bg-tailCall-light-1200">
           <PricingHeader />
