@@ -77,9 +77,9 @@ const PRICING_TITLE_CLASSES =
 const PRICING_SUBTITLE_CLASSES =
   "text-title-small-pricing !text-[22px] !font-normal text-tailCall-darkMode---neutral-500 max-w-2xl mx-auto"
 const PRICING_GRID_CLASSES =
-  "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8 xl:gap-4 max-w-7xl mx-auto pb-12 mb-24"
+  "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 xl:gap-4 max-w-4xl mx-auto pb-12 mb-24 justify-center"
 const CARD_CONTAINER_CLASSES =
-  "bg-gradient-315-light-inactive dark:bg-gradient-315-inactive hover:bg-gradient-315-light hover:dark:bg-gradient-315 rounded-[13px] group p-[1px] relative flex flex-col transition-all duration-700 overflow-visible hover:shadow-2xl"
+  "bg-gradient-315-light-inactive dark:bg-gradient-315-inactive hover:bg-gradient-315-light hover:dark:bg-gradient-315 rounded-[13px] group p-[1px] relative flex flex-col transition-all duration-700 overflow-visible hover:shadow-2xl w-full"
 const CARD_CONTENT_CLASSES = "p-6 bg-white dark:bg-tailCall-darkMode---neutral-900 rounded-xl h-full"
 const CARD_BACKGROUND_CLASSES =
   "absolute left-0 bottom-0 w-full h-[90%] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0 bg-custom-radial-light dark:bg-custom-radial"
@@ -286,7 +286,7 @@ const PricingPage: React.FC = (): JSX.Element => {
         <Section className="py-16 lg:py-24 dark:bg-black bg-tailCall-light-1200">
           <PricingHeader />
           {pricingCards}
-          <FAQSection openIndex={openIndex} onToggle={toggleIndex} />
+          {/* <FAQSection openIndex={openIndex} onToggle={toggleIndex} /> */}
           <AIProvidersSection />
         </Section>
       </main>

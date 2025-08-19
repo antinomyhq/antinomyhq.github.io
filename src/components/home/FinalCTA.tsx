@@ -22,7 +22,7 @@ const FinalCTA = ({showPricingButton = true}: FinalCTAProps): JSX.Element => {
           <p className="text-content-medium max-w-2xl mx-auto mb-4 text-center">
             Join thousands of developers already using ForgeCode. Start free today.
           </p>
-          <div className="flex flex-col sm:flex-row space-y-SPACE_03 sm:space-y-0 sm:space-x-SPACE_06">
+          {/* <div className="flex flex-col sm:flex-row space-y-SPACE_03 sm:space-y-0 sm:space-x-SPACE_06">
             <LinkButton
               title="Sign Up"
               href={pageLinks.signup}
@@ -39,7 +39,7 @@ const FinalCTA = ({showPricingButton = true}: FinalCTAProps): JSX.Element => {
                 onClick={() => analyticsHandler("Home Page", "Click", "Final CTA - View Pricing")}
               />
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
