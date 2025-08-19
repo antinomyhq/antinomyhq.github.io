@@ -19,7 +19,6 @@ Forge supports multiple AI providers, each with unique capabilities and pricing 
 
 ### Provider Overview
 
-- **Forge Provider** (`FORGE_KEY`): Forgecode's managed service with optimized models
 - **OpenRouter** (`OPENROUTER_API_KEY`): Access to 300+ models from multiple providers
 - **OpenAI** (`OPENAI_API_KEY`): Official OpenAI models (GPT-4, o3-mini, etc.)
 - **Anthropic** (`ANTHROPIC_API_KEY`): Claude models (Claude 3.7 Sonnet, etc.)
@@ -57,10 +56,7 @@ touch ../../../.env
 Add your preferred provider's API key to the `.env` file:
 
 ```bash
-# Choose one or multiple providers
-
-# Forge Provider (Forgecode's managed service)
-FORGE_KEY=your_forge_api_key_here
+# Choose one provider
 
 # OpenRouter (recommended for model variety)
 OPENROUTER_API_KEY=your_openrouter_key_here
@@ -92,20 +88,12 @@ OPENAI_URL=your_provider_url
 
 **Where to get API keys:**
 
-- <CustomLink href="https://app.forgecode.dev/app/">Forge Provider</CustomLink> - Sign up for Antinomy account
 - <CustomLink href="https://openrouter.ai/">OpenRouter</CustomLink> - Aggregated access to multiple models
 - <CustomLink href="https://platform.openai.com/">OpenAI</CustomLink> - Official OpenAI platform
 - <CustomLink href="https://console.anthropic.com/">Anthropic</CustomLink> - Official Anthropic console
 - <CustomLink href="https://cloud.google.com/vertex-ai">Google Vertex AI</CustomLink> - Google Cloud AI platform
 - <CustomLink href="https://console.groq.com/">Groq</CustomLink> - Ultra-fast inference platform
 - <CustomLink href="https://aws.amazon.com/bedrock/">Amazon Bedrock</CustomLink> - AWS managed AI service
-
-**Example setup with Forge Provider (recommended):**
-
-```bash
-# ~/.env
-FORGE_KEY=your_forge_api_key_here
-```
 
 **Example setup with OpenRouter:**
 
@@ -156,10 +144,9 @@ Forge will automatically detect and use the highest priority provider available.
 
 When multiple API keys are configured, Forge uses this priority order:
 
-1. **`FORGE_KEY`** - Highest priority (Forgecode's provider)
-2. **`OPENROUTER_API_KEY`** - Second priority (multiple models)
-3. **`OPENAI_API_KEY`** - Third priority (official OpenAI)
-4. **`ANTHROPIC_API_KEY`** - Lowest priority (official Anthropic)
+1. **`OPENROUTER_API_KEY`** - Second priority (multiple models)
+2. **`OPENAI_API_KEY`** - Third priority (official OpenAI)
+3. **`ANTHROPIC_API_KEY`** - Lowest priority (official Anthropic)
 
 ### Environment File Merging
 
@@ -183,10 +170,9 @@ OPENAI_API_KEY=global_openai_key
 ANTHROPIC_API_KEY=global_anthropic_key
 
 # /project/.env (project-specific)
-FORGE_KEY=project_forge_key
 OPENAI_API_KEY=project_openai_key
 
-# Result: Forge uses project_forge_key (highest priority)
+# Result: Forge uses project_openai_key (highest priority)
 # OPENAI_API_KEY from project overrides global
 # ANTHROPIC_API_KEY from global is still available
 ```

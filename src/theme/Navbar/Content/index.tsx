@@ -215,9 +215,9 @@ const NavbarContent = (): JSX.Element => {
         // Render right navbar items
         <>
           <NavbarItems items={rightItems} />
-          <Button className={styles.colorModeToggle} variant="navlink" onClick={handleSignUp}>
+          {/* <Button className={styles.colorModeToggle} variant="navlink" onClick={handleSignUp}>
             <span className={common_styles.theme_text}>Sign up</span>
-          </Button>
+          </Button> */}
           <div className={clsx(styles.colorModeToggle, "flex gap-1")}>
             <Search />
             <ThemeToggle />

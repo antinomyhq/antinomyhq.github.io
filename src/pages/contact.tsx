@@ -1,7 +1,17 @@
 import Layout from "@theme/Layout"
 import React, {useEffect, useState} from "react"
 import SpotlightSpan from "../components/home/components/SpotlightCursor"
-import {UserIcon, IdCard, MailOpen, AlignLeft, SquarePen, BriefcaseBusiness} from "lucide-react"
+import {
+  UserIcon,
+  IdCard,
+  MailOpen,
+  AlignLeft,
+  SquarePen,
+  BriefcaseBusiness,
+  CheckCircle,
+  AlertCircle,
+  Loader2,
+} from "lucide-react"
 import LabeledInput from "../components/shared/Input/Input"
 import {useForm} from "react-hook-form"
 import {COMPANY_STRENGTH, JOB_TITLE} from "../constants"
@@ -14,7 +24,13 @@ interface FormInputs {
   job_title: string
   company: string
   company_strength: string
-  additional_comments: string
+  additional_comments?: string
+}
+
+interface SubmissionState {
+  isSubmitting: boolean
+  isSuccess: boolean
+  error: string | null
 }
 
 const contact = () => {
@@ -23,10 +39,21 @@ const contact = () => {
     handleSubmit,
     setValue,
     reset,
-    formState: {errors},
-  } = useForm<FormInputs>()
+    formState: {errors, isValid},
+  } = useForm<FormInputs>({
+    mode: "onChange",
+    defaultValues: {
+      job_title: JOB_TITLE[0].value,
+      company_strength: COMPANY_STRENGTH[0].value,
+    },
+  })
 
   const [isMobile, setIsMobile] = useState(false)
+  const [submissionState, setSubmissionState] = useState<SubmissionState>({
+    isSubmitting: false,
+    isSuccess: false,
+    error: null,
+  })
 
   useEffect(() => {
     const checkScreenSize = () => {
@@ -37,9 +64,58 @@ const contact = () => {
     return () => window.removeEventListener("resize", checkScreenSize)
   }, [])
 
-  const onSubmit = (data: FormInputs) => {
-    console.log("Form Submitted:", data)
-    reset()
+  const onSubmit = async (data: FormInputs) => {
+    setSubmissionState({
+      isSubmitting: true,
+      isSuccess: false,
+      error: null,
+    })
+
+    try {
+      const response = await fetch("https://contact-to-slack.tailcall.workers.dev/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          first_name: data.first_name,
+          last_name: data.last_name,
+          email: data.email,
+          job_title: data.job_title,
+          company: data.company,
+          company_strength: data.company_strength,
+          additional_comments: data.additional_comments || "",
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error(`Failed to submit form: ${response.status} ${response.statusText}`)
+      }
+
+      // Success
+      setSubmissionState({
+        isSubmitting: false,
+        isSuccess: true,
+        error: null,
+      })
+
+      reset() // Reset form after successful submission
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setSubmissionState((prev) => ({
+          ...prev,
+          isSuccess: false,
+        }))
+      }, 5000)
+    } catch (error) {
+      console.error("Form submission error:", error)
+      setSubmissionState({
+        isSubmitting: false,
+        isSuccess: false,
+        error: error instanceof Error ? error.message : "An unexpected error occurred. Please try again.",
+      })
+    }
   }
   return (
     <Layout title="Contact" description="Contact Us">
@@ -60,7 +136,8 @@ const contact = () => {
                 />
               </div>
               <span className="block -mt-5 md:mt-0 max-w-[500px] xl:mt-20 !font-normal lg:leading-8 xl:leading-[32px] text-[16px] md:text-title-small lg:text-[24px] xl:text-[26px] text-tailCall-darkMode---neutral-500 tracking-normal">
-                Whether it's support, feedback, or partnerships we're all ears (and keyboards).
+                Ready to accelerate your development workflow? Let's explore how Forgecode can enhance your team's
+                productivity.
               </span>
             </div>
           </div>
@@ -80,6 +157,13 @@ const contact = () => {
                       register={register}
                       error={errors.first_name}
                       required
+                      validation={{
+                        required: "First name is required",
+                        minLength: {
+                          value: 2,
+                          message: "First name must be at least 2 characters",
+                        },
+                      }}
                     />
                     <LabeledInput
                       label="Last Name"
@@ -89,6 +173,13 @@ const contact = () => {
                       register={register}
                       error={errors.last_name}
                       required
+                      validation={{
+                        required: "Last name is required",
+                        minLength: {
+                          value: 2,
+                          message: "Last name must be at least 2 characters",
+                        },
+                      }}
                     />
                   </div>
                   <LabeledInput
@@ -99,6 +190,13 @@ const contact = () => {
                     register={register}
                     error={errors.email}
                     required
+                    validation={{
+                      required: "Email is required",
+                      pattern: {
+                        value: /^\S+@\S+\.\S+$/,
+                        message: "Please enter a valid email address",
+                      },
+                    }}
                   />
                   <CustomSelect
                     label="Job Title"
@@ -106,8 +204,13 @@ const contact = () => {
                     register={register}
                     defaultValue={JOB_TITLE[0].value}
                     options={JOB_TITLE}
-                    leftIcon={<SquarePen />} // Emoji or any React component
+                    leftIcon={<SquarePen />}
                     onChange={(value) => setValue("job_title", value)}
+                    error={errors.job_title}
+                    required
+                    validation={{
+                      required: "Job title is required",
+                    }}
                   />
                   <div className="flex__column sm:flex-row gap-8">
                     <LabeledInput
@@ -118,6 +221,13 @@ const contact = () => {
                       register={register}
                       error={errors.company}
                       required
+                      validation={{
+                        required: "Company name is required",
+                        minLength: {
+                          value: 2,
+                          message: "Company name must be at least 2 characters",
+                        },
+                      }}
                     />
                     <CustomSelect
                       label="Company Strength"
@@ -125,8 +235,13 @@ const contact = () => {
                       defaultValue={COMPANY_STRENGTH[0].value}
                       register={register}
                       options={COMPANY_STRENGTH}
-                      leftIcon={<UserIcon />} // Emoji or any React component
+                      leftIcon={<UserIcon />}
                       onChange={(value) => setValue("company_strength", value)}
+                      error={errors.company_strength}
+                      required
+                      validation={{
+                        required: "Company strength is required",
+                      }}
                     />
                   </div>
                   <LabeledInput
@@ -137,10 +252,31 @@ const contact = () => {
                     register={register}
                     error={errors.additional_comments}
                   />
+
+                  {/* Success Message */}
+                  {submissionState.isSuccess && (
+                    <div className="flex items-center gap-3 p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-md">
+                      <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
+                      <span className="text-green-800 dark:text-green-200 text-sm">
+                        Thank you! Your message has been sent successfully. We'll get back to you soon.
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Error Message */}
+                  {submissionState.error && (
+                    <div className="flex items-center gap-3 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md">
+                      <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400" />
+                      <span className="text-red-800 dark:text-red-200 text-sm">{submissionState.error}</span>
+                    </div>
+                  )}
                   <div className="flex items-start">
                     <button
                       type="submit"
-                      className="cursor-pointer relative flex items-center justify-center border-none bg-transparent"
+                      disabled={!isValid || submissionState.isSubmitting}
+                      className={`cursor-pointer relative flex items-center justify-center border-none bg-transparent transition-opacity duration-200 ${
+                        !isValid || submissionState.isSubmitting ? "opacity-50 cursor-not-allowed" : "hover:opacity-90"
+                      }`}
                     >
                       <img
                         src="/images/home/curly-background.svg"
@@ -154,7 +290,10 @@ const contact = () => {
                         height={60}
                         className="block dark:hidden"
                       />
-                      <span className="text-white dark:text-black text-title-small font-light absolute">Submit</span>
+                      <span className="text-white dark:text-black text-title-small font-light absolute flex items-center gap-2">
+                        {submissionState.isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
+                        {submissionState.isSubmitting ? "Submitting..." : "Submit"}
+                      </span>
                     </button>
                   </div>
                 </form>

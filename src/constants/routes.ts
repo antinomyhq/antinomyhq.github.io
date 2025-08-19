@@ -6,7 +6,7 @@ export const pageLinks = {
   pricing: "/pricing",
   terms: "/terms",
   // about: "/about",
-  // contact: "/contact",
+  contact: "/contact",
   contributors: "/docs/contribution-guidelines",
   privacyPolicy: "/privacy/",
   // enterprise: "/enterprise",
