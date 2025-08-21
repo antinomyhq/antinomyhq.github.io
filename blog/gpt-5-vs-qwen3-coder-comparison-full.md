@@ -4,7 +4,7 @@ title: "GPT-5 vs. Qwen 3 Coder: A Head-to-Head Coding Comparison"
 authors: [shrijal]
 tags:
   [
-    "GPT OSS",
+    "GPT 5",
     "Qwen 3 Coder",
     "Model Comparison",
     "AI Coding",
