@@ -8,6 +8,104 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 <VersionUpdateCard />
 
+## v0.110.1 
+
+### 🐛 Bug Fixes
+
+- fix: agent level custom rules not getting attached when default custom rules are defined [@jayantpranjal0](https://github.com/jayantpranjal0) ([#1422](https://github.com/antinomyhq/forge/pull/1422))
+- fix: prevent tool call notifications for agent tools [@tusharmath](https://github.com/tusharmath) ([#1436](https://github.com/antinomyhq/forge/pull/1436))
+- fix: improve format for reasoning messages [@tusharmath](https://github.com/tusharmath) ([#1432](https://github.com/antinomyhq/forge/pull/1432))
+
+
+---
+## v0.110.0 
+
+### 🚀 Features
+
+- feat: use agent to agent communication in forge [@tusharmath](https://github.com/tusharmath) ([#1430](https://github.com/antinomyhq/forge/pull/1430))
+- feat: add researcher - SAGE [@tusharmath](https://github.com/tusharmath) ([#1426](https://github.com/antinomyhq/forge/pull/1426))
+- feat: Open new chat on completion [@manthanabc](https://github.com/manthanabc) ([#1301](https://github.com/antinomyhq/forge/pull/1301))
+
+### 🐛 Bug Fixes
+
+- fix: drop forced login for users [@tusharmath](https://github.com/tusharmath) ([#1431](https://github.com/antinomyhq/forge/pull/1431))
+- fix: improve agent-2-agent communication via tool call [@tusharmath](https://github.com/tusharmath) ([#1428](https://github.com/antinomyhq/forge/pull/1428))
+- fix: improve cache breakpoints [@amitksingh1490](https://github.com/amitksingh1490) ([#1424](https://github.com/antinomyhq/forge/pull/1424))
+- fix: send tool call errors as feedback [@tusharmath](https://github.com/tusharmath) ([#1411](https://github.com/antinomyhq/forge/pull/1411))
+- fix: update summarization prompt for plan files [@tusharmath](https://github.com/tusharmath) ([#1419](https://github.com/antinomyhq/forge/pull/1419))
+
+### 🧰 Maintenance
+
+- fix: improve agent-2-agent communication via tool call [@tusharmath](https://github.com/tusharmath) ([#1428](https://github.com/antinomyhq/forge/pull/1428))
+- chore: drop task management tools [@tusharmath](https://github.com/tusharmath) ([#1429](https://github.com/antinomyhq/forge/pull/1429))
+- feat: Open new chat on completion [@manthanabc](https://github.com/manthanabc) ([#1301](https://github.com/antinomyhq/forge/pull/1301))
+
+
+---
+## v0.109.2 
+
+### 🐛 Bug Fixes
+
+- fix: update README for clarity and organization of setup instructions [@amitksingh1490](https://github.com/amitksingh1490) ([#1418](https://github.com/antinomyhq/forge/pull/1418))
+- fix: prevent overflow in eviction logic for empty or single message context [@amitksingh1490](https://github.com/amitksingh1490) ([#1412](https://github.com/antinomyhq/forge/pull/1412))
+- fix: ensure tool\_choice is set only when tools are defined in the req [@amitksingh1490](https://github.com/amitksingh1490) ([#1414](https://github.com/antinomyhq/forge/pull/1414))
+- fix: disable login call on start and update provider error message. [@amitksingh1490](https://github.com/amitksingh1490) ([#1417](https://github.com/antinomyhq/forge/pull/1417))
+- Revert "fix: ensure tool\_choice is set only when tools are defined in… [@amitksingh1490](https://github.com/amitksingh1490) ([#1413](https://github.com/antinomyhq/forge/pull/1413))
+
+
+---
+## v0.109.1 
+
+### 🐛 Bug Fixes
+
+- fix: optimize user input handling in Console by removing `block_in_place` [@tusharmath](https://github.com/tusharmath) ([#1408](https://github.com/antinomyhq/forge/pull/1408))
+- fix: revert permissions check [@tusharmath](https://github.com/tusharmath) ([#1407](https://github.com/antinomyhq/forge/pull/1407))
+- fix: handle numeric pricing in OpenAI-compatible APIs [@tusharmath](https://github.com/tusharmath) ([#1403](https://github.com/antinomyhq/forge/pull/1403))
+
+
+---
+## v0.109.0 
+
+### 🚀 Features
+
+- feat: add new agents for documentation review and technical writing [@amitksingh1490](https://github.com/amitksingh1490) ([#1397](https://github.com/antinomyhq/forge/pull/1397))
+
+### 🐛 Bug Fixes
+
+- fix: update formatting for sections in prompt template [@tusharmath](https://github.com/tusharmath) ([#1400](https://github.com/antinomyhq/forge/pull/1400))
+- fix: update permissions to allow all read, write, command, and url access [@tusharmath](https://github.com/tusharmath) ([#1401](https://github.com/antinomyhq/forge/pull/1401))
+
+
+---
+## v0.108.0 
+
+### 🚀 Features
+
+- feat: Added configurable timeout for tools (#1249) [@manthanabc](https://github.com/manthanabc) ([#1293](https://github.com/antinomyhq/forge/pull/1293))
+- chore: CLI capabilities for system permissions [@ssddOnTop](https://github.com/ssddOnTop) ([#1334](https://github.com/antinomyhq/forge/pull/1334))
+- feat: add `/usage` command [@laststylebender14](https://github.com/laststylebender14) ([#1365](https://github.com/antinomyhq/forge/pull/1365))
+
+### 🐛 Bug Fixes
+
+- fix: windows file attachments [@jayantpranjal0](https://github.com/jayantpranjal0) ([#1394](https://github.com/antinomyhq/forge/pull/1394))
+- fix: use cwd to identify plan dir [@tusharmath](https://github.com/tusharmath) ([#1391](https://github.com/antinomyhq/forge/pull/1391))
+- fix: split compaction handling into system and user message [@laststylebender14](https://github.com/laststylebender14) ([#1390](https://github.com/antinomyhq/forge/pull/1390))
+- fix: show only date in user prompt [@laststylebender14](https://github.com/laststylebender14) ([#1389](https://github.com/antinomyhq/forge/pull/1389))
+- fix: removed dead code [@manthanabc](https://github.com/manthanabc) ([#1384](https://github.com/antinomyhq/forge/pull/1384))
+- fix: summarization prompt improvements [@tusharmath](https://github.com/tusharmath) ([#1382](https://github.com/antinomyhq/forge/pull/1382))
+
+### 🧰 Maintenance
+
+- chore: treat policy denial as success response [@ssddOnTop](https://github.com/ssddOnTop) ([#1385](https://github.com/antinomyhq/forge/pull/1385))
+- chore: consolidate tool usage instructions into main template and remove partial [@tusharmath](https://github.com/tusharmath) ([#1392](https://github.com/antinomyhq/forge/pull/1392))
+- refactor: replace tokio::sync::Mutex with std::sync::Mutex in input.rs [@tusharmath](https://github.com/tusharmath) ([#1393](https://github.com/antinomyhq/forge/pull/1393))
+- fix: use cwd to identify plan dir [@tusharmath](https://github.com/tusharmath) ([#1391](https://github.com/antinomyhq/forge/pull/1391))
+- chore: update checkout action [@manthanabc](https://github.com/manthanabc) ([#1388](https://github.com/antinomyhq/forge/pull/1388))
+- chore(deps): bump slab from 0.4.10 to 0.4.11 @[dependabot[bot]](https://github.com/apps/dependabot) (#1375)
+- chore: CLI capabilities for system permissions [@ssddOnTop](https://github.com/ssddOnTop) ([#1334](https://github.com/antinomyhq/forge/pull/1334))
+
+
+---
 ## v0.107.0 
 
 ### 🚀 Features
