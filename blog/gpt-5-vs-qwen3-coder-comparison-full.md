@@ -75,15 +75,27 @@ Although I manually checked each attempt, there may be some subjectivity in scor
 - How well the model follows the prompt and stays on task.
 - The time taken to complete the said task.
 
+### Code Quality Criteria
+
+I judged the code quality by examining how well each model structured and organized its output. Here are the key factors I considered:
+
+- **Modularity**: Code organized into reusable functions/components
+- **Readability**: Variable/function naming, comments, and structure
+- **Maintainability**: Presence of unused variables, repeated code
+
 ---
 
 ## Coding Comparison
 
 Below are the results for each task, including the prompt given to the models and a review of their implementation.
 
+:::note
+Throughout the test, I set the temperature of both models to 0.2, which is a fairly standard value for coding. Also, factors like writing good code are not explicitly asked in the prompt or the system prompt itself. We'll test it implicitly to see if the models default to writing better code even when not asked.
+:::
+
 ### 1. Build a Browser Chess Game
 
-> **Prompt:** Build a browser-based chess game that implements all standard chess rules, including castling, en passant, and pawn promotion. Add move history tracking with FEN and PGN support, a multiplayer mode with real-time synchronization via WebSockets, and a game timer with configurable time controls. The game should also support saving and loading game state in local storage. Make sure the design is responsive and user-friendly.
+> **Prompt:** Build a production ready browser-based chess game that implements all standard chess rules, including castling, en passant, and pawn promotion. Add move history tracking with FEN and PGN support, a multiplayer mode with real-time synchronization via WebSockets, and a game timer with configurable time controls. The game should also support saving and loading game state in local storage. Make sure the design is responsive and user-friendly.
 
 - **GPT-5:**
 
@@ -91,9 +103,9 @@ Here's the output of the program:
 
 <img src="/images/blog/chess-gpt-5.gif" alt="Chess browser game built with GPT-5 AI Model" style={{width: "100%", maxWidth: "800px"}} />
 
-As you can see, none of it really works and it wasn't even implemented well as asked. The pieces are not inverted well when flipping the board, there's no support for multiplayer game, the load game functionality does not work as asked. The worst of all, the game does not end even when there's a checkmate.
+As you can see, none of it really works, and it wasn't even implemented as requested. The pieces are not inverted properly when flipping the board, there's no support for multiplayer games with WebSocket, and the load game functionality does not work as requested. Worst of all, the game does not end even when there's a checkmate.
 
-Now, if we look into the code quality, it's good, it has separated the logic in multiple files and documented the code well, but none of it works.
+It's good, it has separated the logic in multiple files and documented the code well, but none of it works.
 
 You can find the code it generated here<sup><a id="ref-3" href="#footnote-3">3</a></sup>.
 
@@ -107,7 +119,7 @@ On the very first look, you can already see the overall feel of this question by
 
 However, the websocket functionality does not work on this one as well. Also the fact that black pieces are colored white.
 
-If we look into the code quality, and the way it is structured, it feels worse than GPT-5. It has put all the logic, markup and CSS all in one file which is a straight no for me.
+The way the code is structured feels worse than GPT-5. It has placed all the logic, markup, and CSS in one file, which is a straight no for me.
 
 You can find the code it generated here<sup><a id="ref-4" href="#footnote-4">4</a></sup>.
 
@@ -149,7 +161,7 @@ Here's the output of the program:
 
 In this specific implementation as well, it did decently. It's not able to fetch the person's GitHub contribution graph, but the demo level it added looks and works pretty well. The game implementation overall is rock solid.
 
-If I judge the code quality, it's not very pretty. The code is documented, but it's all jumbled up in one file.
+The code is well-documented, but it's all jumbled in one file.
 
 You can find the code it generated here<sup><a id="ref-7" href="#footnote-7">7</a></sup>.
 
@@ -159,7 +171,9 @@ Here's the output of the program:
 
 <img src="/images/blog/dx-ball-qwen3-coder.gif" alt="DX Ball game built with Qwen3-Coder AI Model" style={{width: "100%", maxWidth: "800px"}} />
 
-This model included everything I asked for in the implementation. Most importantly, it used Next.js, which I prefer over a generic implementation in a plain HTML file. It can fetch the GitHub contribution graph, but there's a slight problem with the game implementation, as you can see above. Still, this is far better than GPT-5's implementation.
+This model included everything I asked for in the implementation. Most importantly, it used Next.js, which I prefer over a generic implementation in a plain HTML file. In general usage, when building a project from scratch, you might not have everything mentioned in the prompt itself. If a model is wise enough to pick the right tool to get the job done nicely, that's a real advantage.
+
+It can fetch the GitHub contribution graph, but there's a slight problem with the game implementation, as you can see above. Still, this is far better than GPT-5's implementation.
 
 You can find the code it generated here<sup><a id="ref-8" href="#footnote-8">8</a></sup>.
 
@@ -168,7 +182,7 @@ You can find the code it generated here<sup><a id="ref-8" href="#footnote-8">8</
 ## Performance Analysis
 
 :::note
-The entire test is conducted using our Forge CLI.
+The entire test is conducted using our Forge CLI (version 0.101.1).
 :::
 
 Here's the performance comparison between Qwen3-Coder and GPT-5 across 3 tasks:
@@ -184,6 +198,16 @@ Here's the performance comparison between Qwen3-Coder and GPT-5 across 3 tasks:
 **Test Sample:** 3 tasks, repeated 3 times for consistency
 **Confidence Level:** High, based on manual verification
 
+### Code Quality Breakdown
+
+For each task, code quality was evaluated based on the four factors I mentioned earlier.
+
+| Factor              | GPT-5          | Qwen3-Coder            | Notes                                                                                                                                             |
+| ------------------- | -------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Modularity**      | Generally Good | Inconsistent           | GPT-5 consistently tried to separate code into different files. Qwen-3 ranged from one huge file to a clean Next.js setup, depending on the case. |
+| **Readability**     | High           | Good                   | GPT-5’s code was clear and well-documented, even when buggy. Qwen-3’s logic made sense but the large single files were harder to follow.          |
+| **Maintainability** | Inconsistent   | Varies with Modularity | GPT-5’s structure was easy to follow but frequent bugs got in the way. Qwen-3 was maintainable in structured cases but messy in larger ones.      |
+
 ### Verdict
 
 While GPT-5 is great at generating clean, well-structured code, it's no use if the final program is a buggy, incomplete mess. Qwen3-Coder consistently delivered a more functional and complete result, even if it dumped everything into a single file. For getting a working prototype up and running fast, Qwen3-Coder was far more reliable.
@@ -192,14 +216,18 @@ While GPT-5 is great at generating clean, well-structured code, it's no use if t
 
 ## Pricing Breakdown
 
-The entire test cost me about $1-2 for both models combined, with approximately similar token usage for each.
+The entire test, including multiple runs for each model, cost me approximately $1.5 for both models combined.
 
-Here's the pricing breakdown for GPT-5 and Qwen3-Coder:
+Here's the pricing and token breakdown for GPT-5 and Qwen3-Coder:
 
-| Model       | Pricing (Input / 1M tokens) | Pricing (Output / 1M tokens) |
-| ----------- | --------------------------- | ---------------------------- |
-| GPT-5       | $1.25                       | $10.00                       |
-| Qwen3-Coder | $0.20                       | $0.80                        |
+:::note
+The pricing depends on the provider you're using. For this test, I've used OpenRouter. The pricing varies depending on the provider, and here I'm sharing a standard pricing for each model.
+:::
+
+| Model       | Pricing (Input / 1M tokens) | Pricing (Output / 1M tokens) | Estimated Output Tokens | Estimated Total Cost       |
+| ----------- | --------------------------- | ---------------------------- | ----------------------- | -------------------------- |
+| GPT-5       | $1.25 (fixed, OpenAI only)  | $10.00 (fixed, OpenAI only)  | ~130,000                | ~$1.35 (with input tokens) |
+| Qwen3-Coder | $0.20 (varies by provider)  | $0.80 (varies by provider)   | ~195,000                | ~0.18 (with input tokens)  |
 
 Qwen-3 Coder is about **1/6th** the input price of GPT-5 and about **1/12th** the output price of GPT-5.
 
