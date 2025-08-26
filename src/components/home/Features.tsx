@@ -25,7 +25,7 @@ const Feature = ({feature}: FeatureProps): JSX.Element => {
           boxShadow: "0px 0px 0px 3px var(--ifm-color-brand-light-100)",
         }}
       >
-        <div className="bg-gradient-to-b from-tailCall-light-100 from-3% via-[#E4E5E9] via-67% to-tailCall-light-100 absolute -left-SPACE_04 sm:-left-SPACE_06 w-[2px] h-full" />
+        <div className="bg-gradient-to-b from-tailCall-light-100 from-3% via-tailCall-light-1400 via-67% to-tailCall-light-100 absolute -left-SPACE_04 sm:-left-SPACE_06 w-[2px] h-full" />
         <p className="text-content-tiny sm:text-content-small lg:text-content-medium max-w-md">
           <span>{feature.content}</span>
         </p>

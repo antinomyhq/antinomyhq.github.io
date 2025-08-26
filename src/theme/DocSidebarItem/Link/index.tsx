@@ -31,14 +31,9 @@ export default function DocSidebarItemLink({
       key={label}
     >
       <Link
-        className={clsx(
-          "hover:dark:text-white transition-colors duration-200",
-          "menu__link",
-          !isInternalLink && styles.menuExternalLink,
-          {
-            "menu__link--active": isActive,
-          },
-        )}
+        className={clsx("transition-colors duration-200", "menu__link", !isInternalLink && styles.menuExternalLink, {
+          "menu__link--active": isActive,
+        })}
         autoAddBaseUrl={autoAddBaseUrl}
         aria-current={isActive ? "page" : undefined}
         to={href}

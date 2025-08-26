@@ -40,6 +40,9 @@ module.exports = {
             1000: "#454545",
             1100: "#DDDDDD",
             1200: "#F1F1F1",
+            1300: "#B0BEC5",
+            1400: "#E4E5E9",
+            1500: "#181818",
           },
           dark: {
             100: "#545556",
@@ -60,6 +63,8 @@ module.exports = {
             1600: "#181919",
             1700: "#87DB1C",
             1800: "#00A6A6",
+            1900: "#1E1C21",
+            2000: "#1CEB83",
           },
           lightMode: {
             "--primary-50": "#E6FAFA",
@@ -73,6 +78,10 @@ module.exports = {
             "--primary-800": "#065C59",
             "--primary-900": "#093F42",
             "--primary-950": "#08292C",
+            "--primary-1000": "#1CEB83",
+            "--primary-1100": "#018284",
+            "--primary-1200": "#262626",
+            "--primary-1300": "#A1A1A1",
             "--neutral-50": "#FFFFFF",
             "--neutral-100": "#F9F9F9",
             "--neutral-200": "#EDEDED",
@@ -84,6 +93,9 @@ module.exports = {
             "--neutral-800": "#202020",
             "--neutral-900": "#101010",
             "--neutral-950": "#0A0A0A",
+            "--neutral-1000": "#7B7B7B",
+            "--neutral-1100": "#E5E5E5",
+            "--neutral-1200": "#808080",
           },
           darkMode: {
             "--primary-50": "#EEFFFF",
@@ -108,6 +120,8 @@ module.exports = {
             "--neutral-800": "#2B2B2B",
             "--neutral-900": "#171717",
             "--neutral-950": "#0A0A0A",
+            "--neutral-1000": "#181D27",
+            "--neutral-1100": "#545F71",
           },
           yellow: "#FDEA2E",
           gray: "#343335",
@@ -163,6 +177,7 @@ module.exports = {
         "custom-diagonal":
           "linear-gradient(135deg, rgba(62, 62, 62, 1) 0%, rgba(50, 208, 202, 1) 51%, rgba(102, 102, 102, 1) 100%)",
         "benefit-light-background": "linear-gradient(180deg, #FFF 0%, #E5E5E5 100%)",
+        "benefit-dark-background": "linear-gradient(180deg, #1E1C21 0%, #000 100%)",
         "gradient-custom-diagonal": "linear-gradient(135deg, rgba(0, 206, 201, 1) 0%, rgba(38, 38, 38, 1) 100%)",
         "custom-radial-light":
           "radial-gradient(58.31% 20.31% at 50% 100%, rgba(48, 237, 230, 0.5) 1%, rgba(0, 0, 0, 0) 100%)",
@@ -182,6 +197,11 @@ module.exports = {
           "radial-gradient(62.55% 79.85% at 47.58% 100.04%, #30EDE6 0%, rgba(255, 255, 255, 0.1) 100%)",
         "card-border-gradient-nextStep-light": "linear-gradient(180deg, #DBDBDB 0%, #DBDBDB 100%)",
         "card-border-gradient-nextStep": "linear-gradient(180deg, #404040 0%, #262626 100%)",
+        "cyan-to-gray": "linear-gradient(90deg, #30EDE6 0%, #7B7B7B 99%)",
+      },
+      boxShadow: {
+        "brand-light": "0px 0px 4px 0px #088C8C",
+        "brand-dark": "0px 0px 4px 0px #30EDE6",
       },
     },
     fontFamily: {
