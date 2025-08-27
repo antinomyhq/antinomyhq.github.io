@@ -10,147 +10,134 @@ sidebar_label: Tools Reference
 
 Forge provides a comprehensive set of built-in tools that enable AI agents to interact with your system, manage files, process data, and communicate with users. This reference documents all available tools and their parameters.
 
-> **Note:** These tools are used internally by Forge's AI agents and are not meant to be directly called by developers. This reference is provided for understanding what capabilities agents have access to within your system.
+> Note: These tools are used internally by Forge's AI agents and are not meant to be directly called by developers. This reference is provided for understanding what capabilities agents have access to within your system.
 
-## User Interface Tools
+## Deprecation and Backward Compatibility
 
-### forge_tool_display_show_user
+The tool names have been streamlined. Older names are still accepted for backward compatibility and will be deprecated in the future. Please migrate to the new names.
 
-Displays formatted markdown content to the user in the terminal.
+Deprecated → New
+- forge_tool_fs_read → read
+- forge_tool_fs_create → write
+- forge_tool_fs_search → search
+- forge_tool_fs_remove → remove
+- forge_tool_fs_patch → patch
+- forge_tool_fs_undo → undo
+- forge_tool_process_shell → shell
+- forge_tool_net_fetch → fetch
+- forge_tool_followup → followup
+- attempt_completion → attempt_completion
+- forge_tool_plan_create → plan
 
-#### Parameters
-
-| Parameter | Type   | Required | Description                             |
-| --------- | ------ | -------- | --------------------------------------- |
-| `content` | string | Yes      | Markdown content to display to the user |
-
-#### Features
-
-- Rich markdown formatting in terminal output
-- Support for headers, lists, tables, code blocks, and text emphasis
-- Properly rendered using the termimad library
-- Improves readability of complex information
-
-#### When to Use
-
-Agents use this tool when they need to present:
-
-- Structured information with clear hierarchy
-- Tabular data
-- Code snippets with syntax highlighting
-- Step-by-step instructions
-- Visual emphasis for important points
 
 ## File System Tools
 
-### forge_tool_fs_read
+### read
 
-Reads file contents at a specified path.
+Reads file contents from the specified absolute path.
 
-#### Parameters
+Parameters
+- path: string (required) — Absolute path to the file
+- start_line: number (optional) — 1-based start line
+- end_line: number (optional) — Inclusive end line
 
-| Parameter | Type   | Required | Description               |
-| --------- | ------ | -------- | ------------------------- |
-| `path`    | string | Yes      | Absolute path to the file |
-
-### forge_tool_fs_create
+### write
 
 Creates or overwrites a file with specified content.
 
-#### Parameters
+Parameters
+- path: string (required) — Absolute path to the file
+- content: string (required) — Complete content to write
+- overwrite: boolean (optional, default: false) — Overwrite if file exists
 
-| Parameter   | Type    | Required | Description                                          |
-| ----------- | ------- | -------- | ---------------------------------------------------- |
-| `path`      | string  | Yes      | Absolute path to the file                            |
-| `content`   | string  | Yes      | Content to write to the file                         |
-| `overwrite` | boolean | No       | Whether to overwrite if file exists (default: false) |
+### search
 
-### forge_tool_fs_patch
+Recursively searches directories for files by content (regex) and/or name (glob pattern). Avoids binary files and excluded directories.
 
-Modifies files with targeted text operations on matched patterns.
+Parameters
+- path: string (required) — Absolute path of directory or file to search
+- regex: string (optional) — Rust regex to search for in contents
+- start_index: number (optional) — Starting index for paginated results (1-based)
+- max_search_lines: number (optional) — Maximum number of lines to return
+- file_pattern: string (optional) — Glob pattern (e.g., "*.ts")
 
-#### Parameters
-
-| Parameter | Type   | Required | Description                       |
-| --------- | ------ | -------- | --------------------------------- |
-| `path`    | string | Yes      | Absolute path to the file         |
-| `patches` | array  | Yes      | List of patch operations to apply |
-
-#### Patch Operations
-
-| Operation | Description                                 |
-| --------- | ------------------------------------------- |
-| `prepend` | Add content before the matched text         |
-| `append`  | Add content after the matched text          |
-| `replace` | Replace the matched text with new content   |
-| `swap`    | Exchange the matched text with another text |
-
-### forge_tool_fs_remove
+### remove
 
 Removes a file at a specified path.
 
-#### Parameters
+Parameters
+- path: string (required) — Absolute path to the file
 
-| Parameter | Type   | Required | Description               |
-| --------- | ------ | -------- | ------------------------- |
-| `path`    | string | Yes      | Absolute path to the file |
+### patch
 
-### forge_tool_fs_list
+Modifies files with targeted operations on matched patterns. Ideal for precise changes while preserving context.
 
-Lists files and directories at a specified path.
+Parameters
+- path: string (required) — Absolute path to the file
+- search: string (optional) — Exact text to match; when omitted, operation applies to full content for prepend/append/replace
+- operation: string (required) — One of: prepend | append | replace | replace_all | swap
+- content: string (required) — Content for the operation
 
-#### Parameters
+Operations
+- prepend — Add content before the matched text
+- append — Add content after the matched text
+- replace — Replace only the first match (use for targeted edits)
+- replace_all — Replace all occurrences (use for refactors/renames)
+- swap — Replace the matched text with another text (search for the second text and swap them)
 
-| Parameter | Type   | Required | Description                    |
-| --------- | ------ | -------- | ------------------------------ |
-| `path`    | string | Yes      | Absolute path to the directory |
+### undo
 
-### forge_tool_fs_info
+Reverts the most recent file operation (create/modify/delete) on a specific file.
 
-Retrieves metadata about a file or directory.
-
-#### Parameters
-
-| Parameter | Type   | Required | Description                            |
-| --------- | ------ | -------- | -------------------------------------- |
-| `path`    | string | Yes      | Absolute path to the file or directory |
-
-### forge_tool_fs_search
-
-Searches for text patterns across files using regex.
-
-#### Parameters
-
-| Parameter      | Type   | Required | Description                                  |
-| -------------- | ------ | -------- | -------------------------------------------- |
-| `path`         | string | Yes      | Directory to search in (recursively)         |
-| `regex`        | string | Yes      | Regular expression pattern to search for     |
-| `file_pattern` | string | No       | Glob pattern to filter files (e.g., "\*.js") |
-
-## Network Tools
-
-### forge_tool_net_fetch
-
-Retrieves content from URLs as markdown or raw text.
-
-#### Parameters
-
-| Parameter     | Type    | Required | Description                                                        |
-| ------------- | ------- | -------- | ------------------------------------------------------------------ |
-| `url`         | string  | Yes      | URL to fetch content from                                          |
-| `raw`         | boolean | No       | Whether to return raw content instead of markdown (default: false) |
-| `max_length`  | number  | No       | Maximum characters to return (default: 40000)                      |
-| `start_index` | number  | No       | Starting character index for pagination (default: 0)               |
+Parameters
+- path: string (required) — Absolute path to revert
 
 ## Process Tools
 
-### forge_tool_process_shell
+### shell
 
-Executes shell commands with safety measures.
+Executes shell commands safely using a restricted environment.
 
-#### Parameters
+Parameters
+- command: string (required) — Command to execute
+- cwd: string (required) — Working directory
+- keep_ansi: boolean (optional, default: false) — Preserve ANSI escape codes in output
 
-| Parameter | Type   | Required | Description                             |
-| --------- | ------ | -------- | --------------------------------------- |
-| `command` | string | Yes      | Shell command to execute                |
-| `cwd`     | string | Yes      | Working directory for command execution |
+## Network Tools
+
+### fetch
+
+Retrieves content from URLs as markdown or raw text.
+
+Parameters
+- url: string (required) — URL to fetch
+- raw: boolean (optional, default: false) — Return raw content instead of markdown
+
+## Conversation Tools
+
+### followup
+
+Ask a clarifying question or present options to the user when more information is needed.
+
+Parameters
+- question: string (required)
+- multiple: boolean (optional) — Allow multiple selections
+- option1..option5: string (optional) — Up to five options to present
+
+### attempt_completion
+
+Present the final result of the task to the user once all prior tool uses are confirmed successful.
+
+Parameters
+- result: string (required) — Final task result formatted for the user
+
+## Planning Tools
+
+### plan
+
+Creates a new plan file with the specified name, version, and content.
+
+Parameters
+- plan_name: string (required)
+- version: string (required)
+- content: string (required) — Complete markdown content of the plan
