@@ -69,6 +69,8 @@ Although I manually checked each attempt, there may be some subjectivity in scor
 - Replace the standard brick layout with a player’s GitHub contribution graph (squares = contributions).
 - Some blocks should randomly drop boosters (e.g., widen paddle, multi-ball, slow ball).
 
+You might be wondering about OpenAI’s prompt optimization tool for GPT-5 (see link<sup><a id="ref-3" href="#footnote-3">3</a></sup>). I didn't use it here because that would make the comparison unfair to Qwen3-Coder, which doesn't have a similar feature. The base prompt I used is already detailed enough, and the goal of this test was to see how both models perform under the same raw instructions, not with one getting an extra advantage.
+
 ### Evaluation Criteria
 
 - First and foremost, the code quality and no logic errors.
@@ -107,7 +109,15 @@ As you can see, none of it really works, and it wasn't even implemented as reque
 
 It's good, it has separated the logic in multiple files and documented the code well, but none of it works.
 
-You can find the code it generated here<sup><a id="ref-3" href="#footnote-3">3</a></sup>.
+For this question, I thought to also test it using the Playwright MCP to see how quickly it can detect and fix the UI and logic bugs.
+
+Somehow, I got it to a working state in 2 iterations using the Playwright MCP. However, multiple features still don't work, like the WebSocket functionality.
+
+Here's the updated output of the program:
+
+<img src="/images/blog/chess-playwright-gpt-5.gif" alt="Chess browser game built with GPT-5 AI Model enhanced with Playwright MCP" style={{width: "100%", maxWidth: "800px"}} />
+
+You can find the code it generated here<sup><a id="ref-4" href="#footnote-4">4</a></sup>.
 
 - **Qwen3-Coder:**
 
@@ -115,13 +125,15 @@ Here's the output of the program:
 
 <img src="/images/blog/chess-qwen3-coder.gif" alt="Chess browser game built with Qwen3-Coder AI Model" style={{width: "100%", maxWidth: "800px"}} />
 
-On the very first look, you can already see the overall feel of this question by Qwen3 Coder is already much better. The pieces move well, you can save and load game properly, it has added multiple time controls as I asked.
+On the very first look, you can already see the overall feel of this question by Qwen3-Coder is already much better. The pieces move well, you can save and load game properly, it has added multiple time controls as I asked.
 
 However, the websocket functionality does not work on this one as well. Also the fact that black pieces are colored white.
 
 The way the code is structured feels worse than GPT-5. It has placed all the logic, markup, and CSS in one file, which is a straight no for me.
 
-You can find the code it generated here<sup><a id="ref-4" href="#footnote-4">4</a></sup>.
+I tried to fix these issues with Playwright MCP. It did fix the pieces color, but the WebSocket functionality still does not work.
+
+You can find the code it generated here<sup><a id="ref-5" href="#footnote-5">5</a></sup>.
 
 ### 2. Build a CLI to convert images format in Rust
 
@@ -135,7 +147,7 @@ Here's the output of the program:
 
 GPT-5 did a stunning job with this question. It implemented everything I asked for and works flawlessly with both directories and a single image. The main thing I wanted to test is how well it manages to use external crates like `clap` and `image` for argument parsing and working with images, and it used them all correctly.
 
-You can find the code it generated here<sup><a id="ref-5" href="#footnote-5">5</a></sup>.
+You can find the code it generated here<sup><a id="ref-6" href="#footnote-6">6</a></sup>.
 
 - **Qwen3-Coder:**
 
@@ -147,7 +159,7 @@ This went much better than I expected. This question was completely answered by 
 
 Even better, it added support for setting image quality, which I didn't ask for, but it's a nice subtle addition it made on its own.
 
-You can find the code it generated here<sup><a id="ref-6" href="#footnote-6">6</a></sup>.
+You can find the code it generated here<sup><a id="ref-7" href="#footnote-7">7</a></sup>.
 
 ### 3. Build a DX Ball–style game with GitHub contributions
 
@@ -163,7 +175,7 @@ In this specific implementation as well, it did decently. It's not able to fetch
 
 The code is well-documented, but it's all jumbled in one file.
 
-You can find the code it generated here<sup><a id="ref-7" href="#footnote-7">7</a></sup>.
+You can find the code it generated here<sup><a id="ref-8" href="#footnote-8">8</a></sup>.
 
 - **Qwen3-Coder:**
 
@@ -175,7 +187,7 @@ This model included everything I asked for in the implementation. Most important
 
 It can fetch the GitHub contribution graph, but there's a slight problem with the game implementation, as you can see above. Still, this is far better than GPT-5's implementation.
 
-You can find the code it generated here<sup><a id="ref-8" href="#footnote-8">8</a></sup>.
+You can find the code it generated here<sup><a id="ref-9" href="#footnote-9">9</a></sup>.
 
 ---
 
@@ -253,9 +265,9 @@ Now, let's look into the overall impression of these models in our entire test a
 
 And, that seems to be the case with many other folks as well:
 
-<a id="ref-9" href="#footnote-9">GPT-5: Overdue, overhyped and underwhelming. And that’s not the worst of it.</a>
-<a id="ref-10" href="#footnote-10">GPT-5 Users Say It Seriously Sucks.</a>
-<a id="ref-11" href="#footnote-11">Nearly 5,000 GPT-5 users flock to Reddit in backlash.</a>
+<a id="ref-10" href="#footnote-10">GPT-5: Overdue, overhyped and underwhelming. And that’s not the worst of it.</a>
+<a id="ref-11" href="#footnote-11">GPT-5 Users Say It Seriously Sucks.</a>
+<a id="ref-12" href="#footnote-12">Nearly 5,000 GPT-5 users flock to Reddit in backlash.</a>
 
 ### Qwen3-Coder
 
@@ -274,7 +286,7 @@ And, that seems to be the case with many other folks as well:
 | **Typical cost/task**    | ~$0.1-0.2                                                                                           | ~$0.3-0.5                                                                                                               |
 | **Latency (TTFT)**       | Less than 10s (very low, fast first token)                                                          | ~72s (very high, slow first token)                                                                                      |
 | **Output speed**         | Greater than 100 tokens/sec (varies by provider)                                                    | ~93 tokens/sec                                                                                                          |
-| **Accuracy & reasoning** | Solid for coding (Artificial Analysis<sup><a id="ref-12" href="#footnote-12">12</a></sup> index 45) | Very strong reasoning & intelligence (Artificial Analysis<sup><a id="ref-12" href="#footnote-12">12</a></sup> Index 69) |
+| **Accuracy & reasoning** | Solid for coding (Artificial Analysis<sup><a id="ref-13" href="#footnote-13">13</a></sup> index 45) | Very strong reasoning & intelligence (Artificial Analysis<sup><a id="ref-13" href="#footnote-13">13</a></sup> Index 69) |
 | **Context window**       | ~260K tokens                                                                                        | ~400K tokens                                                                                                            |
 | **Open model**           | Yes                                                                                                 | No                                                                                                                      |
 
@@ -306,22 +318,24 @@ In short, if you want a fast, mostly accurate, and cost-efficient model for codi
 
 <a id="footnote-2"></a>**2**. Alibaba "Qwen3-Coder Introduction." [https://qwenlm.github.io/blog/qwen3-coder](https://qwenlm.github.io/blog/qwen3-coder) [↩](#ref-2)
 
-<a id="footnote-3"></a>**3**. Chess Browser Game "Built with GPT-5 AI Model." [https://gist.github.com/shricodev/414a6bb92801f181395636715a82b9f7](https://gist.github.com/shricodev/414a6bb92801f181395636715a82b9f7) [↩](#ref-3)
+<a id="footnote-3"></a>**3**. OpenAI "GPT-5 Prompt Optimization." [https://platform.openai.com/chat/edit?models=gpt-5&optimize=true](https://platform.openai.com/chat/edit?models=gpt-5&optimize=true) [↩](#ref-3)
 
-<a id="footnote-4"></a>**4**. Chess Browser Game "Built with Qwen3-Coder AI Model." [https://gist.github.com/shricodev/ddc1d48956ef3c018d079895d305f264](https://gist.github.com/shricodev/ddc1d48956ef3c018d079895d305f264) [↩](#ref-4)
+<a id="footnote-4"></a>**4**. Chess Browser Game "Built with GPT-5 AI Model." [https://gist.github.com/shricodev/414a6bb92801f181395636715a82b9f7](https://gist.github.com/shricodev/414a6bb92801f181395636715a82b9f7) [↩](#ref-4)
 
-<a id="footnote-5"></a>**5**. Rust CLI filetype converter "Built with GPT-5 AI Model." [https://gist.github.com/shricodev/56fa8e3a78958ebdd5c61df0809fbbf4](https://gist.github.com/shricodev/56fa8e3a78958ebdd5c61df0809fbbf4) [↩](#ref-5)
+<a id="footnote-5"></a>**5**. Chess Browser Game "Built with Qwen3-Coder AI Model." [https://gist.github.com/shricodev/ddc1d48956ef3c018d079895d305f264](https://gist.github.com/shricodev/ddc1d48956ef3c018d079895d305f264) [↩](#ref-5)
 
-<a id="footnote-6"></a>**6**. Rust CLI filetype converter "Built with Qwen3-Coder AI Model." [https://gist.github.com/shricodev/006f28484d6fc9858306d7891fe972f2](https://gist.github.com/shricodev/006f28484d6fc9858306d7891fe972f2) [↩](#ref-6)
+<a id="footnote-6"></a>**6**. Rust CLI filetype converter "Built with GPT-5 AI Model." [https://gist.github.com/shricodev/56fa8e3a78958ebdd5c61df0809fbbf4](https://gist.github.com/shricodev/56fa8e3a78958ebdd5c61df0809fbbf4) [↩](#ref-6)
 
-<a id="footnote-7"></a>**7**. GitHub Contribution DX Ball "Built with GPT-5 AI Model." [https://gist.github.com/shricodev/479ef4135bb01a4899fc7f4ed33de7b5](https://gist.github.com/shricodev/479ef4135bb01a4899fc7f4ed33de7b5) [↩](#ref-7)
+<a id="footnote-7"></a>**7**. Rust CLI filetype converter "Built with Qwen3-Coder AI Model." [https://gist.github.com/shricodev/006f28484d6fc9858306d7891fe972f2](https://gist.github.com/shricodev/006f28484d6fc9858306d7891fe972f2) [↩](#ref-7)
 
-<a id="footnote-8"></a>**8**. GitHub Contribution DX Ball "Built with Qwen3-Coder AI Model." [https://gist.github.com/shricodev/75967d7cff2b6617f7970ea13d836823](https://gist.github.com/shricodev/75967d7cff2b6617f7970ea13d836823) [↩](#ref-8)
+<a id="footnote-8"></a>**8**. GitHub Contribution DX Ball "Built with GPT-5 AI Model." [https://gist.github.com/shricodev/479ef4135bb01a4899fc7f4ed33de7b5](https://gist.github.com/shricodev/479ef4135bb01a4899fc7f4ed33de7b5) [↩](#ref-8)
 
-<a id="footnote-9"></a>**9**. Gary Marcus "GPT-5: Overdue, overhyped and underwhelming. And that’s not the worst of it." [https://garymarcus.substack.com/p/gpt-5-overdue-overhyped-and-underwhelming](https://garymarcus.substack.com/p/gpt-5-overdue-overhyped-and-underwhelming) [↩](#ref-9)
+<a id="footnote-9"></a>**9**. GitHub Contribution DX Ball "Built with Qwen3-Coder AI Model." [https://gist.github.com/shricodev/75967d7cff2b6617f7970ea13d836823](https://gist.github.com/shricodev/75967d7cff2b6617f7970ea13d836823) [↩](#ref-9)
 
-<a id="footnote-10"></a>**10**. Futurism "GPT-5 Users Say It Seriously Sucks." [https://futurism.com/gpt-5-sucks](https://futurism.com/gpt-5-sucks) [↩](#ref-10)
+<a id="footnote-10"></a>**10**. Gary Marcus "GPT-5: Overdue, overhyped and underwhelming. And that’s not the worst of it." [https://garymarcus.substack.com/p/gpt-5-overdue-overhyped-and-underwhelming](https://garymarcus.substack.com/p/gpt-5-overdue-overhyped-and-underwhelming) [↩](#ref-10)
 
-<a id="footnote-11"></a>**11**. Tom’s Guide "Nearly 5,000 GPT-5 users flock to Reddit in backlash." [https://www.tomsguide.com/ai/chatgpt/chatgpt-5-users-are-not-impressed-heres-why-it-feels-like-a-downgrade](https://www.tomsguide.com/ai/chatgpt/chatgpt-5-users-are-not-impressed-heres-why-it-feels-like-a-downgrade) [↩](#ref-11)
+<a id="footnote-11"></a>**11**. Futurism "GPT-5 Users Say It Seriously Sucks." [https://futurism.com/gpt-5-sucks](https://futurism.com/gpt-5-sucks) [↩](#ref-11)
 
-<a id="footnote-12"></a>**12.** Artificial Analysis. "Independent analysis of AI." [https://artificialanalysis.ai](https://artificialanalysis.ai) [↩](#ref-12)
+<a id="footnote-12"></a>**12**. Tom’s Guide "Nearly 5,000 GPT-5 users flock to Reddit in backlash." [https://www.tomsguide.com/ai/chatgpt/chatgpt-5-users-are-not-impressed-heres-why-it-feels-like-a-downgrade](https://www.tomsguide.com/ai/chatgpt/chatgpt-5-users-are-not-impressed-heres-why-it-feels-like-a-downgrade) [↩](#ref-12)
+
+<a id="footnote-13"></a>**13.** Artificial Analysis. "Independent analysis of AI." [https://artificialanalysis.ai](https://artificialanalysis.ai) [↩](#ref-13)
