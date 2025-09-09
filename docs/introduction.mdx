@@ -16,7 +16,7 @@ write code using natural language instructions.
 
 ## Basic usage
 
-Get started in under 2 minutes:
+**Get started in under 2 minutes:**
 
 ```bash
 cd path/to/your/project/directory
@@ -25,38 +25,80 @@ npx forgecode@latest
 
 For detailed installation instructions, see <CustomLink href="/docs/installation">Setup Forge</CustomLink>.
 
-![img](/docs/forge_image.png)
+<div style={{textAlign: 'center', margin: '2rem 0'}}>
+  <img
+    src="/docs/forge_image.png"
+    alt="Forge Code in action"
+    style={{
+      width: '700px',
+      maxWidth: '100%',
+      height: 'auto',
+      borderRadius: '8px',
+      boxShadow: '0 4px 16px rgba(0, 0, 0, 0.1)',
+      border: '1px solid rgba(0, 0, 0, 0.08)'
+    }}
+  />
+</div>
 
-You can interact with Forge directly from the interactive REPL session.
+**Try it now:** Open your terminal, run the command above, and start your first AI-powered coding session.
 
 For complete usage instructions, see <CustomLink href="/docs/quickstart">Quickstart</CustomLink>.
 
 ## Features
 
-### <Rocket size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Fast Startup**
+<div class="features-grid">
 
-Sub-50ms startup times ensure minimal wait time when launching the tool.
+<div class="feature-card">
+  <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
+    <Rocket size={24} style={{color: '#3b82f6', marginRight: '0.75rem'}} />
+    <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Fast Startup</h3>
+  </div>
+  <p style={{margin: 0, lineHeight: 1.7}}>Sub-50ms startup times ensure minimal wait time when launching the tool.</p>
+</div>
 
-### <Brain size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Context Awareness**
+<div class="feature-card">
+  <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
+    <Brain size={24} style={{color: '#10b981', marginRight: '0.75rem'}} />
+    <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Context Awareness</h3>
+  </div>
+  <p style={{margin: 0, lineHeight: 1.7}}>Forge analyzes your project files, Git history, dependencies, and environment to understand your codebase without requiring repeated explanations.</p>
+</div>
 
-Forge analyzes your project files, Git history, dependencies, and environment to understand your codebase without requiring repeated explanations.
+<div class="feature-card">
+  <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
+    <Wrench size={24} style={{color: '#f59e0b', marginRight: '0.75rem'}} />
+    <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Multi-Agent Architecture</h3>
+  </div>
+  <div>
+    <p style={{margin: '0 0 0.25rem 0'}}>Switch between specialized AI agents:</p>
+    <ul style={{margin: 0, paddingLeft: '1.25rem'}}>
+      <li><strong>Forge Agent</strong>: Full execution mode for implementing changes</li>
+      <li><strong>Muse Agent</strong>: Analysis mode for planning and review without modifications</li>
+    </ul>
+  </div>
+</div>
 
-### <Wrench size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Multi-Agent Architecture**
+<div class="feature-card">
+  <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
+    <Shield size={24} style={{color: '#ef4444', marginRight: '0.75rem'}} />
+    <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Security</h3>
+  </div>
+  <ul style={{margin: 0, paddingLeft: '1.25rem'}}>
+    <li>Optional restricted shell mode provides system protection while maintaining AI functionality</li>
+    <li>Code and indexes remain on your local machine</li>
+    <li>Direct terminal operation with real file editing and Git commit capabilities</li>
+  </ul>
+</div>
 
-Switch between specialized AI agents:
+<div class="feature-card">
+  <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
+    <Link size={24} style={{color: '#8b5cf6', marginRight: '0.75rem'}} />
+    <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>AI Provider Integration</h3>
+  </div>
+  <p style={{margin: 0, lineHeight: 1.7}}>Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see <CustomLink href="/docs/custom-providers">Different providers</CustomLink>.</p>
+</div>
 
-- **Forge Agent**: Full execution mode for implementing changes
-- **Muse Agent**: Analysis mode for planning and review without modifications
-
-### <Shield size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Security**
-
-- Optional restricted shell mode provides system protection while maintaining AI functionality
-- Code and indexes remain on your local machine
-- Direct terminal operation with real file editing and Git commit capabilities
-
-### <Link size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **AI Provider Integration**
-
-Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see <CustomLink href="/docs/custom-providers">Different providers</CustomLink>.
+</div>
 
 ## Next Steps
 
@@ -65,21 +107,21 @@ import NextSteps from "../src/components/NextSteps"
 <NextSteps
   items={[
     {
-      logo: <Package size={28} style={{verticalAlign: "middle"}} />,
+      logo: <Package size={24} style={{color: '#8b5cf6'}} />,
       title: "Install Forge",
-      subtitle: "Set up Forge on your system with npm, Homebrew, or direct download.",
+      subtitle: "Get started in minutes with npm, Homebrew, or direct download. Simple setup, powerful results.",
       link: "./installation",
     },
     {
-      logo: <Zap size={28} style={{verticalAlign: "middle"}} />,
-      title: "Tutorial",
-      subtitle: "Complete your first task with Forge in under 10 minutes.",
+      logo: <Zap size={24} style={{color: '#f59e0b'}} />,
+      title: "Quick Tutorial",
+      subtitle: "Master your first AI-powered task in under 10 minutes. From zero to productive.",
       link: "./quickstart",
     },
     {
-      logo: <Target size={28} style={{verticalAlign: "middle"}} />,
-      title: "Commands",
-      subtitle: "Learn the essential commands for productive development.",
+      logo: <Target size={24} style={{color: '#ef4444'}} />,
+      title: "Essential Commands",
+      subtitle: "Discover the key commands that will supercharge your development workflow.",
       link: "./commands",
     },
   ]}
@@ -87,4 +129,6 @@ import NextSteps from "../src/components/NextSteps"
 
 ---
 
-**Ready to get started?** Install Forge and integrate AI assistance into your terminal workflow.
+:::tip Ready to get started?
+Install Forge and integrate AI assistance into your terminal workflow.
+:::
