@@ -48,54 +48,64 @@ For complete usage instructions, see <CustomLink href="/docs/quickstart">Quickst
 
 <div class="content-grid">
 
-<div class="content-card">
-  <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-    <Rocket size={24} style={{color: '#3b82f6', marginRight: '0.75rem'}} />
-    <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Fast Startup</h3>
+<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
+  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
+    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
+      <Rocket size={24} style={{color: '#3b82f6', marginRight: '0.75rem'}} />
+      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Fast Startup</h3>
+    </div>
+    <p style={{margin: 0, lineHeight: 1.7}}>Sub-50ms startup times ensure minimal wait time when launching the tool.</p>
   </div>
-  <p style={{margin: 0, lineHeight: 1.7}}>Sub-50ms startup times ensure minimal wait time when launching the tool.</p>
 </div>
 
-<div class="content-card">
-  <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-    <Brain size={24} style={{color: '#10b981', marginRight: '0.75rem'}} />
-    <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Context Awareness</h3>
+<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
+  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
+    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
+      <Brain size={24} style={{color: '#10b981', marginRight: '0.75rem'}} />
+      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Context Awareness</h3>
+    </div>
+    <p style={{margin: 0, lineHeight: 1.7}}>Forge analyzes your project files, Git history, dependencies, and environment to understand your codebase without requiring repeated explanations.</p>
   </div>
-  <p style={{margin: 0, lineHeight: 1.7}}>Forge analyzes your project files, Git history, dependencies, and environment to understand your codebase without requiring repeated explanations.</p>
 </div>
 
-<div class="content-card">
-  <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-    <Wrench size={24} style={{color: '#f59e0b', marginRight: '0.75rem'}} />
-    <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Multi-Agent Architecture</h3>
+<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
+  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
+    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
+      <Wrench size={24} style={{color: '#f59e0b', marginRight: '0.75rem'}} />
+      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Multi-Agent Architecture</h3>
+    </div>
+    <div>
+      <p style={{margin: '0 0 0.25rem 0'}}>Switch between specialized AI agents:</p>
+      <ul style={{margin: 0, paddingLeft: '1.25rem'}}>
+        <li><strong>Forge Agent</strong>: Full execution mode for implementing changes</li>
+        <li><strong>Muse Agent</strong>: Analysis mode for planning and review without modifications</li>
+      </ul>
+    </div>
   </div>
-  <div>
-    <p style={{margin: '0 0 0.25rem 0'}}>Switch between specialized AI agents:</p>
+</div>
+
+<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
+  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
+    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
+      <Shield size={24} style={{color: '#ef4444', marginRight: '0.75rem'}} />
+      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Security</h3>
+    </div>
     <ul style={{margin: 0, paddingLeft: '1.25rem'}}>
-      <li><strong>Forge Agent</strong>: Full execution mode for implementing changes</li>
-      <li><strong>Muse Agent</strong>: Analysis mode for planning and review without modifications</li>
+      <li>Optional restricted shell mode provides system protection while maintaining AI functionality</li>
+      <li>Code and indexes remain on your local machine</li>
+      <li>Direct terminal operation with real file editing and Git commit capabilities</li>
     </ul>
   </div>
 </div>
 
-<div class="content-card">
-  <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-    <Shield size={24} style={{color: '#ef4444', marginRight: '0.75rem'}} />
-    <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Security</h3>
+<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
+  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
+    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
+      <Link size={24} style={{color: '#8b5cf6', marginRight: '0.75rem'}} />
+      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>AI Provider Integration</h3>
+    </div>
+    <p style={{margin: 0, lineHeight: 1.7}}>Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see <CustomLink href="/docs/custom-providers">Different providers</CustomLink>.</p>
   </div>
-  <ul style={{margin: 0, paddingLeft: '1.25rem'}}>
-    <li>Optional restricted shell mode provides system protection while maintaining AI functionality</li>
-    <li>Code and indexes remain on your local machine</li>
-    <li>Direct terminal operation with real file editing and Git commit capabilities</li>
-  </ul>
-</div>
-
-<div class="content-card">
-  <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-    <Link size={24} style={{color: '#8b5cf6', marginRight: '0.75rem'}} />
-    <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>AI Provider Integration</h3>
-  </div>
-  <p style={{margin: 0, lineHeight: 1.7}}>Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see <CustomLink href="/docs/custom-providers">Different providers</CustomLink>.</p>
 </div>
 
 </div>
