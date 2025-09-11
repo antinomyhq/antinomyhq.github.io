@@ -1665,7 +1665,9 @@ table thead tr {
 }
 
 .img-elevate {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .img-elevate:hover {
