@@ -1664,6 +1664,15 @@ table thead tr {
   margin: 0 auto;
 }
 
+.img-elevate {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.img-elevate:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
 @media (max-width: 768px) {
   .content-grid {
     grid-template-columns: 1fr;
