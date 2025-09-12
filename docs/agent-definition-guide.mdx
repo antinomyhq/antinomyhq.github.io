@@ -1,0 +1,301 @@
+---
+title: Creating Custom Agents
+description: "Learn how to create custom AI agents from scratch with specialized knowledge, behavior, and tool access for your development workflow."
+sidebar_label: Creating Custom Agents
+---
+
+import {Settings, FileText, Code, Brain, Shield, Wrench} from "lucide-react"
+import CustomLink from "@site/src/components/shared/CustomLink"
+
+# Creating Custom Agents
+
+Forge allows you to customize built-in agents (Forge, Muse, Sage, Parker, and Prime) by overriding their default configurations. This powerful feature lets you fine-tune agent behavior, modify parameters, and adapt them to your specific project needs.
+
+## Overview
+
+Built-in agents come with predefined configurations, but you can override any of these settings by creating custom configuration files in your project's `.forge/agents/` directory.
+
+## How It Works
+
+When Forge loads an agent, it follows this priority order:
+
+1. **Custom configuration** (`.forge/agents/agent-name.md`) - highest priority
+2. **Default configuration** (built into Forge) - fallback
+
+This means your custom configurations will always take precedence over the built-in defaults.
+
+## Setting Up Custom Agent Configurations
+
+### 1. Create the Agents Directory
+
+First, create the agents directory in your project:
+
+```bash
+mkdir -p .forge/agents
+```
+
+### 2. Create Agent Configuration Files
+
+Create a markdown file for each agent you want to customize. The filename should match the agent name:
+
+- `forge.md` - Customize the Forge agent
+- `muse.md` - Customize the Muse agent
+- `sage.md` - Customize the Sage agent
+- `parker.md` - Customize the Parker agent
+- `prime.md` - Customize the Prime agent
+
+## Configuration Format
+
+Each agent configuration file uses a YAML frontmatter section followed by optional markdown content:
+
+```markdown
+---
+name: "Custom Forge Agent"
+model: "claude-3-5-sonnet-20241022"
+reasoning_effort: "high"
+temperature: 0.7
+max_tokens: 4000
+system_prompt: |
+  You are a specialized coding assistant focused on my specific project needs.
+  Always consider performance and maintainability in your suggestions.
+---
+
+# Custom Forge Agent
+
+This is my customized version of the Forge agent, optimized for my development workflow.
+```
+
+## Available Configuration Options
+
+### Core Agent Parameters
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `id` | string | Agent identifier | `"custom-forge"` |
+| `title` | string | Agent display name | `"Custom Development Agent"` |
+| `description` | string | Agent description and purpose | `"Specialized agent for React development..."` |
+
+### Reasoning Configuration
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `reasoning.enabled` | boolean | Enable/disable reasoning mode | `true` |
+
+### Tools Configuration
+
+| Parameter | Type | Description | Example |
+|-----------|------|-------------|---------|
+| `tools` | array | Available tools for the agent | `["read", "write", "shell"]` |
+
+### Available Tools
+
+You can customize which tools each agent has access to:
+
+- `read` - Read files and directories
+- `write` - Create and modify files
+- `remove` - Delete files
+- `patch` - Apply patches to files
+- `shell` - Execute shell commands
+- `fetch` - Fetch external resources
+- `search` - Search within files
+- `undo` - Undo previous changes
+- `plan` - Create implementation plans
+- `sage` - Access to Sage research agent
+
+### System Prompt Customization
+
+The main content of your agent file (after the YAML frontmatter) becomes the system prompt. This is where you define:
+
+- Agent personality and behavior
+- Core principles and guidelines
+- Technical capabilities and focus areas
+- Implementation methodology
+- Response formatting preferences
+
+:::info Model Parameters
+Model parameters like `temperature`, `max_tokens`, `top_p`, etc. are configured globally in your `forge.yaml` file, not in individual agent files. See <CustomLink href="/docs/workflow-config">Workflow Configuration</CustomLink> for these settings.
+:::
+
+## Example Configurations
+
+### Performance-Focused Forge Agent
+
+```markdown
+---
+id: "performance-forge"
+title: "Performance-Focused Development Agent"
+description: "Expert software engineer focused on high-performance, scalable solutions with emphasis on optimization and efficiency."
+reasoning:
+  enabled: true
+tools:
+  - read
+  - write
+  - shell
+  - search
+  - patch
+---
+
+You are a performance-focused software engineering assistant specialized in building high-performance, scalable applications.
+
+## Core Principles:
+
+1. Performance First: Always prioritize performance optimization
+2. Scalable Architecture: Design for scale from the beginning
+3. Memory Efficiency: Optimize memory usage and prevent leaks
+4. Clean Code: Maintain readable, maintainable code
+
+## Always Consider:
+
+- Time complexity and algorithmic efficiency
+- Space complexity and memory usage
+- Caching strategies and data optimization
+- Database query optimization
+- Profiling and performance monitoring
+
+Focus on delivering solutions that are both fast and maintainable.
+```
+
+### Creative Planning Agent
+
+```markdown
+---
+id: "creative-muse"
+title: "Creative Planning and Analysis Agent"
+description: "Strategic planning agent that explores innovative solutions and creative approaches to complex development challenges."
+reasoning:
+  enabled: true
+tools:
+  - read
+  - search
+  - plan
+  - sage
+---
+
+You are a creative strategic planning assistant that thinks outside the box and explores innovative solutions.
+
+## Core Principles:
+
+1. Creative Thinking: Explore unconventional approaches and innovative solutions
+2. Strategic Planning: Create comprehensive plans that consider multiple perspectives
+3. Balanced Innovation: Balance creativity with practical implementation considerations
+4. Thorough Analysis: Conduct deep analysis before recommending creative solutions
+
+## Your Approach:
+
+- Suggest multiple creative alternatives for complex problems
+- Consider unconventional approaches that others might miss
+- Balance innovation with practical constraints
+- Provide detailed reasoning for creative recommendations
+
+Focus on generating innovative plans that push boundaries while remaining implementable.
+```
+
+### Security-Focused Research Agent
+
+```markdown
+---
+id: "security-sage"
+title: "Security-Focused Research and Analysis Agent"
+description: "Research agent specialized in security analysis, vulnerability assessment, and secure development practices with deep expertise in identifying security issues."
+reasoning:
+  enabled: true
+tools:
+  - read
+  - search
+  - fetch
+---
+
+You are a security-focused research assistant with deep expertise in secure development practices and vulnerability analysis.
+
+## Core Principles:
+
+1. Security First: Always prioritize security in all analysis and recommendations
+2. Thorough Investigation: Conduct comprehensive security assessments
+3. Risk Assessment: Identify and evaluate potential security risks
+4. Best Practices: Recommend industry-standard security practices
+
+## Always Consider:
+
+- Input validation and sanitization patterns
+- Authentication and authorization mechanisms
+- Data encryption and protection strategies
+- Common vulnerabilities (OWASP Top 10)
+- Secure coding patterns and practices
+- Dependency security and supply chain risks
+
+Focus on identifying security issues and providing actionable security recommendations.
+```
+
+## Best Practices
+
+### 1. Start with Small Changes
+Begin by modifying just one or two parameters to understand the impact:
+
+```markdown
+---
+id: "custom-forge"
+title: "My Custom Forge"
+description: "Customized Forge agent for my development workflow"
+reasoning:
+  enabled: true
+---
+```
+
+### 2. Use Descriptive Names
+Give your customized agents clear, descriptive names:
+
+```markdown
+---
+id: "frontend-forge"
+title: "Frontend-Focused Forge"
+description: "Specialized for React and frontend development"
+---
+# or
+---
+id: "api-sage"
+title: "API Development Sage"
+description: "Research agent focused on API design and analysis"
+---
+```
+
+### 3. Test Your Configurations
+After creating custom configurations:
+
+1. Restart Forge to load the new settings
+2. Test the agent with typical tasks
+3. Adjust parameters based on results
+4. Document what works best for your workflow
+
+## Troubleshooting
+
+### Agent Not Loading Custom Configuration
+
+**Check file location:**
+```bash
+ls -la .forge/agents/
+# Should show your .md files
+```
+
+**Verify file format:**
+- Ensure YAML frontmatter is properly formatted
+- Check for syntax errors in the YAML section
+- Validate that the filename matches the agent name exactly
+
+
+
+### Getting Help
+
+If you encounter issues with agent customization:
+
+- **General Help**: Type `/help` for available commands
+- **Documentation**: Review the <CustomLink href="/docs/custom-providers">Custom Providers</CustomLink> guide
+- **Community**: Join our <CustomLink href="https://discord.gg/kRZBPpkgwq">Discord</CustomLink> for support
+
+## What's Next?
+
+Now that you understand agent customization:
+
+- Experiment with different parameter combinations
+- Create specialized agents for different types of work
+- Share successful configurations with your team
+- Explore <CustomLink href="/docs/workflow-config">Workflow Configuration</CustomLink> for advanced setups
