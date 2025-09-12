@@ -50,19 +50,29 @@ Each agent configuration file uses a YAML frontmatter section followed by option
 
 ```markdown
 ---
-name: "Custom Forge Agent"
-model: "claude-3-5-sonnet-20241022"
-reasoning_effort: "high"
-temperature: 0.7
-max_tokens: 4000
-system_prompt: |
-  You are a specialized coding assistant focused on my specific project needs.
-  Always consider performance and maintainability in your suggestions.
+id: "custom-forge"
+title: "Custom Forge Agent"
+description: "Specialized coding assistant focused on specific project needs with emphasis on performance and maintainability"
+reasoning:
+  enabled: true
+tools:
+  - read
+  - write
+  - shell
+  - search
+  - patch
 ---
 
-# Custom Forge Agent
+You are a specialized coding assistant focused on my specific project needs.
+Always consider performance and maintainability in your suggestions.
 
-This is my customized version of the Forge agent, optimized for my development workflow.
+## Core Principles:
+
+1. Performance First: Optimize for speed and efficiency
+2. Maintainable Code: Write clean, readable, and well-documented code
+3. Best Practices: Follow industry standards and conventions
+
+Focus on delivering high-quality solutions that are both performant and maintainable.
 ```
 
 ## Available Configuration Options
