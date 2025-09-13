@@ -1,0 +1,150 @@
+---
+title: VS Code Extension
+sidebar_position: 15
+description: "Streamline your Forge workflow with the official VS Code extension for quick file reference copying and enhanced IDE integration."
+sidebar_label: VS Code Extension
+---
+
+import {Download, Zap, Copy, Keyboard, Lightbulb, ArrowRight} from "lucide-react"
+import CustomLink from "@site/src/components/shared/CustomLink"
+
+# VS Code Extension
+
+The official Forge VS Code extension streamlines your development workflow by enabling instant file reference copying in Forge's exact format. No more manual typing of file paths and line numbers—just select, copy, and paste.
+
+![Forge VS Code Extension Demo](../static/blog/demo_vscode.gif)
+
+## <Download size={20} style={{verticalAlign: 'baseline', marginRight: 8}} /> Installation
+
+### Prerequisites
+
+- **VS Code**: Version 1.102.0 or higher
+- **Forge**: Must be installed and available in your system PATH
+- **Node.js**: Version 16+ (required for Forge)
+
+### Install from VS Code Marketplace
+
+1. Open VS Code
+2. Go to the Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X`)
+3. Search for "Forge Code"
+4. Click **Install** on the official extension by ForgeCode
+
+**Direct Installation Link**: <CustomLink href="https://marketplace.visualstudio.com/items?itemName=ForgeCode.forge-vscode">VS Code Marketplace</CustomLink>
+
+### Alternative Installation Methods
+
+**Command Line Installation:**
+```bash
+code --install-extension ForgeCode.forge-vscode
+```
+
+> **Note:** Works on Windows, macOS, and Linux with VS Code's built-in CLI.
+
+## <Zap size={20} style={{verticalAlign: 'baseline', marginRight: 8}} /> Features
+
+### <Copy size={16} style={{verticalAlign: 'baseline', marginRight: 6}} /> Smart File Reference Copying
+
+The extension automatically formats file references in Forge's exact syntax, eliminating manual path and line number typing.
+
+**Format Generated:**
+```
+@[<filepath>:<line start>:<line end>]
+```
+
+**Examples:**
+- No selection: `@[src/components/Button.tsx]`
+- Single line: `@[src/components/Button.tsx:42:42]`
+- Multiple lines: `@[src/utils/helpers.js:15:28]`
+### <Keyboard size={16} style={{verticalAlign: 'baseline', marginRight: 6}} /> Quick Access Shortcuts
+
+- **Primary Shortcut**: `Ctrl+U`
+- **Command Palette**: "Copy File Reference"
+- **Context Menu**: Right-click → "Copy Forge Reference"
+
+## <Lightbulb size={20} style={{verticalAlign: 'baseline', marginRight: 8}} /> Usage Guide
+
+### Basic Workflow
+
+<div style={{display: 'flex', alignItems: 'center', gap: '12px', margin: '16px 0'}}>
+  <div style={{background: 'var(--ifm-color-emphasis-200)', color: 'var(--ifm-color-content)', padding: '8px 12px', borderRadius: '6px', fontSize: '14px', fontWeight: '500'}}>1. Select Code</div>
+  <ArrowRight size={16} style={{color: 'var(--ifm-color-content-secondary)'}} />
+  <div style={{background: 'var(--ifm-color-emphasis-200)', color: 'var(--ifm-color-content)', padding: '8px 12px', borderRadius: '6px', fontSize: '14px', fontWeight: '500'}}>2. Press Ctrl+U</div>
+  <ArrowRight size={16} style={{color: 'var(--ifm-color-content-secondary)'}} />
+  <div style={{background: 'var(--ifm-color-emphasis-200)', color: 'var(--ifm-color-content)', padding: '8px 12px', borderRadius: '6px', fontSize: '14px', fontWeight: '500'}}>3. Paste in Forge</div>
+</div>
+
+### Step-by-Step Instructions
+
+1. **Open your project** in VS Code
+2. **Navigate to the file** you want to reference
+3. **Select the code** you want Forge to analyze:
+   - For specific lines: Click and drag to select
+   - For single line: Place cursor on the line
+   - For entire file: Don't select anything (or select all content)
+4. **Copy the reference** using `Ctrl+U`
+5. **Switch to your terminal** where Forge is running
+6. **Paste the reference** in your Forge prompt and continue your conversation
+
+### Example Usage Scenarios
+
+**Debugging a Function:**
+```
+> Help me debug this function @[src/auth/login.js:45:67]
+```
+
+**Code Review:**
+```
+> Review this component for best practices @[components/UserProfile.tsx:12:89]
+```
+
+**Refactoring:**
+```
+> Refactor this utility function to be more efficient @[utils/dataProcessor.js:23:45]
+```
+
+## Best Practices
+
+### <Lightbulb size={16} style={{verticalAlign: 'baseline', marginRight: 6}} /> Effective Reference Usage
+
+- **Be Specific**: Select only the relevant code sections rather than entire files
+- **Context Matters**: Include surrounding context when the issue spans multiple functions
+- **Combine References**: Use multiple references in a single Forge prompt for complex issues
+- **File Organization**: Keep your project structure clean for clearer reference paths
+
+### Performance Tips
+
+- **Large Files**: For files over 1000 lines, select specific sections rather than the entire file
+- **Binary Files**: The extension automatically excludes binary files from reference copying
+- **Git Integration**: References work seamlessly with Git-tracked files and branches
+
+## Troubleshooting
+
+### Common Issues
+
+**Extension Not Working:**
+- Verify Forge is installed and in your PATH: `forge --version`
+- Restart VS Code after installation
+- Check VS Code version compatibility (1.102.0+)
+
+**Keyboard Shortcut Conflicts:**
+- Check for conflicting keybindings in VS Code settings
+- Customize the shortcut: File → Preferences → Keyboard Shortcuts → Search "Forge"
+
+**Path Issues:**
+- Ensure your project is opened as a workspace folder
+- Relative paths are calculated from the workspace root
+- Check that the file is saved (unsaved files may have issues)
+
+### Getting Help
+
+If you encounter issues:
+
+1. **Check the Output Panel**: View → Output → Select "Forge"
+2. **Report Issues**: <CustomLink href="https://github.com/antinomyhq/forge/issues">GitHub Issues</CustomLink>
+3. **Community Support**: Join our community discussions
+
+:::info Ready to Get Started?
+**Install the VS Code extension** and experience seamless integration between your editor and Forge. Streamline your workflow with instant file reference copying and enhanced productivity.
+
+<CustomLink href="https://marketplace.visualstudio.com/items?itemName=ForgeCode.forge-vscode">📦 Install from VS Code Marketplace</CustomLink>
+:::
