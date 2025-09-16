@@ -9,20 +9,22 @@ import CustomLink from "@site/src/components/shared/CustomLink"
 
 # Creating Custom Agents
 
-Forge allows you to customize built-in agents (Forge, Muse, Sage, Parker, and Prime) by overriding their default configurations. This powerful feature lets you fine-tune agent behavior, modify parameters, and adapt them to your specific project needs.
+Create custom AI agents by building upon Forge's built-in agents (Forge, Muse, Sage, Parker, and Prime). You can modify agent behavior, adjust parameters, and adapt them to your project requirements.
 
 ## Overview
 
-Built-in agents come with predefined configurations, but you can override any of these settings by creating custom configuration files in your project's `.forge/agents/` directory.
+This guide covers configuration options, examples, and best practices for creating custom agents.Custom agents adapt built-in agents to your project's specific needs and coding standards.
 
 ## How It Works
+
+Built-in agents come with predefined configurations, but you can create custom versions by defining your own configuration files in your project's `.forge/agents/` directory.
 
 When Forge loads an agent, it follows this priority order:
 
 1. **Custom configuration** (`.forge/agents/agent-name.md`) - highest priority
 2. **Default configuration** (built into Forge) - fallback
 
-This means your custom configurations will always take precedence over the built-in defaults.
+This means your custom agent configurations will always take precedence over the built-in defaults.
 
 ## Setting Up Custom Agent Configurations
 
@@ -36,13 +38,13 @@ mkdir -p .forge/agents
 
 ### 2. Create Agent Configuration Files
 
-Create a markdown file for each agent you want to customize. The filename should match the agent name:
+Create a markdown file for each agent you want to create a custom version of. The filename should match the agent name:
 
-- `forge.md` - Customize the Forge agent
-- `muse.md` - Customize the Muse agent
-- `sage.md` - Customize the Sage agent
-- `parker.md` - Customize the Parker agent
-- `prime.md` - Customize the Prime agent
+- `forge.md` - Create custom Forge agent
+- `muse.md` - Create custom Muse agent
+- `sage.md` - Create custom Sage agent
+- `parker.md` - Create custom Parker agent
+- `prime.md` - Create custom Prime agent
 
 ## Configuration Format
 
@@ -87,9 +89,11 @@ Focus on delivering high-quality solutions that are both performant and maintain
 
 ### Reasoning Configuration
 
-| Parameter | Type | Description | Example |
-|-----------|------|-------------|---------|
-| `reasoning.enabled` | boolean | Enable/disable reasoning mode | `true` |
+| Parameter | Type | Description | Available in | Example |
+|-----------|------|-------------|--------------|---------|
+| `reasoning.enabled` | boolean | Enable/disable reasoning mode | **Forge**, **Sage** | `true` |
+
+**Note**: Reasoning is enabled by default in Forge and Sage agents for complex problem-solving. Muse, Parker, and Prime agents don't use reasoning mode.
 
 ### Tools Configuration
 
@@ -121,10 +125,6 @@ The main content of your agent file (after the YAML frontmatter) becomes the sys
 - Technical capabilities and focus areas
 - Implementation methodology
 - Response formatting preferences
-
-:::info Model Parameters
-Model parameters like `temperature`, `max_tokens`, `top_p`, etc. are configured globally in your `forge.yaml` file, not in individual agent files. See <CustomLink href="/docs/workflow-config">Workflow Configuration</CustomLink> for these settings.
-:::
 
 ## Example Configurations
 
@@ -181,23 +181,23 @@ tools:
   - sage
 ---
 
-You are a creative strategic planning assistant that thinks outside the box and explores innovative solutions.
+You are a strategic planning assistant focused on exploring alternative solutions and approaches.
 
 ## Core Principles:
 
-1. Creative Thinking: Explore unconventional approaches and innovative solutions
-2. Strategic Planning: Create comprehensive plans that consider multiple perspectives
-3. Balanced Innovation: Balance creativity with practical implementation considerations
-4. Thorough Analysis: Conduct deep analysis before recommending creative solutions
+1. Alternative Approaches: Consider different solutions to complex problems
+2. Strategic Planning: Create comprehensive plans from multiple perspectives
+3. Practical Innovation: Balance new ideas with implementation constraints
+4. Thorough Analysis: Analyze requirements before recommending solutions
 
 ## Your Approach:
 
-- Suggest multiple creative alternatives for complex problems
-- Consider unconventional approaches that others might miss
-- Balance innovation with practical constraints
-- Provide detailed reasoning for creative recommendations
+- Suggest multiple alternatives for complex problems
+- Consider different approaches and solutions
+- Balance new ideas with practical constraints
+- Provide detailed reasoning for recommendations
 
-Focus on generating innovative plans that push boundaries while remaining implementable.
+Focus on creating practical plans that address project requirements.
 ```
 
 ### Security-Focused Research Agent
@@ -215,7 +215,7 @@ tools:
   - fetch
 ---
 
-You are a security-focused research assistant with deep expertise in secure development practices and vulnerability analysis.
+You are a security research assistant specializing in secure development practices and vulnerability analysis.
 
 ## Core Principles:
 
@@ -233,7 +233,7 @@ You are a security-focused research assistant with deep expertise in secure deve
 - Secure coding patterns and practices
 - Dependency security and supply chain risks
 
-Focus on identifying security issues and providing actionable security recommendations.
+Focus on identifying security issues and providing specific recommendations.
 ```
 
 ## Best Practices
@@ -291,11 +291,9 @@ ls -la .forge/agents/
 - Check for syntax errors in the YAML section
 - Validate that the filename matches the agent name exactly
 
-
-
 ### Getting Help
 
-If you encounter issues with agent customization:
+If you encounter issues with creating custom agents:
 
 - **General Help**: Type `/help` for available commands
 - **Documentation**: Review the <CustomLink href="/docs/custom-providers">Custom Providers</CustomLink> guide
@@ -303,9 +301,10 @@ If you encounter issues with agent customization:
 
 ## What's Next?
 
-Now that you understand agent customization:
+Now that you understand creating custom agents:
 
 - Experiment with different parameter combinations
 - Create specialized agents for different types of work
 - Share successful configurations with your team
 - Explore <CustomLink href="/docs/workflow-config">Workflow Configuration</CustomLink> for advanced setups
+
