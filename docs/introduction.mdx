@@ -8,6 +8,7 @@ sidebar_label: Overview
 
 import {Rocket, Brain, Wrench, Shield, Link, Package, Zap, Target} from "lucide-react"
 import CustomLink from "@site/src/components/shared/CustomLink"
+import { themeColors } from "@site/src/theme/colors"
 
 # Forge Code overview
 
@@ -23,7 +24,7 @@ cd path/to/your/project/directory
 npx forgecode@latest
 ```
 
-For detailed installation instructions, see <CustomLink href="/docs/installation">Setup Forge</CustomLink>.
+For detailed installation instructions, see [Setup Forge](/docs/installation).
 
 <div className="text-center my-8 px-4">
   <img
@@ -35,73 +36,34 @@ For detailed installation instructions, see <CustomLink href="/docs/installation
 
 **Try it now:** Open your terminal, run the command above, and start your first AI-powered coding session.
 
-For complete usage instructions, see <CustomLink href="/docs/quickstart">Quickstart</CustomLink>.
+For complete usage instructions, see [Quickstart](/docs/quickstart).
 
 ## Features
 
-<div className="content-grid">
+### <Rocket size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Fast Startup**
 
-<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
-  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div className="flex items-start mb-3 gap-3">
-      <Rocket size={24} style={{color: '#3b82f6'}} className="flex-shrink-0 mt-0.5" />
-      <h3 className="m-0 text-2xl font-medium leading-tight break-words">Fast Startup</h3>
-    </div>
-    <p className="m-0 leading-7">Sub-50ms startup times ensure minimal wait time when launching the tool.</p>
-  </div>
-</div>
+Sub-50ms startup times ensure minimal wait time when launching the tool.
 
-<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
-  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div className="flex items-start mb-3 gap-3">
-      <Brain size={24} style={{color: '#10b981', flexShrink: 0, marginTop: '2px'}} />
-      <h3 className="m-0 text-2xl font-medium leading-tight break-words">Context Awareness</h3>
-    </div>
-    <p className="m-0 leading-7">Forge analyzes your project files, Git history, dependencies, and environment to understand your codebase without requiring repeated explanations.</p>
-  </div>
-</div>
+### <Brain size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Context Awareness**
 
-<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
-  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div className="flex items-start mb-3 gap-3">
-      <Wrench size={24} style={{color: '#f59e0b', flexShrink: 0, marginTop: '2px'}} />
-      <h3 className="m-0 text-2xl font-medium leading-tight break-words">Multi-Agent Architecture</h3>
-    </div>
-    <div>
-      <p className="m-0 mb-1">Switch between specialized AI agents:</p>
-      <ul className="m-0 pl-5">
-        <li><strong>Forge Agent</strong>: Full execution mode for implementing changes</li>
-        <li><strong>Muse Agent</strong>: Analysis mode for planning and review without modifications</li>
-      </ul>
-    </div>
-  </div>
-</div>
+Forge analyzes your project files, Git history, dependencies, and environment to understand your codebase without requiring repeated explanations.
 
-<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
-  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div className="flex items-start mb-3 gap-3">
-      <Shield size={24} style={{color: '#ef4444', flexShrink: 0, marginTop: '2px'}} />
-      <h3 className="m-0 text-2xl font-medium leading-tight break-words">Security</h3>
-    </div>
-    <ul className="m-0 pl-5">
-      <li>Optional restricted shell mode provides system protection while maintaining AI functionality</li>
-      <li>Code and indexes remain on your local machine</li>
-      <li>Direct terminal operation with real file editing and Git commit capabilities</li>
-    </ul>
-  </div>
-</div>
+### <Wrench size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Multi-Agent Architecture**
 
-<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
-  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div className="flex items-start mb-3 gap-3">
-      <Link size={24} style={{color: '#8b5cf6', flexShrink: 0, marginTop: '2px'}} />
-      <h3 className="m-0 text-2xl font-medium leading-tight break-words">AI Provider Integration</h3>
-    </div>
-    <p className="m-0 leading-7">Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see <CustomLink href="/docs/custom-providers">Different providers</CustomLink>.</p>
-  </div>
-</div>
+Switch between specialized AI agents:
 
-</div>
+- **Forge Agent**: Full execution mode for implementing changes
+- **Muse Agent**: Analysis mode for planning and review without modifications
+
+### <Shield size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Security**
+
+- Optional restricted shell mode provides system protection while maintaining AI functionality
+- Code and indexes remain on your local machine
+- Direct terminal operation with real file editing and Git commit capabilities
+
+### <Link size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **AI Provider Integration**
+
+Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see <CustomLink href="/docs/custom-providers">Different providers</CustomLink>.
 
 ## Next Steps
 
@@ -110,19 +72,19 @@ import NextSteps from "../src/components/NextSteps"
 <NextSteps
   items={[
     {
-      logo: <Package size={24} style={{color: '#8b5cf6'}} />,
+      logo: <Package size={24} style={{color: themeColors.install}} />,
       title: "Install Forge",
       subtitle: "Get started in minutes with npm, Homebrew, or direct download. Simple setup, powerful results.",
       link: "./installation",
     },
     {
-      logo: <Zap size={24} style={{color: '#f59e0b'}} />,
+      logo: <Zap size={24} style={{color: themeColors.tutorial}} />,
       title: "Quick Tutorial",
       subtitle: "Master your first AI-powered task in under 10 minutes. From zero to productive.",
       link: "./quickstart",
     },
     {
-      logo: <Target size={24} style={{color: '#ef4444'}} />,
+      logo: <Target size={24} style={{color: themeColors.commands}} />,
       title: "Essential Commands",
       subtitle: "Discover the key commands that will supercharge your development workflow.",
       link: "./commands",
