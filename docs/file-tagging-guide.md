@@ -58,6 +58,10 @@ Files with spaces work fine:
 > Review @[src/components/User Profile.tsx]
 ```
 
+:::tip VS Code Extension
+Skip the manual typing! The <CustomLink href="/docs/vscode-extension">Forge VS Code Extension</CustomLink> automatically generates file references in the exact format above. Just select your code and press `Ctrl+U` to copy the reference directly to your clipboard.
+:::
+
 ## When File Tagging Works Best
 
 ### Perfect Use Cases

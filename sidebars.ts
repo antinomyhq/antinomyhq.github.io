@@ -65,10 +65,11 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Tools & Resources", // New category specifically for tools
+      label: "Tools & Integrations", // Expanded category for tools and IDE integrations
       collapsed: false,
       items: [
         "tools-reference", // Dedicated category highlights importance of tools
+        "vscode-extension", // VS Code extension documentation
       ],
     },
     {
