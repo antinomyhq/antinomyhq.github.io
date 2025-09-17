@@ -25,19 +25,11 @@ npx forgecode@latest
 
 For detailed installation instructions, see <CustomLink href="/docs/installation">Setup Forge</CustomLink>.
 
-<div style={{textAlign: 'center', margin: '2rem 0'}}>
+<div className="text-center my-8 px-4">
   <img
     src="/docs/forge_image.png"
     alt="Forge Code in action"
-    style={{
-      width: '700px',
-      maxWidth: '100%',
-      height: 'auto',
-      borderRadius: '12px',
-      boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
-      margin: '2rem auto',
-      display: 'block'
-    }}
+    className="w-full max-w-[700px] h-auto rounded-xl shadow-2xl mx-auto block"
   />
 </div>
 
@@ -47,37 +39,37 @@ For complete usage instructions, see <CustomLink href="/docs/quickstart">Quickst
 
 ## Features
 
-<div class="content-grid">
+<div className="content-grid">
 
 <div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
   <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-      <Rocket size={24} style={{color: '#3b82f6', marginRight: '0.75rem'}} />
-      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Fast Startup</h3>
+    <div className="flex items-start mb-3 gap-3">
+      <Rocket size={24} style={{color: '#3b82f6'}} className="flex-shrink-0 mt-0.5" />
+      <h3 className="m-0 text-2xl font-medium leading-tight break-words">Fast Startup</h3>
     </div>
-    <p style={{margin: 0, lineHeight: 1.7}}>Sub-50ms startup times ensure minimal wait time when launching the tool.</p>
+    <p className="m-0 leading-7">Sub-50ms startup times ensure minimal wait time when launching the tool.</p>
   </div>
 </div>
 
 <div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
   <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-      <Brain size={24} style={{color: '#10b981', marginRight: '0.75rem'}} />
-      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Context Awareness</h3>
+    <div className="flex items-start mb-3 gap-3">
+      <Brain size={24} style={{color: '#10b981', flexShrink: 0, marginTop: '2px'}} />
+      <h3 className="m-0 text-2xl font-medium leading-tight break-words">Context Awareness</h3>
     </div>
-    <p style={{margin: 0, lineHeight: 1.7}}>Forge analyzes your project files, Git history, dependencies, and environment to understand your codebase without requiring repeated explanations.</p>
+    <p className="m-0 leading-7">Forge analyzes your project files, Git history, dependencies, and environment to understand your codebase without requiring repeated explanations.</p>
   </div>
 </div>
 
 <div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
   <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-      <Wrench size={24} style={{color: '#f59e0b', marginRight: '0.75rem'}} />
-      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Multi-Agent Architecture</h3>
+    <div className="flex items-start mb-3 gap-3">
+      <Wrench size={24} style={{color: '#f59e0b', flexShrink: 0, marginTop: '2px'}} />
+      <h3 className="m-0 text-2xl font-medium leading-tight break-words">Multi-Agent Architecture</h3>
     </div>
     <div>
-      <p style={{margin: '0 0 0.25rem 0'}}>Switch between specialized AI agents:</p>
-      <ul style={{margin: 0, paddingLeft: '1.25rem'}}>
+      <p className="m-0 mb-1">Switch between specialized AI agents:</p>
+      <ul className="m-0 pl-5">
         <li><strong>Forge Agent</strong>: Full execution mode for implementing changes</li>
         <li><strong>Muse Agent</strong>: Analysis mode for planning and review without modifications</li>
       </ul>
@@ -87,11 +79,11 @@ For complete usage instructions, see <CustomLink href="/docs/quickstart">Quickst
 
 <div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
   <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-      <Shield size={24} style={{color: '#ef4444', marginRight: '0.75rem'}} />
-      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Security</h3>
+    <div className="flex items-start mb-3 gap-3">
+      <Shield size={24} style={{color: '#ef4444', flexShrink: 0, marginTop: '2px'}} />
+      <h3 className="m-0 text-2xl font-medium leading-tight break-words">Security</h3>
     </div>
-    <ul style={{margin: 0, paddingLeft: '1.25rem'}}>
+    <ul className="m-0 pl-5">
       <li>Optional restricted shell mode provides system protection while maintaining AI functionality</li>
       <li>Code and indexes remain on your local machine</li>
       <li>Direct terminal operation with real file editing and Git commit capabilities</li>
@@ -101,11 +93,11 @@ For complete usage instructions, see <CustomLink href="/docs/quickstart">Quickst
 
 <div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
   <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-      <Link size={24} style={{color: '#8b5cf6', marginRight: '0.75rem'}} />
-      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>AI Provider Integration</h3>
+    <div className="flex items-start mb-3 gap-3">
+      <Link size={24} style={{color: '#8b5cf6', flexShrink: 0, marginTop: '2px'}} />
+      <h3 className="m-0 text-2xl font-medium leading-tight break-words">AI Provider Integration</h3>
     </div>
-    <p style={{margin: 0, lineHeight: 1.7}}>Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see <CustomLink href="/docs/custom-providers">Different providers</CustomLink>.</p>
+    <p className="m-0 leading-7">Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see <CustomLink href="/docs/custom-providers">Different providers</CustomLink>.</p>
   </div>
 </div>
 
@@ -140,6 +132,6 @@ import NextSteps from "../src/components/NextSteps"
 
 ---
 
-:::tip Ready to get started?
+**Ready to get started?**
+
 Install Forge and integrate AI assistance into your terminal workflow.
-:::
