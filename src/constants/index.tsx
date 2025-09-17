@@ -758,16 +758,14 @@ export const BENEFITS = [
     imageLightUrl: "/images/benefits/ben-1.svg",
     title: "Use your favorite IDE",
     smallText: true,
-    description:
-      "Forge works with your CLI and any IDE, so there's no need to switch tools.",
+    description: "Forge works with your CLI and any IDE, so there's no need to switch tools.",
   },
   {
     imageUrl: "/images/benefits/ben-2-dark.svg",
     imageLightUrl: "/images/benefits/ben-2.svg",
     title: "Control speed vs accuracy",
     smallText: true,
-    description:
-      "Pick models smartly: think, code fast, handle big files — mix as needed.",
+    description: "Pick models smartly: think, code fast, handle big files — mix as needed.",
   },
   {
     imageUrl: "/images/benefits/ben-3-dark.svg",
@@ -782,16 +780,14 @@ export const BENEFITS = [
     imageLightUrl: "/images/benefits/ben-4.svg",
     title: "Create and share specialized agents",
     smallText: false,
-    description:
-      "Build and share custom agents for your needs — like Frontend, Backend, or DevOps — with your team.",
+    description: "Build and share custom agents for your needs — like Frontend, Backend, or DevOps — with your team.",
   },
   {
     imageUrl: "/images/benefits/ben-5-dark.svg",
     imageLightUrl: "/images/benefits/ben-5.svg",
     title: "Handle massive refactors",
     smallText: true,
-    description:
-      "Easily handle migrations with tasks, tracking, and smart context.",
+    description: "Easily handle migrations with tasks, tracking, and smart context.",
   },
 ]
 

@@ -252,14 +252,14 @@ const TheBenefits = (): JSX.Element => {
                     }}
                   >
                     <div className="flex__column h-full">
-                    <BenefitsCard
+                      <BenefitsCard
                         title={title}
                         description={description}
                         imageUrl={imageUrl}
                         small={smallText}
                         lightImage={imageLightUrl}
                       />
-                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
