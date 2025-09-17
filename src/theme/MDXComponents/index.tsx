@@ -46,7 +46,7 @@ const MDXComponents: MDXComponentsObject = {
   ),
   h2: (props: ComponentProps<"h2">) => (
     <MDXHeading
-      className="text-[28px] font-medium !mb-0 !mt-6 !pt-6 border-t border-t-solid border-t-[#dbdbdb] dark:border-t-[#2B2B2B] text-tailCall-lightMode---neutral-900 dark:text-tailCall-darkMode---neutral-50"
+      className="text-[28px] font-medium !mb-0 !mt-8 !pt-8 border-t border-t-solid border-t-[#dbdbdb] dark:border-t-[#2B2B2B] text-tailCall-lightMode---neutral-900 dark:text-tailCall-darkMode---neutral-50"
       as="h2"
       {...props}
     />
