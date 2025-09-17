@@ -8,6 +8,7 @@ sidebar_label: Overview
 
 import {Rocket, Brain, Wrench, Shield, Link, Package, Zap, Target} from "lucide-react"
 import CustomLink from "@site/src/components/shared/CustomLink"
+import { themeColors } from "@site/src/theme/colors"
 
 # Forge Code overview
 
@@ -23,13 +24,19 @@ cd path/to/your/project/directory
 npx forgecode@latest
 ```
 
-For detailed installation instructions, see <CustomLink href="/docs/installation">Setup Forge</CustomLink>.
+For detailed installation instructions, see [Setup Forge](/docs/installation).
 
-![img](/docs/forge_image.png)
+<div className="text-center my-8 px-4">
+  <img
+    src="/docs/forge_image.png"
+    alt="Forge Code in action"
+    className="w-full max-w-[700px] h-auto rounded-xl shadow-2xl mx-auto block"
+  />
+</div>
 
 You can interact with Forge directly from the interactive REPL session.
 
-For complete usage instructions, see <CustomLink href="/docs/quickstart">Quickstart</CustomLink>.
+For complete usage instructions, see [Quickstart](/docs/quickstart).
 
 ## Features
 
@@ -65,19 +72,19 @@ import NextSteps from "../src/components/NextSteps"
 <NextSteps
   items={[
     {
-      logo: <Package size={28} style={{verticalAlign: "middle"}} />,
+      logo: <Package size={24} style={{color: themeColors.install}} />,
       title: "Install Forge",
       subtitle: "Set up Forge on your system with npm, Homebrew, or direct download.",
       link: "./installation",
     },
     {
-      logo: <Zap size={28} style={{verticalAlign: "middle"}} />,
+      logo: <Zap size={24} style={{color: themeColors.tutorial}} />,
       title: "Tutorial",
       subtitle: "Complete your first task with Forge in under 10 minutes.",
       link: "./quickstart",
     },
     {
-      logo: <Target size={28} style={{verticalAlign: "middle"}} />,
+      logo: <Target size={24} style={{color: themeColors.commands}} />,
       title: "Commands",
       subtitle: "Learn the essential commands for productive development.",
       link: "./commands",
