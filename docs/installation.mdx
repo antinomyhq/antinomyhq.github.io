@@ -8,6 +8,7 @@ sidebar_label: Installation
 import Steps, {Step} from "../components/Steps"
 import {Zap, Target, Settings, Monitor, Package, HardDrive, Wifi} from "lucide-react"
 import CustomLink from "@site/src/components/shared/CustomLink"
+import { themeColors } from "@site/src/theme/colors"
 
 # Installation & Setup
 
@@ -58,52 +59,24 @@ After installing Forge, you can configure additional AI providers beyond the def
 
 Before installing Forge, ensure your system meets these requirements:
 
-<div class="content-grid">
+### Operating Systems
 
-<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
-  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-      <Monitor size={24} style={{color: '#3b82f6', marginRight: '0.75rem'}} />
-      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Operating Systems</h3>
-    </div>
-    <ul style={{margin: 0, paddingLeft: '1.25rem'}}>
-      <li><strong>macOS</strong>: 10.14 (Mojave) or later</li>
-      <li><strong>Linux</strong>: Ubuntu 18.04+, CentOS 7+, or equivalent distributions</li>
-      <li><strong>Windows</strong>: Windows 10 or later</li>
-    </ul>
-  </div>
-</div>
+- **macOS**: 10.14 (Mojave) or later
+- **Linux**: Ubuntu 18.04+, CentOS 7+, or equivalent distributions
+- **Windows**: Windows 10 or later
 
-<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
-  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-      <Package size={24} style={{color: '#10b981', marginRight: '0.75rem'}} />
-      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Dependencies</h3>
-    </div>
-    <ul style={{margin: 0, paddingLeft: '1.25rem'}}>
-      <li><strong>Node.js</strong>: Version 16.0 or later</li>
-      <li><strong>npm</strong>: Version 7.0 or later (comes with Node.js)</li>
-      <li><strong>Git</strong>: For version control integration</li>
-      <li><strong>Terminal</strong>: Any terminal application</li>
-    </ul>
-  </div>
-</div>
+### Dependencies
 
-<div className="bg-card-border-gradient-nextStep-light dark:bg-card-border-gradient-nextStep p-[1px] rounded-[13px]">
-  <div className="bg-white dark:bg-tailCall-dark-800 rounded-xl p-6 h-full">
-    <div style={{display: 'flex', alignItems: 'center', marginBottom: '0.75rem'}}>
-      <HardDrive size={24} style={{color: '#f59e0b', marginRight: '0.75rem'}} />
-      <h3 style={{margin: 0, fontSize: '1.1rem', fontWeight: 600}}>Hardware</h3>
-    </div>
-    <ul style={{margin: 0, paddingLeft: '1.25rem'}}>
-      <li><strong>RAM</strong>: Minimum 4GB, 8GB+ (recommended)</li>
-      <li><strong>Storage</strong>: 100MB for installation, additional space for project files</li>
-      <li><strong>Network</strong>: Internet connection for AI model access</li>
-    </ul>
-  </div>
-</div>
+- **Node.js**: Version 16.0 or later
+- **npm**: Version 7.0 or later (comes with Node.js)
+- **Git**: For version control integration
+- **Terminal**: Any terminal application
 
-</div>
+### Hardware
+
+- **RAM**: Minimum 4GB, 8GB+ recommended
+- **Storage**: 100MB for installation, additional space for project files
+- **Network**: Internet connection for AI model access
 
 ## Next Steps
 
@@ -112,19 +85,19 @@ import NextSteps from "../src/components/NextSteps"
 <NextSteps
   items={[
     {
-      logo: <Zap size={24} style={{color: '#f59e0b'}} />,
+      logo: <Zap size={24} style={{color: themeColors.tutorial}} />,
       title: "Quick Start Tutorial",
       subtitle: "Complete your first task with Forge in under 10 minutes.",
       link: "/docs/quickstart",
     },
     {
-      logo: <Target size={24} style={{color: '#ef4444'}} />,
+      logo: <Target size={24} style={{color: themeColors.commands}} />,
       title: "Essential Commands",
       subtitle: "Learn the core commands for productive development workflows.",
       link: "/docs/commands",
     },
     {
-      logo: <Settings size={24} style={{color: '#6b7280'}} />,
+      logo: <Settings size={24} style={{color: themeColors.customCommands}} />,
       title: "Provider Configuration",
       subtitle: "Configure additional AI providers and customize your setup.",
       link: "/docs/custom-providers",

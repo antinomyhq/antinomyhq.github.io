@@ -7,6 +7,7 @@ sidebar_label: Quickstart
 
 import {Terminal, CodeXml, GitBranch, Bug, Lightbulb, Zap} from "lucide-react"
 import CustomLink from "@site/src/components/shared/CustomLink"
+import { themeColors } from "@site/src/theme/colors"
 
 # Quickstart
 
@@ -219,19 +220,19 @@ import NextSteps from "../src/components/NextSteps"
 <NextSteps
   items={[
     {
-      logo: <Terminal size={24} style={{color: '#1f2937'}} />,
+      logo: <Terminal size={24} style={{color: themeColors.commandsReference}} />,
       title: "Commands Reference",
       subtitle: "Master all commands and options",
       link: "/docs/commands",
     },
     {
-      logo: <Zap size={24} style={{color: '#f59e0b'}} />,
+      logo: <Zap size={24} style={{color: themeColors.customProviders}} />,
       title: "Custom Providers",
       subtitle: "Configure different AI providers",
       link: "/docs/custom-providers",
     },
     {
-      logo: <GitBranch size={24} style={{color: '#10b981'}} />,
+      logo: <GitBranch size={24} style={{color: themeColors.advancedConfig}} />,
       title: "Advanced Configuration",
       subtitle: "Customize Forge for your workflow",
       link: "/docs/environment-configuration",

@@ -1651,56 +1651,6 @@ table thead tr {
   height: 1.5rem !important;
 }
 
-.content-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
-  margin: 2rem 0;
-  padding: 0 1rem;
-}
-
-.content-grid > div:nth-child(odd):last-child {
-  grid-column: 1 / -1;
-  max-width: 50%;
-  margin: 0 auto;
-}
-
-/* Tablet breakpoint - better spacing for medium screens */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .content-grid {
-    gap: 1.25rem;
-    padding: 0 0.75rem;
-  }
-
-  .content-grid > div:nth-child(odd):last-child {
-    max-width: 60%;
-  }
-}
-
-/* Mobile breakpoint - single column layout */
-@media (max-width: 768px) {
-  .content-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 0 0.5rem;
-  }
-
-  .content-grid > div:nth-child(odd):last-child {
-    grid-column: 1;
-    max-width: 100%;
-    margin: 0;
-  }
-}
-
-/* Small mobile breakpoint - tighter spacing */
-@media (max-width: 480px) {
-  .content-grid {
-    gap: 0.75rem;
-    margin: 1.5rem 0;
-    padding: 0 0.25rem;
-  }
-}
-
 .theme-admonition-caution {
   border-left-color: #c68400;
   background-color: #ded7ca;
