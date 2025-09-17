@@ -671,13 +671,7 @@ div.theme-doc-toc-desktop {
   min-width: 200px;
 }
 
-/* Better responsive behavior for TOC */
-@media (max-width: 1200px) {
-  div.theme-doc-toc-desktop {
-    min-width: 220px;
-  }
-}
-
+/* Optimized TOC responsive behavior */
 @media (max-width: 1024px) {
   div.theme-doc-toc-desktop {
     min-width: 200px;

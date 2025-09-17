@@ -8,7 +8,7 @@ import clsx from "clsx"
 
 export default function TOCItems({
   toc,
-  className = "table-of-contents",
+  className = "table-of-contents table-of-contents__left-border",
   linkClassName = "table-of-contents__link text-tailCall-lightMode---neutral-700 dark:text-tailCall-darkMode---neutral-200",
   linkActiveClassName = "table-of-contents__link--active",
   minHeadingLevel: minHeadingLevelOption,
