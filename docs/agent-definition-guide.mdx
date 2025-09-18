@@ -14,13 +14,13 @@ Before creating custom agents, ensure you have:
 
 ## Key Concepts
 
-**Agent**: A specialized AI assistant with predefined knowledge, behavior, and tool access - like having expert consultants for different development tasks.
+- **Agent**: A specialized AI assistant with predefined knowledge, behavior, and tool access - like having expert consultants for different development tasks.
 
-**Agent Definition File**: A markdown file containing YAML configuration (frontmatter) and an optional system prompt that defines the agent's expertise.
+- **Agent Definition File**: A markdown file containing YAML configuration (frontmatter) and an optional system prompt that defines the agent's expertise.
 
-**System Prompt**: The markdown content below the YAML frontmatter that defines the agent's personality, expertise, and behavior.
+- **System Prompt**: The markdown content below the YAML frontmatter that defines the agent's personality, expertise, and behavior.
 
-**Tools**: Specific capabilities an agent can use, such as reading files, running shell commands, or searching code.
+- **Tools**: Specific capabilities an agent can use, such as reading files, running shell commands, or searching code.
 
 ## Quick Start: Create Your First Agent
 
@@ -28,30 +28,61 @@ Follow these steps to create and use a custom agent in under 5 minutes:
 
 ### Step 1: Create the agents directory
 
-**macOS/Linux:**
+You can create the agents directory in two locations:
 
+#### Option 1: Global Directory (Recommended)
+*Create once, use everywhere - these agents will be available across all your Forge sessions and projects.*
+
+**macOS/Linux:**
 ```bash
 mkdir -p ~/forge/agents
 ls -la ~/forge/agents # Verify directory was created
 ```
 
 **Windows Command Prompt:**
-
 ```cmd
 mkdir "%USERPROFILE%\forge\agents"
 dir "%USERPROFILE%\forge\agents"
 ```
 
 **Windows PowerShell:**
-
 ```powershell
 New-Item -ItemType Directory -Path "$env:USERPROFILE\forge\agents" -Force
 Get-ChildItem "$env:USERPROFILE\forge\agents"
 ```
 
+#### Option 2: Project Specific Directory
+*Higher priority - project agents override global agents with the same ID.*
+
+Create the directory where Forge is running (current project directory):
+
+**macOS/Linux:**
+```bash
+mkdir -p .forge/agents
+ls -la .forge/agents # Verify directory was created
+```
+
+**Windows Command Prompt:**
+```cmd
+mkdir ".forge\agents"
+dir ".forge\agents"
+```
+
+**Windows PowerShell:**
+```powershell
+New-Item -ItemType Directory -Path ".forge\agents" -Force
+Get-ChildItem ".forge\agents"
+```
+
+**Note**: When creating in your project directory, the folder **must** be named `.forge/agents` (with the dot prefix).
+
 ### Step 2: Create your agent definition file
 
-Create a file named `frontend-expert.md` in your agents directory with this content:
+Create a file named `frontend-expert.md` in your chosen agents directory:
+- **Global**: `~/forge/agents/frontend-expert.md`
+- **Project specific**: `.forge/agents/frontend-expert.md`
+
+Add this content to the file:
 
 ```markdown
 ---
@@ -71,7 +102,7 @@ Always explain your architectural decisions and provide working examples.
 
 1. Restart Forge to load the new agent
 2. Use the `/agent` command to start a new conversation
-3. Select "Frontend Development Expert" from the agent list
+3. Select "FRONTEND_EXPERT" (id: `frontend-expert`) from the agent list
 4. Your custom agent is now active and ready to use
 
 ## Agent File Structure
@@ -142,10 +173,10 @@ custom_rules: |
 
 # TOOL ACCESS (defaults to all available tools if not specified)
 tools:
-  - forge_tool_fs_read
-  - forge_tool_fs_create
-  - forge_tool_fs_patch
-  - forge_tool_process_shell
+  - read
+  - write
+  - patch
+  - shell
 
 # CONVERSATION LIMITS
 max_turns: 100           # Maximum conversation length (default: 100)
@@ -198,15 +229,20 @@ Forge validates all agent definitions during startup. Invalid agents are skipped
 
 ## Available Tools
 
-The following tools can be included in the `tools` array:
+You can customize which tools each agent has access to:
 
-- `forge_tool_fs_read` - Read file contents
-- `forge_tool_fs_create` - Create new files
-- `forge_tool_fs_patch` - Modify existing files
-- `forge_tool_fs_search` - Search files and directories
-- `forge_tool_process_shell` - Execute shell commands
-- `forge_tool_net_fetch` - Fetch web content
-- Additional tools may be available depending on your Forge installation
+- `read` - Read files and directories
+- `write` - Create and modify files
+- `remove` - Delete files
+- `patch` - Apply patches to files
+- `shell` - Execute shell commands
+- `fetch` - Fetch external resources
+- `search` - Search within files
+- `undo` - Undo previous changes
+- `plan` - Create implementation plans
+- `sage` - Access to Sage research agent
+
+**Note**: Additional tools may be available depending on your Forge installation and configuration.
 
 ## Agent Examples
 
@@ -227,9 +263,9 @@ custom_rules: |
   - Write tests using React Testing Library
   - Optimize for Core Web Vitals
 tools:
-  - forge_tool_fs_read
-  - forge_tool_fs_create
-  - forge_tool_fs_patch
+  - read
+  - write
+  - patch
 max_turns: 50
 ---
 
@@ -263,10 +299,10 @@ custom_rules: |
   - Follow OpenAPI/Swagger documentation standards
   - Implement proper authentication and authorization
 tools:
-  - forge_tool_fs_read
-  - forge_tool_fs_create
-  - forge_tool_fs_patch
-  - forge_tool_process_shell
+  - read
+  - write
+  - patch
+  - shell
 max_turns: 75
 ---
 
@@ -299,8 +335,8 @@ custom_rules: |
   - Check for common security anti-patterns
   - Recommend security testing approaches
 tools:
-  - forge_tool_fs_read
-  - forge_tool_fs_search
+  - read
+  - search
 max_turns: 30
 reasoning: true
 ---
@@ -334,10 +370,10 @@ custom_rules: |
   - Focus on edge cases and error conditions
   - Ensure tests are maintainable and readable
 tools:
-  - forge_tool_fs_read
-  - forge_tool_fs_create
-  - forge_tool_fs_patch
-  - forge_tool_process_shell
+  - read
+  - write
+  - patch
+  - shell
 max_turns: 60
 ---
 
@@ -358,13 +394,21 @@ Always include test examples and explain your testing strategy rationale.
 
 ### Directory Structure
 
-Agents must be placed in the following directory:
+Agents can be placed in one of two locations:
 
+#### Option 1: Global Directory
 - **macOS/Linux**: `~/forge/agents/`
 - **Windows**: `%USERPROFILE%\forge\agents\`
+- Available across all projects and Forge sessions
+
+#### Option 2: Project Specific Directory
+- **All platforms**: `.forge/agents/` (in your project root)
+- **Note**: Must use dot prefix (`.forge`) for project directories
+- Higher priority - overrides global agents with same ID
 
 Example organization:
 
+**Global Directory:**
 ```
 ~/forge/agents/
 ├── frontend-expert.md
@@ -376,13 +420,129 @@ Example organization:
 └── data-engineer.md
 ```
 
+**Project Specific Directory:**
+```
+your-project/
+├── .forge/
+│   └── agents/
+│       ├── project-frontend.md
+│       ├── custom-backend.md
+│       └── team-reviewer.md
+├── src/
+└── package.json
+```
+
 :::warning
-**Important**: Subdirectories are not supported. All agent definition files must be placed directly in the `agents` directory root. Files in subdirectories will not be discovered by Forge.
+**Important**:
+- Subdirectories are not supported. All agent definition files must be placed directly in the `agents` directory root. Files in subdirectories will not be discovered by Forge.
+- For project-specific agents, the directory **must** be named `.forge/agents/` (with dot prefix).
 :::
 
 ### Automatic Discovery
 
 Forge automatically discovers and loads all `.md` files in your agents directory when starting up. Loaded agents become available in the agent selection interface when using the `/agent` command.
+
+## Customizing Built-in Agents
+
+Need Forge's built-in agents to understand your specific project? Instead of starting from scratch, customize the existing Forge, Muse, Sage, Parker, or Prime agents to match your coding standards, tech stack, and team preferences.
+
+### Available Built-in Agents
+
+- **Forge** - Full execution agent for implementing changes
+- **Muse** - Planning and analysis agent for exploring solutions
+- **Sage** - Research agent for deep investigation and analysis
+- **Parker** - Code review and quality assurance agent
+- **Prime** - General-purpose assistant agent
+
+### How Agent Customization Works
+
+When Forge loads an agent, it follows this priority order:
+
+1. **Custom configuration** (any `.md` file in `.forge/agents/` with matching `id`) - highest priority
+2. **Default configuration** (built into Forge) - fallback
+
+**Key Point**: The filename doesn't matter - only the `id` field in the YAML frontmatter must match the built-in agent name you want to override.
+
+For example:
+- To customize the Forge agent: create any `.md` file with `id: "forge"`
+- To customize the Sage agent: create any `.md` file with `id: "sage"`
+- To customize the Muse agent: create any `.md` file with `id: "muse"`
+
+This means your custom agent configurations will always take precedence over the built-in defaults.
+
+### Setting Up Agent Customization
+
+You can create the agents directory in two locations:
+
+#### Option 1: Project Specific Directory (Recommended)
+Create the agents directory in your current project directory. **Important**: The directory must be named `.forge/agents/` (with the dot prefix):
+
+```bash
+mkdir -p .forge/agents
+```
+
+#### Option 2: Global User Profile Directory
+Create the agents directory in your user profile. **Note**: No dot prefix required for the global directory:
+
+**macOS/Linux:**
+```bash
+mkdir -p ~/forge/agents
+```
+
+**Windows:**
+```cmd
+mkdir "%USERPROFILE%\forge\agents"
+```
+
+Create a markdown file for each agent you want to customize. The filename can be anything, but the `id` field in the YAML frontmatter must match the built-in agent name (forge, muse, sage, parker, or prime).
+
+### Agent Customization Example
+
+Here's how to customize the Forge agent for your project. Create a file named `my-custom-forge.md` (or any name you prefer) in `.forge/agents/`:
+
+```markdown
+---
+id: "forge"
+title: "Project Specific Forge"
+description: "Forge agent customized for React TypeScript development with our team standards"
+reasoning:
+  enabled: true
+tools:
+  - read
+  - write
+  - patch
+  - shell
+---
+
+You are a specialized development assistant for our React TypeScript project.
+
+## Project Standards:
+
+1. **TypeScript**: Use strict mode with comprehensive type definitions
+2. **React**: Prefer functional components with hooks
+3. **Testing**: Include unit tests for all new components and functions
+4. **Styling**: Use CSS modules with semantic class names
+5. **Performance**: Always consider Core Web Vitals and optimization
+
+## Code Quality Requirements:
+
+- Add comprehensive error handling
+- Include JSDoc comments for complex functions
+- Follow our ESLint and Prettier configurations
+- Ensure accessibility with proper ARIA attributes
+
+Focus on maintainable, performant code that follows our established patterns.
+```
+
+### Why Customize Built-in Agents?
+
+Customizing built-in agents allows you to:
+
+- **Match project standards** - Embed your team's coding conventions and best practices
+- **Optimize for your stack** - Configure agents to understand your specific technologies and frameworks
+- **Enforce quality gates** - Build in requirements for testing, documentation, and code quality
+- **Streamline workflows** - Create agents that follow your established development processes
+- **Maintain consistency** - Ensure all team members get consistent guidance and assistance
 
 ## Troubleshooting
 
@@ -392,7 +552,9 @@ Forge automatically discovers and loads all `.md` files in your agents directory
 
 **Solutions**:
 
-1. Verify the file is in the correct directory (`~/forge/agents/` or `%USERPROFILE%\forge\agents\`)
+1. Verify the file is in the correct directory:
+   - Global: `~/forge/agents/` or `%USERPROFILE%\forge\agents\`
+   - Project specific: `.forge/agents/` (with dot prefix)
 2. Ensure the file has a `.md` extension
 3. Check that the YAML frontmatter is valid
 4. Confirm the `id` field exists and is unique
@@ -490,8 +652,9 @@ custom_rules: |
   - Use blue-green deployment strategies
   - Validate all environment configurations before deployment
 tools:
-  - forge_tool_process_shell
-  - forge_tool_fs_read
+  - read
+  - write
+  - shell
 max_turns: 25
 reasoning:
   enabled: true
