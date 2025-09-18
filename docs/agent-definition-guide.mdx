@@ -150,7 +150,31 @@ description: Brief description of agent capabilities
 **Tool Compatibility**: Agents without a `description` field cannot be used as tools by other agents. Always include a description for maximum compatibility.
 :::
 
-### Complete Configuration Options
+### Configuration Examples
+
+**Minimal agent** (just needs an ID):
+```yaml
+---
+id: my-agent
+---
+```
+
+**Practical agent** (recommended for most use cases):
+```yaml
+---
+id: api-expert
+title: Backend API Specialist
+description: Expert in REST APIs and database design
+tools:
+  - read
+  - write
+  - patch
+---
+```
+
+
+
+### Complete Configuration Reference
 
 ```yaml
 ---
@@ -163,6 +187,11 @@ description: Expert in REST APIs, databases, and server architecture
 
 # MODEL SELECTION
 model: claude-3-5-sonnet # Any supported model ID
+
+# PROMPTS
+system_prompt: "You are a backend development expert specializing in APIs and server architecture."
+user_prompt: |
+  Please analyze the codebase and suggest improvements.
 
 # BEHAVIOR CUSTOMIZATION
 custom_rules: |
@@ -179,8 +208,10 @@ tools:
   - shell
 
 # CONVERSATION LIMITS
-max_turns: 100           # Maximum conversation length (default: 100)
-max_walker_depth: 3      # File tree traversal depth (default: 3)
+max_turns: 100                    # Maximum conversation length (default: 100)
+max_walker_depth: 3               # File tree traversal depth (default: 3)
+max_tool_failure_per_turn: 3      # Max tool failures before forcing completion
+max_requests_per_turn: 10         # Max requests in a single turn
 
 # MODEL PARAMETERS
 temperature: 0.2         # Creativity level: 0.0 (deterministic) to 2.0 (very creative)
@@ -191,13 +222,8 @@ max_tokens: 4096        # Maximum response length: 1 to 100,000 tokens
 # ADVANCED FEATURES
 tool_supported: true     # Enable this agent as a tool for other agents (default: true)
 compact: false          # Use compact response format (default: false)
-reasoning: true              # Reasoning configuration (optional)
-  max_tokens: 2048       # Must be > 1024 and < overall max_tokens
-  exclude: false         # Hide reasoning from output (default: false)
-
-# USER PROMPT (sent at conversation start)
-user_prompt: |
-  Please analyze the codebase and suggest improvements.
+reasoning:               # Reasoning configuration (optional)
+  enabled: true
 ---
 
 You are a backend development expert specializing in APIs and server architecture.
@@ -218,14 +244,17 @@ Forge validates all agent definitions during startup. Invalid agents are skipped
 
 ### Parameter Constraints
 
-| Parameter              | Valid Range | Default | Notes                             |
-| ---------------------- | ----------- | ------- | --------------------------------- |
-| `temperature`          | 0.0 - 2.0   | 0.7     | Higher values increase creativity |
-| `top_p`                | 0.0 - 1.0   | 0.9     | Nucleus sampling threshold        |
-| `top_k`                | 1 - 1000    | 40      | Top-k sampling limit              |
-| `max_tokens`           | 1 - 100,000 | 4096    | Maximum response length           |
-| `max_turns`            | 1 - 1000    | 100     | Conversation length limit         |
-| `reasoning.max_tokens` | 1024+       | 2048    | Must be less than `max_tokens`    |
+| Parameter                    | Valid Range   | Default | Notes                                    |
+| ---------------------------- | ------------- | ------- | ---------------------------------------- |
+| `id`                         | Required      | -       | Must be unique across all agents        |
+| `max_turns`                  | 1 - 1000      | 100     | Maximum conversation turns               |
+| `max_walker_depth`           | 1+            | -       | File tree traversal depth                |
+| `max_tool_failure_per_turn`  | 1+            | -       | Max tool failures before completion      |
+| `max_requests_per_turn`      | 1+            | -       | Max requests in single turn              |
+| `temperature`                | 0.0 - 2.0     | 0.7     | Response creativity level                |
+| `top_p`                      | 0.0 - 1.0     | 0.9     | Nucleus sampling threshold               |
+| `top_k`                      | 1 - 1000      | 40      | Top-k sampling limit                     |
+| `max_tokens`                 | 1 - 100,000   | 4096    | Maximum response length                  |
 
 ## Available Tools
 
