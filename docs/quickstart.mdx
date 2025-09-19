@@ -5,8 +5,9 @@ description: "Get started with Forge in minutes. Learn the essential workflows a
 sidebar_label: Quickstart
 ---
 
-import {Terminal, Code, GitBranch, Bug, Lightbulb, Zap} from "lucide-react"
+import {Terminal, CodeXml, GitBranch, Bug, Lightbulb, Zap} from "lucide-react"
 import CustomLink from "@site/src/components/shared/CustomLink"
+import { themeColors } from "@site/src/theme/colors"
 
 # Quickstart
 
@@ -131,7 +132,7 @@ Forge will:
 
 Here are some powerful ways to work with Forge:
 
-### <Code size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Refactor code**
+### <CodeXml size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Refactor code**
 
 ```
 > refactor the authentication module to use async/await instead of callbacks
@@ -204,6 +205,12 @@ Switch between different AI agents for specific tasks:
 - Use Tab for command completion
 - Type `/` to see all available slash commands
 
+## Getting help
+
+- **In Forge**: Type `/help` or ask "how do I..."
+- **Documentation**: Browse these guides for detailed information
+- **Community**: Join our <CustomLink href="https://discord.gg/kRZBPpkgwq">Discord</CustomLink> for tips and support
+
 ## What's next?
 
 Now that you've learned the basics, explore more advanced features:
@@ -213,31 +220,25 @@ import NextSteps from "../src/components/NextSteps"
 <NextSteps
   items={[
     {
-      logo: <Terminal size={28} style={{verticalAlign: "middle"}} />,
+      logo: <Terminal size={24} style={{color: themeColors.commandsReference}} />,
       title: "Commands Reference",
       subtitle: "Master all commands and options",
       link: "/docs/commands",
     },
     {
-      logo: <Zap size={28} style={{verticalAlign: "middle"}} />,
+      logo: <Zap size={24} style={{color: themeColors.customProviders}} />,
       title: "Custom Providers",
       subtitle: "Configure different AI providers",
       link: "/docs/custom-providers",
     },
     {
-      logo: <GitBranch size={28} style={{verticalAlign: "middle"}} />,
+      logo: <GitBranch size={24} style={{color: themeColors.advancedConfig}} />,
       title: "Advanced Configuration",
       subtitle: "Customize Forge for your workflow",
       link: "/docs/environment-configuration",
     },
   ]}
 />
-
-## Getting help
-
-- **In Forge**: Type `/help` or ask "how do I..."
-- **Documentation**: Browse these guides for detailed information
-- **Community**: Join our <CustomLink href="https://discord.gg/kRZBPpkgwq">Discord</CustomLink> for tips and support
 
 ---
 

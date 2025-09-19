@@ -600,6 +600,11 @@ hr {
 .table-of-contents__link {
   font-size: 1rem;
   color: #737373;
+  word-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.4;
+  padding: 0.25rem 0;
+  display: block;
 }
 
 [data-theme="dark"] .table-of-contents__link {
@@ -663,6 +668,19 @@ div.theme-doc-toc-desktop {
   height: 100%;
   top: 80px !important;
   padding-top: 0.6rem;
+  min-width: 200px;
+}
+
+/* Optimized TOC responsive behavior */
+@media (max-width: 1024px) {
+  div.theme-doc-toc-desktop {
+    min-width: 200px;
+  }
+
+  .table-of-contents__link {
+    font-size: 0.875rem;
+    line-height: 1.3;
+  }
 }
 
 [data-theme="dark"] div.theme-doc-toc-desktop {
@@ -1635,7 +1653,7 @@ table thead tr {
 .theme-admonition {
   border-left-width: 4px;
   border-left-style: solid;
-  padding: 32px;
+  padding: 24px;
   border-radius: 12px;
   margin-top: 16px;
   margin-bottom: 20px;
