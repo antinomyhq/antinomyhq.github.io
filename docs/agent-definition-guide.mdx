@@ -30,7 +30,7 @@ Follow these steps to create and use a custom agent in under 5 minutes:
 
 You can create the agents directory in two locations:
 
-#### Option 1: Global Directory (Recommended)
+#### Option 1: User Configuration (Recommended)
 *Create once, use everywhere - these agents will be available across all your Forge sessions and projects.*
 
 **macOS/Linux:**
@@ -51,8 +51,8 @@ New-Item -ItemType Directory -Path "$env:USERPROFILE\forge\agents" -Force
 Get-ChildItem "$env:USERPROFILE\forge\agents"
 ```
 
-#### Option 2: Project Specific Directory
-*Higher priority - project agents override global agents with the same ID.*
+#### Option 2: Local Configuration
+*Higher priority - local agents override user agents with the same ID.*
 
 Create the directory where Forge is running (current project directory):
 
@@ -81,6 +81,8 @@ Get-ChildItem ".forge\agents"
 Create a file named `frontend-expert.md` in your chosen agents directory:
 - **Global**: `~/forge/agents/frontend-expert.md`
 - **Project specific**: `.forge/agents/frontend-expert.md`
+
+**Note**: Local agents take priority - when Forge runs in a directory containing `.forge/agents/`, any agents there will override user agents with the same ID.
 
 Add this content to the file:
 
@@ -165,6 +167,16 @@ id: my-agent
 id: api-expert
 title: Backend API Specialist
 description: Expert in REST APIs and database design
+system_prompt: |
+  You are a backend API specialist focused on building robust, scalable APIs.
+
+  Your expertise:
+  - RESTful API design and best practices
+  - Database schema design and optimization
+  - Error handling and validation patterns
+  - API documentation and testing
+
+  Always provide production-ready code with proper error handling, input validation, and clear documentation.
 tools:
   - read
   - write
@@ -186,12 +198,21 @@ title: Backend API Specialist
 description: Expert in REST APIs, databases, and server architecture
 
 # MODEL SELECTION
-model: claude-3-5-sonnet # Any supported model ID
+model: anthropic/claude-sonnet-4  # Any supported model ID
 
-# PROMPTS
-system_prompt: "You are a backend development expert specializing in APIs and server architecture."
+# PROMPTS (Templates with Handlebars syntax)
+system_prompt: |
+  You are a backend development expert specializing in APIs and server architecture.
+  Current time: {{current_time}}
+  Working directory: {{env.cwd}}
+
 user_prompt: |
-  Please analyze the codebase and suggest improvements.
+  {{#if (eq event.name 'backend-api-expert/user_task_update')}}
+  <feedback>{{event.value}}</feedback>
+  {{else}}
+  <task>{{event.value}}</task>
+  {{/if}}
+  <system_time>{{current_time}}</system_time>
 
 # BEHAVIOR CUSTOMIZATION
 custom_rules: |
@@ -200,30 +221,52 @@ custom_rules: |
   - Include request/response logging
   - Write integration tests for all endpoints
 
-# TOOL ACCESS (defaults to all available tools if not specified)
+# TOOL ACCESS (Available tools: read, write, remove, patch, shell, fetch, search, undo, plan, sage)
 tools:
   - read
   - write
   - patch
   - shell
+  - search
+
+# EVENT SUBSCRIPTION (Optional - events this agent should respond to)
+subscribe:
+  - "backend-api-expert/user_task_init"
+  - "backend-api-expert/user_task_update"
 
 # CONVERSATION LIMITS
 max_turns: 100                    # Maximum conversation length (default: 100)
 max_walker_depth: 3               # File tree traversal depth (default: 3)
-max_tool_failure_per_turn: 3      # Max tool failures before forcing completion
-max_requests_per_turn: 10         # Max requests in a single turn
+max_tool_failure_per_turn: 3      # Max tool failures before forcing completion (default: 3)
+max_requests_per_turn: 10         # Max requests in a single turn (default: 10)
 
-# MODEL PARAMETERS
-temperature: 0.2         # Creativity level: 0.0 (deterministic) to 2.0 (very creative)
-top_p: 0.9              # Nucleus sampling: 0.0 to 1.0
-top_k: 40               # Top-k sampling: 1 to 1000
-max_tokens: 4096        # Maximum response length: 1 to 100,000 tokens
+# MODEL PARAMETERS (All optional with validation)
+temperature: 0.2         # Creativity level: 0.0 to 2.0 (default: provider default)
+top_p: 0.9              # Nucleus sampling: 0.0 to 1.0 (default: provider default)
+top_k: 40               # Top-k sampling: 1 to 1000 (default: provider default)
+max_tokens: 4096        # Maximum response length: 1 to 100,000 tokens (default: provider default)
+
+# CONTEXT COMPACTION (Optional - automatic context management)
+compact:
+  max_tokens: 2000              # Maximum tokens after compaction
+  token_threshold: 100000       # Trigger compaction when context exceeds this
+  retention_window: 6           # Number of recent messages to preserve
+  message_threshold: 200        # Trigger compaction after this many messages
+  eviction_window: 0.2          # Percentage of context that can be summarized (0.0-1.0)
+  model: anthropic/claude-sonnet-4  # Model to use for compaction (optional)
+  on_turn_end: false           # Whether to compact at turn end (default: false)
+  prompt: |                    # Custom compaction prompt (optional)
+    Summarize the following conversation context while preserving key technical details.
+
+# REASONING CONFIGURATION (Optional - for models that support reasoning)
+reasoning:
+  enabled: true          # Enable reasoning mode (default: false)
+  effort: medium         # Reasoning effort: low, medium, high (optional)
+  max_tokens: 2048       # Max tokens for reasoning (must be > 1024, < max_tokens)
+  exclude: false         # Hide reasoning from output (default: false)
 
 # ADVANCED FEATURES
 tool_supported: true     # Enable this agent as a tool for other agents (default: true)
-compact: false          # Use compact response format (default: false)
-reasoning:               # Reasoning configuration (optional)
-  enabled: true
 ---
 
 You are a backend development expert specializing in APIs and server architecture.
@@ -283,6 +326,17 @@ id: frontend-dev
 title: Frontend Development Expert
 description: React, TypeScript, and modern frontend best practices
 model: claude-3-5-sonnet-20241022
+system_prompt: |
+  You are a frontend development expert specializing in React and TypeScript.
+
+  Key Focus Areas:
+  - Component architecture and reusability
+  - Performance optimization techniques
+  - Accessibility (WCAG 2.1 compliance)
+  - Modern CSS and styling solutions
+  - State management patterns
+
+  Always provide working code examples and explain your architectural decisions.
 temperature: 0.1
 custom_rules: |
   - Use TypeScript strict mode
@@ -297,18 +351,6 @@ tools:
   - patch
 max_turns: 50
 ---
-
-You are a frontend development expert specializing in React and TypeScript.
-
-## Key Focus Areas
-
-- Component architecture and reusability
-- Performance optimization techniques
-- Accessibility (WCAG 2.1 compliance)
-- Modern CSS and styling solutions
-- State management patterns
-
-Always provide working code examples and explain your architectural decisions.
 ```
 
 ### Backend API Specialist
@@ -319,6 +361,17 @@ id: backend-api
 title: Backend API Specialist
 description: REST APIs, databases, and scalable server architecture
 model: claude-3-5-sonnet
+system_prompt: |
+  You are a backend development expert specializing in APIs and server architecture.
+
+  Key Responsibilities:
+  - Design RESTful APIs following industry standards
+  - Database schema design and optimization
+  - Security best practices implementation
+  - Performance optimization and caching strategies
+  - Microservices architecture patterns
+
+  Provide production-ready code with proper error handling and monitoring.
 temperature: 0.15
 custom_rules: |
   - Use dependency injection patterns
@@ -334,18 +387,6 @@ tools:
   - shell
 max_turns: 75
 ---
-
-You are a backend development expert specializing in APIs and server architecture.
-
-## Key Responsibilities
-
-- Design RESTful APIs following industry standards
-- Database schema design and optimization
-- Security best practices implementation
-- Performance optimization and caching strategies
-- Microservices architecture patterns
-
-Provide production-ready code with proper error handling and monitoring.
 ```
 
 ### Security Code Auditor
@@ -356,6 +397,17 @@ id: security-auditor
 title: Security Code Auditor
 description: Identifies security vulnerabilities and recommends fixes
 model: claude-3-5-sonnet
+system_prompt: |
+  You are a security expert focused on identifying and fixing security vulnerabilities in code.
+
+  Security Focus Areas:
+  - Input validation and sanitization
+  - Authentication and authorization flaws
+  - Injection vulnerabilities (SQL, XSS, CSRF)
+  - Insecure data handling
+  - Dependency vulnerabilities
+
+  Always provide specific, actionable security recommendations with code examples.
 temperature: 0.05
 custom_rules: |
   - Identify potential security vulnerabilities
@@ -367,20 +419,9 @@ tools:
   - read
   - search
 max_turns: 30
-reasoning: true
+reasoning:
+  enabled: true
 ---
-
-You are a security expert focused on identifying and fixing security vulnerabilities in code.
-
-## Security Focus Areas
-
-- Input validation and sanitization
-- Authentication and authorization flaws
-- Injection vulnerabilities (SQL, XSS, CSRF)
-- Insecure data handling
-- Dependency vulnerabilities
-
-Always provide specific, actionable security recommendations with code examples.
 ```
 
 ### Testing Strategy Expert
@@ -391,6 +432,17 @@ id: testing-expert
 title: Testing Strategy Expert
 description: Comprehensive testing strategies and implementation
 model: claude-3-5-sonnet-20241022
+system_prompt: |
+  You are a testing expert who ensures code quality through comprehensive testing strategies.
+
+  Testing Philosophy:
+  - Test behavior, not implementation details
+  - Write tests first when possible (TDD approach)
+  - Ensure fast feedback loops
+  - Maintain high test coverage on critical paths
+  - Balance unit, integration, and end-to-end tests
+
+  Always include test examples and explain your testing strategy rationale.
 temperature: 0.2
 custom_rules: |
   - Write comprehensive test suites (unit, integration, e2e)
@@ -405,18 +457,6 @@ tools:
   - shell
 max_turns: 60
 ---
-
-You are a testing expert who ensures code quality through comprehensive testing strategies.
-
-## Testing Philosophy
-
-- Test behavior, not implementation details
-- Write tests first when possible (TDD approach)
-- Ensure fast feedback loops
-- Maintain high test coverage on critical paths
-- Balance unit, integration, and end-to-end tests
-
-Always include test examples and explain your testing strategy rationale.
 ```
 
 ## File Organization
@@ -425,19 +465,19 @@ Always include test examples and explain your testing strategy rationale.
 
 Agents can be placed in one of two locations:
 
-#### Option 1: Global Directory
+#### Option 1: User Configuration
 - **macOS/Linux**: `~/forge/agents/`
 - **Windows**: `%USERPROFILE%\forge\agents\`
 - Available across all projects and Forge sessions
 
-#### Option 2: Project Specific Directory
+#### Option 2: Local Configuration
 - **All platforms**: `.forge/agents/` (in your project root)
-- **Note**: Must use dot prefix (`.forge`) for project directories
-- Higher priority - overrides global agents with same ID
+- **Note**: Must use dot prefix (`.forge`) for local directories
+- Higher priority - overrides user agents with same ID
 
 Example organization:
 
-**Global Directory:**
+**User Configuration:**
 ```
 ~/forge/agents/
 ├── frontend-expert.md
@@ -449,7 +489,7 @@ Example organization:
 └── data-engineer.md
 ```
 
-**Project Specific Directory:**
+**Local Configuration:**
 ```
 your-project/
 ├── .forge/
@@ -503,15 +543,15 @@ This means your custom agent configurations will always take precedence over the
 
 You can create the agents directory in two locations:
 
-#### Option 1: Project Specific Directory (Recommended)
+#### Option 1: Local Configuration (Recommended)
 Create the agents directory in your current project directory. **Important**: The directory must be named `.forge/agents/` (with the dot prefix):
 
 ```bash
 mkdir -p .forge/agents
 ```
 
-#### Option 2: Global User Profile Directory
-Create the agents directory in your user profile. **Note**: No dot prefix required for the global directory:
+#### Option 2: User Configuration
+Create the agents directory in your user profile. **Note**: No dot prefix required for the user directory:
 
 **macOS/Linux:**
 ```bash
