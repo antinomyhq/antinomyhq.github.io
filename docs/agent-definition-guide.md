@@ -178,21 +178,21 @@ id: my-agent
 id: api-expert
 title: Backend API Specialist
 description: Expert in REST APIs and database design
-system_prompt: |
-  You are a backend API specialist focused on building robust, scalable APIs.
-
-  Your expertise:
-  - RESTful API design and best practices
-  - Database schema design and optimization
-  - Error handling and validation patterns
-  - API documentation and testing
-
-  Always provide production ready code with proper error handling, input validation, and clear documentation.
 tools:
   - read
   - write
   - patch
 ---
+
+You are a backend API specialist focused on building robust, scalable APIs.
+
+Your expertise:
+- RESTful API design and best practices
+- Database schema design and optimization
+- Error handling and validation patterns
+- API documentation and testing
+
+Always provide production ready code with proper error handling, input validation, and clear documentation.
 ```
 
 ### Complete Configuration Reference
@@ -209,13 +209,8 @@ description: Expert in REST APIs, databases, and server architecture
 # MODEL SELECTION
 model: anthropic/claude-sonnet-4 # Any supported model ID
 
-# PROMPTS (Templates with Handlebars syntax)
-system_prompt: |
-  You are a backend development expert specializing in APIs and server architecture.
-  Current time: {{current_time}}
-  Working directory: {{env.cwd}}
-
-user_prompt: |
+# USER PROMPT (Template with Handlebars syntax)
+user_prompt: |-
   {{#if (eq event.name 'backend-api-expert/user_task_update')}}
   <feedback>{{event.value}}</feedback>
   {{else}}
@@ -315,7 +310,8 @@ You can customize which tools each agent has access to:
 - `search` - Search within files
 - `undo` - Undo previous changes
 - `plan` - Create implementation plans
-- `sage` - Access to Sage research agent
+- `followup` - Ask clarifying questions to users
+- `attempt_completion` - Present final results and complete tasks
 
 **Note**: Additional tools may be available depending on your Forge installation and configuration.
 
@@ -329,17 +325,6 @@ id: frontend-dev
 title: Frontend Development Expert
 description: React, TypeScript, and modern frontend best practices
 model: claude-3-5-sonnet-20241022
-system_prompt: |
-  You are a frontend development expert specializing in React and TypeScript.
-
-  Key Focus Areas:
-  - Component architecture and reusability
-  - Performance optimization techniques
-  - Accessibility (WCAG 2.1 compliance)
-  - Modern CSS and styling solutions
-  - State management patterns
-
-  Always provide working code examples and explain your architectural decisions.
 temperature: 0.1
 custom_rules: |
   - Use TypeScript strict mode
@@ -354,6 +339,18 @@ tools:
   - patch
 max_turns: 50
 ---
+
+You are a frontend development expert specializing in React and TypeScript.
+
+Key Focus Areas:
+
+- Component architecture and reusability
+- Performance optimization techniques
+- Accessibility (WCAG 2.1 compliance)
+- Modern CSS and styling solutions
+- State management patterns
+
+Always provide working code examples and explain your architectural decisions.
 ```
 
 ### Backend API Specialist
@@ -364,17 +361,6 @@ id: backend-api
 title: Backend API Specialist
 description: REST APIs, databases, and scalable server architecture
 model: claude-3-5-sonnet
-system_prompt: |
-  You are a backend development expert specializing in APIs and server architecture.
-
-  Key Responsibilities:
-  - Design RESTful APIs following industry standards
-  - Database schema design and optimization
-  - Security best practices implementation
-  - Performance optimization and caching strategies
-  - Microservices architecture patterns
-
-  Provide production ready code with proper error handling and monitoring.
 temperature: 0.15
 custom_rules: |
   - Use dependency injection patterns
@@ -390,6 +376,18 @@ tools:
   - shell
 max_turns: 75
 ---
+
+You are a backend development expert specializing in APIs and server architecture.
+
+Key Responsibilities:
+
+- Design RESTful APIs following industry standards
+- Database schema design and optimization
+- Security best practices implementation
+- Performance optimization and caching strategies
+- Microservices architecture patterns
+
+Provide production ready code with proper error handling and monitoring.
 ```
 
 ### Security Code Auditor
@@ -400,17 +398,6 @@ id: security-auditor
 title: Security Code Auditor
 description: Identifies security vulnerabilities and recommends fixes
 model: claude-3-5-sonnet
-system_prompt: |
-  You are a security expert focused on identifying and fixing security vulnerabilities in code.
-
-  Security Focus Areas:
-  - Input validation and sanitization
-  - Authentication and authorization flaws
-  - Injection vulnerabilities (SQL, XSS, CSRF)
-  - Insecure data handling
-  - Dependency vulnerabilities
-
-  Always provide specific, actionable security recommendations with code examples.
 temperature: 0.05
 custom_rules: |
   - Identify potential security vulnerabilities
@@ -425,6 +412,18 @@ max_turns: 30
 reasoning:
   enabled: true
 ---
+
+You are a security expert focused on identifying and fixing security vulnerabilities in code.
+
+Security Focus Areas:
+
+- Input validation and sanitization
+- Authentication and authorization flaws
+- Injection vulnerabilities (SQL, XSS, CSRF)
+- Insecure data handling
+- Dependency vulnerabilities
+
+Always provide specific, actionable security recommendations with code examples.
 ```
 
 ### Testing Strategy Expert
@@ -435,17 +434,6 @@ id: testing-expert
 title: Testing Strategy Expert
 description: Comprehensive testing strategies and implementation
 model: claude-3-5-sonnet-20241022
-system_prompt: |
-  You are a testing expert who ensures code quality through comprehensive testing strategies.
-
-  Testing Philosophy:
-  - Test behavior, not implementation details
-  - Write tests first when possible (TDD approach)
-  - Ensure fast feedback loops
-  - Maintain high test coverage on critical paths
-  - Balance unit, integration, and end-to-end tests
-
-  Always include test examples and explain your testing strategy rationale.
 temperature: 0.2
 custom_rules: |
   - Write comprehensive test suites (unit, integration, e2e)
@@ -460,6 +448,18 @@ tools:
   - shell
 max_turns: 60
 ---
+
+You are a testing expert who ensures code quality through comprehensive testing strategies.
+
+Testing Philosophy:
+
+- Test behavior, not implementation details
+- Write tests first when possible (TDD approach)
+- Ensure fast feedback loops
+- Maintain high test coverage on critical paths
+- Balance unit, integration, and end-to-end tests
+
+Always include test examples and explain your testing strategy rationale.
 ```
 
 ## File Organization
@@ -550,35 +550,7 @@ This means your custom agent configurations will always take precedence over the
 
 ### Setting Up Agent Customization
 
-You can create the agents directory in two locations:
-
-#### Option 1: User Configuration (Recommended)
-
-Create the agents directory in your user profile:
-
-**macOS/Linux:**
-
-```bash
-mkdir -p ~/forge/agents
-```
-
-**Windows:**
-
-```cmd
-mkdir "%USERPROFILE%\forge\agents"
-```
-
-#### Option 2: Local Configuration
-
-Create the agents directory in your current project directory.
-
-**Important**: The directory must be named `.forge/agents/` (with dot prefix).
-
-```bash
-mkdir -p .forge/agents
-```
-
-Create a markdown file to customize any built-in agent. Use any filename you want, but set the `id` field in the YAML frontmatter to match the agent you want to customize.
+Create a markdown file in your agents directory (see [Quick Start](#quick-start-create-your-first-agent) for directory setup). Use any filename you want, but set the `id` field in the YAML frontmatter to match the agent you want to customize.
 
 **Examples:**
 
@@ -725,6 +697,57 @@ Common validation errors and their meanings:
 5. **Regular Review**: Update agents as project requirements evolve
 
 ## Advanced Configuration
+
+### Dynamic Prompt Templates
+
+Agent prompts support Handlebars template variables for dynamic, context-aware behavior:
+
+#### Environment Context Variables
+
+Access system information in your prompts:
+
+- `{{current_time}}` - Current timestamp for time-aware responses
+- `{{env.cwd}}` - Current working directory path
+- `{{env.os}}` - Operating system (macOS, Linux, Windows)
+- `{{env.shell}}` - Shell type (bash, zsh, PowerShell)
+
+#### Event-Driven User Prompts
+
+For advanced agent communication, use event variables in `user_prompt` templates:
+
+- `{{event.name}}` - Event identifier (e.g., "agent-id/user_task_init", "agent-id/user_task_update")
+- `{{event.value}}` - Event payload (user's message, feedback, or task data)
+
+#### Template Examples
+
+**Context-aware system prompt:**
+
+```yaml
+---
+id: my-agent
+# ... other configuration
+---
+
+You are a development assistant working in {{env.cwd}} on {{env.os}}.
+Current session started at: {{current_time}}
+
+Adapt your responses based on the operating system and provide
+platform-specific commands when needed.
+```
+
+**Event-driven user prompt:**
+
+```yaml
+user_prompt: |-
+  {{#if (eq event.name 'my-agent/user_task_update')}}
+  <feedback>{{event.value}}</feedback>
+  {{else}}
+  <task>{{event.value}}</task>
+  {{/if}}
+  <system_time>{{current_time}}</system_time>
+```
+
+This enables agents to distinguish between initial tasks and follow-up feedback, providing more contextual responses.
 
 ### Environment-Specific Agents
 
