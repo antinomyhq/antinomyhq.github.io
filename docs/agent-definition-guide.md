@@ -529,7 +529,7 @@ Need Forge's built-in agents to understand your specific project? Instead of sta
 - **Muse** - Planning and analysis agent for exploring solutions
 - **Sage** - Research agent for deep investigation and analysis
 - **Parker** - Code review and quality assurance agent
-- **Prime** - General purpose assistant agent
+- **Prime** - General-purpose assistant agent
 
 ### How Agent Customization Works
 
@@ -581,6 +581,7 @@ mkdir -p .forge/agents
 Create a markdown file to customize any built-in agent. Use any filename you want, but set the `id` field in the YAML frontmatter to match the agent you want to customize.
 
 **Examples:**
+
 - `id: "forge"` - to customize the Forge agent
 - `id: "muse"` - to customize the Muse agent
 
