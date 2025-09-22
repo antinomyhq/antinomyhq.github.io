@@ -12,7 +12,7 @@ Before creating custom agents, ensure you have:
 
 ## Key Concepts
 
-- **Agent**: A specialized AI assistant with predefined knowledge, behavior, and tool access - like having expert consultants for different development tasks.
+- **Agent**: A specialized AI assistant with predefined knowledge, behavior, and tool access, like having expert consultants for different development tasks.
 
 - **Agent Definition File**: A markdown file containing YAML configuration (frontmatter) and an optional system prompt that defines the agent's expertise.
 
@@ -30,7 +30,7 @@ You can create the agents directory in two locations:
 
 #### Option 1: User Configuration (Recommended)
 
-Create once, use everywhere - these agents will be available across all your Forge sessions and projects.
+Create once, use everywhere. These agents will be available across all your Forge sessions and projects.
 
 **macOS/Linux:**
 
@@ -55,9 +55,11 @@ Get-ChildItem "$env:USERPROFILE\forge\agents"
 
 #### Option 2: Local Configuration
 
-Higher priority - local agents override user agents with the same ID.
+Local agents have higher priority and override user agents with the same ID.
 
-Create the directory where Forge is running (current project directory):
+**Setup Instructions:**
+
+Create the `.forge/agents/` directory in your project root (where you run Forge commands):
 
 **macOS/Linux:**
 
@@ -89,7 +91,7 @@ Create a file named `frontend-expert.md` in your chosen agents directory:
 - **User Configuration**: `~/forge/agents/frontend-expert.md`
 - **Local Configuration**: `.forge/agents/frontend-expert.md`
 
-**Note**: Local agents take priority - when Forge runs in a directory containing `.forge/agents/`, any agents there will override user agents with the same ID.
+**Note**: Local agents take priority. When Forge runs in a directory containing `.forge/agents/`, any agents there will override user agents with the same ID.
 
 Add this content to the file:
 
@@ -476,7 +478,7 @@ Agents can be placed in one of two locations:
 
 - **All platforms**: `.forge/agents/` (in your project root)
 - **Note**: Must use dot prefix (`.forge`) for local directories
-- Higher priority - overrides user agents with same ID
+- Takes priority over user agents with the same ID
 
 Example organization:
 
@@ -550,17 +552,9 @@ This means your custom agent configurations will always take precedence over the
 
 You can create the agents directory in two locations:
 
-#### Option 1: Local Configuration (Recommended)
+#### Option 1: User Configuration (Recommended)
 
-Create the agents directory in your current project directory. **Important**: The directory must be named `.forge/agents/` (with the dot prefix):
-
-```bash
-mkdir -p .forge/agents
-```
-
-#### Option 2: User Configuration
-
-Create the agents directory in your user profile. **Note**: No dot prefix required for the user directory:
+Create the agents directory in your user profile:
 
 **macOS/Linux:**
 
@@ -574,7 +568,23 @@ mkdir -p ~/forge/agents
 mkdir "%USERPROFILE%\forge\agents"
 ```
 
-Create a markdown file for each agent you want to customize. The filename can be anything, but the `id` field in the YAML frontmatter must match the built-in agent name (forge, muse, sage, parker, or prime).
+#### Option 2: Local Configuration
+
+Create the agents directory in your current project directory.
+
+**Important**: The directory must be named `.forge/agents/` (with dot prefix).
+
+```bash
+mkdir -p .forge/agents
+```
+
+Create a markdown file to customize any built-in agent. Use any filename you want, but set the `id` field in the YAML frontmatter to match the agent you want to customize.
+
+**Examples:**
+- `id: "forge"` - to customize the Forge agent
+- `id: "muse"` - to customize the Muse agent
+
+**Available agents**: forge, muse, sage, parker, prime
 
 ### Why Customize Built-in Agents?
 
@@ -593,8 +603,8 @@ Here's how to customize the Forge agent for your project. Create a file named `m
 ```markdown
 ---
 id: "forge"
-title: "Project Specific Forge"
-description: "Forge agent customized for React TypeScript development with our team standards"
+title: "Frontend-Focused Forge"
+description: "Forge agent specialized for frontend development with React and TypeScript"
 reasoning:
   enabled: true
 tools:
@@ -606,22 +616,23 @@ tools:
 
 You are a specialized development assistant for our React TypeScript project.
 
-## Project Standards:
+## Your Frontend Focus:
 
-1. **TypeScript**: Use strict mode with comprehensive type definitions
-2. **React**: Prefer functional components with hooks
-3. **Testing**: Include unit tests for all new components and functions
-4. **Styling**: Use CSS modules with semantic class names
-5. **Performance**: Always consider Core Web Vitals and optimization
+- **React & TypeScript**: Build modern, type-safe components
+- **UI/UX**: Create responsive, accessible interfaces
+- **Performance**: Optimize for Core Web Vitals and user experience
+- **Testing**: Write comprehensive tests for components and user interactions
+- **Best Practices**: Follow modern frontend patterns and conventions
 
-## Code Quality Requirements:
+## Your Approach:
 
-- Add comprehensive error handling
-- Include JSDoc comments for complex functions
-- Follow our ESLint and Prettier configurations
-- Ensure accessibility with proper ARIA attributes
+- Always explain your architectural decisions
+- Provide working code examples with proper TypeScript types
+- Include accessibility considerations (ARIA attributes, semantic HTML)
+- Suggest performance optimizations when relevant
+- Write tests alongside implementation
 
-Focus on maintainable, performant code that follows our established patterns.
+You maintain all of Forge's capabilities but with deep frontend expertise.
 ```
 
 ## Troubleshooting
@@ -633,8 +644,8 @@ Focus on maintainable, performant code that follows our established patterns.
 **Solutions**:
 
 1. Verify the file is in the correct directory:
-   - Global: `~/forge/agents/` or `%USERPROFILE%\forge\agents\`
-   - Project specific: `.forge/agents/` (with dot prefix)
+   - User Configuration: `~/forge/agents/` or `%USERPROFILE%\forge\agents\`
+   - Local Configuration: `.forge/agents/` (with dot prefix)
 2. Ensure the file has a `.md` extension
 3. Check that the YAML frontmatter is valid
 4. Confirm the `id` field exists and is unique
