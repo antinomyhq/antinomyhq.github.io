@@ -29,44 +29,52 @@ Follow these steps to create and use a custom agent in under 5 minutes:
 You can create the agents directory in two locations:
 
 #### Option 1: User Configuration (Recommended)
-*Create once, use everywhere - these agents will be available across all your Forge sessions and projects.*
+
+Create once, use everywhere - these agents will be available across all your Forge sessions and projects.
 
 **macOS/Linux:**
+
 ```bash
 mkdir -p ~/forge/agents
 ls -la ~/forge/agents # Verify directory was created
 ```
 
 **Windows Command Prompt:**
+
 ```cmd
 mkdir "%USERPROFILE%\forge\agents"
 dir "%USERPROFILE%\forge\agents"
 ```
 
 **Windows PowerShell:**
+
 ```powershell
 New-Item -ItemType Directory -Path "$env:USERPROFILE\forge\agents" -Force
 Get-ChildItem "$env:USERPROFILE\forge\agents"
 ```
 
 #### Option 2: Local Configuration
-*Higher priority - local agents override user agents with the same ID.*
+
+Higher priority - local agents override user agents with the same ID.
 
 Create the directory where Forge is running (current project directory):
 
 **macOS/Linux:**
+
 ```bash
 mkdir -p .forge/agents
 ls -la .forge/agents # Verify directory was created
 ```
 
 **Windows Command Prompt:**
+
 ```cmd
 mkdir ".forge\agents"
 dir ".forge\agents"
 ```
 
 **Windows PowerShell:**
+
 ```powershell
 New-Item -ItemType Directory -Path ".forge\agents" -Force
 Get-ChildItem ".forge\agents"
@@ -77,8 +85,9 @@ Get-ChildItem ".forge\agents"
 ### Step 2: Create your agent definition file
 
 Create a file named `frontend-expert.md` in your chosen agents directory:
-- **Global**: `~/forge/agents/frontend-expert.md`
-- **Project specific**: `.forge/agents/frontend-expert.md`
+
+- **User Configuration**: `~/forge/agents/frontend-expert.md`
+- **Local Configuration**: `.forge/agents/frontend-expert.md`
 
 **Note**: Local agents take priority - when Forge runs in a directory containing `.forge/agents/`, any agents there will override user agents with the same ID.
 
@@ -153,6 +162,7 @@ description: Brief description of agent capabilities
 ### Configuration Examples
 
 **Minimal agent** (just needs an ID):
+
 ```yaml
 ---
 id: my-agent
@@ -160,6 +170,7 @@ id: my-agent
 ```
 
 **Practical agent** (recommended for most use cases):
+
 ```yaml
 ---
 id: api-expert
@@ -174,15 +185,13 @@ system_prompt: |
   - Error handling and validation patterns
   - API documentation and testing
 
-  Always provide production-ready code with proper error handling, input validation, and clear documentation.
+  Always provide production ready code with proper error handling, input validation, and clear documentation.
 tools:
   - read
   - write
   - patch
 ---
 ```
-
-
 
 ### Complete Configuration Reference
 
@@ -196,7 +205,7 @@ title: Backend API Specialist
 description: Expert in REST APIs, databases, and server architecture
 
 # MODEL SELECTION
-model: anthropic/claude-sonnet-4  # Any supported model ID
+model: anthropic/claude-sonnet-4 # Any supported model ID
 
 # PROMPTS (Templates with Handlebars syntax)
 system_prompt: |
@@ -219,7 +228,7 @@ custom_rules: |
   - Include request/response logging
   - Write integration tests for all endpoints
 
-# TOOL ACCESS (Available tools: read, write, remove, patch, shell, fetch, search, undo, plan, sage)
+# TOOL ACCESS (defaults to all available tools if not specified)
 tools:
   - read
   - write
@@ -227,49 +236,43 @@ tools:
   - shell
   - search
 
-# EVENT SUBSCRIPTION (Optional - events this agent should respond to)
-subscribe:
-  - "backend-api-expert/user_task_init"
-  - "backend-api-expert/user_task_update"
-
 # CONVERSATION LIMITS
-max_turns: 100                    # Maximum conversation length (default: 100)
-max_walker_depth: 3               # File tree traversal depth (default: 3)
-max_tool_failure_per_turn: 3      # Max tool failures before forcing completion (default: 3)
-max_requests_per_turn: 10         # Max requests in a single turn (default: 10)
+max_turns: 100 # Maximum conversation length (default: 100)
+max_walker_depth: 3 # File tree traversal depth (default: 3)
+max_tool_failure_per_turn: 3 # Max tool failures before forcing completion (default: 3)
+max_requests_per_turn: 10 # Max requests in a single turn (default: 10)
 
 # MODEL PARAMETERS (All optional with validation)
-temperature: 0.2         # Creativity level: 0.0 to 2.0 (default: provider default)
-top_p: 0.9              # Nucleus sampling: 0.0 to 1.0 (default: provider default)
-top_k: 40               # Top-k sampling: 1 to 1000 (default: provider default)
-max_tokens: 4096        # Maximum response length: 1 to 100,000 tokens (default: provider default)
+temperature: 0.2 # Creativity level: 0.0 to 2.0 (default: provider default)
+top_p: 0.9 # Nucleus sampling: 0.0 to 1.0 (default: provider default)
+top_k: 40 # Top-k sampling: 1 to 1000 (default: provider default)
+max_tokens: 4096 # Maximum response length: 1 to 100,000 tokens (default: provider default)
 
 # CONTEXT COMPACTION (Optional - automatic context management)
 compact:
-  max_tokens: 2000              # Maximum tokens after compaction
-  token_threshold: 100000       # Trigger compaction when context exceeds this
-  retention_window: 6           # Number of recent messages to preserve
-  message_threshold: 200        # Trigger compaction after this many messages
-  eviction_window: 0.2          # Percentage of context that can be summarized (0.0-1.0)
-  model: anthropic/claude-sonnet-4  # Model to use for compaction (optional)
-  on_turn_end: false           # Whether to compact at turn end (default: false)
-  prompt: |                    # Custom compaction prompt (optional)
+  max_tokens: 2000 # Maximum tokens after compaction
+  token_threshold: 100000 # Trigger compaction when context exceeds this
+  retention_window: 6 # Number of recent messages to preserve
+  message_threshold: 200 # Trigger compaction after this many messages
+  eviction_window: 0.2 # Percentage of context that can be summarized (0.0-1.0)
+  model: anthropic/claude-sonnet-4 # Model to use for compaction (optional)
+  on_turn_end: false # Whether to compact at turn end (default: false)
+  prompt: | # Custom compaction prompt (optional)
     Summarize the following conversation context while preserving key technical details.
 
 # REASONING CONFIGURATION (Optional - for models that support reasoning)
 reasoning:
-  enabled: true          # Enable reasoning mode (default: false)
-  effort: medium         # Reasoning effort: low, medium, high (optional)
-  max_tokens: 2048       # Max tokens for reasoning (must be > 1024, < max_tokens)
-  exclude: false         # Hide reasoning from output (default: false)
+  enabled: true # Enable reasoning mode (default: false)
+  effort: medium # Reasoning effort: low, medium, high (optional)
+  max_tokens: 2048 # Max tokens for reasoning (must be > 1024, < max_tokens)
+  exclude: false # Hide reasoning from output (default: false)
 
 # ADVANCED FEATURES
-tool_supported: true     # Enable this agent as a tool for other agents (default: true)
+tool_supported: true # Enable this agent as a tool for other agents (default: true)
 ---
-
 You are a backend development expert specializing in APIs and server architecture.
 
-Focus on production-ready, scalable code with proper error handling, logging, and comprehensive testing.
+Focus on production ready, scalable code with proper error handling, logging, and comprehensive testing.
 ```
 
 ## Validation Rules and Constraints
@@ -285,17 +288,17 @@ Forge validates all agent definitions during startup. Invalid agents are skipped
 
 ### Parameter Constraints
 
-| Parameter                    | Valid Range   | Default | Notes                                    |
-| ---------------------------- | ------------- | ------- | ---------------------------------------- |
-| `id`                         | Required      | -       | Must be unique across all agents        |
-| `max_turns`                  | 1 - 1000      | 100     | Maximum conversation turns               |
-| `max_walker_depth`           | 1+            | -       | File tree traversal depth                |
-| `max_tool_failure_per_turn`  | 1+            | -       | Max tool failures before completion      |
-| `max_requests_per_turn`      | 1+            | -       | Max requests in single turn              |
-| `temperature`                | 0.0 - 2.0     | 0.7     | Response creativity level                |
-| `top_p`                      | 0.0 - 1.0     | 0.9     | Nucleus sampling threshold               |
-| `top_k`                      | 1 - 1000      | 40      | Top-k sampling limit                     |
-| `max_tokens`                 | 1 - 100,000   | 4096    | Maximum response length                  |
+| Parameter                   | Valid Range | Default | Notes                               |
+| --------------------------- | ----------- | ------- | ----------------------------------- |
+| `id`                        | Required    | -       | Must be unique across all agents    |
+| `max_turns`                 | 1 - 1000    | 100     | Maximum conversation turns          |
+| `max_walker_depth`          | 1+          | -       | File tree traversal depth           |
+| `max_tool_failure_per_turn` | 1+          | -       | Max tool failures before completion |
+| `max_requests_per_turn`     | 1+          | -       | Max requests in single turn         |
+| `temperature`               | 0.0 - 2.0   | 0.7     | Response creativity level           |
+| `top_p`                     | 0.0 - 1.0   | 0.9     | Nucleus sampling threshold          |
+| `top_k`                     | 1 - 1000    | 40      | Top-k sampling limit                |
+| `max_tokens`                | 1 - 100,000 | 4096    | Maximum response length             |
 
 ## Available Tools
 
@@ -369,7 +372,7 @@ system_prompt: |
   - Performance optimization and caching strategies
   - Microservices architecture patterns
 
-  Provide production-ready code with proper error handling and monitoring.
+  Provide production ready code with proper error handling and monitoring.
 temperature: 0.15
 custom_rules: |
   - Use dependency injection patterns
@@ -464,11 +467,13 @@ max_turns: 60
 Agents can be placed in one of two locations:
 
 #### Option 1: User Configuration
+
 - **macOS/Linux**: `~/forge/agents/`
 - **Windows**: `%USERPROFILE%\forge\agents\`
 - Available across all projects and Forge sessions
 
 #### Option 2: Local Configuration
+
 - **All platforms**: `.forge/agents/` (in your project root)
 - **Note**: Must use dot prefix (`.forge`) for local directories
 - Higher priority - overrides user agents with same ID
@@ -476,6 +481,7 @@ Agents can be placed in one of two locations:
 Example organization:
 
 **User Configuration:**
+
 ```
 ~/forge/agents/
 ├── frontend-expert.md
@@ -488,6 +494,7 @@ Example organization:
 ```
 
 **Local Configuration:**
+
 ```
 your-project/
 ├── .forge/
@@ -501,9 +508,10 @@ your-project/
 
 :::warning
 **Important**:
+
 - Subdirectories are not supported. All agent definition files must be placed directly in the `agents` directory root. Files in subdirectories will not be discovered by Forge.
 - For project-specific agents, the directory **must** be named `.forge/agents/` (with dot prefix).
-:::
+  :::
 
 ### Automatic Discovery
 
@@ -519,7 +527,7 @@ Need Forge's built-in agents to understand your specific project? Instead of sta
 - **Muse** - Planning and analysis agent for exploring solutions
 - **Sage** - Research agent for deep investigation and analysis
 - **Parker** - Code review and quality assurance agent
-- **Prime** - General-purpose assistant agent
+- **Prime** - General purpose assistant agent
 
 ### How Agent Customization Works
 
@@ -528,9 +536,10 @@ When Forge loads an agent, it follows this priority order:
 1. **Custom configuration** (any `.md` file in `.forge/agents/` with matching `id`) - highest priority
 2. **Default configuration** (built into Forge) - fallback
 
-**Key Point**: The filename doesn't matter - only the `id` field in the YAML frontmatter must match the built-in agent name you want to override.
+**Key Point**: The filename doesn't matter, only the `id` field in the YAML frontmatter must match the built-in agent name you want to override.
 
 For example:
+
 - To customize the Forge agent: create any `.md` file with `id: "forge"`
 - To customize the Sage agent: create any `.md` file with `id: "sage"`
 - To customize the Muse agent: create any `.md` file with `id: "muse"`
@@ -542,6 +551,7 @@ This means your custom agent configurations will always take precedence over the
 You can create the agents directory in two locations:
 
 #### Option 1: Local Configuration (Recommended)
+
 Create the agents directory in your current project directory. **Important**: The directory must be named `.forge/agents/` (with the dot prefix):
 
 ```bash
@@ -549,19 +559,32 @@ mkdir -p .forge/agents
 ```
 
 #### Option 2: User Configuration
+
 Create the agents directory in your user profile. **Note**: No dot prefix required for the user directory:
 
 **macOS/Linux:**
+
 ```bash
 mkdir -p ~/forge/agents
 ```
 
 **Windows:**
+
 ```cmd
 mkdir "%USERPROFILE%\forge\agents"
 ```
 
 Create a markdown file for each agent you want to customize. The filename can be anything, but the `id` field in the YAML frontmatter must match the built-in agent name (forge, muse, sage, parker, or prime).
+
+### Why Customize Built-in Agents?
+
+Customizing built-in agents allows you to:
+
+- **Match project standards** - Embed your team's coding conventions and best practices
+- **Optimize for your stack** - Configure agents to understand your specific technologies and frameworks
+- **Enforce quality gates** - Build in requirements for testing, documentation, and code quality
+- **Streamline workflows** - Create agents that follow your established development processes
+- **Maintain consistency** - Ensure all team members get consistent guidance and assistance
 
 ### Agent Customization Example
 
@@ -600,16 +623,6 @@ You are a specialized development assistant for our React TypeScript project.
 
 Focus on maintainable, performant code that follows our established patterns.
 ```
-
-### Why Customize Built-in Agents?
-
-Customizing built-in agents allows you to:
-
-- **Match project standards** - Embed your team's coding conventions and best practices
-- **Optimize for your stack** - Configure agents to understand your specific technologies and frameworks
-- **Enforce quality gates** - Build in requirements for testing, documentation, and code quality
-- **Streamline workflows** - Create agents that follow your established development processes
-- **Maintain consistency** - Ensure all team members get consistent guidance and assistance
 
 ## Troubleshooting
 
