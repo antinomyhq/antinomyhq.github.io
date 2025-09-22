@@ -1,5 +1,3 @@
-import CustomLink from '@site/src/components/shared/CustomLink'
-
 # Agent Definition Guide: Creating Custom AI Assistants
 
 Create specialized AI assistants using simple markdown files. Define expert consultants for frontend development, security auditing, testing, or any specialized workflow without complex configuration.
