@@ -207,7 +207,7 @@ title: Backend API Specialist
 description: Expert in REST APIs, databases, and server architecture
 
 # MODEL SELECTION
-model: anthropic/claude-sonnet-4 # Any supported model ID
+model: anthropic/claude-3-5-sonnet # Any supported model ID
 
 # USER PROMPT (Template with Handlebars syntax)
 user_prompt: |-
@@ -235,24 +235,25 @@ tools:
 
 # CONVERSATION LIMITS
 max_turns: 100 # Maximum conversation length (default: 100)
-max_walker_depth: 3 # File tree traversal depth (default: 3)
+max_walker_depth: 3 # File tree traversal depth (default: 1)
 max_tool_failure_per_turn: 3 # Max tool failures before forcing completion (default: 3)
-max_requests_per_turn: 10 # Max requests in a single turn (default: 10)
+max_requests_per_turn: 10 # Max requests in a single turn (default: 100)
 
 # MODEL PARAMETERS (All optional with validation)
 temperature: 0.2 # Creativity level: 0.0 to 2.0 (default: provider default)
-top_p: 0.9 # Nucleus sampling: 0.0 to 1.0 (default: provider default)
-top_k: 40 # Top-k sampling: 1 to 1000 (default: provider default)
-max_tokens: 4096 # Maximum response length: 1 to 100,000 tokens (default: provider default)
+top_p: 0.9 # Nucleus sampling: 0.0 to 1.0 (default: 0.8)
+top_k: 40 # Top-k sampling: 1 to 1000 (default: 30)
+max_tokens: 4096 # Maximum response length: 1 to 100,000 tokens (default: 20480)
 
 # CONTEXT COMPACTION (Optional - automatic context management)
 compact:
   max_tokens: 2000 # Maximum tokens after compaction
   token_threshold: 100000 # Trigger compaction when context exceeds this
   retention_window: 6 # Number of recent messages to preserve
-  message_threshold: 200 # Trigger compaction after this many messages
+  message_threshold: 200 # Trigger compaction after this many messages (default: 200)
+  turn_threshold: 50 # Trigger compaction after this many turns (optional)
   eviction_window: 0.2 # Percentage of context that can be summarized (0.0-1.0)
-  model: anthropic/claude-sonnet-4 # Model to use for compaction (optional)
+  model: anthropic/claude-3-5-sonnet # Model to use for compaction (optional)
   on_turn_end: false # Whether to compact at turn end (default: false)
   prompt: | # Custom compaction prompt (optional)
     Summarize the following conversation context while preserving key technical details.
@@ -285,17 +286,19 @@ Forge validates all agent definitions during startup. Invalid agents are skipped
 
 ### Parameter Constraints
 
-| Parameter                   | Valid Range | Default | Notes                               |
-| --------------------------- | ----------- | ------- | ----------------------------------- |
-| `id`                        | Required    | -       | Must be unique across all agents    |
-| `max_turns`                 | 1 - 1000    | 100     | Maximum conversation turns          |
-| `max_walker_depth`          | 1+          | -       | File tree traversal depth           |
-| `max_tool_failure_per_turn` | 1+          | -       | Max tool failures before completion |
-| `max_requests_per_turn`     | 1+          | -       | Max requests in single turn         |
-| `temperature`               | 0.0 - 2.0   | 0.7     | Response creativity level           |
-| `top_p`                     | 0.0 - 1.0   | 0.9     | Nucleus sampling threshold          |
-| `top_k`                     | 1 - 1000    | 40      | Top-k sampling limit                |
-| `max_tokens`                | 1 - 100,000 | 4096    | Maximum response length             |
+| Parameter                   | Valid Range | Default  | Notes                               |
+| --------------------------- | ----------- | -------- | ----------------------------------- |
+| `id`                        | Required    | -        | Must be unique across all agents    |
+| `max_turns`                 | 0+          | 100      | Maximum conversation turns          |
+| `max_walker_depth`          | 0+          | 1        | File tree traversal depth           |
+| `max_tool_failure_per_turn` | 0+          | 3        | Max tool failures before completion |
+| `max_requests_per_turn`     | 0+          | 100      | Max requests in single turn         |
+| `temperature`               | 0.0 - 2.0   | Provider | Response creativity level           |
+| `top_p`                     | 0.0 - 1.0   | 0.8      | Nucleus sampling threshold          |
+| `top_k`                     | 1 - 1000    | 30       | Top-k sampling limit                |
+| `max_tokens`                | 1 - 100,000 | 20480    | Maximum response length             |
+
+**Note**: "Provider" means the AI model provider's default value (e.g., OpenAI, Anthropic defaults).
 
 ## Available Tools
 
