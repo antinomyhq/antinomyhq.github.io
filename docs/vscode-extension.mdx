@@ -8,176 +8,184 @@ sidebar_label: VS Code Extension
 import {Download, Zap, Copy, Keyboard, Lightbulb, ArrowRight, FileText, Clock, Target} from "lucide-react"
 import CustomLink from "@site/src/components/shared/CustomLink"
 
-# VS Code Extension: Add File or Code References Without the Typing
+# Skip the Copy-Paste: Reference Any Code Instantly
 
-Instead of manually typing file paths, copying code snippets, or trying to describe where the problem is, the Forge VS Code extension lets you reference any code with a single keystroke: `Ctrl+U`.
+Tired of manually typing file paths and copying code snippets when asking Forge for help? This VS Code extension lets you reference any code with a single keystroke.
 
-This guide covers installation, usage, and best practices for getting the most out of the extension.
+## What This Extension Does
 
+**The problem:** Describing code problems is slow and unclear
+- "That function around line 50 something..."
+- Copy-pasting code snippets manually
+- Typing out long file paths
 
-### The Basics
+**The solution:** Show Forge exactly what you mean
+- Select any code → Press `Ctrl+U` → Get a perfect reference
+- Works with single lines, code blocks, or entire files
 
-Select any code in VS Code and press `Ctrl+U` to copy a properly formatted reference. The extension automatically detects your selection and generates the right format:
+:::info New to Forge?
+This extension works with [Forge CLI](/docs/installation). If you haven't installed Forge yet, start with our [Installation Guide](/docs/installation).
+:::
+
+## See It in Action
 
 ![Forge VS Code Extension Demo](../static/blog/demo_vscode.gif)
 
-**Format it gets copied:**
-```
-@[<filepath>:<line start>:<line end>]
-```
-
-**How selection works:**
-- **No selection**: `@[path/to/file.js]` → References entire file
-- **Single line**: `@[path/to/file.js:42:42]` → References line 42
-- **Multiple lines**: `@[path/to/file.js:15:28]` → References lines 15-28
-
-**Why this matters:** Forge can now see exactly what code you're talking about, with full context and precise line numbers. No more "that function around line 50 something."
-
-### Alternative Ways to Copy References
-
-**When `Ctrl+U` doesn't work or you prefer menus:**
-
-- **Command Palette**: `Ctrl+Shift+P` → type "Copy File Reference"
-- **Right-click Menu**: Select code → right-click → "Copy Forge Reference"
-
-### Beyond Single Files: Multi-File References
-
-**Compare implementations across files:**
-```
-> Compare these two approaches @[src/utils/oldMethod.js:15:45] @[src/utils/newMethod.js:20:50]
-```
-
-**Reference any file type:**
-```
-> Review this CSS @[src/styles/components.css:67:89]
-> Debug this config @[webpack.config.js:23:45]
-> Check this SQL @[database/migrations/001_users.sql:12:25]
-```
-
-**Why multi-file references work:** Forge can analyze relationships between files, spot inconsistencies, and suggest improvements that consider your entire codebase context.
+**What you just saw:** Select code → Press `Ctrl+U` → Reference copied and ready to use with Forge.
 
 ## Installation
 
 ### What You Need
-
 - **VS Code**: Version 1.102.0 or higher
-- **Forge CLI**: Already installed and working ([Installation Guide](/docs/installation) if you need it)
+- **Forge CLI**: [Install](/docs/installation) it first if you haven't already
 
 ### Install the Extension
 
-**Option 1: VS Code Marketplace (Recommended)**
+**Option 1: VS Code Marketplace (Easiest)**
 1. Open VS Code
-2. Press `Ctrl+Shift+X` (or `Cmd+Shift+X` on Mac) to open Extensions
+2. Press `Ctrl+Shift+X` (Extensions panel)
 3. Search for **"Forge Code"**
-4. Click **Install** on the official extension by ForgeCode
+4. Click **Install** on the official ForgeCode extension
 
 **Option 2: Command Line**
 ```bash
 code --install-extension ForgeCode.forge-vscode
 ```
 
-**Verify it worked:** Open any code file, select some text, press `Ctrl+U`. If something gets copied to your clipboard, you're ready to go.
+**Test it works:** Open any code file, select some text, press `Ctrl+U`. If something gets copied to your clipboard, you're ready to go! 🎉
 
 **Official extension:** [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ForgeCode.forge-vscode)
 
-## Real-World Usage Examples
+## Basic Usage
 
-### <Lightbulb size={20} style={{verticalAlign: 'baseline', marginRight: 6}} />Debugging Production Issues
+### The Core Workflow
 
-**The scenario:** Your authentication is failing in production, but works locally.
+1. **Select code** (or don't select anything for whole file)
+2. **Press `Ctrl+U`** 
+3. **Paste into Forge** conversation
+
+That's it. No typing, no manual copying.
+
+### What Gets Copied
+
+**Format:** `@[<filepath>:<line start>:<line end>]`
+
+**How selection works:**
+- **No selection**: `@[path/to/file.js]` → References entire file
+- **Single line**: `@[path/to/file.js:42:42]` → References line 42 only
+- **Multiple lines**: `@[path/to/file.js:15:28]` → References lines 15-28
+
+**Multiple files:** Select files from different locations and copy them all at once:
+```
+> Compare these approaches @[src/utils/oldMethod.js:15:45] @[src/utils/newMethod.js:20:50]
+> Review this component and its styles @[components/Button.tsx] @[styles/button.css:12:34]
+```
+
+**Key benefit:** Forge can now see exactly what code you're talking about, with full context and precise line numbers.
+
+### Alternative Ways
+- **Command Palette**: `Ctrl+Shift+P` → type "Copy File Reference"
+- **Right-click Menu**: Select code → right-click → "Copy Forge Reference"
+
+## Real-World Examples
+
+### <Lightbulb size={20} style={{verticalAlign: 'baseline', marginRight: 6}} />Debugging Issues
+
+**Scenario:** Authentication fails in production but works locally.
 
 ```
-> Help me debug this authentication function @[src/auth/AuthService.ts:45:67] - it works locally but fails in production
+> Help me debug this auth function @[src/auth/AuthService.ts:45:67] - works locally but fails in production
 ```
 
-**Why this works:** Forge can see the exact code, understand the logic flow, and suggest environment-specific issues to check.
+**Why this helps:** Forge sees the exact code and can suggest environment-specific issues to check.
 
-### <Target size={20} style={{verticalAlign: 'baseline', marginRight: 6}} />Code Reviews That Actually Help
+### <Target size={20} style={{verticalAlign: 'baseline', marginRight: 6}} />Code Reviews
 
-**The scenario:** You're reviewing a pull request and spot a complex component that could be improved.
+**Scenario:** You spot a component that could be improved.
 
 ```
 > Can you refactor this component to use hooks? @[components/UserProfile.tsx:12:89] Also suggest performance optimizations
 ```
 
-**Why this works:** Instead of generic advice, Forge sees your specific component structure and suggests targeted improvements.
+**Why this works:** Instead of generic advice, Forge sees your specific component and suggests targeted improvements.
 
-### <Zap size={20} style={{verticalAlign: 'baseline', marginRight: 6}} />Cross-File Problem Solving
+### <Zap size={20} style={{verticalAlign: 'baseline', marginRight: 6}} />Type Mismatches
 
-**The scenario:** Your API returns data that doesn't match your TypeScript types, causing runtime errors.
+**Scenario:** API data doesn't match your TypeScript types.
 
 ```
-> @[src/api/users.js:156:203] @[src/types/User.ts] have a type mismatch - the API returns 'user_id' but the type expects 'userId'
+> @[src/api/users.js:156:203] @[src/types/User.ts] have a type mismatch - API returns 'user_id' but type expects 'userId'
 ```
 
-**Why this works:** Forge can compare both files simultaneously and suggest solutions that fix the mismatch properly.
+**Why this works:** Forge compares both files simultaneously and suggests proper fixes.
 
 ### <FileText size={20} style={{verticalAlign: 'baseline', marginRight: 6}} />Feature Implementation
 
-**The scenario:** You need to add dark mode support across multiple components.
+**Scenario:** Adding dark mode across multiple components.
 
 ```
-> Add dark mode support to @[src/components/ThemeProvider.tsx:15:45] and update @[src/styles/theme.css:23:67] to work together
+> Add dark mode support to @[src/components/ThemeProvider.tsx:15:45] and update @[src/styles/theme.css:23:67]
 ```
 
-**Why this works:** Forge understands how your theme system works and can suggest consistent changes across files.
+**Why this works:** Forge understands your theme system and suggests consistent changes across files.
 
+## Troubleshooting
 
-## Troubleshooting Guide
+### "Extension Doesn't Respond At All"
 
-### "Extension Not Working At All"
+**Check these in order:**
+1. **Forge CLI installed?** → Run `forge --version` in terminal
+   - If "command not found" → [Install Forge first](/docs/installation)
+2. **VS Code version** → Help → About → Need 1.102.0 or higher
+3. **Extension enabled?** → Extensions view → "Forge Code" shows "Enabled"
+4. **Restart VS Code** → Close completely and reopen
 
-**Symptoms:** Pressing `Ctrl+U` does nothing, no menu options appear.
+### "Ctrl+U Shortcut Conflict"
 
-**Fix these in order:**
-1. **Check Forge CLI**: Run `forge --version` in terminal
-   - If "command not found" → Install Forge first: [Installation Guide](/docs/installation)
-2. **Check VS Code version**: Help → About → Must be 1.102.0 or higher
-3. **Verify extension**: Extensions view → "Forge Code" should show "Installed" and "Enabled"
-4. **Restart VS Code**: Close completely and reopen
-
-### "Ctrl+U Doesn't Work"
-
-**Symptoms:** The shortcut is taken by another extension or VS Code feature.
-
-**Solution:**
+**Solution:** Change the keyboard shortcut
 1. **File → Preferences → Keyboard Shortcuts**
 2. Search for **"Forge"**
-3. Click the pencil icon next to "Copy File Reference"
-4. Press your preferred key combination (try `Ctrl+Shift+U` or `Alt+U`)
+3. Click pencil icon next to "Copy File Reference"
+4. Try `Ctrl+Shift+U` or `Alt+U` instead
 
-### "Nothing Gets Copied to Clipboard"
+### "Nothing Gets Copied"
 
-**Symptoms:** You press the shortcut but nothing appears when you paste.
-
-**Try these solutions:**
+**Try these fixes:**
 - Use Command Palette: `Ctrl+Shift+P` → "Copy File Reference"
-- Check if you're in a text file (not an image or binary file)
-- Try the right-click menu → "Copy Forge Reference"
-- Check if clipboard permissions are blocked
+- Make sure you're in a text file (not image/binary)
+- Try right-click menu → "Copy Forge Reference"
+- Check clipboard permissions in your system
 
-### "File Paths Look Weird"
+### "File Paths Look Strange"
 
-**Symptoms:** Copied paths show `/workspaces/project/` or other unexpected prefixes.
+**Example:** `/workspaces/project/src/file.js`
 
 **This is normal:** The extension copies paths exactly as VS Code sees them. This works correctly with Forge, even in:
-- Remote development (SSH, containers, WSL)
-- Workspace folders with different names
-- Symlinked directories
+- Remote development
+- Different workspace setups
 
----
+## Quick Success Tips
 
-## Still Need Help?
+### Start Simple
+1. **Practice on one file first** → Select a function, press `Ctrl+U`
+2. **Test with Forge** → Paste the reference and ask a simple question
+3. **Try multi-file references** once comfortable
 
-**Check extension logs:** View → Output → Select "Forge" from dropdown
-**Report bugs:** [GitHub Issues](https://github.com/antinomyhq/forge/issues)
-**Get quick help:** Join our [Discord](https://discord.gg/kRZBPpkgwq) community
+### Best Practices
+- **Be specific with selections** → Select the exact code you're asking about
+- **Include context** → Sometimes reference related files together
+- **Don't reference everything** → Only include code that's relevant to your question
 
----
+### Common Mistakes to Avoid
+- Selecting too much code at once (Forge works better with focused references)
+- Forgetting to test that Forge CLI is working first
+- Not using the extension because you think typing is faster (it's not!)
 
 ## Next Steps
 
-Start with single file references, then try multi-file references as you get comfortable with the workflow.
+**You're ready to:** Start using `Ctrl+U` for single file references, then experiment with multi-file references as you get comfortable.
+
+**Remember:** The goal isn't to reference every line of code, it's to give Forge just enough context to provide genuinely helpful, specific advice for your exact situation.
 
 ## Related Guides
 
@@ -185,4 +193,11 @@ Start with single file references, then try multi-file references as you get com
 - [Quickstart: Get started with Forge in minutes](/docs/quickstart)
 - [Built-in Commands: Essential commands for productive workflows](/docs/commands)
 
-**Remember:** The goal isn't to reference every line of code, it's to give Forge just enough context to provide genuinely helpful, specific advice for your exact situation.
+---
+
+## Still Need Help?
+
+**Quick support options:**
+- **Extension logs:** View → Output → Select "Forge" from dropdown
+- **Report bugs:** [GitHub Issues](https://github.com/antinomyhq/forge/issues)
+- **Community help:** Join our [Discord](https://discord.gg/kRZBPpkgwq) for quick answers
