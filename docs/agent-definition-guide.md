@@ -225,7 +225,7 @@ custom_rules: |
   - Include request/response logging
   - Write integration tests for all endpoints
 
-# TOOL ACCESS (defaults to all available tools if not specified)
+# TOOL ACCESS (specify which tools this agent can use)
 tools:
   - read
   - write
@@ -535,8 +535,9 @@ Need Forge's built-in agents to understand your specific project? Instead of sta
 
 When Forge loads an agent, it follows this priority order:
 
-1. **Custom configuration** (any `.md` file in `.forge/agents/` with matching `id`) - highest priority
-2. **Default configuration** (built into Forge) - fallback
+1. **Local configuration** (any `.md` file in `.forge/agents/` with matching `id`)
+2. **User configuration** (any `.md` file in `~/.forge/agents/` with matching `id`)
+3. **Built-in configuration** (embedded in Forge)
 
 **Key Point**: The filename doesn't matter, only the `id` field in the YAML frontmatter must match the built-in agent name you want to override.
 
@@ -702,52 +703,22 @@ Common validation errors and their meanings:
 
 Agent prompts support Handlebars template variables for dynamic, context-aware behavior:
 
-#### Environment Context Variables
+#### System Prompt Variables
 
-Access system information in your prompts:
+Available in `system_prompt` templates:
 
 - `{{current_time}}` - Current timestamp for time-aware responses
 - `{{env.cwd}}` - Current working directory path
 - `{{env.os}}` - Operating system (macOS, Linux, Windows)
 - `{{env.shell}}` - Shell type (bash, zsh, PowerShell)
 
-#### Event-Driven User Prompts
+#### User Prompt Variables
 
-For advanced agent communication, use event variables in `user_prompt` templates:
+Available in `user_prompt` templates:
 
+- `{{current_time}}` - Current timestamp for time-aware responses
 - `{{event.name}}` - Event identifier (e.g., "agent-id/user_task_init", "agent-id/user_task_update")
 - `{{event.value}}` - Event payload (user's message, feedback, or task data)
-
-#### Template Examples
-
-**Context-aware system prompt:**
-
-```yaml
----
-id: my-agent
-# ... other configuration
----
-
-You are a development assistant working in {{env.cwd}} on {{env.os}}.
-Current session started at: {{current_time}}
-
-Adapt your responses based on the operating system and provide
-platform-specific commands when needed.
-```
-
-**Event-driven user prompt:**
-
-```yaml
-user_prompt: |-
-  {{#if (eq event.name 'my-agent/user_task_update')}}
-  <feedback>{{event.value}}</feedback>
-  {{else}}
-  <task>{{event.value}}</task>
-  {{/if}}
-  <system_time>{{current_time}}</system_time>
-```
-
-This enables agents to distinguish between initial tasks and follow-up feedback, providing more contextual responses.
 
 ### Environment-Specific Agents
 
