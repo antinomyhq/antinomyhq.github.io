@@ -1,6 +1,6 @@
-# Agent Definition Guide: Creating Custom AI Assistants
+# Agent Definition Guide: Creating Custom Agents
 
-Want an AI assistant that's an expert in React? Or one that specializes in security reviews? You can create custom agents tailored to your specific needs using simple markdown files, no complex setup required!
+Want an agent that's an expert in React? Or one that specializes in security reviews? You can create custom agents tailored to your specific needs using simple markdown files, no complex setup required!
 
 ## What You'll Need
 
@@ -12,7 +12,7 @@ Want an AI assistant that's an expert in React? Or one that specializes in secur
 
 Think of agents like hiring different specialists for your team:
 
-- **Agent**: A specialized AI assistant with predefined knowledge, behavior, and tool access, like having expert consultants for different development tasks.
+- **Agent**: A specialized AI agent with predefined knowledge, behavior, and tool access, like having expert consultants for different development tasks.
 
 - **Agent Definition File**: A markdown file containing YAML configuration (frontmatter) and an optional system prompt that defines the agent's expertise.
 
@@ -26,7 +26,7 @@ Follow these steps to create and use a custom agent in under 5 minutes:
 
 ### Step 1: Create the agents directory
 
-You can create the agents directory in two locations:
+You can store your custom agents in two places:
 
 #### Option 1: User Configuration (Recommended)
 
@@ -55,11 +55,10 @@ Get-ChildItem "$env:USERPROFILE\forge\agents"
 
 #### Option 2: Local Configuration
 
-Local agents have higher priority and override user agents with the same ID.
+Create agents just for this project, they'll override user agents with the same name.
 
 **Setup Instructions:**
-
-Create the `.forge/agents/` directory in your project root (where you run Forge commands):
+Create the `.forge/agents/` folder in your current project:
 
 **macOS/Linux:**
 
@@ -562,7 +561,7 @@ Need Forge's built-in agents to understand your specific project? Instead of sta
 - **Muse** - Planning and analysis agent for exploring solutions
 - **Sage** - Research agent for deep investigation and analysis
 - **Parker** - Code review and quality assurance agent
-- **Prime** - General-purpose assistant agent
+- **Prime** - General-purpose agent
 
 ### How Agent Customization Works
 
@@ -621,7 +620,7 @@ tools:
   - shell
 ---
 
-You are a specialized development assistant for our React TypeScript project.
+You are a specialized development agent for our React TypeScript project.
 
 ## Your Frontend Focus:
 
