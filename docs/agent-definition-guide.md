@@ -1,16 +1,16 @@
 # Agent Definition Guide: Creating Custom AI Assistants
 
-Create specialized AI assistants using simple markdown files. Define expert consultants for frontend development, security auditing, testing, or any specialized workflow without complex configuration.
+Want an AI assistant that's an expert in React? Or one that specializes in security reviews? You can create custom agents tailored to your specific needs using simple markdown files, no complex setup required!
 
-## Prerequisites
-
-Before creating custom agents, ensure you have:
+## What You'll Need
 
 - Forge installed and running
 - Access to create directories in your home folder
 - Basic familiarity with YAML syntax
 
-## Key Concepts
+## How It Works
+
+Think of agents like hiring different specialists for your team:
 
 - **Agent**: A specialized AI assistant with predefined knowledge, behavior, and tool access, like having expert consultants for different development tasks.
 
