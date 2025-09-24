@@ -169,6 +169,50 @@ MCP configurations are read from two locations in the following order of precede
 
 Local configurations take precedence over user configurations, allowing you to have project-specific MCP setups while maintaining global defaults.
 
+## How MCP Tools Work with Agents
+
+Once you set up an MCP server, its tools automatically become available to all your agents. No extra configuration needed!
+
+### How It Works
+
+1. **Add MCP server** to your `.mcp.json` file
+2. **Tools appear automatically** in all your agents
+3. **Start using them** right away in any conversation
+
+### Example Workflow
+
+```json
+// Configure weather MCP server in .mcp.json
+{
+  "mcpServers": {
+    "weather": {
+      "command": "node",
+      "args": ["weather-server.js"],
+      "env": {
+        "WEATHER_API_KEY": "your_api_key"
+      }
+    }
+  }
+}
+```
+
+```bash
+# Now any agent can use weather tools:
+> /agent forge
+> What's the weather like in San Francisco?
+
+> /agent muse
+> Get weather data for New York and create a summary
+```
+
+The `get_weather` tool is now available to all your agents automatically!
+
+### What You Get
+
+- **Works with every agent** - Forge, Muse, custom agents, all of them
+- **No setup needed** - Just add the MCP server and you're done
+- **Instant access** - Tools work immediately after configuration
+
 ## Example Use Cases
 
 ### Web Browser Automation
