@@ -304,6 +304,8 @@ Forge validates all agent definitions during startup. Invalid agents are skipped
 
 You can customize which tools each agent has access to:
 
+### Built-in Tools
+
 - `read` - Read files and directories
 - `write` - Create and modify files
 - `remove` - Delete files
@@ -315,6 +317,34 @@ You can customize which tools each agent has access to:
 - `plan` - Create implementation plans
 - `followup` - Ask clarifying questions to users
 - `attempt_completion` - Present final results and complete tasks
+
+### MCP Tools (External Integrations)
+
+**What are MCP tools?** MCP (Model Context Protocol) tools let your agents connect to external services like weather APIs, databases, browsers, and more.
+
+**Key benefits:**
+
+- Tools automatically become available to ALL your agents
+- No extra configuration needed in agent files
+- Use `/tools` in Forge to see all available tools (MCP tools listed separately)
+
+**Example:** After setting up a weather MCP server, your agent configuration stays simple:
+
+```yaml
+tools:
+  - read
+  - write
+  - search
+  # get_weather is automatically available!
+```
+
+**Popular MCP integrations:**
+
+- **Weather data** - Real-time weather information
+- **Database queries** - Connect to PostgreSQL, MySQL
+- **Email sending** - Send notifications and reports
+
+**Learn more:** See [MCP Integration Guide](/docs/mcp-integration) for complete instructions.
 
 **Note**: Additional tools may be available depending on your Forge installation and configuration.
 
