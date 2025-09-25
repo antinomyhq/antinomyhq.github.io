@@ -17,13 +17,15 @@ const FooterItem = ({title, items}: FooterItemProps): JSX.Element => {
   }
   return (
     <div className="flex flex-col mt-5 md:mt-0 gap-5 md:gap-8">
-      <span className="text-title-tiny text-tailCall-light-1000 dark:text-white opacity-40 font-normal">{title}</span>
-      <ul className="m-0 p-0 flex flex-col items-start gap-5 md:gap-8 list-none text-white text-title-tiny font-[275]">
+      <span className="font-kanit text-title-tiny text-tailCall-light-1000 dark:text-white opacity-40 font-normal">
+        {title}
+      </span>
+      <ul className="m-0 p-0 flex flex-col items-start gap-5 md:gap-8 list-none font-kanit text-white text-title-tiny font-[275]">
         {items.map((item) => {
           return item.name === "Cookie Settings" ? (
             <button
               key={item.name}
-              className="text-tailCall-light-1000 dark:text-white no-underline hover:no-underline border-none bg-transparent text-title-tiny m-0 p-0 font-normal cursor-pointer hover:dark:text-tailCall-darkMode---primary-400 hover:text-tailCall-darkMode---primary-600"
+              className="text-tailCall-light-1000 dark:text-white no-underline hover:no-underline border-none bg-transparent text-title-tiny font-[275] m-0 p-0 font-kanit font-normal cursor-pointer hover:dark:text-tailCall-darkMode---primary-400 hover:text-tailCall-darkMode---primary-600"
               onClick={handleOpenCookieConsent}
             >
               {item.name}

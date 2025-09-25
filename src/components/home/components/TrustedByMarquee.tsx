@@ -69,7 +69,7 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
     return (
       <div className="flex items-center gap-5">
         {title && (
-          <span className="hidden lg:block min-w-[200px] text-tailCall-lightMode---neutral-500 dark:text-tailCall-lightMode---neutral-400 text-title-small font-normal mt-8">
+          <span className="hidden lg:block min-w-[200px] font-kanit text-tailCall-lightMode---neutral-500 dark:text-tailCall-lightMode---neutral-400 text-title-small font-normal mt-8">
             {title}
           </span>
         )}

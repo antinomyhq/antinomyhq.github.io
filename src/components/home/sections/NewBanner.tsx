@@ -15,14 +15,14 @@ const contentLayout = "flex justify-around flex-col lg:flex-row gap-4 md:gap-0 l
 
 const mobileTextWrapper = "flex md:hidden lg:flex flex-col"
 const descriptionText =
-  "text-tailCall-lightMode---neutral-800 dark:text-white text-[26px] font-light lg:font-light text-title-medium lg:text-display-tiny opacity-80 max-w-[500px] md:mt-24"
+  "text-tailCall-lightMode---neutral-800 dark:text-white text-[26px] font-light lg:font-light text-title-medium lg:text-display-tiny opacity-80 max-w-[500px] md:mt-24 font-kanit"
 const headerSection = "relative flex flex-col"
 const mobileCTAButtons = "mt-36 ml-5 lg:mt-60 xl:mt-[22rem] xl:ml-20"
 
 const tabletWrapper = "relative hidden md:flex lg:hidden flex-col"
 const tabletHeaderSection = "relative flex flex-col"
 const tabletDescriptionText =
-  "absolute left-80 -top-20 text-tailCall-lightMode---neutral-800 dark:text-white font-light text-title-semi-large lg:text-display-tiny opacity-80 max-w-[500px] mt-24"
+  "absolute left-80 -top-20 text-tailCall-lightMode---neutral-800 dark:text-white font-light text-title-semi-large lg:text-display-tiny opacity-80 max-w-[500px] mt-24 font-kanit"
 const tabletCTAButtons = "md:mx-auto md:mt-64"
 
 const terminalWrapper = "flex justify-center md:mt-8 md:ml-8"

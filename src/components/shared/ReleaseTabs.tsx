@@ -21,7 +21,7 @@ const ReleaseTabs: React.FC<TabsProps> = ({tabs}) => {
           <button
             key={tab.name}
             onClick={() => setActiveIndex(index)}
-            className={`px-8 py-3 bg-transparent border-solid border-b text-content-medium transition-all duration-150 hover:cursor-pointer
+            className={`px-8 py-3 bg-transparent border-solid border-b text-content-medium font-kanit transition-all duration-150 hover:cursor-pointer
               ${
                 index === activeIndex
                   ? "border-b-tailCall-cyan text-tailCall-cyan font-bold"

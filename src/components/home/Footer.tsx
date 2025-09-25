@@ -23,7 +23,7 @@ const Footer = (): JSX.Element => {
             <img src="/images/home/logo-dark.svg" alt="Logo" width={141} className="block dark:hidden cursor-pointer" />
           </Link>
         </div>
-        <span className="text-tailCall-light-1000 dark:text-white text-title-tiny font-[275]">
+        <span className="text-tailCall-light-1000 dark:text-white font-kanit text-title-tiny font-[275]">
           Copyright © {new Date().getFullYear()} Tailcall, Inc.
         </span>
         <div className="flex gap-5">

@@ -14,7 +14,7 @@ const containerClass =
 const innerWrapperClass = "flex flex-col justify-between h-full gap-3"
 const topContentClass = "flex flex-col gap-3"
 const titleClass =
-  "text-tailCall-darkMode---neutral-700 dark:text-white text-title-small font-light break-words text-left"
+  "text-tailCall-darkMode---neutral-700 dark:text-white font-kanit text-title-small font-light break-words text-left"
 const authorClass = "text-tailCall-darkMode---neutral-500 dark:text-white dark:opacity-50 text-title-tiny font-normal"
 
 const UserFeedbackCard = ({title, imageUrl, author, designation}: UserFeedbackCardProps) => (

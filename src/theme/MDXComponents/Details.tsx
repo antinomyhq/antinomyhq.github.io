@@ -12,7 +12,11 @@ export default function MDXDetails(props: Props): JSX.Element {
   const children = <>{items.filter((item) => item !== summary)}</>
 
   return (
-    <Details className="text-tailCall-light-100 bg-tailCall-border-dark-900 !rounded-xl" {...props} summary={summary}>
+    <Details
+      className="text-tailCall-light-100 font-kanit bg-tailCall-border-dark-900 !rounded-xl"
+      {...props}
+      summary={summary}
+    >
       {children}
     </Details>
   )

@@ -26,7 +26,7 @@ const TechCard = (props: TechCardProps): JSX.Element => {
       >
         <span
           className={
-            `max-w-48 md:max-w-none text-content-small xl:text-[26px] -tracking-normal font-normal transition-all duration-300 ` +
+            `max-w-48 md:max-w-none font-kanit text-content-small xl:text-[26px] -tracking-normal font-normal transition-all duration-300 ` +
             `${selected ? "text-white font-bold drop-shadow" : "text-[#262626] dark:text-white opacity-70"}`
           }
         >

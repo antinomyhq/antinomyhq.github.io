@@ -83,7 +83,7 @@ const MDXComponents: MDXComponentsObject = {
   mermaid: Mermaid,
   p: (props: ComponentProps<"p">) => (
     <p
-      className="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-200 !mb-0"
+      className="text-[18px] font-light text-tailCall-lightMode---neutral-500 dark:text-tailCall-darkMode---neutral-200 font-kanit !mb-0"
       {...props}
     />
   ),

@@ -16,7 +16,7 @@ const AIProviderCard = ({title, lightLogoUrl, darkLogoUrl}: AIProviderCardProps)
           {/* Dark mode image */}
           <img src={darkLogoUrl} alt={`${title} dark`} className="hidden dark:block" />
         </div>
-        <span className="z-10 text-tailCall-darkMode---neutral-400 font-light text-title-medium !text-[22px]">
+        <span className="z-10 font-kanit text-tailCall-darkMode---neutral-400 font-light text-title-medium !text-[22px]">
           {title}
         </span>
         <div className="z-0 absolute bottom-0 h-32 w-full opacity-0 group-hover:opacity-100 transition-opacity duration-100 bg-[radial-gradient(67.39%_67.39%_at_50%_130.43%,_#00CEC9_0%,_#FFF_100%)] dark:bg-[radial-gradient(67.39%_67.39%_at_50%_130.43%,_#30EDE6_0%,_#000_100%)] rounded-b-[10px]"></div>

@@ -44,16 +44,11 @@
 html,
 body {
   background-color: #f5f3eb;
-  font-family: "Kanit", sans-serif;
-}
-
-button {
-  font-family: "Kanit", sans-serif;
 }
 
 :root {
   /* Font and Dimension Tokens */
-  --ifm-font-family-base: "Kanit";
+  --ifm-font-family-base: "Rubik";
   --header-height: 5rem;
   --ifm-navbar-height: 5rem;
   --ifm-navbar-height-sm: 4.5rem;
@@ -1152,7 +1147,7 @@ pre > code {
 }
 
 .toc-highlight strong {
-  font-weight: 400 !important;
+  font-weight: 100 !important;
 }
 
 .custom-cards p,

@@ -74,7 +74,7 @@ const CopyCodeButton = ({
       {title && (
         <span
           className={clsx(
-            "absolute -translate-x-[400px] group-hover:translate-x-[-15px] z-[1] text-[18px] transition-all duration-[1000ms]",
+            "absolute -translate-x-[400px] group-hover:translate-x-[-15px] z-[1] text-[18px] font-kanit transition-all duration-[1000ms]",
             titleClassName,
           )}
         >
@@ -84,7 +84,7 @@ const CopyCodeButton = ({
       {title && (
         <span
           className={clsx(
-            "absolute translate-x-0 group-hover:translate-x-[400px] z-[1] text-[18px] transition-all duration-[500ms]",
+            "absolute translate-x-0 group-hover:translate-x-[400px] z-[1] text-[18px] font-kanit transition-all duration-[500ms]",
             titleClassName,
           )}
         >

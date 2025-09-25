@@ -64,13 +64,13 @@ function BlogTagsPostsPageContent({tag, items}: Props): JSX.Element {
     <Layout>
       <div className="container mx-auto mt-3 mb-10 md:my-8 px-4 md:w-8/12">
         <div className="flex flex-col md:flex-row gap-2 mb-5">
-          <span className="text-title-medium font-normal text-tailCall-dark-500 dark:text-tailCall-darkMode---neutral-200">
+          <span className="font-kanit text-title-medium font-normal text-tailCall-dark-500 dark:text-tailCall-darkMode---neutral-200">
             Results for
           </span>
           <span className="flex items-center justify-between flex-1">
             <Chip label={tag.label} />
             <span
-              className="text-content-small text-tailCall-dark-500 dark:text-tailCall-darkMode---neutral-200 underline cursor-pointer"
+              className="font-kanit text-content-small text-tailCall-dark-500 dark:text-tailCall-darkMode---neutral-200 underline cursor-pointer"
               onClick={openTagSelectionModal}
             >
               See all Tags

@@ -70,12 +70,12 @@ const HERO_TITLE_CLASSES =
 const HERO_SUBTITLE_CLASSES =
   "-mt-4 md:-mt-5 lg:-mt-2 xl:-mt-8 leading-10 md:leading-normal font-bebas !font-normal text-[45px] md:text-display-small lg:text-display-medium xl:text-display-large-semi tracking-normal"
 const HERO_DESCRIPTION_CLASSES =
-  "block mt-2 md:mt-0 max-w-[500px] xl:mt-20 !font-normal lg:leading-8 xl:leading-[32px] text-[16px] md:text-title-small lg:text-[20px] xl:text-[22px] text-tailCall-darkMode---neutral-500 tracking-normal"
+  "block mt-2 md:mt-0 max-w-[500px] xl:mt-20 font-kanit !font-normal lg:leading-8 xl:leading-[32px] text-[16px] md:text-title-small lg:text-[20px] xl:text-[22px] text-tailCall-darkMode---neutral-500 tracking-normal"
 const PRICING_HEADER_CLASSES = "text-center mb-14"
 const PRICING_TITLE_CLASSES =
-  "text-title-large !font-normal md:text-content-regular mb-2 text-tailCall-lightMode---neutral-900 dark:text-white"
+  "text-title-large !font-normal md:text-content-regular mb-2 text-tailCall-lightMode---neutral-900 dark:text-white font-kanit"
 const PRICING_SUBTITLE_CLASSES =
-  "text-title-small-pricing !text-[22px] !font-normal text-tailCall-darkMode---neutral-500 max-w-2xl mx-auto"
+  "text-title-small-pricing !text-[22px] font-kanit !font-normal text-tailCall-darkMode---neutral-500 max-w-2xl mx-auto"
 const PRICING_GRID_CLASSES =
   "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 xl:gap-4 max-w-4xl mx-auto pb-12 mb-24 justify-center"
 const CARD_CONTAINER_CLASSES =
@@ -94,7 +94,7 @@ const FEATURES_TITLE_CLASSES =
   "text-sm font-normal text-[15px] mb-3 text-tailCall-lightMode---neutral-900 dark:text-tailCall-light-800 dark:group-hover:text-white transition-colors duration-300"
 const FEATURES_LIST_CLASSES = "space-y-2"
 const FEATURE_ITEM_CLASSES =
-  "flex gap-2 items-start text-lg text-tailCall-darkMode---neutral-700 dark:text-tailCall-darkMode---neutral-400 dark:group-hover:text-white transition-colors duration-300  "
+  "flex gap-2 items-start text-lg text-tailCall-darkMode---neutral-700 dark:text-tailCall-darkMode---neutral-400 dark:group-hover:text-white transition-colors duration-300 font-kanit"
 const FEATURE_ICON_CLASSES =
   "dark:text-tailCall-light-800 mt-2 flex-shrink-0 dark:group-hover:text-white transition-colors duration-300"
 const FEATURE_TEXT_CLASSES = "text-[16px]"
@@ -103,19 +103,19 @@ const FAQ_HEADER_CLASSES = "items-start mt-10"
 const FAQ_TITLE_CLASSES =
   "text-title-large !font-medium md:text-content-regular text-left mb-1 text-tailCall-lightMode---neutral-900 dark:text-tailCall-white !leading-[65px]"
 const FAQ_SUBTITLE_CLASSES =
-  "text-content-small md:text-question-title text-[#A1A1A1] !font-[275] dark:text-tailCall-border-light-300 mt-5"
+  "text-content-small md:text-question-title text-[#A1A1A1] !font-[275] dark:text-tailCall-border-light-300 font-kanit mt-5"
 const FAQ_ITEM_CLASSES =
   "flex w-full justify-between items-center pt-8 text-left focus:outline-none bg-transparent dark:bg-black border-none cursor-pointer transition-all duration-300"
 const FAQ_QUESTION_CLASSES = "text-content-small md:text-question-title transition-colors duration-300"
 const FAQ_ANSWER_CLASSES = "overflow-hidden transition-all duration-300"
 const FAQ_ANSWER_TEXT_CLASSES =
-  "text-tailCall-darkMode---neutral-600 dark:text-tailCall-light-800 py-1 text-content-tiny md:text-[23px] leading-7 md:leading-[35px] font-[275]"
+  "text-tailCall-darkMode---neutral-600 dark:text-tailCall-light-800 py-1 font-kanit text-content-tiny md:text-[23px] leading-7 md:leading-[35px] font-[275]"
 const AI_PROVIDERS_SECTION_CLASSES = "flex flex-col gap-10 xl:my-20"
 const AI_PROVIDERS_HEADER_CLASSES = "flex flex-col items-center text-center xl:mt-10"
 const AI_PROVIDERS_TITLE_CLASSES =
-  "  text-[32px] lg:text-[37px] text-display-tiny font-normal text-tailCall-darkMode---neutral-800 dark:text-white"
+  "font-kanit text-[32px] lg:text-[37px] text-display-tiny font-normal text-tailCall-darkMode---neutral-800 dark:text-white"
 const AI_PROVIDERS_SUBTITLE_CLASSES =
-  "  text-[16px] lg:text-[26px] text-question-title text-tailCall-darkMode---neutral-400 font-light max-w-[50rem] text-center"
+  "font-kanit text-[16px] lg:text-[26px] text-question-title text-tailCall-darkMode---neutral-400 font-light max-w-[50rem] text-center"
 const AI_PROVIDERS_GRID_CLASSES =
   "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 max-w-5xl mx-auto xl:mb-10"
 

@@ -19,8 +19,8 @@ export const VerticalBadge: React.FC<VerticalBadgeProps> = ({top, rightOffset, b
         {icon}
       </span>
       <div className="flex flex-col">
-        <span className="text-white uppercase text-content-mini font-semibold">{subtitle}</span>
-        <span className="text-white text-title-tiny">{title}</span>
+        <span className="text-white uppercase font-kanit text-content-mini font-semibold">{subtitle}</span>
+        <span className="text-white font-kanit text-title-tiny">{title}</span>
       </div>
     </div>
   )

@@ -25,7 +25,7 @@ const TermsPage = (): JSX.Element => {
                 showHighlighted
               />
             </div>
-            <span className="block mt-2 md:mt-0 max-w-[500px] xl:mt-20 !font-normal lg:leading-8 xl:leading-[32px] text-[16px] md:text-title-small lg:text-[20px] xl:text-[22px] text-tailCall-darkMode---neutral-500 tracking-normal">
+            <span className="block mt-2 md:mt-0 max-w-[500px] xl:mt-20 font-kanit !font-normal lg:leading-8 xl:leading-[32px] text-[16px] md:text-title-small lg:text-[20px] xl:text-[22px] text-tailCall-darkMode---neutral-500 tracking-normal">
               Fair usage policy and terms of service for ForgeCode
             </span>
           </div>
@@ -39,7 +39,7 @@ const TermsPage = (): JSX.Element => {
             <div className="mb-12">
               <Heading
                 as="h1"
-                className="text-title-large !font-normal md:text-content-regular mb-8 text-tailCall-lightMode---neutral-900 dark:text-white"
+                className="text-title-large !font-normal md:text-content-regular mb-8 text-tailCall-lightMode---neutral-900 dark:text-white font-kanit"
               >
                 Fair Usage Policy
               </Heading>

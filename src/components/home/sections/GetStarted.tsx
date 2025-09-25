@@ -136,7 +136,7 @@ const GetStarted = (): JSX.Element => {
             text: "with",
             ref: withRef,
             className: clsx(
-              "text-title-tiny xl:text-title-large xl:font-normal absolute top-14 left-64 md:top-20 md:left-72 xl:top-28 xl:left-[560px]",
+              "text-title-tiny xl:text-title-large xl:font-normal font-kanit absolute top-14 left-64 md:top-20 md:left-72 xl:top-28 xl:left-[560px]",
               "max-[390px]:left-[70%]",
               "max-[360px]:left-[70%]",
               "max-[320px]:left-[63%]",

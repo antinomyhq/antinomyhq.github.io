@@ -135,16 +135,15 @@ const contact = () => {
                   showHighlighted
                 />
               </div>
-              <span className="block -mt-5 md:mt-0 max-w-[500px] xl:mt-20 !font-normal lg:leading-8 xl:leading-[32px] text-[16px] md:text-title-small lg:text-[24px] xl:text-[26px] text-tailCall-darkMode---neutral-500 tracking-normal">
-                Ready to accelerate your development workflow? Let's explore how Forgecode can enhance your team's
-                productivity.
+              <span className="block -mt-5 md:mt-0 max-w-[500px] xl:mt-20 font-kanit !font-normal lg:leading-8 xl:leading-[32px] text-[16px] md:text-title-small lg:text-[24px] xl:text-[26px] text-tailCall-darkMode---neutral-500 tracking-normal">
+                Whether it's support, feedback, or partnerships we're all ears (and keyboards).
               </span>
             </div>
           </div>
           <div className="w-full flex justify-center">
             <div className="flex xl:justify-evenly lg:items-center justify-center xl:items-center xl:flex-row w-full px-4 py-7 md:px-14 md:py-7 xl:px-0 xl:py-14">
               <div className="w-full xl:w-auto">
-                <h1 className="text-tailCall-darkMode---neutral-800 dark:text-white text-display-medium !font-normal">
+                <h1 className="text-tailCall-darkMode---neutral-800 dark:text-white font-kanit text-display-medium !font-normal">
                   Hi
                 </h1>
                 <form className="flex flex-col gap-10 mt-16" onSubmit={handleSubmit(onSubmit)}>
@@ -290,9 +289,8 @@ const contact = () => {
                         height={60}
                         className="block dark:hidden"
                       />
-                      <span className="text-white dark:text-black text-title-small font-light absolute flex items-center gap-2">
-                        {submissionState.isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
-                        {submissionState.isSubmitting ? "Submitting..." : "Submit"}
+                      <span className="text-white dark:text-black font-kanit text-title-small font-light absolute">
+                        Submit
                       </span>
                     </button>
                   </div>

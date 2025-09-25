@@ -1,11 +1,11 @@
 import React, {useEffect, useRef, useState} from "react"
+import TechCard from "../shared/TechCard"
 import {TechDetails, TECHS} from "@site/src/constants"
+import SpotlightSpan from "./SpotlightCursor"
 import {ChevronDown, ChevronUp} from "lucide-react"
 
 import gsap from "gsap"
 import {ScrollTrigger} from "gsap/ScrollTrigger"
-import {SpotlightSpan} from "../components"
-import TechCard from "../../shared/TechCard"
 
 gsap.registerPlugin(ScrollTrigger)
 const AUTO_SCROLL_INTERVAL = 2000 // 2 seconds
@@ -106,7 +106,7 @@ const TheTeams = (): JSX.Element => {
               className="md:relative md:-mt-12 xl:-mt-8 font-bebas text-display-medium md:text-display-large xl:text-[140px] md:font-normal font-normal -tracking-normal xl:leading-[130px]"
             />
           </div>
-          <ul className="hidden lg:flex pl-0 flex-row lg:flex-col list-none gap-6 md:text-title-medium md:font-normal xl:font-normal xl:text-title-large font-normal text-white mt-28 xl:mt-10">
+          <ul className="hidden lg:flex pl-0 flex-row lg:flex-col list-none gap-6 font-kanit md:text-title-medium md:font-normal xl:font-normal xl:text-title-large font-normal text-white mt-28 xl:mt-10">
             {TECHS.map((tech, idx) => (
               <li
                 key={tech}
@@ -151,7 +151,7 @@ const TheTeams = (): JSX.Element => {
                   onClick={() => handleTechClick(idx)}
                   className="border-none rounded-md w-full text-left px-4 py-3 bg-tailCall-darkMode---neutral-500 dark:bg-[#18171A] text-white font-semibold flex justify-between items-center"
                 >
-                  <span className={`text-title-tiny font-normal text-white`}>{TECHS[idx]}</span>
+                  <span className={`font-kanit text-title-tiny font-normal text-white`}>{TECHS[idx]}</span>
                   <span>{isOpen ? <ChevronUp /> : <ChevronDown className="text-white" />}</span>
                 </button>
                 {isOpen && (

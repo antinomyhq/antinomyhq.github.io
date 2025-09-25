@@ -45,6 +45,7 @@ function LoadMoreButton({handleLoadMore}: {handleLoadMore: () => void}): JSX.Ele
           cursor-pointer
           transition-all duration-300
           text-[18px]
+          font-kanit
           border border-solid border-tailCall-lightMode---primary-700 dark:border-tailCall-lightMode---primary-400
           text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400 hover:text-white hover:dark:text-black
           bg-transparent hover:bg-tailCall-lightMode---primary-700 hover:dark:bg-tailCall-lightMode---primary-400 
@@ -77,7 +78,7 @@ function BlogListPageContent({metadata, items, sidebar}: Props): JSX.Element {
                 showHighlighted
               />
             </div>
-            <span className="block -mt-5 md:mt-0 max-w-[500px] xl:mt-20 !font-normal lg:leading-8 xl:leading-[32px] text-[16px] md:text-title-small lg:text-[24px] xl:text-[26px] text-tailCall-darkMode---neutral-500 tracking-normal">
+            <span className="block -mt-5 md:mt-0 max-w-[500px] xl:mt-20 font-kanit !font-normal lg:leading-8 xl:leading-[32px] text-[16px] md:text-title-small lg:text-[24px] xl:text-[26px] text-tailCall-darkMode---neutral-500 tracking-normal">
               Insights, updates, and thoughts on building faster with AI in the CLI
             </span>
           </div>

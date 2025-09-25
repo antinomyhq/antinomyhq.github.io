@@ -89,7 +89,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
         type="button"
         onClick={toggleDropdown}
         ref={buttonRef}
-        className="flex text-title-tiny font-normal w-full pr-3 py-2 border border-solid border-[#545F71] rounded-md bg-white dark:bg-black text-sm dark:text-white focus:outline-none focus:ring-1 focus:ring-tailCall-lightMode---primary-600 focus:hover:ring-tailCall-lightMode---primary-400"
+        className="flex font-kanit text-title-tiny font-normal w-full pr-3 py-2 border border-solid border-[#545F71] rounded-md bg-white dark:bg-black text-sm dark:text-white focus:outline-none focus:ring-1 focus:ring-tailCall-lightMode---primary-600 focus:hover:ring-tailCall-lightMode---primary-400"
       >
         <div className="flex items-center">
           {leftIcon && <span className="text-gray-500">{leftIcon}</span>}

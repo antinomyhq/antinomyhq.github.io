@@ -50,7 +50,7 @@ function LastUpdatedByUser({lastUpdatedBy}: {lastUpdatedBy: string}): JSX.Elemen
 
 export default function LastUpdated({lastUpdatedAt, lastUpdatedBy}: Props): JSX.Element {
   return (
-    <span className="text-content-small font-light text-tailCall-dark-900">
+    <span className="font-kanit text-content-small font-light text-tailCall-dark-900">
       <Translate
         id="theme.lastUpdated.lastUpdatedAtBy"
         description="The sentence used to display when a page has been last updated, and by who"
@@ -64,7 +64,7 @@ export default function LastUpdated({lastUpdatedAt, lastUpdatedBy}: Props): JSX.
       {process.env.NODE_ENV === "development" && (
         <div>
           {/* eslint-disable-next-line @docusaurus/no-untranslated-text */}
-          <small className="text-content-small font-light text-tailCall-dark-900">
+          <small className="font-kanit text-content-small font-light text-tailCall-dark-900">
             {" "}
             (Simulated during dev for better perf)
           </small>

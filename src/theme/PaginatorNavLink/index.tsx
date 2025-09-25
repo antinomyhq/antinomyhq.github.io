@@ -29,13 +29,13 @@ export default function PaginatorNavLink(props: Props): JSX.Element {
       <div className="hidden md:block">
         {subLabel && (
           <div
-            className={`text-tailCall-darkMode---neutral-500 text-[14px]font-medium ${!isNext ? "text-start pl-[45px]" : "text-start"}`}
+            className={`text-tailCall-darkMode---neutral-500 text-[14px] font-kanit font-medium ${!isNext ? "text-start pl-[45px]" : "text-start"}`}
           >
             {subLabel}
           </div>
         )}
         <div
-          className={`flex items-center gap-4 pagination-nav__label text-tailCall-darkMode---neutral-600 dark:text-tailCall-darkMode---neutral-300 text-content-medium font-small !leading-tight ${isNext ? "text-tailCall-darkMode---primary-700 dark:text-tailCall-darkMode---primary-400" : ""}`}
+          className={`flex items-center gap-4 pagination-nav__label text-tailCall-darkMode---neutral-600 dark:text-tailCall-darkMode---neutral-300 font-kanit text-content-medium font-small !leading-tight ${isNext ? "text-tailCall-darkMode---primary-700 dark:text-tailCall-darkMode---primary-400" : ""}`}
         >
           {!isNext && (
             <span className="flex items-center flex-shrink-0 w-[26px] h-[26px]">

@@ -81,7 +81,7 @@ const TagSelectionModal: React.FC<TagSelectionModalProps> = ({open, onClose}) =>
         )}
       >
         <div className="flex items-center justify-between">
-          <span className="text-title-medium !font-normal lg:text-title-large text-black dark:text-white">
+          <span className="text-title-medium !font-normal font-kanit lg:text-title-large text-black dark:text-white">
             Explore All Tags
           </span>
           <X width={24} height={24} className="cursor-pointer" onClick={handleClose} />
@@ -103,7 +103,7 @@ const TagSelectionModal: React.FC<TagSelectionModalProps> = ({open, onClose}) =>
 
           {/* Tag Results */}
           <div className="overflow-scroll max-h-[70vh]">
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 font-kanit">
               {query.length === 0 ? (
                 <div className="flex flex-col gap-2">
                   <p>Most talked about</p>

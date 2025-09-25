@@ -111,7 +111,7 @@ const NewNavbar = (): JSX.Element => {
 
           {/* Mobile Nav Links - Scrollable container */}
           <div className="flex-1 overflow-y-auto px-5 pb-5">
-            <ul className="flex flex-col gap-5 text-white text-[20px] list-none">
+            <ul className="flex flex-col gap-5 font-kanit text-white text-[20px] list-none">
               {NavbarItems.map((item) => (
                 <li key={item.name}>
                   <NavLink href={item.link} label={item.name} />
@@ -128,7 +128,7 @@ const NewNavbar = (): JSX.Element => {
           {/* Logo + Desktop Nav */}
           <div className="flex gap-5 items-center">
             <Logo />
-            <ul className="m-0 hidden lg:flex list-none items-center gap-SPACE_07 text-white font-normal text-title-small">
+            <ul className="m-0 hidden lg:flex font-kanit list-none items-center gap-SPACE_07 text-white font-normal text-title-small">
               {NavbarItems.map((item) => (
                 <NavLink key={item.name} href={item.link} label={item.name} />
               ))}
