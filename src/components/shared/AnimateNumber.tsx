@@ -25,33 +25,25 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
 
   useEffect(() => {
     const obj = {val: 0}
+
     const formatter = new Intl.NumberFormat(locale, {
       minimumFractionDigits: decimals,
       maximumFractionDigits: decimals,
     })
 
-    let tween: gsap.core.Tween | null = null
-
-    const trigger = ScrollTrigger.create({
-      trigger: numberRef.current,
-      start: "top 90%", // animate when top of element hits 90% of viewport
-      onEnter: () => {
-        tween = gsap.to(obj, {
-          val: end,
-          duration,
-          ease: "power3.out",
-          onUpdate: () => {
-            if (numberRef.current) {
-              numberRef.current.textContent = `${prefix}${formatter.format(obj.val)}${suffix}`
-            }
-          },
-        })
+    const tween = gsap.to(obj, {
+      val: end,
+      duration,
+      ease: "power3.out",
+      onUpdate: () => {
+        if (numberRef.current) {
+          numberRef.current.textContent = `${prefix}${formatter.format(obj.val)}${suffix}`
+        }
       },
     })
 
     return () => {
-      if (tween) tween.kill()
-      trigger.kill()
+      tween.kill()
     }
   }, [end, duration, prefix, suffix, decimals, locale])
 

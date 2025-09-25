@@ -795,29 +795,20 @@ nav.menu {
   z-index: 1;
 }
 
-@media (max-width: 768px) {
-  .navbar__item.navbar__item {
-    display: none !important;
-  }
-  .navbar__item {
-    display: none !important;
-  }
-}
-
 @media (max-width: 996px) {
   .grid-bg-section {
     background-size: var(--ifm-grid-bg-size-md) var(--ifm-grid-bg-size-md);
+  }
+
+  .navbar__items {
+    margin-left: auto;
+    justify-content: flex-end;
   }
 
   .header-button {
     width: auto;
     display: inline-flex;
     margin-left: 1rem;
-  }
-
-  .navbar__items {
-    margin-left: auto;
-    justify-content: flex-start;
   }
 
   /* Hide GitHub button from main navbar on mobile */
@@ -883,6 +874,10 @@ nav.menu {
     transform: none;
     box-shadow: none;
     background: var(--ifm-color-primary-lightest);
+  }
+
+  .navbar__item.navbar__item {
+    display: none;
   }
 
   .navbar-sidebar__item .menu__link {
@@ -1544,8 +1539,7 @@ table thead {
 }
 
 [data-theme="dark"] table thead tr th {
-  background-color: #262626 !important;
-  color: #e6e6e6 !important;
+  background-color: #262626;
 }
 
 
@@ -1566,16 +1560,6 @@ table tbody tr:nth-child(even) td {
 
 table tbody tr td {
   background-color: #f5f5f5 !important;
-  border-left: transparent !important;
-  border-right: transparent !important;
-}
-
-table tbody tr td:first-child {
-  border-left: transparent !important;
-}
-
-table tbody tr td:last-child {
-  border-right: transparent !important;
 }
 
 [data-theme="dark"] table tbody tr td {
@@ -1585,87 +1569,10 @@ table tbody tr td:last-child {
 [data-theme="dark"] table tbody tr:nth-child(even) td {
   background-color: var(--ifm-table-even) !important;
 }
-
 table thead tr th {
   border: transparent !important;
-  background-color: #e5e5e5 !important;
-  color: #171717 !important;
 }
 
 table thead tr {
   border: 1px solid !important;
-}
-
-/* Update styling for Admonitions cards */
-.theme-admonition {
-  border-left-width: 4px;
-  border-left-style: solid;
-  padding: 24px;
-  border-radius: 12px;
-  margin-top: 16px;
-  margin-bottom: 20px;
-}
-
-.theme-admonition a {
-  text-decoration: none;
-}
-.theme-admonition a:hover {
-  text-decoration: underline;
-}
-.theme-admonition svg {
-  height: 1.5rem !important;
-}
-
-.theme-admonition-caution {
-  border-left-color: #c68400;
-  background-color: #ded7ca;
-}
-
-.theme-admonition-caution svg {
-  fill: #c68400 !important;
-}
-
-[data-theme="dark"] .theme-admonition-caution {
-  border-left-color: #f9a705;
-  background-color: #2f2d2a;
-}
-
-[data-theme="dark"] .theme-admonition-caution svg {
-  fill: #f9a705 !important;
-}
-
-.theme-admonition-info {
-  border-left-color: #158b00;
-  background-color: #d5e7db;
-}
-
-.theme-admonition-info svg {
-  fill: #158b00 !important;
-}
-
-[data-theme="dark"] .theme-admonition-info {
-  border-left-color: #22e000;
-  background-color: #272d29;
-}
-
-[data-theme="dark"] .theme-admonition-info svg {
-  fill: #22e000 !important;
-}
-
-.theme-admonition-tip {
-  border-left-color: #5261ff;
-  background-color: #dae3ed;
-}
-
-.theme-admonition-tip svg {
-  fill: #5261ff !important;
-}
-
-[data-theme="dark"] .theme-admonition-tip {
-  border-left-color: #5968ff;
-  background-color: #151e28;
-}
-
-[data-theme="dark"] .theme-admonition-tip svg {
-  fill: #5968ff !important;
 }

@@ -220,10 +220,8 @@ export const ThemeProvider: React.FC<{children: React.ReactNode}> = ({children})
 
     // Ensure theme is applied immediately
     document.documentElement.classList.remove("dark", "light")
-    if (initialTheme) {
-      document.documentElement.classList.add(initialTheme)
-      document.documentElement.setAttribute("data-theme", initialTheme)
-    }
+    document.documentElement.classList.add(initialTheme)
+    document.documentElement.setAttribute("data-theme", initialTheme)
   }, [])
 
   // Monitor navigation and ensure theme persists

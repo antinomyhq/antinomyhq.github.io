@@ -1,9 +1,3 @@
-type ClientImage = {
-  name: string
-  logo: React.ComponentType<React.SVGProps<SVGSVGElement>> | string
-  lightLogo: React.ComponentType<React.SVGProps<SVGSVGElement>> | string
-}
-
 type PartnerImage = {
   // id: number
   name: string
