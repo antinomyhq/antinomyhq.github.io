@@ -24,8 +24,6 @@ type DocSearchProps = Omit<DocSearchModalProps, "onClose" | "initialScrollY"> & 
 }
 
 let DocSearchModal: typeof DocSearchModalType | null = null
-let globalIsOpen = false
-let globalSearchContainer: HTMLDivElement | null = null
 
 function Hit({hit, children}: {hit: InternalDocSearchHit | StoredDocSearchHit; children: React.ReactNode}) {
   return <Link to={hit.url}>{children}</Link>
@@ -98,38 +96,22 @@ function DocSearch({contextualSearch, externalUrlRegex, ...props}: DocSearchProp
   }, [])
 
   const prepareSearchContainer = useCallback(() => {
-    if (!globalSearchContainer) {
+    if (!searchContainer.current) {
       const divElement = document.createElement("div")
-      globalSearchContainer = divElement
+      searchContainer.current = divElement
       document.body.insertBefore(divElement, document.body.firstChild)
     }
-    // Always use the global container
-    searchContainer.current = globalSearchContainer
   }, [])
 
   const openModal = useCallback(() => {
-    // Prevent duplicate modal opening using global state
-    if (globalIsOpen) return
-
-    globalIsOpen = true
     prepareSearchContainer()
     importDocSearchModalIfNeeded().then(() => setIsOpen(true))
   }, [importDocSearchModalIfNeeded, prepareSearchContainer])
 
   const closeModal = useCallback(() => {
     setIsOpen(false)
-    globalIsOpen = false
     searchButtonRef.current?.focus()
-
-    // Clean up the global search container after a delay to ensure modal is fully closed
-    setTimeout(() => {
-      if (globalSearchContainer && !isOpen) {
-        globalSearchContainer.remove()
-        globalSearchContainer = null
-        searchContainer.current = null
-      }
-    }, 300)
-  }, [isOpen])
+  }, [])
 
   const handleInput = useCallback(
     (event: KeyboardEvent) => {
@@ -188,8 +170,7 @@ function DocSearch({contextualSearch, externalUrlRegex, ...props}: DocSearchProp
     "mod+k",
     (event) => {
       event.preventDefault()
-      if (!globalIsOpen) {
-        setInitialQuery("")
+      if (!isOpen) {
         openModal()
       }
     },
@@ -197,7 +178,7 @@ function DocSearch({contextualSearch, externalUrlRegex, ...props}: DocSearchProp
       enableOnFormTags: false, // Don't trigger when typing in forms
       preventDefault: true,
     },
-    [openModal, setInitialQuery],
+    [isOpen, openModal],
   )
 
   // Handle Escape key to close modal
