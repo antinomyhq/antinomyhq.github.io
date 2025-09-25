@@ -1,4 +1,5 @@
 import CustomLink from '@site/src/components/shared/CustomLink'
+import Card from '@site/src/components/shared/Card'
 
 # Working with Custom Rules: AI-Driven Code Standards for Development Teams
 
@@ -12,11 +13,10 @@ Custom rules are persistent instructions that get injected into every AI convers
 
 When you define custom rules, they become part of the AI's system prompt, meaning they're always active and take priority over default behaviors.
 
-:::info
-
+<Card variant="information">
   <p><strong>Quick Reference</strong></p>
-  For technical implementation details and API reference, see the <CustomLink href="/docs/custom-rules">Custom Rules feature documentation</CustomLink>.
-:::
+  <span>For technical implementation details and API reference, see the <CustomLink href="/docs/custom-rules">Custom Rules feature documentation</CustomLink>.</span>
+</Card>
 
 ## Quick Start: Your First Custom Rule
 
@@ -84,17 +84,14 @@ agents:
       - Validate all input with schemas
 ```
 
-:::info
-
-  <p><strong>Custom Agent Integration</strong></p>
-  For more advanced agent customization, including markdown-based agent definitions, see the <CustomLink href="/docs/agent-definition-guide">Creating Custom Agents guide</CustomLink>.
+:::info Custom Agent Integration
+For more advanced agent customization, including markdown-based agent definitions, see the [Creating Custom Agents guide](/docs/agent-definition-guide).
 :::
 
-:::info
-
+<Card variant="information">
   <p><strong>Rule Priority</strong></p>
-  Global rules override agent-specific rules when both are defined. This means your team-wide standards always take precedence over individual agent configurations.
-:::
+  <span>Global rules override agent-specific rules when both are defined. This means your team-wide standards always take precedence over individual agent configurations.</span>
+</Card>
 
 ## Progressive Learning Path
 

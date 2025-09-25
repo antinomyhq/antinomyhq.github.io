@@ -1227,11 +1227,6 @@ span.token.tag.script.language-javascript {
   @apply !flex !justify-end;
 }
 
-.pagination-nav-single a {
-  width: 100% !important;
-  justify-content: flex-end;
-}
-
 .pagination-nav a {
   @apply md:w-1/2;
 }
