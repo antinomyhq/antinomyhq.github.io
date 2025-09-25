@@ -4,7 +4,6 @@ import type {Props} from "@theme/BlogLayout"
 import {isBlogPost} from "@site/src/utils"
 import {usePluginData} from "@docusaurus/useGlobalData"
 import BlogListItem from "@site/src/components/blog/BlogListItem"
-import {assignBgIndices} from "@site/src/utils/blogColorUtils"
 
 export default function BlogRecentPosts({sidebar}: {sidebar: Props["sidebar"]}): JSX.Element {
   const [isBlogPostPage, setIsBlogPostPage] = React.useState(false)

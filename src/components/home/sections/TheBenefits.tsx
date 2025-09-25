@@ -227,12 +227,7 @@ const TheBenefits = (): JSX.Element => {
                     }}
                   >
                     <div className="flex flex-col h-full">
-                      <BenefitsCard
-                        title={title}
-                        description={description}
-                        imageUrl={imageUrl}
-                        small={smallText}
-                      />
+                      <BenefitsCard title={title} description={description} imageUrl={imageUrl} small={smallText} />
                     </div>
                   </div>
                 ))}
