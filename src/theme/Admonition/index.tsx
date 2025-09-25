@@ -7,7 +7,7 @@ type Props = WrapperProps<typeof AdmonitionType>
 
 export default function AdmonitionWrapper(props: Props): JSX.Element {
   return (
-    <div className="text-tailCall-lightMode---neutral-700 dark:text-tailCall-darkMode---neutral-200">
+    <div className="text-tailCall-lightMode---neutral-700 dark:text-tailCall-darkMode---neutral-300">
       <Admonition {...props} />
     </div>
   )

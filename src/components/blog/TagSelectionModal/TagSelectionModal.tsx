@@ -67,7 +67,7 @@ const TagSelectionModal: React.FC<TagSelectionModalProps> = ({open, onClose}) =>
       {/* Overlay */}
       <div
         className={clsx(
-          "block lg:hidden fixed inset-0 bg-black dark:bg-white bg-opacity-50 dark:bg-opacity-50",
+          "block lg:hidden fixed inset-0 bg-black bg-opacity-50",
           styles.modalOverlay,
         )}
         onClick={handleClose}
@@ -76,12 +76,12 @@ const TagSelectionModal: React.FC<TagSelectionModalProps> = ({open, onClose}) =>
       {/* Modal Container */}
       <div
         className={clsx(
-          "absolute w-full lg:w-4/12 h-full right-0 bg-tailCall-light-1200 dark:bg-black rounded-xl lg:rounded-none lg:border lg:border-solid border-t-transparent dark:lg:border-tailCall-lightMode---neutral-600 lg:border-tailCall-lightMode---neutral-300 px-4 py-8 lg:px-10 lg:py-8 flex flex-col gap-8",
+          "absolute w-full lg:w-4/12 h-full overflow-scroll right-0 bg-white rounded-xl lg:rounded-none lg:border lg:border-solid lg:border-tailCall-border-light-500 px-4 py-8 lg:px-10 lg:py-8 flex flex-col gap-8",
           styles.modalContainer,
         )}
       >
         <div className="flex items-center justify-between">
-          <span className="text-title-medium !font-normal font-kanit lg:text-title-large text-black dark:text-white">
+          <span className="text-title-medium lg:text-title-large text-black">
             Explore All Tags
           </span>
           <X width={24} height={24} className="cursor-pointer" onClick={handleClose} />
@@ -89,7 +89,7 @@ const TagSelectionModal: React.FC<TagSelectionModalProps> = ({open, onClose}) =>
 
         <div className="flex flex-col gap-5 pb-36">
           {/* Search Bar */}
-          <div className="flex items-center gap-3 border border-solid border-tailCall-border-light-500 rounded-lg py-2 px-6">
+          <div className="flex items-center gap-3 border border-solid border-tailCall-border-light-500 rounded-lg py-3 px-6">
             <Search width={20} height={20} className="text-tailCall-light-500" />
             <input
               name="tag"
@@ -97,7 +97,7 @@ const TagSelectionModal: React.FC<TagSelectionModalProps> = ({open, onClose}) =>
               value={query}
               onChange={handleQueryChange}
               placeholder="Search Tags"
-              className="text-black dark:text-white placeholder:text-tailCall-light-500 bg-transparent border-none outline-none font-kanit text-content-small"
+              className="text-black placeholder:text-tailCall-light-500 border-none outline-none text-content-small"
             />
           </div>
 

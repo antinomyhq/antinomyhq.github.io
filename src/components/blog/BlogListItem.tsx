@@ -60,7 +60,7 @@ const BlogListItem: React.FC<BlogListItemProps> = ({
             </div>
             <img src="/icons/basic/forgecode-logo.svg" alt="ForgeCode" className="absolute right-0 top-0" />
           </div>
-          <div className={`z-10 flex flex-col px-3 w-full ${tags ? "mt-3" : "mt-0"}`}>
+          <div className={`flex flex-col px-3 w-full ${tags ? "mt-3" : "mt-0"}`}>
             <div className="flex gap-3 overflow-x-auto max-w-full whitespace-nowrap no-scrollbar">
               {tags?.map(({label, permalink}) => (
                 <Chip onClick={() => history.push(permalink)} label={label} key={label} />
@@ -82,7 +82,7 @@ const BlogListItem: React.FC<BlogListItemProps> = ({
               />
             )}
           </div>
-          <div className="absolute bottom-0 left-0 group-hover:bg-custom-radial-light group-hover:dark:bg-custom-radial z-0 h-[15rem] w-full"></div>
+          <div className="absolute bottom-0 left-0 group-hover:bg-custom-radial-light group-hover:dark:bg-custom-radial z-50 h-[15rem] w-full"></div>
         </div>
       </div>
     </Link>
