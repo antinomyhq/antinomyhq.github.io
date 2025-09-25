@@ -217,7 +217,7 @@ hr {
 }
 [data-theme="dark"] .menu__list-item-collapsible a,
 .theme-doc-sidebar-item-link-level-1 a {
-  color: #737373;
+  color: #e6e6e6;
 }
 
 .theme-doc-sidebar-item-link-level-1 {
@@ -240,7 +240,9 @@ hr {
   font-weight: var(--ifm-font-weight-normal);
 }
 
-
+[data-theme="dark"] .menu__link {
+  color: #e6e6e6;
+}
 
 .menu__link.menu__link--active {
   background-color: transparent;
@@ -574,7 +576,7 @@ hr {
 }
 
 [data-theme="dark"] .table-of-contents__link {
-  color: #737373;
+  color: #e6e6e6;
 }
 
 .table-of-contents__link--active {
