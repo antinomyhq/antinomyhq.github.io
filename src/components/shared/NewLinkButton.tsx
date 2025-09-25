@@ -1,6 +1,5 @@
 import Link from "@docusaurus/Link"
 import {Theme} from "@site/src/constants"
-import {common_styles} from "@site/src/constants/styles"
 import clsx from "clsx"
 import React from "react"
 import {SVGProps} from "react"
@@ -26,7 +25,6 @@ const NewLinkButton = ({
   width = "auto",
   disabled,
 }: LinkButtonProps): JSX.Element => {
-  const {theme_border, theme_text} = common_styles
   const setButtonWidth = () => {
     switch (width) {
       case "small":
@@ -63,10 +61,9 @@ const NewLinkButton = ({
         text-sm sm:text-base
         hover:no-underline
         text-content-tiny
-        border border-solid
-        group-hover:text-white group-hover:dark:text-black
+        border border-solid border-tailCall-lightMode---primary-700 dark:border-tailCall-lightMode---primary-400
+        text-tailCall-lightMode---primary-700 dark:text-tailCall-lightMode---primary-400 group-hover:text-white group-hover:dark:text-black
         bg-transparent group-hover:bg-tailCall-lightMode---primary-700 group-hover:dark:bg-tailCall-lightMode---primary-400 
-        ${theme_text} ${theme_border}
         `,
         setButtonWidth(),
         disabled ? "cursor-not-allowed opacity-20" : "",
