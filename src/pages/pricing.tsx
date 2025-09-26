@@ -14,7 +14,7 @@ import XAILogo from "@site/src/assets/logos/xai.svg"
 import MetaLogo from "@site/src/assets/logos/meta.svg"
 import MistralLogo from "@site/src/assets/logos/mistral.svg"
 import DeepSeekLogo from "@site/src/assets/logos/deepseek.svg"
-import { pageLinks } from "../constants/routes"
+import {pageLinks} from "../constants/routes"
 
 // AI Providers array for iteration
 const aiProviders = [
@@ -123,7 +123,7 @@ const PricingPage = (): JSX.Element => {
 
                 <div className="text-center mb-6 pt-8 sm:pt-6">
                   <div className="flex items-center justify-center gap-2 mb-2">
-                    {tier.icon}
+
                     <h3 className="text-title-large font-bold">{tier.name}</h3>
                   </div>
                   <div className="mb-4">

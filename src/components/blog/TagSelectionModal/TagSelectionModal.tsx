@@ -66,10 +66,7 @@ const TagSelectionModal: React.FC<TagSelectionModalProps> = ({open, onClose}) =>
     <>
       {/* Overlay */}
       <div
-        className={clsx(
-          "block lg:hidden fixed inset-0 bg-black bg-opacity-50",
-          styles.modalOverlay,
-        )}
+        className={clsx("block lg:hidden fixed inset-0 bg-black bg-opacity-50", styles.modalOverlay)}
         onClick={handleClose}
       />
 
@@ -81,9 +78,7 @@ const TagSelectionModal: React.FC<TagSelectionModalProps> = ({open, onClose}) =>
         )}
       >
         <div className="flex items-center justify-between">
-          <span className="text-title-medium lg:text-title-large text-black">
-            Explore All Tags
-          </span>
+          <span className="text-title-medium lg:text-title-large text-black">Explore All Tags</span>
           <X width={24} height={24} className="cursor-pointer" onClick={handleClose} />
         </div>
 
