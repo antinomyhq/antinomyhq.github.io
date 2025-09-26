@@ -1,9 +1,9 @@
 import React from "react"
+import Section from "../shared/Section"
+import AnimatedCounter from "../shared/AnimatedCounter"
 import {Info, Coins, Code, Github} from "lucide-react"
-import {clientLogos} from "@site/src/constants"
-import Section from "../../shared/Section"
-import AnimatedCounter from "../../shared/AnimatedCounter"
 import TrustedByMarquee from "./TrustedByMarquee"
+import {clientLogos} from "@site/src/constants"
 
 const formatNumber = (num: number): string => {
   if (num >= 1000000000) {

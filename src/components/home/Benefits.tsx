@@ -3,6 +3,8 @@ import Heading from "@theme/Heading"
 import SectionTitle from "../shared/SectionTitle"
 import BenefitsCard from "./BenefitsCard"
 import Section from "../shared/Section"
+import TrustedByMarquee from "./TrustedByMarquee"
+import {companies} from "@site/src/constants"
 
 const Benefits = (): JSX.Element => {
   return (

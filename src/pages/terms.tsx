@@ -4,7 +4,6 @@ import {useLocation} from "@docusaurus/router"
 import ReactGA from "react-ga4"
 import Section from "../components/shared/Section"
 import Heading from "@theme/Heading"
-import SpotlightSpan from "../components/home/components/SpotlightCursor"
 
 const TermsPage = (): JSX.Element => {
   const location = useLocation()
@@ -18,13 +17,6 @@ const TermsPage = (): JSX.Element => {
       <div className="max-w-[1320px] mx-auto w-full">
         <div className="py-12 dark:bg-black bg-tailCall-light-1200 border-b border-solid border-transparent border-b-[#dbdbdb] dark:border-b-[#4b4b4b]">
           <div className="flex flex-col lg:gap-0 items-start xl:items-center xl:flex-row justify-between w-full py-5 px-2">
-            <div className="flex flex-col mt-2">
-              <SpotlightSpan
-                className="font-bebas !font-normal text-[45px] md:text-display-small lg:text-display-medium xl:text-display-large-semi tracking-normal"
-                text="Terms & Conditions"
-                showHighlighted
-              />
-            </div>
             <span className="block mt-2 md:mt-0 max-w-[500px] xl:mt-20 font-kanit !font-normal lg:leading-8 xl:leading-[32px] text-[16px] md:text-title-small lg:text-[20px] xl:text-[22px] text-tailCall-darkMode---neutral-500 tracking-normal">
               Fair usage policy and terms of service for ForgeCode
             </span>

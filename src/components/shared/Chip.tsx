@@ -1,20 +1,41 @@
 import React from "react"
 
-type ChipProps = {
+interface ChipProps {
   label: string
+  onClick?: () => void
+  className?: string
+  variant?: "default" | "primary" | "secondary"
 }
 
-const Chip = ({label}: ChipProps) => {
+const Chip: React.FC<ChipProps> = ({
+  label,
+  onClick,
+  className = "",
+  variant = "default",
+}) => {
+  const baseClasses = "inline-flex items-center px-3 py-1 rounded-full text-sm font-medium cursor-pointer transition-colors"
+  
+  const variantClasses = {
+    default: "bg-gray-100 text-gray-800 hover:bg-gray-200",
+    primary: "bg-blue-100 text-blue-800 hover:bg-blue-200",
+    secondary: "bg-green-100 text-green-800 hover:bg-green-200",
+  }
+
   return (
-    <div className="bg-[linear-gradient(90deg,_#30EDE6_0%,_#7B7B7B_99%)] p-[1px] rounded-2xl h-fit flex-shrink-0">
-      <div className="flex items-center justify-center px-5 py-1 bg-[#f1f1f1] dark:bg-black rounded-2xl">
-        <div className="flex items-center justify-center px-5 py-1 bg-[#f1f1f1] dark:bg-black rounded-2xl">
-          <span className="block font-kanit text-tailCall-darkMode---neutral-600 dark:text-white opacity-100 dark:opacity-50 text-content-tiny md:text-title-tiny w-max !font-normal">
-            {label}
-          </span>
-        </div>
-      </div>
-    </div>
+    <span
+      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault()
+          onClick()
+        }
+      } : undefined}
+    >
+      {label}
+    </span>
   )
 }
 

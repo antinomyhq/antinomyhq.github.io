@@ -1,5 +1,3 @@
-import CustomLink from '@site/src/components/shared/CustomLink'
-
 # AI Model Selection Guide: Optimize Forge for Your Workflow
 
 ## How to Change Models in Forge
@@ -56,8 +54,9 @@ If you're experiencing issues with forge:
 
 ## Related Guides
 
-- <CustomLink href="/docs/custom-rules-guide">Custom Rules Guide: Extending Forge's Capabilities</CustomLink>
-- <CustomLink href="/docs/plan-and-act-guide">Plan and Act Guide: Automating Complex Workflows with Forge</CustomLink>
+- [Custom Rules Guide: Extending Forge's Capabilities](/docs/custom-rules-guide)
+- [Plan and Act Guide: Automating Complex Workflows with Forge](/docs/plan-and-act-guide)
+- [Understanding Forge's Pricing for AI Agents](/blog/seat-based-pricing-ai-agents)
 
 1. **Export your session context:**
 
@@ -66,5 +65,5 @@ If you're experiencing issues with forge:
    ```
 
 2. **Share with our team:**
-   - **Discord**: <CustomLink href="https://discord.gg/kRZBPpkgwq">Join our Discord community</CustomLink>
-   - **Twitter/X**: Send us a DM <CustomLink href="https://x.com/forgecodehq">@forgecodehq</CustomLink>
+   - **Discord**: [Join our Discord community](https://discord.gg/kRZBPpkgwq)
+   - **Twitter/X**: Send us a DM [@forgecodehq](https://x.com/forgecodehq)

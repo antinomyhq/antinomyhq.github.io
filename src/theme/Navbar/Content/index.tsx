@@ -13,9 +13,7 @@ import NavbarLogo from "@theme/Navbar/Logo"
 import SearchIcon from "@site/static/icons/basic/search.svg"
 import PageSearchIcon from "@site/static/icons/basic/page-search.svg"
 import styles from "./styles.module.css"
-import {analyticsHandler, getSearchInputRef, setBodyOverflow} from "@site/src/utils"
-import ThemeToggle from "@site/src/components/home/components/ThemeToggle"
-import Button from "@site/src/components/shared/Button"
+import {getSearchInputRef, setBodyOverflow} from "@site/src/utils"
 
 const useNavbarItems = () => {
   // TODO temporary casting until ThemeConfig type is improved (added by docusaurus)
@@ -183,11 +181,6 @@ const NavbarContent = (): JSX.Element => {
   const items = useNavbarItems()
   const [leftItems, rightItems] = splitNavbarItems(items)
 
-  const handleSignUp = () => {
-    if (typeof window === "undefined") return
-    analyticsHandler("Home Page", "Click", "Sign Up")
-    window.open("https://app.forgecode.dev/app/", "_blank")
-  }
   return (
     <NavbarContentLayout
       left={
@@ -195,13 +188,9 @@ const NavbarContent = (): JSX.Element => {
         // Render left navbar items
         <>
           {mobileSidebar.shouldRender && <Search />}
-          {mobileSidebar.shouldRender && <ThemeToggle />}
-
           {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
-          <div className="flex items-center lg:ml-48">
-            <NavbarLogo />
-            <NavbarItems items={leftItems} />
-          </div>
+          <NavbarLogo />
+          <NavbarItems items={leftItems} />
         </>
       }
       right={
@@ -209,16 +198,7 @@ const NavbarContent = (): JSX.Element => {
         // Render right navbar items
         <>
           <NavbarItems items={rightItems} />
-          {/* <NavbarColorModeToggle className={styles.colorModeToggle} /> */}
-          {!mobileSidebar.shouldRender && (
-            <Button variant="navlink" onClick={handleSignUp}>
-              <span className="text-tailCall-lightMode---primary-700 dark:text-tailCall-darkMode---primary-400">
-                Sign up
-              </span>
-            </Button>
-          )}
-          {!mobileSidebar.shouldRender && <Search />}
-          {!mobileSidebar.shouldRender && <ThemeToggle />}
+          <NavbarColorModeToggle className={styles.colorModeToggle} />
         </>
       }
     />
