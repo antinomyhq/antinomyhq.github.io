@@ -16,8 +16,6 @@ description: "First impressions and in-depth review of Claude 4, highlighting it
 hide_table_of_contents: false
 ---
 
-import CustomLink from '@site/src/components/shared/CustomLink'
-
 Claude 4 achieved a groundbreaking 72.7% on SWE-bench Verified, surpassing OpenAI's latest models and setting a new standard for AI-assisted development. After 24 hours of intensive testing with challenging refactoring scenarios, I can confirm these benchmarks translate to remarkable real-world capabilities.
 
 <!--truncate-->
@@ -110,10 +108,10 @@ Claude 4 demonstrates particular strength in agentic coding environments like Fo
 
 Claude 4 is available through:
 
-- <CustomLink href="https://aws.amazon.com/about-aws/whats-new/2025/05/anthropics-claude-4-foundation-models-amazon-bedrock/">Amazon Bedrock</CustomLink>
-- <CustomLink href="https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/claude">Google Cloud's Vertex AI</CustomLink>
-- <CustomLink href="https://openrouter.ai/anthropic/claude-sonnet-4">OpenRouter</CustomLink>
-- <CustomLink href="https://www.anthropic.com/news/claude-4">Anthropic API</CustomLink>
+- [Amazon Bedrock](https://aws.amazon.com/about-aws/whats-new/2025/05/anthropics-claude-4-foundation-models-amazon-bedrock/)
+- [Google Cloud's Vertex AI](https://cloud.google.com/vertex-ai/generative-ai/docs/partner-models/claude)
+- [OpenRouter](https://openrouter.ai/anthropic/claude-sonnet-4)
+- [Anthropic API](https://www.anthropic.com/news/claude-4)
 
 ## Initial Assessment: A Paradigm Shift
 

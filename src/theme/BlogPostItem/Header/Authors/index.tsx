@@ -1,16 +1,12 @@
 import React from "react"
 import clsx from "clsx"
 import {useBlogPost} from "@docusaurus/plugin-content-blog/client"
-import {BlogAuthor} from "@site/src/theme/BlogAuthor"
+import {BlogAuthor} from "@theme/BlogAuthor"
+import type {Props} from "@theme/BlogPostItem/Header/Authors"
 import styles from "./styles.module.css"
 
-type Props = {
-  className?: string
-  textClassName?: string
-}
-
 // Component responsible for the authors layout
-export default function BlogPostItemHeaderAuthors({className, textClassName}: Props): JSX.Element | null {
+export default function BlogPostItemHeaderAuthors({className}: Props): JSX.Element | null {
   const {
     metadata: {authors},
     assets,
@@ -33,7 +29,6 @@ export default function BlogPostItemHeaderAuthors({className, textClassName}: Pr
               // Handle author images using relative paths
               imageURL: assets.authorsImageUrls[idx] ?? author.imageURL,
             }}
-            textClassName={textClassName}
           />
         </div>
       ))}

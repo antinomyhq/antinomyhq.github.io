@@ -2,8 +2,6 @@ import React, {useState} from "react"
 import CodeBlock from "@theme-original/CodeBlock"
 import type CodeBlockType from "@theme/CodeBlock"
 import type {WrapperProps} from "@docusaurus/types"
-import {Copy, CopyCheck} from "lucide-react"
-import {common_styles} from "@site/src/constants/styles"
 
 type Props = WrapperProps<typeof CodeBlockType>
 
@@ -13,8 +11,6 @@ interface MetastringData extends Record<string, Primitive> {
   title: string
   showLineNumbers: boolean
 }
-
-const ICON_STYLES = `h-5 w-5 ${common_styles.theme_text}`
 
 export default function CodeBlockWrapper(props: Props): JSX.Element {
   const [copied, setCopied] = useState(false)
@@ -26,16 +22,19 @@ export default function CodeBlockWrapper(props: Props): JSX.Element {
   }
 
   return (
-    <div className="relative overflow-hidden cursor-pointer" onClick={handleCopy}>
+    <div className="relative overflow-hidden">
       <CodeBlock {...props} />
       <button
+        onClick={handleCopy}
         aria-label="Copy code"
-        className="absolute top-[35px] right-[10px] z-20 bg-transparent border-none rounded-none flex items-center cursor-pointer text-white font-sans"
+        className="absolute top-[12px] right-4 z-20 bg-[rgba(24,24,24,0.85)] border-none rounded-none px-2 py-1 flex items-center cursor-pointer text-white font-sans"
       >
-        {copied && (
-          <span className={`text-xs mr-1.5 opacity-85 font-sans ${common_styles.theme_text}`}>Text Copied!</span>
-        )}
-        {copied ? <CopyCheck className={ICON_STYLES} /> : <Copy className={ICON_STYLES} />}
+        {copied && <span className="text-xs mr-1.5 text-[#b6ffbe] opacity-85 font-sans">Copied!</span>}
+        <img
+          src="/icons/basic/copy-icon.svg"
+          alt="Copy Icon"
+          className={`w-4 h-4 [filter:brightness(2)] ${copied ? "ml-0" : "ml-0.5"}`}
+        />
       </button>
     </div>
   )

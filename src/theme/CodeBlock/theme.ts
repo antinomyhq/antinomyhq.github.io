@@ -6,7 +6,7 @@ const prismTheme = {
   plain: {
     ...baseTheme.plain,
     color: "#fff",
-    backgroundColor: "var(--ifm-code-background)",
+    backgroundColor: "#181818",
   },
   styles: [
     ...baseTheme.styles,
