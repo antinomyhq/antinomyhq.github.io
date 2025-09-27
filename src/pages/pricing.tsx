@@ -123,7 +123,6 @@ const PricingPage = (): JSX.Element => {
 
                 <div className="text-center mb-6 pt-8 sm:pt-6">
                   <div className="flex items-center justify-center gap-2 mb-2">
-
                     <h3 className="text-title-large font-bold">{tier.name}</h3>
                   </div>
                   <div className="mb-4">
