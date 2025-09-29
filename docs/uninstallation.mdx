@@ -25,8 +25,9 @@ If you want to temporarily stop using Forge without removing the installation, y
     # Inside the forge session, logout:
     /logout
     ```
-    
+
     This disconnects you from the Forge provider but keeps the application installed for future use.
+
   </Step>
 </Steps>
 
@@ -47,6 +48,7 @@ If you installed Forge using `npm install -g forgecode@latest`, follow these ste
     ```
 
     This removes the globally installed Forge package from your system.
+
   </Step>
 
   <Step title="Verify removal">
@@ -57,6 +59,7 @@ If you installed Forge using `npm install -g forgecode@latest`, follow these ste
     ```
 
     You should see a "command not found" error, confirming successful removal.
+
   </Step>
 </Steps>
 
@@ -85,6 +88,7 @@ After uninstalling the main application, you may want to remove associated confi
     **Location:**
     - **macOS/Linux**: `~/.forge`
     - **Windows**: `%USERPROFILE%\.forge`
+
   </Step>
   
   <Step title="Remove project-specific configurations (optional)">
@@ -102,7 +106,6 @@ After uninstalling the main application, you may want to remove associated confi
     
     All commands should return "not found" or similar errors.
   </Step>
-  
 
 
 </Steps>
@@ -114,16 +117,16 @@ After uninstalling the main application, you may want to remove associated confi
 If you encounter permission errors during uninstallation:
 
 **macOS/Linux:**
+
 ```bash
 sudo npm uninstall -g forgecode
 ```
 
 **Windows (Run as Administrator):**
+
 ```cmd
 npm uninstall -g forgecode
 ```
-
-
 
 ### npm Cache Issues
 
