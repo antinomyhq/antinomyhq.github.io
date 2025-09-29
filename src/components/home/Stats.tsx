@@ -1,9 +1,9 @@
 import React from "react"
+import Section from "../shared/Section"
+import AnimatedCounter from "../shared/AnimatedCounter"
 import {Info, Coins, Code, Github} from "lucide-react"
-import {clientLogos} from "@site/src/constants"
-import Section from "../../shared/Section"
-import AnimatedCounter from "../../shared/AnimatedCounter"
 import TrustedByMarquee from "./TrustedByMarquee"
+import {clientLogos} from "@site/src/constants"
 
 const formatNumber = (num: number): string => {
   if (num >= 1000000000) {
@@ -47,15 +47,15 @@ const Stats = (): JSX.Element => {
 
   return (
     <Section>
-      <div className="flex flex-col sm:flex-row flex-wrap justify-center items-baseline gap-8 w-full max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 w-full max-w-5xl mx-auto place-items-center">
         {stats.map((stat, index) => {
           const isGithub = stat.label === "GitHub Stars"
 
           let Wrapper: React.ElementType = "div"
           const props: any = {
             key: index,
-            className: "group p-2 flex flex-col items-center text-center w-full sm:w-auto",
-            style: {minWidth: "180px"},
+            className:
+              "group p-2 flex flex-col items-center text-center w-full sm:w-auto min-w-[140px] sm:min-w-[160px] md:min-w-[180px]",
           }
 
           if (isGithub) {
@@ -68,8 +68,8 @@ const Stats = (): JSX.Element => {
 
           return (
             <Wrapper {...props}>
-              <stat.icon className="w-10 h-10 text-slate-500" />
-              <div className="mt-2 text-3xl font-bold text-slate-900">
+              <stat.icon className="w-8 h-8 sm:w-10 sm:h-10 text-slate-500" />
+              <div className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">
                 <AnimatedCounter
                   end={stat.value}
                   suffix={stat.suffix}
