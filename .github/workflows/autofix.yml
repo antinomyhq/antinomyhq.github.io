@@ -66,3 +66,5 @@ jobs:
       - name: Apply fixes from autofix.ci
         if: always()
         uses: autofix-ci/action@v1
+        with:
+          fail-fast: false
