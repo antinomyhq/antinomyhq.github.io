@@ -29,7 +29,7 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Features", // Renamed from "Core Features" for better hierarchy
       collapsed: false,
-      items: ["commands", "shell-commands", "auto-complete", "operating-agents", "custom-rules"],
+      items: ["commands", "shell-commands", "auto-complete", "operating-agents", "custom-rules", "sandbox-feature"],
     },
     {
       type: "category",
