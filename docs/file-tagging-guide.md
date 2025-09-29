@@ -44,6 +44,26 @@ Select your file using and complete the request:
 > Help me debug @[src/auth/AuthService.ts] - the login method is throwing errors
 ```
 
+### Line Range Support
+
+You can also reference specific lines or line ranges within files using the format `@[filename:startLine:endLine]`:
+
+```
+> Review the validation logic in @[src/utils/validation.ts:42:65]
+```
+
+Or reference from a specific line to the end of the file:
+
+```
+> Explain this error starting from @[src/auth/AuthService.ts:127]
+```
+
+This is perfect for:
+- **Debugging specific functions** - Reference just the problematic method with `@[file:start:end]`
+- **Code review focus** - Point to exact sections that need attention
+- **Performance optimization** - Highlight specific bottlenecks or read from a point to end with `@[file:start]`
+- **Token efficiency** - Only send relevant lines to the LLM, reducing costs and improving response speed
+
 ### Multiple Files and Edge Cases
 
 Reference multiple files:
@@ -73,6 +93,14 @@ Skip the manual typing! The <CustomLink href="/docs/vscode-extension">Forge VS C
 ```
 
 Better than pasting 100 lines of code because the AI sees your actual imports, dependencies, and context.
+
+**Targeted Line-by-Line Review**
+
+```
+> The useEffect hook in @[src/components/UserList.tsx:45:62] is causing infinite re-renders
+```
+
+Even more precise - the AI focuses only on the problematic code section, leading to faster, more accurate solutions. Plus, you're only sending 18 lines instead of the entire 200+ line component, saving tokens and getting quicker responses.
 
 **Cross-File Problem Solving**
 
@@ -145,6 +173,14 @@ All different configs! You need to be more specific about which app/package you 
 > @[src/components/LoginForm.tsx] shows "Invalid credentials" even with correct login. Check @[src/auth/AuthService.ts]
 ```
 
+**Precise Bug Investigation with Line Ranges**
+
+```
+> The password validation in @[src/auth/AuthService.ts:89:102] fails but @[src/components/LoginForm.tsx:34:38] shows the input is correct
+```
+
+By referencing specific line ranges, you can pinpoint exactly where the issue occurs, making debugging significantly faster.
+
 **Feature Implementation**
 
 ```
@@ -170,11 +206,27 @@ All different configs! You need to be more specific about which app/package you 
 > I want to migrate @[src/legacy/UserManager.js] to TypeScript. What interfaces do I need based on @[src/types/User.ts]?
 ```
 
+**Efficient Migration with Line Ranges**
+
+```
+> Convert the authentication methods in @[src/legacy/UserManager.js:45:120] to TypeScript using patterns from @[src/auth/AuthService.ts:25:85]
+```
+
+Target only the relevant sections instead of processing entire files - faster analysis, lower token usage, more focused recommendations.
+
 ### Test-Driven Development
 
 ```
 > @[src/auth.test.ts] is failing on line 45. Help me fix the implementation in @[src/auth/AuthService.ts]
 ```
+
+**Precision Test Debugging with Line Ranges**
+
+```
+> The test @[src/auth.test.ts:45:52] expects a specific error format, but @[src/auth/AuthService.ts:127:135] returns a different structure
+```
+
+Line ranges let you reference the exact test case and the corresponding implementation, making test-driven debugging much more efficient.
 
 ### Image File Support
 
@@ -237,6 +289,14 @@ File tagging only sees your current project. External packages and microservices
 1. File exists and isn't in .gitignore
 2. Try different search terms (`Service` vs `service`)
 3. Check file size (> 50KB gets filtered)
+
+### "Line Range Syntax Issues"
+
+**For line range references:**
+
+- **Line range**: `@[file.ts:42:65]` - Lines 42 through 65
+- **From line to end**: `@[file.ts:42]` - From line 42 to end of file  
+- **Common mistakes**: Using dashes (`42-65`) or spaces (`42 : 65`) instead of colons
 
 ### "Too Many Results"
 
