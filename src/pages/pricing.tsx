@@ -4,7 +4,7 @@ import Heading from "@theme/Heading"
 import Section from "../components/shared/Section"
 import LinkButton from "../components/shared/LinkButton"
 import {Theme} from "@site/src/constants"
-import {analyticsHandler} from "@site/src/utils"
+
 import {Check, Star, Crown} from "lucide-react"
 import FinalCTA from "../components/home/FinalCTA"
 import OpenAILogo from "@site/src/assets/logos/openai.svg"
@@ -35,7 +35,7 @@ const PricingPage = (): JSX.Element => {
       period: "forever",
       description: "Perfect for getting started",
       features: ["Basic AI model access", "Community support", "Local processing"],
-      cta: "Get Started Free",
+      cta: "Coming Soon",
       href: pageLinks.signup,
       popular: false,
     },
@@ -51,7 +51,7 @@ const PricingPage = (): JSX.Element => {
         "Additional prompts: 250 for $10 USD",
         "Priority support",
       ],
-      cta: "Start Pro Plan",
+      cta: "Coming Soon",
       href: pageLinks.signup,
       popular: true,
       note: "Most popular for individual developers",
@@ -70,7 +70,7 @@ const PricingPage = (): JSX.Element => {
         "Advanced analytics",
         "Custom integrations",
       ],
-      cta: "Get Unlimited Access",
+      cta: "Coming Soon",
       href: pageLinks.signup,
       popular: false,
       note: "🔥 Early access special - FREE unlimited now, normally $200/month",
@@ -91,11 +91,11 @@ const PricingPage = (): JSX.Element => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-3 max-w-none mx-auto px-1">
             {tiers.map((tier, index) => (
               <div
                 key={tier.name}
-                className={`relative border-dashed border-1 p-6 ${
+                className={`relative border-dashed border-1 p-2 md:p-2 lg:p-3 ${
                   tier.popular
                     ? "border-blue-500 bg-gradient-to-b from-blue-50 to-white transform scale-105"
                     : tier.special
@@ -113,17 +113,17 @@ const PricingPage = (): JSX.Element => {
                 )} */}
 
                 {tier.special && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-yellow-500 text-black px-4 py-2 border-dashed border-1 border-gray-800 text-sm font-semibold flex items-center gap-2">
-                      <Crown size={16} />
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                    <div className="bg-yellow-500 text-black px-3 py-1.5 border-dashed border-1 border-gray-800 text-xs sm:text-sm font-semibold flex items-center gap-1.5 whitespace-nowrap">
+                      <Crown size={14} />
                       Early Access
                     </div>
                   </div>
                 )}
 
-                <div className="text-center mb-6 pt-8 sm:pt-6">
+                <div className={`text-center mb-4 sm:mb-6 ${tier.special ? 'pt-8 sm:pt-10 lg:pt-8' : 'pt-6 sm:pt-8 lg:pt-6'}`}>
                   <div className="flex items-center justify-center gap-2 mb-2">
-                    <h3 className="text-title-large font-bold">{tier.name}</h3>
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold">{tier.name}</h3>
                   </div>
                   <div className="mb-4">
                     {tier.originalPrice ? (
@@ -133,7 +133,7 @@ const PricingPage = (): JSX.Element => {
                           {tier.period}
                         </span>
                         <div className="flex items-baseline">
-                          <span className="text-4xl lg:text-5xl font-bold text-green-600">{tier.price}</span>
+                          <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-600">{tier.price}</span>
                           <span className="text-gray-500 ml-2 text-sm">{tier.period}</span>
                         </div>
                         <span className="text-xs text-green-600 font-semibold mt-1 bg-green-100 px-2 py-1 rounded-full">
@@ -143,7 +143,7 @@ const PricingPage = (): JSX.Element => {
                     ) : (
                       <div>
                         <span
-                          className={`text-3xl lg:text-4xl font-bold ${tier.name === "Early Access Special" ? "line-through decoration-2 text-gray-400" : ""}`}
+                          className={`text-xl sm:text-2xl lg:text-3xl font-bold ${tier.name === "Early Access Special" ? "line-through decoration-2 text-gray-400" : ""}`}
                         >
                           {tier.price}
                         </span>
@@ -153,24 +153,22 @@ const PricingPage = (): JSX.Element => {
                   </div>
                 </div>
 
-                <ul className="space-y-3 mb-6">
+                <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                   {tier.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start gap-3">
-                      <Check size={16} className="text-green-500 flex-shrink-0 mt-1" />
-                      <span className="text-gray-700 text-sm">{feature}</span>
+                    <li key={featureIndex} className="flex items-start gap-2 sm:gap-3">
+                      <Check size={14} className="text-green-500 flex-shrink-0 mt-1 sm:w-4 sm:h-4" />
+                      <span className="text-gray-700 text-xs sm:text-sm leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="space-y-3 mt-auto">
+                <div className="space-y-2 sm:space-y-3 mt-auto">
                   <LinkButton
                     title={tier.cta}
-                    href={tier.href}
                     theme={tier.popular || tier.special ? Theme.Dark : Theme.Light}
                     width="full"
-                    onClick={() => analyticsHandler("Pricing Page", "Click", tier.cta)}
                   />
-                  <p className="text-xs text-gray-500 text-center italic">{tier.note}</p>
+                  <p className="text-xs sm:text-xs text-gray-500 text-center italic leading-tight">{tier.note}</p>
                 </div>
               </div>
             ))}
