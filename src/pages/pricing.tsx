@@ -83,7 +83,7 @@ const PricingPage = (): JSX.Element => {
       <main>
         <Section className="py-16 lg:py-24">
           <div className="text-center mb-16">
-            <Heading as="h1" className="text-display-medium lg:text-display-large mb-6">
+            <Heading as="h1" className="text-3xl sm:text-display-medium lg:text-display-large mb-6 whitespace-nowrap">
               Simple Pricing
             </Heading>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -91,11 +91,11 @@ const PricingPage = (): JSX.Element => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-3 max-w-none mx-auto px-1">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-3 max-w-4xl lg:max-w-none mx-auto px-4">
             {tiers.map((tier, index) => (
               <div
                 key={tier.name}
-                className={`relative border-dashed border-1 p-2 md:p-2 lg:p-3 ${
+                className={`relative border-dashed border-1 p-6 lg:p-4 ${
                   tier.popular
                     ? "border-blue-500 bg-gradient-to-b from-blue-50 to-white transform scale-105"
                     : tier.special
@@ -113,15 +113,15 @@ const PricingPage = (): JSX.Element => {
                 )} */}
 
                 {tier.special && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-yellow-500 text-black px-3 py-1.5 border-dashed border-1 border-gray-800 text-xs sm:text-sm font-semibold flex items-center gap-1.5 whitespace-nowrap">
-                      <Crown size={14} />
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                    <div className="bg-yellow-500 text-black px-4 py-2 border-dashed border-1 border-gray-800 text-sm font-semibold flex items-center gap-2 whitespace-nowrap">
+                      <Crown size={16} />
                       Early Access
                     </div>
                   </div>
                 )}
 
-                <div className={`text-center mb-4 sm:mb-6 ${tier.special ? 'pt-8 sm:pt-10 lg:pt-8' : 'pt-6 sm:pt-8 lg:pt-6'}`}>
+                <div className={`text-center mb-4 sm:mb-6 ${tier.special ? 'pt-10 sm:pt-12 lg:pt-10' : 'pt-4 sm:pt-6 lg:pt-4'}`}>
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <h3 className="text-base sm:text-lg lg:text-xl font-bold">{tier.name}</h3>
                   </div>
