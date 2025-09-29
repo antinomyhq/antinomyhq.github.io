@@ -1,6 +1,5 @@
 import Link from "@docusaurus/Link"
 import {Theme} from "@site/src/constants"
-import {common_styles} from "@site/src/constants/styles"
 import clsx from "clsx"
 import React from "react"
 import {SVGProps} from "react"
@@ -26,7 +25,6 @@ const LinkButton = ({
   width = "auto",
   disabled,
 }: LinkButtonProps): JSX.Element => {
-  const {theme_border, theme_text, transition_all, theme_hover_bg} = common_styles
   // Generate button widths as tailwind is not able to handle dynamic widths
   const setButtonWidth = () => {
     switch (width) {
@@ -50,7 +48,7 @@ const LinkButton = ({
     const themes = {
       [Theme.Light]: {
         classes:
-          "border border-solid border-tailCall-border-dark-100 text-tailCall-dark-500 hover:text-tailCall-dark-500",
+          "border border-solid border-tailCall-border-dark-100 text-tailCall-dark-500 bg-transparent hover:text-tailCall-dark-500",
         gridClasses: "",
       },
       [Theme.Dark]: {
@@ -60,11 +58,12 @@ const LinkButton = ({
       },
       [Theme.Gray]: {
         classes:
-          "border-2 border-solid border-tailCall-light-100 text-tailCall-light-100 hover:text-tailCall-light-100",
+          "border-2 border-solid border-tailCall-light-100 text-tailCall-light-100 bg-transparent hover:text-tailCall-light-100",
         gridClasses: "hidden",
       },
       [Theme.Tailcall]: {
-        classes: `border border-solid ${theme_text} ${theme_border} ${theme_hover_bg} hover:text-white hover:dark:text-black bg-transparent`,
+        classes: "bg-yellow-300 border border-solid text-tailCall-dark-500 bg-transparent hover:text-tailCall-dark-500",
+
         gridClasses: "",
       },
     }
@@ -78,22 +77,18 @@ const LinkButton = ({
         <>
           {/* Dark theme background */}
           <div
-            className={`lg:block rounded-md lg:rounded-lg absolute inset-0 w-full bg-tailCall-dark-500 group-hover:lg:scale-x-[0.98] group-hover:lg:scale-y-[0.95] ${transition_all}`}
+            className={`lg:block rounded-md lg:rounded-lg absolute inset-0 w-full bg-tailCall-dark-500 group-hover:lg:scale-x-[0.98] group-hover:lg:scale-y-[0.95] transform transition-all ease-out duration-250`}
           />
           {!disabled && (
             // Dark theme grid background (only if not disabled)
-            <div
-              className={`hidden lg:block button-grid-bg-section h-full w-full scale-90 opacity-0 group-hover:scale-[0.98] group-hover:opacity-100 ${transition_all}`}
-            />
+            <div className="hidden lg:block button-grid-bg-section h-full w-full scale-90 opacity-0 group-hover:scale-[0.98] group-hover:opacity-100 transform transition-all ease-out duration-250" />
           )}
         </>
       )
     } else if (buttonTheme === Theme.Light && !disabled) {
       // Light theme grid background (only if not disabled)
       return (
-        <div
-          className={`hidden lg:block button-grid-bg-section-dark h-full w-full scale-90 opacity-0 group-hover:scale-[1] group-hover:opacity-100 ${transition_all}`}
-        />
+        <div className="hidden lg:block button-grid-bg-section-dark h-full w-full scale-90 opacity-0 group-hover:scale-[1] group-hover:opacity-100 transform transition-all ease-out duration-250" />
       )
     } else {
       // If no matching theme, return null

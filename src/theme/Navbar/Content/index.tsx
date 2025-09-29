@@ -13,11 +13,7 @@ import NavbarLogo from "@theme/Navbar/Logo"
 import SearchIcon from "@site/static/icons/basic/search.svg"
 import PageSearchIcon from "@site/static/icons/basic/page-search.svg"
 import styles from "./styles.module.css"
-import {analyticsHandler, getSearchInputRef, setBodyOverflow} from "@site/src/utils"
-import ThemeToggle from "@site/src/components/home/components/ThemeToggle"
-import Button from "@site/src/components/shared/Button"
-import clsx from "clsx"
-import {common_styles} from "@site/src/constants/styles"
+import {getSearchInputRef, setBodyOverflow} from "@site/src/utils"
 
 const useNavbarItems = () => {
   // TODO temporary casting until ThemeConfig type is improved (added by docusaurus)
@@ -185,29 +181,16 @@ const NavbarContent = (): JSX.Element => {
   const items = useNavbarItems()
   const [leftItems, rightItems] = splitNavbarItems(items)
 
-  const handleSignUp = () => {
-    if (typeof window === "undefined") return
-    analyticsHandler("Home Page", "Click", "Sign Up")
-    window.open("https://app.forgecode.dev/app/", "_blank")
-  }
   return (
     <NavbarContentLayout
       left={
         // TODO stop hardcoding items? (added by docusaurus)
         // Render left navbar items
         <>
-          <div className="flex items-center min-[997px]:hidden">
-            <Search />
-            <ThemeToggle />
-          </div>
-
-          <div className={styles.showSidebarToggle}>
-            <NavbarMobileSidebarToggle />
-          </div>
-          <div className="flex items-center min-[996px]:ml-48">
-            <NavbarLogo />
-            <NavbarItems items={leftItems} />
-          </div>
+          {mobileSidebar.shouldRender && <Search />}
+          {!mobileSidebar.disabled && <NavbarMobileSidebarToggle />}
+          <NavbarLogo />
+          <NavbarItems items={leftItems} />
         </>
       }
       right={
@@ -215,13 +198,7 @@ const NavbarContent = (): JSX.Element => {
         // Render right navbar items
         <>
           <NavbarItems items={rightItems} />
-          {/* <Button className={styles.colorModeToggle} variant="navlink" onClick={handleSignUp}>
-            <span className={common_styles.theme_text}>Sign up</span>
-          </Button> */}
-          <div className={clsx(styles.colorModeToggle, "flex gap-1")}>
-            <Search />
-            <ThemeToggle />
-          </div>
+          <NavbarColorModeToggle className={styles.colorModeToggle} />
         </>
       }
     />

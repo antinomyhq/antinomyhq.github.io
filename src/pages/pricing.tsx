@@ -1,295 +1,296 @@
-import React, {useEffect, useState, useCallback, useMemo} from "react"
+import React from "react"
 import Layout from "@theme/Layout"
 import Heading from "@theme/Heading"
 import Section from "../components/shared/Section"
+import LinkButton from "../components/shared/LinkButton"
 import {Theme} from "@site/src/constants"
-import {analyticsHandler} from "@site/src/utils"
-import {CircleCheck, Minus, Plus} from "lucide-react"
-import NewLinkButton from "../components/shared/NewLinkButton"
-import clsx from "clsx"
-import {FAQS, tiers} from "../constants/index"
-import {useLocation} from "@docusaurus/router"
-import ReactGA from "react-ga4"
-import SpotlightSpan from "../components/home/components/SpotlightCursor"
-import AIProviderCard from "../components/shared/AIProviderCard"
 
-// Types
-interface AIProvider {
-  title: string
-  darkLogoUrl: string
-  lightLogoUrl: string
-}
+import {Check, Star, Crown} from "lucide-react"
+import FinalCTA from "../components/home/FinalCTA"
+import OpenAILogo from "@site/src/assets/logos/openai.svg"
+import AnthropicLogo from "@site/src/assets/logos/anthropic.svg"
+import GoogleLogo from "@site/src/assets/logos/google.svg"
+import XAILogo from "@site/src/assets/logos/xai.svg"
+import MetaLogo from "@site/src/assets/logos/meta.svg"
+import MistralLogo from "@site/src/assets/logos/mistral.svg"
+import DeepSeekLogo from "@site/src/assets/logos/deepseek.svg"
+import {pageLinks} from "../constants/routes"
 
-interface PricingTier {
-  name: string
-  price: string
-  period: string
-  description?: string
-  cta?: string
-  href?: string
-  popular?: boolean
-  features: string[]
-}
-
-interface FAQItem {
-  question: string
-  answer: string
-}
-
-// Constants
-const AI_PROVIDERS: AIProvider[] = [
-  {title: "OpenAI", darkLogoUrl: "/images/pricing/openai-dark.svg", lightLogoUrl: "/images/pricing/openai-light.svg"},
-  {
-    title: "Anthropic",
-    darkLogoUrl: "/images/pricing/anthropic-dark.svg",
-    lightLogoUrl: "/images/pricing/anthropic-light.svg",
-  },
-  {title: "Google", darkLogoUrl: "/images/pricing/google-dark.svg", lightLogoUrl: "/images/pricing/google-light.svg"},
-  {title: "xAI", darkLogoUrl: "/images/pricing/xai-dark.svg", lightLogoUrl: "/images/pricing/xai-light.svg"},
-  {title: "Meta", darkLogoUrl: "/images/pricing/meta-dark.svg", lightLogoUrl: "/images/pricing/meta-light.svg"},
-  {
-    title: "Mistral",
-    darkLogoUrl: "/images/pricing/mistral-dark.svg",
-    lightLogoUrl: "/images/pricing/mistral-light.svg",
-  },
-  {
-    title: "Deepseek",
-    darkLogoUrl: "/images/pricing/deepseek-dark.svg",
-    lightLogoUrl: "/images/pricing/deepseek-light.svg",
-  },
+// AI Providers array for iteration
+const aiProviders = [
+  {name: "OpenAI", logo: OpenAILogo},
+  {name: "Anthropic", logo: AnthropicLogo},
+  {name: "Google", logo: GoogleLogo},
+  {name: "xAI", logo: XAILogo},
+  {name: "Meta", logo: MetaLogo},
+  {name: "Mistral", logo: MistralLogo},
+  {name: "Deepseek", logo: DeepSeekLogo},
 ]
 
-// CSS Class Constants
-const HERO_CONTAINER_CLASSES = "mx-auto w-full"
-const HERO_SECTION_CLASSES =
-  "px-8 py-16 md:px-24 lg:px-36 lg:py-24  dark:bg-black bg-tailCall-light-1200 border-b border-solid border-transparent border-b-[#dbdbdb] dark:border-b-[#4b4b4b]"
-const HERO_CONTENT_CLASSES = "flex__column lg:gap-0 items-start xl:items-center xl:flex-row justify-between w-full"
-const HERO_TITLE_CONTAINER_CLASSES = "flex__column mt-2"
-const HERO_TITLE_CLASSES =
-  "font-bebas !font-normal text-[45px] md:text-display-small lg:text-display-medium xl:text-display-large-semi tracking-normal"
-const HERO_SUBTITLE_CLASSES =
-  "-mt-4 md:-mt-5 lg:-mt-2 xl:-mt-8 leading-10 md:leading-normal font-bebas !font-normal text-[45px] md:text-display-small lg:text-display-medium xl:text-display-large-semi tracking-normal"
-const HERO_DESCRIPTION_CLASSES =
-  "block mt-2 md:mt-0 max-w-[500px] xl:mt-20 !font-normal lg:leading-8 xl:leading-[32px] text-[16px] md:text-title-small lg:text-[20px] xl:text-[22px] text-tailCall-darkMode---neutral-500 tracking-normal"
-const PRICING_HEADER_CLASSES = "text-center mb-14"
-const PRICING_TITLE_CLASSES =
-  "text-title-large !font-normal md:text-content-regular mb-2 text-tailCall-lightMode---neutral-900 dark:text-white"
-const PRICING_SUBTITLE_CLASSES =
-  "text-title-small-pricing !text-[22px] !font-normal text-tailCall-darkMode---neutral-500 max-w-2xl mx-auto"
-const PRICING_GRID_CLASSES =
-  "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8 xl:gap-4 max-w-4xl mx-auto pb-12 mb-24 justify-center"
-const CARD_CONTAINER_CLASSES =
-  "bg-gradient-315-light-inactive dark:bg-gradient-315-inactive hover:bg-gradient-315-light hover:dark:bg-gradient-315 rounded-[13px] group p-[1px] relative flex flex-col transition-all duration-700 overflow-visible hover:shadow-2xl w-full"
-const CARD_CONTENT_CLASSES = "p-6 bg-white dark:bg-tailCall-darkMode---neutral-900 rounded-xl h-full"
-const CARD_BACKGROUND_CLASSES =
-  "absolute left-0 bottom-0 w-full h-[90%] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0 bg-custom-radial-light dark:bg-custom-radial"
-const CARD_TITLE_CLASSES =
-  "text-title-semi-large font-normal text-left text-tailCall-darkMode---neutral-600 dark:text-white mb-0 dark:group-hover:text-white"
-const PRICE_CONTAINER_CLASSES = "flex items-baseline gap-2"
-const PRICE_CLASSES = "text-title-text-large font-normal text-tailCall-darkMode---neutral-600 dark:text-white"
-const PERIOD_CLASSES = "text-content-tiny text-tailCall-darkMode---neutral-600 dark:text-white"
-const DESCRIPTION_CLASSES = "text-[13px] text-left dark:text-tailCall-darkMode---neutral-400 mb-6"
-const FEATURES_SECTION_CLASSES = "border-gray-300 dark:border-gray-700 mb-4"
-const FEATURES_TITLE_CLASSES =
-  "text-sm font-normal text-[15px] mb-3 text-tailCall-lightMode---neutral-900 dark:text-tailCall-light-800 dark:group-hover:text-white transition-colors duration-300"
-const FEATURES_LIST_CLASSES = "space-y-2"
-const FEATURE_ITEM_CLASSES =
-  "flex gap-2 items-start text-lg text-tailCall-darkMode---neutral-700 dark:text-tailCall-darkMode---neutral-400 dark:group-hover:text-white transition-colors duration-300  "
-const FEATURE_ICON_CLASSES =
-  "dark:text-tailCall-light-800 mt-2 flex-shrink-0 dark:group-hover:text-white transition-colors duration-300"
-const FEATURE_TEXT_CLASSES = "text-[16px]"
-const FAQ_SECTION_CLASSES = "grid grid-cols-1 xl:grid-cols-[300px_1fr] xl:gap-32 items-start"
-const FAQ_HEADER_CLASSES = "items-start mt-10"
-const FAQ_TITLE_CLASSES =
-  "text-title-large !font-medium md:text-content-regular text-left mb-1 text-tailCall-lightMode---neutral-900 dark:text-tailCall-white !leading-[65px]"
-const FAQ_SUBTITLE_CLASSES =
-  "text-content-small md:text-question-title text-[#A1A1A1] !font-[275] dark:text-tailCall-border-light-300 mt-5"
-const FAQ_ITEM_CLASSES =
-  "flex__column__center w-full justify-between pt-8 text-left focus:outline-none bg-transparent dark:bg-black border-none cursor-pointer transition-all duration-300"
-const FAQ_QUESTION_CLASSES = "text-content-small md:text-question-title transition-colors duration-300"
-const FAQ_ANSWER_CLASSES = "overflow-hidden transition-all duration-300"
-const FAQ_ANSWER_TEXT_CLASSES =
-  "text-tailCall-darkMode---neutral-600 dark:text-tailCall-light-800 py-1 font-kanit text-content-tiny md:text-[23px] leading-7 md:leading-[35px] font-[275]"
-const AI_PROVIDERS_SECTION_CLASSES = "flex__column gap-10 xl:my-20"
-const AI_PROVIDERS_HEADER_CLASSES = "flex__column items-center text-center xl:mt-10"
-const AI_PROVIDERS_TITLE_CLASSES =
-  "  text-[32px] lg:text-[37px] text-display-tiny font-normal text-tailCall-darkMode---neutral-800 dark:text-white"
-const AI_PROVIDERS_SUBTITLE_CLASSES =
-  "  text-[16px] lg:text-[26px] text-question-title text-tailCall-darkMode---neutral-400 font-light max-w-[50rem] text-center"
-const AI_PROVIDERS_GRID_CLASSES =
-  "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-6 max-w-5xl mx-auto xl:mb-10"
-
-// Components
-const HeroSection: React.FC = () => (
-  <div className={HERO_CONTAINER_CLASSES}>
-    <div className={HERO_SECTION_CLASSES}>
-      <div className={HERO_CONTENT_CLASSES}>
-        <div className={HERO_TITLE_CONTAINER_CLASSES}>
-          <SpotlightSpan className={HERO_TITLE_CLASSES} text="Pricing" showHighlighted />
-          <SpotlightSpan
-            className={HERO_SUBTITLE_CLASSES}
-            text="Free for personal use. Enterprise for teams."
-            showHighlighted
-          />
-        </div>
-        <span className={HERO_DESCRIPTION_CLASSES}>Pick the plan that fits.</span>
-      </div>
-    </div>
-  </div>
-)
-
-const PricingHeader: React.FC = () => (
-  <div className={PRICING_HEADER_CLASSES}>
-    <Heading as="h1" className={PRICING_TITLE_CLASSES}>
-      Pricing
-    </Heading>
-    <p className={PRICING_SUBTITLE_CLASSES}>Free for personal use. Enterprise for teams.</p>
-  </div>
-)
-
-const PricingCard: React.FC<{tier: PricingTier}> = ({tier}) => (
-  <div className={CARD_CONTAINER_CLASSES}>
-    <div className={CARD_CONTENT_CLASSES}>
-      <div className={clsx(CARD_BACKGROUND_CLASSES, {"!opacity-100": tier.name === "Pro"})} />
-      <div className="relative z-10">
-        <div className="flex flex-col flex-grow">
-          <h3 className={CARD_TITLE_CLASSES}>{tier.name}</h3>
-          <div>
-            <div className={PRICE_CONTAINER_CLASSES}>
-              <span className={PRICE_CLASSES}>{tier.price}</span>
-              <span className={PERIOD_CLASSES}>{tier.period}</span>
-            </div>
-          </div>
-          {tier.description && <p className={DESCRIPTION_CLASSES}>{tier.description}</p>}
-          <div>
-            {tier.cta && (
-              <NewLinkButton
-                title={tier.cta}
-                href={tier.href}
-                theme={tier.popular ? Theme.Dark : Theme.Light}
-                width="full"
-                onClick={() => analyticsHandler("Pricing Page", "Click", tier.cta || "Unknown")}
-              />
-            )}
-          </div>
-
-          <hr className={FEATURES_SECTION_CLASSES} />
-
-          <div>
-            <p className={FEATURES_TITLE_CLASSES}>Features</p>
-            <ul className={FEATURES_LIST_CLASSES}>
-              {tier.features.map((feature, idx) => (
-                <li key={idx} className={FEATURE_ITEM_CLASSES}>
-                  <CircleCheck size={12} className={FEATURE_ICON_CLASSES} />
-                  <span className={FEATURE_TEXT_CLASSES}>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-)
-
-const FAQItem: React.FC<{
-  item: FAQItem
-  index: number
-  isOpen: boolean
-  onToggle: (index: number) => void
-}> = ({item, index, isOpen, onToggle}) => (
-  <div key={index}>
-    <div className={clsx(FAQ_ITEM_CLASSES, isOpen ? "pb-4" : "pb-8")} onClick={() => onToggle(index)}>
-      <span
-        className={clsx(
-          FAQ_QUESTION_CLASSES,
-          isOpen ? "text-[#262626] dark:text-white" : "text-tailCall-lightMode---neutral-500",
-        )}
-      >
-        {item.question}
-      </span>
-      <span className="text-tailCall-darkMode---primary-700 dark:text-white flex__centered">
-        {isOpen ? <Minus size={20} /> : <Plus size={20} />}
-      </span>
-    </div>
-    <div className={`${FAQ_ANSWER_CLASSES} ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}>
-      <p dangerouslySetInnerHTML={{__html: item.answer}} className={`faq-answers ${FAQ_ANSWER_TEXT_CLASSES}`} />
-    </div>
-    {index < FAQS.length - 1 && <div className="bg-gradient-border h-[1px] w-full" />}
-  </div>
-)
-
-const FAQSection: React.FC<{
-  openIndex: number | null
-  onToggle: (index: number) => void
-}> = ({openIndex, onToggle}) => (
-  <div className={FAQ_SECTION_CLASSES}>
-    <div className={FAQ_HEADER_CLASSES}>
-      <Heading as="h2" className={FAQ_TITLE_CLASSES}>
-        Frequently Asked Questions
-      </Heading>
-      <div className={FAQ_SUBTITLE_CLASSES}>Get answers to common questions about our pricing plans and features.</div>
-    </div>
-
-    <div className="w-full">
-      {FAQS.map((item, index) => (
-        <FAQItem key={index} item={item} index={index} isOpen={openIndex === index} onToggle={onToggle} />
-      ))}
-    </div>
-  </div>
-)
-
-const AIProvidersSection: React.FC = () => (
-  <div className={AI_PROVIDERS_SECTION_CLASSES}>
-    <div className="bg-[#dbdbdb] dark:bg-[#4b4b4b] h-[1px] w-full" />
-    <div className={AI_PROVIDERS_HEADER_CLASSES}>
-      <span className={AI_PROVIDERS_TITLE_CLASSES}>Works with every model offered by leading AI providers.</span>
-      <span className={AI_PROVIDERS_SUBTITLE_CLASSES}>
-        Seamlessly integrate with OpenAI, Anthropic, Google, xAI, Meta, Mistral, and Deepseek models.
-      </span>
-    </div>
-    <div className={AI_PROVIDERS_GRID_CLASSES}>
-      {AI_PROVIDERS.map(({title, lightLogoUrl, darkLogoUrl}) => (
-        <AIProviderCard key={title} title={title} lightLogoUrl={lightLogoUrl} darkLogoUrl={darkLogoUrl} />
-      ))}
-    </div>
-  </div>
-)
-
-// Main Component
-const PricingPage: React.FC = (): JSX.Element => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-  const location = useLocation()
-
-  useEffect(() => {
-    ReactGA.send({hitType: "pageview", page: location.pathname, title: "Pricing Page"})
-  }, [location.pathname])
-
-  const toggleIndex = useCallback((index: number) => {
-    setOpenIndex((prevIndex) => (prevIndex === index ? null : index))
-  }, [])
-
-  const pricingCards = useMemo(
-    () => (
-      <div className={PRICING_GRID_CLASSES}>
-        {tiers.map((tier) => (
-          <PricingCard key={tier.name} tier={tier} />
-        ))}
-      </div>
-    ),
-    [],
-  )
+const PricingPage = (): JSX.Element => {
+  const tiers = [
+    {
+      name: "Free",
+      price: "$0",
+      period: "forever",
+      description: "Perfect for getting started",
+      features: ["Basic AI model access", "Community support", "Local processing"],
+      cta: "Coming Soon",
+      href: pageLinks.signup,
+      popular: false,
+    },
+    {
+      name: "Pro",
+      price: "$20",
+      period: "/month",
+      description: "For professional developers",
+      features: [
+        "Everything in Free",
+        "Premium AI models (GPT-4, Claude-4, Grok-3, Gemini-2.5)",
+        "500 prompts per month",
+        "Additional prompts: 250 for $10 USD",
+        "Priority support",
+      ],
+      cta: "Coming Soon",
+      href: pageLinks.signup,
+      popular: true,
+      note: "Most popular for individual developers",
+    },
+    {
+      name: "Max",
+      price: "$0",
+      originalPrice: "$200",
+      period: "/month",
+      description: "🎉 Limited-time early access - FREE unlimited usage!",
+      features: [
+        "Everything in Pro",
+        "Unlimited requests",
+        "Latest AI models (Sonnet4, Gemini-2.5 pro, Grok-4, Gpt-4 series)",
+        "24/7 priority support",
+        "Advanced analytics",
+        "Custom integrations",
+      ],
+      cta: "Coming Soon",
+      href: pageLinks.signup,
+      popular: false,
+      note: "🔥 Early access special - FREE unlimited now, normally $200/month",
+      special: true,
+    },
+  ]
 
   return (
     <Layout title="Pricing" description="Simple, transparent pricing for ForgeCode">
-      {/* <HeroSection /> */}
       <main>
-        <Section className="py-16 lg:py-24 dark:bg-black bg-tailCall-light-1200">
-          <PricingHeader />
-          {pricingCards}
-          {/* <FAQSection openIndex={openIndex} onToggle={toggleIndex} /> */}
-          <AIProvidersSection />
+        <Section className="py-8 lg:py-12">
+          <div className="text-center mb-8">
+            <Heading as="h1" className="text-3xl sm:text-display-medium lg:text-display-large mb-6 whitespace-nowrap">
+              Simple Pricing
+            </Heading>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Start free, upgrade when you're ready. No hidden fees.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-3 max-w-4xl lg:max-w-none mx-auto items-stretch">
+            {tiers.map((tier, index) => (
+              <div
+                key={tier.name}
+                className={`relative border-dashed border-1 p-6 lg:p-4 flex flex-col h-full ${
+                  tier.popular
+                    ? "border-blue-500 bg-gradient-to-b from-blue-50 to-white transform scale-105"
+                    : tier.special
+                      ? "border-yellow-500 bg-gradient-to-b from-yellow-50 to-white"
+                      : "border-gray-400 bg-white"
+                } hover:shadow-xl transition-all duration-300`}
+              >
+                {/* {tier.popular && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-blue-500 text-tailCall-white px-4 py-2 border-dashed border-1 border-gray-800 text-sm font-semibold flex items-center gap-2">
+                      <Star size={16} />
+                      Most Popular
+                    </div>
+                  </div>
+                )} */}
+
+                {tier.special && (
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                    <div className="bg-yellow-500 text-black px-4 py-2 border-dashed border-1 border-gray-800 text-sm font-semibold flex items-center gap-2 whitespace-nowrap">
+                      <Crown size={16} />
+                      Early Access
+                    </div>
+                  </div>
+                )}
+
+                <div
+                  className={`text-center mb-4 sm:mb-6 ${tier.special ? "pt-10 sm:pt-12 lg:pt-10" : "pt-4 sm:pt-6 lg:pt-4"}`}
+                >
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold">{tier.name}</h3>
+                  </div>
+                  <div className="mb-4">
+                    {tier.originalPrice ? (
+                      <div className="flex flex-col items-center">
+                        <span className="text-lg text-gray-400 line-through decoration-2 mb-1">
+                          {tier.originalPrice}
+                          {tier.period}
+                        </span>
+                        <div className="flex items-baseline">
+                          <span className="text-xl sm:text-2xl lg:text-3xl font-bold text-green-600">{tier.price}</span>
+                          <span className="text-gray-500 ml-2 text-sm">{tier.period}</span>
+                        </div>
+                        <span className="text-xs text-green-600 font-semibold mt-1 bg-green-100 px-2 py-1 rounded-full">
+                          LIMITED TIME ONLY
+                        </span>
+                      </div>
+                    ) : (
+                      <div>
+                        <span
+                          className={`text-xl sm:text-2xl lg:text-3xl font-bold ${tier.name === "Early Access Special" ? "line-through decoration-2 text-gray-400" : ""}`}
+                        >
+                          {tier.price}
+                        </span>
+                        <span className="text-gray-500 ml-2 text-sm">{tier.period}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 flex-grow pl-3">
+                  {tier.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-2 sm:gap-3">
+                      <Check size={14} className="text-green-500 flex-shrink-0 mt-1 sm:w-4 sm:h-4" />
+                      <span className="text-gray-700 text-xs sm:text-sm leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-auto">
+                  {tier.note && (
+                    <p className="text-xs sm:text-xs text-gray-500 text-center italic leading-tight mb-3">
+                      {tier.note}
+                    </p>
+                  )}
+                  <LinkButton
+                    title={tier.cta}
+                    theme={tier.popular || tier.special ? Theme.Dark : Theme.Light}
+                    width="full"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-32 text-center mb-24">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Works with every model offered by leading AI providers.
+            </h2>
+            <p className="text-gray-600 mb-12 max-w-2xl mx-auto">
+              Seamlessly integrate with OpenAI, Anthropic, Google, xAI, Meta, Mistral, and Deepseek models.
+            </p>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 max-w-5xl mx-auto">
+              {aiProviders.map((provider) => (
+                <div
+                  key={provider.name}
+                  className="flex flex-col items-center p-6 bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-gray-300 transition-all duration-300 group"
+                >
+                  <div className="w-12 h-12 mb-3 text-gray-700 group-hover:text-gray-900 transition-colors">
+                    <provider.logo className="w-full h-full" />
+                  </div>
+                  <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">{provider.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* FAQ Section */}
+          <div className="mt-24 max-w-4xl mx-auto">
+            <Heading as="h2" className="text-display-tiny text-center mb-12">
+              Frequently Asked Questions
+            </Heading>
+
+            <div className="space-y-8">
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-title-medium font-semibold mb-3">How do I purchase additional prompts?</h3>
+                <p className="text-gray-700">
+                  Additional prompts can be purchased directly through your ForgeCode dashboard when you approach your
+                  monthly limit.
+                  <strong>Pro users</strong> can buy 250 additional prompts for $10 USD, while These additional prompts
+                  are added to your current month's allowance.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-title-medium font-semibold mb-3">
+                  What's the difference between Free, Pro, and Max plans?
+                </h3>
+                <p className="text-gray-700">
+                  <strong>Free ($0):</strong> Basic AI model access with limited daily usage, perfect for getting
+                  started.
+                  <br />
+                  <strong>Pro ($20/month):</strong> Access to premium models (OpenAI, Claude, Gemini) with 500 requests
+                  per month and priority support.
+                  <br />
+                  <strong>Max (FREE - normally $200/month):</strong> Unlimited access.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-title-medium font-semibold mb-3">What are "top tier" models?</h3>
+                <p className="text-gray-700">
+                  Top tier models include the most advanced AI models like GPT-4, Claude-4, and Gemini 2.5 - the premium
+                  models from each provider that offer the best performance for complex coding tasks.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-title-medium font-semibold mb-3">How does the Max plan unlimited usage work?</h3>
+                <p className="text-gray-700">
+                  Max plan users get truly unlimited access to all AI models during with no daily caps, or usage
+                  restrictions.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-title-medium font-semibold mb-3">
+                  What happens when I exceed my monthly prompt limit?
+                </h3>
+                <p className="text-gray-700">
+                  <strong>Free users:</strong> Hit daily usage limits and need to wait for reset or upgrade.
+                  <br />
+                  <strong>Pro users:</strong> After using your 500 included prompts, you can purchase additional
+                  prompts: 250 prompts for $10 USD.
+                  <br />
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-title-medium font-semibold mb-3">Is my code secure and private?</h3>
+                <p className="text-gray-700">
+                  Absolutely. ForgeCode runs entirely on your local machine using your own API keys. Your code never
+                  leaves your computer - no cloud processing, complete privacy and security.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-title-medium font-semibold mb-3">Can I upgrade or downgrade my plan anytime?</h3>
+                <p className="text-gray-700">
+                  Yes, you can change your plan at any time. Upgrades take effect immediately, while downgrades apply at
+                  your next billing cycle.
+                </p>
+              </div>
+
+              <div className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-title-medium font-semibold mb-3">Do I need my own API keys?</h3>
+                <p className="text-gray-700">
+                  For Free users, you'll need your own API keys for AI models. Pro and Max users get included access to
+                  premium models without needing separate API keys, plus the option to use your own keys for additional
+                  providers.
+                </p>
+              </div>
+            </div>
+          </div>
         </Section>
+        <FinalCTA showPricingButton={false} />
       </main>
     </Layout>
   )
