@@ -18,8 +18,16 @@ Get Forge running on your system in under 5 minutes. This guide covers installat
 
 <Steps>
   <Step title="Install Forge">
-    Install <CustomLink href="https://nodejs.org/en/download">Node.js 16+</CustomLink>, then run:
+    Install <CustomLink href="https://nodejs.org/en/download">Node.js 16+</CustomLink>, then choose one of the installation methods:
 
+    ### Method 1: npx (Recommended)
+    Run Forge without global installation:
+    ```bash
+    npx forgecode@latest
+    ```
+
+    ### Method 2: Global npm installation
+    Install Forge globally for the `forge` command:
     ```bash
     npm install -g forgecode@latest
     ```
@@ -40,6 +48,14 @@ Get Forge running on your system in under 5 minutes. This guide covers installat
   </Step>
   
   <Step title="Start Forge">
+    Depending on your installation method:
+
+    **If you used npx (Method 1):**
+    ```bash
+    npx forgecode@latest
+    ```
+
+    **If you used global npm installation (Method 2):**
     ```bash
     forge
     ```
