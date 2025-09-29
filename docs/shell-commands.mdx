@@ -74,12 +74,26 @@ Changing the directory will only be applicable until the command executes and wi
 ! pwd # This will still show your original working directory
 ```
 
-**Workaround**: To permanently change Forge's working directory, you need to exit Forge, navigate to your preferred directory, and start Forge again in that location. Alternatively, use absolute paths or combine directory changes with your commands:
+**Workaround**: To permanently change Forge's working directory, restart Forge in your target directory:
 
-```bash
-! cd /tmp && ls -la                  # Execute ls in /tmp
-! cd /path/to/project && npm install # Install dependencies in specific directory
-```
+1. **Exit and navigate:**
+   ```bash
+   # Exit Forge, then:
+   cd /path/to/project
+   forge
+   ```
+
+2. **Or restart with path directly:**
+   ```bash
+   forge /path/to/project
+   ```
+
+**Alternative approach:**
+- Chain commands with directory changes:
+  ```bash
+  ! cd /tmp && ls -la                  # Execute ls in /tmp
+  ! cd /path/to/project && npm install # Install dependencies in specific directory
+  ```
 
 :::info
   <p>
