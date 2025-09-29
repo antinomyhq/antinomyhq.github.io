@@ -14,11 +14,13 @@ Tired of manually typing file paths and copying code snippets when asking Forge 
 ## What This Extension Does
 
 **The problem:** Describing code problems is slow and unclear
+
 - "That function around line 50 something..."
 - Copy-pasting code snippets manually
 - Typing out long file paths
 
 **The solution:** Show Forge exactly what you mean
+
 - Select any code → Press `Ctrl+U` → Get a perfect reference
 - Works with single lines, code blocks, or entire files
 
@@ -35,18 +37,21 @@ This extension works with [Forge CLI](/docs/installation). Install that first if
 ## Installation
 
 ### What You Need
+
 - **VS Code**: Version 1.102.0 or higher
 - **Forge CLI**: [Install](/docs/installation) it first if you haven't already
 
 ### Install the Extension
 
 **Option 1: VS Code Marketplace (Easiest)**
+
 1. Open VS Code
 2. Press `Ctrl+Shift+X` (Extensions panel)
 3. Search for **"Forge Code"**
 4. Click **Install** on the official ForgeCode extension
 
 **Option 2: Command Line**
+
 ```bash
 code --install-extension ForgeCode.forge-vscode
 ```
@@ -60,7 +65,7 @@ code --install-extension ForgeCode.forge-vscode
 ### The Core Workflow
 
 1. **Select code** (or don't select anything for whole file)
-2. **Press `Ctrl+U`** 
+2. **Press `Ctrl+U`**
 3. **Paste into Forge** conversation
 
 That's it. No typing, no manual copying.
@@ -70,6 +75,7 @@ That's it. No typing, no manual copying.
 **Format:** `@[<filepath>:<line start>:<line end>]`
 
 **How selection works:**
+
 - **No selection**: `@[path/to/file.js]` → References entire file
 - **Single line**: `@[path/to/file.js:42:42]` → References line 42 only
 - **Multiple lines**: `@[path/to/file.js:15:28]` → References lines 15-28
@@ -86,6 +92,7 @@ Here's the real power move. Select code from different files and copy them all a
 Now Forge can see exactly what code you're talking about, with full context and precise line numbers. No more "that function around line 50 something" conversations.
 
 ### Alternative Ways to Copy
+
 - **Command Palette**: `Ctrl+Shift+P` → type "Copy File Reference"
 - **Right-click Menu**: Select code → right-click → "Copy File Reference"
 
@@ -136,6 +143,7 @@ Forge understands your theme system and suggests consistent changes across files
 ### Extension Completely Dead
 
 **Quick fixes to try:**
+
 1. Make sure Forge CLI is actually installed - run `forge --version` in terminal
 2. Check your VS Code version (Help → About) - need 1.102.0+
 3. Verify the extension is enabled in Extensions view
@@ -155,8 +163,9 @@ Common culprits: Vim extensions, other developer tools that love Ctrl+U.
 ### Nothing Gets Copied to Clipboard
 
 Try these workarounds:
+
 - Use Command Palette: `Ctrl+Shift+P` → "Copy File Reference"
-- Right-click menu → "Copy File Reference" 
+- Right-click menu → "Copy File Reference"
 - Check if you're in a text file (extension won't work on images/binaries)
 - Some systems have clipboard permission issues - restart VS Code usually fixes this
 
@@ -189,6 +198,7 @@ You're ready to start using `Ctrl+U` everywhere. The goal isn't to reference eve
 ## Still Need Help?
 
 **If you're still stuck:**
+
 - **Extension logs:** View → Output → Select "Forge" from dropdown
 - **Report bugs:** [GitHub Issues](https://github.com/antinomyhq/forge/issues)
 - **Community help:** Join our [Discord](https://discord.gg/kRZBPpkgwq) for quick answers

@@ -96,8 +96,8 @@ main .gsc-loading-image {
 }
 
 main .gsc-comment-box {
-  background-image: linear-gradient(90deg, #ececec 0.5px, transparent 0.5px),
-    linear-gradient(#ececec 0.5px, transparent 0.5px);
+  background-image:
+    linear-gradient(90deg, #ececec 0.5px, transparent 0.5px), linear-gradient(#ececec 0.5px, transparent 0.5px);
   background-size: 60px 60px;
   background-position: 3px 23px;
   font-family: "Space Grotesk", sans-serif;
