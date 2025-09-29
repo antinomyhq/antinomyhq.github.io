@@ -24,7 +24,9 @@ const Configuration = (): JSX.Element => {
         </div>
         <div className="flex-1 lg:flex-none lg:min-w-[400px] xl:min-w-[500px]">
           <h4 className="text-base sm:text-lg font-semibold mb-2">Install Forge</h4>
-          <pre className="w-full overflow-x-auto text-sm sm:text-base main-install-command px-4 py-3">npx forgecode@latest</pre>
+          <pre className="w-full overflow-x-auto text-sm sm:text-base main-install-command px-4 py-3">
+            npx forgecode@latest
+          </pre>
         </div>
       </div>
     </Section>

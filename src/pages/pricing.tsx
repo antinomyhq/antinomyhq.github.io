@@ -121,7 +121,9 @@ const PricingPage = (): JSX.Element => {
                   </div>
                 )}
 
-                <div className={`text-center mb-4 sm:mb-6 ${tier.special ? 'pt-10 sm:pt-12 lg:pt-10' : 'pt-4 sm:pt-6 lg:pt-4'}`}>
+                <div
+                  className={`text-center mb-4 sm:mb-6 ${tier.special ? "pt-10 sm:pt-12 lg:pt-10" : "pt-4 sm:pt-6 lg:pt-4"}`}
+                >
                   <div className="flex items-center justify-center gap-2 mb-2">
                     <h3 className="text-base sm:text-lg lg:text-xl font-bold">{tier.name}</h3>
                   </div>
@@ -164,7 +166,9 @@ const PricingPage = (): JSX.Element => {
 
                 <div className="mt-auto">
                   {tier.note && (
-                    <p className="text-xs sm:text-xs text-gray-500 text-center italic leading-tight mb-3">{tier.note}</p>
+                    <p className="text-xs sm:text-xs text-gray-500 text-center italic leading-tight mb-3">
+                      {tier.note}
+                    </p>
                   )}
                   <LinkButton
                     title={tier.cta}

@@ -54,7 +54,8 @@ const Stats = (): JSX.Element => {
           let Wrapper: React.ElementType = "div"
           const props: any = {
             key: index,
-            className: "group p-2 flex flex-col items-center text-center w-full sm:w-auto min-w-[140px] sm:min-w-[160px] md:min-w-[180px]",
+            className:
+              "group p-2 flex flex-col items-center text-center w-full sm:w-auto min-w-[140px] sm:min-w-[160px] md:min-w-[180px]",
           }
 
           if (isGithub) {
