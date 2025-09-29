@@ -59,6 +59,7 @@ Or reference from a specific line to the end of the file:
 ```
 
 This is perfect for:
+
 - **Debugging specific functions** - Reference just the problematic method with `@[file:start:end]`
 - **Code review focus** - Point to exact sections that need attention
 - **Performance optimization** - Highlight specific bottlenecks or read from a point to end with `@[file:start]`
@@ -295,7 +296,7 @@ File tagging only sees your current project. External packages and microservices
 **For line range references:**
 
 - **Line range**: `@[file.ts:42:65]` - Lines 42 through 65
-- **From line to end**: `@[file.ts:42]` - From line 42 to end of file  
+- **From line to end**: `@[file.ts:42]` - From line 42 to end of file
 - **Common mistakes**: Using dashes (`42-65`) or spaces (`42 : 65`) instead of colons
 
 ### "Too Many Results"
