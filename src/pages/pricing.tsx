@@ -81,8 +81,8 @@ const PricingPage = (): JSX.Element => {
   return (
     <Layout title="Pricing" description="Simple, transparent pricing for ForgeCode">
       <main>
-        <Section className="py-16 lg:py-24">
-          <div className="text-center mb-16">
+        <Section className="py-8 lg:py-12">
+          <div className="text-center mb-8">
             <Heading as="h1" className="text-3xl sm:text-display-medium lg:text-display-large mb-6 whitespace-nowrap">
               Simple Pricing
             </Heading>
@@ -91,11 +91,11 @@ const PricingPage = (): JSX.Element => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-3 max-w-4xl lg:max-w-none mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-3 max-w-4xl lg:max-w-none mx-auto items-stretch">
             {tiers.map((tier, index) => (
               <div
                 key={tier.name}
-                className={`relative border-dashed border-1 p-6 lg:p-4 ${
+                className={`relative border-dashed border-1 p-6 lg:p-4 flex flex-col h-full ${
                   tier.popular
                     ? "border-blue-500 bg-gradient-to-b from-blue-50 to-white transform scale-105"
                     : tier.special
@@ -153,7 +153,7 @@ const PricingPage = (): JSX.Element => {
                   </div>
                 </div>
 
-                <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
+                <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 flex-grow pl-3">
                   {tier.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-2 sm:gap-3">
                       <Check size={14} className="text-green-500 flex-shrink-0 mt-1 sm:w-4 sm:h-4" />
@@ -162,13 +162,15 @@ const PricingPage = (): JSX.Element => {
                   ))}
                 </ul>
 
-                <div className="space-y-2 sm:space-y-3 mt-auto">
+                <div className="mt-auto">
+                  {tier.note && (
+                    <p className="text-xs sm:text-xs text-gray-500 text-center italic leading-tight mb-3">{tier.note}</p>
+                  )}
                   <LinkButton
                     title={tier.cta}
                     theme={tier.popular || tier.special ? Theme.Dark : Theme.Light}
                     width="full"
                   />
-                  <p className="text-xs sm:text-xs text-gray-500 text-center italic leading-tight">{tier.note}</p>
                 </div>
               </div>
             ))}
