@@ -7,13 +7,11 @@ sidebar_label: Overview
 ---
 
 import {Rocket, Brain, Wrench, Shield, Link, Package, Zap, Target} from "lucide-react"
-import CustomLink from "@site/src/components/shared/CustomLink"
-import { themeColors } from "@site/src/theme/colors"
+import {themeColors} from "../src/theme/colors"
 
 # Forge Code overview
 
-Forge Code is an AI software engineering agent that runs in your terminal. It understands your codebase and helps you
-write code using natural language instructions.
+Forge Code is an AI software engineering agent that runs in your terminal. It understands your codebase and helps you write code using natural language instructions.
 
 ## Basic usage
 
@@ -26,13 +24,7 @@ npx forgecode@latest
 
 For detailed installation instructions, see [Setup Forge](/docs/installation).
 
-<div className="text-center my-8 px-4">
-  <img
-    src="/docs/forge_image.png"
-    alt="Forge Code in action"
-    className="w-full max-w-[700px] h-auto rounded-xl shadow-2xl mx-auto block"
-  />
-</div>
+![img](/docs/forge_start.png)
 
 You can interact with Forge directly from the interactive REPL session.
 
@@ -63,7 +55,7 @@ Switch between specialized AI agents:
 
 ### <Link size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **AI Provider Integration**
 
-Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see <CustomLink href="/docs/custom-providers">Different providers</CustomLink>.
+Forge supports major AI providers. Use your existing API keys and credits. For configuration details, see [Different providers](/docs/custom-providers).
 
 ## Next Steps
 
@@ -72,19 +64,19 @@ import NextSteps from "../src/components/NextSteps"
 <NextSteps
   items={[
     {
-      logo: <Package size={24} style={{color: themeColors.install}} />,
+      logo: <Package size={24} style={{color: themeColors.install, marginRight: 6}} />,
       title: "Install Forge",
       subtitle: "Set up Forge on your system with npm, Homebrew, or direct download.",
       link: "./installation",
     },
     {
-      logo: <Zap size={24} style={{color: themeColors.tutorial}} />,
+      logo: <Zap size={24} style={{color: themeColors.tutorial, marginRight: 6}} />,
       title: "Tutorial",
       subtitle: "Complete your first task with Forge in under 10 minutes.",
       link: "./quickstart",
     },
     {
-      logo: <Target size={24} style={{color: themeColors.commands}} />,
+      logo: <Target size={24} style={{color: themeColors.commands, marginRight: 6}} />,
       title: "Commands",
       subtitle: "Learn the essential commands for productive development.",
       link: "./commands",
