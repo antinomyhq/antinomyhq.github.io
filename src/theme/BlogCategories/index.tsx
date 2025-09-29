@@ -1,4 +1,3 @@
-import {common_styles} from "@site/src/constants/styles"
 import type {Props} from "@theme/BlogListPage"
 import clsx from "clsx"
 import React, {useMemo} from "react"
@@ -27,7 +26,7 @@ export function BlogCategories({items, onCategoryClick, activeCategory}: BlogCat
   }, [items])
 
   return (
-    <div className="mb-4 mt-4 md:mb-5 flex items-center space-x-4 border-b border-solid border-transparent border-b-[#dbdbdb] dark:border-b-[#4b4b4b]">
+    <div className="mb-4 md:mb-5 flex items-center space-x-4 border-b border-gray-200">
       {Object.entries(categories).map(([name, count]) => (
         <div
           aria-role="button"
@@ -36,11 +35,9 @@ export function BlogCategories({items, onCategoryClick, activeCategory}: BlogCat
           onClick={() => onCategoryClick(name === activeCategory ? "All" : name)}
           className={clsx(
             "text-content-small md:text-title-tiny cursor-pointer appearance-none border-none bg-transparent px-1",
-            name === "All" && activeCategory === "All"
-              ? `!font-medium text-[22px] ${common_styles.theme_text} border-b-solid border-b-[1px] border-tailCall-lightMode---primary-600 dark:border-tailCall-darkMode---primary-400`
-              : activeCategory === name
-                ? "!font-medium text-black border-b-solid border-b-2 border-black"
-                : "!font-normal text-tailCall-dark-200 hover:text-gray-700",
+            activeCategory === name
+              ? "!font-medium text-black border-b-solid border-b-2 border-black"
+              : "!font-normal text-tailCall-dark-200 hover:text-gray-700",
           )}
         >
           {name}
