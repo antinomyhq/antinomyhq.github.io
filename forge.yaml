@@ -1,6 +1,4 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/antinomyhq/forge/refs/heads/main/forge.schema.json
-variables:
-  operating_agent: bob
 model: openai/gpt-5
 custom_rules: |-
   - you should never try to run the application as its already running on 3000 in watch mode
