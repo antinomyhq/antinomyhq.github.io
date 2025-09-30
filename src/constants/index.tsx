@@ -84,7 +84,7 @@ export const partnerImages: PartnerImage[] = [
 
 const Highlight = ({text}: {text: string}) => (
   <>
-    <span className="text-content-tiny font-bold sm:text-title-tiny lg:text-title-small bg-tailCall-yellow rounded-[4px] sm:rounded-md px-SPACE_01">
+    <span className="text-content-tiny font-bold sm:text-title-tiny lg:text-title-small bg-tailCall-black rounded-[4px] sm:rounded-md px-SPACE_01 text-white">
       {text}
     </span>
   </>

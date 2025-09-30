@@ -7,7 +7,7 @@ export default function BlogPostItemCategory(): JSX.Element {
   const {category} = frontMatter as unknown as BlogPostFrontMatter & {category: string}
 
   return category ? (
-    <div className="bg-tailCall-yellow/40 border border-tailCall-yellow border-solid text-black text-[12px] font-medium p-1 rounded-[4px] inline-block">
+    <div className="bg-tailCall-black/40 border border-tailCall-black border-solid text-white text-[12px] font-medium p-1 rounded-[4px] inline-block">
       {category.toUpperCase()}
     </div>
   ) : (

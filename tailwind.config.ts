@@ -40,7 +40,7 @@ module.exports = {
             600: "#121212",
             700: "#000000",
           },
-          yellow: "#FDEA2E",
+          black: "#181818",
           white: "#f5f3eb",
         },
       },

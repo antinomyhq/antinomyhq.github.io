@@ -6,8 +6,8 @@ import {ArrowLeft} from "lucide-react"
 
 function NavigatorIcon({isNext}: {isNext: boolean}): JSX.Element {
   return (
-    <div className="w-10 h-10 p-2 bg-tailCall-yellow flex justify-center items-center rounded-full">
-      {isNext ? <ArrowRight size={24} color="black" /> : <ArrowLeft size={24} color="black" />}
+    <div className="w-10 h-10 p-2 bg-tailCall-black flex justify-center items-center rounded-full">
+      {isNext ? <ArrowRight size={24} color="white" /> : <ArrowLeft size={24} color="white" />}
     </div>
   )
 }
@@ -19,7 +19,7 @@ export default function PaginatorNavLink(props: Props): JSX.Element {
       {!isNext && <NavigatorIcon isNext={isNext!} />}
       <div className="hidden md:block">
         {subLabel && <div className="text-tailCall-dark-100 text-[12px] font-medium">{subLabel}</div>}
-        <div className="pagination-nav__label text-black text-content-small font-medium">{title}</div>
+        <div className="pagination-nav__label text-tailCall-dark-700 text-content-small font-medium">{title}</div>
       </div>
       {isNext && <NavigatorIcon isNext={isNext} />}
     </Link>

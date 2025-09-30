@@ -209,7 +209,7 @@ function SearchPageContent(): JSX.Element {
     }
 
     const sanitizeValue = (value: string) =>
-      value.replace(/algolia-docsearch-suggestion--highlight/g, "font-medium text-tailCall-dark-700 bg-tailCall-yellow")
+      value.replace(/algolia-docsearch-suggestion--highlight/g, "font-medium text-white bg-tailCall-black")
 
     const items = hits.map(
       ({
@@ -364,7 +364,7 @@ function SearchPageContent(): JSX.Element {
         {Object.values(resultsCategory).map((category) => {
           return (
             <div
-              className={`flex justify-between items-center rounded-md p-1 pl-3 gap-2 sm:gap-0 sm:px-3 sm:py-2 sm:w-[180px] ${selectedCategory === category ? "border border-solid border-tailCall-border-dark-500 sm:bg-tailCall-yellow sm:border-none" : ""}`}
+              className={`flex justify-between items-center rounded-md p-1 pl-3 gap-2 sm:gap-0 sm:px-3 sm:py-2 sm:w-[180px] ${selectedCategory === category ? "border border-solid border-tailCall-border-dark-500 sm:bg-tailCall-black sm:border-none sm:text-white" : ""}`}
               onClick={() => handleCategoryClick(category)}
             >
               <span
@@ -373,7 +373,7 @@ function SearchPageContent(): JSX.Element {
                 {category}
               </span>
               <span
-                className={`flex justify-center items-center py-[2px] px-[6px] md:py-0 !font-medium text-content-tiny sm:text-content-small ${selectedCategory === category ? "text-tailCall-dark-700 bg-tailCall-yellow sm:bg-transparent rounded-md" : "text-tailCall-dark-100 rounded-[6px] bg-tailCall-light-200"}`}
+                className={`flex justify-center items-center py-[2px] px-[6px] md:py-0 !font-medium text-content-tiny sm:text-content-small ${selectedCategory === category ? "text-white bg-tailCall-black sm:bg-transparent rounded-md" : "text-tailCall-dark-100 rounded-[6px] bg-tailCall-light-200"}`}
               >
                 {categoryCount[category as keyof typeof categoryCount] || 0}
               </span>

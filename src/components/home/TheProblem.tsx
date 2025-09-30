@@ -16,7 +16,7 @@ const LegacyGateway = (): JSX.Element => {
             className="text-title-large sm:text-display-tiny lg:text-display-small text-tailCall-dark-500 min-w-fit"
           >
             REST APIs are <br />
-            <span className="bg-tailCall-yellow px-SPACE_02 rounded-md sm:rounded-2xl">not composable</span> <br />
+            <span className="bg-tailCall-black px-SPACE_02 rounded-md sm:rounded-2xl text-white">not composable</span> <br />
           </Heading>
 
           <p className="text-content-tiny font-normal sm:text-content-small lg:text-content-medium text-tailCall-dark-500">

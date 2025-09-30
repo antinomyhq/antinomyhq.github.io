@@ -15,7 +15,7 @@ const WhyChooseForge = (): JSX.Element => {
           className="text-title-large sm:text-display-tiny lg:text-display-medium flex flex-col items-center md:flex-row lg:mb-12"
         >
           <span>How Developers Use</span>
-          <span className="bg-tailCall-yellow rounded-lg text-black px-SPACE_01 ml-SPACE_02">Forge</span>
+          <span className="bg-tailCall-black rounded-lg text-white px-SPACE_01 ml-SPACE_02">Forge</span>
         </Heading>
       </div>
 
@@ -33,8 +33,8 @@ const WhyChooseForge = (): JSX.Element => {
               onClick={() => setSelectedUseCase(useCase.id)}
               className={`group px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
                 selectedUseCase === useCase.id
-                  ? "bg-tailCall-yellow text-black shadow-lg shadow-yellow-500/25"
-                  : "bg-tailCall-dark-500 text-tailCall-white hover:bg-tailCall-dark-400 border border-tailCall-dark-300 hover:border-tailCall-yellow/50"
+                  ? "bg-tailCall-black text-white shadow-lg shadow-gray-500/25"
+                  : "bg-tailCall-dark-500 text-tailCall-white hover:bg-tailCall-dark-400 border border-tailCall-dark-300 hover:border-tailCall-black/50"
               }`}
             >
               <span className="flex items-center gap-2">{useCase.title}</span>
@@ -48,8 +48,8 @@ const WhyChooseForge = (): JSX.Element => {
               onClick={() => setSelectedUseCase(useCase.id)}
               className={`group px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
                 selectedUseCase === useCase.id
-                  ? "bg-tailCall-yellow text-black shadow-lg shadow-yellow-500/25"
-                  : "bg-tailCall-dark-500 text-tailCall-white hover:bg-tailCall-dark-400 border border-tailCall-dark-300 hover:border-tailCall-yellow/50"
+                  ? "bg-tailCall-black text-white shadow-lg shadow-gray-500/25"
+                  : "bg-tailCall-dark-500 text-tailCall-white hover:bg-tailCall-dark-400 border border-tailCall-dark-300 hover:border-tailCall-black/50"
               }`}
             >
               <span className="flex items-center gap-2">{useCase.title}</span>
@@ -79,7 +79,7 @@ const WhyChooseForge = (): JSX.Element => {
                     <div className="grid gap-4">
                       {useCase.examples.map((example, index) => (
                         <div key={index} className="group hover:scale-[1.01] transition-transform duration-200">
-                          <div className="bg-gradient-to-r from-tailCall-dark-700 via-tailCall-dark-600 to-tailCall-dark-700 rounded-xl p-5 border border-tailCall-dark-400 hover:border-tailCall-yellow/30 transition-all duration-300">
+                          <div className="bg-gradient-to-r from-tailCall-dark-700 via-tailCall-dark-600 to-tailCall-dark-700 rounded-xl p-5 border border-tailCall-dark-400 hover:border-tailCall-black/30 transition-all duration-300">
                             <p className="text-tailCall-white text-base leading-relaxed font-medium">"{example}"</p>
                           </div>
                         </div>

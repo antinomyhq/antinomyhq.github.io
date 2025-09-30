@@ -92,7 +92,7 @@ const prismTheme = {
     {
       types: ["function"],
       style: {
-        color: "#FDEA2F",
+        color: "#FFFFFF",
       },
     },
     {

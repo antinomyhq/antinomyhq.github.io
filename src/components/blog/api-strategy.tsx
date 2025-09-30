@@ -87,10 +87,10 @@ const APIStrategyQuiz: React.FC = () => {
       }
     } else if (score >= 5) {
       return {
-        icon: <Meh className="w-24 h-24 text-yellow-500" />,
+        icon: <Meh className="w-24 h-24 text-gray-500" />,
         title: "Good Start",
         message: "Your API strategy is on the right track but has room for improvement.",
-        gradient: "from-yellow-400 to-orange-500",
+        gradient: "from-gray-400 to-gray-600",
       }
     } else {
       return {
@@ -116,7 +116,7 @@ const APIStrategyQuiz: React.FC = () => {
 
   return (
     <div
-      className={`max-w-2xl mx-auto p-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg shadow-lg text-tailCall-white ${animation} min-h-[500px] flex flex-col justify-center`}
+      className={`max-w-2xl mx-auto p-8 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg shadow-lg text-tailCall-white ${animation} min-h-[500px] flex flex-col justify-center`}
     >
       {showResult ? (
         <div className="text-center">
