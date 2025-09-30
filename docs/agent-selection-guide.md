@@ -9,7 +9,7 @@ Selecting the right agent for your workflow is simple:
 3. **Navigate with keyboard** - use up/down arrow keys to select
 4. **Press Enter** to confirm and start working with your chosen agent
 
-![Forge agent selection process showing a user typing /agent and selecting from a list of available agents](../static/docs/change_model.gif)
+![Forge agent selection process showing a user typing /agent and selecting from a list of available agents](../static/docs/switching-agents.gif)
 
 The interface displays all configured agents, including both default Forge agents and any custom agents you've added.
 
