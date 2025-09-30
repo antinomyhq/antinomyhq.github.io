@@ -1,0 +1,186 @@
+---
+title: fd and fzf Installation
+sidebar_position: 5
+description: "Platform-specific installation instructions for fd and fzf dependencies required by ZSH Support."
+sidebar_label: fd and fzf Installation
+---
+
+# fd and fzf Installation
+
+This guide provides platform-specific installation instructions for `fd` and `fzf`, which are required dependencies for [ZSH Support](/docs/zsh-support) file tagging functionality.
+
+:::info Requirements
+Both `fd` (fast file finder) and `fzf` (fuzzy finder) are required for the `@filename<Tab>` file tagging feature in ZSH Support. Without these tools, pressing Tab after `@` will not trigger the fuzzy finder, and you'll need to type full file paths manually.
+:::
+
+## Install fd (Fast File Finder)
+
+`fd` is a fast and user-friendly alternative to the traditional `find` command, used by ZSH Support to quickly locate files in your project.
+
+### macOS
+```bash
+brew install fd
+```
+
+### Ubuntu/Debian
+```bash
+sudo apt install fd-find
+```
+
+:::tip Ubuntu/Debian Note
+On Ubuntu/Debian systems, the binary is installed as `fdfind` instead of `fd` due to a naming conflict. The ZSH integration handles this automatically.
+:::
+
+### Arch Linux
+```bash
+sudo pacman -S fd
+```
+
+### Other Linux Distributions
+
+**Using cargo (if Rust is installed):**
+```bash
+cargo install fd-find
+```
+
+**Manual installation from GitHub releases:**
+1. Visit [fd releases page](https://github.com/sharkdp/fd/releases)
+2. Download the appropriate binary for your system
+3. Extract and place in your PATH
+
+### Verify fd Installation
+```bash
+fd --version
+```
+
+## Install fzf (Fuzzy Finder)
+
+`fzf` is a command-line fuzzy finder that provides the interactive file selection interface in ZSH Support.
+
+### macOS
+```bash
+brew install fzf
+```
+
+### Ubuntu/Debian
+```bash
+sudo apt install fzf
+```
+
+### Arch Linux
+```bash
+sudo pacman -S fzf
+```
+
+### Other Linux Distributions
+
+**Manual installation using git:**
+```bash
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+```
+
+**Using package managers:**
+- **CentOS/RHEL/Fedora**: `sudo dnf install fzf` or `sudo yum install fzf`
+- **openSUSE**: `sudo zypper install fzf`
+
+### Verify fzf Installation
+```bash
+fzf --version
+```
+
+## Troubleshooting
+
+### Command Not Found After Installation
+
+If `fd` or `fzf` commands are not found after installation:
+
+1. **Check if they're in your PATH:**
+   ```bash
+   which fd fzf
+   ```
+
+2. **Restart your terminal** or reload your shell configuration:
+   ```bash
+   source ~/.zshrc
+   ```
+
+3. **For Ubuntu/Debian fd issues:** The binary might be installed as `fdfind`. Create a symlink:
+   ```bash
+   ln -s $(which fdfind) ~/.local/bin/fd
+   ```
+
+### Permission Issues
+
+If you encounter permission errors during installation:
+
+- **Avoid using `sudo` with `cargo install`** - this can create permission issues
+- **Use a package manager instead** when available
+- **For manual installations**, ensure the binary is placed in a directory you own (like `~/.local/bin`)
+
+### ZSH Support Still Not Working
+
+After installing both tools, if file tagging still doesn't work in ZSH Support:
+
+1. **Verify both tools are installed:**
+   ```bash
+   fd --version && fzf --version
+   ```
+
+2. **Reload ZSH configuration:**
+   ```bash
+   source ~/.zshrc
+   ```
+
+3. **Test the integration:**
+   ```bash
+   : test file tagging @package.json<Tab>
+   ```
+
+4. **Check the [ZSH Support troubleshooting section](/docs/zsh-support#troubleshooting)** for additional help.
+
+## Platform-Specific Notes
+
+### macOS
+- Homebrew installation is the most reliable method
+- Both tools integrate seamlessly with the system PATH
+
+### Linux
+- Most modern distributions include both tools in their repositories
+- Ubuntu/Debian users should be aware of the `fdfind` vs `fd` naming
+
+### Windows (WSL)
+- Use the Linux installation methods within WSL
+- Ensure your WSL distribution is up to date before installing
+
+## Alternative Installation Methods
+
+If the standard installation methods don't work for your system:
+
+### Using Nix
+```bash
+nix-env -i fd fzf
+```
+
+### Using Snap (Ubuntu)
+```bash
+sudo snap install fd fzf
+```
+
+### Building from Source
+
+Both tools are written in Rust and can be built from source:
+
+**fd:**
+```bash
+git clone https://github.com/sharkdp/fd.git
+cd fd
+cargo build --release
+```
+
+**fzf:**
+```bash
+git clone https://github.com/junegunn/fzf.git
+cd fzf
+make install
+```

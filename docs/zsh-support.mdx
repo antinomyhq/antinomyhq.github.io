@@ -9,121 +9,65 @@ import Steps, {Step} from "../components/Steps"
 
 # ZSH Support
 
-Forge's ZSH integration brings AI assistance directly to your terminal, maintaining context across commands and shell operations. Execute tasks, run shell commands, and continue conversations without losing your workflow state.
+Forge's ZSH integration brings AI assistance directly to your terminal using the `:` sentinel character, letting you stay in your native shell environment with all your aliases, functions, and custom tooling intact. No more switching to interactive mode and losing access to years of shell customization.
 
-:::tip Seamless Workflow Integration
-See how ZSH Support maintains context across AI tasks and shell commands:
+:::tip Why the `:` Sentinel Character Matters
+**The Problem**: Forge's interactive mode creates a separate environment where your ZSH aliases, custom functions, and carefully crafted shell setup don't work.
+
+**The Solution**: Use `:` to send prompts to Forge while staying in your native ZSH session:
 
 ```bash
-# Start a task with Forge
-: create a user authentication service in TypeScript
+# Your zsh plugins work normally
+gst
 
-# Run shell commands as part of your workflow
-npm install bcrypt @types/bcrypt jsonwebtoken @types/jsonwebtoken
+# But you can also get AI help instantly
+: analyze the memory usage patterns in @src/server.rs
 
-# Continue the conversation with full context
-: now add password hashing and JWT token generation to the auth service
+# Run your custom tools as part of your investigation
+ps aux | grep server
+htop -p $(pgrep server)
+
+# Continue with full context about the analysis
+: now optimize the memory allocations you identified in the server struct
 ```
 
-The agent remembers the authentication service task while you install dependencies, creating a seamless development experience.
+**The Result**: Keep your shell environment while getting AI assistance, maintaining context across both AI tasks and your custom shell operations.
 :::
 
-## Features
+## Capabilities
 
-- **Direct prompt integration**: Send prompts to Forge agents directly from ZSH
-- **Agent targeting**: Specify which agent to use for each prompt
-- **Fuzzy file finding**: Tag files using `@` with tab completion and fuzzy search
-- **Syntax highlighting**: Beautiful highlighting optimized for dark terminals
-- **Session continuity**: Maintains agent context across commands
+- **Native Shell Integration**: Use the `:` sentinel character to access Forge AI while preserving all your ZSH aliases, functions, PATH modifications, and custom tooling - no separate environment
+- **Intelligent Context Management**: Maintain conversation context across AI prompts and shell commands, with `:reset` control and agent targeting via `:agent`
+- **Enhanced File Operations**: Fuzzy file finding with `@filename<Tab>` using fd/fzf, plus syntax highlighting optimized for dark terminals
 
 ## Installation
 
 <Steps>
   <Step title="Install Forge">
-    First, install Forge globally or ensure it's available via npx:
-
-    ### Method 1: Global Installation
-    ```bash
-    npm install -g forgecode@latest
-    ```
-
-    ### Method 2: Use npx (Recommended)
-    If you prefer not to install globally, you can use npx. In this case, you'll set `FORGEBIN` to `npx forgecode` in step 3.
-  </Step>
-
-  <Step title="Install Dependencies">
-    ZSH Support requires `fd` and `fzf` for optimal functionality:
-
-    ### Install fd (Fast File Finder)
+    First, [install and set up Forge](/docs/installation) following the main installation guide.
     
-    **macOS:**
-    ```bash
-    brew install fd
-    ```
-
-    **Ubuntu/Debian:**
-    ```bash
-    sudo apt install fd-find
-    ```
-
-    **Arch Linux:**
-    ```bash
-    sudo pacman -S fd
-    ```
-
-    **Other Linux distributions:**
-    ```bash
-    # Using cargo (if Rust is installed)
-    cargo install fd-find
-
-    # Or download from GitHub releases
-    # https://github.com/sharkdp/fd/releases
-    ```
-
-    ### Install fzf (Fuzzy Finder)
-
-    **macOS:**
-    ```bash
-    brew install fzf
-    ```
-
-    **Ubuntu/Debian:**
-    ```bash
-    sudo apt install fzf
-    ```
-
-    **Arch Linux:**
-    ```bash
-    sudo pacman -S fzf
-    ```
-
-    **Other Linux distributions:**
-    ```bash
-    # Using git (manual installation)
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
-    ```
+    You can use either installation method (npx or global), but note which one you choose as you'll need to set `$FORGEBIN` accordingly in Step 2.
   </Step>
 
   <Step title="Configure ZSH Integration">
     Add the Forge ZSH prompt integration to your shell configuration:
 
-    ### For Global Installation
-    Add this line to your `~/.zshrc`:
+    **For Global Installation:**
+    Add these lines to your `~/.zshrc`:
     ```bash
     # Set FORGEBIN for global installation
     export FORGEBIN=forge
-    
+
     # Enable Forge ZSH integration
     source <($FORGEBIN generate-zsh-prompt)
     ```
 
-    ### For npx Usage
-    Add this line to your `~/.zshrc`:
+    **For npx Usage:**
+    Add these lines to your `~/.zshrc`:
     ```bash
     # Set FORGEBIN for npx usage
     export FORGEBIN="npx forgecode"
-    
+
     # Enable Forge ZSH integration
     source <($FORGEBIN generate-zsh-prompt)
     ```
@@ -132,6 +76,14 @@ The agent remembers the authentication service task while you install dependenci
     ```bash
     source ~/.zshrc
     ```
+
+  </Step>
+
+  <Step title="Install File Finding Dependencies">
+    ZSH Support requires `fd` and `fzf` for file tagging functionality. **Without these dependencies, the `@filename<Tab>` fuzzy file finding will not work.**
+
+    See our [fd and fzf Installation Guide](/docs/fd-fzf-installation) for platform-specific installation instructions.
+
   </Step>
 
   <Step title="Verify Installation">
@@ -142,8 +94,29 @@ The agent remembers the authentication service task while you install dependenci
     ```
 
     You should see syntax highlighting and the command should execute successfully.
+
   </Step>
 </Steps>
+
+## Quick Start
+
+After installation, test ZSH Support with these commands:
+
+```bash
+# Basic prompt - should show syntax highlighting
+: hello, can you help me debug this shell script?
+
+# Agent-specific prompt (if you have sage configured)
+:sage what's the difference between ps aux and ps -ef?
+
+# Conversation reset
+:reset
+
+# File tagging (requires fd/fzf)
+: explain the config in @package.json<Tab>
+```
+
+If you see syntax highlighting and the commands execute, you're ready to go!
 
 ## Usage
 
@@ -169,6 +142,10 @@ Target specific agents by including the agent name after the colon:
 :architect design a microservices structure
 ```
 
+:::info Agent Names
+These are example agent names. Use `/agents` in your Forge session to see your configured agents, or check your agent configuration files to see which agents you have available.
+:::
+
 This sends the prompt directly to the specified agent, making it easy to use specialized agents for different tasks.
 
 ### File Tagging with Fuzzy Finding
@@ -182,6 +159,7 @@ Tag files in your prompts using `@` followed by the filename and pressing Tab:
 ```
 
 When you press Tab after typing `@` and partial filename:
+
 - A fuzzy finder window opens using `fzf`
 - Type to filter files by name
 - Use arrow keys to navigate
@@ -192,44 +170,69 @@ When you press Tab after typing `@` and partial filename:
 The fuzzy finder searches through your project files using `fd`, providing fast and intuitive file selection. It respects your `.gitignore` and other ignore files automatically.
 :::
 
-### Combining Features
+## Session Continuity
 
-You can combine agent targeting and file tagging in a single command:
+ZSH Support maintains intelligent conversation context across commands while giving you control over when to preserve or reset that context:
+
+### Context Preservation
+
+The agent remembers previous conversations within the same terminal session:
 
 ```bash
-:architect review the database schema in @models/user.js<Tab> and suggest improvements
-:sage optimize the algorithm in @src/sorting.py<Tab> for better performance
+# Start analyzing a performance issue
+: the database queries are running slow, can you help me investigate?
+
+# Run some shell commands for investigation
+ps aux | grep postgres
+htop -p $(pgrep postgres)
+
+# Continue the conversation - agent remembers the database context
+: based on what I found, the CPU usage is high, what should I check next?
 ```
 
-## Syntax Highlighting
+### Context Reset
 
-The ZSH integration includes intelligent syntax highlighting optimized for dark terminals:
+Use `:reset` when switching to completely different tasks to avoid context interference:
 
-- **Prompt indicators** (`:` and `:agent`) are highlighted in distinct colors
-- **Agent names** are color-coded for easy identification
-- **File tags** (`@filename`) are highlighted when detected
-- **Commands** are distinguished from regular text
-- **Error states** show different colors for invalid syntax
+```bash
+# Working on database optimization
+: analyze the slow queries in @database/analytics.sql
+
+# Switch focus to a completely different task
+:reset
+
+# Now start fresh on a new topic - no database context carried over
+: help me set up CI/CD pipeline for this project
+```
+
+The `:reset` command clears the conversation history, ensuring previous context doesn't influence new tasks. This gives you the best of both worlds: context when you need it, clean slate when you don't.
 
 ## Troubleshooting
 
 ### Command Not Found
 
 If `: command not found` appears:
+
 1. Ensure you've added the source line to `~/.zshrc`
 2. Reload your shell: `source ~/.zshrc`
 3. Verify `FORGEBIN` is set correctly: `echo $FORGEBIN`
 
 ### Fuzzy Finder Issues
 
-If file tagging doesn't work:
+If file tagging doesn't work (`@filename<Tab>` does nothing):
+
 1. Verify `fd` is installed: `fd --version`
 2. Verify `fzf` is installed: `fzf --version`
 3. Check that both are in your PATH: `which fd fzf`
 
+:::warning File Tagging Requirements
+File tagging with `@filename<Tab>` requires both `fd` and `fzf`. Without these tools, pressing Tab after `@` will not trigger the fuzzy finder, and you'll need to type full file paths manually. See our [fd and fzf Installation Guide](/docs/fd-fzf-installation) for installation instructions.
+:::
+
 ### Syntax Highlighting Problems
 
 If highlighting doesn't appear:
+
 1. Ensure you're using ZSH (not bash): `echo $SHELL`
 2. Check that your terminal supports colors: `echo $TERM`
 3. Try resetting highlighting: `source ~/.zshrc`
@@ -237,9 +240,10 @@ If highlighting doesn't appear:
 ### Agent Not Found
 
 If you get "agent not found" errors:
-1. Verify the agent exists in your Forge configuration
-2. Check agent name spelling (case-sensitive)
-3. Try using the default agent first: `: test prompt`
+
+1. Check your available agents: `/agents` (run this in a Forge session)
+2. Verify agent name spelling (case-sensitive)
+3. Test with a diagnostic command: `: list my current working directory and git status`
 
 ## Performance Tips
 
@@ -249,5 +253,5 @@ If you get "agent not found" errors:
 - **History integration**: Previous prompts are saved to ZSH history for easy recall
 
 :::tip Pro Tip
-Use the ZSH integration for quick, one-off requests while keeping longer coding sessions in the main Forge interface. This gives you the best of both worlds - quick access and full-featured development support.
+Use ZSH integration with the `:` sentinel for quick requests and shell-heavy workflows where you need your aliases and custom tooling. Keep the interactive mode for longer coding sessions that don't require your shell customizations. This gives you the best of both worlds - your native shell environment for system work and full Forge features for development.
 :::
