@@ -54,18 +54,14 @@ These features are optional but provide a significantly better experience. Insta
   <Step title="Install Optional File Finding Tools (Recommended)">
     For fuzzy file finding and agent selection, install fd and fzf:
 
-    ### macOS
     ```bash
+    # macOS
     brew install fd fzf
-    ```
 
-    ### Ubuntu/Debian
-    ```bash
+    # Ubuntu/Debian
     sudo apt install fd-find fzf
-    ```
 
-    ### Arch Linux
-    ```bash
+    # Arch Linux
     sudo pacman -S fd fzf
     ```
 
@@ -80,20 +76,20 @@ These features are optional but provide a significantly better experience. Insta
   <Step title="Install Forge">
     [Install and set up Forge](/docs/installation) following the main installation guide.
     
-    Choose either global installation or npx usage. Remember your choice for the next step.
+    Choose either global installation via `npm` or `npx` usage. Remember your choice for the next step.
   </Step>
   
   <Step title="Configure ZSH Integration">
     Add Forge ZSH integration to your shell configuration:
 
-    **If you installed Forge globally:**
+    If you installed Forge globally:
     ```bash
     # Add to ~/.zshrc
     export FORGEBIN=forge
     source <($FORGEBIN generate-zsh-prompt)
     ```
 
-    **If you're using npx:**
+    If you're using npx:
     ```bash
     # Add to ~/.zshrc
     export FORGEBIN="npx forgecode"
@@ -110,7 +106,7 @@ These features are optional but provide a significantly better experience. Insta
   <Step title="Verify Installation">
     Test that everything works:
 
-    ```bash
+    ```shell
     # Basic prompt - should show syntax highlighting
     : hello world
 
@@ -197,25 +193,19 @@ Target specific agents by including the agent name after the colon:
 
 Press Tab after `:` for fuzzy agent selection _(requires fd/fzf)_.
 
-<div className="rounded-md border border-blue-300 bg-blue-50 px-4 py-2 mt-3 text-blue-900 text-sm">
-  <strong>Agent Names</strong>
-  <ul className="mt-2 mb-0">
-    <li>
-      <strong>forge</strong> - Main agent for coding, refactoring, debugging, and general development tasks
-    </li>
-    <li>
-      <strong>muse</strong> - Planning and strategy for complex features
-    </li>
-    <li>
-      <strong>sage</strong> - Questions and analysis without making code modifications
-    </li>
-  </ul>
-  Run <code>/agents</code> in a Forge session to see your configured agents.
-</div>
+:::tip Agent Names
+
+- **forge** - Main agent for coding, refactoring, debugging, and general development tasks
+- **muse** - Planning and strategy for complex features
+- **sage** - Questions and analysis without making code modifications
+
+Run `/agents` in a Forge session to see your configured agents.
+
+:::
 
 ### Context Management
 
-ZSH Support maintains conversation context across prompts. Use `:reset` to clear context when switching to unrelated tasks:
+ZSH Support maintains conversation context across prompts. Use `:reset` to clear context when switching to a new task:
 
 ```bash
 # Working on database optimization
@@ -259,18 +249,18 @@ The fuzzy finder searches through your project files and respects your `.gitigno
 
 ## Troubleshooting
 
-### Command Not Found
+#### Command Not Found
 
 If `: command not found` appears:
 
 1. Ensure you added the source line to `~/.zshrc`
-2. Reload your shell: `source ~/.zshrc`
+2. Reload your shell: `source ~/.zshrc` or `exec zsh`
 3. Verify `FORGEBIN` is set correctly: `echo $FORGEBIN`
 4. Check the path matches your installation method (global vs npx)
 
-### File Tagging Doesn't Work
+#### File Tagging Doesn't Work
 
-If `@filename<Tab>` does nothing, fd and fzf are not installed. See Step 1 or our [fd and fzf Installation Guide](/docs/fd-fzf-installation).
+If `@filename<Tab>` does nothing, fd and fzf are not installed. See [Step 1](#installation) or our [fd and fzf Installation Guide](/docs/fd-fzf-installation).
 
 You can still use full file paths manually:
 
@@ -278,7 +268,7 @@ You can still use full file paths manually:
 : review the changes in @[src/components/Header.tsx]
 ```
 
-### Syntax Highlighting Problems
+#### Syntax Highlighting Problems
 
 If highlighting doesn't appear:
 
@@ -286,7 +276,7 @@ If highlighting doesn't appear:
 2. Check that your terminal supports colors: `echo $TERM`
 3. Try reloading: `source ~/.zshrc`
 
-### Agent Not Found
+#### No agent has subscribed to the event
 
 If you get "agent not found" errors:
 
