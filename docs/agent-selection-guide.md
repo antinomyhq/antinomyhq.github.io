@@ -1,3 +1,11 @@
+---
+title: Agent Selection Guide - Choose the Right AI Assistant for Your Task
+slug: /agent-selection-guide
+sidebar_position: 3
+description: "Learn how to switch between different AI agents in Forge and choose the right assistant for your specific development tasks"
+sidebar_label: Agent Selection
+---
+
 # Agent Selection Guide: Choose the Right AI Assistant for Your Task
 
 ## How to Switch Agents in Forge
