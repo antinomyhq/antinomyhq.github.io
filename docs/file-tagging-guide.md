@@ -1,6 +1,6 @@
 # File Tagging with @: Enhance AI Context for Faster Developer Workflow
 
-One of the biggest challenges with AI coding assistants is providing the right context. Instead of copy-pasting code or Agent searching for where to start repeatedly, Forge's file tagging system lets you reference any project file with simple `@filename` syntax and tab completion.
+One of the biggest challenges with AI coding assistants is providing the right context. Instead of copy-pasting code or Agent searching for where to start repeatedly, Forge's file tagging system lets you reference any project file with simple `@[filename]` syntax and tab completion. You can even tag specific line ranges within files using `@[filename:startLine:endLine]` to focus on exactly the code that matters.
 
 This guide shows you how to use file tagging effectively - including when it works great and when it doesn't.
 
