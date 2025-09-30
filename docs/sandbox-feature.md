@@ -1,31 +1,34 @@
-# Sandbox - Isolated Development Environments
+# Sandbox - Isolated Agent Workspaces
 
-The Sandbox feature in Forge creates isolated development environments using Git worktrees. This allows you to work on different features, experiments, or bug fixes without affecting your main codebase.
+Sandbox in Forge creates isolated development environments using Git worktrees. This allows agents to work on different tasks, experiments, or features in parallel without interfering with each other or your main codebase.
 
-## Why Not Just Use Branches?
+## Why Sandboxes Matter for Agent Work
 
-**TL;DR**: Branches require context switching. Sandboxes let you work on multiple features simultaneously without losing your place.
+**TL;DR**: Agents work better when they have isolated workspaces. Sandboxes give each agent task its own environment, preventing conflicts and enabling true parallel execution.
 
-Traditional branch workflow:
-
-```bash
-git stash                   # Save current work
-git checkout feature-branch # Switch context
-# Work on feature
-git checkout main # Switch back
-git stash pop     # Restore previous work
-```
-
-Sandbox workflow:
+Traditional single-workspace approach:
 
 ```bash
-forge --sandbox feature-auth # Work on auth feature
-# In another terminal:
-forge --sandbox feature-payments # Work on payments simultaneously
-# Original terminal still has auth work intact
+# Agent 1 is refactoring authentication
+forge "refactor the auth module"
+
+# Agent 2 needs to fix a bug, but has to wait
+# Or worse, both agents modify the same files simultaneously
 ```
 
-With sandboxes, each feature gets its own directory and terminal session. No stashing, no context loss, no "where was I?" moments.
+Sandbox workflow with agents:
+
+```bash
+# Agent 1 works on auth refactoring in isolated sandbox
+forge --sandbox refactor-auth "refactor the auth module"
+
+# Agent 2 fixes bug in separate sandbox (simultaneously)
+forge --sandbox bugfix-payment "fix payment validation bug"
+
+# Both agents work independently, no conflicts
+```
+
+With sandboxes, each agent task gets its own isolated directory. No conflicts, no waiting, no interference between parallel operations.
 
 ## How It Works
 
@@ -35,21 +38,26 @@ your-project/           # Your main repository
 ├── package.json
 └── README.md
 
-../your-sandbox/        # Created by --sandbox your-sandbox
-├── src/               # Same files, different worktree
+../refactor-auth/       # Agent 1's isolated workspace
+├── src/               # Same files, independent changes
+├── package.json
+└── README.md
+
+../bugfix-payment/      # Agent 2's isolated workspace
+├── src/               # Same files, different changes
 ├── package.json
 └── README.md
 ```
 
-The sandbox creates a **Git worktree** - a separate working directory that shares the same `.git` repository but allows different branches and working states.
+Each sandbox creates a **Git worktree** - a separate working directory that shares the same `.git` repository but allows independent changes, branches, and agent operations.
 
 ## Basic Usage
 
-### Creating a New Sandbox
+### Creating a New Sandbox for Agent Work
 
 ```bash
-# Create a sandbox named 'feature-auth'
-forge --sandbox feature-auth
+# Create a sandbox for authentication work
+forge --sandbox feature-auth "implement JWT authentication"
 ```
 
 This command:
@@ -57,15 +65,16 @@ This command:
 1. Checks if you're in a Git repository (required)
 2. Creates a new worktree in `../feature-auth/`
 3. Creates a new branch named `feature-auth` (if it doesn't exist)
-4. Starts Forge in the new sandbox directory
+4. Starts Forge agent in the isolated sandbox directory
+5. Agent works exclusively in this environment
 
-### Using an Existing Sandbox
+### Reusing an Existing Sandbox
 
-If a sandbox already exists, Forge will detect it and reuse it:
+If a sandbox already exists, Forge will detect it and let the agent continue work there:
 
 ```bash
-# Reuses existing sandbox if it exists
-forge --sandbox feature-auth
+# Agent continues work in existing sandbox
+forge --sandbox feature-auth "add refresh token support"
 ```
 
 The system will show:
@@ -75,272 +84,134 @@ Worktree [Reused]
 ../feature-auth/
 ```
 
-## Advanced Usage
+## Agent-Specific Use Cases
 
-### Combining with Directory Changes
+### Parallel Feature Development
 
-You can combine the sandbox feature with the `--directory` option to start in a specific subdirectory of your sandbox:
-
-```bash
-# Create sandbox and change to src/ directory
-forge --sandbox feature-auth --directory src/
-```
-
-This creates the `feature-auth` worktree and then navigates to the `src/` directory within it.
-
-### Working with Existing Branches
-
-If you already have a branch with the same name as your sandbox, Forge will:
-
-1. Create a worktree using the existing branch
-2. Switch to that branch in the new worktree
-3. Preserve any existing work on that branch
+Run multiple agents simultaneously on different features:
 
 ```bash
-# Uses existing 'hotfix-login' branch if it exists
-forge --sandbox hotfix-login
+# Terminal 1: Agent working on authentication
+forge --sandbox feature-auth "implement OAuth2 flow"
+
+# Terminal 2: Agent working on payments
+forge --sandbox feature-payments "integrate Stripe API"
+
+# Terminal 3: Agent working on UI
+forge --sandbox feature-dashboard "redesign user dashboard"
 ```
 
-## Requirements and Edge Cases
+Each agent operates independently without interfering with others.
+
+### Safe Experimentation
+
+Let agents try different approaches without risk:
+
+```bash
+# Agent tries architectural approach A
+forge --sandbox experiment-redux "refactor state management with Redux"
+
+# Agent tries architectural approach B
+forge --sandbox experiment-zustand "refactor state management with Zustand"
+
+# Compare results, keep the better implementation
+```
+
+### Incremental Refactoring
+
+Break large refactoring tasks into isolated sandbox sessions:
+
+```bash
+# Session 1: Agent refactors data layer
+forge --sandbox refactor-data-layer "migrate database queries to Prisma"
+
+# Session 2: Agent refactors API layer
+forge --sandbox refactor-api-layer "convert REST endpoints to GraphQL"
+
+# Session 3: Agent refactors frontend
+forge --sandbox refactor-frontend "update components to use new API"
+```
+
+### Bug Investigation and Fixes
+
+Isolate bug fixes from ongoing feature work:
+
+```bash
+# Main work continues in default workspace
+forge "continue implementing user profiles"
+
+# Bug fix happens in separate sandbox
+forge --sandbox hotfix-login "fix OAuth redirect loop"
+
+# Main work remains untouched, bug fix can be merged independently
+```
+
+## Requirements and Best Practices
 
 ### Requirements
 
-- **Git Repository**: You must be inside a Git repository to use sandboxes
-- **Parent Directory Access**: The sandbox is created in the parent directory of your Git repository root
-- **Unique Names**: Each sandbox name must be unique (directory names cannot conflict)
+- **Git Repository**: Must be inside a Git repository
+- **Parent Directory Access**: Sandboxes are created in parent directory of repo root
+- **Unique Names**: Each sandbox name must be unique
 
-### Common Repository Locations
+## Managing Agent Sandboxes
 
-- **Home directory repo** (`~/my-project/`): Sandbox created at `~/my-sandbox/`
-- **Nested repo** (`~/workspace/my-project/`): Sandbox created at `~/workspace/my-sandbox/`
-- **Monorepo** (`~/company-repo/service-a/`): Sandbox created at `~/company-repo-sandbox/` (based on repo root)
-
-### Limitations
-
-- Sandboxes are created as sibling directories to your main repository
-- You cannot create a sandbox if your repository is at the filesystem root
-- Directory conflicts: If a non-Git directory with the same name exists, the command will fail
-
-## Managing Sandboxes
-
-### Creating and Reusing
+### Viewing Active Sandboxes
 
 ```bash
-# Create new sandbox
-forge --sandbox feature-auth
-
-# Reuse existing sandbox (shows "Worktree [Reused]")
-forge --sandbox feature-auth
-```
-
-### Cleanup (Important!)
-
-Sandboxes persist after you're done with them. Clean up regularly:
-
-```bash
-# Remove the worktree (run from main repository)
-git worktree remove ../feature-auth
-
-# Or delete the directory and prune
-rm -rf ../feature-auth
-git worktree prune
-
-# List all worktrees to see what you have
+# List all active worktrees/sandboxes
 git worktree list
 ```
 
-**Pro tip**: Set a reminder to clean up old sandboxes weekly. They accumulate quickly.
+Shows all sandboxes where agents have been working.
 
-## Error Handling
+### Cleanup After Agent Work
 
-The sandbox feature provides clear error messages for common issues:
-
-### Not in a Git Repository
-
-```
-Error: Current directory is not inside a git repository.
-Worktree creation requires a git repository.
-```
-
-### Directory Conflicts
-
-```
-Error: Directory '../feature-auth' already exists but is not a git worktree.
-Please remove it or choose a different name.
-```
-
-### Repository at Root
-
-```
-Error: Git repository is at filesystem root - cannot create worktree in parent directory.
-```
-
-## Use Cases
-
-### Feature Development
+Sandboxes persist after agent completes work. Clean up regularly:
 
 ```bash
-# Work on user authentication
-forge --sandbox feature-auth
+# Remove completed sandbox (run from main repository)
+git worktree remove ../feature-auth
 
-# Work on payment integration
-forge --sandbox feature-payments
-
-# Fix critical bug
-forge --sandbox hotfix-security
-```
-
-### Experimentation
-
-```bash
-# Try different architectural approaches
-forge --sandbox experiment-microservices
-forge --sandbox experiment-monolith
-
-# Test performance optimizations
-forge --sandbox perf-optimization
-```
-
-### Code Reviews
-
-```bash
-# Review a colleague's feature branch
-forge --sandbox review-pr-123
-```
-
-### Learning and Tutorials
-
-```bash
-# Follow a tutorial without affecting main code
-forge --sandbox learn-graphql
-
-# Practice refactoring
-forge --sandbox practice-cleanup
-```
-
-## Best Practices
-
-### Naming Conventions
-
-- Use descriptive names: `feature-user-auth` instead of `test1`
-- Include context: `bugfix-login-redirect` or `experiment-react-18`
-- Use hyphens for readability: `feature-dark-mode`
-
-### Workflow Integration
-
-1. **Start with a sandbox** for any new work
-2. **Use meaningful names** that describe the work
-3. **Clean up** unused sandboxes regularly
-4. **Push branches** from sandboxes to share with team
-
-## Troubleshooting
-
-### Permission Issues
-
-Ensure you have write access to the parent directory of your Git repository.
-
-### Stale Worktrees
-
-If you manually delete sandbox directories, clean up with:
-
-```bash
+# Or delete directory and prune
+rm -rf ../feature-auth
 git worktree prune
+
+# List remaining sandboxes
+git worktree list
 ```
 
-### Branch Conflicts
+:::tip
 
-If you have local changes that conflict with the target branch:
+Clean up sandboxes after merging changes to keep your workspace organized.
 
-1. Commit or stash changes in your main worktree
-2. Create the sandbox
-3. Resolve any conflicts in the sandbox environment
-
-## Real-World Examples
-
-### Daily Development Workflow
-
-```bash
-# Monday: Start new feature
-forge --sandbox feature-user-profile
-
-# Tuesday: Bug report comes in, need to investigate
-forge --sandbox bugfix-header-layout # Your feature work is preserved
-
-# Wednesday: Back to feature work
-forge --sandbox feature-user-profile # Exactly where you left off
-
-# Thursday: Feature is done, clean up
-git push origin feature-user-profile
-git worktree remove ../feature-user-profile
-```
-
-### Rapid Prototyping
-
-```bash
-# Try approach A
-forge --sandbox experiment-redux
-
-# Try approach B (in parallel)
-forge --sandbox experiment-zustand
-
-# Compare results, keep the better one, delete the other
-git worktree remove ../experiment-redux
-```
+:::
 
 ## When to Use Sandboxes (Decision Tree)
 
 **Use a sandbox when:**
 
-- Working on multiple features simultaneously
-- Experimenting with different approaches
-- Following tutorials or learning new tech
-- Need to quickly switch between unfinished work
-- Reviewing someone else's branch while keeping your work intact
+- Running multiple agents on different tasks simultaneously
+- Agent is experimenting with different approaches
+- You want to preserve current state while agent works on something else
+- Agent work might take multiple sessions to complete
+- Testing potentially breaking changes in isolation
 
-**Just use branches when:**
+**Skip sandboxes when:**
 
-- Working on one feature at a time
-- Making small, quick changes
-- Hotfixes that need immediate attention
-- You're comfortable with git stash workflows
+- Single agent performing quick, isolated task
+- Making small, low-risk changes
+- Agent work will complete in one session
+- No parallel work needed
 
-## Team Collaboration Patterns
+## Benefits Summary
 
-### Working on Teammate's Branch
+Sandboxes enable:
 
-```bash
-# Fetch the latest changes
-git fetch origin feature-api-redesign
+- **True Parallel Execution**: Multiple agents work simultaneously
+- **Risk Isolation**: Experiments and changes are contained
+- **State Preservation**: Each task maintains its own state
+- **Clean Organization**: Separate workspaces for separate concerns
+- **Flexible Workflows**: Sequential or parallel agent operations
 
-# Create sandbox for their branch (preserves your current work)
-forge --sandbox feature-api-redesign
-
-# Make changes and push updates
-git push origin feature-api-redesign
-```
-
-### Code Review Workflow
-
-```bash
-# Create sandbox for PR review (your main work stays untouched)
-forge --sandbox review-pr-123
-
-# Test the changes, leave feedback
-# Delete sandbox when done
-git worktree remove ../review-pr-123
-```
-
-### Parallel Feature Development
-
-```bash
-# Team lead working on architecture
-forge --sandbox feature-user-auth
-
-# Junior dev working on UI (different terminal/session)
-forge --sandbox feature-auth-ui
-
-# Both can push their branches independently
-# Both can pull each other's changes without conflicts
-```
-
-The Sandbox feature transforms how you work with Forge by providing true isolation and parallel development capabilities, making it easier to manage complex projects and experiment with confidence.
+Sandbox transforms agent-driven development by providing true isolation and enabling sophisticated multi-agent workflows, making complex projects more manageable and development more efficient.
