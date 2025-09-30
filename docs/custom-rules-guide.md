@@ -337,6 +337,7 @@ Custom rules transform AI coding from a series of corrections into a smooth, sta
 
 To maximize your team's productivity with Forge, explore these complementary guides:
 
+- **[Agent Selection Guide](/docs/agent-selection-guide)** - Choose the right AI assistant for your specific development tasks
 - **[Model Selection Guide](/docs/model-selection-guide)** - Choose the right AI models for your specific development tasks
 - **[File Tagging Guide](/docs/file-tagging-guide)** - Use @ mentions to provide better context for AI code generation
 - **[Plan and Act Guide](/docs/plan-and-act-guide)** - Structure your development workflow with AI planning before implementation

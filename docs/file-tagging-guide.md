@@ -329,6 +329,7 @@ File tagging works best when you understand both its strengths and limitations. 
 
 ## Related Guides
 
+- [Agent Selection Guide: Choose the Right AI Assistant for Your Task](/docs/agent-selection-guide)
 - [AI Model Selection Guide: Optimize Forge for Your Workflow](/docs/model-selection-guide)
 - [Plan and Act Guide: Automating Complex Workflows with Forge](/docs/plan-and-act-guide)
 - [Custom Rules Guide: Extending Forge's Capabilities](/docs/custom-rules-guide)

@@ -38,6 +38,7 @@ const sidebars: SidebarsConfig = {
       items: [
         {type: "doc", id: "plan-and-act-guide", label: "Plan First, Then Act"},
         {type: "doc", id: "agent-definition-guide", label: "Creating Custom Agents"},
+        {type: "doc", id: "agent-selection-guide", label: "Switching Agents"},
         {type: "doc", id: "model-selection-guide", label: "Switching Models"},
         {type: "doc", id: "custom-rules-guide", label: "Working with Custom Rules"},
         {type: "doc", id: "file-tagging-guide", label: "File Tagging with @"},
