@@ -63,7 +63,6 @@ This is perfect for:
 - **Performance optimization** - Highlight specific bottlenecks or read from a point to end with `@[file:start]`
 - **Token efficiency** - Only send relevant lines to the LLM, reducing costs and improving response speed
 
-
 :::tip Use the VS Code Extension
 Skip manual typing of file references! The [Forge VS Code Extension](/docs/vscode-extension) lets you select any code and press `Ctrl+U` to instantly copy the reference in the correct format (`@[filepath:start:end]`). Perfect for quickly referencing specific functions or code sections without typing paths and line numbers manually.
 :::
