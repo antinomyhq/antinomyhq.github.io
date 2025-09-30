@@ -73,6 +73,7 @@ const sidebars: SidebarsConfig = {
         "npm-troubleshooting", // Node.js and npm installation issues
         "windows-troubleshooting", // Windows-specific runtime issues
         "fd-fzf-installation", // fd and fzf installation for ZSH Support
+        "uninstallation", // Uninstalling guide
         "error-handling", // Moved from Advanced Features
         "logging", // Moved from Reference
       ],
