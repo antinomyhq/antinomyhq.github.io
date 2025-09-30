@@ -59,16 +59,18 @@ Learn more: [Creating Custom Agents Guide](/docs/agent-definition-guide)
 
 ## When to Switch Agents
 
+Now that you understand what each agent does, here's when to use them:
+
 Different agents excel at different stages of development:
 
-- **Sage** - Deep research and understanding complex systems
-- **Muse** - Planning and analyzing changes before implementation
-- **Forge** - Implementing solutions and making code changes
-- **Custom Agents** - Specialized tasks or team-specific workflows
+- **Sage** - For deep research and understanding complex systems
+- **Muse** - For planning and analyzing changes before implementation
+- **Forge** - For implementing solutions and making code changes
+- **Custom Agents** - For specialized tasks or team-specific workflows
 
 Use the `/agent` command to quickly switch between agents as your needs change.
 
-For detailed guidance on when to use each built-in agent and switching strategies, see the [Operating Agents Guide](/docs/operating-agents).
+Learn more: [Operating Agents Guide](/docs/operating-agents)
 
 ## Pro Tips
 
