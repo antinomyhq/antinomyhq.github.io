@@ -1,0 +1,2 @@
+# Prevent Prettier from formatting GitHub workflow files (autofix.ci cannot commit under .github)
+.github/
