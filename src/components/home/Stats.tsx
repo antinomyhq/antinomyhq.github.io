@@ -21,7 +21,7 @@ const formatNumber = (num: number): string => {
 const Stats = (): JSX.Element => {
   const stats = [
     {
-      value: 2640000000,
+      value: 9500000000,
       suffix: "+",
       label: "Tokens",
       description: "/ day",
@@ -29,14 +29,14 @@ const Stats = (): JSX.Element => {
       icon: Coins,
     },
     {
-      value: 2330000,
+      value: 6100000,
       suffix: "+",
       label: "Lines of Code",
       description: "/ day",
       icon: Code,
     },
     {
-      value: 3800,
+      value: 4500,
       suffix: "+",
       label: "GitHub Stars",
       description: "",
