@@ -11,7 +11,7 @@ const BenefitsCard = (): JSX.Element => {
         {benefits.map((item, index) => (
           <Link
             className={clsx(
-              "group  p-6 flex flex-col md:flex-row items-start hover:border-[#181818] cursor-pointer hover:no-underline",
+              "group  p-6 flex flex-col md:flex-row items-start cursor-pointer hover:no-underline",
               benefits.length % 2 !== 0 &&
                 index === benefits.length - 1 &&
                 "md:col-span-2 md:max-w-[calc(50%-20px)] md:mx-auto",
