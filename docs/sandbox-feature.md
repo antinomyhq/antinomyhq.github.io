@@ -1,4 +1,10 @@
-# Sandbox - Isolated Agent Workspaces
+---
+title: Sandbox - Isolated Agent Workspaces
+slug: /sandbox-feature
+sidebar_position: 7
+description: "Create isolated development environments using Git worktrees for parallel agent work without conflicts"
+sidebar_label: Agent Sandbox
+---
 
 The Sandbox feature in Forge creates isolated development environments using Git worktrees. This allows agents to work on different tasks, experiments, or features in parallel without interfering with each other or your main codebase.
 
