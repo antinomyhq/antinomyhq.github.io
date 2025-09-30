@@ -67,9 +67,11 @@ These features are optional but provide a significantly better experience. Insta
 
     **Other platforms:** See our [fd and fzf Installation Guide](/docs/fd-fzf-installation)
 
-    <div className="rounded-md border border-blue-300 bg-blue-50 px-4 py-2 mt-3 text-blue-900 text-sm">
-      <strong>Optional but Recommended:</strong> ZSH Support works without these tools, but you'll need to type full file paths instead of using fuzzy finding. You can install them later if you skip this step.
-    </div>
+:::tip Optional but Recommended
+
+ZSH Support works without these tools, but you'll need to type full file paths instead of using fuzzy finding. You can install them later if you skip this step.
+
+:::
 
   </Step>
   
@@ -283,10 +285,3 @@ If you get "agent not found" errors:
 1. Check your available agents by running `/agents` in a Forge session
 2. Verify agent name spelling (case-sensitive)
 3. Test with a basic command: `: list my current working directory and git status`
-
-## Performance Tips
-
-- **File caching**: The fuzzy finder caches file listings for better performance in large projects
-- **Agent persistence**: Once an agent is used, it stays active for faster subsequent calls
-- **Incremental search**: Type a few characters in the fuzzy finder to quickly narrow results
-- **History integration**: Previous prompts are saved to ZSH history for easy recall with arrow keys
