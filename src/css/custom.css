@@ -540,6 +540,13 @@ aside.theme-doc-sidebar-container {
   margin-top: 0;
 }
 
+/* Override Docusaurus default sidebar padding-top for sticky navbar */
+@media (min-width: 997px) {
+  [class*="docRoot"] [class*="sidebar"] {
+    padding-top: 0 !important;
+  }
+}
+
 .algolia-docsearch-suggestion--category-header {
   background-color: var(--ifm-color-gray-300) !important;
   color: var(--ifm-color-brand-dark-300) !important;
