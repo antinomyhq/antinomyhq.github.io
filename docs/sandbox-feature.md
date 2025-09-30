@@ -1,10 +1,22 @@
 # Sandbox - Isolated Agent Workspaces
 
-Sandbox in Forge creates isolated development environments using Git worktrees. This allows agents to work on different tasks, experiments, or features in parallel without interfering with each other or your main codebase.
+The Sandbox feature in Forge creates isolated development environments using Git worktrees. This allows agents to work on different tasks, experiments, or features in parallel without interfering with each other or your main codebase.
+
+## Requirements
+
+- **Git Repository**: Must be inside a Git repository
+- **Parent Directory Access**: Sandboxes are created in the parent directory of the repo root
+- **Unique Names**: Each sandbox name must be unique
+
+:::info Learn More About Git Worktrees
+
+Forge sandboxes are built on [Git worktrees](https://git-scm.com/docs/git-worktree). For advanced worktree management, error handling, and low-level details, refer to the official Git documentation.
+
+:::
 
 ## Why Sandboxes Matter for Agent Work
 
-Agents work better when they have isolated workspaces. Sandboxes give each agent task its own environment, preventing conflicts and enabling true parallel execution.
+Sandboxes help agents avoid file conflicts and enable true parallel execution by giving each agent task its own isolated environment without interfering with ongoing work.
 
 Traditional single-workspace approach:
 
@@ -28,7 +40,7 @@ forge --sandbox bugfix-payment "fix payment validation bug"
 # Both agents work independently, no conflicts
 ```
 
-With sandboxes, each agent task gets its own isolated directory. No conflicts, no waiting, no interference between parallel operations.
+With sandboxes, each agent task gets its own isolated directory, no conflicts, no waiting, no interference between parallel operations.
 
 ## How It Works
 
@@ -49,7 +61,7 @@ your-project/           # Your main repository
 └── README.md
 ```
 
-Each sandbox creates a **Git worktree** - a separate working directory that shares the same `.git` repository but allows independent changes, branches, and agent operations.
+Each sandbox is a **Git worktree** - a separate working directory that shares the same `.git` repository but allows independent changes and branches.
 
 ## Basic Usage
 
@@ -64,9 +76,9 @@ This command:
 
 1. Checks if you're in a Git repository (required)
 2. Creates a new worktree in `../feature-auth/`
-3. Creates a new branch named `feature-auth` (if it doesn't exist)
-4. Starts Forge agent in the isolated sandbox directory
-5. Agent works exclusively in this environment
+3. Creates or reuses a branch named `feature-auth`
+4. Starts the Forge agent in the isolated sandbox directory
+5. The agent works exclusively in this environment
 
 ### Reusing an Existing Sandbox
 
@@ -83,6 +95,8 @@ The system will show:
 Worktree [Reused]
 ../feature-auth/
 ```
+
+The agent resumes work in the existing sandbox.
 
 ## Agent-Specific Use Cases
 
@@ -105,7 +119,7 @@ Each agent operates independently without interfering with others.
 
 ### Safe Experimentation
 
-Let agents try different approaches without risk:
+Let agents try different approaches without conflicts:
 
 ```bash
 # Agent tries architectural approach A
@@ -137,7 +151,7 @@ forge --sandbox refactor-frontend "update components to use new API"
 Isolate bug fixes from ongoing feature work:
 
 ```bash
-# Main work continues in default workspace
+# Main work continues in your main repository
 forge "continue implementing user profiles"
 
 # Bug fix happens in separate sandbox
@@ -145,12 +159,6 @@ forge --sandbox hotfix-login "fix OAuth redirect loop"
 
 # Main work remains untouched, bug fix can be merged independently
 ```
-
-## Requirements
-
-- **Git Repository**: Must be inside a Git repository
-- **Parent Directory Access**: Sandboxes are created in parent directory of repo root
-- **Unique Names**: Each sandbox name must be unique
 
 ## Managing Agent Sandboxes
 
@@ -165,7 +173,19 @@ Shows all sandboxes where agents have been working.
 
 ### Cleanup After Agent Work
 
-Sandboxes persist after agent completes work. Clean up regularly:
+Sandboxes persist after the agent completes work. Clean up regularly to keep your workspace organized:
+
+:::tip Best Practice
+
+Clean up sandboxes after merging changes to keep your workspace organized. The branch remains in your repository even after removing the worktree.
+
+:::
+
+:::warning Uncommitted Changes
+
+If you have uncommitted changes in a sandbox, `git worktree remove` will fail by default. Either commit your changes first or use `git worktree remove --force` to discard them.
+
+:::
 
 ```bash
 # Remove completed sandbox (run from main repository)
@@ -178,9 +198,3 @@ git worktree prune
 # List remaining sandboxes
 git worktree list
 ```
-
-:::tip
-
-Clean up sandboxes after merging changes to keep your workspace organized.
-
-:::
