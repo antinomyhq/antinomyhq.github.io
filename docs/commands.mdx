@@ -17,21 +17,112 @@ The `/new` command clears the current conversation context and starts a fresh ta
 
 **When to use:** Use this when switching between unrelated tasks to ensure a clean context.
 
+## /conversations
+
+Browse and select from your recent conversations.
+
+The `/conversations` command displays your last 20 conversations with timestamps and titles, allowing you to interactively select one to resume.
+
+**Example output:**
+
+```
+❯ /conversations
+? Select the conversation to resume:
+ > Current Time Query          6 days 1h 44m ago
+   React component refactoring 2 days 3h 15m ago
+   API error handling fixes    1 week 2 days ago
+   Database migration setup    1 week 4 days ago
+[Type a name or use arrow keys to navigate and Enter to select]
+```
+
+**When to use:** When you want to return to a previous conversation.
+
+**Usage:**
+
+- Navigate with arrow keys or type to search
+- Press Enter to select a conversation
+- The `>` indicator shows your current selection
+- Each entry shows conversation title and relative time
+
 ## /info
 
-Display system environment information.
+Display comprehensive system environment and status information.
 
-The `/info` command displays information about your environment, including system details, logs location, and command history.
+The `/info` command provides a detailed overview of your current Forge environment, including paths, configuration, model settings, token usage, and conversation details.
 
-This will display information about your environment including:
+**Example output:**
 
-- Operating system details
-- Current working directory
-- Log file location
-- Application version
-- Available models
+```
+❯ /info
 
-**When to use:** Use this when you need to troubleshoot, find log files, or review your recent commands.
+PATHS
+  Logs: ~/forge/logs
+  Agents: ~/forge/agents
+  History: ~/forge/.forge_history
+  Checkpoints: ~/forge/snapshots
+  Policies: ~/forge/permissions.yaml
+
+ENVIRONMENT
+  Version: 0.1.0
+  Working Directory: ~/Desktop/workspace/antinomyhq.github.io
+  Shell: /bin/zsh
+  Git Branch: docs/add-shortcut-for-exit-command
+
+MODEL
+  Current: anthropic/claude-sonnet-4
+  Provider (URL): https://openrouter.ai/api/v1/
+  API Key: sk-or-v1-9999...9999
+
+TOKEN USAGE
+  Input Tokens: 17,860
+  Cached Tokens: 7,720 [43%]
+  Output Tokens: 356
+  Cost: $0.0023
+
+CONVERSATION
+  ID: 1b15bef2-128c-4ff1-9c78-45feef4a9076
+  Title: Exit Command Documentation Update
+```
+
+**Output sections explained:**
+
+- **PATHS**: File system locations for Forge components
+  - `Logs`: Where system and error logs are stored
+  - `Agents`: Directory containing agent configurations
+  - `History`: Command history file for session recall
+  - `Checkpoints`: Saved conversation snapshots and state
+  - `Policies`: Permission and access control configuration file
+
+- **ENVIRONMENT**: Current system and project context
+  - `Version`: Forge application version number
+  - `Working Directory`: Current project/working directory path
+  - `Shell`: Command shell being used (bash, zsh, etc.)
+  - `Git Branch`: Active git branch in the working directory (if applicable)
+
+- **MODEL**: AI model configuration and credentials
+  - `Current`: Active AI model being used for conversations
+  - `Provider (URL)`: API endpoint URL for the model provider
+  - `API Key`: Masked API key for security (shows first/last characters only)
+
+- **TOKEN USAGE**: Resource consumption and costs accumulated for the entire conversation
+  - `Input Tokens`: Total tokens consumed by user input and context across all messages
+  - `Cached Tokens`: Previously processed tokens reused for efficiency (percentage shown)
+  - `Output Tokens`: Total tokens generated in AI responses throughout the conversation
+  - `Cost`: Total estimated monetary cost based on accumulated token usage
+
+- **CONVERSATION**: Current chat session details
+  - `ID`: Unique identifier for the current conversation
+  - `Title`: Human-readable name or high level description of the conversation
+
+**When to use:** Use this when you need to troubleshoot, find configuration files, check token usage, verify your current model setup, or get an overview of your Forge environment.
+
+## /retry
+
+Retry the last message in the conversation.
+
+The `/retry` command re-executes the most recent message in the conversation. This is useful when a command failed due to temporary issues or when you want to run the same operation again.
+
+**When to use:** Use this when you want to re-run the last command that failed due to network issues, temporary errors, or when you need to execute the same operation multiple times.
 
 ## /model
 
@@ -58,7 +149,6 @@ The `/agent` command provides an interactive interface to select and switch betw
 This will:
 
 1. Display an interactive selection menu with available agents:
-
    - **Forge Agent**: Full execution capabilities with read-write access
    - **Muse Agent**: Read-only analysis and planning mode
 
@@ -147,6 +237,6 @@ The `/logout` command ends your current authenticated session with the Forge pro
 
 Exit the application.
 
-The `/exit` command terminates the Forge application.
+The `/exit` command terminates the Forge application. You can also use `Ctrl+D` as a keyboard shortcut to exit.
 
 **When to use:** Use this when you want to quit Forge completely.

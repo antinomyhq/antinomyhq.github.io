@@ -4,8 +4,6 @@ title: Workflow Configuration
 description: Configure workflow settings for your Forge instance
 ---
 
-import CustomLink from "@site/src/components/shared/CustomLink"
-
 # Workflow Configuration
 
 Forge provides comprehensive workflow configuration options through your `forge.yaml` file. These root-level settings control workflow behavior and apply globally to your entire Forge instance.
@@ -93,18 +91,6 @@ max_tokens: 20480
 max_walker_depth: 1
 ```
 
-### Variables
-
-#### `variables`
-
-- **Type**: `object`
-- **Description**: Defines global variables that can be referenced throughout your configuration using Handlebars syntax.
-
-```yaml
-variables:
-  operating_agent: Forge
-```
-
 ### Updates
 
 #### `updates`
@@ -147,8 +133,6 @@ updates:
 
 ## Related Documentation
 
-- <CustomLink href="/docs/environment-configuration">Environment Configuration</CustomLink> - Environment-specific
-  settings
-- <CustomLink href="/docs/context-compaction">Context Compaction</CustomLink> - Memory management and conversation
-  history
-- <CustomLink href="/docs/mcp-integration">MCP Integration</CustomLink> - Model Context Protocol setup
+- [Environment Configuration](./environment-configuration.mdx) - Environment-specific settings
+- [Context Compaction](./context-compaction.mdx) - Memory management and conversation history
+- [MCP Integration](./mcp-integration.mdx) - Model Context Protocol setup

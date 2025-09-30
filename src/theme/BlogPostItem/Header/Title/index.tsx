@@ -11,13 +11,7 @@ export default function BlogPostItemHeaderTitle({className}: Props): JSX.Element
   const {permalink, title} = metadata
   const TitleHeading = isBlogPostPage ? "h1" : "h2"
   return (
-    <TitleHeading
-      className={clsx(
-        styles.title,
-        "text-tailCall-lightMode---neutral-600 dark:text-tailCall-darkMode---neutral-200",
-        className,
-      )}
-    >
+    <TitleHeading className={clsx(styles.title, className)}>
       {isBlogPostPage ? title : <Link to={permalink}>{title}</Link>}
     </TitleHeading>
   )

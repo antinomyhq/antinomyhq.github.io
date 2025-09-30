@@ -1,0 +1,70 @@
+name: autofix.ci
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  format-and-fix:
+    name: Format and autofix
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies (if package.json present)
+        run: |
+          if [ -f package.json ]; then
+            if [ -f package-lock.json ]; then
+              npm ci
+            else
+              npm install
+            fi
+          else
+            echo "No package.json found; skipping install"
+          fi
+        shell: bash
+
+      - name: Prettier format
+        run: |
+          npx --yes prettier@3 --write .
+        shell: bash
+
+      - name: ESLint fix (if config present)
+        run: |
+          if ls -1 .eslintrc.* eslint.config.* 2>/dev/null | grep -q .; then
+            npx --yes eslint@8 . --ext .js,.jsx,.ts,.tsx --fix || true
+          else
+            echo "No ESLint config found; skipping eslint --fix"
+          fi
+        shell: bash
+
+      - name: Sort package.json (if present)
+        run: |
+          if [ -f package.json ]; then
+            npx --yes sort-package-json || true
+          fi
+        shell: bash
+
+      - name: Apply fixes from autofix.ci
+        if: always()
+        uses: autofix-ci/action@v1
+        with:
+          fail-fast: false

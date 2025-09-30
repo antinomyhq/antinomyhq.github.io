@@ -86,9 +86,53 @@ To switch to the Muse Agent, use:
 /agent
 ```
 
+## Sage Agent
+
+The Sage Agent is designed for deep research and investigation of your codebase. Unlike Muse (which plans changes) or Forge (which implements them), Sage focuses purely on understanding how things work. This agent operates in read-only mode and specializes in systematic exploration and analysis.
+
+### Capabilities of the Sage Agent
+
+- **Deep Investigation**: Traces functionality across multiple files to understand how systems work
+- **Architectural Analysis**: Maps project structure, dependencies, and component relationships
+- **Pattern Discovery**: Identifies design patterns and explains architectural decisions
+- **Code Quality Insights**: Examines test coverage, technical debt, and improvement opportunities
+- **Structured Reports**: Provides clear, actionable findings with specific code references
+
+### When to Use the Sage Agent
+
+- When you need to understand how something works before making changes
+- For investigating bugs that span multiple components or files
+- When onboarding to an unfamiliar codebase or module
+- To analyze code quality before planning a refactoring
+- When you want to understand why certain architectural decisions were made
+- For tracing data flow or understanding complex business logic
+
+### Example Use Cases
+
+1. **Bug Investigation**: "How does the authentication flow work? I'm seeing intermittent failures"
+2. **System Understanding**: "Explain how the payment processing system handles refunds"
+3. **Architecture Review**: "What design patterns are used in the API layer and why?"
+4. **Technical Debt**: "Analyze the user service for potential improvements and code smells"
+
+### Activating the Sage Agent
+
+To switch to the Sage Agent, use:
+
+```bash
+# Switch to Sage Agent within a Forge session
+/sage
+
+# Or use the general agent command and then from drop down select `sage` agent
+/agent
+```
+
 ## Agent Switching Strategy
 
-You can easily switch between agents during a session using the `/muse`, `/forge`, or `/agent` commands. The Muse Agent is especially useful for reviewing potential changes before they're implemented, while the Forge Agent streamlines the development process by handling implementation details for you.
+You can easily switch between agents during a session using the `/muse`, `/forge`, `/sage`, or `/agent` commands. Each agent serves a distinct purpose in the development workflow:
+
+- **Sage Agent**: For deep research and understanding complex systems before planning changes
+- **Muse Agent**: For planning and analyzing potential changes before implementation
+- **Forge Agent**: For implementing solutions and making actual changes to the codebase
 
 ### When to Switch from Forge Agent to Muse Agent
 
@@ -104,12 +148,20 @@ You can easily switch between agents during a session using the `/muse`, `/forge
 - Once you understand the scope and impact of changes
 - For quick implementation following a planning session
 
+### When to Switch from Sage to Muse or Forge
+
+- After completing research and ready to plan or implement changes
+- Once you understand the system architecture and are ready to propose modifications
+- When you've identified the problem and need to create a solution plan (switch to Muse)
+- When the solution is clear and ready for implementation (switch to Forge)
+
 ## Best Practices
 
-- **Start Conservative**: Begin with the Muse Agent for critical systems to understand potential changes
+- **Start with Understanding**: For unfamiliar code or complex systems, begin with the Sage Agent to understand how things work
+- **Research → Plan → Implement**: Use Sage to investigate, Muse to plan changes, then Forge to implement
 - **Review Before Acting**: Use the Muse Agent to generate a plan, review it, then switch to the Forge Agent for implementation
-- **Iterative Approach**: For complex tasks, alternate between agents - plan first, implement a portion, plan again
+- **Iterative Approach**: For complex tasks, alternate between agents as needed - research, plan, implement a portion, then repeat
 - **Version Control**: Always ensure you have commits or backups before using the Forge Agent for significant changes
-- **Task Specificity**: Be more specific with your requests to the Forge Agent to ensure accurate implementation
+- **Task Specificity**: Be specific with your requests to ensure each agent provides the most relevant assistance
 
 <!-- Note: This page focuses on the specialized agents in Forge. For information about built-in commands, see the Commands section. -->

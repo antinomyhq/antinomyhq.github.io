@@ -29,46 +29,35 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Features", // Renamed from "Core Features" for better hierarchy
       collapsed: false,
-      items: ["commands", "shell-commands", "auto-complete", "operating-agents", "custom-rules"],
+      items: [
+        "commands",
+        "shell-commands",
+        "zsh-support",
+        "auto-complete",
+        "operating-agents",
+        "custom-rules",
+        "sandbox-feature",
+      ],
     },
     {
       type: "category",
       label: "Guides",
       collapsed: false,
       items: [
-        {
-          type: "doc",
-          id: "plan-and-act-guide",
-          label: "Plan First, Then Act",
-        },
-        {
-          type: "doc",
-          id: "agent-definition-guide",
-          label: "Creating Custom Agents",
-        },
-        {
-          type: "doc",
-          id: "model-selection-guide",
-          label: "Switching Models",
-        },
-        {
-          type: "doc",
-          id: "custom-rules-guide",
-          label: "Working with Custom Rules",
-        },
-        {
-          type: "doc",
-          id: "file-tagging-guide",
-          label: "File Tagging with @",
-        },
+        {type: "doc", id: "plan-and-act-guide", label: "Plan First, Then Act"},
+        {type: "doc", id: "agent-definition-guide", label: "Creating Custom Agents"},
+        {type: "doc", id: "model-selection-guide", label: "Switching Models"},
+        {type: "doc", id: "custom-rules-guide", label: "Working with Custom Rules"},
+        {type: "doc", id: "file-tagging-guide", label: "File Tagging with @"},
       ],
     },
     {
       type: "category",
-      label: "Tools & Resources", // New category specifically for tools
+      label: "Tools & Integrations", // Expanded category for tools and IDE integrations
       collapsed: false,
       items: [
         "tools-reference", // Dedicated category highlights importance of tools
+        "vscode-extension", // VS Code extension documentation
       ],
     },
     {
@@ -86,11 +75,13 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Troubleshooting", // New category for operational concerns
+      label: "Troubleshooting & Maintenance", // New category for operational concerns
       collapsed: true,
       items: [
         "npm-troubleshooting", // Node.js and npm installation issues
         "windows-troubleshooting", // Windows-specific runtime issues
+        "fd-fzf-installation", // fd and fzf installation for ZSH Support
+        "uninstallation", // Uninstalling guide
         "error-handling", // Moved from Advanced Features
         "logging", // Moved from Reference
       ],

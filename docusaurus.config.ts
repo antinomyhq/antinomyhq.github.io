@@ -15,139 +15,6 @@ export default {
   trailingSlash: true,
   tagline: "Forge: The AI Coding Assistant for Your Terminal",
   headTags: [
-    // Anti-flicker theme script - completely prevents theme flickering
-    {
-      tagName: "script",
-      attributes: {},
-      innerHTML: `
-        (function() {
-          // Get theme preference immediately
-          function getThemePreference() {
-            try {
-              var match = document.cookie.match(/theme-preference=(dark|light)/);
-              return match ? match[1] : 'dark';
-            } catch (e) {
-              return 'dark';
-            }
-          }
-          
-          // Apply theme with maximum priority
-          function applyThemeImmediate(theme) {
-            var html = document.documentElement;
-            
-            // Remove all possible theme classes
-            html.classList.remove('dark', 'light', 'theme-dark', 'theme-light');
-            html.removeAttribute('data-theme');
-            html.removeAttribute('data-color-mode');
-            
-            // Apply our theme
-            html.classList.add(theme);
-            html.setAttribute('data-theme', theme);
-            html.style.setProperty('--theme-mode', theme);
-            
-            // Prevent Docusaurus from overriding
-            html.style.setProperty('--ifm-color-mode', theme);
-            
-            // Store theme preference
-            try {
-              document.cookie = 'theme-preference=' + theme + ';path=/;max-age=31536000;SameSite=Strict';
-            } catch (e) {}
-          }
-          
-          // Get and apply theme immediately
-          var theme = getThemePreference();
-          applyThemeImmediate(theme);
-          
-          // Override all possible theme-changing methods
-          var originalSetAttribute = document.documentElement.setAttribute;
-          var originalSetProperty = document.documentElement.style.setProperty;
-          var originalAdd = document.documentElement.classList.add;
-          var originalRemove = document.documentElement.classList.remove;
-          
-          // Protect against attribute changes
-          document.documentElement.setAttribute = function(name, value) {
-            if (name === 'data-theme' || name === 'data-color-mode') {
-              var currentTheme = getThemePreference();
-              if (value !== currentTheme) {
-                return; // Block unwanted theme changes
-              }
-            }
-            return originalSetAttribute.call(this, name, value);
-          };
-          
-          // Protect against class changes
-          document.documentElement.classList.add = function() {
-            var args = Array.prototype.slice.call(arguments);
-            var currentTheme = getThemePreference();
-            
-            // Filter out conflicting theme classes
-            args = args.filter(function(cls) {
-              if (cls === 'dark' || cls === 'light') {
-                return cls === currentTheme;
-              }
-              return true;
-            });
-            
-            if (args.length > 0) {
-              return originalAdd.apply(this, args);
-            }
-          };
-          
-          // Monitor for any attempts to change theme
-          var observer = new MutationObserver(function(mutations) {
-            var currentTheme = getThemePreference();
-            var needsReapply = false;
-            
-            mutations.forEach(function(mutation) {
-              if (mutation.type === 'attributes') {
-                var target = mutation.target;
-                if (target === document.documentElement) {
-                  if (mutation.attributeName === 'data-theme' && target.getAttribute('data-theme') !== currentTheme) {
-                    needsReapply = true;
-                  }
-                  if (mutation.attributeName === 'class') {
-                    var hasCorrectTheme = target.classList.contains(currentTheme);
-                    var hasWrongTheme = target.classList.contains(currentTheme === 'dark' ? 'light' : 'dark');
-                    if (!hasCorrectTheme || hasWrongTheme) {
-                      needsReapply = true;
-                    }
-                  }
-                }
-              }
-            });
-            
-            if (needsReapply) {
-              applyThemeImmediate(currentTheme);
-            }
-          });
-          
-          observer.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['class', 'data-theme', 'data-color-mode']
-          });
-          
-          // Reapply theme after DOM is ready
-          if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', function() {
-              applyThemeImmediate(getThemePreference());
-            });
-          }
-          
-          // Store references for cleanup
-          window.__themeGuard = {
-            observer: observer,
-            cleanup: function() {
-              observer.disconnect();
-              document.documentElement.setAttribute = originalSetAttribute;
-              document.documentElement.style.setProperty = originalSetProperty;
-              document.documentElement.classList.add = originalAdd;
-              document.documentElement.classList.remove = originalRemove;
-            }
-          };
-          
-        })();
-      `,
-    },
     // Adaptive favicon implementation - automatically switches based on system theme
     {
       tagName: "link",
@@ -394,12 +261,34 @@ export default {
     },
 
     navbar: {
-      hideOnScroll: false,
+      hideOnScroll: true,
+      logo: {
+        alt: "ForgeCode",
+        src: "/images/home/logo-dark.svg",
+      },
       items: [
-        {to: "/", label: "Home", position: "left"},
+        {to: "/", label: "Home", position: "left", activeBaseRegex: "^/$"},
+        // {to: "/about", label: "About", position: "left"},
+        // {to: "/enterprise", label: "Enterprise", position: "left"},
         {to: "/pricing", label: "Pricing", position: "left"},
         {to: "/docs", label: "Docs", position: "left"},
         {to: "/blog", label: "Blogs", position: "left"},
+
+        // {
+        //   label: "Developers",
+        //   position: "left",
+        //   items: [
+        //     {
+        //       to: "/docs",
+        //       html: getNavDropdownItemHtml("/images/home/book.svg", "Docs Icon", "Docs"),
+        //     },
+        //   ],
+        // },
+        {
+          type: "search",
+          position: "right",
+          className: "hidden lg:flex search-icon-navbar",
+        },
       ],
     },
     prism: {
