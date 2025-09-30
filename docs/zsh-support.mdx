@@ -1,24 +1,24 @@
 ---
 title: ZSH Support
 sidebar_position: 6
-description: "Enhanced terminal integration with ZSH prompt support, fuzzy file finding, and syntax highlighting."
+description: "Keep your ZSH aliases and shell setup while getting AI assistance - no separate environment needed."
 sidebar_label: ZSH Support
 ---
 
 import Steps, {Step} from "../components/Steps"
 
-# ZSH Support
+# ZSH Support: Keep Your Shell Aliases While Getting AI Help
 
-Forge's ZSH integration brings AI assistance directly to your terminal using the `:` sentinel character, letting you stay in your native shell environment with all your aliases, functions, and custom tooling intact. No more switching to interactive mode and losing access to years of shell customization.
+Stop losing access to your carefully crafted ZSH aliases, custom functions, and shell tooling every time you need AI assistance. The `:` sentinel character lets you stay in your native shell while getting help from Forge.
 
-:::tip Why the `:` Sentinel Character Matters
-**The Problem**: Forge's interactive mode creates a separate environment where your ZSH aliases, custom functions, and carefully crafted shell setup don't work.
+**The Problem**: Forge's interactive mode creates a separate environment where your ZSH aliases, custom functions, and shell setup don't work. You're forced to choose between AI assistance or your productivity tools.
 
 **The Solution**: Use `:` to send prompts to Forge while staying in your native ZSH session:
 
 ```bash
 # Your zsh plugins work normally
 gst
+gcam "fix: resolve memory leak"
 
 # But you can also get AI help instantly
 : analyze the memory usage patterns in @src/server.rs
@@ -31,98 +31,139 @@ htop -p $(pgrep server)
 : now optimize the memory allocations you identified in the server struct
 ```
 
-**The Result**: Keep your shell environment while getting AI assistance, maintaining context across both AI tasks and your custom shell operations.
-:::
+**The Result**: Maintain context across both AI tasks and your custom shell operations, without switching environments or losing your workflow.
 
-## Capabilities
+## When to Use ZSH Support vs Interactive Mode
 
-- **Native Shell Integration**: Use the `:` sentinel character to access Forge AI while preserving all your ZSH aliases, functions, PATH modifications, and custom tooling - no separate environment
-- **Intelligent Context Management**: Maintain conversation context across AI prompts and shell commands, with `:reset` control and agent targeting via `:agent`
-- **Enhanced File Operations**: Fuzzy file finding with `@filename<Tab>` using fd/fzf, plus syntax highlighting optimized for dark terminals
+Understanding which mode to use will save you time and frustration:
+
+| Use ZSH Support When | Use Interactive Mode When |
+|---------------------|-------------------------|
+| You need your shell aliases and custom functions | You're doing focused coding without shell tools |
+| Running system commands alongside AI tasks | Working on extended multi-file refactoring |
+| Quick one-off questions or small tasks | Deep debugging sessions with lots of context |
+| Investigating performance or system issues | You don't need your ZSH customizations |
+| Integrating AI into existing shell workflows | Pairing programming with an AI agent |
+
+<div className="rounded-md border border-green-300 bg-green-50 px-4 py-2 mt-3 text-green-900 text-sm">
+  <strong>Pro Tip:</strong> You're not locked into one mode. Use ZSH Support for quick requests and shell-heavy workflows, then switch to interactive mode for longer coding sessions. Get the best of both worlds.
+</div>
+
+## What You Get
+
+### Core Features (Work Immediately After Installation)
+- **Native Shell Integration**: Use `:` to access Forge AI while preserving all your ZSH aliases, functions, PATH modifications, and custom tooling
+- **Intelligent Context Management**: Maintain conversation context across prompts with `:reset` control and agent targeting like `:sage` or `:muse`
+- **Syntax Highlighting**: Color-coded prompts optimized for dark terminals
+
+### Advanced Features (Require fd and fzf)
+- **Fuzzy File Finding**: Quick file tagging with `@filename<Tab>`
+- **Fuzzy Agent Selection**: Press Tab after `:` to get a searchable list of available agents
+
+These features are optional but provide a significantly better experience. Installation instructions are in Step 1 below.
 
 ## Installation
 
 <Steps>
-  <Step title="Install Forge">
-    First, [install and set up Forge](/docs/installation) following the main installation guide.
-    
-    You can use either installation method (npx or global), but note which one you choose as you'll need to set `$FORGEBIN` accordingly in Step 2.
+  <Step title="Install Optional File Finding Tools (Recommended)">
+    For fuzzy file finding and agent selection, install fd and fzf:
+
+    ### macOS
+    ```bash
+    brew install fd fzf
+    ```
+
+    ### Ubuntu/Debian
+    ```bash
+    sudo apt install fd-find fzf
+    ```
+
+    ### Arch Linux
+    ```bash
+    sudo pacman -S fd fzf
+    ```
+
+    **Other platforms:** See our [fd and fzf Installation Guide](/docs/fd-fzf-installation)
+
+    <div className="rounded-md border border-blue-300 bg-blue-50 px-4 py-2 mt-3 text-blue-900 text-sm">
+      <strong>Optional but Recommended:</strong> ZSH Support works without these tools, but you'll need to type full file paths instead of using fuzzy finding. You can install them later if you skip this step.
+    </div>
+
   </Step>
-
+  
+  <Step title="Install Forge">
+    [Install and set up Forge](/docs/installation) following the main installation guide.
+    
+    Choose either global installation or npx usage. Remember your choice for the next step.
+  </Step>
+  
   <Step title="Configure ZSH Integration">
-    Add the Forge ZSH prompt integration to your shell configuration:
+    Add Forge ZSH integration to your shell configuration:
 
-    **For Global Installation:**
-    Add these lines to your `~/.zshrc`:
+    **If you installed Forge globally:**
     ```bash
-    # Set FORGEBIN for global installation
+    # Add to ~/.zshrc
     export FORGEBIN=forge
-
-    # Enable Forge ZSH integration
     source <($FORGEBIN generate-zsh-prompt)
     ```
 
-    **For npx Usage:**
-    Add these lines to your `~/.zshrc`:
+    **If you're using npx:**
     ```bash
-    # Set FORGEBIN for npx usage
+    # Add to ~/.zshrc
     export FORGEBIN="npx forgecode"
-
-    # Enable Forge ZSH integration
     source <($FORGEBIN generate-zsh-prompt)
     ```
 
-    After editing `~/.zshrc`, reload your shell:
+    Then reload your shell:
     ```bash
     source ~/.zshrc
     ```
 
   </Step>
-
-  <Step title="Install File Finding Dependencies">
-    ZSH Support requires `fd` and `fzf` for file tagging functionality. **Without these dependencies, the `@filename<Tab>` fuzzy file finding will not work.**
-
-    See our [fd and fzf Installation Guide](/docs/fd-fzf-installation) for platform-specific installation instructions.
-
-  </Step>
-
+  
   <Step title="Verify Installation">
-    Test that the integration is working:
+    Test that everything works:
+
     ```bash
-    # This should show syntax highlighting and be ready for input
+    # Basic prompt - should show syntax highlighting
     : hello world
+
+    # Test file tagging (requires fd/fzf from Step 1)
+    : help me with @README<Tab>
     ```
 
-    You should see syntax highlighting and the command should execute successfully.
+    You should see syntax highlighting and successful command execution.
 
   </Step>
 </Steps>
 
 ## Quick Start
 
-After installation, test ZSH Support with these commands:
-
 ```bash
-# Basic prompt - should show syntax highlighting
+# Basic prompt
 : hello, can you help me debug this shell script?
 
-# Agent-specific prompt (asking questions without modifications)
+# Agent-specific prompt
 :sage what are the performance implications of this database query?
 
-# Conversation reset
+# Continue the conversation with context
+: what optimizations would you recommend?
+
+# Reset when switching to a different task
 :reset
 
-# File tagging (requires fd/fzf)
-: explain the config in @package.json<Tab>
-```
+# Fuzzy agent selection (requires fd/fzf)
+:<Tab>
 
-If you see syntax highlighting and the commands execute, you're ready to go!
+# Fuzzy file finding (requires fd/fzf)
+: explain the config in @package<Tab>
+```
 
 ## Usage
 
 ### Basic Prompt Execution
 
-Send prompts directly to Forge using the `:` prefix:
+Send prompts to Forge using the `:` prefix:
 
 ```bash
 : explain this error message
@@ -130,9 +171,9 @@ Send prompts directly to Forge using the `:` prefix:
 : add error handling to the database connection
 ```
 
-The prompt will be sent to your last used agent, defaulting to the main Forge agent if no previous agent was used.
+The prompt goes to your last used agent, defaulting to the main Forge agent if this is your first interaction.
 
-### Agent-Specific Prompts
+### Agent Selection
 
 Target specific agents by including the agent name after the colon:
 
@@ -142,122 +183,86 @@ Target specific agents by including the agent name after the colon:
 :forge refactor this function to be more maintainable
 ```
 
-:::info Agent Names
-These are example agent names and their purposes:
-- **forge** - Main agent for coding, refactoring, debugging, and general development tasks
-- **muse** - Specialized for creating plans and strategies for complex features  
-- **sage** - Ask questions and get analysis without making any code modifications
+**Agent Selection Rules:**
+- **No agent specified** (`:`) = uses the previous agent, or Forge if first interaction
+- **Agent specified** (`:sage`) = switches to that agent and makes it the new default
+- **`:reset`** = clears conversation context but keeps the current agent selection
 
-Use `/agents` in your Forge session to see your configured agents, or check your agent configuration files to see which agents you have available.
-:::
-
-This sends the prompt directly to the specified agent, making it easy to use specialized agents for different tasks.
-
-#### When to Use `:` vs `:agent`
-
-Understanding agent selection is crucial for effective ZSH Support usage:
-
-**Use `:` (no agent specified) when:**
-
-- Continuing the same type of conversation or task
-- You want the previous agent to maintain context
-- Starting fresh (defaults to main Forge agent)
-
-**Use `:agent` when:**
-
-- Switching to a different type of task that needs a specialized agent
-- You want expertise from a specific agent (e.g., `:sage` for questions/analysis, `:muse` for planning complex features)
-- Being explicit about which agent should handle the request
+**Example workflow:**
 
 ```bash
 # First interaction - goes to default Forge agent
 : help me debug this performance issue
 
-# Continues with same agent (remembers the performance context)
+# Continues with same agent
 : what tools should I use to profile memory usage?
 
-# Switch to sage for questions about the algorithm - no modifications
-:sage analyze the complexity of this algorithm in @sorting.js
+# Switch to sage for analysis
+:sage analyze the complexity of this sorting algorithm
 
-# Back to previous agent (sage) - continues with questions
-: what are the potential edge cases I should consider?
+# Continues with sage
+: what are the potential edge cases?
 
-# Switch to muse for planning a complex feature
-:muse create a plan for implementing real-time notifications
-
-# Continue with muse for planning details  
-: what components and APIs will I need for this plan?
-
-# Reset to start fresh, then use forge for actual coding
+# Clear context when switching tasks
 :reset
 :forge implement the user login validation function
 ```
 
-:::tip Agent Context Flow
+Press Tab after `:` for fuzzy agent selection *(requires fd/fzf)*.
 
-- **No agent specified** = uses the previous agent (or Forge if first interaction)
-- **Agent specified** = switches to that agent and makes it the new "previous" agent
-- **`:reset`** = clears context but keeps the current agent selection
-  :::
+<div className="rounded-md border border-blue-300 bg-blue-50 px-4 py-2 mt-3 text-blue-900 text-sm">
+  <strong>Agent Names</strong>
+  <ul className="mt-2 mb-0">
+    <li><strong>forge</strong> - Main agent for coding, refactoring, debugging, and general development tasks</li>
+    <li><strong>muse</strong> - Planning and strategy for complex features</li>
+    <li><strong>sage</strong> - Questions and analysis without making code modifications</li>
+  </ul>
+  Run <code>/agents</code> in a Forge session to see your configured agents.
+</div>
 
-### File Tagging with Fuzzy Finding
+### Context Management
 
-Tag files in your prompts using `@` followed by the filename and pressing Tab:
-
-```bash
-: review the changes in @package.json<Tab>
-: explain the logic in @src/utils/helper<Tab>
-: optimize the performance of @database/queries<Tab>
-```
-
-When you press Tab after typing `@` and partial filename:
-
-- A fuzzy finder window opens using `fzf`
-- Type to filter files by name
-- Use arrow keys to navigate
-- Press Enter to select the file
-- The full file path will be inserted into your prompt
-
-:::info Fuzzy File Search
-The fuzzy finder searches through your project files using `fd`, providing fast and intuitive file selection. It respects your `.gitignore` and other ignore files automatically.
-:::
-
-## Session Continuity
-
-ZSH Support maintains intelligent conversation context across commands while giving you control over when to preserve or reset that context:
-
-### Context Preservation
-
-The agent remembers previous conversations within the same terminal session:
-
-```bash
-# Start analyzing a performance issue
-: the database queries are running slow, can you help me investigate?
-
-# Run some shell commands for investigation
-ps aux | grep postgres
-htop -p $(pgrep postgres)
-
-# Continue the conversation - agent remembers the database context
-: based on what I found, the CPU usage is high, what should I check next?
-```
-
-### Context Reset
-
-Use `:reset` when switching to completely different tasks to avoid context interference:
+ZSH Support maintains conversation context across prompts. Use `:reset` to clear context when switching to unrelated tasks:
 
 ```bash
 # Working on database optimization
 : analyze the slow queries in @database/analytics.sql
 
-# Switch focus to a completely different task
+# Run shell commands for investigation
+ps aux | grep postgres
+htop -p $(pgrep postgres)
+
+# Continue the conversation - agent remembers context
+: based on what I found, the CPU usage is high, what should I check next?
+
+# Switch to a completely different task
 :reset
 
-# Now start fresh on a new topic - no database context carried over
+# Start fresh - no database context carried over
 : help me set up CI/CD pipeline for this project
 ```
 
-The `:reset` command clears the conversation history, ensuring previous context doesn't influence new tasks. This gives you the best of both worlds: context when you need it, clean slate when you don't.
+The agent remembers previous conversations within the same session, letting you work naturally with a mix of shell commands and AI assistance.
+
+### File Tagging *(requires fd/fzf)*
+
+Tag files in your prompts using `@` followed by a partial filename and Tab:
+
+```bash
+: review the changes in @package<Tab>
+: explain the logic in @src/utils/helper<Tab>
+: optimize the performance of @database/queries<Tab>
+```
+
+When you press Tab:
+
+1. A fuzzy finder window opens
+2. Type to filter files by name
+3. Use arrow keys to navigate
+4. Press Enter to select the file
+5. The full file path is inserted into your prompt
+
+The fuzzy finder searches through your project files and respects your `.gitignore` automatically.
 
 ## Troubleshooting
 
@@ -265,21 +270,19 @@ The `:reset` command clears the conversation history, ensuring previous context 
 
 If `: command not found` appears:
 
-1. Ensure you've added the source line to `~/.zshrc`
+1. Ensure you added the source line to `~/.zshrc`
 2. Reload your shell: `source ~/.zshrc`
 3. Verify `FORGEBIN` is set correctly: `echo $FORGEBIN`
+4. Check the path matches your installation method (global vs npx)
 
-### Fuzzy Finder Issues
+### File Tagging Doesn't Work
 
-If file tagging doesn't work (`@filename<Tab>` does nothing):
+If `@filename<Tab>` does nothing, fd and fzf are not installed. See Step 1 or our [fd and fzf Installation Guide](/docs/fd-fzf-installation).
 
-1. Verify `fd` is installed: `fd --version`
-2. Verify `fzf` is installed: `fzf --version`
-3. Check that both are in your PATH: `which fd fzf`
-
-:::warning File Tagging Requirements
-File tagging with `@filename<Tab>` requires both `fd` and `fzf`. Without these tools, pressing Tab after `@` will not trigger the fuzzy finder, and you'll need to type full file paths manually. See our [fd and fzf Installation Guide](/docs/fd-fzf-installation) for installation instructions.
-:::
+You can still use full file paths manually:
+```bash
+: review the changes in @[src/components/Header.tsx]
+```
 
 ### Syntax Highlighting Problems
 
@@ -287,23 +290,19 @@ If highlighting doesn't appear:
 
 1. Ensure you're using ZSH (not bash): `echo $SHELL`
 2. Check that your terminal supports colors: `echo $TERM`
-3. Try resetting highlighting: `source ~/.zshrc`
+3. Try reloading: `source ~/.zshrc`
 
 ### Agent Not Found
 
 If you get "agent not found" errors:
 
-1. Check your available agents: `/agents` (run this in a Forge session)
+1. Check your available agents by running `/agents` in a Forge session
 2. Verify agent name spelling (case-sensitive)
-3. Test with a diagnostic command: `: list my current working directory and git status`
+3. Test with a basic command: `: list my current working directory and git status`
 
 ## Performance Tips
 
-- **File caching**: The fuzzy finder caches file listings for better performance
+- **File caching**: The fuzzy finder caches file listings for better performance in large projects
 - **Agent persistence**: Once an agent is used, it stays active for faster subsequent calls
 - **Incremental search**: Type a few characters in the fuzzy finder to quickly narrow results
-- **History integration**: Previous prompts are saved to ZSH history for easy recall
-
-:::tip Pro Tip
-Use ZSH integration with the `:` sentinel for quick requests and shell-heavy workflows where you need your aliases and custom tooling. Keep the interactive mode for longer coding sessions that don't require your shell customizations. This gives you the best of both worlds - your native shell environment for system work and full Forge features for development.
-:::
+- **History integration**: Previous prompts are saved to ZSH history for easy recall with arrow keys
