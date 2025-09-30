@@ -146,9 +146,7 @@ forge --sandbox hotfix-login "fix OAuth redirect loop"
 # Main work remains untouched, bug fix can be merged independently
 ```
 
-## Requirements and Best Practices
-
-### Requirements
+## Requirements
 
 - **Git Repository**: Must be inside a Git repository
 - **Parent Directory Access**: Sandboxes are created in parent directory of repo root
@@ -187,31 +185,3 @@ Clean up sandboxes after merging changes to keep your workspace organized.
 
 :::
 
-## When to Use Sandboxes (Decision Tree)
-
-**Use a sandbox when:**
-
-- Running multiple agents on different tasks simultaneously
-- Agent is experimenting with different approaches
-- You want to preserve current state while agent works on something else
-- Agent work might take multiple sessions to complete
-- Testing potentially breaking changes in isolation
-
-**Skip sandboxes when:**
-
-- Single agent performing quick, isolated task
-- Making small, low-risk changes
-- Agent work will complete in one session
-- No parallel work needed
-
-## Benefits Summary
-
-Sandboxes enable:
-
-- **True Parallel Execution**: Multiple agents work simultaneously
-- **Risk Isolation**: Experiments and changes are contained
-- **State Preservation**: Each task maintains its own state
-- **Clean Organization**: Separate workspaces for separate concerns
-- **Flexible Workflows**: Sequential or parallel agent operations
-
-Sandbox transforms agent-driven development by providing true isolation and enabling sophisticated multi-agent workflows, making complex projects more manageable and development more efficient.
