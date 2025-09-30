@@ -24,18 +24,21 @@ Different agents are optimized for different types of work. While models determi
 Forge comes with specialized agents designed for different stages of development. Each has distinct capabilities and access levels:
 
 **Forge Agent (Default):**
+
 - Full read-write capabilities for implementing changes
 - Modifies files, creates code, and executes commands
 - Perfect for routine tasks and hands-off implementation
 - Active by default when you start Forge
 
 **Muse Agent:**
+
 - Read-only mode for planning and analysis
 - Creates detailed implementation plans without touching code
 - Ideal for understanding scope before making changes
 - Great for critical systems requiring careful review
 
 **Sage Agent:**
+
 - Read-only mode for deep research and investigation
 - Traces functionality across multiple files
 - Maps architecture, dependencies, and patterns
@@ -59,7 +62,7 @@ Learn more: [Creating Custom Agents Guide](/docs/agent-definition-guide)
 Different agents excel at different stages of development:
 
 - **Sage** - Deep research and understanding complex systems
-- **Muse** - Planning and analyzing changes before implementation  
+- **Muse** - Planning and analyzing changes before implementation
 - **Forge** - Implementing solutions and making code changes
 - **Custom Agents** - Specialized tasks or team-specific workflows
 
