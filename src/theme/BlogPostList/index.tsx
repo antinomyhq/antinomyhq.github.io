@@ -52,8 +52,8 @@ function BlogPostList({items}: {items: Props["items"]}): JSX.Element {
   return (
     <div className="grid grid-cols-1 gap-4 md:gap-3 md:grid-cols-2 lg:grid-cols-3">
       {items.map((item) => {
-        const {permalink, date, title, description, authors, tags, readingTime} = item.content.metadata
-        const bgIndex = blogColorMap[permalink] ?? 0
+        const {permalink, date, title, description, authors} = item.content.metadata
+
         return (
           <BlogListItem
             key={permalink}
@@ -62,9 +62,6 @@ function BlogPostList({items}: {items: Props["items"]}): JSX.Element {
             description={description}
             authors={authors}
             permalink={permalink}
-            tags={tags}
-            bgIndex={bgIndex}
-            readingTime={readingTime}
           />
         )
       })}

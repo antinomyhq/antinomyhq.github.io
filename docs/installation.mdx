@@ -7,8 +7,7 @@ sidebar_label: Installation
 
 import Steps, {Step} from "../components/Steps"
 import {Zap, Target, Settings} from "lucide-react"
-import CustomLink from "@site/src/components/shared/CustomLink"
-import { themeColors } from "@site/src/theme/colors"
+import {themeColors} from "../src/theme/colors"
 
 # Installation & Setup
 
@@ -18,18 +17,31 @@ Get Forge running on your system in under 5 minutes. This guide covers installat
 
 <Steps>
   <Step title="Install Forge">
-    Install <CustomLink href="https://nodejs.org/en/download">Node.js 16+</CustomLink>, then run:
+    Install <a href="https://nodejs.org/en/download" target="_blank" rel="noopener noreferrer">Node.js 16+</a>, then choose one of the installation methods:
 
+    ### Method 1: npx (Recommended)
+    Run Forge without global installation:
+    ```bash
+    npx forgecode@latest
+    ```
+
+    ### Method 2: Global npm installation
+    Install Forge globally for the `forge` command:
     ```bash
     npm install -g forgecode@latest
     ```
 
-:::caution
-    Do <strong>not</strong> use <code>sudo npm install -g</code> as this can lead to permission issues and security
-    risks. If you encounter permission errors, see our{" "}
-    <CustomLink href="/docs/npm-troubleshooting">Node.js & npm Troubleshooting</CustomLink>
-    guide for safe solutions including npm directory configuration and Node.js version managers like nvm.
-:::
+    <div className="rounded-md border border-amber-300 bg-amber-50 px-4 py-2 mt-3 text-amber-900 text-sm flex items-start gap-2">
+      <span className="mt-1 mr-2">⚠️</span>
+      <span>
+        Do <strong>not</strong> use <code>sudo npm install -g</code> as this can lead to permission issues and security
+        risks. If you encounter permission errors, see our{" "}
+        <a href="/docs/npm-troubleshooting" className="underline hover:no-underline">
+          Node.js & npm Troubleshooting
+        </a>{" "}
+        guide for safe solutions including npm directory configuration and Node.js version managers like nvm.
+      </span>
+    </div>
 
   </Step>
   
@@ -40,20 +52,69 @@ Get Forge running on your system in under 5 minutes. This guide covers installat
   </Step>
   
   <Step title="Start Forge">
+    Depending on your installation method:
+
+    **If you used npx (Method 1):**
+    ```bash
+    npx forgecode@latest
+    ```
+
+    **If you used global npm installation (Method 2):**
     ```bash
     forge
     ```
+
   </Step>
   
   <Step title="Complete authentication">
+    Forge offers multiple authentication options:
 
-    **AI Providers**: Configure Forge to use <CustomLink href="/docs/custom-providers">OpenAI, Anthropic, or other providers</CustomLink> with your own API keys for custom setups.
+    1. **Forge Provider**: The default option. Connect through the Forge app and complete the OAuth process.
+       This will open your browser to [app.forgecode.dev](https://app.forgecode.dev/app/) where you can sign up or sign in with Google/GitHub.
+
+    2. **Other AI Providers**: Configure Forge to use [OpenAI, Anthropic, or other providers](/docs/custom-providers) with your own API keys for custom setups.
+
+    To logout when needed you can run:
+
+    ```bash
+    /logout
+    ```
+
+    inside the forge session
+
   </Step>
 </Steps>
 
 ## Initialize your project
 
-After installing Forge, you can configure additional AI providers beyond the default. Follow the <CustomLink href="../custom-providers">Provider Configuration</CustomLink> guide to set up alternative providers like OpenAI, Anthropic, or OpenRouter.
+After installing Forge, you can configure additional AI providers beyond the default. Follow the [Provider Configuration](../custom-providers) guide to set up alternative providers like OpenAI, Anthropic, or OpenRouter.
+
+## Next Steps
+
+import NextSteps from "../src/components/NextSteps"
+
+<NextSteps
+  items={[
+    {
+      logo: <Zap size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      title: "Quick Start Tutorial",
+      subtitle: "Complete your first task with Forge in under 10 minutes.",
+      link: "/docs/quickstart",
+    },
+    {
+      logo: <Target size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      title: "Essential Commands",
+      subtitle: "Learn the core commands for productive development workflows.",
+      link: "/docs/commands",
+    },
+    {
+      logo: <Settings size={28} style={{verticalAlign: "middle", marginRight: 6}} />,
+      title: "Provider Configuration",
+      subtitle: "Configure additional AI providers and customize your setup.",
+      link: "/docs/custom-providers",
+    },
+  ]}
+/>
 
 ## System Requirements
 
@@ -77,30 +138,3 @@ Before installing Forge, ensure your system meets these requirements:
 - **RAM**: Minimum 4GB, 8GB+ recommended
 - **Storage**: 100MB for installation, additional space for project files
 - **Network**: Internet connection for AI model access
-
-## Next Steps
-
-import NextSteps from "../src/components/NextSteps"
-
-<NextSteps
-  items={[
-    {
-      logo: <Zap size={24} style={{color: themeColors.tutorial}} />,
-      title: "Quick Start Tutorial",
-      subtitle: "Complete your first task with Forge in under 10 minutes.",
-      link: "/docs/quickstart",
-    },
-    {
-      logo: <Target size={24} style={{color: themeColors.commands}} />,
-      title: "Essential Commands",
-      subtitle: "Learn the core commands for productive development workflows.",
-      link: "/docs/commands",
-    },
-    {
-      logo: <Settings size={24} style={{color: themeColors.customCommands}} />,
-      title: "Provider Configuration",
-      subtitle: "Configure additional AI providers and customize your setup.",
-      link: "/docs/custom-providers",
-    },
-  ]}
-/>

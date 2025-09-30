@@ -6,21 +6,33 @@
     "publish-externals"
   ],
   "scripts": {
-    "docusaurus": "docusaurus",
-    "start": "docusaurus start",
-    "build": "docusaurus build",
-    "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
-    "clear": "docusaurus clear",
-    "serve": "docusaurus serve",
     "analyze": "docusaurus build --bundle-analyzer",
-    "format:fix": "prettier --write '**/*.{graphql,yml,json,md,sh,ts,tsx,js,css}'",
+    "build": "docusaurus build",
+    "clear": "docusaurus clear",
+    "cypress": "cypress run",
+    "deploy": "docusaurus deploy",
+    "docusaurus": "docusaurus",
     "format:check": "prettier --check '**/*.{graphql,yml,json,md,sh,ts,tsx,js,css}'",
-    "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids",
-    "typecheck": "tsc",
+    "format:fix": "prettier --write '**/*.{graphql,yml,json,md,sh,ts,tsx,js,css}'",
+    "serve": "docusaurus serve",
+    "start": "docusaurus start",
+    "swizzle": "docusaurus swizzle",
     "test:cypress": "start-server-and-test serve http://localhost:3000 cypress",
-    "cypress": "cypress run"
+    "typecheck": "tsc",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "write-translations": "docusaurus write-translations"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
   },
   "dependencies": {
     "@docusaurus/core": "^3.8.1",
@@ -37,9 +49,8 @@
     "clsx": "^2.1.1",
     "graphiql": "^3.3.1",
     "graphql-ws": "^5.16.0",
-    "gsap": "^3.13.0",
     "lottie-light-react": "^2.4.0",
-    "lucide-react": "^0.525.0",
+    "lucide-react": "^0.414.0",
     "postcss": "^8.4.38",
     "prism-react-renderer": "^2.3.1",
     "react": "^18.3.1",
@@ -48,9 +59,7 @@
     "react-dom": "^18.3.1",
     "react-fast-marquee": "^1.6.4",
     "react-ga4": "^2.1.0",
-    "react-hook-form": "^7.60.0",
     "react-hot-toast": "^2.4.1",
-    "react-markdown": "^10.1.0",
     "react-hotkeys-hook": "^5.1.0",
     "react-on-screen": "^2.1.1",
     "react-platform-js": "^0.0.1",
@@ -74,18 +83,6 @@
     "prettier-plugin-sh": "^0.14.0",
     "start-server-and-test": "^2.0.8",
     "typescript": "~5.5.2"
-  },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 3 chrome version",
-      "last 3 firefox version",
-      "last 5 safari version"
-    ]
   },
   "engines": {
     "node": ">=18.0"

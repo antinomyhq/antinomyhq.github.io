@@ -6,8 +6,7 @@ sidebar_label: Quickstart
 ---
 
 import {Terminal, CodeXml, GitBranch, Bug, Lightbulb, Zap} from "lucide-react"
-import CustomLink from "@site/src/components/shared/CustomLink"
-import { themeColors } from "@site/src/theme/colors"
+import {themeColors} from "@site/src/theme/colors"
 
 # Quickstart
 
@@ -15,66 +14,58 @@ Welcome to Forge! This quickstart guide will have you using AI-powered coding as
 
 ## Before you begin
 
-Make sure you have:
-
-- A code project to work with (or create a new one)
+Make sure you have a code project to work with (or create a new one using forge).
 
 ## Step 1: Start your first session
 
 Open your terminal in any project directory and start Forge:
 
 ```bash
-cd /path/to/your/project
+cd awesome-project
 npx forgecode@latest
 ```
 
-This will run Forge. When you first run it, Forge will open your browser to <CustomLink href="https://app.forgecode.dev/app">app.forgecode.dev</CustomLink> for authorization. Complete the OAuth process to authenticate.
+This will run Forge. When you first run it, Forge will open your browser to [app.forgecode.dev](https://app.forgecode.dev/app) for authorization. Complete the Auth process to authenticate.
 
 You'll see the Forge prompt inside a new interactive session:
 
 ```
-✻ Welcome to Forge!
+ _____
+|  ___|__  _ __ __ _  ___
+| |_ / _ \| '__/ _` |/ _ \
+|  _| (_) | | | (_| |  __/
+|_|  \___/|_|  \__, |\___|
+               |___/
 
-Context: /path/to/your/project
+New conversation: /new
+     Get started: /info, /usage, /help, /conversations
+    Switch model: /model
+    Switch agent: /forge or /muse or /agent
+          Update: /update
+            Quit: /exit or <CTRL+D>
 
-> Try asking "what does this project do?" or "help me add a new feature"
+> help me add a new feature
 ```
 
 ## Step 2: Understand your codebase
 
-Let's start by having Forge analyze your project. Try one of these commands:
+Let's start by having Forge analyze your project. Once the command is given, Forge will examine your project structure, dependencies, and patterns. Try one of these commands:
 
-```
-> analyze the architecture of this codebase and identify any potential issues
-```
+> **Analyze the architecture of this codebase and identify any potential issues**
 
-Forge will examine your project structure, dependencies, and patterns. You can also ask for specific insights:
+> **What are the main components and how do they interact?**
 
-```
-> what are the main components and how do they interact?
-```
+> **Identify any code smells or areas that need refactoring**
 
-```
-> identify any code smells or areas that need refactoring
-```
+> **Show me the data flow through this application**
 
-```
-> show me the data flow through this application
-```
-
-```
-> what testing strategy is currently in place and how can it be improved?
-```
-
-> **Note**: Forge reads your files as needed and maintains context throughout the conversation - you don't have to manually add files or repeat information.
+> **What testing strategy is currently in place and how can it be improved?**
 
 ## Step 3: Make your first code change
 
 Now let's have Forge write some code. Try a simple task:
 
-```
-> add a unit test for tree diffing function
-```
+> **Add a unit test for tree diffing function**
 
 Forge will:
 
@@ -85,41 +76,27 @@ Forge will:
 
 Forge makes Git operations conversational and intelligent:
 
-```
-> what files have I changed?
-```
+> **What files have I changed?**
 
-```
-> commit my changes with a descriptive message
-```
+> **Commit my changes with a descriptive message**
 
 You can also prompt for more complex Git operations:
 
-```
-> create a new branch called feature/quickstart-demo
-```
+> **Create a new branch called feature/quickstart-demo**
 
-```
-> show me the last 5 commits
-```
+> **Show me the last 5 commits**
 
-```
-> help me resolve any merge conflicts
-```
+> **Help me resolve any merge conflicts**
 
 ## Step 5: Debug and fix issues
 
 Forge excels at debugging and problem-solving. Describe issues in natural language:
 
-```
-> there's a bug where users can submit empty forms - help me fix it
-```
+> **There's a bug where users can submit empty forms - help me fix it**
 
 Or ask for help with specific errors:
 
-```
-> I'm getting "TypeError: Cannot read property 'map' of undefined" - what might be causing this?
-```
+> **I'm getting "TypeError: Cannot read property 'map' of undefined" - what might be causing this?**
 
 Forge will:
 
@@ -127,89 +104,6 @@ Forge will:
 - Identify potential causes
 - Suggest multiple solutions
 - Implement fixes with your approval
-
-## Step 6: Explore common workflows
-
-Here are some powerful ways to work with Forge:
-
-### <CodeXml size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Refactor code**
-
-```
-> refactor the authentication module to use async/await instead of callbacks
-```
-
-### <Terminal size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Write tests**
-
-```
-> write unit tests for the calculator functions
-```
-
-### <Lightbulb size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Add new features**
-
-```
-> add input validation to the user registration form
-```
-
-### <Bug size={20} style={{verticalAlign: 'middle', marginRight: 6}} /> **Code review**
-
-```
-> review my changes and suggest improvements
-```
-
-> **Tip**: Think of Forge as your AI pair programmer. Describe what you want to achieve in natural language, and it will help you get there efficiently.
-
-## Advanced usage patterns
-
-### Multi-step tasks
-
-Break complex tasks into steps:
-
-```
-> 1. create a new API endpoint for user profiles
-```
-
-```
-> 2. add validation for required fields
-```
-
-```
-> 3. write tests for the endpoint
-```
-
-### Context-aware assistance
-
-Let Forge explore before making changes:
-
-```
-> analyze the database schema first
-```
-
-```
-> how does error handling work in this app?
-```
-
-```
-> then add proper error handling to the login endpoint
-```
-
-### Specialized agents
-
-Switch between different AI agents for specific tasks:
-
-- **Forge Agent**: Full execution mode for implementing changes
-- **Muse Agent**: Analysis mode for planning and review without modifications
-
-### Save time with shortcuts
-
-- Press ↑ for command history
-- Use Tab for command completion
-- Type `/` to see all available slash commands
-
-## Getting help
-
-- **In Forge**: Type `/help` or ask "how do I..."
-- **Documentation**: Browse these guides for detailed information
-- **Community**: Join our <CustomLink href="https://discord.gg/kRZBPpkgwq">Discord</CustomLink> for tips and support
 
 ## What's next?
 
@@ -220,25 +114,31 @@ import NextSteps from "../src/components/NextSteps"
 <NextSteps
   items={[
     {
-      logo: <Terminal size={24} style={{color: themeColors.commandsReference}} />,
+      logo: <Terminal size={24} style={{color: themeColors.commandsReference, marginRight: 6}} />,
       title: "Commands Reference",
       subtitle: "Master all commands and options",
       link: "/docs/commands",
     },
     {
-      logo: <Zap size={24} style={{color: themeColors.customProviders}} />,
+      logo: <Zap size={24} style={{color: themeColors.customProviders, marginRight: 6}} />,
       title: "Custom Providers",
       subtitle: "Configure different AI providers",
       link: "/docs/custom-providers",
     },
     {
-      logo: <GitBranch size={24} style={{color: themeColors.advancedConfig}} />,
+      logo: <GitBranch size={24} style={{color: themeColors.advancedConfig, marginRight: 6}} />,
       title: "Advanced Configuration",
       subtitle: "Customize Forge for your workflow",
       link: "/docs/environment-configuration",
     },
   ]}
 />
+
+## Getting help
+
+- **In Forge**: Type `/help` or ask "how do I..."
+- **Documentation**: Browse these guides for detailed information
+- **Community**: Join our [Discord](https://discord.gg/kRZBPpkgwq) for tips and support
 
 ---
 
