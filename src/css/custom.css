@@ -91,13 +91,15 @@ body {
 }
 
 code {
-  border: 1px dashed #555;
+  color: #111727;
+  border: 0.5px dashed #555;
   letter-spacing: 0.00001px;
   vertical-align: baseline;
   background-color: #eee;
-  border-radius: 0;
-  padding: 0px 4px;
-  font-size: 0.8em;
+  border-radius: px;
+  padding: 0px 6px;
+  font-size: 1em;
+  font-weight: 600;
 }
 
 input[type="radio"] {
@@ -364,8 +366,8 @@ input[type="radio"]:checked::before {
 
 .navbar__item.navbar__link.navbar__link--active,
 .navbar__item.dropdown.navbar__link--active {
-  background-color: var(--ifm-color-brand);
-  color: var(--ifm-color-gray-900);
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
+  color: #fff;
   border-radius: 6px;
 }
 
