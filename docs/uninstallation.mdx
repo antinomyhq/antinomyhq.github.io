@@ -1,0 +1,151 @@
+---
+title: Logout & Uninstall Forge
+sidebar_position: 3
+description: "Complete guide to temporarily logging out or uninstalling Forge Code from your system."
+sidebar_label: Logout & Uninstalling
+---
+
+import Steps, {Step} from "../components/Steps"
+import {Trash2, AlertTriangle, CheckCircle, LogOut} from "lucide-react"
+
+# Logout & Uninstall Forge
+
+Log out from Forge or uninstall Forge Code from your system.
+
+## Logout from Forge
+
+If you want to temporarily stop using Forge without removing the installation, you can simply log out from your current session:
+
+<Steps>
+  <Step title="Start Forge and log out">
+    ```bash
+    # Start Forge
+    forge
+
+    # Inside the Forge session, log out:
+    /logout
+    ```
+
+    This disconnects you from the Forge provider but keeps the application installed for future use.
+
+  </Step>
+</Steps>
+
+:::info Quick Return
+After logging out, you can start using Forge again anytime by running `forge` and completing authentication.
+:::
+
+## Uninstallation
+
+### For Global npm Uninstallation
+
+If you installed Forge using `npm install -g forgecode@latest`, follow these steps to uninstall:
+
+<Steps>
+  <Step title="Uninstall">
+    ```bash
+    npm uninstall -g forgecode
+    ```
+
+    This removes the globally installed Forge package from your system.
+
+  </Step>
+
+  <Step title="Verify Removal">
+    Check that Forge has been removed:
+
+    ```bash
+    forge --version
+    ```
+
+    You should see an error indicating the command is not found, confirming successful removal.
+
+  </Step>
+</Steps>
+
+### For npx Usage
+
+If you've been using `npx forgecode@latest`, **no uninstallation is required**. The npx command downloads and runs Forge temporarily without installing it permanently on your system.
+
+:::info No Installation = No Uninstallation
+Since `npx forgecode@latest` doesn't install anything permanently, there's nothing to uninstall. Each time you run the command, it downloads the latest version temporarily.
+:::
+
+Optionally, you can clear the npx cache to free up disk space:
+
+```bash
+npm cache clean --force
+```
+
+## Clean Up Configuration and Data
+
+After uninstalling the main application, you may want to remove associated configuration files and data:
+
+<Steps>
+  <Step title="Remove Forge configuration directory">
+    Delete the `forge` folder from your home directory. This folder contains your authentication tokens, custom agents, and local configurations.
+
+    **Location:**
+    - **macOS/Linux**: `~/forge/`
+    - **Windows**: `%USERPROFILE%\forge\`
+
+  </Step>
+  
+  <Step title="Remove project-specific configurations (optional)">
+    Look for `forge.yaml` files in your project directories and delete them if no longer needed. These files contain project-specific Forge settings and agent configurations.
+  </Step>
+</Steps>
+
+## Verify Removal
+
+<Steps>
+  <Step title="Check command availability">
+    ```bash
+    forge --version
+    ```
+
+    The command should return "not found" or a similar error.
+
+  </Step>
+
+</Steps>
+
+## Troubleshooting Uninstallation
+
+### Permission Issues
+
+If you encounter permission errors during uninstallation:
+
+**macOS/Linux:**
+
+```bash
+sudo npm uninstall -g forgecode
+```
+
+**Windows (Run as Administrator):**
+
+```cmd
+npm uninstall -g forgecode
+```
+
+### npm Cache Issues
+
+If you experience issues with npm, clear the npm cache:
+
+```bash
+npm cache clean --force
+```
+
+## Need Help?
+
+If you encounter issues during logout or uninstallation:
+
+- Check our [npm Troubleshooting Guide](/docs/npm-troubleshooting)
+- Join our [Discord community](https://discord.gg/kRZBPpkgwq) for real-time help
+- Visit our [GitHub Issues](https://github.com/antinomyhq/forge/issues)
+
+---
+
+:::note Success
+Forge Code has been logged out or removed from your system. Thank you for trying Forge Code!
+:::

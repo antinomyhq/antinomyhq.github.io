@@ -6,7 +6,7 @@ import {ArrowLeft} from "lucide-react"
 
 function NavigatorIcon({isNext}: {isNext: boolean}): JSX.Element {
   return (
-    <div className="w-10 h-10 p-2 bg-tailCall-black flex justify-center items-center rounded-full">
+    <div className="w-10 h-10 p-2 bg-gray-900 flex justify-center items-center rounded-full">
       {isNext ? <ArrowRight size={24} color="white" /> : <ArrowLeft size={24} color="white" />}
     </div>
   )

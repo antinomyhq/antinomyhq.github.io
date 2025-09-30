@@ -17,8 +17,16 @@ Get Forge running on your system in under 5 minutes. This guide covers installat
 
 <Steps>
   <Step title="Install Forge">
-    Install [Node.js 16+](https://nodejs.org/en/download), then run:
+    Install <a href="https://nodejs.org/en/download" target="_blank" rel="noopener noreferrer">Node.js 16+</a>, then choose one of the installation methods:
 
+    ### Method 1: npx (Recommended)
+    Run Forge without global installation:
+    ```bash
+    npx forgecode@latest
+    ```
+
+    ### Method 2: Global npm installation
+    Install Forge globally for the `forge` command:
     ```bash
     npm install -g forgecode@latest
     ```
@@ -37,16 +45,29 @@ Get Forge running on your system in under 5 minutes. This guide covers installat
 
   </Step>
   
-  <Step title="Navigate to your project">
+  <Step title="Start Forge">
+    Choose your preferred startup method:
+
+    **Navigate first (the traditional way):**
     ```bash
     cd your-project-directory
     ```
+
   </Step>
   
   <Step title="Start Forge">
+    Depending on your installation method:
+
+    **If you used npx (Method 1):**
+    ```bash
+    npx forgecode@latest
+    ```
+
+    **If you used global npm installation (Method 2):**
     ```bash
     forge
     ```
+
   </Step>
   
   <Step title="Complete authentication">
@@ -121,3 +142,7 @@ Before installing Forge, ensure your system meets these requirements:
 - **RAM**: Minimum 4GB, 8GB+ recommended
 - **Storage**: 100MB for installation, additional space for project files
 - **Network**: Internet connection for AI model access
+
+## Need to Uninstall?
+
+If you need to remove Forge from your system, see our [Uninstallation Guide](/docs/uninstallation) for complete removal instructions including configuration cleanup.
