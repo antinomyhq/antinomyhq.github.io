@@ -36,7 +36,7 @@ Shows only:
 @[src/auth/AuthService.ts]
 ```
 
-Select your file using and complete the request:
+Select your file from the filtered results and complete the request:
 
 ```
 > Help me debug @[src/auth/AuthService.ts] - the login method is throwing errors
