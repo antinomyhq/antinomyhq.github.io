@@ -106,8 +106,8 @@ After installation, test ZSH Support with these commands:
 # Basic prompt - should show syntax highlighting
 : hello, can you help me debug this shell script?
 
-# Agent-specific prompt (if you have sage configured)
-:sage what's the difference between ps aux and ps -ef?
+# Agent-specific prompt (asking questions without modifications)
+:sage what are the performance implications of this database query?
 
 # Conversation reset
 :reset
@@ -137,16 +137,68 @@ The prompt will be sent to your last used agent, defaulting to the main Forge ag
 Target specific agents by including the agent name after the colon:
 
 ```bash
-:sage explain the algorithm complexity
-:reviewer check this code for security issues
-:architect design a microservices structure
+:sage explain the algorithm complexity and performance characteristics
+:muse create a plan for implementing user authentication with OAuth
+:forge refactor this function to be more maintainable
 ```
 
 :::info Agent Names
-These are example agent names. Use `/agents` in your Forge session to see your configured agents, or check your agent configuration files to see which agents you have available.
+These are example agent names and their purposes:
+- **forge** - Main agent for coding, refactoring, debugging, and general development tasks
+- **muse** - Specialized for creating plans and strategies for complex features  
+- **sage** - Ask questions and get analysis without making any code modifications
+
+Use `/agents` in your Forge session to see your configured agents, or check your agent configuration files to see which agents you have available.
 :::
 
 This sends the prompt directly to the specified agent, making it easy to use specialized agents for different tasks.
+
+#### When to Use `:` vs `:agent`
+
+Understanding agent selection is crucial for effective ZSH Support usage:
+
+**Use `:` (no agent specified) when:**
+
+- Continuing the same type of conversation or task
+- You want the previous agent to maintain context
+- Starting fresh (defaults to main Forge agent)
+
+**Use `:agent` when:**
+
+- Switching to a different type of task that needs a specialized agent
+- You want expertise from a specific agent (e.g., `:sage` for questions/analysis, `:muse` for planning complex features)
+- Being explicit about which agent should handle the request
+
+```bash
+# First interaction - goes to default Forge agent
+: help me debug this performance issue
+
+# Continues with same agent (remembers the performance context)
+: what tools should I use to profile memory usage?
+
+# Switch to sage for questions about the algorithm - no modifications
+:sage analyze the complexity of this algorithm in @sorting.js
+
+# Back to previous agent (sage) - continues with questions
+: what are the potential edge cases I should consider?
+
+# Switch to muse for planning a complex feature
+:muse create a plan for implementing real-time notifications
+
+# Continue with muse for planning details  
+: what components and APIs will I need for this plan?
+
+# Reset to start fresh, then use forge for actual coding
+:reset
+:forge implement the user login validation function
+```
+
+:::tip Agent Context Flow
+
+- **No agent specified** = uses the previous agent (or Forge if first interaction)
+- **Agent specified** = switches to that agent and makes it the new "previous" agent
+- **`:reset`** = clears context but keeps the current agent selection
+  :::
 
 ### File Tagging with Fuzzy Finding
 
