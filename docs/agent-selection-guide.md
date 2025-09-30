@@ -56,17 +56,16 @@ Learn more: [Creating Custom Agents Guide](/docs/agent-definition-guide)
 
 ## When to Switch Agents
 
-**Starting a new type of task:**
-If you're moving from backend work to frontend styling, switch to an agent optimized for that domain.
+Different agents excel at different stages of development:
 
-**Need different communication style:**
-Some agents are more verbose and educational, others are concise and action-oriented.
+- **Sage** - Deep research and understanding complex systems
+- **Muse** - Planning and analyzing changes before implementation  
+- **Forge** - Implementing solutions and making code changes
+- **Custom Agents** - Specialized tasks or team-specific workflows
 
-**Working with specific technologies:**
-Use agents configured with deep knowledge of your stack (React, Python, DevOps, etc.).
+Use the `/agent` command to quickly switch between agents as your needs change.
 
-**Custom requirements:**
-Switch to your team's custom agent when working on projects with specific coding standards.
+For detailed guidance on when to use each built-in agent and switching strategies, see the [Operating Agents Guide](/docs/operating-agents).
 
 ## Pro Tips
 
