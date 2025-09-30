@@ -36,7 +36,7 @@ const Stats = (): JSX.Element => {
       icon: Code,
     },
     {
-      value: 4100,
+      value: 4500,
       suffix: "+",
       label: "GitHub Stars",
       description: "",
