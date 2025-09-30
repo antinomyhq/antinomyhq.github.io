@@ -4,7 +4,7 @@ Sandbox in Forge creates isolated development environments using Git worktrees. 
 
 ## Why Sandboxes Matter for Agent Work
 
-**TL;DR**: Agents work better when they have isolated workspaces. Sandboxes give each agent task its own environment, preventing conflicts and enabling true parallel execution.
+Agents work better when they have isolated workspaces. Sandboxes give each agent task its own environment, preventing conflicts and enabling true parallel execution.
 
 Traditional single-workspace approach:
 
