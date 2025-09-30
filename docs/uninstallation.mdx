@@ -10,19 +10,19 @@ import {Trash2, AlertTriangle, CheckCircle, LogOut} from "lucide-react"
 
 # Logout & Uninstall Forge
 
-Logout from Forge or uninstall Forge Code from your system.
+Log out from Forge or uninstall Forge Code from your system.
 
 ## Logout from Forge
 
-If you want to temporarily stop using Forge without removing the installation, you can simply logout from your current session:
+If you want to temporarily stop using Forge without removing the installation, you can simply log out from your current session:
 
 <Steps>
-  <Step title="Start Forge and logout">
+  <Step title="Start Forge and log out">
     ```bash
-    # Start forge
+    # Start Forge
     forge
 
-    # Inside the forge session, logout:
+    # Inside the Forge session, log out:
     /logout
     ```
 
@@ -32,12 +32,12 @@ If you want to temporarily stop using Forge without removing the installation, y
 </Steps>
 
 :::info Quick Return
-After logout, you can start using Forge again anytime by running `forge` and completing authentication.
+After logging out, you can start using Forge again anytime by running `forge` and completing authentication.
 :::
 
 ## Uninstallation
 
-### For Global npm Installation
+### For Global npm Uninstallation
 
 If you installed Forge using `npm install -g forgecode@latest`, follow these steps to uninstall:
 
@@ -51,14 +51,14 @@ If you installed Forge using `npm install -g forgecode@latest`, follow these ste
 
   </Step>
 
-  <Step title="Verify removal">
+  <Step title="Verify Removal">
     Check that Forge has been removed:
 
     ```bash
     forge --version
     ```
 
-    You should see a "command not found" error, confirming successful removal.
+    You should see an error indicating the command is not found, confirming successful removal.
 
   </Step>
 </Steps>
@@ -103,8 +103,9 @@ After uninstalling the main application, you may want to remove associated confi
     ```bash
     forge --version
     ```
-    
-    All commands should return "not found" or similar errors.
+
+    The command should return "not found" or a similar error.
+
   </Step>
 
 </Steps>
