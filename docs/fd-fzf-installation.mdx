@@ -18,11 +18,13 @@ Both `fd` (fast file finder) and `fzf` (fuzzy finder) are required for the `@fil
 `fd` is a fast and user-friendly alternative to the traditional `find` command, used by ZSH Support to quickly locate files in your project.
 
 ### macOS
+
 ```bash
 brew install fd
 ```
 
 ### Ubuntu/Debian
+
 ```bash
 sudo apt install fd-find
 ```
@@ -32,6 +34,7 @@ On Ubuntu/Debian systems, the binary is installed as `fdfind` instead of `fd` du
 :::
 
 ### Arch Linux
+
 ```bash
 sudo pacman -S fd
 ```
@@ -39,16 +42,19 @@ sudo pacman -S fd
 ### Other Linux Distributions
 
 **Using cargo (if Rust is installed):**
+
 ```bash
 cargo install fd-find
 ```
 
 **Manual installation from GitHub releases:**
+
 1. Visit [fd releases page](https://github.com/sharkdp/fd/releases)
 2. Download the appropriate binary for your system
 3. Extract and place in your PATH
 
 ### Verify fd Installation
+
 ```bash
 fd --version
 ```
@@ -58,16 +64,19 @@ fd --version
 `fzf` is a command-line fuzzy finder that provides the interactive file selection interface in ZSH Support.
 
 ### macOS
+
 ```bash
 brew install fzf
 ```
 
 ### Ubuntu/Debian
+
 ```bash
 sudo apt install fzf
 ```
 
 ### Arch Linux
+
 ```bash
 sudo pacman -S fzf
 ```
@@ -75,16 +84,19 @@ sudo pacman -S fzf
 ### Other Linux Distributions
 
 **Manual installation using git:**
+
 ```bash
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ```
 
 **Using package managers:**
+
 - **CentOS/RHEL/Fedora**: `sudo dnf install fzf` or `sudo yum install fzf`
 - **openSUSE**: `sudo zypper install fzf`
 
 ### Verify fzf Installation
+
 ```bash
 fzf --version
 ```
@@ -96,11 +108,13 @@ fzf --version
 If `fd` or `fzf` commands are not found after installation:
 
 1. **Check if they're in your PATH:**
+
    ```bash
    which fd fzf
    ```
 
 2. **Restart your terminal** or reload your shell configuration:
+
    ```bash
    source ~/.zshrc
    ```
@@ -123,16 +137,19 @@ If you encounter permission errors during installation:
 After installing both tools, if file tagging still doesn't work in ZSH Support:
 
 1. **Verify both tools are installed:**
+
    ```bash
    fd --version && fzf --version
    ```
 
 2. **Reload ZSH configuration:**
+
    ```bash
    source ~/.zshrc
    ```
 
 3. **Test the integration:**
+
    ```bash
    : test file tagging @package.json<Tab>
    ```
@@ -142,14 +159,17 @@ After installing both tools, if file tagging still doesn't work in ZSH Support:
 ## Platform-Specific Notes
 
 ### macOS
+
 - Homebrew installation is the most reliable method
 - Both tools integrate seamlessly with the system PATH
 
 ### Linux
+
 - Most modern distributions include both tools in their repositories
 - Ubuntu/Debian users should be aware of the `fdfind` vs `fd` naming
 
 ### Windows (WSL)
+
 - Use the Linux installation methods within WSL
 - Ensure your WSL distribution is up to date before installing
 
@@ -158,11 +178,13 @@ After installing both tools, if file tagging still doesn't work in ZSH Support:
 If the standard installation methods don't work for your system:
 
 ### Using Nix
+
 ```bash
 nix-env -i fd fzf
 ```
 
 ### Using Snap (Ubuntu)
+
 ```bash
 sudo snap install fd fzf
 ```
@@ -172,6 +194,7 @@ sudo snap install fd fzf
 Both tools are written in Rust and can be built from source:
 
 **fd:**
+
 ```bash
 git clone https://github.com/sharkdp/fd.git
 cd fd
@@ -179,6 +202,7 @@ cargo build --release
 ```
 
 **fzf:**
+
 ```bash
 git clone https://github.com/junegunn/fzf.git
 cd fzf
