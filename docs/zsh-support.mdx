@@ -37,26 +37,29 @@ htop -p $(pgrep server)
 
 Understanding which mode to use will save you time and frustration:
 
-| Use ZSH Support When | Use Interactive Mode When |
-|---------------------|-------------------------|
+| Use ZSH Support When                             | Use Interactive Mode When                       |
+| ------------------------------------------------ | ----------------------------------------------- |
 | You need your shell aliases and custom functions | You're doing focused coding without shell tools |
-| Running system commands alongside AI tasks | Working on extended multi-file refactoring |
-| Quick one-off questions or small tasks | Deep debugging sessions with lots of context |
-| Investigating performance or system issues | You don't need your ZSH customizations |
-| Integrating AI into existing shell workflows | Pairing programming with an AI agent |
+| Running system commands alongside AI tasks       | Working on extended multi-file refactoring      |
+| Quick one-off questions or small tasks           | Deep debugging sessions with lots of context    |
+| Investigating performance or system issues       | You don't need your ZSH customizations          |
+| Integrating AI into existing shell workflows     | Pairing programming with an AI agent            |
 
 <div className="rounded-md border border-green-300 bg-green-50 px-4 py-2 mt-3 text-green-900 text-sm">
-  <strong>Pro Tip:</strong> You're not locked into one mode. Use ZSH Support for quick requests and shell-heavy workflows, then switch to interactive mode for longer coding sessions. Get the best of both worlds.
+  <strong>Pro Tip:</strong> You're not locked into one mode. Use ZSH Support for quick requests and shell-heavy
+  workflows, then switch to interactive mode for longer coding sessions. Get the best of both worlds.
 </div>
 
 ## What You Get
 
 ### Core Features (Work Immediately After Installation)
+
 - **Native Shell Integration**: Use `:` to access Forge AI while preserving all your ZSH aliases, functions, PATH modifications, and custom tooling
 - **Intelligent Context Management**: Maintain conversation context across prompts with `:reset` control and agent targeting like `:sage` or `:muse`
 - **Syntax Highlighting**: Color-coded prompts optimized for dark terminals
 
 ### Advanced Features (Require fd and fzf)
+
 - **Fuzzy File Finding**: Quick file tagging with `@filename<Tab>`
 - **Fuzzy Agent Selection**: Press Tab after `:` to get a searchable list of available agents
 
@@ -184,6 +187,7 @@ Target specific agents by including the agent name after the colon:
 ```
 
 **Agent Selection Rules:**
+
 - **No agent specified** (`:`) = uses the previous agent, or Forge if first interaction
 - **Agent specified** (`:sage`) = switches to that agent and makes it the new default
 - **`:reset`** = clears conversation context but keeps the current agent selection
@@ -208,14 +212,20 @@ Target specific agents by including the agent name after the colon:
 :forge implement the user login validation function
 ```
 
-Press Tab after `:` for fuzzy agent selection *(requires fd/fzf)*.
+Press Tab after `:` for fuzzy agent selection _(requires fd/fzf)_.
 
 <div className="rounded-md border border-blue-300 bg-blue-50 px-4 py-2 mt-3 text-blue-900 text-sm">
   <strong>Agent Names</strong>
   <ul className="mt-2 mb-0">
-    <li><strong>forge</strong> - Main agent for coding, refactoring, debugging, and general development tasks</li>
-    <li><strong>muse</strong> - Planning and strategy for complex features</li>
-    <li><strong>sage</strong> - Questions and analysis without making code modifications</li>
+    <li>
+      <strong>forge</strong> - Main agent for coding, refactoring, debugging, and general development tasks
+    </li>
+    <li>
+      <strong>muse</strong> - Planning and strategy for complex features
+    </li>
+    <li>
+      <strong>sage</strong> - Questions and analysis without making code modifications
+    </li>
   </ul>
   Run <code>/agents</code> in a Forge session to see your configured agents.
 </div>
@@ -244,7 +254,7 @@ htop -p $(pgrep postgres)
 
 The agent remembers previous conversations within the same session, letting you work naturally with a mix of shell commands and AI assistance.
 
-### File Tagging *(requires fd/fzf)*
+### File Tagging _(requires fd/fzf)_
 
 Tag files in your prompts using `@` followed by a partial filename and Tab:
 
@@ -280,6 +290,7 @@ If `: command not found` appears:
 If `@filename<Tab>` does nothing, fd and fzf are not installed. See Step 1 or our [fd and fzf Installation Guide](/docs/fd-fzf-installation).
 
 You can still use full file paths manually:
+
 ```bash
 : review the changes in @[src/components/Header.tsx]
 ```
