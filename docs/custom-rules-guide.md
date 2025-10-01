@@ -94,9 +94,10 @@ For detailed project-specific guidelines, create an `AGENTS.md` file in your pro
 See the [Custom Rules documentation](/docs/custom-rules#method-2-agentsmd-recommended-for-comprehensive-guidelines) for detailed examples and usage.
 
 :::important Rule Priority
+
 - Global rules in `forge.yaml` override agent-specific rules
 - Rules from both `AGENTS.md` and `forge.yaml` are combined and applied together
-:::
+  :::
 
 ## Progressive Learning Path
 
