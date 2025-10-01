@@ -332,8 +332,8 @@
   stroke-width: 2px;
   height: 20px !important;
   width: 20px !important;
-  color: #1C1D1F !important;
-  stroke: #1C1D1F !important;
+  color: #1c1d1f !important;
+  stroke: #1c1d1f !important;
   opacity: 1 !important;
 }
 
@@ -356,14 +356,14 @@
 .DocSearch-Button:hover .DocSearch-Search-Icon,
 .DocSearch-Button:focus .DocSearch-Search-Icon,
 .DocSearch-Button:active .DocSearch-Search-Icon {
-  color: #1C1D1F !important;
-  stroke: #1C1D1F !important;
+  color: #1c1d1f !important;
+  stroke: #1c1d1f !important;
   opacity: 1 !important;
 }
 
 /* Target SVG path element directly (where the icon is actually drawn) */
 .DocSearch-Button svg path {
-  stroke: #1C1D1F !important;
+  stroke: #1c1d1f !important;
   opacity: 1 !important;
 }
 
@@ -379,8 +379,6 @@
 .navbar__items--right .DocSearch-Button svg path,
 .navbar__items .DocSearch-Button svg path,
 .search-icon-navbar .DocSearch-Button svg path {
-  stroke: #1C1D1F !important;
+  stroke: #1c1d1f !important;
   opacity: 1 !important;
 }
-
-
