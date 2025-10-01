@@ -47,6 +47,13 @@ User: "Perfect!"
 
 ## Setting Up Custom Rules
 
+You can define custom rules in two ways:
+
+1. **`forge.yaml`** - For concise, structured rules (recommended for most teams)
+2. **`AGENTS.md`** - For comprehensive, documentation-style guidelines
+
+Both methods work together and rules from both sources are combined.
+
 ### Global Rules (Recommended for Teams)
 
 Add rules to your `forge.yaml` file to apply them across all agents:
@@ -80,8 +87,15 @@ agents:
       - Validate all input with schemas
 ```
 
+### Using AGENTS.md for Comprehensive Guidelines
+
+For detailed project-specific guidelines, create an `AGENTS.md` file in your project root. This is perfect for comprehensive documentation-style rules.
+
+See the [Custom Rules documentation](/docs/custom-rules#method-2-agentsmd-recommended-for-comprehensive-guidelines) for detailed examples and usage.
+
 :::important Rule Priority
-Global rules override agent-specific rules when both are defined. This means your team-wide standards always take precedence over individual agent configurations.
+- Global rules in `forge.yaml` override agent-specific rules
+- Rules from both `AGENTS.md` and `forge.yaml` are combined and applied together
 :::
 
 ## Progressive Learning Path

@@ -16,9 +16,27 @@ For comprehensive examples, team management strategies, and real-world use cases
 
 ## Configuration
 
-Custom rules are defined in your `forge.yaml` file and can be set globally or per-agent.
+Custom rules can be defined in two ways:
 
-### Global Rules
+1. **`forge.yaml` file** - For concise, structured rules in YAML format
+2. **`AGENTS.md` file** - For comprehensive, markdown-formatted guidelines
+
+Both methods work together - rules from both sources are combined and injected into the AI's system prompt.
+
+:::tip Which Method Should I Use?
+
+- **Just starting?** Start with `forge.yaml` for a few simple rules
+- **Team project with standards?** Use `AGENTS.md` for comprehensive documentation
+- **Want both?** Combine them! Use `forge.yaml` for short rules + `AGENTS.md` for detailed guidelines
+
+Both methods work together seamlessly - Forge automatically combines rules from both sources.
+:::
+
+### Method 1: forge.yaml (For Short Rules)
+
+Define rules in your `forge.yaml` file for concise, structured configuration.
+
+#### Global Rules
 
 Apply rules to all agents:
 
@@ -31,7 +49,7 @@ custom_rules: |
   - Follow team naming conventions
 ```
 
-### Agent-Specific Rules
+#### Agent-Specific Rules
 
 Apply rules to individual agents:
 
@@ -50,6 +68,52 @@ agents:
       - Add request/response logging
       - Validate all input with schemas
 ```
+
+### Method 2: AGENTS.md (For Comprehensive Guidelines)
+
+For detailed, project-specific guidelines, create an `AGENTS.md` file in your project root. This is ideal for:
+
+- Comprehensive development standards
+- Project-specific architecture patterns
+- Detailed coding conventions
+- Team workflows and best practices
+
+**Example `AGENTS.md`:**
+
+```markdown
+## Core Development Rules
+
+### Application Runtime
+
+- Never restart the development server - it's already running
+- Always check if services are running before starting new ones
+
+### Code Quality Standards
+
+- Use TypeScript strict mode for all new code
+- Follow the repository pattern for data access
+- Write unit tests for all business logic
+
+### Project Structure
+
+This is a React application with the following structure:
+
+- `/src/components` - Reusable UI components
+- `/src/services` - Business logic and API calls
+- `/src/utils` - Helper functions
+```
+
+:::info
+AGENTS.md supports full markdown formatting including headings, lists, code blocks, and emphasis. This makes it perfect for detailed documentation-style guidelines.
+:::
+
+**Quick Start:**
+
+1. Create `AGENTS.md` in your project root directory
+2. Write your guidelines using markdown
+3. Start Forge - rules are automatically loaded
+
+For a complete example, see the [Custom Rules Guide](/docs/custom-rules-guide#using-agentsmd).
 
 ## Rule Format
 
@@ -79,17 +143,28 @@ custom_rules: |
 
 ## How It Works
 
-1. **Loading**: Rules are loaded when Forge starts
-2. **Injection**: Rules become part of the AI's system prompt
-3. **Application**: AI applies rules to every response in the session
-4. **Precedence**: Global rules override agent-specific rules
+When you start a Forge session:
 
-## Rule Precedence
+1. **Loading**: Forge loads rules from both `forge.yaml` and `AGENTS.md` (if present)
+2. **Combining**: Rules from both sources are combined together
+3. **Injection**: All rules become part of the AI's system prompt
+4. **Application**: AI applies all rules to every response in the session
 
-When rules conflict:
+### Rule Precedence
+
+**Within `forge.yaml`:**
+
+- Global `custom_rules` override agent-specific `custom_rules`
+
+**Between `forge.yaml` and `AGENTS.md`:**
+
+- Both sources are loaded and combined
+- All rules from both files are applied to the AI's system prompt
+
+**Example:**
 
 ```yaml
-# Global rule
+# forge.yaml - Global rule
 custom_rules: "Use tabs for indentation"
 
 agents:
@@ -98,14 +173,23 @@ agents:
     custom_rules: "Use 2 spaces for indentation"
 ```
 
-Global rules override agent-specific rules.
+The global rule takes precedence.
 
 ## Troubleshooting
 
 ### Rules Not Applied
 
+**For `forge.yaml` rules:**
+
 - Check YAML syntax (whitespace-sensitive)
-- Verify `forge.yaml` is in project root
+- Verify `forge.yaml` is in your project root directory
+- Restart Forge session to reload rules
+
+**For `AGENTS.md` rules:**
+
+- Verify `AGENTS.md` is in your project root directory
+- Check that the file is named exactly `AGENTS.md` (case-sensitive)
+- Ensure the file contains valid markdown
 - Restart Forge session to reload rules
 
 ### Viewing Active Rules
