@@ -60,12 +60,25 @@ forge mcp add <server_name> <command/url>
 <details>
 <summary><code>forge mcp add-json</code> - Add a server using JSON configuration</summary>
 
-Allows you to add an MCP server by providing a complete JSON configuration.
+Adds an MCP server by providing a JSON configuration string.
 
 **Usage:**
 
 ```bash
-forge mcp add-json <your_json_config_for_mcp>
+forge mcp add-json [OPTIONS] <NAME> <JSON>
+```
+
+**Arguments:**
+- `<NAME>` - Name of the server
+- `<JSON>` - JSON string containing the server configuration
+
+**Options:**
+- `-s, --scope <SCOPE>` - Configuration scope: `local` (default) or `user`
+
+**Example:**
+
+```bash
+forge mcp add-json weather '{"command":"node","args":["weather.js"],"env":{"API_KEY":"abc123"}}'
 ```
 
 </details>
@@ -90,7 +103,7 @@ This displays:
 <details>
 <summary><code>forge mcp remove</code> - Remove an MCP server</summary>
 
-Removes an MCP server configuration from your setup.
+Removes an MCP server configuration.
 
 **Usage:**
 
@@ -104,7 +117,23 @@ This will permanently remove the server configuration.
 
 ### Manual Configuration
 
-You can also manually create MCP configurations by creating a `.mcp.json` file with the following structure:
+You can also manually create MCP configurations by creating a `.mcp.json` file. The file location determines its scope:
+
+**Local Configuration (Project-Specific)**
+- Location: `.mcp.json` in your project root directory
+- Scope: Applies only to the current project
+- Precedence: Takes precedence over global configuration
+
+**Global Configuration (User-Specific)**
+- Location: `.mcp.json` in your Forge configuration directory
+- Scope: Applies to all projects
+- Typical paths:
+  - **Windows**: `C:\Users\YourUsername\forge\.mcp.json`
+  - **macOS/Linux**: `~/forge/.mcp.json` or `~/.forge/.mcp.json`
+- Equivalent to: `--scope user` in CLI commands
+- Find your path: Run `/info` in Forge Shell to see your exact configuration directory
+
+Create the file with the following structure:
 
 ```json
 {
@@ -164,13 +193,13 @@ Each MCP server configuration can use one of two formats:
 
 MCP configurations are read from two locations in the following order of precedence:
 
-1. **Local configuration** (project-specific): `.mcp.json` in your current project directory
-2. **User configuration** (user-specific): Global configuration defined in the Forge configuration directory
+1. **Local configuration** (project-specific): `.mcp.json` in your current project root directory
+2. **Global configuration** (user-specific): `.mcp.json` in your Forge configuration directory
 
 > **Note**: The configuration directory is automatically determined by Forge.
 > You can always find the exact path by running `/info` in the Forge Shell.
 
-Local configurations take precedence over user configurations, allowing you to have project-specific MCP setups while maintaining global defaults.
+Local configurations take precedence over global configurations, allowing you to have project-specific MCP setups while maintaining global defaults.
 
 ## How MCP Tools Work with Agents
 
@@ -215,6 +244,24 @@ The `get_weather` tool is now available to all your agents automatically!
 - **Works with every agent** - Forge, Muse, custom agents, all of them
 - **No setup needed** - Just add the MCP server and you're done
 - **Instant access** - Tools work immediately after configuration
+
+### Verifying MCP Tools
+
+To verify that your MCP server tools are available:
+
+1. **List all tools**: Run `/tools` command in the Forge Shell
+2. **Check MCP tools**: MCP tools are listed separately from built-in Forge tools
+3. **Test the tool**: Ask an agent to use the tool in a conversation
+
+Example:
+```bash
+> /tools
+# Shows all available tools including MCP server tools
+
+> /agent forge
+> Use the weather tool to check San Francisco weather
+# Agent will use the MCP tool if it's properly configured
+```
 
 ## Example Use Cases
 
@@ -340,15 +387,39 @@ Create connections to custom internal services:
 - Check network connectivity
 - Ensure required environment variables are set
 - Validate authentication credentials
+- Check if the MCP server process is running (for command-based servers)
 
 **Command Execution Errors:**
 
-- Verify command paths and arguments
-- Check file permissions
-- Ensure required dependencies are installed
+- Verify command paths and arguments (e.g., `npx`, `node`, `python` are in PATH)
+- Check file permissions for executable commands
+- Ensure required dependencies are installed (e.g., `npm install` for Node.js servers)
 - Review environment variable configurations
+- Test the command manually in your terminal first
 
 **Configuration Problems:**
 
 - Validate JSON syntax in `.mcp.json` files
-- Check configuration file locations
+- Check file locations (project root vs. global config directory)
+- Verify `mcpServers` key spelling
+- Ensure command-based servers have `command` and `args` fields
+- Ensure URL-based servers only have `url` field (no `env` field)
+
+**Tools Not Appearing:**
+
+- Run `/tools` to verify MCP tools are loaded
+- Restart Forge after configuration changes
+- Check logs using `/info` for MCP connection errors
+
+**Debugging Tips:**
+
+1. Use `/info` to find log directory and check for errors
+2. Test MCP server commands manually in your terminal
+3. Start with minimal configuration, add complexity gradually
+4. Use `/tools` to confirm tools are available
+
+### Getting Help
+
+- Check the [Forge GitHub repository](https://github.com/antinomyhq/forge) for known issues
+- Review MCP server documentation for configuration requirements
+- Join the Forge community for support
