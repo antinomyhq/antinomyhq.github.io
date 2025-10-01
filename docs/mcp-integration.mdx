@@ -69,10 +69,12 @@ forge mcp add-json [OPTIONS] <NAME> <JSON>
 ```
 
 **Arguments:**
+
 - `<NAME>` - Name of the server
 - `<JSON>` - JSON string containing the server configuration
 
 **Options:**
+
 - `-s, --scope <SCOPE>` - Configuration scope: `local` (default) or `user`
 
 **Example:**
@@ -120,11 +122,13 @@ This will permanently remove the server configuration.
 You can also manually create MCP configurations by creating a `.mcp.json` file. The file location determines its scope:
 
 **Local Configuration (Project-Specific)**
+
 - Location: `.mcp.json` in your project root directory
 - Scope: Applies only to the current project
 - Precedence: Takes precedence over global configuration
 
 **Global Configuration (User-Specific)**
+
 - Location: `.mcp.json` in your Forge configuration directory
 - Scope: Applies to all projects
 - Typical paths:
@@ -254,6 +258,7 @@ To verify that your MCP server tools are available:
 3. **Test the tool**: Ask an agent to use the tool in a conversation
 
 Example:
+
 ```bash
 > /tools
 # Shows all available tools including MCP server tools
