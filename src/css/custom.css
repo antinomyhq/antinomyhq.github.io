@@ -1209,3 +1209,16 @@ article table th {
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
+
+/* MCP Documentation Images */
+.mcp-screenshot {
+  max-width: 600px;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}

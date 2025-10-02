@@ -60,7 +60,7 @@ forge mcp add <server_name> <command/url>
 <details>
 <summary><code>forge mcp add-json</code> - Add a server using JSON configuration</summary>
 
-Adds an MCP server by providing a JSON configuration string.
+Allows you to add an MCP server by providing a complete JSON configuration.
 
 **Usage:**
 
@@ -135,7 +135,7 @@ You can also manually create MCP configurations by creating a `.mcp.json` file. 
   - **Windows**: `C:\Users\YourUsername\forge\.mcp.json`
   - **macOS/Linux**: `~/forge/.mcp.json` or `~/.forge/.mcp.json`
 - Equivalent to: `--scope user` in CLI commands
-- Find your path: Run `/info` in Forge Shell to see your exact configuration directory
+- Find your path: Run `/info` in Forge Shell to see system paths (the configuration directory will be shown in the PATHS section)
 
 Create the file with the following structure:
 
@@ -201,7 +201,7 @@ MCP configurations are read from two locations in the following order of precede
 2. **Global configuration** (user-specific): `.mcp.json` in your Forge configuration directory
 
 > **Note**: The configuration directory is automatically determined by Forge.
-> You can always find the exact path by running `/info` in the Forge Shell.
+> You can find the system paths by running `/info` in the Forge Shell.
 
 Local configurations take precedence over global configurations, allowing you to have project-specific MCP setups while maintaining global defaults.
 
@@ -241,12 +241,11 @@ $ /agent muse
 $ Get weather data for New York and create a summary
 ```
 
-The `get_weather` tool is now available to all your agents automatically!
+The `get_weather` tool is now available to all your agents!
 
 ### What You Get
 
 - **Works with every agent** - Forge, Muse, custom agents, all of them
-- **No setup needed** - Just add the MCP server and you're done
 - **Instant access** - Tools work immediately after configuration
 
 ### Verifying MCP Tools
@@ -257,6 +256,10 @@ To verify that your MCP server tools are available:
 2. **Check MCP tools**: MCP tools are listed separately from built-in Forge tools
 3. **Test the tool**: Ask an agent to use the tool in a conversation
 
+<img src="/images/mcp-tools-screenshot.png" alt="MCP Tools in Forge Shell" className="mcp-screenshot" />
+
+This screenshot shows the `/tools` command output after adding our weather MCP server. Notice how the `get_weather` tool now appears in the list alongside Forge's built-in tools.
+
 Example:
 
 ```bash
@@ -265,7 +268,6 @@ $ /tools
 
 $ /agent forge
 $ Use the weather tool to check San Francisco weather
-# Agent will use the MCP tool if it's properly configured
 ```
 
 ## Example Use Cases
@@ -414,14 +416,12 @@ Create connections to custom internal services:
 
 - Run `/tools` to verify MCP tools are loaded
 - Restart Forge after configuration changes
-- Check logs using `/info` for MCP connection errors
 
 **Debugging Tips:**
 
-1. Use `/info` to find log directory and check for errors
+1. Check log files for MCP connection errors
 2. Test MCP server commands manually in your terminal
 3. Start with minimal configuration, add complexity gradually
-4. Use `/tools` to confirm tools are available
 
 ### Getting Help
 
