@@ -68,4 +68,188 @@ This is useful for:
 - Proxy services or API gateways
 - Regional API endpoints
 
+## Advanced Configuration Variables
+
+Forge supports several environment variables for advanced configuration and fine-tuning. These can be set in your `.env` file or system environment.
+
+:::info
+These variables are optional and have sensible defaults. Only set them if you need to customize Forge's behavior for your specific use case.
+:::
+
+### Retry Configuration
+
+Control how Forge handles retry logic for failed requests:
+
+| Environment Variable             | Default               | Description                                          |
+| -------------------------------- | --------------------- | ---------------------------------------------------- |
+| `FORGE_RETRY_INITIAL_BACKOFF_MS` | `1000`                | Initial backoff time in milliseconds before retrying |
+| `FORGE_RETRY_BACKOFF_FACTOR`     | `2`                   | Multiplier for backoff time on each retry attempt    |
+| `FORGE_RETRY_MAX_ATTEMPTS`       | `3`                   | Maximum number of retry attempts for failed requests |
+| `FORGE_SUPPRESS_RETRY_ERRORS`    | `false`               | Suppress retry error messages in output              |
+| `FORGE_RETRY_STATUS_CODES`       | `429,500,502,503,504` | Comma-separated HTTP status codes to retry           |
+
+**Example:**
+
+```bash
+# .env
+FORGE_RETRY_INITIAL_BACKOFF_MS=1000
+FORGE_RETRY_BACKOFF_FACTOR=2
+FORGE_RETRY_MAX_ATTEMPTS=3
+FORGE_SUPPRESS_RETRY_ERRORS=false
+FORGE_RETRY_STATUS_CODES=429,500,502
+```
+
+### HTTP Configuration
+
+Fine-tune HTTP client behavior for API requests:
+
+| Environment Variable                | Default   | Description                                                            |
+| ----------------------------------- | --------- | ---------------------------------------------------------------------- |
+| `FORGE_HTTP_CONNECT_TIMEOUT`        | `30`      | Connection timeout in seconds                                          |
+| `FORGE_HTTP_READ_TIMEOUT`           | `900`     | Read timeout in seconds (15 minutes)                                   |
+| `FORGE_HTTP_POOL_IDLE_TIMEOUT`      | `90`      | Pool idle timeout in seconds                                           |
+| `FORGE_HTTP_POOL_MAX_IDLE_PER_HOST` | `5`       | Maximum idle connections per host                                      |
+| `FORGE_HTTP_MAX_REDIRECTS`          | `10`      | Maximum redirects to follow                                            |
+| `FORGE_HTTP_USE_HICKORY`            | `false`   | Use Hickory DNS resolver                                               |
+| `FORGE_HTTP_TLS_BACKEND`            | `default` | TLS backend: `default` or `rustls`                                     |
+| `FORGE_HTTP_MIN_TLS_VERSION`        | `1.2`     | Minimum TLS version: `1.0`, `1.1`, `1.2`, `1.3`                        |
+| `FORGE_HTTP_MAX_TLS_VERSION`        | `1.3`     | Maximum TLS version: `1.0`, `1.1`, `1.2`, `1.3`                        |
+| `FORGE_HTTP_ADAPTIVE_WINDOW`        | `true`    | Enable HTTP/2 adaptive window                                          |
+| `FORGE_HTTP_KEEP_ALIVE_INTERVAL`    | `60`      | Keep-alive interval in seconds (use `none` or `disabled` to disable)   |
+| `FORGE_HTTP_KEEP_ALIVE_TIMEOUT`     | `10`      | Keep-alive timeout in seconds                                          |
+| `FORGE_HTTP_KEEP_ALIVE_WHILE_IDLE`  | `true`    | Keep-alive while idle                                                  |
+| `FORGE_HTTP_ACCEPT_INVALID_CERTS`   | `false`   | Accept invalid SSL/TLS certificates                                    |
+| `FORGE_HTTP_ROOT_CERT_PATHS`        | -         | Comma-separated paths to root certificate files (PEM, CRT, CER format) |
+
+**Example:**
+
+```bash
+# .env
+FORGE_HTTP_CONNECT_TIMEOUT=30
+FORGE_HTTP_READ_TIMEOUT=900
+FORGE_HTTP_POOL_IDLE_TIMEOUT=90
+FORGE_HTTP_POOL_MAX_IDLE_PER_HOST=5
+FORGE_HTTP_MAX_REDIRECTS=10
+FORGE_HTTP_USE_HICKORY=false
+FORGE_HTTP_TLS_BACKEND=default
+FORGE_HTTP_MIN_TLS_VERSION=1.2
+FORGE_HTTP_MAX_TLS_VERSION=1.3
+FORGE_HTTP_ADAPTIVE_WINDOW=true
+FORGE_HTTP_KEEP_ALIVE_INTERVAL=60
+FORGE_HTTP_KEEP_ALIVE_TIMEOUT=10
+FORGE_HTTP_KEEP_ALIVE_WHILE_IDLE=true
+FORGE_HTTP_ACCEPT_INVALID_CERTS=false
+FORGE_HTTP_ROOT_CERT_PATHS=/path/to/cert1.pem,/path/to/cert2.crt
+```
+
+:::warning Security Warning
+Setting `FORGE_HTTP_ACCEPT_INVALID_CERTS=true` disables SSL/TLS certificate verification, which can expose you to man-in-the-middle attacks. Only use this in development environments or when you fully trust the network and endpoints.
+:::
+
+{/\* ### API Configuration
+
+Override default API endpoints:
+
+| Environment Variable | Default                     | Description          |
+| -------------------- | --------------------------- | -------------------- |
+| `FORGE_API_URL`      | `https://api.forgecode.dev` | Custom Forge API URL |
+
+**Example:**
+
+````bash
+# .env
+FORGE_API_URL=https://api.forgecode.dev
+``` */}
+
+### Tool Configuration
+
+Configure tool execution behavior:
+
+| Environment Variable   | Default | Description                                                     |
+| ---------------------- | ------- | --------------------------------------------------------------- |
+| `FORGE_TOOL_TIMEOUT`   | `300`   | Maximum execution time in seconds for a tool before termination |
+| `FORGE_DUMP_AUTO_OPEN` | `false` | Automatically open dump files in browser                        |
+
+**Example:**
+
+```bash
+# .env
+FORGE_TOOL_TIMEOUT=300
+FORGE_DUMP_AUTO_OPEN=false
+````
+
+### ZSH Plugin Configuration
+
+Configure the ZSH plugin behavior. The `FORGE_BIN` environment variable allows you to customize the command used by the ZSH plugin when transforming `#` prefixed commands.
+
+| Environment Variable | Default | Description                         |
+| -------------------- | ------- | ----------------------------------- |
+| `FORGE_BIN`          | `forge` | Command to use for forge operations |
+
+**Example:**
+
+```bash
+# .env
+FORGE_BIN=forge
+```
+
+### System Configuration
+
+System-level environment variables (usually set automatically):
+
+| Environment Variable            | Default        | Description                                           |
+| ------------------------------- | -------------- | ----------------------------------------------------- |
+| `FORGE_MAX_SEARCH_RESULT_BYTES` | `101024`       | Maximum bytes for search results (10 KB)              |
+| `FORGE_HISTORY_FILE`            | System default | Custom path for Forge history file                    |
+| `SHELL`                         | System default | Shell to use for command execution (Unix/Linux/macOS) |
+| `COMSPEC`                       | `cmd.exe`      | Command processor to use (Windows)                    |
+
+**Example:**
+
+```bash
+# .env
+# Increase search result size limit
+FORGE_MAX_SEARCH_RESULT_BYTES=204800
+
+# Use custom history file location
+FORGE_HISTORY_FILE=~/.config/forge/custom_history
+```
+
+### Complete Configuration Example
+
+Here's a comprehensive example of a `.env` file with all configuration options:
+
+```bash
+# API Provider Configuration (required)
+OPENROUTER_API_KEY=your_openrouter_key_here
+
+# Retry Configuration
+FORGE_RETRY_INITIAL_BACKOFF_MS=1000
+FORGE_RETRY_BACKOFF_FACTOR=2
+FORGE_RETRY_MAX_ATTEMPTS=3
+FORGE_SUPPRESS_RETRY_ERRORS=false
+FORGE_RETRY_STATUS_CODES=429,500,502,503,504
+
+# HTTP Configuration
+FORGE_HTTP_CONNECT_TIMEOUT=30
+FORGE_HTTP_READ_TIMEOUT=900
+FORGE_HTTP_POOL_IDLE_TIMEOUT=90
+FORGE_HTTP_POOL_MAX_IDLE_PER_HOST=5
+FORGE_HTTP_MAX_REDIRECTS=10
+FORGE_HTTP_KEEP_ALIVE_INTERVAL=60
+FORGE_HTTP_KEEP_ALIVE_TIMEOUT=10
+FORGE_HTTP_KEEP_ALIVE_WHILE_IDLE=true
+
+# Tool Configuration
+FORGE_TOOL_TIMEOUT=300
+FORGE_DUMP_AUTO_OPEN=false
+
+# ZSH Plugin Configuration
+FORGE_BIN=forge
+
+# System Configuration
+FORGE_MAX_SEARCH_RESULT_BYTES=204800
+FORGE_HISTORY_FILE=~/.config/forge/history
+```
+
 <!-- Note: This page focuses on environment variables and configuration options. For information about workflow configuration files, see the Custom Workflows section. -->
