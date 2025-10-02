@@ -146,7 +146,7 @@ FORGE_HTTP_ROOT_CERT_PATHS=/path/to/cert1.pem,/path/to/cert2.crt
 Setting `FORGE_HTTP_ACCEPT_INVALID_CERTS=true` disables SSL/TLS certificate verification, which can expose you to man-in-the-middle attacks. Only use this in development environments or when you fully trust the network and endpoints.
 :::
 
-### API Configuration
+{/* ### API Configuration
 
 Override default API endpoints:
 
@@ -159,7 +159,7 @@ Override default API endpoints:
 ```bash
 # .env
 FORGE_API_URL=https://api.forgecode.dev
-```
+``` */}
 
 ### Tool Configuration
 
@@ -239,9 +239,6 @@ FORGE_HTTP_MAX_REDIRECTS=10
 FORGE_HTTP_KEEP_ALIVE_INTERVAL=60
 FORGE_HTTP_KEEP_ALIVE_TIMEOUT=10
 FORGE_HTTP_KEEP_ALIVE_WHILE_IDLE=true
-
-# API Configuration
-FORGE_API_URL=https://api.forgecode.dev
 
 # Tool Configuration
 FORGE_TOOL_TIMEOUT=300
