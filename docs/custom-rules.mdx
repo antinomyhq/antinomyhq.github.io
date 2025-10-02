@@ -1,119 +1,41 @@
 ---
-title: Custom Rules
+title: Project Guidelines
 slug: /custom-rules
 sidebar_position: 6
-description: "Learn how to define custom rules and guidelines for AI agents in Forge"
-sidebar_label: Custom Rules
+description: "Learn how to define project-specific guidelines and development standards using AGENTS.md"
+sidebar_label: Project Guidelines
 ---
 
-# Custom Rules
+# Project Guidelines
 
-Custom rules allow you to define specific guidelines and instructions that shape how AI agents behave in Forge. These rules act as persistent instructions that get injected into every AI conversation.
+Project guidelines allow you to define specific development standards and instructions that shape how AI agents behave in your project. These guidelines act as persistent instructions that get injected into every AI conversation.
 
 :::tip Looking for best practices and examples?
-For comprehensive examples, team management strategies, and real-world use cases, check out our [Custom Rules Guide](/docs/custom-rules-guide).
+For comprehensive examples, team management strategies, and real-world use cases, check out our [Project Guidelines Guide](/docs/custom-rules-guide).
 :::
 
-## Configuration
+## Getting Started
 
-Custom rules can be defined in two ways:
+Project guidelines are defined using an **`AGENTS.md` file** in your project root directory. This file uses markdown format for comprehensive, documentation-style guidelines.
 
-1. **`forge.yaml` file** - For concise, structured rules in YAML format
-2. **`AGENTS.md` file** - For comprehensive, markdown-formatted guidelines
+**Quick Start:**
 
-Both methods work together - rules from both sources are combined and injected into the AI's system prompt.
+1. Create `AGENTS.md` in your project root directory
+2. Write your development guidelines using markdown
+3. Guidelines are automatically loaded when the agent starts
 
-:::tip Which Method Should I Use?
-
-- **Just starting?** Start with `forge.yaml` for a few simple rules
-- **Team project with standards?** Use `AGENTS.md` for comprehensive documentation
-- **Want both?** Combine them! Use `forge.yaml` for short rules + `AGENTS.md` for detailed guidelines
-
-Both methods work together seamlessly - Forge automatically combines rules from both sources.
-:::
-
-### Method 1: forge.yaml (For Short Rules)
-
-Define rules in your `forge.yaml` file for concise, structured configuration.
-
-#### Global Rules
-
-Apply rules to all agents:
-
-```yaml
-# forge.yaml
-custom_rules: |
-  - Use TypeScript strict mode
-  - Add error handling to all functions
-  - Include unit tests for new code
-  - Follow team naming conventions
-```
-
-#### Agent-Specific Rules
-
-Apply rules to individual agents:
-
-```yaml
-# forge.yaml
-agents:
-  - id: frontend-specialist
-    custom_rules: |
-      - Use React functional components with hooks
-      - Include accessibility attributes
-      - Use CSS modules for styling
-
-  - id: backend-specialist
-    custom_rules: |
-      - Use dependency injection for services
-      - Add request/response logging
-      - Validate all input with schemas
-```
-
-### Method 2: AGENTS.md (For Comprehensive Guidelines)
-
-For detailed, project-specific guidelines, create an `AGENTS.md` file in your project root. This is ideal for:
+The `AGENTS.md` file is ideal for:
 
 - Comprehensive development standards
 - Project-specific architecture patterns
 - Detailed coding conventions
 - Team workflows and best practices
 
-**Example `AGENTS.md`:**
-
-```markdown
-## Core Development Rules
-
-### Application Runtime
-
-- Never restart the development server - it's already running
-- Always check if services are running before starting new ones
-
-### Code Quality Standards
-
-- Use TypeScript strict mode for all new code
-- Follow the repository pattern for data access
-- Write unit tests for all business logic
-
-### Project Structure
-
-This is a React application with the following structure:
-
-- `/src/components` - Reusable UI components
-- `/src/services` - Business logic and API calls
-- `/src/utils` - Helper functions
-```
-
 :::info
 AGENTS.md supports full markdown formatting including headings, lists, code blocks, and emphasis. This makes it perfect for detailed documentation-style guidelines.
 :::
 
-**Quick Start:**
-
-1. Create `AGENTS.md` in your project root directory
-2. Write your guidelines using markdown
-3. Start Forge - rules are automatically loaded
-
-**Complete Example:**
+## Complete Example
 
 Here's a real-world `AGENTS.md` file for a full-stack web application:
 
@@ -210,89 +132,28 @@ Here's a real-world `AGENTS.md` file for a full-stack web application:
 
 This example shows how to structure comprehensive guidelines that cover runtime behavior, code standards, project structure, and team conventions all in one place.
 
-## Rule Format
-
-Custom rules support:
-
-- **Plain text instructions**
-- **Markdown formatting** (lists, code blocks, emphasis)
-- **Multi-line content** using YAML's `|` syntax
-- **Code examples** within the rules
-
-Example with formatting:
-
-````yaml
-custom_rules: |
-  Error Handling Pattern:
-
-  Always use this pattern:
-  ```typescript
-  try {
-    // risky operation
-  } catch (error) {
-    logger.error('Operation failed:', error);
-    throw new AppError('User-friendly message');
-  }
-  ```
-````
-
 ## How It Works
 
-When you start a Forge session:
+When you start an AI agent session:
 
-1. **Loading**: Forge loads rules from both `forge.yaml` and `AGENTS.md` (if present)
-2. **Combining**: Rules from both sources are combined together
-3. **Injection**: All rules become part of the AI's system prompt
-4. **Application**: AI applies all rules to every response in the session
-
-### Rule Precedence
-
-**Within `forge.yaml`:**
-
-- Global `custom_rules` override agent-specific `custom_rules`
-
-**Between `forge.yaml` and `AGENTS.md`:**
-
-- Both sources are loaded and combined
-- All rules from both files are applied to the AI's system prompt
-
-**Example:**
-
-```yaml
-# forge.yaml - Global rule
-custom_rules: "Use tabs for indentation"
-
-agents:
-  - id: frontend
-    # This gets overridden by the global rule
-    custom_rules: "Use 2 spaces for indentation"
-```
-
-The global rule takes precedence.
+1. **Loading**: The system searches for `AGENTS.md` files in three locations in order of priority:
+   - **Base path** (environment.base_path) - highest priority
+   - **Git root directory** (if available) - medium priority
+   - **Current working directory** (environment.cwd) - lowest priority
+2. **Injection**: All guidelines from the found file become part of the AI's system prompt
+3. **Application**: AI applies all guidelines to every response in the session
 
 ## Troubleshooting
 
-### Rules Not Applied
+### Guidelines Not Applied
 
-**For `forge.yaml` rules:**
-
-- Check YAML syntax (whitespace-sensitive)
-- Verify `forge.yaml` is in your project root directory
-- Restart Forge session to reload rules
-
-**For `AGENTS.md` rules:**
+If your project guidelines aren't being followed:
 
 - Verify `AGENTS.md` is in your project root directory
 - Check that the file is named exactly `AGENTS.md` (case-sensitive)
 - Ensure the file contains valid markdown
-- Restart Forge session to reload rules
+- Restart your AI agent session to reload guidelines
 
-### Viewing Active Rules
+### Viewing Active Guidelines
 
-Export session context to see what rules are active:
-
-```bash
-/dump html
-```
-
-This shows exactly what context (including custom rules) is sent to the AI.
+To verify that your guidelines are being applied, you can ask the AI agent to describe what project guidelines it's currently following. The guidelines from `AGENTS.md` will be part of the AI's system prompt and will influence all responses.
