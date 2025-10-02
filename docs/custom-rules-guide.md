@@ -273,13 +273,17 @@ The system uses the first `AGENTS.md` file it finds, starting from the base path
 
 ```markdown
 <!-- Too vague -->
+
 # Guidelines
+
 - Write good code
 - Add tests
 - Handle errors
 
 <!-- Better -->
+
 # Guidelines
+
 - Add error handling with try/catch blocks
 - Include unit tests with arrange-act-assert pattern
 ```
