@@ -612,16 +612,14 @@ nav.menu {
 }
 
 .grid-bg-section {
-  background-image:
-    linear-gradient(var(--ifm-color-brand-dark-opacity-05) 1px, transparent 1px),
+  background-image: linear-gradient(var(--ifm-color-brand-dark-opacity-05) 1px, transparent 1px),
     linear-gradient(90deg, var(--ifm-color-brand-dark-opacity-05) 1px, transparent 1px);
   background-size: var(--ifm-grid-bg-size-lg) var(--ifm-grid-bg-size-lg);
   clip-path: inset(0.5rem 0 1rem 0);
 }
 
 .button-grid-bg-section {
-  background-image:
-    linear-gradient(var(--ifm-color-brand-light-opacity-15) 1px, transparent 2px),
+  background-image: linear-gradient(var(--ifm-color-brand-light-opacity-15) 1px, transparent 2px),
     linear-gradient(90deg, var(--ifm-color-brand-light-opacity-15) 1px, transparent 2px);
   background-size: var(--ifm-grid-bg-size-sm) var(--ifm-grid-bg-size-sm);
   clip-path: inset(0.2rem);
@@ -630,8 +628,7 @@ nav.menu {
 }
 
 .button-grid-bg-section-dark {
-  background-image:
-    linear-gradient(var(--ifm-color-brand-dark-opacity-05) 1px, transparent 2px),
+  background-image: linear-gradient(var(--ifm-color-brand-dark-opacity-05) 1px, transparent 2px),
     linear-gradient(90deg, var(--ifm-color-brand-dark-opacity-05) 1px, transparent 2px);
   background-size: var(--ifm-grid-bg-size-sm) var(--ifm-grid-bg-size-sm);
   position: absolute;
@@ -639,8 +636,7 @@ nav.menu {
 }
 
 .button-grid-bg-github {
-  background-image:
-    linear-gradient(var(--ifm-color-brand-dark-opacity-05) 1px, transparent 2px),
+  background-image: linear-gradient(var(--ifm-color-brand-dark-opacity-05) 1px, transparent 2px),
     linear-gradient(90deg, var(--ifm-color-brand-dark-opacity-05) 1px, transparent 2px);
   background-size: var(--ifm-grid-bg-size-sm) var(--ifm-grid-bg-size-sm);
   scale: 0.9;
@@ -666,8 +662,7 @@ nav.menu {
   height: 100%;
   background-size: 50px 50px;
   /* Adjust the grid size as needed */
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   z-index: 0;
 }
@@ -928,8 +923,7 @@ span.token.tag.script.language-javascript {
   border: 2px solid transparent;
   border-bottom: none;
   border-radius: 0.75rem;
-  background-image:
-    linear-gradient(180deg, #232426 0%, #121315 100%), linear-gradient(180deg, #555656 0%, #121315 100%);
+  background-image: linear-gradient(180deg, #232426 0%, #121315 100%), linear-gradient(180deg, #555656 0%, #121315 100%);
   background-origin: border-box;
   background-clip: padding-box, border-box;
 }
@@ -946,8 +940,7 @@ span.token.tag.script.language-javascript {
   left: 0;
   width: 100%;
   height: 100%;
-  background:
-    repeating-linear-gradient(
+  background: repeating-linear-gradient(
       0deg,
       rgba(255, 255, 255, 0.08),
       rgba(255, 255, 255, 0.08) 0.5px,
@@ -1054,8 +1047,8 @@ span.token.tag.script.language-javascript {
 
 .version-update-card {
   background-color: #121212;
-  background-image:
-    linear-gradient(90deg, #545556 0.5px, transparent 0.5px), linear-gradient(#545556 0.5px, transparent 0.5px);
+  background-image: linear-gradient(90deg, #545556 0.5px, transparent 0.5px),
+    linear-gradient(#545556 0.5px, transparent 0.5px);
   background-size: 60px 60px;
   background-position: 3px 23px;
 }
@@ -1154,4 +1147,44 @@ details code {
 details .admonition-heading code,
 details .admonition-content code {
   color: #333 !important;
+}
+
+/* Environment configuration tables - optimized for readability */
+.markdown table,
+article table,
+.theme-doc-markdown table {
+  table-layout: fixed !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  display: table !important;
+}
+
+/* Ensure table container is full width */
+.markdown > div,
+article > div {
+  width: 100% !important;
+}
+
+/* Column widths: Environment Variable (35%), Default (20%), Description (45%) */
+article table th:nth-child(1),
+article table td:nth-child(1) {
+  width: 35%;
+}
+
+article table th:nth-child(2),
+article table td:nth-child(2) {
+  width: 20%;
+}
+
+article table th:nth-child(3),
+article table td:nth-child(3) {
+  width: 45%;
+}
+
+/* Consistent text alignment and word wrapping */
+article table td,
+article table th {
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
