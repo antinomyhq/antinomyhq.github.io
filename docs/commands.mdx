@@ -124,6 +124,24 @@ The `/retry` command re-executes the most recent message in the conversation. Th
 
 **When to use:** Use this when you want to re-run the last command that failed due to network issues, temporary errors, or when you need to execute the same operation multiple times.
 
+## /provider
+
+Switch to a different AI provider.
+
+The `/provider` command displays an interactive list of your configured AI providers and allows you to switch between them. Only providers with valid API keys will appear in the list.
+
+**What happens after selection:**
+
+- Forge switches to the selected provider
+- You'll be prompted to select a compatible model
+- The conversation continues with the new provider/model
+
+**When to use:** Use this when you want to change which AI provider Forge uses for processing your requests.
+
+:::tip Provider Setup
+To add more providers to the list, configure their API keys following the [Provider Setup Guide](/docs/custom-providers).
+:::
+
 ## /model
 
 Switch to a different model.
