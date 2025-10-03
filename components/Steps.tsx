@@ -3,7 +3,7 @@ import React, {ReactNode} from "react"
 export interface StepProps {
   title: string
   children: ReactNode
-  number?: number
+  number: number
   isLast?: boolean
 }
 
