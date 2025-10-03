@@ -39,7 +39,7 @@ htop -p $(pgrep server)
 
 - **Native Shell Integration**: Use `:` to access Forge AI while preserving all your ZSH aliases, functions, PATH modifications, and custom tooling
 - **Intelligent Context Management**: Maintain conversation context across prompts with `:reset` control and agent targeting like `:sage` or `:muse`
-- **Syntax Highlighting**: Color-coded prompts optimized for dark terminals
+- **Syntax Highlighting**: Color-coded prompts optimized for dark terminals (requires zsh-syntax-highlighting plugin)
 
 ### Advanced Features (Require fd and fzf)
 
@@ -51,6 +51,51 @@ These features are optional but provide a significantly better experience. Insta
 ## Installation
 
 <Steps>
+  <Step title="Install zsh-syntax-highlighting Plugin (Required)">
+    The syntax highlighting feature requires the [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) plugin to be installed and loaded in your ZSH configuration.
+
+    **Option 1: Package Manager (Recommended)**
+
+    ```bash
+    # macOS
+    brew install zsh-syntax-highlighting
+
+    # Ubuntu/Debian
+    sudo apt install zsh-syntax-highlighting
+
+    # Arch Linux
+    sudo pacman -S zsh-syntax-highlighting
+
+    # Fedora
+    sudo dnf install zsh-syntax-highlighting
+    ```
+
+    **Option 2: Oh My Zsh**
+
+    ```bash
+    # Clone to Oh My Zsh plugins directory
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+    # Add to plugins in ~/.zshrc (must be last plugin)
+    plugins=(... zsh-syntax-highlighting)
+    ```
+
+    **Option 3: Manual Installation**
+
+    ```bash
+    # Clone the repository
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+    # Add to ~/.zshrc (must be at the end)
+    echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+    ```
+
+    :::warning Important Loading Order
+    **zsh-syntax-highlighting must be sourced LAST** in your `.zshrc` file, after all other plugins and the Forge integration. This ensures proper highlighting of Forge prompts.
+    :::
+
+  </Step>
+
   <Step title="Install Optional File Finding Tools (Recommended)">
     For fuzzy file finding and agent selection, install fd and fzf:
 
@@ -65,7 +110,7 @@ These features are optional but provide a significantly better experience. Insta
     sudo pacman -S fd fzf
     ```
 
-    **Other platforms:** See our [fd and fzf Installation Guide](/docs/fd-fzf-installation)
+    **Other platforms:** See our [ZSH Dependencies Installation Guide](/docs/fd-fzf-installation)
 
 :::tip Optional but Recommended
 
@@ -98,6 +143,13 @@ ZSH Support works without these tools, but you'll need to type full file paths i
     source <($FORGEBIN generate-zsh-prompt)
     ```
 
+    :::note Critical Loading Order
+    **The Forge source line must come BEFORE the zsh-syntax-highlighting source line** in your `.zshrc` file. The correct order is:
+    1. All other plugins
+    2. Forge integration (`source <($FORGEBIN generate-zsh-prompt)`)
+    3. zsh-syntax-highlighting (last)
+    :::
+
     Then reload your shell:
     ```bash
     source ~/.zshrc
@@ -116,7 +168,7 @@ ZSH Support works without these tools, but you'll need to type full file paths i
     : help me with @README<Tab>
     ```
 
-    You should see syntax highlighting and successful command execution.
+    You should see color-coded syntax highlighting and successful command execution.
 
   </Step>
 </Steps>
@@ -262,7 +314,7 @@ If `: command not found` appears:
 
 #### File Tagging Doesn't Work
 
-If `@filename<Tab>` does nothing, fd and fzf are not installed. See [Step 1](#installation) or our [fd and fzf Installation Guide](/docs/fd-fzf-installation).
+If `@filename<Tab>` does nothing, fd and fzf are not installed. See [Step 2](#installation) or our [ZSH Dependencies Installation Guide](/docs/fd-fzf-installation).
 
 You can still use full file paths manually:
 
@@ -274,9 +326,34 @@ You can still use full file paths manually:
 
 If highlighting doesn't appear:
 
-1. Ensure you're using ZSH (not bash): `echo $SHELL`
-2. Check that your terminal supports colors: `echo $TERM`
-3. Try reloading: `source ~/.zshrc`
+1. **Ensure zsh-syntax-highlighting is installed**:
+
+   ```bash
+   # Check if installed via package manager
+   brew list | grep zsh-syntax-highlighting # macOS
+   dpkg -l | grep zsh-syntax-highlighting   # Ubuntu/Debian
+   ```
+
+2. **Verify correct loading order in ~/.zshrc**:
+   - Forge integration must be loaded BEFORE zsh-syntax-highlighting
+   - zsh-syntax-highlighting must be the LAST plugin sourced
+
+3. **Check if zsh-syntax-highlighting is loaded**:
+
+   ```bash
+   echo $ZSH_HIGHLIGHT_VERSION
+   ```
+
+   If this returns empty, the plugin isn't loaded.
+
+4. **Ensure you're using ZSH (not bash)**: `echo $SHELL`
+5. **Check that your terminal supports colors**: `echo $TERM`
+6. **Try reloading**: `source ~/.zshrc`
+
+7. **For manual installations**, verify the path is correct:
+   ```bash
+   ls -la /path/to/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+   ```
 
 #### No agent has subscribed to the event
 

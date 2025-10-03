@@ -1,17 +1,90 @@
 ---
-title: fd and fzf Installation
+title: ZSH Dependencies Installation
 sidebar_position: 5
-description: "Platform-specific installation instructions for fd and fzf dependencies required by ZSH Support."
-sidebar_label: fd and fzf Installation
+description: "Platform-specific installation instructions for fd, fzf, and zsh-syntax-highlighting dependencies required by ZSH Support."
+sidebar_label: ZSH Dependencies Installation
 ---
 
-# fd and fzf Installation
+# ZSH Dependencies Installation
 
-This guide provides platform-specific installation instructions for `fd` and `fzf`, which are required dependencies for [ZSH Support](/docs/zsh-support) file tagging functionality.
+This guide provides platform-specific installation instructions for the dependencies required by [ZSH Support](/docs/zsh-support):
 
-:::info Requirements
-Both `fd` (fast file finder) and `fzf` (fuzzy finder) are required for the `@filename<Tab>` file tagging feature in ZSH Support. Without these tools, pressing Tab after `@` will not trigger the fuzzy finder, and you'll need to type full file paths manually.
+- **zsh-syntax-highlighting** (required) - Provides syntax highlighting for Forge prompts
+- **fd** (optional) - Fast file finder for `@filename<Tab>` file tagging
+- **fzf** (optional) - Fuzzy finder for interactive file and agent selection
+
+:::info Requirements Overview
+- **zsh-syntax-highlighting**: Required for syntax highlighting feature
+- **fd + fzf**: Optional but recommended for fuzzy file finding and agent selection
+- Without these tools, you'll need to type full file paths manually and won't get syntax highlighting
 :::
+
+## Install zsh-syntax-highlighting (Required)
+
+[zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) provides syntax highlighting for Forge prompts and is **required** for the advertised syntax highlighting feature.
+
+### Package Manager Installation (Recommended)
+
+#### macOS
+
+```bash
+brew install zsh-syntax-highlighting
+```
+
+#### Ubuntu/Debian
+
+```bash
+sudo apt install zsh-syntax-highlighting
+```
+
+#### Arch Linux
+
+```bash
+sudo pacman -S zsh-syntax-highlighting
+```
+
+#### Fedora
+
+```bash
+sudo dnf install zsh-syntax-highlighting
+```
+
+#### Other Linux Distributions
+
+Check the [official installation guide](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md) for distribution-specific instructions.
+
+### Oh My Zsh Installation
+
+If you use Oh My Zsh:
+
+```bash
+# Clone to Oh My Zsh plugins directory
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# Add to plugins in ~/.zshrc (must be last plugin)
+plugins=(... zsh-syntax-highlighting)
+```
+
+### Manual Installation
+
+For manual installation without a package manager:
+
+```bash
+# Clone the repository
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+# Add to ~/.zshrc (must be at the end)
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+```
+
+### Verify zsh-syntax-highlighting Installation
+
+```bash
+# Check if the environment variable is set
+echo $ZSH_HIGHLIGHT_VERSION
+```
+
+If this returns a version number, the plugin is loaded correctly.
 
 ## Install fd (Fast File Finder)
 
@@ -101,6 +174,30 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 fzf --version
 ```
 
+## Configuration and Loading Order
+
+:::warning Critical Loading Order
+The order in which you load these components in your `.zshrc` file is crucial:
+
+1. **All other plugins** (git, auto-completion, etc.)
+2. **Forge integration**: `source <($FORGEBIN generate-zsh-prompt)`
+3. **zsh-syntax-highlighting**: Must be **LAST**
+
+**Example ~/.zshrc structure:**
+```bash
+# Other plugins and configuration
+plugins=(git zsh-autosuggestions)
+
+# Forge integration
+export FORGEBIN=forge
+source <($FORGEBIN generate-zsh-prompt)
+
+# zsh-syntax-highlighting (must be last)
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  # Linux
+# source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  # macOS
+```
+:::
+
 ## Troubleshooting
 
 ### Command Not Found After Installation
@@ -132,14 +229,31 @@ If you encounter permission errors during installation:
 - **Use a package manager instead** when available
 - **For manual installations**, ensure the binary is placed in a directory you own (like `~/.local/bin`)
 
+### Syntax Highlighting Not Working
+
+If Forge prompts don't show syntax highlighting:
+
+1. **Verify zsh-syntax-highlighting is installed**:
+   ```bash
+   echo $ZSH_HIGHLIGHT_VERSION
+   ```
+
+2. **Check loading order** in `.zshrc` - ensure zsh-syntax-highlighting is loaded last
+
+3. **Verify the source path** is correct for your installation method
+
 ### ZSH Support Still Not Working
 
-After installing both tools, if file tagging still doesn't work in ZSH Support:
+After installing all dependencies, if ZSH Support features don't work:
 
-1. **Verify both tools are installed:**
+1. **Verify all tools are installed:**
 
    ```bash
-   fd --version && fzf --version
+   # For syntax highlighting
+    echo $ZSH_HIGHLIGHT_VERSION
+    
+    # For file tagging (optional)
+    fd --version && fzf --version
    ```
 
 2. **Reload ZSH configuration:**
@@ -208,3 +322,19 @@ git clone https://github.com/junegunn/fzf.git
 cd fzf
 make install
 ```
+
+**zsh-syntax-highlighting:**
+
+```bash
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+cd zsh-syntax-highlighting
+# Follow manual installation instructions from the repository
+```
+
+## Links and Resources
+
+- [zsh-syntax-highlighting Repository](https://github.com/zsh-users/zsh-syntax-highlighting)
+- [zsh-syntax-highlighting Installation Guide](https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md)
+- [fd Repository](https://github.com/sharkdp/fd)
+- [fzf Repository](https://github.com/junegunn/fzf)
+- [ZSH Support Documentation](/docs/zsh-support)
