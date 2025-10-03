@@ -78,6 +78,16 @@ Searches for text patterns across files using regex.
 | `regex`        | string | Yes      | Regular expression pattern to search for     |
 | `file_pattern` | string | No       | Glob pattern to filter files (e.g., "\*.js") |
 
+### undo
+
+Reverts the most recent file operation on a specific file.
+
+#### Parameters
+
+| Parameter | Type   | Required | Description                         |
+| --------- | ------ | -------- | ----------------------------------- |
+| `path`    | string | Yes      | Absolute path of the file to revert |
+
 ## Network Tools
 
 ### fetch
@@ -114,18 +124,6 @@ Presents the result of the task to the user.
 
 #### Parameters
 
-| Parameter | Type   | Required | Description     |
-| --------- | ------ | -------- | --------------- |
-| `result`  | string | Yes      | The task result |
-
-## Undo Tool
-
-### undo
-
-Reverts the most recent file operation on a specific file.
-
-#### Parameters
-
-| Parameter | Type   | Required | Description                         |
-| --------- | ------ | -------- | ----------------------------------- |
-| `path`    | string | Yes      | Absolute path of the file to revert |
+| Parameter | Type   | Required | Description        |
+| --------- | ------ | -------- | ------------------ |
+| `result`  | string | Yes      | The task result    |
