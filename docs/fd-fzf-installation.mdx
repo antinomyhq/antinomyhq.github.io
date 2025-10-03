@@ -14,10 +14,11 @@ This guide provides platform-specific installation instructions for the dependen
 - **fzf** (optional) - Fuzzy finder for interactive file and agent selection
 
 :::info Requirements Overview
+
 - **zsh-syntax-highlighting**: Required for syntax highlighting feature
 - **fd + fzf**: Optional but recommended for fuzzy file finding and agent selection
 - Without these tools, you'll need to type full file paths manually and won't get syntax highlighting
-:::
+  :::
 
 ## Install zsh-syntax-highlighting (Required)
 
@@ -184,6 +185,7 @@ The order in which you load these components in your `.zshrc` file is crucial:
 3. **zsh-syntax-highlighting**: Must be **LAST**
 
 **Example ~/.zshrc structure:**
+
 ```bash
 # Other plugins and configuration
 plugins=(git zsh-autosuggestions)
@@ -193,9 +195,10 @@ export FORGEBIN=forge
 source <($FORGEBIN generate-zsh-prompt)
 
 # zsh-syntax-highlighting (must be last)
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  # Linux
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Linux
 # source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  # macOS
 ```
+
 :::
 
 ## Troubleshooting
@@ -234,6 +237,7 @@ If you encounter permission errors during installation:
 If Forge prompts don't show syntax highlighting:
 
 1. **Verify zsh-syntax-highlighting is installed**:
+
    ```bash
    echo $ZSH_HIGHLIGHT_VERSION
    ```
@@ -250,10 +254,10 @@ After installing all dependencies, if ZSH Support features don't work:
 
    ```bash
    # For syntax highlighting
-    echo $ZSH_HIGHLIGHT_VERSION
-    
-    # For file tagging (optional)
-    fd --version && fzf --version
+   echo $ZSH_HIGHLIGHT_VERSION
+   
+   # For file tagging (optional)
+   fd --version && fzf --version
    ```
 
 2. **Reload ZSH configuration:**
