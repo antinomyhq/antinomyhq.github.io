@@ -4,7 +4,7 @@ import LinkButton from "../shared/LinkButton"
 import {Theme} from "@site/src/constants"
 import {pageLinks} from "@site/src/constants/routes"
 import {analyticsHandler} from "@site/src/utils"
-import BgForgeCode from "@site/static/images/home/bg-forgecode-light.svg"
+import BgForgeCode from "@site/static/images/home/logo-light.svg"
 
 interface FinalCTAProps {
   showPricingButton?: boolean
