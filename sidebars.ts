@@ -48,7 +48,7 @@ const sidebars: SidebarsConfig = {
         {type: "doc", id: "agent-definition-guide", label: "Creating Custom Agents"},
         {type: "doc", id: "agent-selection-guide", label: "Agent Selection"},
         {type: "doc", id: "model-selection-guide", label: "Switching Models"},
-        {type: "doc", id: "custom-rules-guide", label: "Working with Custom Rules"},
+        {type: "doc", id: "custom-rules-guide", label: "Project Specific Guidelines"},
         {type: "doc", id: "file-tagging-guide", label: "File Tagging with @"},
       ],
     },

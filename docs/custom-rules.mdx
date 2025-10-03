@@ -1,119 +1,159 @@
 ---
-title: Custom Rules
+title: Project Guidelines
 slug: /custom-rules
 sidebar_position: 6
-description: "Learn how to define custom rules and guidelines for AI agents in Forge"
-sidebar_label: Custom Rules
+description: "Learn how to define project-specific guidelines and development standards using AGENTS.md"
+sidebar_label: Project Guidelines
 ---
 
-# Custom Rules
+# Project Guidelines
 
-Custom rules allow you to define specific guidelines and instructions that shape how AI agents behave in Forge. These rules act as persistent instructions that get injected into every AI conversation.
+Project guidelines allow you to define specific development standards and instructions that shape how AI agents behave in your project. These guidelines act as persistent instructions that get injected into every AI conversation.
 
 :::tip Looking for best practices and examples?
-For comprehensive examples, team management strategies, and real-world use cases, check out our [Custom Rules Guide](/docs/custom-rules-guide).
+For comprehensive examples, team management strategies, and real-world use cases, check out our [Project Guidelines Guide](/docs/custom-rules-guide).
 :::
 
-## Configuration
+## Getting Started
 
-Custom rules are defined in your `forge.yaml` file and can be set globally or per-agent.
+Project guidelines are defined using an **`AGENTS.md` file** in your project root directory. This file uses markdown format for comprehensive, documentation-style guidelines.
 
-### Global Rules
+**Quick Start:**
 
-Apply rules to all agents:
+1. Create `AGENTS.md` in your project root directory
+2. Write your development guidelines using markdown
+3. Guidelines are automatically loaded when the agent starts
 
-```yaml
-# forge.yaml
-custom_rules: |
-  - Use TypeScript strict mode
-  - Add error handling to all functions
-  - Include unit tests for new code
-  - Follow team naming conventions
+The `AGENTS.md` file is ideal for:
+
+- Comprehensive development standards
+- Project-specific architecture patterns
+- Detailed coding conventions
+- Team workflows and best practices
+
+:::info
+AGENTS.md supports full markdown formatting including headings, lists, code blocks, and emphasis. This makes it perfect for detailed documentation-style guidelines.
+:::
+
+## Complete Example
+
+Here's a real-world `AGENTS.md` file for a full-stack web application:
+
+````markdown
+# Development Guidelines for MyApp
+
+## 📋 Core Development Rules
+
+### Application Runtime
+
+- **NEVER** attempt to run the application - it's already running on port 3000 in watch mode
+- The development server is persistent and handles hot reloading automatically
+- Always assume the application is accessible at `http://localhost:3000`
+
+### Package Management
+
+- **Use**: `npm` or `npx` commands exclusively
+- **Avoid**: `yarn` or `pnpm` - not used in this project
+- Always check `package.json` for available scripts before running commands
+
+### Code Quality Standards
+
+- **TypeScript First**: All code must be type-safe with proper type definitions
+- **Component Architecture**: Follow React functional components with hooks
+- **Responsive Design**: Ensure all UI components work across devices
+- **Error Handling**: Always wrap async operations in try-catch blocks
+
+## 🛠️ Project Structure
+
+```
+├── src/
+│   ├── components/      # Reusable React components
+│   ├── pages/           # Next.js pages
+│   ├── services/        # API calls and business logic
+│   ├── utils/           # Helper functions
+│   └── styles/          # Global styles and themes
+├── public/              # Static assets
+└── tests/               # Test files
 ```
 
-### Agent-Specific Rules
+## 🎯 Development Focus Areas
 
-Apply rules to individual agents:
+### API Integration
 
-```yaml
-# forge.yaml
-agents:
-  - id: frontend-specialist
-    custom_rules: |
-      - Use React functional components with hooks
-      - Include accessibility attributes
-      - Use CSS modules for styling
+- All API calls must go through the `services/` directory
+- Use the custom `apiClient` wrapper for consistent error handling
+- Never hardcode API endpoints - use environment variables
 
-  - id: backend-specialist
-    custom_rules: |
-      - Use dependency injection for services
-      - Add request/response logging
-      - Validate all input with schemas
-```
+### State Management
 
-## Rule Format
+- Use React Context for global state
+- Keep component state local when possible
+- Avoid prop drilling - use context or composition
 
-Custom rules support:
+### Testing
 
-- **Plain text instructions**
-- **Markdown formatting** (lists, code blocks, emphasis)
-- **Multi-line content** using YAML's `|` syntax
-- **Code examples** within the rules
+- Write unit tests for all utility functions
+- Use React Testing Library for component tests
+- Aim for 80% code coverage on new features
 
-Example with formatting:
+## 🚫 Restrictions & Limitations
 
-````yaml
-custom_rules: |
-  Error Handling Pattern:
+### What NOT to do:
 
-  Always use this pattern:
-  ```typescript
-  try {
-    // risky operation
-  } catch (error) {
-    logger.error('Operation failed:', error);
-    throw new AppError('User-friendly message');
-  }
-  ```
+- ❌ Run `npm start` or similar server commands (server is already running)
+- ❌ Use `any` type in TypeScript
+- ❌ Create non-responsive components
+- ❌ Skip error handling in async functions
+
+### What TO do:
+
+- ✅ Use existing development server
+- ✅ Write TypeScript-first code with proper types
+- ✅ Follow mobile-first responsive design
+- ✅ Add comprehensive error handling
+- ✅ Write tests for new features
+
+## 📝 Code Style
+
+- Use functional components with hooks (no class components)
+- Prefer `const` over `let`, avoid `var`
+- Use arrow functions for callbacks
+- Keep functions small and focused (max 50 lines)
+- Use meaningful variable names (no single letters except loop counters)
+
+## 🔍 Before Completing Any Task
+
+- [ ] Code is TypeScript compliant with proper types
+- [ ] Components are responsive and accessible
+- [ ] Error handling is implemented
+- [ ] No attempts to restart the development server
+- [ ] Tests are written and passing
 ````
+
+This example shows how to structure comprehensive guidelines that cover runtime behavior, code standards, project structure, and team conventions all in one place.
 
 ## How It Works
 
-1. **Loading**: Rules are loaded when Forge starts
-2. **Injection**: Rules become part of the AI's system prompt
-3. **Application**: AI applies rules to every response in the session
-4. **Precedence**: Global rules override agent-specific rules
+When you start an AI agent session:
 
-## Rule Precedence
-
-When rules conflict:
-
-```yaml
-# Global rule
-custom_rules: "Use tabs for indentation"
-
-agents:
-  - id: frontend
-    # This gets overridden by the global rule
-    custom_rules: "Use 2 spaces for indentation"
-```
-
-Global rules override agent-specific rules.
+1. **Loading**: The system searches for `AGENTS.md` files in three locations in order of priority:
+   - **Base path** (environment.base_path) - highest priority
+   - **Git root directory** (if available) - medium priority
+   - **Current working directory** (environment.cwd) - lowest priority
+2. **Injection**: All guidelines from the found file become part of the AI's system prompt
+3. **Application**: AI applies all guidelines to every response in the session
 
 ## Troubleshooting
 
-### Rules Not Applied
+### Guidelines Not Applied
 
-- Check YAML syntax (whitespace-sensitive)
-- Verify `forge.yaml` is in project root
-- Restart Forge session to reload rules
+If your project guidelines aren't being followed:
 
-### Viewing Active Rules
+- Verify `AGENTS.md` is in your project root directory
+- Check that the file is named exactly `AGENTS.md` (case-sensitive)
+- Ensure the file contains valid markdown
+- Restart your AI agent session to reload guidelines
 
-Export session context to see what rules are active:
+### Viewing Active Guidelines
 
-```bash
-/dump html
-```
-
-This shows exactly what context (including custom rules) is sent to the AI.
+To verify that your guidelines are being applied, you can ask the AI agent to describe what project guidelines it's currently following. The guidelines from `AGENTS.md` will be part of the AI's system prompt and will influence all responses.
