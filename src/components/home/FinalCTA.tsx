@@ -1,4 +1,4 @@
-import React from "react"
+import React, { JSX } from "react"
 import Heading from "@theme/Heading"
 import LinkButton from "../shared/LinkButton"
 import {Theme} from "@site/src/constants"
