@@ -39,7 +39,7 @@ export const Step = ({title, children, number, isLast = false}: StepProps) => {
 }
 
 export interface StepsProps {
-  children: ReactNode
+  children: ReactNode[]
 }
 
 export const Steps = ({children}: StepsProps) => {
