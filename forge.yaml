@@ -1,5 +1,4 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/antinomyhq/forge/refs/heads/main/forge.schema.json
-model: anthropic/claude-sonnet-4
 custom_rules: |-
   - you should never try to run the application as its already running on 3000 in watch mode
   - you should use playwright mcp if its available
