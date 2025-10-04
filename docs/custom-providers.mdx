@@ -146,6 +146,47 @@ Forge will automatically detect and use the highest priority provider available.
   </Step>
 </Steps>
 
+## Switching Between Providers
+
+Once you have multiple providers configured, you can easily switch between them using the `/provider` command.
+
+### Using the `/provider` Command
+
+```bash
+# In Forge CLI, type:
+/provider
+```
+
+This will display an interactive menu showing all your configured providers:
+
+```
+? Select a provider:
+> openrouter [openrouter.ai]
+  openai [api.openai.com]
+  anthropic [api.anthropic.com]
+  [Type a name or use arrow keys to navigate and Enter to select]
+```
+
+**Navigation:**
+
+- Use **arrow keys** to navigate up/down
+- **Type** to filter providers by name
+- Press **Enter** to select
+- Press **Escape** to cancel
+
+### Model Selection
+
+After switching providers, you'll be prompted to select a compatible model from the new provider's available models.
+
+:::tip Multiple Providers
+Configure multiple providers to easily switch based on your needs:
+
+- **OpenRouter**: For model variety and cost comparison
+- **OpenAI**: For latest GPT models and features
+- **Anthropic**: For Claude's reasoning capabilities
+- **Groq**: For ultra-fast inference
+  :::
+
 ## Provider Priority & Environment Merging
 
 ### Priority Order
