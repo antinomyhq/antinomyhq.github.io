@@ -61,7 +61,7 @@ body {
   --ifm-navbar-background-color: #f5f3eb;
 
   /* Color Tokens */
-  --ifm-color-brand: #fdea2e;
+  --ifm-color-brand: #181818;
   --ifm-color-brand-linkedin: #0a66c2;
   --ifm-color-brand-discord: #5865f2;
   --ifm-color-brand-dark: #000;
@@ -285,7 +285,7 @@ input[type="radio"]:checked::before {
 }
 
 .pagination-nav__sublabel {
-  color: var(--ifm-color-gray-900);
+  /* color: white; */ /* Removed - using Tailwind classes instead */
   margin-bottom: 0.5rem;
   font-weight: var(--ifm-font-weight-normal);
 }

@@ -11,7 +11,7 @@ const BenefitsCard = (): JSX.Element => {
         {benefits.map((item, index) => (
           <Link
             className={clsx(
-              "group  p-6 flex flex-col md:flex-row items-start hover:border-[#FDEA2E] cursor-pointer hover:no-underline",
+              "group  p-6 flex flex-col md:flex-row items-start cursor-pointer hover:no-underline",
               benefits.length % 2 !== 0 &&
                 index === benefits.length - 1 &&
                 "md:col-span-2 md:max-w-[calc(50%-20px)] md:mx-auto",
@@ -20,7 +20,7 @@ const BenefitsCard = (): JSX.Element => {
             href={item.redirection_url}
           >
             <div className="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
-              <item.image className="w-16 h-16 text-gray-400 group-hover:text-tailCall-yellow object-contain" />
+              <item.image className="w-16 h-16 text-gray-400 group-hover:text-white object-contain" />
             </div>
             <div className="flex-grow">
               <p className="text-title-small sm:text-title-large text-tailCall-white mb-2 flex items-center justify-between">

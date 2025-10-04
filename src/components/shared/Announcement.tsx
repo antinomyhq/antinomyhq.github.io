@@ -23,9 +23,7 @@ const Announcement: React.FC<AnnouncementProps> = ({text, children, refLink, ref
           {refLink && refText && (
             <a
               className={`font-bold ml-2 ${
-                isGradient
-                  ? "text-tailCall-yellow hover:text-white transition-colors underline"
-                  : "text-tailCall-yellow"
+                isGradient ? "text-white hover:text-gray-300 transition-colors underline" : "text-white"
               }`}
               href={refLink}
               target="_blank"
