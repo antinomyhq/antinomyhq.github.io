@@ -12,38 +12,9 @@ Forge provides a comprehensive set of built-in tools that enable AI agents to in
 
 > **Note:** These tools are used internally by Forge's AI agents and are not meant to be directly called by developers. This reference is provided for understanding what capabilities agents have access to within your system.
 
-## User Interface Tools
-
-### forge_tool_display_show_user
-
-Displays formatted markdown content to the user in the terminal.
-
-#### Parameters
-
-| Parameter | Type   | Required | Description                             |
-| --------- | ------ | -------- | --------------------------------------- |
-| `content` | string | Yes      | Markdown content to display to the user |
-
-#### Features
-
-- Rich markdown formatting in terminal output
-- Support for headers, lists, tables, code blocks, and text emphasis
-- Properly rendered using the termimad library
-- Improves readability of complex information
-
-#### When to Use
-
-Agents use this tool when they need to present:
-
-- Structured information with clear hierarchy
-- Tabular data
-- Code snippets with syntax highlighting
-- Step-by-step instructions
-- Visual emphasis for important points
-
 ## File System Tools
 
-### forge_tool_fs_read
+### read
 
 Reads file contents at a specified path.
 
@@ -53,7 +24,7 @@ Reads file contents at a specified path.
 | --------- | ------ | -------- | ------------------------- |
 | `path`    | string | Yes      | Absolute path to the file |
 
-### forge_tool_fs_create
+### write
 
 Creates or overwrites a file with specified content.
 
@@ -65,7 +36,7 @@ Creates or overwrites a file with specified content.
 | `content`   | string  | Yes      | Content to write to the file                         |
 | `overwrite` | boolean | No       | Whether to overwrite if file exists (default: false) |
 
-### forge_tool_fs_patch
+### patch
 
 Modifies files with targeted text operations on matched patterns.
 
@@ -85,7 +56,7 @@ Modifies files with targeted text operations on matched patterns.
 | `replace` | Replace the matched text with new content   |
 | `swap`    | Exchange the matched text with another text |
 
-### forge_tool_fs_remove
+### remove
 
 Removes a file at a specified path.
 
@@ -95,27 +66,7 @@ Removes a file at a specified path.
 | --------- | ------ | -------- | ------------------------- |
 | `path`    | string | Yes      | Absolute path to the file |
 
-### forge_tool_fs_list
-
-Lists files and directories at a specified path.
-
-#### Parameters
-
-| Parameter | Type   | Required | Description                    |
-| --------- | ------ | -------- | ------------------------------ |
-| `path`    | string | Yes      | Absolute path to the directory |
-
-### forge_tool_fs_info
-
-Retrieves metadata about a file or directory.
-
-#### Parameters
-
-| Parameter | Type   | Required | Description                            |
-| --------- | ------ | -------- | -------------------------------------- |
-| `path`    | string | Yes      | Absolute path to the file or directory |
-
-### forge_tool_fs_search
+### search
 
 Searches for text patterns across files using regex.
 
@@ -127,9 +78,19 @@ Searches for text patterns across files using regex.
 | `regex`        | string | Yes      | Regular expression pattern to search for     |
 | `file_pattern` | string | No       | Glob pattern to filter files (e.g., "\*.js") |
 
+### undo
+
+Reverts the most recent file operation on a specific file.
+
+#### Parameters
+
+| Parameter | Type   | Required | Description                         |
+| --------- | ------ | -------- | ----------------------------------- |
+| `path`    | string | Yes      | Absolute path of the file to revert |
+
 ## Network Tools
 
-### forge_tool_net_fetch
+### fetch
 
 Retrieves content from URLs as markdown or raw text.
 
@@ -144,7 +105,7 @@ Retrieves content from URLs as markdown or raw text.
 
 ## Process Tools
 
-### forge_tool_process_shell
+### shell
 
 Executes shell commands with safety measures.
 
@@ -154,3 +115,15 @@ Executes shell commands with safety measures.
 | --------- | ------ | -------- | --------------------------------------- |
 | `command` | string | Yes      | Shell command to execute                |
 | `cwd`     | string | Yes      | Working directory for command execution |
+
+## Completion Tool
+
+### attempt_completion
+
+Presents the result of the task to the user.
+
+#### Parameters
+
+| Parameter | Type   | Required | Description     |
+| --------- | ------ | -------- | --------------- |
+| `result`  | string | Yes      | The task result |
