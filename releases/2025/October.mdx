@@ -8,6 +8,80 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 <VersionUpdateCard />
 
+## v0.123.3 
+
+### 🐛 Bug Fixes
+
+- fix: accumulate usage from summarization in context [@amitksingh1490](https://github.com/amitksingh1490) ([#1666](https://github.com/antinomyhq/forge/pull/1666))
+- fix: remove unnecessary search output from CLI [@tusharmath](https://github.com/tusharmath) ([#1678](https://github.com/antinomyhq/forge/pull/1678))
+- fix: skip empty messages from user logs [@tusharmath](https://github.com/tusharmath) ([#1676](https://github.com/antinomyhq/forge/pull/1676))
+- fix: agent ID retrieval in tools command [@amitksingh1490](https://github.com/amitksingh1490) ([#1677](https://github.com/antinomyhq/forge/pull/1677))
+
+
+---
+## v0.123.2 
+
+### 🐛 Bug Fixes
+
+- fix: revert `FORGE_BIN` to default 'forge' for consistency [@amitksingh1490](https://github.com/amitksingh1490) ([#1672](https://github.com/antinomyhq/forge/pull/1672))
+- fix: add Z.ai thinking transformation [@amitksingh1490](https://github.com/amitksingh1490) ([#1673](https://github.com/antinomyhq/forge/pull/1673))
+- fix: add reasoning configuration and styles to conversation rendering [@amitksingh1490](https://github.com/amitksingh1490) ([#1667](https://github.com/antinomyhq/forge/pull/1667))
+
+
+---
+## v0.123.1 
+
+### 🐛 Bug Fixes
+
+- fix: improve ZSH experience [@tusharmath](https://github.com/tusharmath) ([#1660](https://github.com/antinomyhq/forge/pull/1660))
+- fix: improve reliability of mcp on ZSH [@amitksingh1490](https://github.com/amitksingh1490) ([#1661](https://github.com/antinomyhq/forge/pull/1661))
+- fix: tool validation to support glob patterns [@amitksingh1490](https://github.com/amitksingh1490) ([#1663](https://github.com/antinomyhq/forge/pull/1663))
+- fix: order of conversation by `updated_at` [@tusharmath](https://github.com/tusharmath) ([#1662](https://github.com/antinomyhq/forge/pull/1662))
+
+
+---
+## v0.123.0 
+
+- feat: persist provider specific model [@tusharmath](https://github.com/tusharmath) ([#1647](https://github.com/antinomyhq/forge/pull/1647))
+
+### 🚀 Features
+
+- feat: add BigModel provider [@ssddOnTop](https://github.com/ssddOnTop) ([#1658](https://github.com/antinomyhq/forge/pull/1658))
+- feat: support glob patterns for MCP tool access [@tusharmath](https://github.com/tusharmath) ([#1652](https://github.com/antinomyhq/forge/pull/1652))
+- feat: add 'show-tools' command and update zsh plugin [@amitksingh1490](https://github.com/amitksingh1490) ([#1651](https://github.com/antinomyhq/forge/pull/1651))
+- feat: add session management commands for handling conversations [@amitksingh1490](https://github.com/amitksingh1490) ([#1643](https://github.com/antinomyhq/forge/pull/1643))
+- feat: implement configuration management commands [@amitksingh1490](https://github.com/amitksingh1490) ([#1623](https://github.com/antinomyhq/forge/pull/1623))
+
+### 🐛 Bug Fixes
+
+- fix: empty app config [@ssddOnTop](https://github.com/ssddOnTop) ([#1659](https://github.com/antinomyhq/forge/pull/1659))
+- fix: correct command references from "/conversations" to "/conversation" [@amitksingh1490](https://github.com/amitksingh1490) ([#1653](https://github.com/antinomyhq/forge/pull/1653))
+- fix: derive cost from cost\_details [@laststylebender14](https://github.com/laststylebender14) ([#1646](https://github.com/antinomyhq/forge/pull/1646))
+- fix: raise an error if no provider is configured. [@laststylebender14](https://github.com/laststylebender14) ([#1645](https://github.com/antinomyhq/forge/pull/1645))
+
+### 🧰 Maintenance
+
+- chore: rename .json file [@tusharmath](https://github.com/tusharmath) ([#1655](https://github.com/antinomyhq/forge/pull/1655))
+- refactor: move model configuration into a JSON file [@tusharmath](https://github.com/tusharmath) ([#1650](https://github.com/antinomyhq/forge/pull/1650))
+- chore: update dependencies and features for multiple crates [@amitksingh1490](https://github.com/amitksingh1490) ([#1627](https://github.com/antinomyhq/forge/pull/1627))
+
+
+---
+## v0.122.2 
+
+### 🐛 Bug Fixes
+
+- fix: ensure tool\_supported is explicitly set in configuration [@tusharmath](https://github.com/tusharmath) ([#1639](https://github.com/antinomyhq/forge/pull/1639))
+
+### 🧰 Maintenance
+
+- refactor: improve title formatting in conversation initialization [@tusharmath](https://github.com/tusharmath) ([#1637](https://github.com/antinomyhq/forge/pull/1637))
+- chore: update action trigger [@tusharmath](https://github.com/tusharmath) ([#1638](https://github.com/antinomyhq/forge/pull/1638))
+- refactor: have single source of truth [@tusharmath](https://github.com/tusharmath) ([#1630](https://github.com/antinomyhq/forge/pull/1630))
+- refactor: remove redundant explanation fields from tool input structs [@tusharmath](https://github.com/tusharmath) ([#1636](https://github.com/antinomyhq/forge/pull/1636))
+
+
+---
 ## v0.122.1 
 
 - revert: 1597 [@amitksingh1490](https://github.com/amitksingh1490) ([#1624](https://github.com/antinomyhq/forge/pull/1624))
