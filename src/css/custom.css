@@ -1164,28 +1164,14 @@ article table,
   width: 100% !important;
   max-width: 100% !important;
   display: table !important;
+  border-collapse: collapse;
 }
 
 /* Ensure table container is full width */
 .markdown > div,
 article > div {
   width: 100% !important;
-}
-
-/* Column widths: Environment Variable (35%), Default (20%), Description (45%) */
-article table th:nth-child(1),
-article table td:nth-child(1) {
-  width: 35%;
-}
-
-article table th:nth-child(2),
-article table td:nth-child(2) {
-  width: 20%;
-}
-
-article table th:nth-child(3),
-article table td:nth-child(3) {
-  width: 45%;
+  overflow-x: auto;
 }
 
 /* Consistent text alignment and word wrapping */
@@ -1194,4 +1180,21 @@ article table th {
   text-align: left;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  white-space: normal !important;
+  padding: 12px 16px;
+  vertical-align: middle;
+  min-width: 120px;
+}
+
+/* Responsive table behavior */
+@media (max-width: 768px) {
+  article table {
+    font-size: 0.9rem;
+  }
+
+  article table td,
+  article table th {
+    padding: 8px 12px;
+    min-width: 100px;
+  }
 }
