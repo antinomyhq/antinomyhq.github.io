@@ -17,6 +17,7 @@
   cursor: pointer;
   transition: all var(--ifm-transition-fast) var(--ifm-transition-timing-default);
   overflow: clip;
+  border: none;
 }
 
 .DocSearch-Cancel {
@@ -323,4 +324,6 @@
 .DocSearch-Search-Icon {
   cursor: pointer;
   stroke-width: 2px;
+  color: var(--ifm-color-gray-900) !important;
+  stroke: var(--ifm-color-gray-900) !important;
 }
