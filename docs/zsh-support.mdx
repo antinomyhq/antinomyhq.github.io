@@ -132,21 +132,21 @@ ZSH Support works without these tools, but you'll need to type full file paths i
     If you installed Forge globally:
     ```bash
     # Add to ~/.zshrc
-    export FORGEBIN=forge
-    source <($FORGEBIN generate-zsh-prompt)
+    export FORGE_BIN=forge
+    source <($FORGE_BIN generate-zsh-prompt)
     ```
 
     If you're using npx:
     ```bash
     # Add to ~/.zshrc
-    export FORGEBIN="npx forgecode"
-    source <($FORGEBIN generate-zsh-prompt)
+    export FORGE_BIN="npx forgecode"
+    source <($FORGE_BIN generate-zsh-prompt)
     ```
 
     :::note Critical Loading Order
     **The Forge source line must come BEFORE the zsh-syntax-highlighting source line** in your `.zshrc` file. The correct order is:
     1. All other plugins
-    2. Forge integration (`source <($FORGEBIN generate-zsh-prompt)`)
+    2. Forge integration (`source <($FORGE_BIN generate-zsh-prompt)`)
     3. zsh-syntax-highlighting (last)
     :::
 
@@ -309,7 +309,7 @@ If `: command not found` appears:
 
 1. Ensure you added the source line to `~/.zshrc`
 2. Reload your shell: `source ~/.zshrc` or `exec zsh`
-3. Verify `FORGEBIN` is set correctly: `echo $FORGEBIN`
+3. Verify `FORGE_BIN` is set correctly: `echo $FORGE_BIN`
 4. Check the path matches your installation method (global vs npx)
 
 #### File Tagging Doesn't Work
