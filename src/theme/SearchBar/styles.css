@@ -219,7 +219,7 @@
   }
 
   .DocSearch-Dropdown {
-    height: 50vh !important;
+    height: 60vh !important;
   }
 }
 
@@ -231,7 +231,7 @@
   }
 
   .DocSearch-Dropdown {
-    height: 45vh !important;
+    height: 55vh !important;
   }
 }
 
@@ -240,7 +240,7 @@
   .DocSearch-Modal {
     width: 85vw !important;
     max-width: 500px !important;
-    max-height: 75vh !important;
+    max-height: 85vh !important;
   }
 
   .DocSearch-Container {
@@ -248,7 +248,7 @@
   }
 
   .DocSearch-Dropdown {
-    height: 40vh !important;
+    height: 50vh !important;
   }
 }
 
@@ -257,7 +257,7 @@
   .DocSearch-Modal {
     width: 90vw !important;
     max-width: unset !important;
-    max-height: 70vh !important;
+    max-height: 90vh !important;
     min-width: unset !important;
   }
 
@@ -266,7 +266,7 @@
   }
 
   .DocSearch-Dropdown {
-    height: 40vh !important;
+    height: 60vh !important;
   }
 
   .DocSearch-Input {
@@ -282,7 +282,7 @@
 @media only screen and (max-width: 480px) {
   .DocSearch-Modal {
     width: 92vw !important;
-    max-height: 65vh !important;
+    max-height: 90vh !important;
   }
 
   .DocSearch-Container {
@@ -290,7 +290,7 @@
   }
 
   .DocSearch-Dropdown {
-    height: 35vh !important;
+    height: 70vh !important;
   }
 }
 
