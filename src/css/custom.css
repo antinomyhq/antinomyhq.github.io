@@ -102,6 +102,15 @@ code {
   font-weight: 600;
 }
 
+/* Firefox copy-paste fix: Force code block lines to behave as block elements */
+/* This helps Firefox handle text selection correctly in code blocks */
+.prism-code .token-line {
+  display: block;
+  user-select: text;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+}
+
 input[type="radio"] {
   -webkit-appearance: none;
   appearance: none;
