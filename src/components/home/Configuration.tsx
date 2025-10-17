@@ -44,11 +44,7 @@ const Configuration = (): JSX.Element => {
               aria-label="Copy command"
               className="absolute top-1.5 right-1.5 sm:top-2 sm:right-3 z-20 bg-[rgba(24,24,24,0.85)] hover:bg-[rgba(24,24,24,0.95)] border-none rounded-none px-1.5 py-1 sm:px-2 flex items-center cursor-pointer text-white font-sans transition-colors"
             >
-              {copied && (
-                <span className="text-xs mr-1.5 text-[#b6ffbe] opacity-85 font-sans">
-                  Copied!
-                </span>
-              )}
+              {copied && <span className="text-xs mr-1.5 text-[#b6ffbe] opacity-85 font-sans">Copied!</span>}
               <img
                 src="/icons/basic/copy-icon.svg"
                 alt="Copy"
