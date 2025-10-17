@@ -1083,14 +1083,42 @@ span.token.tag.script.language-javascript {
 }
 
 pre.main-install-command {
-  font-size: 1.5rem;
+  font-size: 0.75rem;
   font-weight: 600;
   font-family: var(--ifm-font-family-monospace);
   border-radius: 0;
   color: #f5f3eb;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-wrap;
+  overflow-x: hidden;
+}
+
+@media (min-width: 375px) {
+  pre.main-install-command {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 480px) {
+  pre.main-install-command {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 640px) {
+  pre.main-install-command {
+    font-size: 1.25rem;
+  }
 }
 
 @media (min-width: 768px) {
+  pre.main-install-command {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
   pre.main-install-command {
     font-size: 2rem;
   }

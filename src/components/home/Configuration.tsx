@@ -36,13 +36,13 @@ const Configuration = (): JSX.Element => {
         <div className="flex-1 lg:flex-none lg:min-w-[400px] xl:min-w-[500px]">
           <h4 className="text-base sm:text-lg font-semibold mb-2">Install Forge</h4>
           <div className="relative">
-            <pre className="w-full overflow-x-auto text-xs sm:text-sm md:text-base main-install-command px-4 py-3 pr-14">
+            <pre className="w-full main-install-command px-2 py-2 pr-12 xs:px-3 xs:pr-14 sm:px-4 sm:pr-20">
               {INSTALL_COMMAND}
             </pre>
             <button
               onClick={handleCopy}
               aria-label="Copy command"
-              className="absolute top-2 right-3 z-20 bg-[rgba(24,24,24,0.85)] hover:bg-[rgba(24,24,24,0.95)] border-none rounded-none px-2 py-1 flex items-center cursor-pointer text-white font-sans transition-colors"
+              className="absolute top-1.5 right-1.5 sm:top-2 sm:right-3 z-20 bg-[rgba(24,24,24,0.85)] hover:bg-[rgba(24,24,24,0.95)] border-none rounded-none px-1.5 py-1 sm:px-2 flex items-center cursor-pointer text-white font-sans transition-colors"
             >
               {copied && (
                 <span className="text-xs mr-1.5 text-[#b6ffbe] opacity-85 font-sans">
