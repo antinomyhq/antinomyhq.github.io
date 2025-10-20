@@ -48,21 +48,21 @@ const LinkButton = ({
     const themes = {
       [Theme.Light]: {
         classes:
-          "border border-solid border-tailCall-border-dark-100 text-tailCall-dark-500 bg-transparent hover:text-tailCall-dark-500",
+          "border border-dashed border-gray-400 text-tailCall-dark-500 bg-transparent hover:text-tailCall-dark-500",
         gridClasses: "",
       },
       [Theme.Dark]: {
         classes:
-          "border-2 border-solid border-tailCall-border-dark-100 text-tailCall-light-100 bg-white hover:text-tailCall-light-100",
+          "border border-dashed border-white text-tailCall-light-100 bg-tailCall-dark-500 hover:text-tailCall-light-100",
         gridClasses: "",
       },
       [Theme.Gray]: {
         classes:
-          "border-2 border-solid border-tailCall-light-100 text-tailCall-light-100 bg-transparent hover:text-tailCall-light-100",
+          "border border-dashed border-tailCall-light-100 text-tailCall-light-100 bg-transparent hover:text-tailCall-light-100",
         gridClasses: "hidden",
       },
       [Theme.Tailcall]: {
-        classes: "bg-tailCall-black border border-solid text-white bg-transparent hover:text-white",
+        classes: "bg-tailCall-black border border-dashed border-gray-400 text-white bg-transparent hover:text-white",
 
         gridClasses: "",
       },
@@ -77,7 +77,7 @@ const LinkButton = ({
         <>
           {/* Dark theme background */}
           <div
-            className={`lg:block rounded-md lg:rounded-lg absolute inset-0 w-full bg-tailCall-dark-500 group-hover:lg:scale-x-[0.98] group-hover:lg:scale-y-[0.95] transform transition-all ease-out duration-250`}
+            className={`lg:block absolute inset-0 w-full bg-tailCall-dark-500 group-hover:lg:scale-x-[0.98] group-hover:lg:scale-y-[0.95] transform transition-all ease-out duration-250`}
           />
           {!disabled && (
             // Dark theme grid background (only if not disabled)
@@ -101,7 +101,7 @@ const LinkButton = ({
       to={href}
       onClick={onClick}
       className={`
-      group relative disabled:opacity-25 disabled:cursor-not-allowed flex items-center justify-center gap-x-SPACE_03 hover:no-underline rounded-lg sm:rounded-xl h-12 sm:h-16 text-content-small font-bold sm:text-title-small cursor-pointer px-SPACE_06 py-SPACE_03 sm:px-SPACE_08 lg:px-SPACE_10 sm:py-SPACE_04 lg:py-SPACE_05
+      group relative disabled:opacity-25 disabled:cursor-not-allowed flex items-center justify-center gap-x-SPACE_03 hover:no-underline h-12 sm:h-16 text-content-small font-bold sm:text-title-small cursor-pointer px-SPACE_06 py-SPACE_03 sm:px-SPACE_08 lg:px-SPACE_10 sm:py-SPACE_04 lg:py-SPACE_05
       ${setButtonWidth()} 
       ${generateThemeClasses().classes ?? ""} 
       ${disabled ? "cursor-not-allowed opacity-20" : ""} `}

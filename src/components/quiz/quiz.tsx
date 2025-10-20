@@ -67,7 +67,7 @@ const Quiz: React.FC<QuizProps> = ({questions, title}) => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-gradient-to-r from-purple-100 to-blue-100 shadow-lg rounded-xl">
+    <div className="max-w-2xl mx-auto p-6 bg-gradient-to-r from-purple-100 to-blue-100 shadow-lg">
       <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">{title} Quiz!</h2>
       {showScore ? (
         <div className="text-center">
@@ -90,14 +90,14 @@ const Quiz: React.FC<QuizProps> = ({questions, title}) => {
           <div className="mt-6 space-y-3">
             <button
               onClick={() => shareScore("twitter", score, questions.length, title)}
-              className="w-full bg-black text-tailCall-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors duration-300 shadow-md flex items-center justify-center"
+              className="w-full bg-black text-tailCall-white px-6 py-3 text-lg font-semibold hover:bg-gray-800 transition-colors duration-300 shadow-md flex items-center justify-center"
             >
               <TwitterLogo /> Share on X (Twitter)
             </button>
           </div>
           <button
             onClick={resetQuiz}
-            className="mt-6 bg-green-500 text-tailCall-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-600 transition-colors duration-300 shadow-md w-full"
+            className="mt-6 bg-green-500 text-tailCall-white px-6 py-3 text-lg font-semibold hover:bg-green-600 transition-colors duration-300 shadow-md w-full"
           >
             Retry Quiz
           </button>
@@ -113,7 +113,7 @@ const Quiz: React.FC<QuizProps> = ({questions, title}) => {
               <button
                 key={index}
                 onClick={() => handleAnswerClick(index)}
-                className={`w-full text-left p-4 rounded-lg transition-all duration-300 ${
+                className={`w-full text-left p-4 transition-all duration-300 ${
                   selectedAnswer === null
                     ? "bg-white hover:bg-gray-100 shadow-md"
                     : selectedAnswer === index

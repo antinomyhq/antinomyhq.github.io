@@ -233,7 +233,7 @@ input[type="radio"]:checked::before {
 .pagination-nav__link {
   background: var(--ifm-color-brand);
   border: none;
-  border-radius: 16px;
+  border-radius: 0;
 }
 
 .pagination-nav__label {
@@ -361,14 +361,15 @@ input[type="radio"]:checked::before {
 .navbar__item.navbar__link:hover {
   background-color: #f3f3f3;
   color: var(--ifm-color-gray-900);
-  border-radius: 6px;
+  border-radius: 0;
 }
 
 .navbar__item.navbar__link.navbar__link--active,
 .navbar__item.dropdown.navbar__link--active {
   background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
   color: #fff;
-  border-radius: 6px;
+  border-radius: 0;
+  border: 1px dashed var(--ifm-color-gray-900);
 }
 
 .navbar-sidebar__item .menu__link:hover {
@@ -382,7 +383,7 @@ input[type="radio"]:checked::before {
   min-width: 20rem;
   box-shadow: none;
   border: 1px solid #e7e7e7;
-  border-radius: 8px;
+  border-radius: 0;
   gap: 8px;
   top: calc(100% - var(--ifm-navbar-item-padding-vertical) + 0.3rem);
 }
@@ -411,7 +412,7 @@ input[type="radio"]:checked::before {
   height: 3rem;
   color: var(--ifm-color-gray-900);
   border: 2px solid var(--ifm-color-gray-900);
-  border-radius: 8px;
+  border-radius: 0;
   justify-content: center;
   font-weight: var(--ifm-font-weight-bold);
 }
@@ -712,7 +713,7 @@ nav.menu {
     padding: 0.75rem 1rem;
     margin: 0 auto 1rem auto;
     border: 1px solid var(--ifm-color-gray-400);
-    border-radius: 8px;
+    border-radius: 0;
     background: transparent;
     color: var(--ifm-color-gray-600);
     font-weight: var(--ifm-font-weight-bold);
@@ -739,7 +740,7 @@ nav.menu {
     padding: 0.75rem 1rem;
     margin: 0 auto 1rem auto;
     border: 1px solid var(--ifm-color-primary);
-    border-radius: 8px;
+    border-radius: 0;
     background: transparent;
     color: var(--ifm-color-primary);
     font-weight: var(--ifm-font-weight-bold);
@@ -818,7 +819,7 @@ nav.menu {
   }
 
   .navbar__search input {
-    border-radius: 8px;
+    border-radius: 0;
     border: 1px solid var(--ifm-color-brand-light-600);
   }
 }
@@ -927,7 +928,7 @@ span.token.tag.script.language-javascript {
 .customer-feedback-card {
   border: 2px solid transparent;
   border-bottom: none;
-  border-radius: 0.75rem;
+  border-radius: 0;
   background-image:
     linear-gradient(180deg, #232426 0%, #121315 100%), linear-gradient(180deg, #555656 0%, #121315 100%);
   background-origin: border-box;
@@ -1099,7 +1100,7 @@ pre.main-install-command {
 details {
   background-color: transparent !important;
   border: 1px solid var(--ifm-color-brand-light-400);
-  border-radius: 8px;
+  border-radius: 0;
   padding: 0;
   margin-bottom: 1rem;
 }

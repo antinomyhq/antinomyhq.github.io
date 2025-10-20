@@ -73,7 +73,7 @@ const TagSelectionModal: React.FC<TagSelectionModalProps> = ({open, onClose}) =>
       {/* Modal Container */}
       <div
         className={clsx(
-          "absolute w-full lg:w-4/12 h-full overflow-scroll right-0 bg-white rounded-xl lg:rounded-none lg:border lg:border-solid lg:border-tailCall-border-light-500 px-4 py-8 lg:px-10 lg:py-8 flex flex-col gap-8",
+          "absolute w-full lg:w-4/12 h-full overflow-scroll right-0 bg-white lg:border lg:border-solid lg:border-tailCall-border-light-500 px-4 py-8 lg:px-10 lg:py-8 flex flex-col gap-8",
           styles.modalContainer,
         )}
       >
@@ -84,7 +84,7 @@ const TagSelectionModal: React.FC<TagSelectionModalProps> = ({open, onClose}) =>
 
         <div className="flex flex-col gap-5 pb-36">
           {/* Search Bar */}
-          <div className="flex items-center gap-3 border border-solid border-tailCall-border-light-500 rounded-lg py-3 px-6">
+          <div className="flex items-center gap-3 border border-solid border-tailCall-border-light-500 py-3 px-6">
             <Search width={20} height={20} className="text-tailCall-light-500" />
             <input
               name="tag"
