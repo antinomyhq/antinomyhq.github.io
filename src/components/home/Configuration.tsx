@@ -3,12 +3,10 @@ import Heading from "@theme/Heading"
 import Link from "@docusaurus/Link"
 import Section from "../shared/Section"
 import CopyButton from "../shared/CopyButton"
-import {useCopyToClipboard} from "@site/src/hooks/useCopyToClipboard"
 
 const INSTALL_COMMAND = "npx forgecode@latest"
 
 const Configuration: React.FC = () => {
-  const {copied, copyToClipboard} = useCopyToClipboard()
 
   return (
     <Section className="flex flex-col">
@@ -35,8 +33,7 @@ const Configuration: React.FC = () => {
               {INSTALL_COMMAND}
             </pre>
             <CopyButton
-              copied={copied}
-              onClick={() => copyToClipboard(INSTALL_COMMAND)}
+              textToCopy={INSTALL_COMMAND}
               ariaLabel="Copy command"
               className="absolute top-1.5 right-1.5 sm:top-2 sm:right-3 z-20 px-1.5 sm:px-2"
               iconClassName="w-3.5 h-3.5 sm:w-4 sm:h-4"
