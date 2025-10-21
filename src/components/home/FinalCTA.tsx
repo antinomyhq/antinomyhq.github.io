@@ -1,6 +1,6 @@
 import BgForgeCode from "@site/static/images/home/logo-light.svg"
 import Heading from "@theme/Heading"
-import React, { JSX } from "react"
+import React, {JSX} from "react"
 import Section from "../shared/Section"
 
 interface FinalCTAProps {
