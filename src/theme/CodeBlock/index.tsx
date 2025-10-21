@@ -17,7 +17,11 @@ export default function CodeBlockWrapper(props: Props): JSX.Element {
   return (
     <div className="relative overflow-hidden">
       <CodeBlock {...props} />
-      <CopyButton textToCopy={props.children?.toString() || ""} ariaLabel="Copy code" className="absolute top-[12px] right-4 z-20" />
+      <CopyButton
+        textToCopy={props.children?.toString() || ""}
+        ariaLabel="Copy code"
+        className="absolute top-[12px] right-4 z-20"
+      />
     </div>
   )
 }

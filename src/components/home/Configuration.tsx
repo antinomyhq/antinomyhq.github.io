@@ -7,7 +7,6 @@ import CopyButton from "../shared/CopyButton"
 const INSTALL_COMMAND = "npx forgecode@latest"
 
 const Configuration: React.FC = () => {
-
   return (
     <Section className="flex flex-col">
       <div className="flex flex-col gap-6 md:gap-8 lg:gap-10 lg:flex-row lg:items-start">
