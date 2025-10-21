@@ -1,19 +1,14 @@
-import React, {useState} from "react"
+import React from "react"
 import Heading from "@theme/Heading"
 import Link from "@docusaurus/Link"
 import Section from "../shared/Section"
+import CopyButton from "../shared/CopyButton"
+import {useCopyToClipboard} from "@site/src/hooks/useCopyToClipboard"
 
 const INSTALL_COMMAND = "npx forgecode@latest"
-const COPY_FEEDBACK_DURATION = 2000
 
-const Configuration = (): JSX.Element => {
-  const [copied, setCopied] = useState(false)
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(INSTALL_COMMAND)
-    setCopied(true)
-    setTimeout(() => setCopied(false), COPY_FEEDBACK_DURATION)
-  }
+const Configuration: React.FC = () => {
+  const {copied, copyToClipboard} = useCopyToClipboard()
 
   return (
     <Section className="flex flex-col">
@@ -39,18 +34,13 @@ const Configuration = (): JSX.Element => {
             <pre className="w-full main-install-command px-2 py-2 pr-12 xs:px-3 xs:pr-14 sm:px-4 sm:pr-20">
               {INSTALL_COMMAND}
             </pre>
-            <button
-              onClick={handleCopy}
-              aria-label="Copy command"
-              className="absolute top-1.5 right-1.5 sm:top-2 sm:right-3 z-20 bg-[rgba(24,24,24,0.85)] hover:bg-[rgba(24,24,24,0.95)] border-none rounded-none px-1.5 py-1 sm:px-2 flex items-center cursor-pointer text-white font-sans transition-colors"
-            >
-              {copied && <span className="text-xs mr-1.5 text-[#b6ffbe] opacity-85 font-sans">Copied!</span>}
-              <img
-                src="/icons/basic/copy-icon.svg"
-                alt="Copy"
-                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 [filter:brightness(2)] ${copied ? "" : "ml-0.5"}`}
-              />
-            </button>
+            <CopyButton
+              copied={copied}
+              onClick={() => copyToClipboard(INSTALL_COMMAND)}
+              ariaLabel="Copy command"
+              className="absolute top-1.5 right-1.5 sm:top-2 sm:right-3 z-20 px-1.5 sm:px-2"
+              iconClassName="w-3.5 h-3.5 sm:w-4 sm:h-4"
+            />
           </div>
         </div>
       </div>
