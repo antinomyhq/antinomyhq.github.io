@@ -16,4 +16,3 @@ export const useCopyToClipboard = (duration: number = 2000): UseCopyToClipboardR
 
   return {copied, copyToClipboard}
 }
-
