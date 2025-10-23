@@ -48,7 +48,7 @@ const Stats: React.FC = () => {
   return (
     <Section>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 w-full max-w-5xl mx-auto place-items-center">
-        {stats.map((stat, index) => {
+        {stats.map((stat) => {
           const isGithub = stat.label === "GitHub Stars"
 
           let Wrapper: React.ElementType = "div"
@@ -66,7 +66,7 @@ const Stats: React.FC = () => {
           }
 
           return (
-            <Wrapper key={index} {...wrapperProps}>
+            <Wrapper key={stat.label} {...wrapperProps}>
               <stat.icon className="w-8 h-8 sm:w-10 sm:h-10 text-slate-500" />
               <div className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">
                 <AnimatedCounter
