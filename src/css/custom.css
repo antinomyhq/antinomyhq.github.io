@@ -1204,6 +1204,20 @@ details {
 details summary {
   color: #333 !important;
   border-radius: 0 !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1rem !important;
+}
+
+details summary::before {
+  position: absolute !important;
+  top: 50% !important;
+  left: 0.5rem !important;
+  transform: translateY(-50%) !important;
+  transition: transform 0.2s ease !important;
+}
+
+details[open] summary::before {
+  transform: translateY(-50%) rotate(90deg) !important;
 }
 
 details[open] summary {
@@ -1265,4 +1279,19 @@ article table th {
     padding: 8px 12px;
     min-width: 100px;
   }
+}
+
+/* MCP Documentation Images */
+.mcp-screenshot {
+  max-width: 600px;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 8px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
