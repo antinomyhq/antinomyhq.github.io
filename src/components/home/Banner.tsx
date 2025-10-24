@@ -8,7 +8,7 @@ import {pageLinks} from "@site/src/constants/routes"
 import Section from "../shared/Section"
 import {Star, Github} from "lucide-react"
 
-const Banner = (): JSX.Element => {
+const Banner: React.FC = () => {
   return (
     <main className="grid justify-center">
       <Section className="flex flex-col sm:items-center sm:text-center w-full !pb-0">

@@ -18,7 +18,7 @@ const formatNumber = (num: number): string => {
   return num.toString()
 }
 
-const Stats = (): JSX.Element => {
+const Stats: React.FC = () => {
   const stats = [
     {
       value: 9500000000,
@@ -48,26 +48,25 @@ const Stats = (): JSX.Element => {
   return (
     <Section>
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 w-full max-w-5xl mx-auto place-items-center">
-        {stats.map((stat, index) => {
+        {stats.map((stat) => {
           const isGithub = stat.label === "GitHub Stars"
 
           let Wrapper: React.ElementType = "div"
-          const props: any = {
-            key: index,
+          const wrapperProps: any = {
             className:
               "group p-2 flex flex-col items-center text-center w-full sm:w-auto min-w-[140px] sm:min-w-[160px] md:min-w-[180px]",
           }
 
           if (isGithub) {
             Wrapper = "a"
-            props.href = stat.infoLink
-            props.target = "_blank"
-            props.rel = "noopener noreferrer"
-            props.className += " no-underline hover:no-underline text-inherit"
+            wrapperProps.href = stat.infoLink
+            wrapperProps.target = "_blank"
+            wrapperProps.rel = "noopener noreferrer"
+            wrapperProps.className += " no-underline hover:no-underline text-inherit"
           }
 
           return (
-            <Wrapper {...props}>
+            <Wrapper key={stat.label} {...wrapperProps}>
               <stat.icon className="w-8 h-8 sm:w-10 sm:h-10 text-slate-500" />
               <div className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900">
                 <AnimatedCounter
