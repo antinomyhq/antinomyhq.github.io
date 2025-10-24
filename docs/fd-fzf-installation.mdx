@@ -181,7 +181,7 @@ fzf --version
 The order in which you load these components in your `.zshrc` file is crucial:
 
 1. **All other plugins** (git, auto-completion, etc.)
-2. **Forge integration**: `source <($FORGE_BIN generate-zsh-prompt)`
+2. **Forge integration**: `source <($FORGE_BIN extension zsh)`
 3. **zsh-syntax-highlighting**: Must be **LAST**
 
 **Example ~/.zshrc structure:**
@@ -192,7 +192,7 @@ plugins=(git zsh-autosuggestions)
 
 # Forge integration
 export FORGE_BIN=forge
-source <($FORGE_BIN generate-zsh-prompt)
+source <($FORGE_BIN extension zsh)
 
 # zsh-syntax-highlighting (must be last)
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Linux

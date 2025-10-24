@@ -133,20 +133,20 @@ ZSH Support works without these tools, but you'll need to type full file paths i
     ```bash
     # Add to ~/.zshrc
     export FORGE_BIN=forge
-    source <($FORGE_BIN generate-zsh-prompt)
+    source <($FORGE_BIN extension zsh)
     ```
 
     If you're using npx:
     ```bash
     # Add to ~/.zshrc
     export FORGE_BIN="npx forgecode"
-    source <($FORGE_BIN generate-zsh-prompt)
+    source <($FORGE_BIN extension zsh)
     ```
 
     :::note Critical Loading Order
     **The Forge source line must come BEFORE the zsh-syntax-highlighting source line** in your `.zshrc` file. The correct order is:
     1. All other plugins
-    2. Forge integration (`source <($FORGE_BIN generate-zsh-prompt)`)
+    2. Forge integration (`source <($FORGE_BIN extension zsh)`)
     3. zsh-syntax-highlighting (last)
     :::
 

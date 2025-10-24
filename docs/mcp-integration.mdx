@@ -26,6 +26,69 @@ MCP provides a standardized way for AI agents to interact with external tools, A
 Forge provides several CLI commands to manage MCP server configurations:
 
 <details>
+<summary><code>forge mcp import</code> - Import MCP servers configuration from JSON</summary>
+
+Imports MCP server configurations from a JSON string. This command allows you to add one or multiple MCP servers at once.
+
+**Usage:**
+
+```bash
+forge mcp import [OPTIONS] '<json_configuration>'
+```
+
+**Options:**
+
+- `-s, --scope <SCOPE>` - Configuration scope: `local` (project-specific) or `user` (global) [default: local]
+- `--porcelain` - Output in machine-readable format
+
+**Example - Adding multiple MCP servers to local scope:**
+
+```bash
+forge mcp import '{
+  "mcpServers": {
+    "context7": {
+      "url": "https://mcp.context7.com/sse"
+    },
+    "deepwiki": {
+      "url": "https://mcp.deepwiki.com/sse"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    }
+  }
+}'
+```
+
+**Example - Adding to user (global) scope:**
+
+```bash
+forge mcp import --scope user '{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    }
+  }
+}'
+```
+
+**Output:**
+```
+⏺ Added MCP server 'context7'
+⏺ Added MCP server 'deepwiki'
+⏺ Added MCP server 'playwright'
+```
+
+**Scope explanation:**
+- `local` (default): Adds servers to `.mcp.json` in your current project directory
+- `user`: Adds servers to your global user configuration (available across all projects)
+
+This is the quickest way to set up multiple MCP servers at once.
+
+</details>
+
+<details>
 <summary><code>forge mcp list</code> - List all configured MCP servers</summary>
 
 Displays all currently configured MCP servers with their basic information.
@@ -36,54 +99,14 @@ Displays all currently configured MCP servers with their basic information.
 forge mcp list
 ```
 
+**Options:**
+
+- `--porcelain` - Output in machine-readable format
+
 This command shows:
 
 - Server names
-- Connection status
 - Basic configuration details
-
-</details>
-
-<details>
-<summary><code>forge mcp add</code> - Add a new MCP server interactively</summary>
-
-Launches an interactive setup process to add a new MCP server configuration.
-
-**Usage:**
-
-```bash
-forge mcp add <server_name> <command/url>
-```
-
-</details>
-
-<details>
-<summary><code>forge mcp add-json</code> - Add a server using JSON configuration</summary>
-
-Allows you to add an MCP server by providing a complete JSON configuration.
-
-**Usage:**
-
-```bash
-forge mcp add-json <your_json_config_for_mcp>
-```
-
-</details>
-
-<details>
-<summary><code>forge mcp get</code> - Get detailed server information</summary>
-
-Retrieves detailed information about a specific MCP server configuration.
-
-**Usage:**
-
-```bash
-forge mcp get <server_name>
-```
-
-This displays:
-
-- Command/URL used by the mcp server
 
 </details>
 
@@ -95,16 +118,73 @@ Removes an MCP server configuration from your setup.
 **Usage:**
 
 ```bash
-forge mcp remove <server_name>
+forge mcp remove [OPTIONS] <server_name>
 ```
 
-This will permanently remove the server configuration.
+**Options:**
+
+- `-s, --scope <SCOPE>` - Configuration scope: `local` (project-specific) or `user` (global) [default: local]
+- `--porcelain` - Output in machine-readable format
+
+**Examples:**
+
+```bash
+# Remove from local (project) configuration
+forge mcp remove playwright
+
+# Remove from user (global) configuration
+forge mcp remove --scope user playwright
+```
+
+This will permanently remove the server configuration from the specified scope.
+
+</details>
+
+<details>
+<summary><code>forge mcp show</code> - Show detailed server information</summary>
+
+Shows detailed configuration for a specific MCP server.
+
+**Usage:**
+
+```bash
+forge mcp show <server_name>
+```
+
+**Options:**
+
+- `--porcelain` - Output in machine-readable format
+
+This displays:
+
+- Command/URL used by the MCP server
+- Environment variables
+- Arguments
+- Full server configuration
+
+</details>
+
+<details>
+<summary><code>forge mcp reload</code> - Reload MCP servers</summary>
+
+Reloads MCP servers and rebuilds caches.
+
+**Usage:**
+
+```bash
+forge mcp reload
+```
+
+**Options:**
+
+
+Use this command when you've made changes to your `.mcp.json` configuration files and want to reload the servers without restarting Forge. This is particularly useful after manually editing configuration files.
 
 </details>
 
 ### Manual Configuration
 
-You can also manually create MCP configurations by creating a `.mcp.json` file with the following structure:
+While the `forge mcp import` command is the quickest way to add MCP servers, you can also manually create MCP configurations by creating or editing a `.mcp.json` file with the following structure:
 
 ```json
 {
@@ -162,15 +242,20 @@ Each MCP server configuration can use one of two formats:
 
 ### Configuration Precedence
 
-MCP configurations are read from two locations in the following order of precedence:
+MCP configurations can exist in two scopes:
 
 1. **Local configuration** (project-specific): `.mcp.json` in your current project directory
-2. **User configuration** (user-specific): Global configuration defined in the Forge configuration directory
+   - Used when you run `forge mcp import` (default) or `forge mcp import --scope local`
+   - Only available to the current project
+
+2. **User configuration** (global): Stored in the Forge configuration directory
+   - Used when you run `forge mcp import --scope user`
+   - Available across all projects
 
 > **Note**: The configuration directory is automatically determined by Forge.
 > You can always find the exact path by running `/info` in the Forge Shell.
 
-Local configurations take precedence over user configurations, allowing you to have project-specific MCP setups while maintaining global defaults.
+**Precedence**: Local configurations take precedence over user configurations, allowing you to have project-specific MCP setups while maintaining global defaults.
 
 ## How MCP Tools Work with Agents
 
@@ -178,14 +263,31 @@ Once you set up an MCP server, its tools automatically become available to all y
 
 ### How It Works
 
-1. **Add MCP server** to your `.mcp.json` file
+1. **Add MCP server** using `forge mcp import` command or by editing your `.mcp.json` file
 2. **Tools appear automatically** in all your agents
 3. **Start using them** right away in any conversation
 
 ### Example Workflow
 
+**Option 1: Using the import command (recommended)**
+
+```bash
+forge mcp import '{
+  "mcpServers": {
+    "weather": {
+      "command": "node",
+      "args": ["weather-server.js"],
+      "env": {
+        "WEATHER_API_KEY": "your_api_key"
+      }
+    }
+  }
+}'
+```
+
+**Option 2: Manually editing .mcp.json**
+
 ```json
-// Configure weather MCP server in .mcp.json
 {
   "mcpServers": {
     "weather": {
@@ -199,12 +301,14 @@ Once you set up an MCP server, its tools automatically become available to all y
 }
 ```
 
+
+**Now any agent can use weather tools:**
+
 ```bash
-# Now any agent can use weather tools:
-> /agent forge
+> /forge
 > What's the weather like in San Francisco?
 
-> /agent muse
+> /muse
 > Get weather data for New York and create a summary
 ```
 
