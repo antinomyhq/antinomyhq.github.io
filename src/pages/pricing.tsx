@@ -81,7 +81,7 @@ const PricingPage = (): JSX.Element => {
   return (
     <Layout title="Pricing" description="Simple, transparent pricing for ForgeCode">
       <main>
-        <Section className="py-8 lg:py-12">
+        <Section className="py-6 lg:py-10">
           <div className="text-center mb-8">
             <Heading as="h1" className="text-3xl sm:text-display-medium lg:text-display-large mb-6 whitespace-nowrap">
               Simple Pricing
@@ -91,16 +91,16 @@ const PricingPage = (): JSX.Element => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-3 max-w-4xl lg:max-w-none mx-auto items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 max-w-4xl lg:max-w-none mx-auto">
             {tiers.map((tier, index) => (
               <div
                 key={tier.name}
-                className={`relative border-dashed border-1 p-6 lg:p-4 flex flex-col h-full ${
+                className={`relative dash p-6 lg:p-4 flex flex-col ${
                   tier.popular
-                    ? "border-blue-500 bg-gradient-to-b from-blue-50 to-white transform scale-105"
+                    ? "bg-gradient-to-b from-blue-50 to-white"
                     : tier.special
-                      ? "border-gray-800 bg-gradient-to-b from-gray-100 to-white"
-                      : "border-gray-400 bg-white"
+                      ? "bg-gradient-to-b from-gray-100 to-white"
+                      : "bg-white"
                 } hover:shadow-xl transition-all duration-300`}
               >
                 {/* {tier.popular && (
@@ -114,7 +114,7 @@ const PricingPage = (): JSX.Element => {
 
                 {tier.special && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-gray-800 text-white px-4 py-2 border-dashed border-1 border-white text-sm font-semibold flex items-center gap-2 whitespace-nowrap">
+                    <div className="bg-gray-800 text-white px-4 py-2 dash text-sm font-semibold flex items-center gap-2 whitespace-nowrap">
                       <Crown size={16} />
                       Early Access
                     </div>
@@ -155,7 +155,7 @@ const PricingPage = (): JSX.Element => {
                   </div>
                 </div>
 
-                <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6 flex-grow pl-3">
+                <ul className="space-y-2 sm:space-y-3 mb-6 pl-3 flex-grow">
                   {tier.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-2 sm:gap-3">
                       <Check size={14} className="text-green-500 flex-shrink-0 mt-1 sm:w-4 sm:h-4" />
@@ -170,11 +170,7 @@ const PricingPage = (): JSX.Element => {
                       {tier.note}
                     </p>
                   )}
-                  <LinkButton
-                    title={tier.cta}
-                    theme={tier.popular || tier.special ? Theme.Dark : Theme.Light}
-                    width="full"
-                  />
+                  <LinkButton title={tier.cta} theme={Theme.Outlined} width="full" />
                 </div>
               </div>
             ))}
@@ -191,7 +187,7 @@ const PricingPage = (): JSX.Element => {
               {aiProviders.map((provider) => (
                 <div
                   key={provider.name}
-                  className="flex flex-col items-center p-6 bg-white border border-gray-200 rounded-xl hover:shadow-lg hover:border-gray-300 transition-all duration-300 group"
+                  className="flex flex-col items-center p-6 bg-white dash hover:shadow-lg transition-all duration-300 group"
                 >
                   <div className="w-12 h-12 mb-3 text-gray-700 group-hover:text-gray-900 transition-colors">
                     <provider.logo className="w-full h-full" />
@@ -209,7 +205,7 @@ const PricingPage = (): JSX.Element => {
             </Heading>
 
             <div className="space-y-8">
-              <div className="bg-gray-50 rounded-xl p-6">
+              <div className="bg-gray-50 p-6 border-dashed border border-gray-400">
                 <h3 className="text-title-medium font-semibold mb-3">How do I purchase additional prompts?</h3>
                 <p className="text-gray-700">
                   Additional prompts can be purchased directly through your ForgeCode dashboard when you approach your
@@ -219,7 +215,7 @@ const PricingPage = (): JSX.Element => {
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-xl p-6">
+              <div className="bg-gray-50 p-6 dash">
                 <h3 className="text-title-medium font-semibold mb-3">
                   What's the difference between Free, Pro, and Max plans?
                 </h3>
@@ -234,7 +230,7 @@ const PricingPage = (): JSX.Element => {
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-xl p-6">
+              <div className="bg-gray-50 p-6 border-dashed border border-gray-400">
                 <h3 className="text-title-medium font-semibold mb-3">What are "top tier" models?</h3>
                 <p className="text-gray-700">
                   Top tier models include the most advanced AI models like GPT-4, Claude-4, and Gemini 2.5 - the premium
@@ -242,7 +238,7 @@ const PricingPage = (): JSX.Element => {
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-xl p-6">
+              <div className="bg-gray-50 p-6 border-dashed border border-gray-400">
                 <h3 className="text-title-medium font-semibold mb-3">How does the Max plan unlimited usage work?</h3>
                 <p className="text-gray-700">
                   Max plan users get truly unlimited access to all AI models during with no daily caps, or usage
@@ -250,7 +246,7 @@ const PricingPage = (): JSX.Element => {
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-xl p-6">
+              <div className="bg-gray-50 p-6 dash">
                 <h3 className="text-title-medium font-semibold mb-3">
                   What happens when I exceed my monthly prompt limit?
                 </h3>
@@ -263,7 +259,7 @@ const PricingPage = (): JSX.Element => {
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-xl p-6">
+              <div className="bg-gray-50 p-6 border-dashed border border-gray-400">
                 <h3 className="text-title-medium font-semibold mb-3">Is my code secure and private?</h3>
                 <p className="text-gray-700">
                   Absolutely. ForgeCode runs entirely on your local machine using your own API keys. Your code never
@@ -271,7 +267,7 @@ const PricingPage = (): JSX.Element => {
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-xl p-6">
+              <div className="bg-gray-50 p-6 border-dashed border border-gray-400">
                 <h3 className="text-title-medium font-semibold mb-3">Can I upgrade or downgrade my plan anytime?</h3>
                 <p className="text-gray-700">
                   Yes, you can change your plan at any time. Upgrades take effect immediately, while downgrades apply at
@@ -279,7 +275,7 @@ const PricingPage = (): JSX.Element => {
                 </p>
               </div>
 
-              <div className="bg-gray-50 rounded-xl p-6">
+              <div className="bg-gray-50 p-6 border-dashed border border-gray-400">
                 <h3 className="text-title-medium font-semibold mb-3">Do I need my own API keys?</h3>
                 <p className="text-gray-700">
                   For Free users, you'll need your own API keys for AI models. Pro and Max users get included access to

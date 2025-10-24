@@ -89,7 +89,7 @@ const CookieConsentModal: React.FC<CookieConsentModalProps> = ({open, onAccept, 
           {/* Modal Container */}
           <div
             className={clsx(
-              "flex flex-col xl:flex-row xl:justify-between relative py-6 px-8 gap-4 sm:gap-12 xl:gap-0 font-space-mono bg-black rounded-xl",
+              "flex flex-col xl:flex-row xl:justify-between relative py-6 px-8 gap-4 sm:gap-12 xl:gap-0 font-space-mono bg-black",
               styles.cookieConsentModal,
             )}
           >

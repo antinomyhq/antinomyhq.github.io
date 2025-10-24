@@ -32,12 +32,15 @@ function BlogListPageMetadata(props: Props): JSX.Element {
 
 function LoadMoreButton({handleLoadMore}: {handleLoadMore: () => void}): JSX.Element {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mt-4">
       <button
         onClick={handleLoadMore}
-        className="mt-4 h-12 cursor-pointer rounded-lg border-2 border-solid border-tailCall-border-dark-100 bg-transparent px-4 py-2 text-title-tiny font-bold text-black"
+        className="h-12 cursor-pointer dash-outline text-white bg-gray-900 px-4 py-2 text-title-tiny font-bold hover:text-white relative group overflow-hidden"
       >
-        Load more blogs
+        {/* Background element for hover effect */}
+        <div className="hidden lg:block absolute inset-0 w-full bg-gray-900 group-hover:lg:scale-x-[0.98] group-hover:lg:scale-y-[0.95] transform transition-all ease-out duration-250" />
+        <div className="hidden lg:block button-grid-bg-section h-full w-full scale-90 opacity-0 group-hover:scale-[0.98] group-hover:opacity-100 transform transition-all ease-out duration-250 absolute inset-0" />
+        <span className="relative z-20">Load more blogs</span>
       </button>
     </div>
   )

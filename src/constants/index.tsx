@@ -84,7 +84,7 @@ export const partnerImages: PartnerImage[] = [
 
 const Highlight = ({text}: {text: string}) => (
   <>
-    <span className="text-content-tiny font-bold sm:text-title-tiny lg:text-title-small bg-tailCall-black rounded-[4px] sm:rounded-md px-SPACE_01 text-white">
+    <span className="text-content-tiny font-bold sm:text-title-tiny lg:text-title-small bg-tailCall-black px-SPACE_01 text-white">
       {text}
     </span>
   </>
@@ -606,6 +606,7 @@ export enum Theme {
   Dark = "dark",
   Gray = "gray",
   Tailcall = "tailcall",
+  Outlined = "outlined", // Black bg + white text + dashed outline with spacing
 }
 
 export const testimonials: CustomerFeedback[] = [

@@ -1,6 +1,6 @@
 .input {
   width: 100%;
-  border-radius: 8px;
+  border-radius: 0;
   border: 1px solid var(--ifm-color-gray-800);
   background-color: transparent;
   height: 44px;
@@ -41,7 +41,7 @@
   width: 640px;
   transform: translate(-50%, -50%);
   border: 1px solid var(--ifm-color-brand-dark-100);
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 .initialCase {
