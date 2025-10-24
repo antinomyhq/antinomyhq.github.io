@@ -371,12 +371,37 @@ input[type="radio"]:checked::before {
 
 .navbar__item.navbar__link.navbar__link--active,
 .navbar__item.dropdown.navbar__link--active {
+  position: relative;
+  overflow: hidden;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
   color: #fff;
   border-radius: 0;
   border: none;
   outline: 1px dashed #545556;
   outline-offset: 4px;
+}
+
+/* Reuse button grid pattern for navbar hover */
+.navbar__item.navbar__link.navbar__link--active::before,
+.navbar__item.dropdown.navbar__link--active::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--ifm-color-brand-light-opacity-15) 1px, transparent 2px),
+    linear-gradient(90deg, var(--ifm-color-brand-light-opacity-15) 1px, transparent 2px);
+  background-size: var(--ifm-grid-bg-size-sm) var(--ifm-grid-bg-size-sm);
+  clip-path: inset(0.2rem);
+  opacity: 0;
+  scale: 0.9;
+  transition: all 0.25s ease-out;
+  pointer-events: none;
+}
+
+.navbar__item.navbar__link.navbar__link--active:hover::before,
+.navbar__item.dropdown.navbar__link--active:hover::before {
+  opacity: 1;
+  scale: 0.98;
 }
 
 .navbar-sidebar__item .menu__link:hover {

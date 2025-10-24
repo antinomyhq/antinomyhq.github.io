@@ -114,7 +114,7 @@ const PricingPage = (): JSX.Element => {
 
                 {tier.special && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-gray-800 text-white px-4 py-2 border-dashed border border-white text-sm font-semibold flex items-center gap-2 whitespace-nowrap">
+                    <div className="bg-gray-800 text-white px-4 py-2 dash text-sm font-semibold flex items-center gap-2 whitespace-nowrap">
                       <Crown size={16} />
                       Early Access
                     </div>
@@ -172,7 +172,7 @@ const PricingPage = (): JSX.Element => {
                   )}
                   <LinkButton
                     title={tier.cta}
-                    theme={tier.popular || tier.special ? Theme.Dark : Theme.Light}
+                    theme={Theme.Outlined}
                     width="full"
                   />
                 </div>

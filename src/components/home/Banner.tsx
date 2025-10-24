@@ -24,7 +24,7 @@ const Banner = (): JSX.Element => {
             <LinkButton
               title="Get Started"
               href={pageLinks.installation}
-              theme={Theme.Light}
+              theme={Theme.Outlined}
               width="medium"
               onClick={() => analyticsHandler("Home Page", "Click", "Get Started")}
             />

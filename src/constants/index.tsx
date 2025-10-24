@@ -606,6 +606,7 @@ export enum Theme {
   Dark = "dark",
   Gray = "gray",
   Tailcall = "tailcall",
+  Outlined = "outlined", // Black bg + white text + dashed outline with spacing
 }
 
 export const testimonials: CustomerFeedback[] = [

@@ -66,18 +66,22 @@ const LinkButton: React.FC<LinkButtonProps> = ({
 
         gridClasses: "",
       },
+      [Theme.Outlined]: {
+        classes: "dash-outline text-white hover:text-white",
+        gridClasses: "",
+      },
     }
 
     return themes[theme] || {classes: "", styles: "", gridClasses: ""}
   }
 
   const renderBackgroundElements = (buttonTheme: Theme) => {
-    if (buttonTheme === Theme.Dark || buttonTheme === Theme.Gray) {
+    if (buttonTheme === Theme.Dark || buttonTheme === Theme.Gray || buttonTheme === Theme.Outlined) {
       return (
         <>
           {/* Dark theme background */}
           <div
-            className={`lg:block absolute inset-0 w-full bg-tailCall-dark-500 group-hover:lg:scale-x-[0.98] group-hover:lg:scale-y-[0.95] transform transition-all ease-out duration-250`}
+            className={`lg:block absolute inset-0 w-full ${buttonTheme === Theme.Outlined ? "bg-gray-900" : "bg-tailCall-dark-500"} group-hover:lg:scale-x-[0.98] group-hover:lg:scale-y-[0.95] transform transition-all ease-out duration-250`}
           />
           {!disabled && (
             // Dark theme grid background (only if not disabled)
