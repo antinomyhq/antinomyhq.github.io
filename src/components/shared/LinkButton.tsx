@@ -15,7 +15,7 @@ type LinkButtonProps = {
   disabled?: boolean
 }
 
-const LinkButton = ({
+const LinkButton: React.FC<LinkButtonProps> = ({
   title,
   titleClassName,
   Icon,
@@ -24,7 +24,7 @@ const LinkButton = ({
   href,
   width = "auto",
   disabled,
-}: LinkButtonProps): JSX.Element => {
+}) => {
   // Generate button widths as tailwind is not able to handle dynamic widths
   const setButtonWidth = () => {
     switch (width) {
@@ -48,21 +48,21 @@ const LinkButton = ({
     const themes = {
       [Theme.Light]: {
         classes:
-          "border border-dashed border-gray-400 text-tailCall-dark-500 bg-transparent hover:text-tailCall-dark-500",
+          "dash text-tailCall-dark-500 bg-transparent hover:text-tailCall-dark-500",
         gridClasses: "",
       },
       [Theme.Dark]: {
         classes:
-          "border border-dashed border-white text-tailCall-light-100 bg-tailCall-dark-500 hover:text-tailCall-light-100",
+          "dash dash-current text-tailCall-light-100 bg-tailCall-dark-500 hover:text-tailCall-light-100",
         gridClasses: "",
       },
       [Theme.Gray]: {
         classes:
-          "border border-dashed border-tailCall-light-100 text-tailCall-light-100 bg-transparent hover:text-tailCall-light-100",
+          "dash dash-current text-tailCall-light-100 bg-transparent hover:text-tailCall-light-100",
         gridClasses: "hidden",
       },
       [Theme.Tailcall]: {
-        classes: "bg-tailCall-black border border-dashed border-gray-400 text-white bg-transparent hover:text-white",
+        classes: "bg-tailCall-black dash text-white hover:text-white",
 
         gridClasses: "",
       },

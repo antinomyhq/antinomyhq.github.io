@@ -18,7 +18,7 @@ export interface BlogListItemProps {
 const BlogListItem: React.FC<BlogListItemProps> = ({date, title, description, authors, permalink}) => {
   return (
     <Link to={permalink} className="flex flex-col overflow-hidden !text-black !no-underline">
-      <div className="flex flex-col flex-1 p-3 md:py-12 md:px-6 gap-2 md:gap-3 border border-dashed border-tailCall-border-light-600 hover:border-tailCall-border-dark-100">
+      <div className="flex flex-col flex-1 p-3 md:py-12 md:px-6 gap-2 md:gap-3 dash">
         <span className="hidden md:flex text-content-mini text-black">
           {new Date(date).toLocaleDateString("en-US", {
             month: "long",

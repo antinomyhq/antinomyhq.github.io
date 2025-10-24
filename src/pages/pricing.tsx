@@ -95,7 +95,7 @@ const PricingPage = (): JSX.Element => {
             {tiers.map((tier, index) => (
               <div
                 key={tier.name}
-                className={`relative border-dashed border border-gray-400 p-6 lg:p-4 flex flex-col ${
+                className={`relative dash p-6 lg:p-4 flex flex-col ${
                   tier.popular
                     ? "bg-gradient-to-b from-blue-50 to-white"
                     : tier.special
@@ -191,7 +191,7 @@ const PricingPage = (): JSX.Element => {
               {aiProviders.map((provider) => (
                 <div
                   key={provider.name}
-                  className="flex flex-col items-center p-6 bg-white border-dashed border border-gray-400 hover:shadow-lg hover:border-gray-500 transition-all duration-300 group"
+                  className="flex flex-col items-center p-6 bg-white dash hover:shadow-lg transition-all duration-300 group"
                 >
                   <div className="w-12 h-12 mb-3 text-gray-700 group-hover:text-gray-900 transition-colors">
                     <provider.logo className="w-full h-full" />
@@ -219,7 +219,7 @@ const PricingPage = (): JSX.Element => {
                 </p>
               </div>
 
-              <div className="bg-gray-50 p-6 border-dashed border border-gray-400">
+              <div className="bg-gray-50 p-6 dash">
                 <h3 className="text-title-medium font-semibold mb-3">
                   What's the difference between Free, Pro, and Max plans?
                 </h3>
@@ -250,7 +250,7 @@ const PricingPage = (): JSX.Element => {
                 </p>
               </div>
 
-              <div className="bg-gray-50 p-6 border-dashed border border-gray-400">
+              <div className="bg-gray-50 p-6 dash">
                 <h3 className="text-title-medium font-semibold mb-3">
                   What happens when I exceed my monthly prompt limit?
                 </h3>

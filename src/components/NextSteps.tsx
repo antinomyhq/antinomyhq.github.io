@@ -19,7 +19,7 @@ const NextSteps: React.FC<NextStepsProps> = ({items, className}) => {
     <div className={clsx("grid grid-cols-1 md:grid-cols-3 gap-4 my-8", className)}>
       {items.map((item, idx) => (
         <Link key={idx} to={item.link} className="flex flex-col overflow-hidden !text-black !no-underline h-full">
-          <div className="flex flex-col flex-1 p-6 gap-2 min-h-44 border border-dashed border-tailCall-border-light-600 bg-transparent hover:border-tailCall-border-dark-100 transition-colors">
+          <div className="flex flex-col flex-1 p-6 gap-2 min-h-44 dash bg-transparent transition-colors">
             <div className="mb-2 flex items-center text-tailCall-light-700">{item.logo}</div>
             <div className="flex flex-col flex-1 gap-1">
               <span className="text-title-small font-bold line-clamp-2">{item.title}</span>

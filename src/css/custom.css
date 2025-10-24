@@ -30,6 +30,11 @@
     border-top-style: solid;
     border-bottom-style: solid;
   }
+  /* Shared dashed border utilities */
+  .dash { border: 1px dashed #545556; }
+  .dash-outline { outline: 1px dashed #545556; outline-offset: 4px; }
+  .dash-current { border-color: currentColor; outline-color: currentColor; }
+
 }
 
 html,
@@ -92,7 +97,7 @@ body {
 
 code {
   color: #111727;
-  border: 0.5px dashed #555;
+  border: 1px dashed #545556;
   letter-spacing: 0.00001px;
   vertical-align: baseline;
   background-color: #eee;
@@ -369,7 +374,9 @@ input[type="radio"]:checked::before {
   background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
   color: #fff;
   border-radius: 0;
-  border: 1px dashed var(--ifm-color-gray-900);
+  border: none;
+  outline: 1px dashed #545556;
+  outline-offset: 4px;
 }
 
 .navbar-sidebar__item .menu__link:hover {
