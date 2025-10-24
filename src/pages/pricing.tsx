@@ -170,11 +170,7 @@ const PricingPage = (): JSX.Element => {
                       {tier.note}
                     </p>
                   )}
-                  <LinkButton
-                    title={tier.cta}
-                    theme={Theme.Outlined}
-                    width="full"
-                  />
+                  <LinkButton title={tier.cta} theme={Theme.Outlined} width="full" />
                 </div>
               </div>
             ))}

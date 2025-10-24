@@ -47,18 +47,15 @@ const LinkButton: React.FC<LinkButtonProps> = ({
   const generateThemeClasses = () => {
     const themes = {
       [Theme.Light]: {
-        classes:
-          "dash text-tailCall-dark-500 bg-transparent hover:text-tailCall-dark-500",
+        classes: "dash text-tailCall-dark-500 bg-transparent hover:text-tailCall-dark-500",
         gridClasses: "",
       },
       [Theme.Dark]: {
-        classes:
-          "dash dash-current text-tailCall-light-100 bg-tailCall-dark-500 hover:text-tailCall-light-100",
+        classes: "dash dash-current text-tailCall-light-100 bg-tailCall-dark-500 hover:text-tailCall-light-100",
         gridClasses: "",
       },
       [Theme.Gray]: {
-        classes:
-          "dash dash-current text-tailCall-light-100 bg-transparent hover:text-tailCall-light-100",
+        classes: "dash dash-current text-tailCall-light-100 bg-transparent hover:text-tailCall-light-100",
         gridClasses: "hidden",
       },
       [Theme.Tailcall]: {

@@ -31,10 +31,17 @@
     border-bottom-style: solid;
   }
   /* Shared dashed border utilities */
-  .dash { border: 1px dashed #545556; }
-  .dash-outline { outline: 1px dashed #545556; outline-offset: 4px; }
-  .dash-current { border-color: currentColor; outline-color: currentColor; }
-
+  .dash {
+    border: 1px dashed #545556;
+  }
+  .dash-outline {
+    outline: 1px dashed #545556;
+    outline-offset: 4px;
+  }
+  .dash-current {
+    border-color: currentColor;
+    outline-color: currentColor;
+  }
 }
 
 html,
@@ -384,7 +391,7 @@ input[type="radio"]:checked::before {
 /* Reuse button grid pattern for navbar hover */
 .navbar__item.navbar__link.navbar__link--active::before,
 .navbar__item.dropdown.navbar__link--active::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-image:
