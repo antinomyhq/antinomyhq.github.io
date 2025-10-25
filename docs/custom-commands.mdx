@@ -8,7 +8,7 @@ sidebar_label: Custom Commands
 
 # Custom Commands
 
-Forge allows you to define and use custom commands that extend its functionality and streamline your workflow. These commands can be executed within the Forge CLI using the `/command_name` syntax and are configured in your `forge.yaml` file.
+Forge allows you to define and use custom commands that extend its functionality and streamline your workflow. These commands can be executed within the Forge CLI using the `/command_name` syntax and are defined as individual files in the `~/forge/commands/` directory.
 
 ## What Are Custom Commands?
 
@@ -19,34 +19,68 @@ Custom commands are user-defined shortcuts that trigger specific actions or work
 - Simplify complex operations into single commands
 - Integrate Forge with your development processes
 
-## Configuring Custom Commands
+## Defining Custom Commands
 
-Custom commands are defined in the `commands` section of your `forge.yaml` file:
+Custom commands are defined as individual Markdown files in the `~/forge/commands/` directory. Each command file follows the naming convention `command-name.md`.
 
-```yaml
-commands:
-  - name: commit
-    description: Commit changes with a standard prefix
-    prompt: |
-      Understand the diff produced and commit using the 'conventional commit' standard
+### Command File Structure
 
-  - name: branch
-    description: Create and checkout a new branch
+Create a Markdown file in `~/forge/commands/` with frontmatter containing metadata and the body containing the prompt:
 
-  - name: pull-request
-    description: Create a pull request with standard template
-    prompt: |
-      Understand the diff with respect to `main` and create a pull-request.
-      Ensure it follows 'conventional commit' standard.
+**`~/forge/commands/commit.md`**
+
+```markdown
+---
+name: commit
+description: Commit changes with a standard prefix
+---
+
+Understand the diff produced and commit using the 'conventional commit' standard
 ```
+
+**`~/forge/commands/branch.md`**
+
+```markdown
+---
+name: branch
+description: Create and checkout a new branch
+---
+
+Create a new branch based on the current changes and checkout to it
+```
+
+**`~/forge/commands/check.md`**
+
+```markdown
+---
+name: check
+description: Checks if the code is ready to be committed
+---
+
+- Run the `lint` and `test` commands and verify if everything is fine.
+  <lint>npm run lint</lint>
+  <test>npm test</test>
+- Fix every issue found in the process
+```
+
+### File Format
+
+Command files use Markdown with YAML frontmatter:
+
+- **Frontmatter**: Contains `name` and `description` fields enclosed in `---`
+- **Body**: The content after frontmatter becomes the default prompt for the command
 
 ### Configuration Options
 
-| Option        | Required | Description                                              |
-| ------------- | -------- | -------------------------------------------------------- |
-| `name`        | Yes      | The name of the command (used as `/name` in the CLI)     |
-| `description` | Yes      | A description of what the command does (shown in help)   |
-| `prompt`      | No       | Default prompt value used when no arguments are provided |
+| Option        | Required | Location    | Description                                              |
+| ------------- | -------- | ----------- | -------------------------------------------------------- |
+| `name`        | Yes      | Frontmatter | The name of the command (used as `/name` in the CLI)     |
+| `description` | Yes      | Frontmatter | A description of what the command does (shown in help)   |
+| prompt        | No       | Body        | Default prompt value used when no arguments are provided |
+
+:::warning Deprecated: Commands in forge.yaml
+Defining commands in the `commands` section of `forge.yaml` is **deprecated** and no longer supported. Please migrate your commands to individual Markdown files in the `~/forge/commands/` directory.
+:::
 
 ## Using Custom Commands
 
@@ -108,107 +142,212 @@ There are two main approaches for handling custom command events in agents:
 
 Pass the event value directly to the agent as complete instructions:
 
-```yaml
-commands:
-  - name: commit
-    description: Commit changes with a standard prefix
-    prompt: |
-      Understand the diff and commit using the 'conventional commit' standard
+**`~/forge/commands/commit.md`**
 
-agents:
-  - id: git-commit
-    model: anthropic/claude-3.7-sonnet
-    system_prompt: "{{> system-prompt-git-commit.hbs }}"
-    user_prompt: "{{event.value}}"
-    tools:
-      - forge_tool_process_shell
-    subscribe:
-      - commit
+```markdown
+---
+name: commit
+description: Commit changes with a standard prefix
+---
+
+Understand the diff and commit using the 'conventional commit' standard
 ```
 
 ### 2. Using Event Value as Data in a Template
 
 Incorporate the event value into a structured template:
 
-```yaml
-commands:
-  - name: analyze
-    description: Analyze a file with specific focus
+**`~/forge/commands/analyze.md`**
 
-agents:
-  - id: file-analyzer
-    model: anthropic/claude-3.7-sonnet
-    system_prompt: "{{> forge-system-prompt-engineer-act.hbs }}"
-    user_prompt: |
-      <task>Analyze the following file in detail</task>
-      <focus>{{event.value}}</focus>
-    tools:
-      - forge_tool_fs_read
-    subscribe:
-      - analyze
-```
+````markdown
+---
+name: analyze
+description: Analyze a file with specific focus
+---
+
+Perform a detailed analysis of the specified file
 
 ## Example Custom Commands
 
 ### Git Workflow Commands
 
-```yaml
-commands:
-  - name: commit
-    description: Commit changes with a standard prefix
-    prompt: |
-      Analyze changes and create a commit message following conventional commit format
+**`~/forge/commands/commit.md`**
 
-  - name: branch
-    description: Create and checkout a new branch from the current changes
+```markdown
+---
+name: commit
+description: Commit changes with a standard prefix
+---
 
-  - name: pr
-    description: Create a pull request for current branch
-    prompt: |
-      Create a detailed pull request description based on the changes in this branch
+Analyze changes and create a commit message following conventional commit format
+```
+````
+
+**`~/forge/commands/branch.md`**
+
+```markdown
+---
+name: branch
+description: Create and checkout a new branch from the current changes
+---
+
+Create a new branch based on the context and checkout to it
+```
+
+**`~/forge/commands/pr.md`**
+
+```markdown
+---
+name: pr
+description: Create a pull request for current branch
+---
+
+Create a detailed pull request description based on the changes in this branch
 ```
 
 ### Development Workflow Commands
 
-```yaml
-commands:
-  - name: review
-    description: Review code for bugs and improvements
-    prompt: |
-      Review the code for bugs, security issues, performance problems, and suggest improvements
+**`~/forge/commands/review.md`**
 
-  - name: document
-    description: Generate documentation for a file
+```markdown
+---
+name: review
+description: Review code for bugs and improvements
+---
 
-  - name: test
-    description: Generate unit tests for a file or function
-    prompt: |
-      Create comprehensive unit tests with good coverage for the specified code
+Review the code for bugs, security issues, performance problems, and suggest improvements
+```
+
+**`~/forge/commands/document.md`**
+
+```markdown
+---
+name: document
+description: Generate documentation for a file
+---
+
+Generate comprehensive documentation for the specified code
+```
+
+**`~/forge/commands/test.md`**
+
+```markdown
+---
+name: test
+description: Generate unit tests for a file or function
+---
+
+Create comprehensive unit tests with good coverage for the specified code
 ```
 
 ### Project-Specific Commands
 
-```yaml
-commands:
-  - name: fixme
-    description: Looks for all the fixme comments in the code and attempts to fix them
-    prompt: |
-      Find all the FIXME comments in source-code files and attempt to fix them.
+**`~/forge/commands/fixme.md`**
 
-  - name: deploy
-    description: Prepare deployment package and update version numbers
-    prompt: |
-      Update version numbers and prepare the project for deployment
+```markdown
+---
+name: fixme
+description: Looks for all the fixme comments in the code and attempts to fix them
+---
+
+Find all the FIXME comments in source-code files and attempt to fix them.
+```
+
+**`~/forge/commands/deploy.md`**
+
+```markdown
+---
+name: deploy
+description: Prepare deployment package and update version numbers
+---
+
+Update version numbers and prepare the project for deployment
 ```
 
 ## Best Practices
 
-1. **Descriptive Names**: Use clear, action-oriented names for commands
+1. **Descriptive Names**: Use clear, action-oriented names for commands (use lowercase with hyphens for multi-word commands)
 2. **Helpful Descriptions**: Write descriptions that explain both the purpose and expected outcome
-3. **Default Values**: Provide default values for commands that can work without specific arguments
-4. **Specialized Agents**: Configure agents specifically for handling particular commands
-5. **Command Organization**: Group related commands in your configuration for easier management
+3. **Default Prompts**: Provide default prompts for commands that can work without specific arguments
+4. **Specialized Agents**: Configure agents specifically for handling particular commands in `~/forge/agents/`
+5. **File Organization**: Keep command files organized in `~/forge/commands/` with descriptive filenames
 6. **Documentation**: Document custom commands for your team in a project README
+
+## Migrating from forge.yaml
+
+If you have commands defined in your `forge.yaml` file, migrate them to individual Markdown files:
+
+**Old format (deprecated):**
+
+```yaml
+# forge.yaml
+commands:
+  - name: commit
+    description: Commit changes
+    prompt: |
+      Create a commit message
+```
+
+**New format:**
+
+```markdown
+# ~/forge/commands/commit.md
+
+---
+
+name: commit
+description: Commit changes
+
+---
+
+Create a commit message
+```
+
+### Migration Steps
+
+1. Create the `~/forge/commands/` directory if it doesn't exist:
+
+   ```bash
+   mkdir -p ~/forge/commands
+   ```
+
+2. For each command in your `forge.yaml`, create a Markdown file:
+
+   ```bash
+   # Example: converting a commit command
+   touch ~/forge/commands/commit.md
+   ```
+
+3. Add the frontmatter with `name` and `description` fields
+
+4. Add the prompt as the body content (without `prompt:` prefix)
+
+5. Remove the `commands` section from your `forge.yaml`
+
+6. Restart Forge to load the new command definitions
+
+### Example Migration
+
+**Before (forge.yaml):**
+
+```yaml
+commands:
+  - name: check
+    description: Checks if the code is ready
+    prompt: |
+      Run linting and tests
+```
+
+**After (~/forge/commands/check.md):**
+
+```markdown
+---
+name: check
+description: Checks if the code is ready
+---
+
+Run linting and tests
+```
 
 ## Related Documentation
 
