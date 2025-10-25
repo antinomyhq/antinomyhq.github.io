@@ -71,27 +71,39 @@
   backdrop-filter: blur(32px);
   background: rgba(0, 0, 0, 0.1);
   z-index: var(--ifm-z-index-overlay);
-  display: grid;
+  display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .DocSearch-Modal {
-  margin: 0;
+  margin: 0 auto;
   box-shadow: none;
   border: none;
   height: fit-content;
+  max-height: 85vh;
   width: 50vw;
-  max-width: unset;
+  max-width: 800px;
+  min-width: 300px;
   border-radius: 12px;
-  overflow: clip;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .DocSearch-Dropdown {
   max-height: unset;
-  height: 60vh;
+  height: 65vh;
   padding: 0;
   padding-bottom: 60px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .DocSearch-SearchBar {
@@ -191,78 +203,94 @@
   border-bottom: 1px solid var(--ifm-color-brand-light-500) !important;
 }
 
-@media only screen and (max-width: 996px) {
+/* Large tablets and small laptops */
+@media only screen and (max-width: 1400px) {
   .DocSearch-Modal {
-    height: 80dvh !important;
-    bottom: 0dvh;
-    border-radius: 8px 8px 0px 0px !important;
+    width: 80vw !important;
+    max-width: 700px !important;
   }
+}
 
-  .DocSearch-Input {
-    font-family: var(--ifm-font-family-base);
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    color: #545556;
-  }
-
-  .DocSearch-Button {
-    width: fit-content;
-    border: none;
-    margin: 0;
-    padding: 10px 8px;
-  }
-
-  .DocSearch-Button-Keys {
-    display: none;
-  }
-
-  .DocSearch-Container > div {
-    width: 100vw;
+/* Tablets */
+@media only screen and (max-width: 1100px) {
+  .DocSearch-Modal {
+    width: 70vw !important;
+    max-width: 650px !important;
   }
 
   .DocSearch-Dropdown {
-    max-height: unset;
-    height: 100dvh !important;
-    padding-bottom: 300px;
+    height: 60vh !important;
+  }
+}
+
+/* Small tablets */
+@media only screen and (max-width: 900px) {
+  .DocSearch-Modal {
+    width: 80vw !important;
+    max-width: 600px !important;
+  }
+
+  .DocSearch-Dropdown {
+    height: 55vh !important;
+  }
+}
+
+/* Large mobile */
+@media only screen and (max-width: 768px) {
+  .DocSearch-Modal {
+    width: 85vw !important;
+    max-width: 500px !important;
+    max-height: 85vh !important;
   }
 
   .DocSearch-Container {
-    z-index: 201;
-    position: fixed;
-    height: 100dvh !important;
-    align-items: end;
+    padding: 0.5rem !important;
   }
 
-  .DocSearch-SearchBar form {
-    border-bottom: 1px solid var(--ifm-color-brand-light-500);
+  .DocSearch-Dropdown {
+    height: 50vh !important;
+  }
+}
+
+/* Mobile */
+@media only screen and (max-width: 600px) {
+  .DocSearch-Modal {
+    width: 90vw !important;
+    max-width: unset !important;
+    max-height: 90vh !important;
+    min-width: unset !important;
   }
 
-  .DocSearch-Button-Keys,
-  .DocSearch-Button-Placeholder {
-    display: none;
+  .DocSearch-Container {
+    padding: 0.5rem !important;
   }
 
-  .DocSearch-Cancel {
+  .DocSearch-Dropdown {
+    height: 60vh !important;
+  }
+
+  .DocSearch-Input {
+    font-size: 14px !important;
+  }
+
+  .DocSearch-Button-Keys {
     display: none !important;
   }
+}
 
-  .DocSearch-Footer {
-    display: none;
+/* Extra small mobile (like 544px) */
+@media only screen and (max-width: 480px) {
+  .DocSearch-Modal {
+    width: 92vw !important;
+    max-height: 90vh !important;
   }
 
-  .DocSearch-HitsFooter {
-    position: absolute;
-    width: 100%;
-    padding: 8px 16px !important;
-    margin-top: unset;
-    margin-bottom: unset;
-    bottom: 0dvh;
+  .DocSearch-Container {
+    padding: 0.25rem !important;
   }
 
-  .DocSearch-Search-Icon {
-    height: 20px !important;
-    width: 20px !important;
+  .DocSearch-Dropdown {
+    height: 70vh !important;
   }
 }
 
