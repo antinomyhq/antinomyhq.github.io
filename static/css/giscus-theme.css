@@ -32,15 +32,15 @@ main {
   --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
   --color-prettylights-syntax-constant-other-reference-link: #0a3069;
   --color-btn-text: #24292f;
-  --color-btn-bg: #f6f8fa;
-  --color-btn-border: #1f232826;
+  --color-btn-bg: #f5f3eb;
+  --color-btn-border: #cececf;
   --color-btn-shadow: 0 1px 0 #1f23280a;
   --color-btn-inset-shadow: inset 0 1px 0 #ffffff40;
-  --color-btn-hover-bg: #f3f4f6;
-  --color-btn-hover-border: #1f232826;
-  --color-btn-active-bg: #ebecf0;
-  --color-btn-active-border: #1f232826;
-  --color-btn-selected-bg: #eeeff2;
+  --color-btn-hover-bg: #e8e6de;
+  --color-btn-hover-border: #cececf;
+  --color-btn-active-bg: #e0ded6;
+  --color-btn-active-border: #cececf;
+  --color-btn-selected-bg: #ffffff;
   --color-btn-primary-text: #fff;
   --color-btn-primary-bg: #121315;
   --color-btn-primary-border: #1f232826;
@@ -54,16 +54,16 @@ main {
   --color-btn-primary-disabled-bg: #b4b4b4;
   --color-btn-primary-disabled-border: #1f232826;
   --color-action-list-item-default-hover-bg: #d0d7de52;
-  --color-segmented-control-bg: #eaeef2;
-  --color-segmented-control-button-bg: #fff;
-  --color-segmented-control-button-selected-border: #8c959f;
+  --color-segmented-control-bg: #e8e6de;
+  --color-segmented-control-button-bg: #f5f3eb;
+  --color-segmented-control-button-selected-border: #121315;
   --color-fg-default: #1f2328;
   --color-fg-muted: #323335;
   --color-fg-subtle: #6e7781;
-  --color-canvas-default: #fff;
-  --color-canvas-overlay: #fff;
-  --color-canvas-inset: #fff;
-  --color-canvas-subtle: #f6f8fa;
+  --color-canvas-default: #f5f3eb;
+  --color-canvas-overlay: #f5f3eb;
+  --color-canvas-inset: #f5f3eb;
+  --color-canvas-subtle: #f5f3eb;
   --color-border-default: #cececf;
   --color-border-muted: #cececf;
   --color-neutral-muted: #afb8c133;
@@ -102,7 +102,8 @@ main .gsc-comment-box {
   background-position: 3px 23px;
   font-family: "Space Grotesk", sans-serif;
   padding: 32px;
-  border: none;
+  border: 1px solid #cececf;
+  border-radius: 0.5rem;
 }
 
 main .gsc-comment-box-tabs {
@@ -186,8 +187,25 @@ main .gsc-comment-box-preview {
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   border: 1px solid var(--color-border-default);
   border-radius: 0.5rem;
-  background: white;
+  background: #f5f3eb;
   color: #000000;
+}
+
+/* Comment items styling */
+main .gsc-comment {
+  border: 1px solid #cececf;
+  border-radius: 0.5rem;
+  background: #f5f3eb;
+}
+
+main .gsc-comment + .gsc-comment {
+  margin-top: 1rem;
+}
+
+main .gsc-reply {
+  border: 1px solid #cececf;
+  border-radius: 0.5rem;
+  background: #f5f3eb;
 }
 
 @media (max-width: 768px) {
