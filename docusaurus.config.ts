@@ -15,22 +15,12 @@ export default {
   trailingSlash: true,
   tagline: "Forge: The AI Coding Assistant for Your Terminal",
   headTags: [
-    // Adaptive favicon implementation - automatically switches based on system theme
-    {
-      tagName: "link",
-      attributes: {
-        rel: "icon",
-        href: "/images/favicon-light.svg",
-        type: "image/svg+xml",
-      },
-    },
     {
       tagName: "link",
       attributes: {
         rel: "icon",
         href: "/images/favicon-dark.svg",
         type: "image/svg+xml",
-        media: "(prefers-color-scheme: dark)",
       },
     },
 
