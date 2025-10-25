@@ -258,6 +258,62 @@ MCP configurations can exist in two scopes:
 
 **Precedence**: Local configurations take precedence over user configurations, allowing you to have project-specific MCP setups while maintaining global defaults.
 
+### Disabling MCP Servers
+
+You can temporarily disable MCP servers without removing them from your configuration by adding the `"disable": true` field. This is useful when you want to:
+
+- Temporarily turn off a server without losing its configuration
+- Test your setup with certain servers disabled
+- Maintain server configurations for future use
+
+#### Disabling a Server
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/",
+      "disable": true
+    },
+    "weather": {
+      "command": "node",
+      "args": ["weather-server.js"],
+      "disable": false
+    }
+  }
+}
+```
+
+#### Behavior
+
+- **`"disable": true`**: The server is completely ignored by Forge and won't be loaded
+- **`"disable": false`** or **field omitted**: The server operates normally
+- Disabled servers remain in your configuration file for easy re-enabling
+
+#### Use Cases
+
+```json
+{
+  "mcpServers": {
+    "production_api": {
+      "url": "https://api.production.com/mcp/",
+      "disable": true
+    },
+    "staging_api": {
+      "url": "https://api.staging.com/mcp/",
+      "disable": false
+    },
+    "development_tools": {
+      "command": "npx",
+      "args": ["@devtools/mcp"],
+      "disable": false
+    }
+  }
+}
+```
+
+This allows you to maintain different server configurations for different environments and easily switch between them by toggling the `disable` field.
+
 ## How MCP Tools Work with Agents
 
 Once you set up an MCP server, its tools automatically become available to all your agents. No extra configuration needed!
@@ -456,3 +512,5 @@ Create connections to custom internal services:
 
 - Validate JSON syntax in `.mcp.json` files
 - Check configuration file locations
+- Verify servers are not disabled with `"disable": true`
+- Use `forge mcp list` to see which servers are actually loaded
