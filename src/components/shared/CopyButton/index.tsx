@@ -44,11 +44,7 @@ const CopyButton: React.FC<CopyButtonProps> = ({
           aria-hidden="true"
         />
 
-        <div
-          className={`${baseIconClasses} ${
-            copied ? "opacity-100 scale-100 copy-check-glow" : "opacity-0 scale-0"
-          }`}
-        >
+        <div className={`${baseIconClasses} ${copied ? "opacity-100 scale-100 copy-check-glow" : "opacity-0 scale-0"}`}>
           <Check
             className={`w-full h-full text-[#4ade80] ${copied ? "animate-check-bounce" : ""}`}
             strokeWidth={ICON_STROKE_WIDTH.CHECK}
