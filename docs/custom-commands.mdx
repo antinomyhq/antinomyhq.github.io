@@ -69,6 +69,7 @@ Command files use Markdown with YAML frontmatter:
 
 - **Frontmatter**: Contains `name` and `description` fields enclosed in `---`
 - **Body**: The content after frontmatter becomes the default prompt for the command
+- **Templates**: Support Handlebars template syntax using `{{parameters}}` placeholders for dynamic prompts
 
 ### Configuration Options
 
@@ -166,6 +167,160 @@ description: Analyze a file with specific focus
 ---
 
 Perform a detailed analysis of the specified file
+````
+
+## Using Templates in Commands
+
+Custom commands support Handlebars template syntax, allowing you to create dynamic prompts with parameters. Parameters can be accessed using the `{{parameters}}` syntax.
+
+### Passing Parameters
+
+Forge supports two parameter formats:
+
+**1. JSON Object Format** (for structured data with multiple named parameters):
+```bash
+/command_name {"key1": "value1", "key2": "value2"}
+```
+
+**2. Direct Value Format** (for simple, single-value parameters):
+```bash
+/command_name simple value here
+```
+
+### Template Example 1: Structured Parameters
+
+**`~/forge/commands/execute_operation.md`**
+
+```markdown
+---
+name: execute_operation
+description: Execute mathematical operations on lists
+---
+Perform the operation "{{parameters.operation}}" on the following input and output only the result.
+
+Operation: {{parameters.operation}}
+Input: {{parameters.input}}
+
+Example: sum([1,2,3,4]) should output 10
+```
+
+**Usage with JSON format:**
+```bash
+/execute_operation {"operation": "sum", "input": [1,2,3]}
+```
+
+The template variables:
+- `{{parameters.operation}}` - The operation to perform (e.g., "sum", "average", "max")
+- `{{parameters.input}}` - The input data provided by the user
+
+### Template Example 2: File Operations
+
+**`~/forge/commands/refactor.md`**
+
+```markdown
+---
+name: refactor
+description: Refactor code with specific pattern
+---
+Refactor the file {{parameters.filepath}} by applying the {{parameters.pattern}} pattern.
+
+Guidelines:
+- Preserve existing functionality
+- Add appropriate tests
+- Update related documentation
+
+Target file: {{parameters.filepath}}
+Refactoring pattern: {{parameters.pattern}}
+```
+
+**Usage:**
+```bash
+/refactor {"filepath": "src/auth.ts", "pattern": "strategy"}
+```
+
+This demonstrates how templates work for file operations, not just math.
+
+### Template Example 3: Simple Parameters
+
+**`~/forge/commands/explain.md`**
+
+```markdown
+---
+name: explain
+description: Explain a concept in simple terms
+---
+Explain the following concept in simple terms with practical examples:
+
+Topic: {{parameters}}
+
+Provide:
+1. A clear definition
+2. Real-world analogies
+3. Common use cases
+4. Practical code examples
+```
+
+**Usage with direct value:**
+```bash
+/explain closures in JavaScript
+```
+
+When using direct values, `{{parameters}}` receives the entire argument string as-is.
+
+### Advanced: Using Handlebars Conditionals
+
+Handlebars templates support conditional logic using `{{#if}}` blocks. This is useful for handling optional parameters:
+
+```markdown
+---
+name: analyze
+description: Analyze code or files
+---
+{{#if parameters.file}}
+Analyze the file: {{parameters.file}}
+{{else}}
+Analyze the current working directory
+{{/if}}
+```
+
+**Usage:**
+```bash
+/analyze {"file": "src/main.ts"}  # Analyzes specific file
+/analyze                           # Analyzes current directory
+```
+
+For more advanced Handlebars features (loops, helpers, etc.), see the [Handlebars documentation](https://handlebarsjs.com/guide/).
+
+### Template Benefits
+
+- **Dynamic prompts**: Create commands that adapt based on input parameters
+- **Reusable logic**: Define command templates once and use with different values
+- **Structured data**: Pass complex data structures (arrays, objects) using JSON format
+- **Flexible workflows**: Combine parameters in various ways to create sophisticated behaviors
+- **Type flexibility**: Use simple strings or complex objects depending on your needs
+
+### Troubleshooting Templates
+
+**Malformed JSON** - Invalid JSON gets treated as a string. Use quotes around keys and values:
+```bash
+/refactor {filepath: "src/auth.ts"}      # Wrong - treated as string
+/refactor {"filepath": "src/auth.ts"}    # Correct JSON
+```
+
+**Missing Parameters** - Unset parameters render as empty strings. Use conditionals:
+```markdown
+{{#if parameters.filepath}}
+File: {{parameters.filepath}}
+{{else}}
+Error: Please provide a filepath parameter
+{{/if}}
+```
+
+**Format Mismatch** - Match your template to input format:
+- JSON input: Use `{{parameters.property}}`
+- Direct value: Use `{{parameters}}`
+
+**Debug with `/dump`** - Shows exactly what's being sent after template rendering. Compare output with your expected result to find mismatches.
 
 ## Example Custom Commands
 
