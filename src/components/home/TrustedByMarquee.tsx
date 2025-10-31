@@ -52,7 +52,11 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
         ) : (
           <>
             {typeof LogoComponent === "string" ? (
-              <img src={LogoComponent} alt={partner.name} className="max-h-4 sm:max-h-5 md:max-h-7 max-w-[60px] sm:max-w-[80px] md:max-w-[110px] object-contain opacity-70" />
+              <img
+                src={LogoComponent}
+                alt={partner.name}
+                className="max-h-4 sm:max-h-5 md:max-h-7 max-w-[60px] sm:max-w-[80px] md:max-w-[110px] object-contain opacity-70"
+              />
             ) : (
               <LogoComponent className="max-h-4 sm:max-h-5 md:max-h-7 max-w-[60px] sm:max-w-[80px] md:max-w-[110px] object-contain opacity-70" />
             )}
