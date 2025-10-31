@@ -752,6 +752,7 @@ nav.menu {
   .navbar__items {
     margin-left: auto;
     justify-content: flex-end;
+    gap: 1rem;
   }
 
   .header-button {
