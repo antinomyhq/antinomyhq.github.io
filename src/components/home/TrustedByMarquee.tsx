@@ -13,8 +13,6 @@ interface TrustedByMarqueeProps {
   logos: LogoItem[]
   onClick?: () => void
   titleClassName?: string
-  desktopClassName?: string
-  mobileClassName?: string
 }
 
 const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
@@ -22,8 +20,6 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
   logos,
   onClick,
   titleClassName = "text-content-small font-bold sm:text-title-tiny lg:text-title-small text-tailCall-light-600 text-center space-x-1",
-  desktopClassName = "hidden sm:flex items-center px-8 mt-SPACE_10 overflow-hidden",
-  mobileClassName = "sm:hidden flex items-center justify-around flex-wrap mt-SPACE_06 space-y-SPACE_02",
 }) => {
   const handleClick = () => {
     if (onClick) {
@@ -35,7 +31,7 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
     const LogoComponent = partner.logo
 
     return (
-      <div key={partner.name} className="h-12 flex items-center justify-center px-8">
+      <div key={partner.name} className="h-8 sm:h-10 md:h-12 flex items-center justify-center px-3 sm:px-6 md:px-8">
         {partner.link ? (
           <a
             href={partner.link}
@@ -47,18 +43,18 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
               <img
                 src={LogoComponent}
                 alt={partner.name}
-                className="max-h-7 max-w-[110px] object-contain opacity-70 hover:opacity-100 transition-opacity"
+                className="max-h-4 sm:max-h-5 md:max-h-7 max-w-[60px] sm:max-w-[80px] md:max-w-[110px] object-contain opacity-70 hover:opacity-100 transition-opacity"
               />
             ) : (
-              <LogoComponent className="max-h-7 max-w-[110px] object-contain opacity-70 hover:opacity-100 transition-opacity" />
+              <LogoComponent className="max-h-4 sm:max-h-5 md:max-h-7 max-w-[60px] sm:max-w-[80px] md:max-w-[110px] object-contain opacity-70 hover:opacity-100 transition-opacity" />
             )}
           </a>
         ) : (
           <>
             {typeof LogoComponent === "string" ? (
-              <img src={LogoComponent} alt={partner.name} className="max-h-7 max-w-[110px] object-contain opacity-70" />
+              <img src={LogoComponent} alt={partner.name} className="max-h-4 sm:max-h-5 md:max-h-7 max-w-[60px] sm:max-w-[80px] md:max-w-[110px] object-contain opacity-70" />
             ) : (
-              <LogoComponent className="max-h-7 max-w-[110px] object-contain opacity-70" />
+              <LogoComponent className="max-h-4 sm:max-h-5 md:max-h-7 max-w-[60px] sm:max-w-[80px] md:max-w-[110px] object-contain opacity-70" />
             )}
           </>
         )}
@@ -67,17 +63,15 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
   }
 
   return (
-    <section className={`px-10 md:px-0 ${onClick ? "cursor-pointer" : ""}`} onClick={handleClick}>
+    <section className={`px-4 sm:px-10 md:px-0 ${onClick ? "cursor-pointer" : ""}`} onClick={handleClick}>
       <div className={titleClassName}>
-        <GreaterThanUnderscoreIcon className="h-4 w-6" />
+        <GreaterThanUnderscoreIcon className="h-3 sm:h-4 w-5 sm:w-6" />
         <span>{title}</span>
       </div>
 
-      <Marquee autoFill>
-        <div className={desktopClassName}>{logos.map(renderLogo)}</div>
+      <Marquee autoFill speed={30} className="mt-4 sm:mt-6 md:mt-SPACE_10">
+        <div className="flex items-center overflow-hidden">{logos.map(renderLogo)}</div>
       </Marquee>
-
-      <div className={mobileClassName}>{logos.map(renderLogo)}</div>
     </section>
   )
 }
