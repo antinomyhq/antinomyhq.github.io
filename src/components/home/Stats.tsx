@@ -53,8 +53,7 @@ const Stats: React.FC = () => {
 
           let Wrapper: React.ElementType = "div"
           const wrapperProps: any = {
-            className:
-              "group p-1 xs:p-2 flex flex-col items-center text-center w-full",
+            className: "group p-1 xs:p-2 flex flex-col items-center text-center w-full",
           }
 
           if (isGithub) {
