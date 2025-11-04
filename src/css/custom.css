@@ -752,6 +752,7 @@ nav.menu {
   .navbar__items {
     margin-left: auto;
     justify-content: flex-end;
+    gap: 1rem;
   }
 
   .header-button {
@@ -1249,6 +1250,13 @@ details code {
 details .admonition-heading code,
 details .admonition-content code {
   color: #333 !important;
+}
+
+/* Stats section - smaller on mobile */
+@media (max-width: 640px) {
+  .stats-counter {
+    font-size: 20px !important;
+  }
 }
 
 /* Environment configuration tables - optimized for readability */
