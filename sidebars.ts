@@ -31,6 +31,7 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         "commands",
+        "cli-reference",
         "shell-commands",
         "zsh-support",
         "auto-complete",

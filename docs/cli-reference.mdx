@@ -1,0 +1,352 @@
+---
+title: CLI Reference
+sidebar_position: 2
+description: "Complete reference for Forge command-line interface, including commands and flags."
+sidebar_label: CLI Reference
+---
+
+# CLI Reference
+
+> Complete reference for Forge command-line interface, including commands and flags.
+
+## CLI Commands
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| `forge` | Start interactive REPL | `forge` |
+| `forge -p "query"` | Execute prompt directly, then exit | `forge -p "explain this function"` |
+| `cat file \| forge` | Process piped content as prompt, then exit | `cat logs.txt \| forge` |
+| `forge -c file.txt` | Execute commands from file, then continue in interactive mode | `forge -c commands.txt` |
+| `forge --conversation-id <id>` | Resume conversation by ID | `forge --conversation-id abc123` |
+| `forge -C /path/to/dir` | Change working directory before starting | `forge -C ~/projects/myapp` |
+| `forge --sandbox <name>` | Create isolated git worktree | `forge --sandbox experiment-1` |
+| `forge list <resource>` | List resources (agents, models, providers, mcp, etc.) | `forge list agents` |
+| `forge config <subcommand>` | Manage configuration | `forge config get model` |
+| `forge conversation <subcommand>` | Manage conversations | `forge conversation list` |
+| `forge mcp <subcommand>` | Manage MCP servers | `forge mcp list` |
+| `forge info` | Show current configuration and status | `forge info` |
+| `forge env` | Display environment information | `forge env` |
+| `forge banner` | Display version and helpful information | `forge banner` |
+| `forge --version` | Print version | `forge --version` |
+
+## CLI Flags
+
+Customize Forge's behavior with these command-line flags:
+
+| Flag | Description | Example |
+| :--- | :--- | :--- |
+| `-p, --prompt` | Direct prompt to process without entering interactive mode (mutually exclusive with piping) | `forge -p "analyze this code"` |
+| `-c, --command` | Path to file containing initial commands to execute, then continue in interactive mode | `forge -c setup.txt` |
+| `--conversation` | Path to JSON file containing conversation to execute | `forge --conversation chat.json` |
+| `--conversation-id` | Resume or continue existing conversation by ID | `forge --conversation-id abc123` |
+| `-C, --directory` | Working directory to set before starting forge | `forge -C ~/projects` |
+| `--sandbox` | Create isolated git worktree for experimentation | `forge --sandbox feature-test` |
+| `--verbose` | Enable verbose output mode | `forge --verbose` |
+| `-r, --restricted` | Use restricted shell (rbash) for enhanced security | `forge -r` |
+| `--agent` | Agent ID to use for this session | `forge --agent sage` |
+| `-w, --workflow` | Path to file containing workflow to execute | `forge -w workflow.yaml` |
+| `-e, --event` | Dispatch event to workflow | `forge -e '{"name": "fix_issue", "value": "449"}'` |
+| `-h, --help` | Print help information | `forge --help` |
+| `-V, --version` | Print version | `forge --version` |
+
+## List Commands
+
+View available resources in your Forge installation:
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| `forge list agents` | List all available agents | `forge list agents` |
+| `forge list providers` | List all available providers | `forge list providers` |
+| `forge list models` | List all available models | `forge list models` |
+| `forge list config` | List current configuration values | `forge list config` |
+| `forge list tools <agent>` | List all tools for a specific agent | `forge list tools sage` |
+| `forge list mcp` | List all MCP servers | `forge list mcp` |
+| `forge list conversation` | List all conversations | `forge list conversation` |
+
+### List Options
+
+| Flag | Description |
+| :--- | :--- |
+| `--porcelain` | Output in machine-readable format |
+
+## Configuration Commands
+
+Manage Forge configuration settings:
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| `forge config set <field> <value>` | Set configuration value | `forge config set model gpt-4` |
+| `forge config get <field>` | Get specific configuration value | `forge config get provider` |
+| `forge config list` | List all configuration values | `forge config list` |
+
+### Configuration Fields
+
+| Field | Description |
+| :--- | :--- |
+| `model` | AI model to use |
+| `provider` | AI provider to use |
+
+### Configuration Options
+
+| Flag | Description |
+| :--- | :--- |
+| `--porcelain` | Output in machine-readable format (tab-separated key-value pairs) |
+
+## Conversation Commands
+
+Manage and interact with conversations:
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| `forge conversation list` | List all conversations | `forge conversation list` |
+| `forge conversation new` | Create a new conversation and output its ID | `forge conversation new` |
+| `forge conversation dump <id> [format]` | Dump conversation as JSON or HTML | `forge conversation dump abc123 html` |
+| `forge conversation compact <id>` | Compact the conversation context | `forge conversation compact abc123` |
+| `forge conversation retry <id>` | Retry last command without modifying context | `forge conversation retry abc123` |
+| `forge conversation resume <id>` | Resume a conversation (starts interactive mode) | `forge conversation resume abc123` |
+| `forge conversation show <id>` | Show last assistant message | `forge conversation show abc123` |
+| `forge conversation info <id>` | Show detailed conversation information | `forge conversation info abc123` |
+
+### Conversation Options
+
+| Flag | Description |
+| :--- | :--- |
+| `--porcelain` | Output in machine-readable format |
+
+### Dump Format
+
+When using `forge conversation dump`, you can specify the output format:
+
+- **JSON** (default): Omit format argument or specify `json`
+- **HTML**: Specify `html` for formatted HTML output
+
+```bash
+# Dump as JSON
+forge conversation dump abc123
+
+# Dump as HTML
+forge conversation dump abc123 html
+```
+
+## MCP Commands
+
+Manage Model Context Protocol (MCP) servers:
+
+| Command | Description | Example |
+| :--- | :--- | :--- |
+| `forge mcp import` | Import MCP servers configuration from JSON | `forge mcp import` |
+| `forge mcp list` | List all MCP servers | `forge mcp list` |
+| `forge mcp remove <name>` | Remove a server by name | `forge mcp remove playwright` |
+| `forge mcp show <name>` | Show detailed configuration for a server | `forge mcp show playwright` |
+| `forge mcp reload` | Reload MCP servers and rebuild caches | `forge mcp reload` |
+
+### MCP Options
+
+| Flag | Description |
+| :--- | :--- |
+| `--porcelain` | Output in machine-readable format |
+
+## Advanced Usage
+
+### Working Directory
+
+Change the working directory before starting Forge:
+
+```bash
+forge -C /path/to/project -p "analyze the codebase"
+```
+
+### Sandbox Mode
+
+Create an isolated git worktree for experimentation without affecting your main branch:
+
+```bash
+forge --sandbox experiment-1
+```
+
+This creates a new git worktree where you can safely test changes.
+
+### Workflow Execution
+
+Execute predefined workflows with custom events:
+
+```bash
+# Execute workflow
+forge -w workflow.yaml
+
+# Execute workflow with event
+forge -w workflow.yaml -e '{"name": "fix_issue", "value": "449"}'
+```
+
+### Security Mode
+
+Run Forge with restricted shell for enhanced security:
+
+```bash
+forge -r
+```
+
+This uses rbash (restricted bash) to limit potentially harmful operations.
+
+### Verbose Output
+
+Enable detailed logging for debugging:
+
+```bash
+forge --verbose -p "complex task"
+```
+
+### Agent Selection
+
+Use a specific agent for your session:
+
+```bash
+forge --agent sage -p "research this topic"
+```
+
+## Piping Content
+
+Forge supports piping content from stdin as an alternative to using the `-p` flag. **Note:** Piping and `-p` flag are mutually exclusive - when you use `-p`, the piped content is ignored.
+
+```bash
+# Pipe file content (piped content becomes the prompt)
+cat README.md | forge
+
+# Pipe command output
+git log --oneline | forge
+
+# Pipe from multiple sources
+cat file1.txt file2.txt | forge
+
+# Combine with other flags
+cat config.json | forge --agent sage
+```
+
+:::tip
+Use piping when you want to process file contents or command output. The piped content will be treated as your prompt to Forge. If you need to provide additional context or instructions, use the `-p` flag instead.
+:::
+
+## Session Management
+
+### Resume Conversation
+
+Continue a previous conversation using its ID:
+
+```bash
+# Using conversation-id flag
+forge --conversation-id abc123
+
+# Using conversation resume command
+forge conversation resume abc123
+```
+
+### View Conversation History
+
+List all your conversations:
+
+```bash
+forge conversation list
+```
+
+View specific conversation details:
+
+```bash
+# Show detailed information about a conversation
+forge conversation info <conversation-id>
+
+# Show the last assistant message
+forge conversation show <conversation-id>
+```
+
+### Export Conversation
+
+Export conversations for sharing or archival:
+
+```bash
+# Export as JSON
+forge conversation dump abc123 > conversation.json
+
+# Export as HTML
+forge conversation dump abc123 html > conversation.html
+```
+
+## Porcelain Mode
+
+Many commands support `--porcelain` flag for machine-readable output, useful for scripting:
+
+```bash
+# Get config in parseable format
+forge config list --porcelain
+
+# List agents for scripts
+forge list agents --porcelain
+
+# List conversations for automation
+forge conversation list --porcelain
+```
+
+:::tip
+The `--porcelain` flag provides tab-separated or structured output that's easier to parse in scripts and automation tools.
+:::
+
+## Environment Information
+
+View system and environment details:
+
+```bash
+# Show current configuration and active model
+forge info
+
+# Display environment variables and paths
+forge env
+
+# Show version and helpful information
+forge banner
+```
+
+## Examples
+
+### Quick Analysis
+
+```bash
+forge -p "explain the main function in src/main.rs"
+```
+
+### Interactive Session with Setup
+
+```bash
+forge -c initial-commands.txt
+```
+
+### Resume Previous Work
+
+```bash
+forge --conversation-id abc123 -p "continue where we left off"
+```
+
+### Sandbox Experimentation
+
+```bash
+forge --sandbox new-feature -p "implement the user authentication"
+```
+
+### Workflow Automation
+
+```bash
+forge -w ci-workflow.yaml -e '{"name": "deploy", "value": "production"}'
+```
+
+### Verbose Debugging
+
+```bash
+forge --verbose -C ~/my-project -p "debug the failing test"
+```
+
+## See Also
+
+* [Quickstart Guide](/docs/quickstart) - Getting started with Forge
+* [Built-in Commands](/docs/commands) - Interactive slash commands
+* [Operating Agents](/docs/operating-agents) - Understanding Forge agents
+* [MCP Integration](/docs/mcp-integration) - Model Context Protocol integration
+* [Workflow Configuration](/docs/workflow-config) - Creating and using workflows
+* [Environment Configuration](/docs/environment-configuration) - Advanced configuration options
