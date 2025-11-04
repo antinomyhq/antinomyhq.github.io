@@ -64,34 +64,34 @@ agents:
     model: anthropic/claude-3.5-sonnet
     compact:
       # Triggering thresholds (ANY condition triggers compaction)
-      token_threshold: 80000      # Trigger when context exceeds this many tokens
-      message_threshold: 200      # Trigger after this many total messages
-      turn_threshold: 50          # Trigger after this many user turns (optional)
-      on_turn_end: false          # Trigger on user message (default: false, use with caution)
-      
+      token_threshold: 80000 # Trigger when context exceeds this many tokens
+      message_threshold: 200 # Trigger after this many total messages
+      turn_threshold: 50 # Trigger after this many user turns (optional)
+      on_turn_end: false # Trigger on user message (default: false, use with caution)
+
       # Compaction strategy (controls what to preserve)
-      retention_window: 6         # Number of recent messages to preserve unchanged
-      eviction_window: 0.2        # Percentage (0.0-1.0) of context to compact
-      
+      retention_window: 6 # Number of recent messages to preserve unchanged
+      eviction_window: 0.2 # Percentage (0.0-1.0) of context to compact
+
       # Summarization settings
-      max_tokens: 2000            # Maximum tokens for the generated summary
-      model: google/gemini-2.0-flash-001  # Model to use for summarization
+      max_tokens: 2000 # Maximum tokens for the generated summary
+      model: google/gemini-2.0-flash-001 # Model to use for summarization
       prompt: "{{> forge-system-prompt-context-summarizer.hbs }}" # Optional custom prompt
 ```
 
 ### Configuration Parameters
 
-| Parameter            | Required | Description                                                    |
-| -------------------- | -------- | -------------------------------------------------------------- |
-| `token_threshold`    | No       | Trigger compaction when token count exceeds this value         |
-| `message_threshold`  | No       | Trigger compaction when total messages exceed this value       |
-| `turn_threshold`     | No       | Trigger compaction when user turns exceed this value           |
-| `on_turn_end`        | No       | Trigger compaction on user messages (default: false)           |
-| `retention_window`   | No       | Number of recent messages to preserve unchanged                |
-| `eviction_window`    | No       | Percentage (0.0-1.0) of context that can be summarized         |
-| `max_tokens`         | No       | Maximum token count for the generated summary                  |
-| `model`              | No       | AI model to use for generating the summary                     |
-| `prompt`             | No       | Custom prompt template for summarization                       |
+| Parameter           | Required | Description                                              |
+| ------------------- | -------- | -------------------------------------------------------- |
+| `token_threshold`   | No       | Trigger compaction when token count exceeds this value   |
+| `message_threshold` | No       | Trigger compaction when total messages exceed this value |
+| `turn_threshold`    | No       | Trigger compaction when user turns exceed this value     |
+| `on_turn_end`       | No       | Trigger compaction on user messages (default: false)     |
+| `retention_window`  | No       | Number of recent messages to preserve unchanged          |
+| `eviction_window`   | No       | Percentage (0.0-1.0) of context that can be summarized   |
+| `max_tokens`        | No       | Maximum token count for the generated summary            |
+| `model`             | No       | AI model to use for generating the summary               |
+| `prompt`            | No       | Custom prompt template for summarization                 |
 
 :::tip Triggering Logic
 Compaction triggers when **ANY** condition is met. You can use one or more thresholds based on your needs. The system uses a conservative strategy - if both `eviction_window` and `retention_window` apply, it will preserve more context (whichever is more conservative).
@@ -108,11 +108,13 @@ Setting `on_turn_end: true` will trigger compaction after every user message, wh
 Set thresholds based on your model's context window and usage patterns:
 
 **Token-based triggering (recommended for most cases):**
+
 - For Claude 3.7 Sonnet (~200K token window): 150,000 to 180,000 tokens
 - For Claude 3.5 haiku (~200K token window): 120,000 to 160,000 tokens
 - Leave headroom for the model to work with full context
 
 **Message/Turn-based triggering (useful for specific scenarios):**
+
 - Use `message_threshold` for very long conversations regardless of token count
 - Use `turn_threshold` when you want to limit based on user interactions
 - Combine with token thresholds for multi-condition triggering
@@ -132,13 +134,13 @@ These settings work together to determine what gets compacted:
 - **Retention Window** (fixed count): Preserves the last N messages unchanged
   - Typical value: 6-10 messages
   - Guarantees recent context is never compacted
-  
 - **Eviction Window** (percentage): Controls what portion can be summarized
   - Range: 0.0 (nothing) to 1.0 (everything eligible)
   - Typical value: 0.2 (20% of older context)
   - More conservative than retention window wins
 
 **Example**: With `retention_window: 6` and `eviction_window: 0.2`, if you have 100 messages:
+
 - Retention says: preserve last 6, can compact first 94
 - Eviction says: can compact 20% of 100 = 20 messages
 - Result: Compacts the first 20 messages (more conservative)
@@ -192,6 +194,7 @@ Context compaction is designed to minimize performance impact:
 - **Token Reduction**: Effective compaction can reduce overall token usage significantly
 
 **Optimization tips:**
+
 - Use faster models (like Gemini Flash) for summarization to reduce latency
 - Set higher thresholds to compact less frequently
 - Balance `retention_window` and `eviction_window` for your use case
@@ -201,11 +204,13 @@ Context compaction is designed to minimize performance impact:
 ### Issue: Context Seems Lost After Compaction
 
 **Possible causes:**
+
 - Summary model not preserving key details
 - Eviction window too aggressive
 - Retention window too small
 
 **Solutions:**
+
 - Increase `max_tokens` to allow for more detailed summaries
 - Use a more capable summarization model
 - Increase `retention_window` to preserve more recent messages
@@ -215,14 +220,15 @@ Context compaction is designed to minimize performance impact:
 ### Issue: Slow Responses After Threshold is Reached
 
 **Possible causes:**
+
 - Slow summarization model
 - Very large context to summarize
 
 **Solutions:**
+
 - Choose a faster summarization model (e.g., Gemini Flash)
 - Reduce `token_threshold` to trigger earlier compaction with smaller context
 - Increase `eviction_window` to compact more at once (fewer compactions)
-
 
 ## Related Features
 

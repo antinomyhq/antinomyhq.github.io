@@ -259,11 +259,11 @@ compact:
   message_threshold: 200 # Trigger after this many total messages
   turn_threshold: 50 # Trigger after this many user turns (optional)
   on_turn_end: false # Trigger on user message (use with caution, default: false)
-  
+
   # Compaction strategy (controls what to preserve)
   retention_window: 6 # Number of recent messages to preserve unchanged
   eviction_window: 0.2 # Percentage (0.0-1.0) of context to compact
-  
+
   # Summarization settings
   max_tokens: 2000 # Maximum tokens for the generated summary
   model: claude-sonnet-4 # Model to use for compaction (optional)
