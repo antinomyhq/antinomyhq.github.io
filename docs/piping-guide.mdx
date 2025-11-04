@@ -44,32 +44,36 @@ When you pipe content to Forge:
 Empty piped content causes Forge to wait indefinitely for interactive input because it can't distinguish between "no input yet" and "no input ever."
 
 **Problem commands:**
+
 ```bash
 # These HANG if they produce no output
-git diff | forge                    # No changes = hangs
-grep "pattern" file.txt | forge     # No matches = hangs
-find . -name "*.xyz" | forge        # No files found = hangs
+git diff | forge                # No changes = hangs
+grep "pattern" file.txt | forge # No matches = hangs
+find . -name "*.xyz" | forge    # No files found = hangs
 ```
 
 **Solution 1 - Check before piping:**
+
 ```bash
 # For git diff
 if ! git diff --quiet; then
-    git diff | forge
+  git diff | forge
 fi
 
 # For grep
 if grep -q "pattern" file.txt; then
-    grep "pattern" file.txt | forge
+  grep "pattern" file.txt | forge
 fi
 ```
 
 **Solution 2 - Provide fallback content:**
+
 ```bash
 (git diff || echo "No changes detected") | forge
 ```
 
 **Solution 3 - Include instructions in pipe:**
+
 ```bash
 # Instructions ensure content is always present
 {
@@ -78,6 +82,7 @@ fi
   git diff
 } | forge
 ```
+
 :::
 
 ### --prompt Flag Takes Precedence
@@ -110,12 +115,12 @@ git log -5 | forge --model claude-sonnet-4
 ```bash
 # Check for changes first
 if ! git diff --quiet; then
-    git diff | forge
+  git diff | forge
 fi
 
 # Review staged changes
 if ! git diff --cached --quiet; then
-    git diff --cached | forge
+  git diff --cached | forge
 fi
 
 # Combine instructions with diff
@@ -239,13 +244,18 @@ git diff --quiet || git diff | forge
 ## Quick Reference
 
 **Safe patterns:**
+
 ```bash
 echo "text" | forge
-{ echo "Instructions:"; command; } | forge
+{
+  echo "Instructions:"
+  command
+} | forge
 (command || echo "fallback") | forge
 ```
 
 **Unsafe (will hang on empty output):**
+
 ```bash
 git diff | forge
 grep "pattern" file.txt | forge
