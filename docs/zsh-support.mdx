@@ -132,6 +132,11 @@ These features are optional but provide a significantly better experience. Insta
     plugins=(... zsh-autocomplete zsh-syntax-highlighting)
     ```
 
+    :::tip
+    The `--depth 1` flag creates a shallow clone, downloading only the latest commit instead of the entire git history. This makes the installation faster and saves disk space. It's perfectly fine for plugin usage since you don't need the full repository history.
+    :::
+
+
     **Option 3: Manual Installation**
 
     ```bash
