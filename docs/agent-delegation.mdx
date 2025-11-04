@@ -1,0 +1,121 @@
+---
+title: Agent Delegation
+sidebar_position: 6
+description: "Learn how agents can use other agents as tools for specialized workflows"
+sidebar_label: Agent Delegation
+---
+
+# Agent Delegation
+
+Agent delegation enables agents to use other agents as tools, creating specialized workflows where orchestrator agents delegate tasks to specialist agents.
+
+## Overview
+
+### How It Works
+
+1. **Agent Discovery**: The system automatically discovers agents from your agent files
+2. **Tool Conversion**: Each agent becomes a callable tool with its ID as the tool name
+4. **Execution**: The system routes agent tool calls to the appropriate specialist
+
+### Required Configuration
+
+For an agent to be used as a tool, it needs:
+
+```yaml
+---
+id: "specialist-agent"
+title: "Specialist Agent"
+description: "What this agent specializes in"
+---
+```
+
+**Critical Requirements:**
+- `id`: Unique identifier that becomes the tool name
+- `description`: Required for tool discovery and validation
+
+### Agent Tool Usage
+
+When calling another agent as a tool, use this format:
+
+```json
+{
+      "name": "specialist-agent",
+  "arguments": {
+    "tasks": [
+      "Specific task description for the agent to perform"
+    ]
+  }
+}
+```
+
+## Implementation Example
+
+### Code Review Orchestrator
+
+Create an orchestrator agent that delegates to specialist agents:
+
+**1. Security Specialist** (`~/.forge/agents/security-specialist.md`):
+```yaml
+---
+id: "security-specialist"
+title: "Security Specialist" 
+description: "Reviews code for security vulnerabilities"
+tool_supported: true
+tools:
+  - read
+  - search
+max_turns: 30
+---
+
+You are a security expert focused on identifying vulnerabilities in code.
+Focus on authentication, authorization, and input validation issues.
+```
+
+**2. Code Review Orchestrator** (`./.forge/agents/code-review-orchestrator.md`):
+```yaml
+---
+id: "code-review-orchestrator"
+title: "Code Review Orchestrator"
+description: "Coordinates code review using specialist agents"
+tool_supported: false
+tools:
+  - security-specialist
+  - read
+  - write
+  - patch
+max_turns: 75
+---
+
+You are a code review orchestrator that coordinates specialist agents.
+
+## Process:
+1. Review the code changes
+2. Use the security-specialist agent to check for vulnerabilities
+3. Provide comprehensive feedback based on the specialist's analysis
+
+## Usage:
+When you need security analysis, call the security-specialist agent with specific tasks:
+{
+  "name": "security-specialist",
+  "arguments": {
+    "tasks": [
+      "Review authentication code for security issues",
+      "Check input validation in user endpoints"
+    ]
+  }
+}
+```
+
+## Agent Discovery
+
+The system loads agents from three sources with precedence:
+1. **CWD Agents**: `./.forge/agents/*.md` (highest priority)
+2. **Global Agents**: `~/.forge/agents/*.md` (Unix/macOS) or `%USERPROFILE%\.forge\agents\*.md` (Windows)
+3. **Built-in Agents**: Embedded in application (lowest priority)
+
+CWD agents override global agents with the same ID.
+
+## Related Documentation
+
+- [Creating Custom Agents](../agent-definition-guide) - Basic agent configuration and creation
+- [Agent Configuration](../agent-configuration) - Detailed configuration options and troubleshooting
