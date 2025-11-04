@@ -14,18 +14,20 @@ Forge supports reading input from stdin (standard input) via piping, allowing yo
 Pipe content from any command or file directly to Forge:
 
 ```bash
-# Pipe from a file
-cat prompt.txt | forge
-
 # Pipe from echo
 echo "Explain what this project does" | forge
+
+# Using here-string (alternative syntax)
+forge <<< "Explain what this project does"
+
+# Pipe from a file
+cat prompt.txt | forge
 
 # Pipe from git commands
 git log --oneline -10 | forge
 
 # Pipe from other tools
 tail -n 100 error.log | forge
-ls -la | forge
 cargo test 2>&1 | forge
 ```
 
@@ -44,45 +46,20 @@ When you pipe content to Forge:
 Empty piped content causes Forge to wait indefinitely for interactive input because it can't distinguish between "no input yet" and "no input ever."
 
 **Problem commands:**
-
 ```bash
 # These HANG if they produce no output
-git diff | forge                # No changes = hangs
-grep "pattern" file.txt | forge # No matches = hangs
-find . -name "*.xyz" | forge    # No files found = hangs
+git diff | forge
+grep "pattern" file.txt | forge
+find . -name "*.xyz" | forge
 ```
 
-**Solution 1 - Check before piping:**
-
+**Solution - Include instructions with command substitution:**
 ```bash
-# For git diff
-if ! git diff --quiet; then
-  git diff | forge
-fi
+echo "Review this diff: $(git diff main)" | forge
 
-# For grep
-if grep -q "pattern" file.txt; then
-  grep "pattern" file.txt | forge
-fi
+# Or using here-string
+forge <<< "Review this PR: $(git diff main)"
 ```
-
-**Solution 2 - Provide fallback content:**
-
-```bash
-(git diff || echo "No changes detected") | forge
-```
-
-**Solution 3 - Include instructions in pipe:**
-
-```bash
-# Instructions ensure content is always present
-{
-  echo "Review these changes if any exist:"
-  echo ""
-  git diff
-} | forge
-```
-
 :::
 
 ### --prompt Flag Takes Precedence
@@ -104,7 +81,7 @@ Piping works with all other Forge flags:
 
 ```bash
 echo "Review this code" | forge --verbose --restricted
-echo "Quick task" | forge --agent muse
+forge <<< "Quick task" --agent muse
 git log -5 | forge --model claude-sonnet-4
 ```
 
@@ -113,22 +90,14 @@ git log -5 | forge --model claude-sonnet-4
 ### Code Review Workflow
 
 ```bash
-# Check for changes first
-if ! git diff --quiet; then
-  git diff | forge
-fi
+# Simple review
+echo "Review this PR: $(git diff main)" | forge
 
 # Review staged changes
-if ! git diff --cached --quiet; then
-  git diff --cached | forge
-fi
+echo "Review staged changes: $(git diff --cached)" | forge
 
-# Combine instructions with diff
-{
-  echo "Review these changes for security issues:"
-  echo ""
-  git diff
-} | forge
+# Using here-string
+forge <<< "Review this PR: $(git diff main)"
 ```
 
 ### Log Analysis
@@ -137,19 +106,8 @@ fi
 # Analyze recent errors
 tail -n 50 application.log | forge
 
-# Add context to piped content
-{
-  echo "Summarize these test failures:"
-  echo ""
-  cargo test 2>&1
-} | forge
-
-# Review build output
-{
-  echo "Identify build issues:"
-  echo ""
-  npm run build 2>&1
-} | forge
+# Add context
+echo "Summarize these test failures: $(cargo test 2>&1)" | forge
 ```
 
 ### File Content Review
@@ -159,36 +117,14 @@ tail -n 50 application.log | forge
 cat src/main.rs | forge
 
 # Review with instructions
-{
-  echo "Review this code for best practices:"
-  echo ""
-  cat src/database.js
-} | forge
-
-# Review multiple files
-{
-  echo "Analyze these Rust files:"
-  echo ""
-  cat src/*.rs
-} | forge
+echo "Review this code for best practices: $(cat src/database.js)" | forge
 ```
 
 ### Command Output Analysis
 
 ```bash
 # Analyze directory structure
-{
-  echo "Explain this directory structure:"
-  echo ""
-  ls -la
-} | forge
-
-# Process find results
-{
-  echo "Review all TypeScript files:"
-  echo ""
-  find . -name "*.ts" -exec cat {} \;
-} | forge
+echo "Explain this directory structure: $(ls -la)" | forge
 
 # Clipboard to Forge (macOS)
 pbpaste | forge
@@ -198,23 +134,6 @@ xclip -selection clipboard -o | forge
 ```
 
 ## Advanced Patterns
-
-### Reusable Prompt Templates
-
-```bash
-# Create a template
-cat > review-template.txt << 'EOF'
-Please review this code for:
-- Security vulnerabilities
-- Performance issues
-- Code style and best practices
-
-Code to review:
-EOF
-
-# Use it with piped content
-cat review-template.txt <(git diff) | forge
-```
 
 ### Conditional Piping
 
@@ -230,32 +149,36 @@ git diff --quiet || git diff | forge
 
 ```bash
 # Combine multiple sources
-{
-  echo "=== Current Changes ==="
-  git diff
-  echo ""
-  echo "=== Recent Commits ==="
-  git log --oneline -5
-  echo ""
-  echo "Please summarize recent development activity"
-} | forge
+echo "Current changes: $(git diff)
+
+Recent commits: $(git log --oneline -5)
+
+Please summarize recent development activity" | forge
+```
+
+### Using Here-Documents
+
+```bash
+# Multi-line prompt with command output
+forge << EOF
+Review these changes:
+
+$(git diff main)
+
+Focus on security and performance.
+EOF
 ```
 
 ## Quick Reference
 
 **Safe patterns:**
-
 ```bash
 echo "text" | forge
-{
-  echo "Instructions:"
-  command
-} | forge
-(command || echo "fallback") | forge
+forge <<< "text"
+echo "Review: $(command)" | forge
 ```
 
 **Unsafe (will hang on empty output):**
-
 ```bash
 git diff | forge
 grep "pattern" file.txt | forge
@@ -265,26 +188,7 @@ grep "pattern" file.txt | forge
 
 1. **Always Verify Output**: Commands like `git diff`, `grep`, or `find` might return nothing. Check before piping to avoid hanging.
 2. **Don't Mix Input Methods**: The `--prompt` flag ignores piped content. Use one or the other.
-3. **Mind Large Files**: Piped content is read entirely into memory.
-4. **Capture Errors**: Use `2>&1` to capture both stdout and stderr.
-5. **Add Context**: Include instructions within piped content for better results.
+3. **Use Command Substitution**: `echo "Context: $(command)" | forge` ensures you always have content.
+4. **Mind Large Files**: Piped content is read entirely into memory.
+5. **Capture Errors**: Use `2>&1` to capture both stdout and stderr.
 
-## Implementation Details
-
-:::info Technical Background
-The piping feature uses the `atty` crate to detect non-TTY stdin:
-
-```rust
-// Check if there's piped input and no explicit prompt was provided
-if cli.prompt.is_none() && !atty::is(atty::Stream::Stdin) {
-    let mut stdin_content = String::new();
-    std::io::stdin().read_to_string(&mut stdin_content)?;
-    let trimmed_content = stdin_content.trim();
-    if !trimmed_content.is_empty() {
-        cli.prompt = Some(trimmed_content.to_string());
-    }
-}
-```
-
-This approach can't distinguish between "no input yet" and "no input ever," which is why empty piped content causes indefinite waiting.
-:::
