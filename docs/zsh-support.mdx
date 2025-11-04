@@ -99,7 +99,20 @@ These features are optional but provide a significantly better experience. Insta
   <Step title="Install zsh-autocomplete Plugin (Optional)">
     The [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) plugin provides real-time autocomplete suggestions as you type, making it easier to repeat previous Forge commands.
 
-    **Option 1: Oh My Zsh**
+    **Option 1: Package Manager (Recommended)**
+
+    ```bash
+    # macOS
+    brew install zsh-autocomplete
+
+    # Arch Linux
+    sudo pacman -S zsh-autocomplete
+
+    # Gentoo (Portage)
+    sudo emerge app-shells/zsh-autocomplete
+    ```
+
+    **Option 2: Oh My Zsh**
 
     ```bash
     # Clone to Oh My Zsh plugins directory
@@ -109,7 +122,7 @@ These features are optional but provide a significantly better experience. Insta
     plugins=(... zsh-autocomplete zsh-syntax-highlighting)
     ```
 
-    **Option 2: Manual Installation**
+    **Option 3: Manual Installation**
 
     ```bash
     # Clone the repository
