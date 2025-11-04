@@ -36,7 +36,8 @@ const sidebars: SidebarsConfig = {
       label: "ZSH",
       collapsed: false,
       items: [
-        {type: "doc", id: "zsh-installation", label: "Installation"},
+        {type: "doc", id: "zsh-overview", label: "Overview"},
+        {type: "doc", id: "zsh-quickstart", label: "Quick Start"},
         {type: "doc", id: "zsh-built-in-commands", label: "Built-in Commands"},
       ],
     },
