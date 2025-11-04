@@ -172,6 +172,7 @@ provider: open_ai # Optional: Override the default provider
 ```
 
 **Provider naming rules:**
+
 - Provider names must be in **snake_case** format
 - Examples of valid provider names:
   - `provider: forge`
@@ -188,6 +189,7 @@ provider: open_ai # Optional: Override the default provider
   - `provider: azure`
 
 **When to specify a provider:**
+
 - If you want to use a specific provider instead of the default
 - When using models available on multiple providers
 - For testing different provider implementations
