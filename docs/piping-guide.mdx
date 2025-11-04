@@ -46,6 +46,7 @@ When you pipe content to Forge:
 Empty piped content causes Forge to wait indefinitely for interactive input because it can't distinguish between "no input yet" and "no input ever."
 
 **Problem commands:**
+
 ```bash
 # These HANG if they produce no output
 git diff | forge
@@ -54,12 +55,14 @@ find . -name "*.xyz" | forge
 ```
 
 **Solution - Include instructions with command substitution:**
+
 ```bash
 echo "Review this diff: $(git diff main)" | forge
 
 # Or using here-string
 forge <<< "Review this PR: $(git diff main)"
 ```
+
 :::
 
 ### --prompt Flag Takes Precedence
@@ -172,6 +175,7 @@ EOF
 ## Quick Reference
 
 **Safe patterns:**
+
 ```bash
 echo "text" | forge
 forge <<< "text"
@@ -179,6 +183,7 @@ echo "Review: $(command)" | forge
 ```
 
 **Unsafe (will hang on empty output):**
+
 ```bash
 git diff | forge
 grep "pattern" file.txt | forge
@@ -191,4 +196,3 @@ grep "pattern" file.txt | forge
 3. **Use Command Substitution**: `echo "Context: $(command)" | forge` ensures you always have content.
 4. **Mind Large Files**: Piped content is read entirely into memory.
 5. **Capture Errors**: Use `2>&1` to capture both stdout and stderr.
-
