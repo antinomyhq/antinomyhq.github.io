@@ -1,0 +1,164 @@
+# Ignoring Files in Forge
+
+Forge respects your existing `.gitignore` and `.ignore` patterns automatically. If you've already set up `.gitignore` for your project, you're done. Forge reads it and applies those rules immediately.
+
+The system is designed to work the way you'd expect: keep sensitive files out of Git with `.gitignore`, and use `.ignore` when you need to hide files from Forge's context without affecting Git.
+
+## Quick Start
+
+**Already have a `.gitignore`?** You're done. Forge uses it automatically.
+
+**Need additional ignore rules?** Create a `.ignore` file in your project root.
+
+**Files still showing up?** Check [troubleshooting](#troubleshooting) below.
+
+## How It Works
+
+Forge enables all standard ignore filters by default, processing files through multiple layers:
+
+### Ignore Sources (Precedence Order)
+
+When determining if a file should be ignored, Forge checks these sources in order:
+
+1. **`.ignore` files** - Highest precedence, overrides everything below
+2. **`.gitignore` files** - Standard Git ignore patterns
+3. **Global gitignore** - From `~/.config/git/ignore` or Git's `core.excludesFile`
+4. **`.git/info/exclude`** - Local repository excludes
+
+**Important**: Within each type, more nested ignore files have higher precedence than parent directory ignore files. But any `.ignore` file always overrides all `.gitignore` files, regardless of nesting level.
+
+### How Files Are Filtered
+
+Forge processes each file through these filters in order. If any filter excludes a file, it stops processing:
+
+1. **Ignore files** - Checks `.ignore`, then `.gitignore`, then global ignores
+2. **File type matcher** - Skips non-text files and binary content
+3. **Hidden files** - Files starting with `.` are skipped (except `.ignore`, `.gitignore`, etc.)
+
+**Example walkthrough for `src/.cache/data.json`:**
+- Matched by `.gitignore` pattern `.cache/` → **Excluded**
+
+**Example walkthrough for `config/.env.local`:**
+- Not matched by ignore patterns ✓
+- Is a text file ✓
+- Starts with `.` but parent `config/` doesn't → **Included**
+
+If a file passes all filters, it appears in your file tree.
+
+### Standard Filters Enabled by Default
+
+- **Hidden files** - Files starting with `.` are skipped, but configuration files like `.gitignore`, `.ignore`, `.env` in your project root are visible
+- **Parent directory ignore files** - Respects `.gitignore` in parent directories
+- **`.ignore` files** - Same semantics as `.gitignore`, used by ripgrep and ag
+- **`.gitignore` files** - Standard Git ignore patterns
+- **Global gitignore** - Your personal global ignore file
+- **`.git/info/exclude`** - Repository-specific excludes
+
+**Hidden file behavior examples:**
+- `.env` in project root → **Visible**
+- `.env` in `src/` subdirectory → **Hidden** (in a non-root directory)
+- `.cache/` directory anywhere → **Hidden** (directory starts with `.`)
+- `src/.DS_Store` → **Hidden** (file in subdirectory starts with `.`)
+
+## Troubleshooting
+
+### I Can't Find My File
+
+**First, figure out WHY it's hidden.** Common causes:
+
+1. **Matched by an ignore pattern** (`.gitignore` or `.ignore`)
+2. **Hidden file or directory** (starts with `.` and not in project root)
+3. **Binary or non-text file** (Forge skips these)
+
+**Check if Git is ignoring it:**
+```bash
+git check-ignore -v path/to/file
+```
+
+**Example output:**
+```
+.gitignore:3:node_modules/    node_modules/package/index.js
+```
+This means line 3 of `.gitignore` is hiding it.
+
+**Important:** `git check-ignore` only checks `.gitignore` patterns. It won't tell you if a file is hidden by `.ignore` or other Forge-specific filters.
+
+**If `git check-ignore` shows nothing but the file is still hidden:**
+- Check your `.ignore` file (Git doesn't know about `.ignore` files)
+- Verify the file isn't in a hidden directory (like `.cache/`)
+- Confirm it's a text file, not binary
+
+**To make a file visible:**
+
+If hidden by `.gitignore`, add to `.ignore`:
+```gitignore
+!path/to/file
+```
+
+If it's a hidden file (starts with `.`), add to `.ignore`:
+```gitignore
+!.important-config
+```
+
+**Remember:** Changes to ignore files require restarting your Forge session.
+
+### My Ignore Patterns Aren't Working
+
+**Pattern syntax checklist:**
+
+✓ Use `/` for paths (even on Windows): `src/build/` not `src\build\`  
+✓ Add trailing `/` for directories: `dist/` not `dist`  
+✓ Patterns are relative to the ignore file location  
+✓ Use `*` for wildcards: `*.log` matches all `.log` files  
+✓ Use `**` for recursive matching: `**/temp/` matches `temp/` anywhere
+
+**Test your pattern:**
+```bash
+# Check if a specific file matches
+git check-ignore -v path/to/file
+
+# Find all files matching a pattern
+find . -name "*.log"
+
+# Check which of those are ignored
+git check-ignore -v $(find . -name "*.log")
+```
+
+**Precedence issues:**
+
+If a file should be ignored but isn't:
+1. Check if it's whitelisted with `!` in a `.ignore` file
+2. Verify the pattern is in the right ignore file (`.ignore` overrides `.gitignore`)
+3. Check for more nested ignore files that might override parent patterns
+
+**Still not working?**
+- Verify your ignore file is saved
+- Restart your Forge session (ignore rules are loaded at startup)
+- Check for typos in file paths
+
+### Still Having Issues?
+
+If you've tried the steps above and still can't figure out why a file is hidden or visible, export your session diagnostics:
+
+```bash
+/dump html
+```
+
+Then share the output in [Discord](https://discord.gg/kRZBPPkgwq) along with:
+
+1. **The specific file path** you're trying to ignore or include
+2. **Your `.gitignore` and `.ignore` contents** (or the relevant patterns)
+3. **What you expected** vs. what's actually happening
+4. **Output from** `git check-ignore -v path/to/file`
+
+This information helps us debug whether it's a pattern issue, precedence problem, or something else entirely.
+
+## Related Documentation
+
+- [File Tagging with @](/docs/file-tagging-guide) - Reference specific files or code sections
+- [Security Features](/docs/security-features) - How Forge protects sensitive information
+- [Custom Rules Guide](/docs/custom-rules-guide) - Define project-specific AI guidelines
+
+---
+
+**Need help?** Export your session (`/dump html`) and reach out on [Discord](https://discord.gg/kRZBPPkgwq)
