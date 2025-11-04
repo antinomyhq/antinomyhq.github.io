@@ -96,6 +96,51 @@ These features are optional but provide a significantly better experience. Insta
 
   </Step>
 
+  <Step title="Install zsh-autosuggestions Plugin (Optional)">
+    The [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) plugin provides fish-like autocomplete suggestions as you type, making it easier to repeat previous Forge commands.
+
+    **Option 1: Package Manager (Recommended)**
+
+    ```bash
+    # macOS
+    brew install zsh-autosuggestions
+
+    # Ubuntu/Debian
+    sudo apt install zsh-autosuggestions
+
+    # Arch Linux
+    sudo pacman -S zsh-autosuggestions
+
+    # Fedora
+    sudo dnf install zsh-autosuggestions
+    ```
+
+    **Option 2: Oh My Zsh**
+
+    ```bash
+    # Clone to Oh My Zsh plugins directory
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+    # Add to plugins in ~/.zshrc (before zsh-syntax-highlighting)
+    plugins=(... zsh-autosuggestions zsh-syntax-highlighting)
+    ```
+
+    **Option 3: Manual Installation**
+
+    ```bash
+    # Clone the repository
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+
+    # Add to ~/.zshrc (before zsh-syntax-highlighting)
+    source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+    ```
+
+    :::tip Optional Enhancement
+    This plugin is optional but highly recommended. It will show suggestions from your command history as you type, making it easier to reuse previous Forge prompts and commands.
+    :::
+
+  </Step>
+
   <Step title="Install Optional File Finding Tools (Recommended)">
     For fuzzy file finding and agent selection, install fd and fzf:
 
@@ -164,7 +209,7 @@ ZSH Support works without these tools, but you'll need to type full file paths i
     # Basic prompt - should show syntax highlighting
     : hello world
 
-    # Test file tagging (requires fd/fzf from Step 1)
+    # Test file tagging (requires fd/fzf from Step 3)
     : help me with @README<Tab>
     ```
 
@@ -314,7 +359,7 @@ If `: command not found` appears:
 
 #### File Tagging Doesn't Work
 
-If `@filename<Tab>` does nothing, fd and fzf are not installed. See [Step 2](#installation) or our [ZSH Dependencies Installation Guide](/docs/fd-fzf-installation).
+If `@filename<Tab>` does nothing, fd and fzf are not installed. See [Step 3](#installation) or our [ZSH Dependencies Installation Guide](/docs/fd-fzf-installation).
 
 You can still use full file paths manually:
 
