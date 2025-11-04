@@ -49,12 +49,16 @@ OPENROUTER_API_KEY=your_openrouter_key_here
 
 ### Custom Provider URLs
 
-For OpenAI-compatible providers (including Open Router), you can customize the API endpoint URL:
+You can customize the API endpoint URLs for both OpenAI and Anthropic providers:
 
 ```bash
 # Custom OpenAI-compatible provider
 OPENAI_API_KEY=your_api_key_here
 OPENAI_URL=https://your-custom-provider.com/v1
+
+# Custom Anthropic-compatible provider
+ANTHROPIC_API_KEY=your_api_key_here
+ANTHROPIC_URL=https://your-custom-anthropic-provider.com
 
 # Or with Open Router but custom endpoint
 OPENROUTER_API_KEY=your_openrouter_key_here
@@ -63,10 +67,11 @@ OPENAI_URL=https://alternative-openrouter-endpoint.com/v1
 
 This is useful for:
 
-- Self-hosted models with OpenAI-compatible APIs
-- Enterprise OpenAI deployments
+- Self-hosted models with OpenAI or Anthropic-compatible APIs
+- Enterprise deployments (OpenAI, Anthropic, or Azure)
 - Proxy services or API gateways
 - Regional API endpoints
+- Custom upstream providers for Anthropic requests
 
 ## Advanced Configuration Variables
 

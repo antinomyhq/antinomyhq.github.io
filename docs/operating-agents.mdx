@@ -5,163 +5,88 @@ description: "Understanding the different specialized agents in Forge and when t
 sidebar_label: Operating Agents
 ---
 
-# Agents Within Forge
+# Operating Agents
 
-Forge uses different specialized agents to provide flexible assistance based on your needs. These agents implement different capabilities and interaction models, allowing you to choose the right type of assistance for your specific task and security requirements.
+Forge provides three specialized agents, each designed for different stages of development work. They differ in capabilities and access levels, allowing you to choose the right approach for your task.
 
-## Forge Agent (Default)
+## Agent Comparison
 
-The Forge Agent is the default when you start Forge and is empowered to directly implement changes to your codebase and execute commands. This agent provides full read-write capabilities within your environment.
+| Agent     | Access     | Purpose                  | Best For                                                      |
+| --------- | ---------- | ------------------------ | ------------------------------------------------------------- |
+| **Muse**  | Read-write | Planning & analysis      | Reviewing impact, planning changes, critical systems          |
+| **Forge** | Read-write | Implementation           | Making changes, fixing bugs, creating features                |
+| **Sage**  | Read-only  | Research & investigation | Understanding codebases, tracing bugs, analyzing architecture |
 
-### Capabilities of the Forge Agent
+**Typical workflow**: Use **Muse** to plan → Switch to **Forge** to implement
 
-- **Full Execution**: Forge can modify files, create new ones, and execute shell commands
-- **Implementation**: Directly implements the solutions it proposes
-- **Verification**: Performs verification steps to ensure changes work as intended
-- **Feedback Loop**: Provides real-time feedback on changes as they're implemented
+Both agents can use **Sage** internally to research and understand your codebase when needed.
 
-### When to Use the Forge Agent
-
-- When you want hands-off implementation of solutions
-- For routine tasks that you're confident about
-- When you need quick fixes that don't require extensive review
-- When working in non-critical environments or with proper version control
-- For tasks where you want to see immediate results
-
-### Example Use Cases
-
-1. **Bug Fixing**: "Fix the null pointer exception in the authentication service"
-2. **Code Generation**: "Create a React component for a user profile page"
-3. **Refactoring**: "Refactor this function to use async/await instead of promises"
-4. **Test Creation**: "Generate unit tests for the payment processor module"
-
-### Activating the Forge Agent
-
-The Forge Agent is active by default, but if you've switched to another agent, you can return to the Forge Agent with:
-
-```bash
-# Switch to Forge Agent within a Forge session
-/forge
-
-# Or use the general agent command and then from drop down select `forge` agent
-/agent
-```
+---
 
 ## Muse Agent
 
-The Muse Agent analyzes and plans but doesn't modify your codebase. This agent operates in read-only mode, making it perfect for when you want to understand the potential impact of changes before they're made.
+Muse analyzes your codebase and creates detailed implementation plans. It proposes solutions and explains the impact of changes without executing them.
 
-### Capabilities of the Muse Agent
+**Switch to Muse**: `/muse`
 
-- **Read-Only Operations**: Can only read files and run non-destructive commands
-- **Detailed Analysis**: Thoroughly examines code, identifies issues, and proposes solutions
-- **Structured Planning**: Provides step-by-step action plans for implementing changes
-- **Safe Exploration**: Allows exploration of potential solutions without making changes
+**Ideal for:**
 
-### When to Use the Muse Agent
+- Planning complex refactoring
+- Understanding scope before implementation
+- Working with critical or production code
+- Learning how to implement specific features
+- Changes requiring team review
 
-- When you want to understand what changes are needed before implementing them yourself
-- When working with critical systems where changes need careful review
-- For learning how specific changes would be implemented
-- When you want to understand the scope and impact of a task
-- For complex refactoring that requires careful planning
-- When collaborating with others and changes need approval
+**Example prompts:**
 
-### Example Use Cases
+- "How would you redesign this API for better scalability?"
+- "Create a plan to add user authentication"
+- "What's needed to implement pagination?"
 
-1. **Architecture Planning**: "How would you redesign this API to be more scalable?"
-2. **Security Review**: "Analyze this codebase for security vulnerabilities"
-3. **Performance Analysis**: "Identify potential performance bottlenecks in this application"
-4. **Learning**: "Explain how you would implement pagination for this API"
+---
 
-### Activating the Muse Agent
+## Forge Agent
 
-To switch to the Muse Agent, use:
+Forge implements solutions directly. It modifies files, creates code, and executes commands to complete tasks immediately.
 
-```bash
-# Switch to Muse Agent within a Forge session
-/muse
+**Switch to Forge**: `/forge` (active by default)
 
-# Or use the general agent command and then from drop down select `muse` agent
-/agent
-```
+**Ideal for:**
 
-## Sage Agent
+- Quick fixes and routine tasks
+- Refactoring with immediate results
+- Implementing approved plans
+- Tasks where you want hands-off execution
+- Creating new features
 
-The Sage Agent is designed for deep research and investigation of your codebase. Unlike Muse (which plans changes) or Forge (which implements them), Sage focuses purely on understanding how things work. This agent operates in read-only mode and specializes in systematic exploration and analysis.
+**Example prompts:**
 
-### Capabilities of the Sage Agent
+- "Fix the null pointer exception in UserService"
+- "Create a React component for the user profile"
+- "Add unit tests for the payment processor"
 
-- **Deep Investigation**: Traces functionality across multiple files to understand how systems work
-- **Architectural Analysis**: Maps project structure, dependencies, and component relationships
-- **Pattern Discovery**: Identifies design patterns and explains architectural decisions
-- **Code Quality Insights**: Examines test coverage, technical debt, and improvement opportunities
-- **Structured Reports**: Provides clear, actionable findings with specific code references
+---
 
-### When to Use the Sage Agent
+## Sage (Internal Research Tool)
 
-- When you need to understand how something works before making changes
-- For investigating bugs that span multiple components or files
-- When onboarding to an unfamiliar codebase or module
-- To analyze code quality before planning a refactoring
-- When you want to understand why certain architectural decisions were made
-- For tracing data flow or understanding complex business logic
+Sage is not a user-facing agent, but it's an internal tool that both **Muse** and **Forge** can use automatically to research and understand your codebase. When either agent needs to investigate code, trace functionality, or analyze architecture, it leverages Sage behind the scenes.
 
-### Example Use Cases
+You don't need to manually switch to Sage; it works transparently when the agents need deeper codebase insights.
 
-1. **Bug Investigation**: "How does the authentication flow work? I'm seeing intermittent failures"
-2. **System Understanding**: "Explain how the payment processing system handles refunds"
-3. **Architecture Review**: "What design patterns are used in the API layer and why?"
-4. **Technical Debt**: "Analyze the user service for potential improvements and code smells"
+---
 
-### Activating the Sage Agent
+## Switching Between Agents
 
-To switch to the Sage Agent, use:
+You can switch between agents at any time during your session:
 
-```bash
-# Switch to Sage Agent within a Forge session
-/sage
+- Use `/muse` to switch to Muse Agent
+- Use `/forge` to switch to Forge Agent
+- Use `/agent` to see all available agents and choose from a dropdown
 
-# Or use the general agent command and then from drop down select `sage` agent
-/agent
-```
+**Common patterns:**
 
-## Agent Switching Strategy
+- Use **Muse** before making significant changes to critical systems
+- Switch to **Forge** when you're ready to implement
+- Both agents will automatically use **Sage** for research when needed
 
-You can easily switch between agents during a session using the `/muse`, `/forge`, `/sage`, or `/agent` commands. Each agent serves a distinct purpose in the development workflow:
-
-- **Sage Agent**: For deep research and understanding complex systems before planning changes
-- **Muse Agent**: For planning and analyzing potential changes before implementation
-- **Forge Agent**: For implementing solutions and making actual changes to the codebase
-
-### When to Switch from Forge Agent to Muse Agent
-
-- When you're about to make significant architectural changes
-- Before modifying critical or production code
-- When you want to understand the scope of changes first
-- If you're working in an unfamiliar codebase
-
-### When to Switch from Muse Agent to Forge Agent
-
-- After reviewing and approving the proposed changes
-- When moving from analysis to implementation
-- Once you understand the scope and impact of changes
-- For quick implementation following a planning session
-
-### When to Switch from Sage to Muse or Forge
-
-- After completing research and ready to plan or implement changes
-- Once you understand the system architecture and are ready to propose modifications
-- When you've identified the problem and need to create a solution plan (switch to Muse)
-- When the solution is clear and ready for implementation (switch to Forge)
-
-## Best Practices
-
-- **Start with Understanding**: For unfamiliar code or complex systems, begin with the Sage Agent to understand how things work
-- **Research → Plan → Implement**: Use Sage to investigate, Muse to plan changes, then Forge to implement
-- **Review Before Acting**: Use the Muse Agent to generate a plan, review it, then switch to the Forge Agent for implementation
-- **Iterative Approach**: For complex tasks, alternate between agents as needed - research, plan, implement a portion, then repeat
-- **Version Control**: Always ensure you have commits or backups before using the Forge Agent for significant changes
-- **Task Specificity**: Be specific with your requests to ensure each agent provides the most relevant assistance
-
-<!-- Note: This page focuses on the specialized agents in Forge. For information about built-in commands, see the Commands section. -->
+**Best practice**: Use version control and commit your work before using Forge for significant changes.
