@@ -68,15 +68,19 @@ Get Forge working in your ZSH shell in 3 simple steps. This guide will set up th
   </Step>
 </Steps>
 
-## Optional Enhancements
+## Enhance Your Experience
 
-### Syntax Highlighting (Recommended)
+The core setup above gives you full Forge functionality. These optional enhancements make the experience even better:
 
-Add color-coded prompts to make Forge commands visually distinct.
+---
 
-The [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) plugin provides syntax highlighting for Forge prompts.
+### Syntax Highlighting
 
-**Option 1: Package Manager (Recommended)**
+Add color-coded prompts to make Forge commands visually distinct in your terminal.
+
+Install the [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) plugin:
+
+**Option 1: Package Manager**
 
 ```bash
 # macOS
@@ -116,7 +120,9 @@ echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> 
 **zsh-syntax-highlighting must be sourced LAST** in your `.zshrc` file, after all other plugins and the Forge integration. This ensures proper highlighting of Forge prompts.
 :::
 
-### Fuzzy File Finding (Recommended)
+---
+
+### Fuzzy File Finding
 
 Enable quick file tagging with `@filename<Tab>` and fuzzy agent selection with `:<Tab>`.
 
