@@ -100,58 +100,92 @@ This executes the `rust-format` command with the default instructions defined in
 
 ### Command with Arguments
 
-To override the default value or provide instructions for commands without a default:
+Commands can accept arguments passed after the command name:
 
 ```bash
-/rust-format Also run cargo check to verify compilation
+/explain React useEffect lifecycle
 ```
 
 ```bash
-/branch feature/new-auth
+/branch feature/user-authentication
 ```
 
-## How Custom Commands Work
+```bash
+/refactor UserService to improve performance
+```
 
-When a custom command is executed, it follows this event flow:
+All arguments are combined into a single text value that becomes part of your command's instruction.
 
-1. **Command Execution**: User types a command like `/rust-format Also run cargo check`
-2. **Event Dispatch**: Forge dispatches an event with:
-   - **Name**: The command name (e.g., `rust-format`)
-   - **Value**: The provided argument or default value (e.g., `Also run cargo check`)
-3. **Event Processing**: The agent processes the event according to its configuration
+## Working with Command Arguments
 
-## Command Handling Approaches
+Commands can use the `{{parameters}}` variable to incorporate user-provided arguments into their prompts. This makes commands flexible and reusable across different contexts.
 
-There are two main approaches for handling custom command events in agents:
+### Static Commands
 
-### 1. Using Event Value as Instructions
-
-Pass the event value directly to the agent as complete instructions:
+Commands without parameters have fixed prompts:
 
 **`~/forge/commands/rust-format.md`**
 
 ```markdown
 ---
 name: rust-format
-description: Format and lint Rust code using cargo fmt and clippy
+description: Format and lint Rust code
 ---
 
-Run `cargo fmt` to format the code and `cargo clippy` to check for common mistakes and improvements. Fix any issues found.
+Run `cargo fmt` to format the code and `cargo clippy` to check for improvements. Fix any issues found.
 ```
 
-### 2. Using Event Value as Data in a Template
+**Usage:** `/rust-format`
 
-Incorporate the event value into a structured template:
+### Dynamic Commands
 
-**`~/forge/commands/analyze.md`**
+Commands that accept arguments use `{{parameters}}` to insert user input:
 
-````markdown
+**`~/forge/commands/explain.md`**
+
+```markdown
 ---
-name: analyze
-description: Analyze a file with specific focus
+name: explain
+description: Explain code or concepts in detail
 ---
 
-Perform a detailed analysis of the specified file
+Provide a detailed explanation of: {{parameters}}
+
+Include:
+- Purpose and functionality
+- How it works internally
+- Common use cases and examples
+- Best practices and gotchas
+```
+
+**Usage:** `/explain React hooks and their lifecycle`
+
+The `{{parameters}}` placeholder will be replaced with `react hooks and their lifecycle`.
+
+### Conditional Parameters
+
+Use Handlebars conditionals for commands that work with or without arguments:
+
+**`~/forge/commands/test.md`**
+
+```markdown
+---
+name: test
+description: Generate unit tests
+---
+
+Generate comprehensive unit tests{{#if parameters}} for {{parameters}}{{/if}}.
+
+Include edge cases, error handling, and integration scenarios.
+```
+
+**Usage:**
+- `/test` → Generates tests for current context
+- `/test UserService` → Generates tests specifically for UserService
+
+:::tip
+Use `{{parameters}}` anywhere in your command prompt where you want to insert user-provided arguments.
+:::
 
 ## Example Custom Commands
 
@@ -162,22 +196,53 @@ Perform a detailed analysis of the specified file
 ```markdown
 ---
 name: branch
-description: Create and checkout a new branch from the current changes
+description: Create and checkout a new branch
 ---
 
-Create a new branch based on the context and checkout to it
+Create and checkout a new branch named: {{parameters}}
+
+Ensure the branch is created from the current HEAD and verify it was created successfully.
 ```
+
+**Usage:** `/branch feature/user-authentication`
 
 **`~/forge/commands/pr.md`**
 
 ```markdown
 ---
 name: pr
-description: Create a pull request for current branch
+description: Create a pull request description
 ---
 
-Create a detailed pull request description based on the changes in this branch
+Create a detailed pull request with the title: {{parameters}}
+
+Include:
+- Summary of changes
+- Related issue numbers  
+- Testing performed
+- Breaking changes (if any)
 ```
+
+**Usage:** `/pr Add OAuth2 authentication`
+
+**`~/forge/commands/refactor.md`**
+
+```markdown
+---
+name: refactor
+description: Refactor code with specific focus
+---
+
+Refactor the following: {{parameters}}
+
+Goals:
+- Improve readability and maintainability
+- Enhance performance
+- Follow best practices
+- Maintain existing functionality
+```
+
+**Usage:** `/refactor authentication module in src/auth`
 
 ### Development Workflow Commands
 
@@ -208,11 +273,18 @@ Generate comprehensive documentation for the specified code
 ```markdown
 ---
 name: test
-description: Generate unit tests for a file or function
+description: Generate unit tests
 ---
 
-Create comprehensive unit tests with good coverage for the specified code
+Create comprehensive unit tests for: {{parameters}}
+
+Requirements:
+- Full code coverage
+- Edge cases and error conditions
+- Clear test descriptions
 ```
+
+**Usage:** `/test UserService.authenticate method`
 
 ### Project-Specific Commands
 
@@ -242,10 +314,11 @@ Update version numbers and prepare the project for deployment
 
 1. **Descriptive Names**: Use clear, action-oriented names for commands (use lowercase with hyphens for multi-word commands)
 2. **Helpful Descriptions**: Write descriptions that explain both the purpose and expected outcome
-3. **Default Prompts**: Provide default prompts for commands that can work without specific arguments
-4. **Specialized Agents**: Configure agents specifically for handling particular commands in `~/forge/agents/`
-5. **File Organization**: Keep command files organized in `~/forge/commands/` with descriptive filenames
-6. **Documentation**: Document custom commands for your team in a project README
+3. **Use Parameters**: Make commands flexible with `{{parameters}}` for user input
+4. **Clear Instructions**: Provide detailed steps in command prompts for consistent results
+5. **Specialized Agents**: Configure agents specifically for handling particular commands in `~/forge/agents/`
+6. **File Organization**: Keep command files organized in `~/forge/commands/` with descriptive filenames
+7. **Documentation**: Document custom commands for your team in a project README
 
 ## Migrating from forge.yaml
 
