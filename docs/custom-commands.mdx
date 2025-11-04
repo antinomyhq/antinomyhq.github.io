@@ -27,30 +27,6 @@ Custom commands are defined as individual Markdown files in the `~/forge/command
 
 Create a Markdown file in `~/forge/commands/` with frontmatter containing metadata and the body containing the prompt:
 
-**`~/forge/commands/rust-format.md`**
-
-```markdown
----
-name: rust-format
-description: Format and lint Rust code using cargo fmt and clippy
----
-
-- Run `cargo fmt` to format the code
-- Use `cargo clippy` to check for common mistakes and improvements.
-- Fix any issues found.
-```
-
-**`~/forge/commands/branch.md`**
-
-```markdown
----
-name: branch
-description: Create and checkout a new branch
----
-
-Create a new branch based on the current changes and checkout to it
-```
-
 **`~/forge/commands/check.md`**
 
 ```markdown
@@ -93,10 +69,10 @@ Once configured, you can use custom commands in the Forge CLI in two ways:
 To execute a command with its default value (if provided):
 
 ```bash
-/rust-format
+/fmt
 ```
 
-This executes the `rust-format` command with the default instructions defined in its prompt.
+This executes the `fmt` command with the default instructions defined in its prompt.
 
 ### Command with Arguments
 
@@ -124,18 +100,18 @@ Commands can use the `{{parameters}}` variable to incorporate user-provided argu
 
 Commands without parameters have fixed prompts:
 
-**`~/forge/commands/rust-format.md`**
+**`~/forge/commands/review.md`**
 
 ```markdown
 ---
-name: rust-format
-description: Format and lint Rust code
+name: review
+description: Review code for bugs and improvements
 ---
 
-Run `cargo fmt` to format the code and `cargo clippy` to check for improvements. Fix any issues found.
+Review the code for bugs, security issues, performance problems, and suggest improvements
 ```
 
-**Usage:** `/rust-format`
+**Usage:** `/review`
 
 ### Dynamic Commands
 
@@ -193,21 +169,6 @@ Use `{{parameters}}` anywhere in your command prompt where you want to insert us
 
 ### Git Workflow Commands
 
-**`~/forge/commands/branch.md`**
-
-```markdown
----
-name: branch
-description: Create and checkout a new branch
----
-
-Create and checkout a new branch named: {{parameters}}
-
-Ensure the branch is created from the current HEAD and verify it was created successfully.
-```
-
-**Usage:** `/branch feature/user-authentication`
-
 **`~/forge/commands/pr.md`**
 
 ```markdown
@@ -250,17 +211,6 @@ Goals:
 
 ### Development Workflow Commands
 
-**`~/forge/commands/review.md`**
-
-```markdown
----
-name: review
-description: Review code for bugs and improvements
----
-
-Review the code for bugs, security issues, performance problems, and suggest improvements
-```
-
 **`~/forge/commands/document.md`**
 
 ```markdown
@@ -271,25 +221,6 @@ description: Generate documentation for a file
 
 Generate comprehensive documentation for the specified code
 ```
-
-**`~/forge/commands/test.md`**
-
-```markdown
----
-name: test
-description: Generate unit tests
----
-
-Create comprehensive unit tests for: {{parameters}}
-
-Requirements:
-
-- Full code coverage
-- Edge cases and error conditions
-- Clear test descriptions
-```
-
-**Usage:** `/test UserService.authenticate method`
 
 ### Project-Specific Commands
 
@@ -334,20 +265,20 @@ If you have commands defined in your `forge.yaml` file, migrate them to individu
 ```yaml
 # forge.yaml
 commands:
-  - name: rust-format
-    description: Format and lint Rust code
+  - name: fmt
+    description: Format and fix Rust code
     prompt: |
       Run cargo fmt and cargo clippy, then fix any issues
 ```
 
 **New format:**
 
-# In `~/forge/commands/rust-format.md`
+# In `~/forge/commands/fmt.md`
 
 ```markdown
 ---
-name: rust-format
-description: Format and lint Rust code
+name: fmt
+description: Format and fix Rust code
 ---
 
 Run cargo fmt and cargo clippy, then fix any issues
@@ -364,8 +295,8 @@ Run cargo fmt and cargo clippy, then fix any issues
 2. For each command in your `forge.yaml`, create a Markdown file:
 
    ```bash
-   # Example: converting a rust-format command
-   touch ~/forge/commands/rust-format.md
+   # Example: converting a fmt command
+   touch ~/forge/commands/fmt.md
    ```
 
 3. Add the frontmatter with `name` and `description` fields
@@ -381,7 +312,3 @@ Run cargo fmt and cargo clippy, then fix any issues
 - [Custom Workflows](../custom-workflows) - Learn how to create sophisticated workflows with multiple agents
 - [Agent Configuration](../agent-configuration) - Configure agents to respond to custom commands
 - [Commands](../commands) - Learn about Forge's built-in commands
-
-```
-
-```
