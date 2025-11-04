@@ -5,11 +5,11 @@ description: "Learn how to install and use the Forge VS Code extension to copy f
 sidebar_label: VS Code Extension
 ---
 
-import {Download, Zap, Copy, Keyboard, Lightbulb, ArrowRight, FileText, Clock, Target} from "lucide-react"
+import {Download, Zap, Copy, Keyboard, Lightbulb, ArrowRight, FileText, Clock, Target, Terminal} from "lucide-react"
 
 # Skip the Copy-Paste: Reference Any Code Instantly
 
-Tired of manually typing file paths and copying code snippets when asking Forge for help? This VS Code extension lets you reference any code with a single keystroke.
+Tired of manually typing file paths and copying code snippets when asking Forge for help? This VS Code extension lets you reference any code with a single keystroke and start Forge sessions directly from your editor.
 
 ## What This Extension Does
 
@@ -43,10 +43,10 @@ This extension works with [Forge CLI](/docs/installation). Install that first if
 
 ### Install the Extension
 
-**Option 1: VS Code Marketplace (Easiest)**
+**Option 1: VS Code Marketplace (Recommended)**
 
 1. Open VS Code
-2. Press `Ctrl+Shift+X` (Extensions panel)
+2. Press `Ctrl+Shift+X` to open Extensions panel
 3. Search for **"Forge Code"**
 4. Click **Install** on the official ForgeCode extension
 
@@ -56,7 +56,7 @@ This extension works with [Forge CLI](/docs/installation). Install that first if
 code --install-extension ForgeCode.forge-vscode
 ```
 
-**Test that it works:** Open any code file, select some text, press `Ctrl+U`. If something gets copied to your clipboard, you're ready to go!
+**Test that it works:** Open any code file, select some text, press `Ctrl+U`. If a file reference gets copied to your clipboard, you're ready to go!
 
 **Official extension:** [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ForgeCode.forge-vscode)
 
@@ -70,9 +70,9 @@ code --install-extension ForgeCode.forge-vscode
 
 That's it. No typing, no manual copying.
 
-### What Gets Copied
+**What gets copied:**
 
-**Format:** `@[<filepath>:<line start>:<line end>]`
+Format: `@[<filepath>:<line start>:<line end>]`
 
 **How selection works:**
 
@@ -82,7 +82,9 @@ That's it. No typing, no manual copying.
 
 ### Power Move: Multi-File References
 
-Here's the real power move. Select code from different files and copy them all at once:
+Here's the real power move. You can reference multiple files in a single Forge prompt by copying and pasting references one at a time:
+
+**Example:**
 
 ```
 > Compare these approaches @[src/utils/oldMethod.js:15:45] @[src/utils/newMethod.js:20:50]
@@ -91,10 +93,26 @@ Here's the real power move. Select code from different files and copy them all a
 
 Now Forge can see exactly what code you're talking about, with full context and precise line numbers. No more "that function around line 50 something" conversations.
 
-### Alternative Ways to Copy
+**Alternative ways to copy:**
 
 - **Command Palette**: `Ctrl+Shift+P` → type "Copy File Reference"
 - **Right-click Menu**: Select code → right-click → "Copy File Reference"
+
+### Start New Forge Session
+
+Start a Forge terminal directly in VS Code without switching windows.
+
+**How to use:**
+
+- **Command Palette**: `Ctrl+Shift+P` → type "Start New Forge Session"
+- **Right-click Menu**: Right-click in any file → "Start New Forge Session"
+- **Editor Toolbar**: Click the Forge icon in the top-right of the editor
+
+The extension will:
+1. Create a new integrated terminal in VS Code
+2. Navigate to your workspace directory
+3. Start Forge automatically
+4. Auto-paste any file reference from the current editor (if open)
 
 ## Real-World Examples
 
@@ -138,36 +156,98 @@ Forge compares both files simultaneously and suggests proper fixes.
 
 Forge understands your theme system and suggests consistent changes across files.
 
-## When Things Don't Work
+## Configuration
 
-### Extension Completely Dead
+The extension provides several settings to customize its behavior. Access settings via **File → Preferences → Settings → Extensions → Forge**.
+
+### Available Settings
+
+#### `forge.terminalMode`
+
+Controls terminal interaction when copying file references with `Ctrl+U`.
+
+- **Type**: String (dropdown)
+- **Options**:
+  - `once` (default): Open terminal once and reuse it for subsequent operations
+  - `never`: Never open terminal, only copy file reference to clipboard
+- **Default**: `once`
+
+**When to use `once`:** Most users should use this. The extension intelligently manages Forge terminals, creating one when needed and reusing it for subsequent file references.
+
+**When to use `never`:** Use this if you always work with Forge in an external terminal and only want the extension to copy file references to clipboard without any terminal interaction.
+
+#### `forge.pasteDelay`
+
+Delay in milliseconds before auto-pasting file reference into a newly created Forge terminal.
+
+- **Type**: Number
+- **Default**: `5000` (5 seconds)
+- **Range**: 0-10000 milliseconds
+
+**Why this exists:** When the extension creates a new Forge terminal, it needs time to start up before accepting input. This delay ensures the file reference is pasted after Forge is ready.
+
+**When to adjust:**
+- If file references aren't being pasted: Increase the value (try 7000-10000ms)
+- If you have a fast machine and want quicker pasting: Decrease the value (try 3000-4000ms)
+- Note: This only affects newly created terminals, not existing ones
+
+#### `forge.showInstallationPrompt`
+
+Show a prompt to install Forge CLI if it's not detected in your PATH.
+
+- **Type**: Boolean
+- **Default**: `true`
+
+**When to disable:** If you use Forge via `npx` or have it installed in a non-standard location, you might want to disable this prompt.
+
+## Troubleshooting
+
+### Extension Not Working
 
 **Quick fixes to try:**
 
-1. Make sure Forge CLI is actually installed - run `forge --version` in terminal
+1. Verify Forge CLI is installed - run `forge --version` in terminal
 2. Check your VS Code version (Help → About) - need 1.102.0+
-3. Verify the extension is enabled in Extensions view
+3. Verify the extension is enabled in Extensions view (`Ctrl+Shift+X`)
 4. Restart VS Code completely
 
-### Ctrl+U Does Nothing
+### Keyboard Shortcut Not Working
+
+**`Ctrl+U` does nothing:**
 
 This usually means another extension grabbed that shortcut. Here's how to fix it:
 
 1. **File → Preferences → Keyboard Shortcuts**
-2. Search for **"Forge"**
-3. Click the pencil next to "Copy File Reference"
+2. Search for **"Forge"** or **"Copy File Reference"**
+3. Click the pencil icon next to "Copy File Reference"
 4. Pick a new combo like `Ctrl+Shift+U` or `Alt+U`
 
-Common culprits: Vim extensions, other developer tools that love Ctrl+U.
+**Common culprits:** Vim extensions, browser preview extensions, other developer tools.
 
 ### Nothing Gets Copied to Clipboard
 
 Try these workarounds:
 
 - Use Command Palette: `Ctrl+Shift+P` → "Copy File Reference"
-- Right-click menu → "Copy File Reference"
+- Use right-click menu → "Copy File Reference"
 - Check if you're in a text file (extension won't work on images/binaries)
 - Some systems have clipboard permission issues - restart VS Code usually fixes this
+
+### Terminal Not Opening or Forge Not Starting
+
+**If "Start New Forge Session" doesn't work:**
+
+1. Check that Forge is in your PATH - run `which forge` (macOS/Linux) or `where forge` (Windows) in terminal
+2. If using `npx`, the extension may not detect it - install Forge globally: `npm install -g forgecode`
+3. Try manually opening a terminal and running `forge` to see if there are any errors
+4. Restart VS Code after installing Forge globally
+
+**If file references aren't being pasted automatically:**
+
+- Increase the `forge.pasteDelay` setting (try 7000-10000ms for slower machines)
+- The default is 5000ms (5 seconds) - if that's not enough, Forge may need more time to start
+- Check that your terminal shell is compatible (bash, zsh, PowerShell work well)
+- Try using `Ctrl+U` to copy the reference, then manually paste it into the Forge terminal
 
 ### Weird File Paths
 
@@ -185,7 +265,7 @@ Sometimes you'll see paths like `/workspaces/project/src/file.js` instead of nor
 
 ## Next Steps
 
-You're ready to start using `Ctrl+U` everywhere. The goal isn't to reference every line of code - it's to give Forge just enough context to actually help with your specific situation.
+You're ready to start using the extension! The goal isn't to reference every line of code - it's to give Forge just enough context to actually help with your specific situation.
 
 ## Related Guides
 
