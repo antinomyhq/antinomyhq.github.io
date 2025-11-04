@@ -109,6 +109,7 @@ Start a Forge terminal directly in VS Code without switching windows.
 - **Editor Toolbar**: Click the Forge icon in the top-right of the editor
 
 The extension will:
+
 1. Create a new integrated terminal in VS Code
 2. Navigate to your workspace directory
 3. Start Forge automatically
@@ -187,6 +188,7 @@ Delay in milliseconds before auto-pasting file reference into a newly created Fo
 **Why this exists:** When the extension creates a new Forge terminal, it needs time to start up before accepting input. This delay ensures the file reference is pasted after Forge is ready.
 
 **When to adjust:**
+
 - If file references aren't being pasted: Increase the value (try 7000-10000ms)
 - If you have a fast machine and want quicker pasting: Decrease the value (try 3000-4000ms)
 - Note: This only affects newly created terminals, not existing ones
