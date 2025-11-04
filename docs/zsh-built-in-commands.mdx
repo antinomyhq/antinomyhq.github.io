@@ -376,46 +376,8 @@ Without fd/fzf, use full paths with brackets:
 If fd and fzf aren't installed, Tab completion won't trigger the fuzzy finder. You'll need to type the full file path manually using the `@[path]` syntax.
 :::
 
-## Workflows
-
-**Multi-Agent Collaboration:**
-
-```bash
-:sage explain how authentication works
-:muse plan OAuth integration
-:forge implement the OAuth changes
-```
-
-**Session Management:**
-
-```bash
-:info              # Check status
-:model             # Switch model
-:reset             # Clear context
-:dump html         # Export for debugging
-:conversation      # Resume previous work
-:new               # Start fresh
-```
-
-**Fuzzy Command Selection:**
-
-Press Tab after `:` to search all commands and agents (requires fd/fzf).
-
-```bash
-:<Tab>
-```
-
-## Tips
-
-- Use `:reset` when switching between unrelated tasks
-- Use file tagging (`@file<Tab>`) for precision
-- Use `:sage` for understanding, `:muse` for planning, `:forge` for coding
-- Check `:info` regularly to monitor token usage
-- For debugging use `:dump html`
-
 ## Next Steps
 
 - [Troubleshooting](/docs/zsh-troubleshooting) - Fix common issues
 - [File Tagging Guide](/docs/file-tagging-guide) - Advanced file selection techniques
 - [Interactive Mode Commands](/docs/commands) - Command reference for interactive mode
-- [Custom Agents](/docs/agent-definition-guide) - Create specialized agents
