@@ -175,18 +175,10 @@ provider: open_ai # Optional: Override the default provider
 
 - Provider names must be in **snake_case** format
 - Examples of valid provider names:
-  - `provider: forge`
   - `provider: openai`
   - `provider: open_router`
   - `provider: requesty`
-  - `provider: zai`
-  - `provider: zai_coding`
-  - `provider: cerebras`
-  - `provider: xai`
   - `provider: anthropic`
-  - `provider: vertex_ai`
-  - `provider: big_model`
-  - `provider: azure`
 
 **When to specify a provider:**
 
@@ -670,45 +662,19 @@ reasoning: true
 
 You can specify different providers for different use cases:
 
+- OpenAI:
+
 ```yaml
-# Using OpenAI provider
 id: openai-agent
 model: gpt-4
 provider: openai
+```
 
-# Using Anthropic provider
-id: anthropic-agent
-model: claude-sonnet-4
-provider: anthropic
+- Requesty
 
-# Using OpenRouter for accessing multiple models
-id: router-agent
-model: claude-sonnet-4
-provider: open_router
-
-# Using Azure OpenAI
-id: azure-agent
-model: gpt-4
-provider: azure
-
-# Using Vertex AI
-id: vertex-agent
-model: gemini-pro
-provider: vertex_ai
-
-# Using Cerebras for fast inference
-id: cerebras-agent
-model: llama-3.1-8b
-provider: cerebras
-
-# Using xAI
-id: xai-agent
-model: grok-beta
-provider: xai
-
-# Using custom provider
-id: custom-agent
-model: custom-model
+```yaml
+id: requesty-agent
+model: anthropic/claude-sonnet-4-5
 provider: requesty
 ```
 
