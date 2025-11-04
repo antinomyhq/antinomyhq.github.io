@@ -27,15 +27,17 @@ Custom commands are defined as individual Markdown files in the `~/forge/command
 
 Create a Markdown file in `~/forge/commands/` with frontmatter containing metadata and the body containing the prompt:
 
-**`~/forge/commands/commit.md`**
+**`~/forge/commands/rust-format.md`**
 
 ```markdown
 ---
-name: commit
-description: Commit changes with a standard prefix
+name: rust-format
+description: Format and lint Rust code using cargo fmt and clippy
 ---
 
-Understand the diff produced and commit using the 'conventional commit' standard
+- Run `cargo fmt` to format the code
+- Use `cargo clippy` to check for common mistakes and improvements.
+- Fix any issues found.
 ```
 
 **`~/forge/commands/branch.md`**
@@ -91,17 +93,17 @@ Once configured, you can use custom commands in the Forge CLI in two ways:
 To execute a command with its default value (if provided):
 
 ```bash
-/commit
+/rust-format
 ```
 
-This executes the `commit` command with the default instructions defined in its `value` field.
+This executes the `rust-format` command with the default instructions defined in its prompt.
 
 ### Command with Arguments
 
 To override the default value or provide instructions for commands without a default:
 
 ```bash
-/commit Create a detailed commit message for the login feature
+/rust-format Also run cargo check to verify compilation
 ```
 
 ```bash
@@ -112,27 +114,11 @@ To override the default value or provide instructions for commands without a def
 
 When a custom command is executed, it follows this event flow:
 
-1. **Command Execution**: User types a command like `/commit feat: add user authentication`
+1. **Command Execution**: User types a command like `/rust-format Also run cargo check`
 2. **Event Dispatch**: Forge dispatches an event with:
-   - **Name**: The command name (e.g., `commit`)
-   - **Value**: The provided argument or default value (e.g., `feat: add user authentication`)
-3. **Agent Subscription**: Any agent that has subscribed to this event name receives the event
-4. **Event Processing**: The agent processes the event according to its configuration
-
-## Agent Configuration for Custom Commands
-
-For an agent to respond to a custom command, it must explicitly subscribe to the event with the same name as the command:
-
-```yaml
-agents:
-  - id: git-commit
-    model: anthropic/claude-3.7-sonnet
-    system_prompt: "{{> system-prompt-git-commit.hbs }}"
-    tools:
-      - forge_tool_process_shell
-    subscribe:
-      - commit # This agent subscribes to the 'commit' custom command
-```
+   - **Name**: The command name (e.g., `rust-format`)
+   - **Value**: The provided argument or default value (e.g., `Also run cargo check`)
+3. **Event Processing**: The agent processes the event according to its configuration
 
 ## Command Handling Approaches
 
@@ -142,15 +128,15 @@ There are two main approaches for handling custom command events in agents:
 
 Pass the event value directly to the agent as complete instructions:
 
-**`~/forge/commands/commit.md`**
+**`~/forge/commands/rust-format.md`**
 
 ```markdown
 ---
-name: commit
-description: Commit changes with a standard prefix
+name: rust-format
+description: Format and lint Rust code using cargo fmt and clippy
 ---
 
-Understand the diff and commit using the 'conventional commit' standard
+Run `cargo fmt` to format the code and `cargo clippy` to check for common mistakes and improvements. Fix any issues found.
 ```
 
 ### 2. Using Event Value as Data in a Template
@@ -170,18 +156,6 @@ Perform a detailed analysis of the specified file
 ## Example Custom Commands
 
 ### Git Workflow Commands
-
-**`~/forge/commands/commit.md`**
-
-```markdown
----
-name: commit
-description: Commit changes with a standard prefix
----
-
-Analyze changes and create a commit message following conventional commit format
-```
-````
 
 **`~/forge/commands/branch.md`**
 
@@ -282,25 +256,23 @@ If you have commands defined in your `forge.yaml` file, migrate them to individu
 ```yaml
 # forge.yaml
 commands:
-  - name: commit
-    description: Commit changes
+  - name: rust-format
+    description: Format and lint Rust code
     prompt: |
-      Create a commit message
+      Run cargo fmt and cargo clippy, then fix any issues
 ```
 
 **New format:**
 
+# In `~/forge/commands/rust-format.md`
+
 ```markdown
-# ~/forge/commands/commit.md
-
+---
+name: rust-format
+description: Format and lint Rust code
 ---
 
-name: commit
-description: Commit changes
-
----
-
-Create a commit message
+Run cargo fmt and cargo clippy, then fix any issues
 ```
 
 ### Migration Steps
@@ -314,8 +286,8 @@ Create a commit message
 2. For each command in your `forge.yaml`, create a Markdown file:
 
    ```bash
-   # Example: converting a commit command
-   touch ~/forge/commands/commit.md
+   # Example: converting a rust-format command
+   touch ~/forge/commands/rust-format.md
    ```
 
 3. Add the frontmatter with `name` and `description` fields
@@ -325,29 +297,6 @@ Create a commit message
 5. Remove the `commands` section from your `forge.yaml`
 
 6. Restart Forge to load the new command definitions
-
-### Example Migration
-
-**Before (forge.yaml):**
-
-```yaml
-commands:
-  - name: check
-    description: Checks if the code is ready
-    prompt: |
-      Run linting and tests
-```
-
-**After (~/forge/commands/check.md):**
-
-```markdown
----
-name: check
-description: Checks if the code is ready
----
-
-Run linting and tests
-```
 
 ## Related Documentation
 
