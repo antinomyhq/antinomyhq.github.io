@@ -27,28 +27,6 @@ Custom commands are defined as individual Markdown files in the `~/forge/command
 
 Create a Markdown file in `~/forge/commands/` with frontmatter containing metadata and the body containing the prompt:
 
-**`~/forge/commands/commit.md`**
-
-```markdown
----
-name: commit
-description: Commit changes with a standard prefix
----
-
-Understand the diff produced and commit using the 'conventional commit' standard
-```
-
-**`~/forge/commands/branch.md`**
-
-```markdown
----
-name: branch
-description: Create and checkout a new branch
----
-
-Create a new branch based on the current changes and checkout to it
-```
-
 **`~/forge/commands/check.md`**
 
 ```markdown
@@ -91,121 +69,36 @@ Once configured, you can use custom commands in the Forge CLI in two ways:
 To execute a command with its default value (if provided):
 
 ```bash
-/commit
+/fmt
 ```
 
-This executes the `commit` command with the default instructions defined in its `value` field.
+This executes the `fmt` command with the default instructions defined in its prompt.
 
 ### Command with Arguments
 
-To override the default value or provide instructions for commands without a default:
+Commands can accept arguments passed after the command name:
 
 ```bash
-/commit Create a detailed commit message for the login feature
+/explain React useEffect lifecycle
 ```
 
 ```bash
-/branch feature/new-auth
+/branch feature/user-authentication
 ```
 
-## How Custom Commands Work
-
-When a custom command is executed, it follows this event flow:
-
-1. **Command Execution**: User types a command like `/commit feat: add user authentication`
-2. **Event Dispatch**: Forge dispatches an event with:
-   - **Name**: The command name (e.g., `commit`)
-   - **Value**: The provided argument or default value (e.g., `feat: add user authentication`)
-3. **Agent Subscription**: Any agent that has subscribed to this event name receives the event
-4. **Event Processing**: The agent processes the event according to its configuration
-
-## Agent Configuration for Custom Commands
-
-For an agent to respond to a custom command, it must explicitly subscribe to the event with the same name as the command:
-
-```yaml
-agents:
-  - id: git-commit
-    model: anthropic/claude-3.7-sonnet
-    system_prompt: "{{> system-prompt-git-commit.hbs }}"
-    tools:
-      - forge_tool_process_shell
-    subscribe:
-      - commit # This agent subscribes to the 'commit' custom command
+```bash
+/refactor UserService to improve performance
 ```
 
-## Command Handling Approaches
+All arguments are combined into a single text value that becomes part of your command's instruction.
 
-There are two main approaches for handling custom command events in agents:
+## Working with Command Arguments
 
-### 1. Using Event Value as Instructions
+Commands can use the `{{parameters}}` variable to incorporate user-provided arguments into their prompts. This makes commands flexible and reusable across different contexts.
 
-Pass the event value directly to the agent as complete instructions:
+### Static Commands
 
-**`~/forge/commands/commit.md`**
-
-```markdown
----
-name: commit
-description: Commit changes with a standard prefix
----
-
-Understand the diff and commit using the 'conventional commit' standard
-```
-
-### 2. Using Event Value as Data in a Template
-
-Incorporate the event value into a structured template:
-
-**`~/forge/commands/analyze.md`**
-
-````markdown
----
-name: analyze
-description: Analyze a file with specific focus
----
-
-Perform a detailed analysis of the specified file
-
-## Example Custom Commands
-
-### Git Workflow Commands
-
-**`~/forge/commands/commit.md`**
-
-```markdown
----
-name: commit
-description: Commit changes with a standard prefix
----
-
-Analyze changes and create a commit message following conventional commit format
-```
-````
-
-**`~/forge/commands/branch.md`**
-
-```markdown
----
-name: branch
-description: Create and checkout a new branch from the current changes
----
-
-Create a new branch based on the context and checkout to it
-```
-
-**`~/forge/commands/pr.md`**
-
-```markdown
----
-name: pr
-description: Create a pull request for current branch
----
-
-Create a detailed pull request description based on the changes in this branch
-```
-
-### Development Workflow Commands
+Commands without parameters have fixed prompts:
 
 **`~/forge/commands/review.md`**
 
@@ -218,6 +111,106 @@ description: Review code for bugs and improvements
 Review the code for bugs, security issues, performance problems, and suggest improvements
 ```
 
+**Usage:** `/review`
+
+### Dynamic Commands
+
+Commands that accept arguments use `{{parameters}}` to insert user input:
+
+**`~/forge/commands/explain.md`**
+
+```markdown
+---
+name: explain
+description: Explain code or concepts in detail
+---
+
+Provide a detailed explanation of: {{parameters}}
+
+Include:
+
+- Purpose and functionality
+- How it works internally
+- Common use cases and examples
+- Best practices and gotchas
+```
+
+**Usage:** `/explain React hooks and their lifecycle`
+
+The `{{parameters}}` placeholder will be replaced with `react hooks and their lifecycle`.
+
+### Conditional Parameters
+
+Use Handlebars conditionals for commands that work with or without arguments:
+
+**`~/forge/commands/test.md`**
+
+```markdown
+---
+name: test
+description: Generate unit tests
+---
+
+Generate comprehensive unit tests{{#if parameters}} for {{parameters}}{{/if}}.
+
+Include edge cases, error handling, and integration scenarios.
+```
+
+**Usage:**
+
+- `/test` → Generates tests for current context
+- `/test UserService` → Generates tests specifically for UserService
+
+:::tip
+Use `{{parameters}}` anywhere in your command prompt where you want to insert user-provided arguments.
+:::
+
+## Example Custom Commands
+
+### Git Workflow Commands
+
+**`~/forge/commands/pr.md`**
+
+```markdown
+---
+name: pr
+description: Create a pull request description
+---
+
+Create a detailed pull request with the title: {{parameters}}
+
+Include:
+
+- Summary of changes
+- Related issue numbers
+- Testing performed
+- Breaking changes (if any)
+```
+
+**Usage:** `/pr Add OAuth2 authentication`
+
+**`~/forge/commands/refactor.md`**
+
+```markdown
+---
+name: refactor
+description: Refactor code with specific focus
+---
+
+Refactor the following: {{parameters}}
+
+Goals:
+
+- Improve readability and maintainability
+- Enhance performance
+- Follow best practices
+- Maintain existing functionality
+```
+
+**Usage:** `/refactor authentication module in src/auth`
+
+### Development Workflow Commands
+
 **`~/forge/commands/document.md`**
 
 ```markdown
@@ -227,17 +220,6 @@ description: Generate documentation for a file
 ---
 
 Generate comprehensive documentation for the specified code
-```
-
-**`~/forge/commands/test.md`**
-
-```markdown
----
-name: test
-description: Generate unit tests for a file or function
----
-
-Create comprehensive unit tests with good coverage for the specified code
 ```
 
 ### Project-Specific Commands
@@ -268,10 +250,11 @@ Update version numbers and prepare the project for deployment
 
 1. **Descriptive Names**: Use clear, action-oriented names for commands (use lowercase with hyphens for multi-word commands)
 2. **Helpful Descriptions**: Write descriptions that explain both the purpose and expected outcome
-3. **Default Prompts**: Provide default prompts for commands that can work without specific arguments
-4. **Specialized Agents**: Configure agents specifically for handling particular commands in `~/forge/agents/`
-5. **File Organization**: Keep command files organized in `~/forge/commands/` with descriptive filenames
-6. **Documentation**: Document custom commands for your team in a project README
+3. **Use Parameters**: Make commands flexible with `{{parameters}}` for user input
+4. **Clear Instructions**: Provide detailed steps in command prompts for consistent results
+5. **Specialized Agents**: Configure agents specifically for handling particular commands in `~/forge/agents/`
+6. **File Organization**: Keep command files organized in `~/forge/commands/` with descriptive filenames
+7. **Documentation**: Document custom commands for your team in a project README
 
 ## Migrating from forge.yaml
 
@@ -282,25 +265,23 @@ If you have commands defined in your `forge.yaml` file, migrate them to individu
 ```yaml
 # forge.yaml
 commands:
-  - name: commit
-    description: Commit changes
+  - name: fmt
+    description: Format and fix Rust code
     prompt: |
-      Create a commit message
+      Run cargo fmt and cargo clippy, then fix any issues
 ```
 
 **New format:**
 
+# In `~/forge/commands/fmt.md`
+
 ```markdown
-# ~/forge/commands/commit.md
-
+---
+name: fmt
+description: Format and fix Rust code
 ---
 
-name: commit
-description: Commit changes
-
----
-
-Create a commit message
+Run cargo fmt and cargo clippy, then fix any issues
 ```
 
 ### Migration Steps
@@ -314,8 +295,8 @@ Create a commit message
 2. For each command in your `forge.yaml`, create a Markdown file:
 
    ```bash
-   # Example: converting a commit command
-   touch ~/forge/commands/commit.md
+   # Example: converting a fmt command
+   touch ~/forge/commands/fmt.md
    ```
 
 3. Add the frontmatter with `name` and `description` fields
@@ -325,29 +306,6 @@ Create a commit message
 5. Remove the `commands` section from your `forge.yaml`
 
 6. Restart Forge to load the new command definitions
-
-### Example Migration
-
-**Before (forge.yaml):**
-
-```yaml
-commands:
-  - name: check
-    description: Checks if the code is ready
-    prompt: |
-      Run linting and tests
-```
-
-**After (~/forge/commands/check.md):**
-
-```markdown
----
-name: check
-description: Checks if the code is ready
----
-
-Run linting and tests
-```
 
 ## Related Documentation
 

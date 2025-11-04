@@ -47,7 +47,7 @@ A workflow consists of agents connected via events. Each agent has specific capa
 
 ### Event System
 
-Agents communicate through events which they can publish and subscribe to:
+Agents communicate through events:
 
 #### Built-in Events
 
@@ -79,7 +79,6 @@ Each agent needs tools to perform tasks, configured in the `tools` field:
 - `model` - AI model to use (from the `\models` list)
 - `temperature` - Control response determinism and creativity (0.0-2.0)
 - `tools` - List of tools the agent can use
-- `subscribe` - Events the agent listens to
 - `ephemeral` - If true, agent is destroyed after task completion
 - `tool_supported` - (Optional) Boolean flag that determines whether tools defined in the agent configuration are actually made available to the LLM
 - `system_prompt` - (Optional) Instructions for how the agent should behave
@@ -112,8 +111,6 @@ agents:
     model: *efficiency_model
     tools:
       - forge_tool_event_dispatch
-    subscribe:
-      - user_task_init
     tool_supported: false # Force XML-based tool call formatting
     system_prompt: "{{> forge-system-prompt-engineer-plan.hbs }}"
     user_prompt: <technical_content>{{event.value}}</technical_content>
@@ -126,8 +123,6 @@ agents:
       - forge_tool_net_fetch
       - forge_tool_event_dispatch
       - forge_tool_process_think
-    subscribe:
-      - research_request
     system_prompt: "{{> forge-system-prompt-engineer-plan.hbs }}"
 
   - id: developer
@@ -142,10 +137,6 @@ agents:
       - forge_tool_net_fetch
       - forge_tool_fs_search
       - forge_tool_display_show_user # Rich markdown display tool
-    subscribe:
-      - user_task_init
-      - user_task_update
-      - research_results
     max_walker_depth: 1024 # Maximum directory exploration depth
     compact:
       max_tokens: 2000 # Maximum tokens for summary
