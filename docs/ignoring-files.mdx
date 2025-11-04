@@ -14,51 +14,30 @@ The system is designed to work the way you'd expect: keep sensitive files out of
 
 ## How It Works
 
-Forge enables all standard ignore filters by default, processing files through multiple layers:
+Forge checks multiple ignore sources when deciding whether to show a file. Here's the order of precedence (highest to lowest):
 
-### Ignore Sources (Precedence Order)
+1. **`.ignore` files** - Highest priority, overrides everything else
+2. **`.gitignore` files** - Standard Git ignore patterns  
+3. **Global gitignore** - Your personal ignore file (`~/.config/git/ignore`)
+4. **`.git/info/exclude`** - Repository-specific excludes
 
-When determining if a file should be ignored, Forge checks these sources in order:
+**Key rule:** `.ignore` always wins. If you whitelist a file in `.ignore` (using `!pattern`), it will be visible even if `.gitignore` hides it.
 
-1. **`.ignore` files** - Highest precedence, overrides everything below
-2. **`.gitignore` files** - Standard Git ignore patterns
-3. **Global gitignore** - From `~/.config/git/ignore` or Git's `core.excludesFile`
-4. **`.git/info/exclude`** - Local repository excludes
+### What Gets Filtered Out
 
-**Important**: Within each type, more nested ignore files have higher precedence than parent directory ignore files. But any `.ignore` file always overrides all `.gitignore` files, regardless of nesting level.
+Forge automatically skips:
 
-### How Files Are Filtered
+- **Files matched by ignore patterns** - Checked in the precedence order above
+- **Binary files** - Non-text content is excluded
+- **Hidden files** - Files starting with `.` (except in your project root)
 
-Forge processes each file through these filters in order. If any filter excludes a file, it stops processing:
+**Hidden file examples:**
+- `.env` in project root → **Visible** ✓
+- `.env` in `src/` subdirectory → **Hidden** ✗
+- `.cache/` directory → **Hidden** ✗ (starts with `.`)
+- `src/.DS_Store` → **Hidden** ✗ (hidden file in subdirectory)
 
-1. **Ignore files** - Checks `.ignore`, then `.gitignore`, then global ignores
-2. **File type matcher** - Skips non-text files and binary content
-3. **Hidden files** - Files starting with `.` are skipped (except `.ignore`, `.gitignore`, etc.)
-
-**Example walkthrough for `src/.cache/data.json`:**
-- Matched by `.gitignore` pattern `.cache/` → **Excluded**
-
-**Example walkthrough for `config/.env.local`:**
-- Not matched by ignore patterns ✓
-- Is a text file ✓
-- Starts with `.` but parent `config/` doesn't → **Included**
-
-If a file passes all filters, it appears in your file tree.
-
-### Standard Filters Enabled by Default
-
-- **Hidden files** - Files starting with `.` are skipped, but configuration files like `.gitignore`, `.ignore`, `.env` in your project root are visible
-- **Parent directory ignore files** - Respects `.gitignore` in parent directories
-- **`.ignore` files** - Same semantics as `.gitignore`, used by ripgrep and ag
-- **`.gitignore` files** - Standard Git ignore patterns
-- **Global gitignore** - Your personal global ignore file
-- **`.git/info/exclude`** - Repository-specific excludes
-
-**Hidden file behavior examples:**
-- `.env` in project root → **Visible**
-- `.env` in `src/` subdirectory → **Hidden** (in a non-root directory)
-- `.cache/` directory anywhere → **Hidden** (directory starts with `.`)
-- `src/.DS_Store` → **Hidden** (file in subdirectory starts with `.`)
+**To show a hidden file:** Add `!.filename` to your `.ignore` file
 
 ## Troubleshooting
 
