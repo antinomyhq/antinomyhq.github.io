@@ -11,106 +11,106 @@ Complete reference for Forge command-line interface, including commands and flag
 
 ## CLI Commands
 
-| Command | Description | Example |
-| :--- | :--- | :--- |
-| `forge` | Start interactive REPL | `forge` |
-| `forge -p "query"` | Execute prompt directly, then exit | `forge -p "explain this function"` |
-| `cat file \| forge` | Process piped content as prompt, then exit | `cat logs.txt \| forge` |
-| `forge -c file.txt` | Execute commands from file, then continue in interactive mode | `forge -c commands.txt` |
-| `forge --conversation-id <id>` | Resume conversation by ID | `forge --conversation-id abc123` |
-| `forge -C /path/to/dir` | Change working directory before starting | `forge -C ~/projects/myapp` |
-| `forge --sandbox <name>` | Create isolated git worktree | `forge --sandbox experiment-1` |
-| `forge list <resource>` | List resources (agents, models, providers, mcp, etc.) | `forge list agents` |
-| `forge config <subcommand>` | Manage configuration | `forge config get model` |
-| `forge conversation <subcommand>` | Manage conversations | `forge conversation list` |
-| `forge mcp <subcommand>` | Manage MCP servers | `forge mcp list` |
-| `forge info` | Show current configuration and status | `forge info` |
-| `forge env` | Display environment information | `forge env` |
-| `forge banner` | Display version and helpful information | `forge banner` |
-| `forge --version` | Print version | `forge --version` |
+| Command                           | Description                                                   | Example                            |
+| :-------------------------------- | :------------------------------------------------------------ | :--------------------------------- |
+| `forge`                           | Start interactive REPL                                        | `forge`                            |
+| `forge -p "query"`                | Execute prompt directly, then exit                            | `forge -p "explain this function"` |
+| `cat file \| forge`               | Process piped content as prompt, then exit                    | `cat logs.txt \| forge`            |
+| `forge -c file.txt`               | Execute commands from file, then continue in interactive mode | `forge -c commands.txt`            |
+| `forge --conversation-id <id>`    | Resume conversation by ID                                     | `forge --conversation-id abc123`   |
+| `forge -C /path/to/dir`           | Change working directory before starting                      | `forge -C ~/projects/myapp`        |
+| `forge --sandbox <name>`          | Create isolated git worktree                                  | `forge --sandbox experiment-1`     |
+| `forge list <resource>`           | List resources (agents, models, providers, mcp, etc.)         | `forge list agents`                |
+| `forge config <subcommand>`       | Manage configuration                                          | `forge config get model`           |
+| `forge conversation <subcommand>` | Manage conversations                                          | `forge conversation list`          |
+| `forge mcp <subcommand>`          | Manage MCP servers                                            | `forge mcp list`                   |
+| `forge info`                      | Show current configuration and status                         | `forge info`                       |
+| `forge env`                       | Display environment information                               | `forge env`                        |
+| `forge banner`                    | Display version and helpful information                       | `forge banner`                     |
+| `forge --version`                 | Print version                                                 | `forge --version`                  |
 
 ## CLI Flags
 
 Customize Forge's behavior with these command-line flags:
 
-| Flag | Description | Example |
-| :--- | :--- | :--- |
-| `-p, --prompt` | Direct prompt to process without entering interactive mode (mutually exclusive with piping) | `forge -p "analyze this code"` |
-| `-c, --command` | Path to file containing initial commands to execute, then continue in interactive mode | `forge -c setup.txt` |
-| `--conversation` | Path to JSON file containing conversation to execute | `forge --conversation chat.json` |
-| `--conversation-id` | Resume or continue existing conversation by ID | `forge --conversation-id abc123` |
-| `-C, --directory` | Working directory to set before starting forge | `forge -C ~/projects` |
-| `--sandbox` | Create isolated git worktree for experimentation | `forge --sandbox feature-test` |
-| `--verbose` | Enable verbose output mode | `forge --verbose` |
-| `-r, --restricted` | Use restricted shell (rbash) for enhanced security | `forge -r` |
-| `--agent` | Agent ID to use for this session | `forge --agent sage` |
-| `-w, --workflow` | Path to file containing workflow to execute | `forge -w workflow.yaml` |
-| `-e, --event` | Dispatch event to workflow | `forge -e '{"name": "fix_issue", "value": "449"}'` |
-| `-h, --help` | Print help information | `forge --help` |
-| `-V, --version` | Print version | `forge --version` |
+| Flag                | Description                                                                                 | Example                                            |
+| :------------------ | :------------------------------------------------------------------------------------------ | :------------------------------------------------- |
+| `-p, --prompt`      | Direct prompt to process without entering interactive mode (mutually exclusive with piping) | `forge -p "analyze this code"`                     |
+| `-c, --command`     | Path to file containing initial commands to execute, then continue in interactive mode      | `forge -c setup.txt`                               |
+| `--conversation`    | Path to JSON file containing conversation to execute                                        | `forge --conversation chat.json`                   |
+| `--conversation-id` | Resume or continue existing conversation by ID                                              | `forge --conversation-id abc123`                   |
+| `-C, --directory`   | Working directory to set before starting forge                                              | `forge -C ~/projects`                              |
+| `--sandbox`         | Create isolated git worktree for experimentation                                            | `forge --sandbox feature-test`                     |
+| `--verbose`         | Enable verbose output mode                                                                  | `forge --verbose`                                  |
+| `-r, --restricted`  | Use restricted shell (rbash) for enhanced security                                          | `forge -r`                                         |
+| `--agent`           | Agent ID to use for this session                                                            | `forge --agent sage`                               |
+| `-w, --workflow`    | Path to file containing workflow to execute                                                 | `forge -w workflow.yaml`                           |
+| `-e, --event`       | Dispatch event to workflow                                                                  | `forge -e '{"name": "fix_issue", "value": "449"}'` |
+| `-h, --help`        | Print help information                                                                      | `forge --help`                                     |
+| `-V, --version`     | Print version                                                                               | `forge --version`                                  |
 
 ## List Commands
 
 View available resources in your Forge installation:
 
-| Command | Description | Example |
-| :--- | :--- | :--- |
-| `forge list agents` | List all available agents | `forge list agents` |
-| `forge list providers` | List all available providers | `forge list providers` |
-| `forge list models` | List all available models | `forge list models` |
-| `forge list config` | List current configuration values | `forge list config` |
-| `forge list tools <agent>` | List all tools for a specific agent | `forge list tools sage` |
-| `forge list mcp` | List all MCP servers | `forge list mcp` |
-| `forge list conversation` | List all conversations | `forge list conversation` |
+| Command                    | Description                         | Example                   |
+| :------------------------- | :---------------------------------- | :------------------------ |
+| `forge list agents`        | List all available agents           | `forge list agents`       |
+| `forge list providers`     | List all available providers        | `forge list providers`    |
+| `forge list models`        | List all available models           | `forge list models`       |
+| `forge list config`        | List current configuration values   | `forge list config`       |
+| `forge list tools <agent>` | List all tools for a specific agent | `forge list tools sage`   |
+| `forge list mcp`           | List all MCP servers                | `forge list mcp`          |
+| `forge list conversation`  | List all conversations              | `forge list conversation` |
 
 ### List Options
 
-| Flag | Description |
-| :--- | :--- |
+| Flag          | Description                       |
+| :------------ | :-------------------------------- |
 | `--porcelain` | Output in machine-readable format |
 
 ## Configuration Commands
 
 Manage Forge configuration settings:
 
-| Command | Description | Example |
-| :--- | :--- | :--- |
-| `forge config set <field> <value>` | Set configuration value | `forge config set model gpt-4` |
-| `forge config get <field>` | Get specific configuration value | `forge config get provider` |
-| `forge config list` | List all configuration values | `forge config list` |
+| Command                            | Description                      | Example                        |
+| :--------------------------------- | :------------------------------- | :----------------------------- |
+| `forge config set <field> <value>` | Set configuration value          | `forge config set model gpt-4` |
+| `forge config get <field>`         | Get specific configuration value | `forge config get provider`    |
+| `forge config list`                | List all configuration values    | `forge config list`            |
 
 ### Configuration Fields
 
-| Field | Description |
-| :--- | :--- |
-| `model` | AI model to use |
+| Field      | Description        |
+| :--------- | :----------------- |
+| `model`    | AI model to use    |
 | `provider` | AI provider to use |
 
 ### Configuration Options
 
-| Flag | Description |
-| :--- | :--- |
+| Flag          | Description                                                       |
+| :------------ | :---------------------------------------------------------------- |
 | `--porcelain` | Output in machine-readable format (tab-separated key-value pairs) |
 
 ## Conversation Commands
 
 Manage and interact with conversations:
 
-| Command | Description | Example |
-| :--- | :--- | :--- |
-| `forge conversation list` | List all conversations | `forge conversation list` |
-| `forge conversation new` | Create a new conversation and output its ID | `forge conversation new` |
-| `forge conversation dump <id> [format]` | Dump conversation as JSON or HTML | `forge conversation dump abc123 html` |
-| `forge conversation compact <id>` | Compact the conversation context | `forge conversation compact abc123` |
-| `forge conversation retry <id>` | Retry last command without modifying context | `forge conversation retry abc123` |
-| `forge conversation resume <id>` | Resume a conversation (starts interactive mode) | `forge conversation resume abc123` |
-| `forge conversation show <id>` | Show last assistant message | `forge conversation show abc123` |
-| `forge conversation info <id>` | Show detailed conversation information | `forge conversation info abc123` |
+| Command                                 | Description                                     | Example                               |
+| :-------------------------------------- | :---------------------------------------------- | :------------------------------------ |
+| `forge conversation list`               | List all conversations                          | `forge conversation list`             |
+| `forge conversation new`                | Create a new conversation and output its ID     | `forge conversation new`              |
+| `forge conversation dump <id> [format]` | Dump conversation as JSON or HTML               | `forge conversation dump abc123 html` |
+| `forge conversation compact <id>`       | Compact the conversation context                | `forge conversation compact abc123`   |
+| `forge conversation retry <id>`         | Retry last command without modifying context    | `forge conversation retry abc123`     |
+| `forge conversation resume <id>`        | Resume a conversation (starts interactive mode) | `forge conversation resume abc123`    |
+| `forge conversation show <id>`          | Show last assistant message                     | `forge conversation show abc123`      |
+| `forge conversation info <id>`          | Show detailed conversation information          | `forge conversation info abc123`      |
 
 ### Conversation Options
 
-| Flag | Description |
-| :--- | :--- |
+| Flag          | Description                       |
+| :------------ | :-------------------------------- |
 | `--porcelain` | Output in machine-readable format |
 
 ### Dump Format
@@ -132,18 +132,18 @@ forge conversation dump abc123 html
 
 Manage Model Context Protocol (MCP) servers:
 
-| Command | Description | Example |
-| :--- | :--- | :--- |
-| `forge mcp import` | Import MCP servers configuration from JSON | `forge mcp import` |
-| `forge mcp list` | List all MCP servers | `forge mcp list` |
-| `forge mcp remove <name>` | Remove a server by name | `forge mcp remove playwright` |
-| `forge mcp show <name>` | Show detailed configuration for a server | `forge mcp show playwright` |
-| `forge mcp reload` | Reload MCP servers and rebuild caches | `forge mcp reload` |
+| Command                   | Description                                | Example                       |
+| :------------------------ | :----------------------------------------- | :---------------------------- |
+| `forge mcp import`        | Import MCP servers configuration from JSON | `forge mcp import`            |
+| `forge mcp list`          | List all MCP servers                       | `forge mcp list`              |
+| `forge mcp remove <name>` | Remove a server by name                    | `forge mcp remove playwright` |
+| `forge mcp show <name>`   | Show detailed configuration for a server   | `forge mcp show playwright`   |
+| `forge mcp reload`        | Reload MCP servers and rebuild caches      | `forge mcp reload`            |
 
 ### MCP Options
 
-| Flag | Description |
-| :--- | :--- |
+| Flag          | Description                       |
+| :------------ | :-------------------------------- |
 | `--porcelain` | Output in machine-readable format |
 
 ## Advanced Usage
@@ -344,9 +344,9 @@ forge --verbose -C ~/my-project -p "debug the failing test"
 
 ## See Also
 
-* [Quickstart Guide](/docs/quickstart) - Getting started with Forge
-* [Built-in Commands](/docs/commands) - Interactive slash commands
-* [Operating Agents](/docs/operating-agents) - Understanding Forge agents
-* [MCP Integration](/docs/mcp-integration) - Model Context Protocol integration
-* [Workflow Configuration](/docs/workflow-config) - Creating and using workflows
-* [Environment Configuration](/docs/environment-configuration) - Advanced configuration options
+- [Quickstart Guide](/docs/quickstart) - Getting started with Forge
+- [Built-in Commands](/docs/commands) - Interactive slash commands
+- [Operating Agents](/docs/operating-agents) - Understanding Forge agents
+- [MCP Integration](/docs/mcp-integration) - Model Context Protocol integration
+- [Workflow Configuration](/docs/workflow-config) - Creating and using workflows
+- [Environment Configuration](/docs/environment-configuration) - Advanced configuration options
