@@ -66,7 +66,7 @@ const sidebars: SidebarsConfig = {
       label: "Advanced Configuration",
       collapsed: false,
       items: [
-        "workflow-config",
+        "forge-configuration",
         "environment-configuration",
         "mcp-integration",
         "context-compaction",
