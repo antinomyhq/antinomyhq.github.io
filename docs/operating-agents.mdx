@@ -11,11 +11,11 @@ Forge provides three specialized agents, each designed for different stages of d
 
 ## Agent Comparison
 
-| Agent | Access | Purpose | Best For |
-|-------|--------|---------|----------|
-| **Muse** | Read-write | Planning & analysis | Reviewing impact, planning changes, critical systems |
-| **Forge** | Read-write | Implementation | Making changes, fixing bugs, creating features |
-| **Sage** | Read-only | Research & investigation | Understanding codebases, tracing bugs, analyzing architecture |
+| Agent     | Access     | Purpose                  | Best For                                                      |
+| --------- | ---------- | ------------------------ | ------------------------------------------------------------- |
+| **Muse**  | Read-write | Planning & analysis      | Reviewing impact, planning changes, critical systems          |
+| **Forge** | Read-write | Implementation           | Making changes, fixing bugs, creating features                |
+| **Sage**  | Read-only  | Research & investigation | Understanding codebases, tracing bugs, analyzing architecture |
 
 **Typical workflow**: Use **Muse** to plan → Switch to **Forge** to implement
 
@@ -30,6 +30,7 @@ Muse analyzes your codebase and creates detailed implementation plans. It propos
 **Switch to Muse**: `/muse`
 
 **Ideal for:**
+
 - Planning complex refactoring
 - Understanding scope before implementation
 - Working with critical or production code
@@ -37,6 +38,7 @@ Muse analyzes your codebase and creates detailed implementation plans. It propos
 - Changes requiring team review
 
 **Example prompts:**
+
 - "How would you redesign this API for better scalability?"
 - "Create a plan to add user authentication"
 - "What's needed to implement pagination?"
@@ -50,6 +52,7 @@ Forge implements solutions directly. It modifies files, creates code, and execut
 **Switch to Forge**: `/forge` (active by default)
 
 **Ideal for:**
+
 - Quick fixes and routine tasks
 - Refactoring with immediate results
 - Implementing approved plans
@@ -57,6 +60,7 @@ Forge implements solutions directly. It modifies files, creates code, and execut
 - Creating new features
 
 **Example prompts:**
+
 - "Fix the null pointer exception in UserService"
 - "Create a React component for the user profile"
 - "Add unit tests for the payment processor"
@@ -74,11 +78,13 @@ You don't need to manually switch to Sage; it works transparently when the agent
 ## Switching Between Agents
 
 You can switch between agents at any time during your session:
+
 - Use `/muse` to switch to Muse Agent
-- Use `/forge` to switch to Forge Agent  
+- Use `/forge` to switch to Forge Agent
 - Use `/agent` to see all available agents and choose from a dropdown
 
 **Common patterns:**
+
 - Use **Muse** before making significant changes to critical systems
 - Switch to **Forge** when you're ready to implement
 - Both agents will automatically use **Sage** for research when needed
