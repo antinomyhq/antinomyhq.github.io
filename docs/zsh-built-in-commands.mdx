@@ -1,0 +1,421 @@
+---
+title: Command Reference
+sidebar_position: 2
+description: "Quick reference for commands available in ZSH mode"
+sidebar_label: Built-in Commands
+---
+
+# Command Reference for ZSH Mode
+
+Execute Forge commands in ZSH using the `:` prefix. Your shell aliases and environment work normally.
+
+:::warning Requirements
+Pressing `<Tab>` to open fuzzy selectors requires fd and fzf. See [Installation](/docs/zsh-installation) guide.
+:::
+
+## Basic Usage
+
+```bash
+# Send prompt to current agent
+: explain this error message
+
+# Execute a command
+:info
+:new
+
+# Switch agent and send prompt
+:sage explain this algorithm
+:muse plan the architecture
+:forge implement the feature
+
+# Tag files in prompts
+: review @src/main<Tab>
+: analyze @[src/utils/helper.ts]
+```
+
+## Commands
+
+### info
+
+Display comprehensive system environment and status information.
+
+The `:info` command provides a detailed overview of your current Forge environment, including paths, configuration, model settings, token usage, and conversation details.
+
+**Example output:**
+
+```
+❯ :info
+
+PATHS
+  Logs: ~/forge/logs
+  Agents: ~/forge/agents
+  History: ~/forge/.forge_history
+  Checkpoints: ~/forge/snapshots
+  Policies: ~/forge/permissions.yaml
+
+ENVIRONMENT
+  Version: 0.1.0
+  Working Directory: ~/Desktop/workspace/antinomyhq.github.io
+  Shell: /bin/zsh
+  Git Branch: main
+
+MODEL
+  Current: anthropic/claude-sonnet-4
+  Provider (URL): https://openrouter.ai/api/v1/
+  API Key: sk-or-v1-9999...9999
+
+TOKEN USAGE
+  Input Tokens: 17,860
+  Cached Tokens: 7,720 [43%]
+  Output Tokens: 356
+  Cost: $0.0023
+
+CONVERSATION
+  ID: 1b15bef2-128c-4ff1-9c78-45feef4a9076
+  Title: Documentation Enhancement
+```
+
+**Output sections explained:**
+
+- **PATHS**: File system locations for Forge components
+  - `Logs`: Where system and error logs are stored
+  - `Agents`: Directory containing agent configurations
+  - `History`: Command history file for session recall
+  - `Checkpoints`: Saved conversation snapshots and state
+  - `Policies`: Permission and access control configuration file
+
+- **ENVIRONMENT**: Current system and project context
+  - `Version`: Forge application version number
+  - `Working Directory`: Current project/working directory path
+  - `Shell`: Command shell being used (bash, zsh, etc.)
+  - `Git Branch`: Active git branch in the working directory (if applicable)
+
+- **MODEL**: AI model configuration and credentials
+  - `Current`: Active AI model being used for conversations
+  - `Provider (URL)`: API endpoint URL for the model provider
+  - `API Key`: Masked API key for security (shows first/last characters only)
+
+- **TOKEN USAGE**: Resource consumption and costs accumulated for the entire conversation
+  - `Input Tokens`: Total tokens consumed by user input and context across all messages
+  - `Cached Tokens`: Previously processed tokens reused for efficiency (percentage shown)
+  - `Output Tokens`: Total tokens generated in AI responses throughout the conversation
+  - `Cost`: Total estimated monetary cost based on accumulated token usage
+
+- **CONVERSATION**: Current chat session details
+  - `ID`: Unique identifier for the current conversation
+  - `Title`: Human-readable name or high level description of the conversation
+
+**When to use:** Use this when you need to troubleshoot, find configuration files, check token usage, verify your current model setup, or get an overview of your Forge environment.
+
+```bash
+:info
+```
+
+### new
+
+Start a new conversation while preserving history.
+
+The `:new` command clears the current conversation context and starts a fresh task. This is useful when you've completed your current task and want to begin something entirely different. Previous conversations are preserved and accessible via `:conversation`.
+
+**When to use:** Use this when switching between unrelated tasks to ensure a clean context.
+
+```bash
+:new
+```
+
+### conversation
+
+Browse and select from your recent conversations.
+
+The `:conversation` command displays your last 20 conversations with timestamps and titles, allowing you to interactively select one to resume.
+
+**Example output:**
+
+```
+❯ :conversation
+? Select the conversation to resume:
+ > Current Time Query          6 days 1h 44m ago
+   React component refactoring 2 days 3h 15m ago
+   API error handling fixes    1 week 2 days ago
+   Database migration setup    1 week 4 days ago
+[Type a name or use arrow keys to navigate and Enter to select]
+```
+
+**When to use:** When you want to return to a previous conversation.
+
+**Usage:**
+
+- Navigate with arrow keys or type to search
+- Press Enter to select a conversation
+- The `>` indicator shows your current selection
+- Each entry shows conversation title and relative time
+
+```bash
+:conversation
+```
+
+### retry
+
+Retry the last message in the conversation.
+
+The `:retry` command re-executes the most recent message in the conversation. This is useful when a command failed due to temporary issues or when you want to run the same operation again.
+
+**When to use:** Use this when you want to re-run the last command that failed due to network issues, temporary errors, or when you need to execute the same operation multiple times.
+
+```bash
+:retry
+```
+
+### compact
+
+Compact the conversation context.
+
+The `:compact` command reduces the conversation context by summarizing or removing older messages to optimize memory usage and performance.
+
+**When to use:** Use this when you have a long conversation and want to reduce context size while preserving important information.
+
+```bash
+:compact
+```
+
+### dump
+
+Save conversation as JSON or HTML.
+
+The `:dump` command saves the current conversation to a file for future reference. By default, it saves in JSON format, but you can specify HTML format using `:dump html`.
+
+**Usage:**
+
+- `:dump` - Saves as JSON format
+- `:dump html` - Saves as HTML format
+
+**When to use:** Use this when you need to debug issues, inspect the conversation context, or report problems to the development team.
+
+```bash
+:dump          # JSON format
+:dump html     # HTML format
+```
+
+### provider
+
+Switch to a different AI provider.
+
+The `:provider` command displays an interactive list of your configured AI providers and allows you to switch between them. Only providers with valid API keys set in the environment will appear in the list.
+
+**Example output:**
+
+```
+Provider > 
+4/4
+  OpenRouter   [openrouter.ai]
+  Requesty     [router.requesty.ai]
+  Anthropic    [api.anthropic.com]
+  VertexAi     [us-east5-aiplatform.googleapis.com]
+```
+
+**What happens after selection:**
+
+- Forge switches to the selected provider
+- You'll be prompted to select a compatible model
+- The conversation continues with the new provider/model
+
+**When to use:** Use this when you want to change which AI provider Forge uses for processing your requests.
+
+:::tip Provider Setup
+To add more providers to the list, configure their API keys following the [Provider Setup Guide](/docs/custom-providers).
+:::
+
+```bash
+:provider
+```
+
+### model
+
+Switch to a different model.
+
+The `:model` command allows you to interactively select from available AI models and set your preferred model in the project's forge.yaml configuration file.
+
+**Example output:**
+
+```
+Model > 
+8/8
+  anthropic/claude-3.5-sonnet
+  anthropic/claude-3-opus
+  anthropic/claude-3-haiku
+  openai/gpt-4-turbo
+  openai/gpt-4
+  google/gemini-pro
+  meta-llama/llama-3-70b
+  mistralai/mixtral-8x7b
+```
+
+This will:
+
+1. Display an interactive selection menu with all available models
+2. Update the standard_model anchor in your forge.yaml file with your selection
+3. Confirm the change with a success message
+
+The model choice will persist between sessions as it's stored in your configuration file.
+
+**When to use:** Use this when you want to change which AI model Forge uses for processing your requests.
+
+```bash
+:model
+```
+
+### tools
+
+List all available tools with their descriptions and schema.
+
+The `:tools` command displays a comprehensive list of all available tools, categorized by type. Tools marked with `[✓]` are currently available, while `[ ]` indicates unavailable tools.
+
+**Example output:**
+
+```
+❯ :tools
+
+SYSTEM
+  [✓] read
+  [✓] read_image
+  [✓] write
+  [✓] search
+  [✓] remove
+  [✓] patch
+  [✓] undo
+  [✓] shell
+  [✓] fetch
+  [ ] followup
+  [ ] plan
+
+AGENTS
+  [ ] forge
+  [ ] prime
+  [✓] sage
+```
+
+**Tool categories:**
+
+- **SYSTEM**: Core file operations and utilities (read, write, search, patch, shell, etc.)
+- **AGENTS**: Agent-specific tools available to different agent types
+
+**When to use:** Use this when you want to see what tools are available or need to understand tool capabilities and parameters.
+
+```bash
+:tools
+```
+
+## Agents
+
+### forge
+
+Main agent for technical development with full read-write access.
+
+The `:forge` command switches to Forge Agent, where it can execute commands and implement changes. This is the default agent.
+
+**When to use:** Use this to switch back to the Forge Agent if you were previously using a different agent. This is the agent for actual implementation work.
+
+```bash
+:forge implement user authentication
+```
+
+### muse
+
+Planning agent that generates implementation plans without modifying code.
+
+The `:muse` command (also available as `:plan`) switches to the Muse Agent, where it analyzes and suggests changes without modifying files.
+
+**When to use:** Use this when you want to analyze your codebase and suggest changes without actually implementing them. This is useful for understanding what would happen before making changes.
+
+```bash
+:muse plan a refactor for better testability
+:plan create architecture for new feature
+```
+
+### sage
+
+Research agent that analyzes code and answers questions without modifications.
+
+The `:sage` command (also available as `:ask`) switches to the Sage Agent, a read-only agent focused on code analysis and answering questions.
+
+**When to use:** Use this when you want to understand existing code, analyze patterns, or get explanations without any risk of modifications.
+
+```bash
+:sage explain this authentication flow
+:ask what are the performance implications?
+```
+
+### reset
+
+Clear conversation context while keeping current agent.
+
+The `:reset` command clears the current conversation context without changing the active agent. This is useful when you want to start fresh on a new task with the same agent.
+
+**When to use:** Use this when switching between unrelated tasks while staying with the same agent.
+
+```bash
+:reset
+```
+
+## File Tagging
+
+Reference files in your prompts using `@filename`. Press Tab for fuzzy finding (requires fd/fzf).
+
+```bash
+: review @package<Tab>
+: compare @src/auth/login<Tab> and @src/auth/signup<Tab>
+```
+
+Without fd/fzf, use full paths with brackets:
+
+```bash
+: review @[src/components/Header.tsx]
+```
+
+:::info What happens without fd/fzf?
+If fd and fzf aren't installed, Tab completion won't trigger the fuzzy finder. You'll need to type the full file path manually using the `@[path]` syntax.
+:::
+
+## Workflows
+
+**Multi-Agent Collaboration:**
+
+```bash
+:sage explain how authentication works
+:muse plan OAuth integration
+:forge implement the OAuth changes
+```
+
+**Session Management:**
+
+```bash
+:info              # Check status
+:model             # Switch model
+:reset             # Clear context
+:dump html         # Export for debugging
+:conversation      # Resume previous work
+:new               # Start fresh
+```
+
+**Fuzzy Command Selection:**
+
+Press Tab after `:` to search all commands and agents (requires fd/fzf).
+
+```bash
+:<Tab>
+```
+
+## Tips
+
+- Use `:reset` when switching between unrelated tasks
+- Use file tagging (`@file<Tab>`) for precision
+- Use `:sage` for understanding, `:muse` for planning, `:forge` for coding
+- Check `:info` regularly to monitor token usage
+- For debugging use `:dump html`
+
+## Next Steps
+
+- [Troubleshooting](/docs/zsh-troubleshooting) - Fix common issues
+- [File Tagging Guide](/docs/file-tagging-guide) - Advanced file selection techniques
+- [Interactive Mode Commands](/docs/commands) - Command reference for interactive mode
+- [Custom Agents](/docs/agent-definition-guide) - Create specialized agents

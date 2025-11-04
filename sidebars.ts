@@ -29,14 +29,16 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Features", // Renamed from "Core Features" for better hierarchy
       collapsed: false,
+      items: ["commands", "shell-commands", "auto-complete", "operating-agents", "custom-rules", "sandbox-feature"],
+    },
+    {
+      type: "category",
+      label: "ZSH",
+      collapsed: false,
       items: [
-        "commands",
-        "shell-commands",
-        "zsh-support",
-        "auto-complete",
-        "operating-agents",
-        "custom-rules",
-        "sandbox-feature",
+        {type: "doc", id: "zsh-installation", label: "Installation"},
+        {type: "doc", id: "zsh-built-in-commands", label: "Built-in Commands"},
+        {type: "doc", id: "zsh-troubleshooting", label: "Troubleshooting"},
       ],
     },
     {

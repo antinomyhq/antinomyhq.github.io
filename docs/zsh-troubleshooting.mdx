@@ -1,0 +1,75 @@
+---
+title: Troubleshooting Guide
+sidebar_position: 3
+description: "Solutions to common ZSH integration issues"
+sidebar_label: Troubleshooting
+---
+
+## Troubleshooting
+
+#### Command Not Found
+
+If `: command not found` appears:
+
+1. Ensure you added the source line to `~/.zshrc`
+2. Reload your shell: `source ~/.zshrc` or `exec zsh`
+3. Verify `FORGE_BIN` is set correctly: `echo $FORGE_BIN`
+4. Check the path matches your installation method (global vs npx)
+
+#### File Tagging Doesn't Work
+
+If `@filename<Tab>` does nothing, fd and fzf are not installed. See [Step 3](#installation) or our [ZSH Dependencies Installation Guide](/docs/fd-fzf-installation).
+
+You can still use full file paths manually:
+
+```bash
+: review the changes in @[src/components/Header.tsx]
+```
+
+#### Syntax Highlighting Problems
+
+If highlighting doesn't appear:
+
+1. **Ensure zsh-syntax-highlighting is installed**:
+
+  ```bash
+  # Check if installed via package manager
+  brew list | grep zsh-syntax-highlighting # macOS
+  dpkg -l | grep zsh-syntax-highlighting   # Ubuntu/Debian
+  ```
+
+2. **Verify correct loading order in ~/.zshrc**:
+  - Forge integration must be loaded BEFORE zsh-syntax-highlighting
+  - zsh-syntax-highlighting must be the LAST plugin sourced
+
+3. **Check if zsh-syntax-highlighting is loaded**:
+
+  ```bash
+  echo $ZSH_HIGHLIGHT_VERSION
+  ```
+
+  If this returns empty, the plugin isn't loaded.
+
+4. **Ensure you're using ZSH (not bash)**: `echo $SHELL`
+5. **Check that your terminal supports colors**: `echo $TERM`
+6. **Try reloading**: `source ~/.zshrc`
+
+7. **For manual installations**, verify the path is correct:
+  ```bash
+  ls -la /path/to/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  ```
+
+#### No agent has subscribed to the event
+
+If you get "agent not found" errors:
+
+1. Check your available agents by running `/agents` in a Forge session
+2. Verify agent name spelling (case-sensitive)
+3. Test with a basic command: `: list my current working directory and git status`
+
+## Related Documentation
+
+- [Installation Guide](/docs/zsh-installation) - Initial setup instructions
+- [Built-in Commands](/docs/zsh-built-in-commands) - Command reference
+- [fd/fzf Installation](/docs/fd-fzf-installation) - Detailed dependency installation
+- [File Tagging Guide](/docs/file-tagging-guide) - File tagging best practices
