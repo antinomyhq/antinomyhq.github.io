@@ -17,7 +17,7 @@ The system is designed to work the way you'd expect: keep sensitive files out of
 Forge checks multiple ignore sources when deciding whether to show a file. Here's the order of precedence (highest to lowest):
 
 1. **`.ignore` files** - Highest priority, overrides everything else
-2. **`.gitignore` files** - Standard Git ignore patterns  
+2. **`.gitignore` files** - Standard Git ignore patterns
 3. **Global gitignore** - Your personal ignore file (`~/.config/git/ignore`)
 4. **`.git/info/exclude`** - Repository-specific excludes
 
@@ -32,6 +32,7 @@ Forge automatically skips:
 - **Hidden files** - Files starting with `.` (except in your project root)
 
 **Hidden file examples:**
+
 - `.env` in project root → **Visible** ✓
 - `.env` in `src/` subdirectory → **Hidden** ✗
 - `.cache/` directory → **Hidden** ✗ (starts with `.`)
@@ -50,19 +51,23 @@ Forge automatically skips:
 3. **Binary or non-text file** (Forge skips these)
 
 **Check if Git is ignoring it:**
+
 ```bash
 git check-ignore -v path/to/file
 ```
 
 **Example output:**
+
 ```
 .gitignore:3:node_modules/    node_modules/package/index.js
 ```
+
 This means line 3 of `.gitignore` is hiding it.
 
 **Important:** `git check-ignore` only checks `.gitignore` patterns. It won't tell you if a file is hidden by `.ignore` or other Forge-specific filters.
 
 **If `git check-ignore` shows nothing but the file is still hidden:**
+
 - Check your `.ignore` file (Git doesn't know about `.ignore` files)
 - Verify the file isn't in a hidden directory (like `.cache/`)
 - Confirm it's a text file, not binary
@@ -70,11 +75,13 @@ This means line 3 of `.gitignore` is hiding it.
 **To make a file visible:**
 
 If hidden by `.gitignore`, add to `.ignore`:
+
 ```gitignore
 !path/to/file
 ```
 
 If it's a hidden file (starts with `.`), add to `.ignore`:
+
 ```gitignore
 !.important-config
 ```
@@ -92,6 +99,7 @@ If it's a hidden file (starts with `.`), add to `.ignore`:
 ✓ Use `**` for recursive matching: `**/temp/` matches `temp/` anywhere
 
 **Test your pattern:**
+
 ```bash
 # Check if a specific file matches
 git check-ignore -v path/to/file
@@ -106,11 +114,13 @@ git check-ignore -v $(find . -name "*.log")
 **Precedence issues:**
 
 If a file should be ignored but isn't:
+
 1. Check if it's whitelisted with `!` in a `.ignore` file
 2. Verify the pattern is in the right ignore file (`.ignore` overrides `.gitignore`)
 3. Check for more nested ignore files that might override parent patterns
 
 **Still not working?**
+
 - Verify your ignore file is saved
 - Restart your Forge session (ignore rules are loaded at startup)
 - Check for typos in file paths
