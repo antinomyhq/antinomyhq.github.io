@@ -15,7 +15,7 @@ Agent delegation enables agents to use other agents as tools, creating specializ
 
 1. **Agent Discovery**: The system automatically discovers agents from your agent files
 2. **Tool Conversion**: Each agent becomes a callable tool with its ID as the tool name
-4. **Execution**: The system routes agent tool calls to the appropriate specialist
+3. **Execution**: The system routes agent tool calls to the appropriate specialist
 
 ### Required Configuration
 
@@ -30,6 +30,7 @@ description: "What this agent specializes in"
 ```
 
 **Critical Requirements:**
+
 - `id`: Unique identifier that becomes the tool name
 - `description`: Required for tool discovery and validation
 
@@ -39,11 +40,9 @@ When calling another agent as a tool, use this format:
 
 ```json
 {
-      "name": "specialist-agent",
+  "name": "specialist-agent",
   "arguments": {
-    "tasks": [
-      "Specific task description for the agent to perform"
-    ]
+    "tasks": ["Specific task description for the agent to perform"]
   }
 }
 ```
@@ -55,10 +54,11 @@ When calling another agent as a tool, use this format:
 Create an orchestrator agent that delegates to specialist agents:
 
 **1. Security Specialist** (`~/.forge/agents/security-specialist.md`):
+
 ```yaml
 ---
 id: "security-specialist"
-title: "Security Specialist" 
+title: "Security Specialist"
 description: "Reviews code for security vulnerabilities"
 tool_supported: true
 tools:
@@ -66,12 +66,12 @@ tools:
   - search
 max_turns: 30
 ---
-
 You are a security expert focused on identifying vulnerabilities in code.
 Focus on authentication, authorization, and input validation issues.
 ```
 
 **2. Code Review Orchestrator** (`./.forge/agents/code-review-orchestrator.md`):
+
 ```yaml
 ---
 id: "code-review-orchestrator"
@@ -109,6 +109,7 @@ When you need security analysis, call the security-specialist agent with specifi
 ## Agent Discovery
 
 The system loads agents from three sources with precedence:
+
 1. **CWD Agents**: `./.forge/agents/*.md` (highest priority)
 2. **Global Agents**: `~/.forge/agents/*.md` (Unix/macOS) or `%USERPROFILE%\.forge\agents\*.md` (Windows)
 3. **Built-in Agents**: Embedded in application (lowest priority)
