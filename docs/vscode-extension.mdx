@@ -74,6 +74,8 @@ That's it. No typing, no manual copying.
 
 Format: `@[<filepath>:<line start>:<line end>]`
 
+The path format (absolute or relative) is controlled by the `forge.pathFormat` setting (default: absolute).
+
 **How selection works:**
 
 - **No selection**: `@[path/to/file.js]` → References entire file
@@ -96,13 +98,26 @@ Now Forge can see exactly what code you're talking about, with full context and 
 **Alternative ways to copy:**
 
 - **Command Palette**: `Ctrl+Shift+P` → type "Copy File Reference"
-- **Right-click Menu**: Select code → right-click → "Copy File Reference"
+- **Right-click Menu**: Select code → right-click → Choose "Copy Absolute Path" or "Copy Relative Path"
+
+### Context Menu Commands for Path Control
+
+Want to choose the path format on-the-fly? The context menu gives you direct control:
+
+**How to use:**
+
+1. Right-click in any editor
+2. Choose either:
+   - **Copy Absolute Path**: Always uses absolute path (e.g., `/Users/name/project/src/file.ts`)
+   - **Copy Relative Path**: Always uses workspace-relative path (e.g., `src/file.ts`)
+
+These commands work independently of the `forge.pathFormat` setting, giving you direct control over the path format for each copy operation.
 
 ### Start New Forge Session
 
 Start a Forge terminal directly in VS Code without switching windows.
 
-**How to use:**
+**How to access (choose any method):**
 
 - **Command Palette**: `Ctrl+Shift+P` → type "Start New Forge Session"
 - **Right-click Menu**: Right-click in any file → "Start New Forge Session"
@@ -116,6 +131,18 @@ The extension will:
 4. Auto-paste any file reference from the current editor (if open)
 
 ## Real-World Examples
+
+### Path Format Examples
+
+The extension supports both absolute and relative path formats:
+
+```bash
+# Absolute paths (default)
+@[/Users/name/project/src/components/Button.tsx:10:20]
+
+# Relative paths (forge.pathFormat: "relative")
+@[src/components/Button.tsx:10:20]
+```
 
 ### Debugging Issues
 
@@ -161,46 +188,73 @@ Forge understands your theme system and suggests consistent changes across files
 
 The extension provides several settings to customize its behavior. Access settings via **File → Preferences → Settings → Extensions → Forge**.
 
-### Available Settings
+### Open Terminal
 
-#### `forge.terminalMode`
+**Setting:** `forge.openTerminal`
 
-Controls terminal interaction when copying file references with `Ctrl+U`.
+Control whether to automatically open a Forge terminal when copying file references with `Ctrl+U`.
 
-- **Type**: String (dropdown)
-- **Options**:
-  - `once` (default): Open terminal once and reuse it for subsequent operations
-  - `never`: Never open terminal, only copy file reference to clipboard
-- **Default**: `once`
+- **`once`** (default): Open terminal once and reuse it for subsequent operations
+- **`never`**: Never open terminal, only copy file reference to clipboard
 
-**When to use `once`:** Most users should use this. The extension intelligently manages Forge terminals, creating one when needed and reusing it for subsequent file references.
+**Use `once` if:** You want the extension to automatically create and manage Forge terminals for you.
 
-**When to use `never`:** Use this if you always work with Forge in an external terminal and only want the extension to copy file references to clipboard without any terminal interaction.
+**Use `never` if:** You prefer to manually manage your own Forge terminal (whether internal or external) and only want the extension to copy file references to clipboard.
 
-#### `forge.pasteDelay`
+### Auto Paste
 
-Delay in milliseconds before auto-pasting file reference into a newly created Forge terminal.
+**Setting:** `forge.autoPaste`
 
-- **Type**: Number
+Toggle automatic pasting of file references into Forge terminals.
+
+- **`true`** (default): Automatically paste file references after the paste delay
+- **`false`**: Only copy to clipboard, paste manually
+
+**Enable if:** You want the extension to automatically paste file references into Forge terminals.
+
+**Disable if:** You prefer to manually paste file references. The extension will still copy references to clipboard.
+
+### Paste Delay
+
+**Setting:** `forge.pasteDelay`
+
+Set the delay (in milliseconds) to wait for Forge to start before auto-pasting file references.
+
 - **Default**: `5000` (5 seconds)
-- **Range**: 0-10000 milliseconds
 
-**Why this exists:** When the extension creates a new Forge terminal, it needs time to start up before accepting input. This delay ensures the file reference is pasted after Forge is ready.
+**When this applies:** Only when the extension automatically creates a new Forge terminal (via `Ctrl+U` when no terminal exists, or "Start New Forge Session" command). Does not apply to manually started Forge terminals.
 
-**When to adjust:**
+**Why this exists:** Forge needs time to start up before accepting input. This delay ensures the file reference is pasted after Forge is ready.
 
-- If file references aren't being pasted: Increase the value (try 7000-10000ms)
-- If you have a fast machine and want quicker pasting: Decrease the value (try 3000-4000ms)
-- Note: This only affects newly created terminals, not existing ones
+**Adjust this if:**
+- File references aren't being pasted → Increase to 7000-10000ms
+- You have a fast machine → Decrease to 3000-4000ms
 
-#### `forge.showInstallationPrompt`
+### Path Format
 
-Show a prompt to install Forge CLI if it's not detected in your PATH.
+**Setting:** `forge.pathFormat`
 
-- **Type**: Boolean
-- **Default**: `true`
+Choose between absolute or relative file paths when copying references.
 
-**When to disable:** If you use Forge via `npx` or have it installed in a non-standard location, you might want to disable this prompt.
+- **`absolute`** (default): Full file paths (e.g., `/Users/name/project/src/file.ts`)
+- **`relative`**: Workspace-relative paths (e.g., `src/file.ts`)
+
+**Use `absolute` if:** You want unambiguous paths that work everywhere (recommended for most users).
+
+**Use `relative` if:** You prefer shorter paths or work with multiple workspace folders.
+
+**Tip:** Need a different format just once? Right-click in the editor and choose "Copy Absolute Path" or "Copy Relative Path" to override this setting for that specific copy.
+
+### Installation Prompt
+
+**Setting:** `forge.showInstallationPrompt`
+
+Toggle the installation prompt when Forge CLI is not detected in your PATH.
+
+- **`true`** (default): Show installation prompt
+- **`false`**: Hide installation prompt
+
+**Disable if:** You use Forge via `npx` or have it installed in a non-standard location.
 
 ## Troubleshooting
 
@@ -231,7 +285,7 @@ This usually means another extension grabbed that shortcut. Here's how to fix it
 Try these workarounds:
 
 - Use Command Palette: `Ctrl+Shift+P` → "Copy File Reference"
-- Use right-click menu → "Copy File Reference"
+- Use right-click menu → "Copy Absolute Path" or "Copy Relative Path"
 - Check if you're in a text file (extension won't work on images/binaries)
 - Some systems have clipboard permission issues - restart VS Code usually fixes this
 
@@ -246,10 +300,11 @@ Try these workarounds:
 
 **If file references aren't being pasted automatically:**
 
+- Check that `forge.autoPaste` is enabled (default: `true`)
 - Increase the `forge.pasteDelay` setting (try 7000-10000ms for slower machines)
 - The default is 5000ms (5 seconds) - if that's not enough, Forge may need more time to start
 - Check that your terminal shell is compatible (bash, zsh, PowerShell work well)
-- Try using `Ctrl+U` to copy the reference, then manually paste it into the Forge terminal
+- Try disabling `forge.autoPaste` and manually paste references using `Ctrl+U` to copy, then paste into the Forge terminal
 
 ### Weird File Paths
 
