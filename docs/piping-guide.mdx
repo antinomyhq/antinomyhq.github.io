@@ -40,31 +40,6 @@ When you pipe content to Forge:
 
 ## Critical Behavior
 
-### Empty Input Causes Hanging
-
-:::danger Always Check for Empty Output
-Empty piped content causes Forge to wait indefinitely for interactive input because it can't distinguish between "no input yet" and "no input ever."
-
-**Problem commands:**
-
-```bash
-# These HANG if they produce no output
-git diff | forge
-grep "pattern" file.txt | forge
-find . -name "*.xyz" | forge
-```
-
-**Solution - Include instructions with command substitution:**
-
-```bash
-echo "Review this diff: $(git diff main)" | forge
-
-# Or using here-string
-forge <<< "Review this PR: $(git diff main)"
-```
-
-:::
-
 ### --prompt Flag Takes Precedence
 
 :::warning Cannot Combine Piping with --prompt
@@ -172,27 +147,9 @@ Focus on security and performance.
 EOF
 ```
 
-## Quick Reference
-
-**Safe patterns:**
-
-```bash
-echo "text" | forge
-forge <<< "text"
-echo "Review: $(command)" | forge
-```
-
-**Unsafe (will hang on empty output):**
-
-```bash
-git diff | forge
-grep "pattern" file.txt | forge
-```
-
 ## Tips
 
-1. **Always Verify Output**: Commands like `git diff`, `grep`, or `find` might return nothing. Check before piping to avoid hanging.
-2. **Don't Mix Input Methods**: The `--prompt` flag ignores piped content. Use one or the other.
-3. **Use Command Substitution**: `echo "Context: $(command)" | forge` ensures you always have content.
-4. **Mind Large Files**: Piped content is read entirely into memory.
-5. **Capture Errors**: Use `2>&1` to capture both stdout and stderr.
+1. **Don't Mix Input Methods**: The `--prompt` flag ignores piped content. Use one or the other.
+2. **Use Command Substitution**: `echo "Context: $(command)" | forge` ensures you always have content.
+3. **Mind Large Files**: Piped content is read entirely into memory.
+4. **Capture Errors**: Use `2>&1` to capture both stdout and stderr.
