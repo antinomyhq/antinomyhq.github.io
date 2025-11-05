@@ -254,14 +254,19 @@ max_tokens: 4096 # Maximum response length: 1 to 100,000 tokens (default: 20480)
 
 # CONTEXT COMPACTION (Optional - automatic context management)
 compact:
-  max_tokens: 2000 # Maximum tokens after compaction
-  token_threshold: 100000 # Trigger compaction when context exceeds this
-  retention_window: 6 # Number of recent messages to preserve
-  message_threshold: 200 # Trigger compaction after this many messages (default: 200)
-  turn_threshold: 50 # Trigger compaction after this many turns (optional)
-  eviction_window: 0.2 # Percentage of context that can be summarized (0.0-1.0)
+  # Triggering thresholds (ANY condition triggers compaction)
+  token_threshold: 100000 # Trigger when context exceeds this many tokens
+  message_threshold: 200 # Trigger after this many total messages
+  turn_threshold: 50 # Trigger after this many user turns (optional)
+  on_turn_end: false # Trigger on user message (use with caution, default: false)
+
+  # Compaction strategy (controls what to preserve)
+  retention_window: 6 # Number of recent messages to preserve unchanged
+  eviction_window: 0.2 # Percentage (0.0-1.0) of context to compact
+
+  # Summarization settings
+  max_tokens: 2000 # Maximum tokens for the generated summary
   model: claude-sonnet-4 # Model to use for compaction (optional)
-  on_turn_end: false # Whether to compact at turn end (default: false)
   prompt: | # Custom compaction prompt (optional)
     Summarize the following conversation context while preserving key technical details.
 
