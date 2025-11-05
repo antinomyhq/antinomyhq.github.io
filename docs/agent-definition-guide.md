@@ -287,7 +287,33 @@ Focus on production ready, scalable code with proper error handling, logging, an
 
 ## Available Tools and When to Use Them
 
-You can customize which tools each agent has access to. Here's when to use each tool:
+You can customize which tools each agent has access to using exact names or glob patterns for flexible configuration.
+
+### Tool Configuration with Glob Patterns
+
+Instead of listing every tool individually, use glob patterns to grant access to tool families:
+
+```yaml
+---
+id: my-agent
+title: My Custom Agent
+tools:
+  - read # Exact tool name
+  - write
+  - "mcp_*" # All MCP tools (mcp_weather, mcp_database, etc.)
+  - search
+---
+```
+
+Check the list of [built-in tools](./tools-reference.mdx).
+
+### Glob Pattern Syntax
+
+| Pattern | Description            | Example                                       |
+| ------- | ---------------------- | --------------------------------------------- |
+| `*`     | Match any characters   | `mcp_*` matches all MCP tools                 |
+| `?`     | Match single character | `read?` matches `read1`, `read2`              |
+| `[...]` | Match character class  | `tool[123]` matches `tool1`, `tool2`, `tool3` |
 
 ### Built-in Tools
 
@@ -314,7 +340,7 @@ You can customize which tools each agent has access to. Here's when to use each 
 
 ### MCP Tools (External Integrations)
 
-MCP (Model Context Protocol) tools connect your agents to external services. Once configured, they're automatically available to all agents without additional setup.
+MCP (Model Context Protocol) tools connect your agents to external services. Once configured, can be accessed using glob patterns.
 
 **Popular integrations:**
 
@@ -323,15 +349,21 @@ MCP (Model Context Protocol) tools connect your agents to external services. Onc
 - Email services for notifications
 - Browser automation for testing
 
-**Example**: After setting up a weather MCP server:
+**Example**: Grant access to all MCP tools automatically:
 
 ```yaml
 tools:
   - read
   - write
   - search
-  # get_weather is automatically available!
+  - "mcp_*" # Automatically includes all MCP tools like mcp_weather, mcp_database, etc.
 ```
+
+**Benefits of using glob patterns for MCP tools:**
+
+- **Automatic Access**: New MCP servers you add are automatically available to the agent
+- **No Configuration Updates**: Don't need to modify agent definitions when adding MCP tools
+- **Flexible Control**: Can still restrict specific MCP tools if needed
 
 Use `/tools` in Forge to see all available tools (MCP tools are listed separately).
 
@@ -359,6 +391,7 @@ tools:
   - read
   - write
   - patch
+  - "mcp_*" # All MCP tools for external integrations
 max_turns: 50
 ---
 
@@ -396,6 +429,7 @@ tools:
   - write
   - patch
   - shell
+  - "mcp_*" # Database and external service integrations
 max_turns: 75
 ---
 
