@@ -1,0 +1,263 @@
+---
+title: Quick Start Guide
+sidebar_position: 2
+description: "Get ZSH support running in minutes - essential steps only"
+sidebar_label: Quick Start
+---
+
+import Steps, {Step} from "../components/Steps"
+
+# ZSH Quick Start
+
+Get Forge working in your ZSH shell in 4 simple steps. This guide will set up the core integration so you can use the `:` prefix to send prompts to Forge while keeping all your shell aliases, functions, and environment intact.
+
+**What you'll be able to do:**
+
+- Send prompts to Forge using `: your prompt here`
+- Switch between agents like `:sage`, `:muse`, or `:forge`
+- Manage conversations with `:new` and `:conversation`
+- Keep using all your existing ZSH aliases and tools
+
+**Time required:** Quick setup with just 4 essential steps.
+
+## Installation
+
+<Steps>
+  <Step title="Install Forge">
+    [Install and set up Forge](/docs/installation) following the main installation guide.
+    
+    Choose either global installation via `npm` or `npx` usage. Remember your choice for the next step.
+  </Step>
+  
+  <Step title="Install fd and fzf">
+    These tools are required for tab completion features like quick file tagging with `@filename<Tab>` and fuzzy agent selection with `:<Tab>`.
+
+    ```bash
+    # macOS
+    brew install fd fzf
+
+    # Ubuntu/Debian
+    sudo apt install fd-find fzf
+
+    # Arch Linux
+    sudo pacman -S fd fzf
+    ```
+
+    **Other platforms:** See our [ZSH Dependencies Installation Guide](/docs/fd-fzf-installation) for detailed instructions.
+
+    **What you get:**
+
+    - Quick file tagging: `: review @package<Tab>`
+    - Fuzzy agent selection: `:<Tab>`
+
+  </Step>
+  
+  <Step title="Configure ZSH Integration">
+    Add Forge ZSH integration to your shell configuration:
+
+    If you installed Forge globally:
+    ```bash
+    # Add to ~/.zshrc
+    export FORGE_BIN=forge
+    source <($FORGE_BIN extension zsh)
+    ```
+
+    If you're using npx:
+    ```bash
+    # Add to ~/.zshrc
+    export FORGE_BIN="npx forgecode"
+    source <($FORGE_BIN extension zsh)
+    ```
+
+    Then reload your shell:
+    ```bash
+    source ~/.zshrc
+    ```
+
+  </Step>
+  
+  <Step title="Verify Installation">
+    Test that everything works:
+
+    ```bash
+    # Basic prompt
+    : hello world
+
+    # Check system info
+    :info
+
+    # Test tab completion
+    : review @<Tab>
+    ```
+
+    You should see Forge responding to your prompts and tab completion working for file tagging. 🎉
+
+  </Step>
+</Steps>
+
+## Enhance Your Experience
+
+The core setup above gives you full Forge functionality. These optional enhancements make the experience even better:
+
+---
+
+### Syntax Highlighting
+
+Add color-coded prompts to make Forge commands visually distinct in your terminal.
+
+Install the [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) plugin:
+
+**Option 1: Package Manager**
+
+```bash
+# macOS
+brew install zsh-syntax-highlighting
+
+# Ubuntu/Debian
+sudo apt install zsh-syntax-highlighting
+
+# Arch Linux
+sudo pacman -S zsh-syntax-highlighting
+
+# Fedora
+sudo dnf install zsh-syntax-highlighting
+```
+
+**Option 2: Oh My Zsh**
+
+```bash
+# Clone to Oh My Zsh plugins directory
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# Add to plugins in ~/.zshrc (must be last plugin)
+plugins=(... zsh-syntax-highlighting)
+```
+
+**Option 3: Manual Installation**
+
+```bash
+# Clone the repository
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+# Add to ~/.zshrc (must be at the end)
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+```
+
+::::warning Important Loading Order
+**zsh-syntax-highlighting must be sourced LAST** in your `.zshrc` file, after all other plugins and the Forge integration. This ensures proper highlighting of Forge prompts.
+::::
+
+---
+
+### Autocomplete Suggestions
+
+Get real-time autocomplete suggestions as you type, making it easier to repeat previous Forge commands.
+
+Install the [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) plugin:
+
+**Option 1: Package Manager**
+
+```bash
+# macOS
+brew install zsh-autocomplete
+
+# Arch Linux
+sudo pacman -S zsh-autocomplete
+
+# Gentoo (Portage)
+sudo emerge app-shells/zsh-autocomplete
+```
+
+After installing via package manager, add to your `~/.zshrc`:
+
+```bash
+source /path/to/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+```
+
+The exact path may vary depending on your package manager and system.
+
+**Option 2: Oh My Zsh**
+
+```bash
+# Clone to Oh My Zsh plugins directory
+git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete
+
+# Add to plugins in ~/.zshrc (before zsh-syntax-highlighting)
+plugins=(... zsh-autocomplete zsh-syntax-highlighting)
+```
+
+**Option 3: Manual Installation**
+
+```bash
+# Clone the repository
+git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git ~/.zsh/zsh-autocomplete
+
+# Add to ~/.zshrc (before zsh-syntax-highlighting)
+source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+```
+
+::::tip Optional Enhancement
+This plugin is optional but highly recommended. It will show autocomplete suggestions as you type, making it easier to reuse previous Forge prompts and commands.
+::::
+
+## Troubleshooting
+
+### Command Not Found
+
+If `: command not found` appears:
+
+1. Ensure you added the source line to `~/.zshrc`
+2. Reload your shell: `source ~/.zshrc` or `exec zsh`
+3. Verify `FORGE_BIN` is set correctly: `echo $FORGE_BIN`
+4. Check the path matches your installation method (global vs npx)
+
+### File Tagging Doesn't Work
+
+If `@filename<Tab>` does nothing:
+
+1. Verify fd and fzf are installed correctly (see Step 2 in [Installation](#installation))
+2. Reload your shell: `source ~/.zshrc` or `exec zsh`
+3. Check if fd is available: `which fd` (or `which fdfind` on Ubuntu/Debian)
+4. Check if fzf is available: `which fzf`
+
+You can still use full file paths manually:
+
+```bash
+: review the changes in @[src/components/Header.tsx]
+```
+
+### Syntax Highlighting Problems
+
+If highlighting doesn't appear:
+
+1. **Ensure zsh-syntax-highlighting is installed** (see [Syntax Highlighting](#optional-enhancements) above)
+
+2. **Verify correct loading order in ~/.zshrc**:
+   - Forge integration must be loaded BEFORE zsh-syntax-highlighting
+   - zsh-syntax-highlighting must be the LAST plugin sourced
+
+3. **Check if zsh-syntax-highlighting is loaded**:
+
+   ```bash
+   echo $ZSH_HIGHLIGHT_VERSION
+   ```
+
+   If this returns empty, the plugin isn't loaded.
+
+4. **Ensure you're using ZSH (not bash)**: `echo $SHELL`
+5. **Check that your terminal supports colors**: `echo $TERM`
+6. **Try reloading**: `source ~/.zshrc`
+
+### No agent has subscribed to the event
+
+If you get "agent not found" errors:
+
+1. Check your available agents by running `/agents` in a Forge session
+2. Verify agent name spelling (case-sensitive)
+3. Test with a basic command: `: list my current working directory and git status`
+
+## Next Steps
+
+- Learn about [Built-in Commands](/docs/zsh-built-in-commands) available in ZSH mode
+- Explore [file tagging](/docs/file-tagging-guide) to efficiently reference files in your prompts
+- Check the [Overview](/docs/zsh-overview) for usage examples and best practices

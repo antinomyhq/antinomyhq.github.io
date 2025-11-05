@@ -33,11 +33,20 @@ const sidebars: SidebarsConfig = {
         "commands",
         "cli-reference",
         "shell-commands",
-        "zsh-support",
         "auto-complete",
         "operating-agents",
         "custom-rules",
         "sandbox-feature",
+      ],
+    },
+    {
+      type: "category",
+      label: "ZSH",
+      collapsed: false,
+      items: [
+        {type: "doc", id: "zsh-overview", label: "Overview"},
+        {type: "doc", id: "zsh-quickstart", label: "Quick Start"},
+        {type: "doc", id: "zsh-built-in-commands", label: "Built-in Commands"},
       ],
     },
     {

@@ -1,0 +1,181 @@
+---
+title: ZSH Support Overview
+sidebar_position: 1
+description: "Keep your ZSH aliases and shell setup while getting AI assistance - no separate environment needed."
+sidebar_label: Overview
+---
+
+# ZSH Support: Keep Your Shell Aliases While Getting AI Help
+
+Stop losing access to your carefully crafted ZSH aliases, custom functions, and shell tooling every time you need AI assistance. The `:` sentinel character lets you stay in your native shell while getting help from Forge.
+
+**The Problem**: Forge's interactive mode creates a separate environment where your ZSH aliases, custom functions, and shell setup don't work. You're forced to choose between AI assistance or your productivity tools.
+
+**The Solution**: Use `:` to send prompts to Forge while staying in your native ZSH session:
+
+```bash
+# Your zsh plugins work normally
+gst
+gcam "fix: resolve memory leak"
+
+# But you can also get AI help instantly
+: analyze the memory usage patterns in @src/server.rs
+
+# Run your custom tools as part of your investigation
+ps aux | grep server
+htop -p $(pgrep server)
+
+# Continue with full context about the analysis
+: now optimize the memory allocations you identified in the server struct
+```
+
+**The Result**: Maintain context across both AI tasks and your custom shell operations, without switching environments or losing your workflow.
+
+## What You Get
+
+### Core Features (Work Immediately After Installation)
+
+- **Native Shell Integration**: Use `:` to access Forge AI while preserving all your ZSH aliases, functions, PATH modifications, and custom tooling
+- **Intelligent Context Management**: Maintain conversation context across prompts with agent targeting like `:sage` or `:muse`
+- **Syntax Highlighting**: Color-coded prompts optimized for dark terminals (requires zsh-syntax-highlighting plugin)
+
+### Advanced Features (Require fd and fzf)
+
+- **Fuzzy File Finding**: Quick file tagging with `@filename<Tab>`
+- **Fuzzy Agent Selection**: Press Tab after `:` to get a searchable list of available agents
+
+These features are optional but provide a significantly better experience. Installation instructions are in the [Quick Start](/docs/zsh-quickstart) guide.
+
+## Quick Start Examples
+
+```bash
+# Basic prompt
+: hello, can you help me debug this shell script?
+
+# Agent-specific prompt
+:sage what are the performance implications of this database query?
+
+# Continue the conversation with context
+: what optimizations would you recommend?
+
+# Reset when switching to a different task
+:new
+
+# Fuzzy agent selection (requires fd/fzf)
+:<Tab>
+
+# Fuzzy file finding (requires fd/fzf)
+: explain the config in @package<Tab>
+```
+
+## Usage
+
+### Basic Prompt Execution
+
+Send prompts to Forge using the `:` prefix:
+
+```bash
+: explain this error message
+: refactor this function to be more readable
+: add error handling to the database connection
+```
+
+The prompt goes to your last used agent, defaulting to the main Forge agent if this is your first interaction.
+
+### Agent Selection
+
+Target specific agents by including the agent name after the colon:
+
+```bash
+:sage explain the algorithm complexity and performance characteristics
+:muse create a plan for implementing user authentication with OAuth
+:forge refactor this function to be more maintainable
+```
+
+**Agent Selection Rules:**
+
+- **No agent specified** (`:`) = uses the previous agent, or Forge if first interaction
+- **Agent specified** (`:sage`) = switches to that agent and makes it the new default
+- **`:new`** = clears conversation context and set the agent to forge
+
+**Example workflow:**
+
+```bash
+# First interaction - goes to default Forge agent
+: help me debug this performance issue
+
+# Continues with same agent
+: what tools should I use to profile memory usage?
+
+# Switch to sage for analysis
+:sage analyze the complexity of this sorting algorithm
+
+# Continues with sage
+: what are the potential edge cases?
+
+# Clear context when switching tasks
+:new
+:forge implement the user login validation function
+```
+
+Press Tab after `:` for fuzzy agent selection _(requires fd/fzf)_.
+
+:::tip Agent Names
+
+- **forge** - Main agent for coding, refactoring, debugging, and general development tasks
+- **muse** - Planning and strategy for complex features
+- **sage** - Questions and analysis without making code modifications
+
+Run `/agents` in a Forge session to see your configured agents.
+
+:::
+
+### Context Management
+
+ZSH Support maintains conversation context across prompts. Use `:new` to clear context when switching to a new task:
+
+```bash
+# Working on database optimization
+: analyze the slow queries in @database/analytics.sql
+
+# Run shell commands for investigation
+ps aux | grep postgres
+htop -p $(pgrep postgres)
+
+# Continue the conversation - agent remembers context
+: based on what I found, the CPU usage is high, what should I check next?
+
+# Switch to a completely different task
+:new
+
+# Start fresh - no database context carried over
+: help me set up CI/CD pipeline for this project
+```
+
+The agent remembers previous conversations within the same session, letting you work naturally with a mix of shell commands and AI assistance.
+
+### File Tagging _(requires fd/fzf)_
+
+Tag files in your prompts using `@` followed by a partial filename and Tab:
+
+```bash
+: review the changes in @package<Tab>
+: explain the logic in @src/utils/helper<Tab>
+: optimize the performance of @database/queries<Tab>
+```
+
+When you press Tab:
+
+1. A fuzzy finder window opens
+2. Type to filter files by name
+3. Use arrow keys to navigate
+4. Press Enter to select the file
+5. The full file path is inserted into your prompt
+
+The fuzzy finder searches through your project files and respects your `.gitignore` automatically.
+
+## Next Steps
+
+Ready to get started? Follow the [Quick Start Guide](/docs/zsh-quickstart) to install ZSH support.
+
+Already installed? Check out the [Built-in Commands](/docs/zsh-built-in-commands) reference.
