@@ -1,14 +1,64 @@
 ---
 sidebar_position: 3
 toc_max_heading_level: 2
-slug: /
 ---
 
 import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 <VersionUpdateCard />
 
-## v1.0.0
+## v1.2.0 
+
+### 🚀 Features
+
+- feat: maintain session based isolation for agents [@tusharmath](https://github.com/tusharmath) ([#1799](https://github.com/antinomyhq/forge/pull/1799))
+- feat: ability to define provider per agent [@ssddOnTop](https://github.com/ssddOnTop) ([#1705](https://github.com/antinomyhq/forge/pull/1705))
+- feat: show conversation preview in ZSH [@tusharmath](https://github.com/tusharmath) ([#1787](https://github.com/antinomyhq/forge/pull/1787))
+
+### 🐛 Bug Fixes
+
+- fix(zsh): model and provider selection [@amitksingh1490](https://github.com/amitksingh1490) ([#1806](https://github.com/antinomyhq/forge/pull/1806))
+- fix: ensure deterministic first provider selection [@amitksingh1490](https://github.com/amitksingh1490) ([#1805](https://github.com/antinomyhq/forge/pull/1805))
+- fix: allow empty json object in mcp json file [@laststylebender14](https://github.com/laststylebender14) ([#1804](https://github.com/antinomyhq/forge/pull/1804))
+- refactor: global agent config fixed [@tusharmath](https://github.com/tusharmath) ([#1795](https://github.com/antinomyhq/forge/pull/1795))
+- fix: sub-agent calls [@tusharmath](https://github.com/tusharmath) ([#1796](https://github.com/antinomyhq/forge/pull/1796))
+
+### 🧰 Maintenance
+
+- refactor: simplify config set command handling by consolidating field updates [@tusharmath](https://github.com/tusharmath) ([#1798](https://github.com/antinomyhq/forge/pull/1798))
+- refactor: global agent config fixed [@tusharmath](https://github.com/tusharmath) ([#1795](https://github.com/antinomyhq/forge/pull/1795))
+- refactor: remove subscription from agents [@tusharmath](https://github.com/tusharmath) ([#1794](https://github.com/antinomyhq/forge/pull/1794))
+- chore: improve conversation switching message [@tusharmath](https://github.com/tusharmath) ([#1791](https://github.com/antinomyhq/forge/pull/1791))
+
+
+---
+## v1.1.0 
+
+### 🚀 Features
+
+- feat: show user feedback and task in summary [@tusharmath](https://github.com/tusharmath) ([#1786](https://github.com/antinomyhq/forge/pull/1786))
+- fix: make info key col fixed width [@tusharmath](https://github.com/tusharmath) ([#1784](https://github.com/antinomyhq/forge/pull/1784))
+- feat: support custom providers and models [@tusharmath](https://github.com/tusharmath) ([#1777](https://github.com/antinomyhq/forge/pull/1777))
+- feat: show user task [@tusharmath](https://github.com/tusharmath) ([#1781](https://github.com/antinomyhq/forge/pull/1781))
+- feat: add completion prompt toggle via environment variable [@laststylebender14](https://github.com/laststylebender14) ([#1733](https://github.com/antinomyhq/forge/pull/1733))
+
+### 🐛 Bug Fixes
+
+- fix: show correct title for write tool operations [@laststylebender14](https://github.com/laststylebender14) ([#1783](https://github.com/antinomyhq/forge/pull/1783))
+- fix: make info key col fixed width [@tusharmath](https://github.com/tusharmath) ([#1784](https://github.com/antinomyhq/forge/pull/1784))
+- fix: mcp import accepts JSON in invalid format [@ssddOnTop](https://github.com/ssddOnTop) ([#1779](https://github.com/antinomyhq/forge/pull/1779))
+
+### 🚀 Performance
+
+- perf: make read operation output consistent across tools [@laststylebender14](https://github.com/laststylebender14) ([#1790](https://github.com/antinomyhq/forge/pull/1790))
+
+### 🧰 Maintenance
+
+- feat: support custom providers and models [@tusharmath](https://github.com/tusharmath) ([#1777](https://github.com/antinomyhq/forge/pull/1777))
+
+
+---
+## v1.0.0 
 
 ### 🚀 Features
 
@@ -51,9 +101,9 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 - feat: update CLI commands [@amitksingh1490](https://github.com/amitksingh1490) ([#1669](https://github.com/antinomyhq/forge/pull/1669))
 
----
 
-## v0.126.0
+---
+## v0.126.0 
 
 ### 🚀 Features
 
@@ -76,16 +126,16 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - chore: clean up ui [@laststylebender14](https://github.com/laststylebender14) ([#1722](https://github.com/antinomyhq/forge/pull/1722))
 - chore: trace file reading errors [@ssddOnTop](https://github.com/ssddOnTop) ([#1717](https://github.com/antinomyhq/forge/pull/1717))
 
----
 
-## v0.125.1
+---
+## v0.125.1 
 
 ### 🐛 Bug Fixes
 
 - fix: Update `compact.rs` and `forge.default.yaml` [@amitksingh1490](https://github.com/amitksingh1490) ([#1701](https://github.com/antinomyhq/forge/pull/1701))
 - fix: show output of overwrite [@tusharmath](https://github.com/tusharmath) ([#1700](https://github.com/antinomyhq/forge/pull/1700))
 - fix: handle invalid app config gracefully [@amitksingh1490](https://github.com/amitksingh1490) ([#1699](https://github.com/antinomyhq/forge/pull/1699))
-- fix: add more non_negotiable_rules [@laststylebender14](https://github.com/laststylebender14) ([#1694](https://github.com/antinomyhq/forge/pull/1694))
+- fix: add more non\_negotiable\_rules [@laststylebender14](https://github.com/laststylebender14) ([#1694](https://github.com/antinomyhq/forge/pull/1694))
 - fix: dedupe tool definition sent to upstream [@laststylebender14](https://github.com/laststylebender14) ([#1693](https://github.com/antinomyhq/forge/pull/1693))
 
 ### 🧰 Maintenance
@@ -93,17 +143,17 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - refactor: drop attempt-completion [@tusharmath](https://github.com/tusharmath) ([#1696](https://github.com/antinomyhq/forge/pull/1696))
 - chore: update rmcp version [@amitksingh1490](https://github.com/amitksingh1490) ([#1690](https://github.com/antinomyhq/forge/pull/1690))
 
----
 
-## v0.125.0
+---
+## v0.125.0 
 
 ### 🚀 Features
 
 - Revert "feat: add Github provider" [@amitksingh1490](https://github.com/amitksingh1490) ([#1695](https://github.com/antinomyhq/forge/pull/1695))
 
----
 
-## v0.124.0
+---
+## v0.124.0 
 
 ### 🚀 Features
 
@@ -118,9 +168,9 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 - perf: make zsh lazily initialized [@tusharmath](https://github.com/tusharmath) ([#1692](https://github.com/antinomyhq/forge/pull/1692))
 
----
 
-## v0.123.3
+---
+## v0.123.3 
 
 ### 🐛 Bug Fixes
 
@@ -129,9 +179,9 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - fix: skip empty messages from user logs [@tusharmath](https://github.com/tusharmath) ([#1676](https://github.com/antinomyhq/forge/pull/1676))
 - fix: agent ID retrieval in tools command [@amitksingh1490](https://github.com/amitksingh1490) ([#1677](https://github.com/antinomyhq/forge/pull/1677))
 
----
 
-## v0.123.2
+---
+## v0.123.2 
 
 ### 🐛 Bug Fixes
 
@@ -139,9 +189,9 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - fix: add Z.ai thinking transformation [@amitksingh1490](https://github.com/amitksingh1490) ([#1673](https://github.com/antinomyhq/forge/pull/1673))
 - fix: add reasoning configuration and styles to conversation rendering [@amitksingh1490](https://github.com/amitksingh1490) ([#1667](https://github.com/antinomyhq/forge/pull/1667))
 
----
 
-## v0.123.1
+---
+## v0.123.1 
 
 ### 🐛 Bug Fixes
 
@@ -150,9 +200,9 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - fix: tool validation to support glob patterns [@amitksingh1490](https://github.com/amitksingh1490) ([#1663](https://github.com/antinomyhq/forge/pull/1663))
 - fix: order of conversation by `updated_at` [@tusharmath](https://github.com/tusharmath) ([#1662](https://github.com/antinomyhq/forge/pull/1662))
 
----
 
-## v0.123.0
+---
+## v0.123.0 
 
 - feat: persist provider specific model [@tusharmath](https://github.com/tusharmath) ([#1647](https://github.com/antinomyhq/forge/pull/1647))
 
@@ -168,7 +218,7 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 - fix: empty app config [@ssddOnTop](https://github.com/ssddOnTop) ([#1659](https://github.com/antinomyhq/forge/pull/1659))
 - fix: correct command references from "/conversations" to "/conversation" [@amitksingh1490](https://github.com/amitksingh1490) ([#1653](https://github.com/antinomyhq/forge/pull/1653))
-- fix: derive cost from cost_details [@laststylebender14](https://github.com/laststylebender14) ([#1646](https://github.com/antinomyhq/forge/pull/1646))
+- fix: derive cost from cost\_details [@laststylebender14](https://github.com/laststylebender14) ([#1646](https://github.com/antinomyhq/forge/pull/1646))
 - fix: raise an error if no provider is configured. [@laststylebender14](https://github.com/laststylebender14) ([#1645](https://github.com/antinomyhq/forge/pull/1645))
 
 ### 🧰 Maintenance
@@ -177,13 +227,13 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - refactor: move model configuration into a JSON file [@tusharmath](https://github.com/tusharmath) ([#1650](https://github.com/antinomyhq/forge/pull/1650))
 - chore: update dependencies and features for multiple crates [@amitksingh1490](https://github.com/amitksingh1490) ([#1627](https://github.com/antinomyhq/forge/pull/1627))
 
----
 
-## v0.122.2
+---
+## v0.122.2 
 
 ### 🐛 Bug Fixes
 
-- fix: ensure tool_supported is explicitly set in configuration [@tusharmath](https://github.com/tusharmath) ([#1639](https://github.com/antinomyhq/forge/pull/1639))
+- fix: ensure tool\_supported is explicitly set in configuration [@tusharmath](https://github.com/tusharmath) ([#1639](https://github.com/antinomyhq/forge/pull/1639))
 
 ### 🧰 Maintenance
 
@@ -192,9 +242,9 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 - refactor: have single source of truth [@tusharmath](https://github.com/tusharmath) ([#1630](https://github.com/antinomyhq/forge/pull/1630))
 - refactor: remove redundant explanation fields from tool input structs [@tusharmath](https://github.com/tusharmath) ([#1636](https://github.com/antinomyhq/forge/pull/1636))
 
----
 
-## v0.122.1
+---
+## v0.122.1 
 
 - revert: 1597 [@amitksingh1490](https://github.com/amitksingh1490) ([#1624](https://github.com/antinomyhq/forge/pull/1624))
 
@@ -202,9 +252,9 @@ import VersionUpdateCard from "@site/src/components/shared/VersionUpdateCard"
 
 - chore(deps): bump the actions group with 2 updates @[dependabot[bot]](https://github.com/apps/dependabot) (#1610)
 
----
 
-## v0.122.0
+---
+## v0.122.0 
 
 ### 🚀 Features
 
