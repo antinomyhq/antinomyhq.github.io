@@ -62,7 +62,7 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   }
 
   return (
-    <Heading as="h2" className="text-title-large sm:text-display-tiny lg:text-display-small">
+    <Heading as="h2" className="text-title-large sm:text-display-tiny lg:text-display-small stats-counter">
       {formatNumber(count)}
       {suffix}
     </Heading>
