@@ -296,7 +296,6 @@ tools:
   - read # Exact tool name
   - write
   - "mcp_*" # All MCP tools (mcp_weather, mcp_database, etc.)
-  - "fs_*" # All filesystem tools
   - search
 ---
 ```
