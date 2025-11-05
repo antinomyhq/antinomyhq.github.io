@@ -28,7 +28,6 @@ agents:
 | `id`               | Yes      | Unique identifier for the agent                                       |
 | `model`            | Yes      | AI model to use (e.g., anthropic/claude-3.5-sonnet)                   |
 | `system_prompt`    | Yes      | System prompt or template reference                                   |
-| `subscribe`        | No       | List of commands the agent should respond to                          |
 | `max_walker_depth` | No       | Maximum directory/file depth for exploration                          |
 | `custom_rules`     | No       | Custom instructions or rules (see [Custom Rules](/docs/custom-rules)) |
 
@@ -136,6 +135,6 @@ When `hide_content` is set to `true`:
 
 ## Related Documentation
 
+- [Forge Configuration](../forge-configuration) - Global configuration settings
 - [Context Compaction](../context-compaction) - Detailed guide on context management
-- [Custom Workflows](../custom-workflows) - Learn how to create specialized workflows
 - [Tools Reference](../tools-reference) - Available tools for agents to use

@@ -31,6 +31,7 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         "commands",
+        "cli-reference",
         "shell-commands",
         "zsh-support",
         "auto-complete",
@@ -46,10 +47,13 @@ const sidebars: SidebarsConfig = {
       items: [
         {type: "doc", id: "plan-and-act-guide", label: "Plan First, Then Act"},
         {type: "doc", id: "agent-definition-guide", label: "Creating Custom Agents"},
+        {type: "doc", id: "agent-delegation", label: "Agent Delegation"},
         {type: "doc", id: "agent-selection-guide", label: "Agent Selection"},
         {type: "doc", id: "model-selection-guide", label: "Switching Models"},
         {type: "doc", id: "custom-rules-guide", label: "Project Specific Guidelines"},
         {type: "doc", id: "file-tagging-guide", label: "File Tagging with @"},
+        {type: "doc", id: "ignoring-files", label: "Ignoring Files"},
+        {type: "doc", id: "piping-guide", label: "Piping Input"},
       ],
     },
     {
@@ -66,7 +70,7 @@ const sidebars: SidebarsConfig = {
       label: "Advanced Configuration",
       collapsed: false,
       items: [
-        "workflow-config",
+        "forge-configuration",
         "environment-configuration",
         "mcp-integration",
         "context-compaction",

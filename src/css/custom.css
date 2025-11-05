@@ -42,6 +42,33 @@
     border-color: currentColor;
     outline-color: currentColor;
   }
+
+  /* Copy button animations */
+  .animate-check-bounce {
+    animation: checkBounce 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    will-change: transform;
+  }
+
+  .copy-check-glow {
+    filter: drop-shadow(0 0 6px rgba(74, 222, 128, 0.5));
+  }
+}
+
+@keyframes checkBounce {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.3) rotate(5deg);
+  }
+  70% {
+    transform: scale(0.9) rotate(-3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
 html,
@@ -112,6 +139,15 @@ code {
   padding: 0px 6px;
   font-size: 1em;
   font-weight: 600;
+}
+
+/* Firefox copy-paste fix: Force code block lines to behave as block elements */
+/* This helps Firefox handle text selection correctly in code blocks */
+.prism-code .token-line {
+  display: block;
+  user-select: text;
+  -moz-user-select: text;
+  -webkit-user-select: text;
 }
 
 input[type="radio"] {
@@ -725,6 +761,7 @@ nav.menu {
   .navbar__items {
     margin-left: auto;
     justify-content: flex-end;
+    gap: 1rem;
   }
 
   .header-button {
@@ -1222,6 +1259,13 @@ details code {
 details .admonition-heading code,
 details .admonition-content code {
   color: #333 !important;
+}
+
+/* Stats section - smaller on mobile */
+@media (max-width: 640px) {
+  .stats-counter {
+    font-size: 20px !important;
+  }
 }
 
 /* Environment configuration tables - optimized for readability */

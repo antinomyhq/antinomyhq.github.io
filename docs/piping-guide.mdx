@@ -1,0 +1,155 @@
+---
+title: Piping Input to Forge
+sidebar_position: 7
+description: "Learn how to pipe command output and file content directly to Forge for seamless workflow integration."
+sidebar_label: Piping Input
+---
+
+# Piping Input to Forge
+
+Forge supports reading input from stdin (standard input) via piping, allowing you to pass content from other commands or files directly to Forge.
+
+## Basic Usage
+
+Pipe content from any command or file directly to Forge:
+
+```bash
+# Pipe from echo
+echo "Explain what this project does" | forge
+
+# Using here-string (alternative syntax)
+forge <<< "Explain what this project does"
+
+# Pipe from a file
+cat prompt.txt | forge
+
+# Pipe from git commands
+git log --oneline -10 | forge
+
+# Pipe from other tools
+tail -n 100 error.log | forge
+cargo test 2>&1 | forge
+```
+
+## How It Works
+
+When you pipe content to Forge:
+
+1. **Detects Piped Input**: Automatically recognizes stdin from a pipe
+2. **Reads and Processes**: Reads all content until EOF, trims whitespace, and uses it as your prompt
+
+## Critical Behavior
+
+### --prompt Flag Takes Precedence
+
+:::warning Cannot Combine Piping with --prompt
+The `--prompt` flag will **completely ignore** piped content:
+
+```bash
+# The piped content is IGNORED
+echo "This is ignored" | forge --prompt "This is used"
+```
+
+Choose one input method or the other.
+:::
+
+### Works with Other Flags
+
+Piping works with all other Forge flags:
+
+```bash
+echo "Review this code" | forge --verbose --restricted
+forge <<< "Quick task" --agent muse
+git log -5 | forge --model claude-sonnet-4
+```
+
+## Practical Examples
+
+### Code Review Workflow
+
+```bash
+# Simple review
+echo "Review this PR: $(git diff main)" | forge
+
+# Review staged changes
+echo "Review staged changes: $(git diff --cached)" | forge
+
+# Using here-string
+forge <<< "Review this PR: $(git diff main)"
+```
+
+### Log Analysis
+
+```bash
+# Analyze recent errors
+tail -n 50 application.log | forge
+
+# Add context
+echo "Summarize these test failures: $(cargo test 2>&1)" | forge
+```
+
+### File Content Review
+
+```bash
+# Review a specific file
+cat src/main.rs | forge
+
+# Review with instructions
+echo "Review this code for best practices: $(cat src/database.js)" | forge
+```
+
+### Command Output Analysis
+
+```bash
+# Analyze directory structure
+echo "Explain this directory structure: $(ls -la)" | forge
+
+# Clipboard to Forge (macOS)
+pbpaste | forge
+
+# Clipboard to Forge (Linux with xclip)
+xclip -selection clipboard -o | forge
+```
+
+## Advanced Patterns
+
+### Conditional Piping
+
+```bash
+# Check file size before piping
+[ -s file.txt ] && cat file.txt | forge
+
+# Check command success
+git diff --quiet || git diff | forge
+```
+
+### Multi-Source Input
+
+```bash
+# Combine multiple sources
+echo "Current changes: $(git diff)
+
+Recent commits: $(git log --oneline -5)
+
+Please summarize recent development activity" | forge
+```
+
+### Using Here-Documents
+
+```bash
+# Multi-line prompt with command output
+forge << EOF
+Review these changes:
+
+$(git diff main)
+
+Focus on security and performance.
+EOF
+```
+
+## Tips
+
+1. **Don't Mix Input Methods**: The `--prompt` flag ignores piped content. Use one or the other.
+2. **Use Command Substitution**: `echo "Context: $(command)" | forge` ensures you always have content.
+3. **Mind Large Files**: Piped content is read entirely into memory.
+4. **Capture Errors**: Use `2>&1` to capture both stdout and stderr.

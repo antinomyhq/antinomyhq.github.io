@@ -96,6 +96,63 @@ These features are optional but provide a significantly better experience. Insta
 
   </Step>
 
+  <Step title="Install zsh-autocomplete Plugin (Optional)">
+    The [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete) plugin provides real-time autocomplete suggestions as you type, making it easier to repeat previous Forge commands.
+
+    **Option 1: Package Manager (Recommended)**
+
+    ```bash
+    # macOS
+    brew install zsh-autocomplete
+
+    # Arch Linux
+    sudo pacman -S zsh-autocomplete
+
+    # Gentoo (Portage)
+    sudo emerge app-shells/zsh-autocomplete
+    ```
+
+
+    :::note
+    After installing via package manager, you still need to source the plugin in your `~/.zshrc`:
+    ```bash
+    source /path/to/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+    ```
+    The exact path may vary depending on your package manager and system.
+    :::
+
+
+    **Option 2: Oh My Zsh**
+
+    ```bash
+    # Clone to Oh My Zsh plugins directory
+    git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete
+
+    # Add to plugins in ~/.zshrc (before zsh-syntax-highlighting)
+    plugins=(... zsh-autocomplete zsh-syntax-highlighting)
+    ```
+
+    :::tip
+    The `--depth 1` flag creates a shallow clone, downloading only the latest commit instead of the entire git history. This makes the installation faster and saves disk space. It's perfectly fine for plugin usage since you don't need the full repository history.
+    :::
+
+
+    **Option 3: Manual Installation**
+
+    ```bash
+    # Clone the repository
+    git clone --depth 1 https://github.com/marlonrichert/zsh-autocomplete.git ~/.zsh/zsh-autocomplete
+
+    # Add to ~/.zshrc (before zsh-syntax-highlighting)
+    source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+    ```
+
+    :::tip Optional Enhancement
+    This plugin is optional but highly recommended. It will show autocomplete suggestions as you type, making it easier to reuse previous Forge prompts and commands.
+    :::
+
+  </Step>
+
   <Step title="Install Optional File Finding Tools (Recommended)">
     For fuzzy file finding and agent selection, install fd and fzf:
 
@@ -164,7 +221,7 @@ ZSH Support works without these tools, but you'll need to type full file paths i
     # Basic prompt - should show syntax highlighting
     : hello world
 
-    # Test file tagging (requires fd/fzf from Step 1)
+    # Test file tagging (requires fd/fzf from Step 3)
     : help me with @README<Tab>
     ```
 
@@ -314,7 +371,7 @@ If `: command not found` appears:
 
 #### File Tagging Doesn't Work
 
-If `@filename<Tab>` does nothing, fd and fzf are not installed. See [Step 2](#installation) or our [ZSH Dependencies Installation Guide](/docs/fd-fzf-installation).
+If `@filename<Tab>` does nothing, fd and fzf are not installed. See [Step 3](#installation) or our [ZSH Dependencies Installation Guide](/docs/fd-fzf-installation).
 
 You can still use full file paths manually:
 
@@ -355,7 +412,7 @@ If highlighting doesn't appear:
    ls -la /path/to/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
    ```
 
-#### No agent has subscribed to the event
+#### Agent Not Found Errors
 
 If you get "agent not found" errors:
 

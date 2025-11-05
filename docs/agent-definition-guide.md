@@ -159,6 +159,34 @@ id: unique-agent-identifier
 ---
 ```
 
+### Model and Provider Selection
+
+You can customize which model and provider your agent uses:
+
+```yaml
+---
+id: my-agent
+model: claude-sonnet-4 # Optional: Override the default model
+provider: open_ai # Optional: Override the default provider
+---
+```
+
+**Provider naming rules:**
+
+- Provider names must be in **snake_case** format
+- Examples of valid provider names:
+  - `provider: openai`
+  - `provider: open_router`
+  - `provider: requesty`
+  - `provider: anthropic`
+
+**When to specify a provider:**
+
+- If you want to use a specific provider instead of the default
+- When using models available on multiple providers
+- For testing different provider implementations
+- Leave unspecified to use the default provider configured in Forge
+
 ### Recommended Minimum Configuration
 
 For agents that can be used as tools by other agents:
@@ -186,6 +214,7 @@ description: Expert in REST APIs, databases, and server architecture
 
 # MODEL SELECTION
 model: claude-sonnet-4 # Any supported model ID
+provider: anthropic # Optional: override the default provider (must be in snake_case)
 
 # USER PROMPT (Template with Handlebars syntax)
 user_prompt: |-
@@ -225,14 +254,19 @@ max_tokens: 4096 # Maximum response length: 1 to 100,000 tokens (default: 20480)
 
 # CONTEXT COMPACTION (Optional - automatic context management)
 compact:
-  max_tokens: 2000 # Maximum tokens after compaction
-  token_threshold: 100000 # Trigger compaction when context exceeds this
-  retention_window: 6 # Number of recent messages to preserve
-  message_threshold: 200 # Trigger compaction after this many messages (default: 200)
-  turn_threshold: 50 # Trigger compaction after this many turns (optional)
-  eviction_window: 0.2 # Percentage of context that can be summarized (0.0-1.0)
+  # Triggering thresholds (ANY condition triggers compaction)
+  token_threshold: 100000 # Trigger when context exceeds this many tokens
+  message_threshold: 200 # Trigger after this many total messages
+  turn_threshold: 50 # Trigger after this many user turns (optional)
+  on_turn_end: false # Trigger on user message (use with caution, default: false)
+
+  # Compaction strategy (controls what to preserve)
+  retention_window: 6 # Number of recent messages to preserve unchanged
+  eviction_window: 0.2 # Percentage (0.0-1.0) of context to compact
+
+  # Summarization settings
+  max_tokens: 2000 # Maximum tokens for the generated summary
   model: claude-sonnet-4 # Model to use for compaction (optional)
-  on_turn_end: false # Whether to compact at turn end (default: false)
   prompt: | # Custom compaction prompt (optional)
     Summarize the following conversation context while preserving key technical details.
 
@@ -253,7 +287,33 @@ Focus on production ready, scalable code with proper error handling, logging, an
 
 ## Available Tools and When to Use Them
 
-You can customize which tools each agent has access to. Here's when to use each tool:
+You can customize which tools each agent has access to using exact names or glob patterns for flexible configuration.
+
+### Tool Configuration with Glob Patterns
+
+Instead of listing every tool individually, use glob patterns to grant access to tool families:
+
+```yaml
+---
+id: my-agent
+title: My Custom Agent
+tools:
+  - read # Exact tool name
+  - write
+  - "mcp_*" # All MCP tools (mcp_weather, mcp_database, etc.)
+  - search
+---
+```
+
+Check the list of [built-in tools](./tools-reference.mdx).
+
+### Glob Pattern Syntax
+
+| Pattern | Description            | Example                                       |
+| ------- | ---------------------- | --------------------------------------------- |
+| `*`     | Match any characters   | `mcp_*` matches all MCP tools                 |
+| `?`     | Match single character | `read?` matches `read1`, `read2`              |
+| `[...]` | Match character class  | `tool[123]` matches `tool1`, `tool2`, `tool3` |
 
 ### Built-in Tools
 
@@ -277,12 +337,10 @@ You can customize which tools each agent has access to. Here's when to use each 
   - _Use for_: Breaking down complex tasks, project planning
 - **`followup`** - Ask clarifying questions
   - _Use for_: Gathering requirements, clarifying ambiguous requests
-- **`attempt_completion`** - Present final results
-  - _Use for_: Completing tasks, summarizing work done
 
 ### MCP Tools (External Integrations)
 
-MCP (Model Context Protocol) tools connect your agents to external services. Once configured, they're automatically available to all agents without additional setup.
+MCP (Model Context Protocol) tools connect your agents to external services. Once configured, can be accessed using glob patterns.
 
 **Popular integrations:**
 
@@ -291,15 +349,21 @@ MCP (Model Context Protocol) tools connect your agents to external services. Onc
 - Email services for notifications
 - Browser automation for testing
 
-**Example**: After setting up a weather MCP server:
+**Example**: Grant access to all MCP tools automatically:
 
 ```yaml
 tools:
   - read
   - write
   - search
-  # get_weather is automatically available!
+  - "mcp_*" # Automatically includes all MCP tools like mcp_weather, mcp_database, etc.
 ```
+
+**Benefits of using glob patterns for MCP tools:**
+
+- **Automatic Access**: New MCP servers you add are automatically available to the agent
+- **No Configuration Updates**: Don't need to modify agent definitions when adding MCP tools
+- **Flexible Control**: Can still restrict specific MCP tools if needed
 
 Use `/tools` in Forge to see all available tools (MCP tools are listed separately).
 
@@ -327,6 +391,7 @@ tools:
   - read
   - write
   - patch
+  - "mcp_*" # All MCP tools for external integrations
 max_turns: 50
 ---
 
@@ -364,6 +429,7 @@ tools:
   - write
   - patch
   - shell
+  - "mcp_*" # Database and external service integrations
 max_turns: 75
 ---
 
@@ -628,6 +694,28 @@ model: claude-sonnet-4
 temperature: 0.2
 reasoning: true
 ```
+
+### Provider-Specific Configuration
+
+You can specify different providers for different use cases:
+
+- OpenAI:
+
+```yaml
+id: openai-agent
+model: gpt-4
+provider: openai
+```
+
+- Requesty
+
+```yaml
+id: requesty-agent
+model: anthropic/claude-sonnet-4-5
+provider: requesty
+```
+
+**Important**: Provider names must always be in snake_case format (lowercase with underscores separating words).
 
 ## Getting Help
 
