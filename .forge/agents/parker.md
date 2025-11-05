@@ -7,6 +7,7 @@ tools:
   - fetch
   - search
   - write
+  - shell
   - patch
 user_prompt: |-
   {{#if (eq event.name 'parker/user_task_update')}}
