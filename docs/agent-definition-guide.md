@@ -299,6 +299,7 @@ tools:
   - search
 ---
 ```
+
 Check the list of [built-in tools](./tools-reference.mdx).
 
 ### Glob Pattern Syntax
