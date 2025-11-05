@@ -9,7 +9,7 @@ import Steps, {Step} from "../components/Steps"
 
 # ZSH Quick Start
 
-Get Forge working in your ZSH shell in 3 simple steps. This guide will set up the core integration so you can use the `:` prefix to send prompts to Forge while keeping all your shell aliases, functions, and environment intact.
+Get Forge working in your ZSH shell in 4 simple steps. This guide will set up the core integration so you can use the `:` prefix to send prompts to Forge while keeping all your shell aliases, functions, and environment intact.
 
 **What you'll be able to do:**
 
@@ -18,7 +18,7 @@ Get Forge working in your ZSH shell in 3 simple steps. This guide will set up th
 - Manage conversations with `:new` and `:conversation`
 - Keep using all your existing ZSH aliases and tools
 
-**Time required:** Quick setup with just 3 essential steps.
+**Time required:** Quick setup with just 4 essential steps.
 
 ## Installation
 
@@ -27,6 +27,29 @@ Get Forge working in your ZSH shell in 3 simple steps. This guide will set up th
     [Install and set up Forge](/docs/installation) following the main installation guide.
     
     Choose either global installation via `npm` or `npx` usage. Remember your choice for the next step.
+  </Step>
+  
+  <Step title="Install fd and fzf">
+    These tools are required for tab completion features like quick file tagging with `@filename<Tab>` and fuzzy agent selection with `:<Tab>`.
+
+    ```bash
+    # macOS
+    brew install fd fzf
+
+    # Ubuntu/Debian
+    sudo apt install fd-find fzf
+
+    # Arch Linux
+    sudo pacman -S fd fzf
+    ```
+
+    **Other platforms:** See our [ZSH Dependencies Installation Guide](/docs/fd-fzf-installation) for detailed instructions.
+
+    **What you get:**
+
+    - Quick file tagging: `: review @package<Tab>`
+    - Fuzzy agent selection: `:<Tab>`
+
   </Step>
   
   <Step title="Configure ZSH Integration">
@@ -62,9 +85,12 @@ Get Forge working in your ZSH shell in 3 simple steps. This guide will set up th
 
     # Check system info
     :info
+
+    # Test tab completion
+    : review @<Tab>
     ```
 
-    You should see Forge responding to your prompts. 🎉
+    You should see Forge responding to your prompts and tab completion working for file tagging. 🎉
 
   </Step>
 </Steps>
@@ -119,38 +145,6 @@ echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> 
 
 ::::warning Important Loading Order
 **zsh-syntax-highlighting must be sourced LAST** in your `.zshrc` file, after all other plugins and the Forge integration. This ensures proper highlighting of Forge prompts.
-::::
-
----
-
-### Fuzzy File Finding
-
-Enable quick file tagging with `@filename<Tab>` and fuzzy agent selection with `:<Tab>`.
-
-Install fd and fzf:
-
-```bash
-# macOS
-brew install fd fzf
-
-# Ubuntu/Debian
-sudo apt install fd-find fzf
-
-# Arch Linux
-sudo pacman -S fd fzf
-```
-
-**Other platforms:** See our [ZSH Dependencies Installation Guide](/docs/fd-fzf-installation) for detailed instructions.
-
-**What you get:**
-
-- Quick file tagging: `: review @package<Tab>`
-- Fuzzy agent selection: `:<Tab>`
-
-::::tip Optional but Worth It
-
-ZSH Support works without these tools, but you'll need to type full file paths instead of using fuzzy finding. You can install them later if you skip this step.
-
 ::::
 
 ---
@@ -219,7 +213,12 @@ If `: command not found` appears:
 
 ### File Tagging Doesn't Work
 
-If `@filename<Tab>` does nothing, fd and fzf are not installed. See [Fuzzy File Finding](#optional-enhancements) above or our [ZSH Dependencies Installation Guide](/docs/fd-fzf-installation).
+If `@filename<Tab>` does nothing:
+
+1. Verify fd and fzf are installed correctly (see Step 2 in [Installation](#installation))
+2. Reload your shell: `source ~/.zshrc` or `exec zsh`
+3. Check if fd is available: `which fd` (or `which fdfind` on Ubuntu/Debian)
+4. Check if fzf is available: `which fzf`
 
 You can still use full file paths manually:
 
