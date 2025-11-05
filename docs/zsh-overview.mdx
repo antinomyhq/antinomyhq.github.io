@@ -36,7 +36,7 @@ htop -p $(pgrep server)
 ### Core Features (Work Immediately After Installation)
 
 - **Native Shell Integration**: Use `:` to access Forge AI while preserving all your ZSH aliases, functions, PATH modifications, and custom tooling
-- **Intelligent Context Management**: Maintain conversation context across prompts with `:reset` control and agent targeting like `:sage` or `:muse`
+- **Intelligent Context Management**: Maintain conversation context across prompts with agent targeting like `:sage` or `:muse`
 - **Syntax Highlighting**: Color-coded prompts optimized for dark terminals (requires zsh-syntax-highlighting plugin)
 
 ### Advanced Features (Require fd and fzf)
@@ -59,7 +59,7 @@ These features are optional but provide a significantly better experience. Insta
 : what optimizations would you recommend?
 
 # Reset when switching to a different task
-:reset
+:new
 
 # Fuzzy agent selection (requires fd/fzf)
 :<Tab>
@@ -96,7 +96,7 @@ Target specific agents by including the agent name after the colon:
 
 - **No agent specified** (`:`) = uses the previous agent, or Forge if first interaction
 - **Agent specified** (`:sage`) = switches to that agent and makes it the new default
-- **`:reset`** = clears conversation context but keeps the current agent selection
+- **`:new`** = clears conversation context but keeps the current agent selection
 
 **Example workflow:**
 
@@ -114,7 +114,7 @@ Target specific agents by including the agent name after the colon:
 : what are the potential edge cases?
 
 # Clear context when switching tasks
-:reset
+:new
 :forge implement the user login validation function
 ```
 
@@ -132,7 +132,7 @@ Run `/agents` in a Forge session to see your configured agents.
 
 ### Context Management
 
-ZSH Support maintains conversation context across prompts. Use `:reset` to clear context when switching to a new task:
+ZSH Support maintains conversation context across prompts. Use `:new` to clear context when switching to a new task:
 
 ```bash
 # Working on database optimization
@@ -146,7 +146,7 @@ htop -p $(pgrep postgres)
 : based on what I found, the CPU usage is high, what should I check next?
 
 # Switch to a completely different task
-:reset
+:new
 
 # Start fresh - no database context carried over
 : help me set up CI/CD pipeline for this project
