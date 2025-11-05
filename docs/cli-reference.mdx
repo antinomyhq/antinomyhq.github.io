@@ -53,14 +53,14 @@ Customize Forge's behavior with these command-line flags:
 
 View available resources in your Forge installation:
 
-| Command                    | Description                         | Example                   |
-| :------------------------- | :---------------------------------- | :------------------------ |
-| `forge list agents`        | List all available agents           | `forge list agents`       |
-| `forge list providers`     | List all available providers        | `forge list providers`    |
-| `forge list models`        | List all available models           | `forge list models`       |
-| `forge list config`        | List current configuration values   | `forge list config`       |
-| `forge list tools <agent>` | List all tools for a specific agent | `forge list tools sage`   |
-| `forge list mcp`           | List all MCP servers                | `forge list mcp`          |
+| Command                    | Description                                                                                   | Example                   |
+| :------------------------- | :-------------------------------------------------------------------------------------------- | :------------------------ |
+| `forge list agents`        | List all available agents                                                                     | `forge list agents`       |
+| `forge list providers`     | List all available providers                                                                  | `forge list providers`    |
+| `forge list models`        | List all available models                                                                     | `forge list models`       |
+| `forge list config`        | List current configuration values                                                             | `forge list config`       |
+| `forge list tools <agent>` | List all tools for a specific agent                                                           | `forge list tools sage`   |
+| `forge list mcp`           | List all MCP servers                                                                          | `forge list mcp`          |
 | `forge list conversation`  | List all conversations (max controlled by `FORGE_MAX_CONVERSATIONS` env var, defaults to 100) | `forge list conversation` |
 
 ### List Options
@@ -96,16 +96,16 @@ Manage Forge configuration settings:
 
 Manage and interact with conversations:
 
-| Command                                 | Description                                     | Example                               |
-| :-------------------------------------- | :---------------------------------------------- | :------------------------------------ |
+| Command                                 | Description                                                                                   | Example                               |
+| :-------------------------------------- | :-------------------------------------------------------------------------------------------- | :------------------------------------ |
 | `forge conversation list`               | List all conversations (max controlled by `FORGE_MAX_CONVERSATIONS` env var, defaults to 100) | `forge conversation list`             |
-| `forge conversation new`                | Create a new conversation and output its ID     | `forge conversation new`              |
-| `forge conversation dump <id> [format]` | Dump conversation as JSON or HTML               | `forge conversation dump abc123 html` |
-| `forge conversation compact <id>`       | Compact the conversation context                | `forge conversation compact abc123`   |
-| `forge conversation retry <id>`         | Retry last command without modifying context    | `forge conversation retry abc123`     |
-| `forge conversation resume <id>`        | Resume a conversation (starts interactive mode) | `forge conversation resume abc123`    |
-| `forge conversation show <id>`          | Show last assistant message                     | `forge conversation show abc123`      |
-| `forge conversation info <id>`          | Show detailed conversation information          | `forge conversation info abc123`      |
+| `forge conversation new`                | Create a new conversation and output its ID                                                   | `forge conversation new`              |
+| `forge conversation dump <id> [format]` | Dump conversation as JSON or HTML                                                             | `forge conversation dump abc123 html` |
+| `forge conversation compact <id>`       | Compact the conversation context                                                              | `forge conversation compact abc123`   |
+| `forge conversation retry <id>`         | Retry last command without modifying context                                                  | `forge conversation retry abc123`     |
+| `forge conversation resume <id>`        | Resume a conversation (starts interactive mode)                                               | `forge conversation resume abc123`    |
+| `forge conversation show <id>`          | Show last assistant message                                                                   | `forge conversation show abc123`      |
+| `forge conversation info <id>`          | Show detailed conversation information                                                        | `forge conversation info abc123`      |
 
 ### Conversation Options
 
