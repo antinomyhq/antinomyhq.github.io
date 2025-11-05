@@ -159,6 +159,34 @@ id: unique-agent-identifier
 ---
 ```
 
+### Model and Provider Selection
+
+You can customize which model and provider your agent uses:
+
+```yaml
+---
+id: my-agent
+model: claude-sonnet-4 # Optional: Override the default model
+provider: open_ai # Optional: Override the default provider
+---
+```
+
+**Provider naming rules:**
+
+- Provider names must be in **snake_case** format
+- Examples of valid provider names:
+  - `provider: openai`
+  - `provider: open_router`
+  - `provider: requesty`
+  - `provider: anthropic`
+
+**When to specify a provider:**
+
+- If you want to use a specific provider instead of the default
+- When using models available on multiple providers
+- For testing different provider implementations
+- Leave unspecified to use the default provider configured in Forge
+
 ### Recommended Minimum Configuration
 
 For agents that can be used as tools by other agents:
@@ -186,6 +214,7 @@ description: Expert in REST APIs, databases, and server architecture
 
 # MODEL SELECTION
 model: claude-sonnet-4 # Any supported model ID
+provider: anthropic # Optional: override the default provider (must be in snake_case)
 
 # USER PROMPT (Template with Handlebars syntax)
 user_prompt: |-
@@ -628,6 +657,28 @@ model: claude-sonnet-4
 temperature: 0.2
 reasoning: true
 ```
+
+### Provider-Specific Configuration
+
+You can specify different providers for different use cases:
+
+- OpenAI:
+
+```yaml
+id: openai-agent
+model: gpt-4
+provider: openai
+```
+
+- Requesty
+
+```yaml
+id: requesty-agent
+model: anthropic/claude-sonnet-4-5
+provider: requesty
+```
+
+**Important**: Provider names must always be in snake_case format (lowercase with underscores separating words).
 
 ## Getting Help
 

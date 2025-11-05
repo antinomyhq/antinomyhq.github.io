@@ -28,7 +28,11 @@
 .DocSearch-Hit[aria-selected="true"] mark,
 .DocSearch-Hit-title mark {
   color: var(--ifm-color-primary);
-  background-color: var(--ifm-color-brand);
+  background-color: rgba(var(--ifm-color-primary-rgb), 0.1);
+  font-weight: 600;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid rgba(var(--ifm-color-primary-rgb), 0.2);
 }
 
 .DocSearch-Hit[aria-selected="true"] .DocSearch-Hit-action,
