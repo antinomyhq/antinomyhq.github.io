@@ -61,7 +61,7 @@ View available resources in your Forge installation:
 | `forge list config`        | List current configuration values   | `forge list config`       |
 | `forge list tools <agent>` | List all tools for a specific agent | `forge list tools sage`   |
 | `forge list mcp`           | List all MCP servers                | `forge list mcp`          |
-| `forge list conversation`  | List all conversations              | `forge list conversation` |
+| `forge list conversation`  | List all conversations (max controlled by `FORGE_MAX_CONVERSATIONS` env var, defaults to 100) | `forge list conversation` |
 
 ### List Options
 
@@ -98,7 +98,7 @@ Manage and interact with conversations:
 
 | Command                                 | Description                                     | Example                               |
 | :-------------------------------------- | :---------------------------------------------- | :------------------------------------ |
-| `forge conversation list`               | List all conversations                          | `forge conversation list`             |
+| `forge conversation list`               | List all conversations (max controlled by `FORGE_MAX_CONVERSATIONS` env var, defaults to 100) | `forge conversation list`             |
 | `forge conversation new`                | Create a new conversation and output its ID     | `forge conversation new`              |
 | `forge conversation dump <id> [format]` | Dump conversation as JSON or HTML               | `forge conversation dump abc123 html` |
 | `forge conversation compact <id>`       | Compact the conversation context                | `forge conversation compact abc123`   |
