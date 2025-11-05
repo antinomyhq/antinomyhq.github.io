@@ -254,14 +254,19 @@ max_tokens: 4096 # Maximum response length: 1 to 100,000 tokens (default: 20480)
 
 # CONTEXT COMPACTION (Optional - automatic context management)
 compact:
-  max_tokens: 2000 # Maximum tokens after compaction
-  token_threshold: 100000 # Trigger compaction when context exceeds this
-  retention_window: 6 # Number of recent messages to preserve
-  message_threshold: 200 # Trigger compaction after this many messages (default: 200)
-  turn_threshold: 50 # Trigger compaction after this many turns (optional)
-  eviction_window: 0.2 # Percentage of context that can be summarized (0.0-1.0)
+  # Triggering thresholds (ANY condition triggers compaction)
+  token_threshold: 100000 # Trigger when context exceeds this many tokens
+  message_threshold: 200 # Trigger after this many total messages
+  turn_threshold: 50 # Trigger after this many user turns (optional)
+  on_turn_end: false # Trigger on user message (use with caution, default: false)
+
+  # Compaction strategy (controls what to preserve)
+  retention_window: 6 # Number of recent messages to preserve unchanged
+  eviction_window: 0.2 # Percentage (0.0-1.0) of context to compact
+
+  # Summarization settings
+  max_tokens: 2000 # Maximum tokens for the generated summary
   model: claude-sonnet-4 # Model to use for compaction (optional)
-  on_turn_end: false # Whether to compact at turn end (default: false)
   prompt: | # Custom compaction prompt (optional)
     Summarize the following conversation context while preserving key technical details.
 
@@ -282,7 +287,33 @@ Focus on production ready, scalable code with proper error handling, logging, an
 
 ## Available Tools and When to Use Them
 
-You can customize which tools each agent has access to. Here's when to use each tool:
+You can customize which tools each agent has access to using exact names or glob patterns for flexible configuration.
+
+### Tool Configuration with Glob Patterns
+
+Instead of listing every tool individually, use glob patterns to grant access to tool families:
+
+```yaml
+---
+id: my-agent
+title: My Custom Agent
+tools:
+  - read # Exact tool name
+  - write
+  - "mcp_*" # All MCP tools (mcp_weather, mcp_database, etc.)
+  - search
+---
+```
+
+Check the list of [built-in tools](./tools-reference.mdx).
+
+### Glob Pattern Syntax
+
+| Pattern | Description            | Example                                       |
+| ------- | ---------------------- | --------------------------------------------- |
+| `*`     | Match any characters   | `mcp_*` matches all MCP tools                 |
+| `?`     | Match single character | `read?` matches `read1`, `read2`              |
+| `[...]` | Match character class  | `tool[123]` matches `tool1`, `tool2`, `tool3` |
 
 ### Built-in Tools
 
@@ -306,12 +337,10 @@ You can customize which tools each agent has access to. Here's when to use each 
   - _Use for_: Breaking down complex tasks, project planning
 - **`followup`** - Ask clarifying questions
   - _Use for_: Gathering requirements, clarifying ambiguous requests
-- **`attempt_completion`** - Present final results
-  - _Use for_: Completing tasks, summarizing work done
 
 ### MCP Tools (External Integrations)
 
-MCP (Model Context Protocol) tools connect your agents to external services. Once configured, they're automatically available to all agents without additional setup.
+MCP (Model Context Protocol) tools connect your agents to external services. Once configured, can be accessed using glob patterns.
 
 **Popular integrations:**
 
@@ -320,15 +349,21 @@ MCP (Model Context Protocol) tools connect your agents to external services. Onc
 - Email services for notifications
 - Browser automation for testing
 
-**Example**: After setting up a weather MCP server:
+**Example**: Grant access to all MCP tools automatically:
 
 ```yaml
 tools:
   - read
   - write
   - search
-  # get_weather is automatically available!
+  - "mcp_*" # Automatically includes all MCP tools like mcp_weather, mcp_database, etc.
 ```
+
+**Benefits of using glob patterns for MCP tools:**
+
+- **Automatic Access**: New MCP servers you add are automatically available to the agent
+- **No Configuration Updates**: Don't need to modify agent definitions when adding MCP tools
+- **Flexible Control**: Can still restrict specific MCP tools if needed
 
 Use `/tools` in Forge to see all available tools (MCP tools are listed separately).
 
@@ -356,6 +391,7 @@ tools:
   - read
   - write
   - patch
+  - "mcp_*" # All MCP tools for external integrations
 max_turns: 50
 ---
 
@@ -393,6 +429,7 @@ tools:
   - write
   - patch
   - shell
+  - "mcp_*" # Database and external service integrations
 max_turns: 75
 ---
 

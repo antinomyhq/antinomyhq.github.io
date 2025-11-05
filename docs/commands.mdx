@@ -128,7 +128,30 @@ The `/retry` command re-executes the most recent message in the conversation. Th
 
 Switch to a different AI provider.
 
-The `/provider` command displays an interactive list of your configured AI providers and allows you to switch between them. Only providers with valid API keys set in the environment will appear in the list.
+The `/provider` command displays an interactive list of all available AI providers supported by Forge. The list shows both configured and unconfigured providers with different visual indicators.
+
+**Display format:**
+
+- **Configured providers**: Shows a ✓ checkmark, provider name, and domain
+  ```
+  ✓ Anthropic  [api.anthropic.com]
+  ✓ OpenRouter [openrouter.ai]
+  ```
+- **Unconfigured providers**: Shows provider name with `[unavailable]` indicator
+  ```
+    OpenAI     [unavailable]
+    XAI        [unavailable]
+  ```
+
+**Example output:**
+
+```
+? Select a provider:
+  ✓ Anthropic  [api.anthropic.com]      ← Has ANTHROPIC_API_KEY
+  ✓ OpenRouter [openrouter.ai]          ← Has OPENROUTER_API_KEY
+    OpenAI     [unavailable]            ← Missing OPENAI_API_KEY
+    XAI        [unavailable]            ← Missing XAI_API_KEY
+```
 
 **What happens after selection:**
 
@@ -136,11 +159,11 @@ The `/provider` command displays an interactive list of your configured AI provi
 - You'll be prompted to select a compatible model
 - The conversation continues with the new provider/model
 
-**When to use:** Use this when you want to change which AI provider Forge uses for processing your requests.
+**When to use:** Use this when you want to change which AI provider Forge uses for processing your requests, or to see which providers are available and configured.
 
-:::tip Provider Setup
-To add more providers to the list, configure their API keys following the [Provider Setup Guide](/docs/custom-providers).
-:::
+::::tip Provider Setup
+To configure an unconfigured provider, set its API key environment variable. See the [Provider Setup Guide](/docs/custom-providers) for details.
+::::
 
 ## /model
 

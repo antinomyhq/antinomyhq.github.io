@@ -52,6 +52,7 @@ const sidebars: SidebarsConfig = {
         {type: "doc", id: "model-selection-guide", label: "Switching Models"},
         {type: "doc", id: "custom-rules-guide", label: "Project Specific Guidelines"},
         {type: "doc", id: "file-tagging-guide", label: "File Tagging with @"},
+        {type: "doc", id: "ignoring-files", label: "Ignoring Files"},
       ],
     },
     {
@@ -68,7 +69,7 @@ const sidebars: SidebarsConfig = {
       label: "Advanced Configuration",
       collapsed: false,
       items: [
-        "workflow-config",
+        "forge-configuration",
         "environment-configuration",
         "mcp-integration",
         "context-compaction",
