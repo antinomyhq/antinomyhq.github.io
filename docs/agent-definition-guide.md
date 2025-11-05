@@ -306,8 +306,6 @@ You can customize which tools each agent has access to. Here's when to use each 
   - _Use for_: Breaking down complex tasks, project planning
 - **`followup`** - Ask clarifying questions
   - _Use for_: Gathering requirements, clarifying ambiguous requests
-- **`attempt_completion`** - Present final results
-  - _Use for_: Completing tasks, summarizing work done
 
 ### MCP Tools (External Integrations)
 
