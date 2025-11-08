@@ -172,15 +172,15 @@ FORGE_DUMP_AUTO_OPEN=false
 
 Customize how information is displayed in Forge's title bars during operations. You can control both the overall layout and the specific metadata shown.
 
-| Environment Variable              | Default                                              | Description                                                                 |
-| --------------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------- |
-| `FORGE_TITLE_FORMAT`              | `[{metadata}] {title} {subtitle}`                    | Overall layout template for title display                                   |
-| `FORGE_TITLE_METADATA_FORMAT`     | `{timestamp} {input}/{total} {cost} {cache_pct}`     | Format template for metadata content                                        |
-| `FORGE_TITLE_SHOW_TIMESTAMP`      | `true`                                               | Show timestamp in title metadata                                            |
-| `FORGE_TITLE_SHOW_INPUT_TOKENS`   | `true`                                               | Show input/prompt tokens in title metadata                                  |
-| `FORGE_TITLE_SHOW_TOTAL_TOKENS`   | `true`                                               | Show total tokens in title metadata                                         |
-| `FORGE_TITLE_SHOW_COST`           | `true`                                               | Show estimated cost in title metadata                                       |
-| `FORGE_TITLE_SHOW_CACHE_PCT`      | `true`                                               | Show cache percentage in title metadata                                     |
+| Environment Variable            | Default                                          | Description                                |
+| ------------------------------- | ------------------------------------------------ | ------------------------------------------ |
+| `FORGE_TITLE_FORMAT`            | `[{metadata}] {title} {subtitle}`                | Overall layout template for title display  |
+| `FORGE_TITLE_METADATA_FORMAT`   | `{timestamp} {input}/{total} {cost} {cache_pct}` | Format template for metadata content       |
+| `FORGE_TITLE_SHOW_TIMESTAMP`    | `true`                                           | Show timestamp in title metadata           |
+| `FORGE_TITLE_SHOW_INPUT_TOKENS` | `true`                                           | Show input/prompt tokens in title metadata |
+| `FORGE_TITLE_SHOW_TOTAL_TOKENS` | `true`                                           | Show total tokens in title metadata        |
+| `FORGE_TITLE_SHOW_COST`         | `true`                                           | Show estimated cost in title metadata      |
+| `FORGE_TITLE_SHOW_CACHE_PCT`    | `true`                                           | Show cache percentage in title metadata    |
 
 #### Title Format Placeholders
 
@@ -206,12 +206,14 @@ The `FORGE_TITLE_METADATA_FORMAT` variable controls what information is shown in
 #### Usage Examples
 
 **Default Display:**
+
 ```bash
 # Shows timestamp, input/total tokens, cost, and cache percentage
 # Result: ⏺ [12:34:56 1234/5678 $0.0012 45%] Task Complete
 ```
 
 **Cost-Focused Display:**
+
 ```bash
 # .env
 FORGE_TITLE_FORMAT="{title} [{metadata}]"
@@ -222,6 +224,7 @@ FORGE_TITLE_SHOW_TIMESTAMP=false
 ```
 
 **Input/Output Tokens:**
+
 ```bash
 # .env
 FORGE_TITLE_METADATA_FORMAT="{timestamp} {input}/{output}"
@@ -232,6 +235,7 @@ FORGE_TITLE_SHOW_CACHE_PCT=false
 ```
 
 **Detailed Token Display:**
+
 ```bash
 # .env
 FORGE_TITLE_METADATA_FORMAT="{timestamp} | in:{input} out:{output} total:{total} | cache:{cache_pct} | {cost}"
@@ -240,6 +244,7 @@ FORGE_TITLE_METADATA_FORMAT="{timestamp} | in:{input} out:{output} total:{total}
 ```
 
 **Minimal Display (No Metadata):**
+
 ```bash
 # .env
 FORGE_TITLE_FORMAT="{title}"
@@ -249,6 +254,7 @@ FORGE_TITLE_METADATA_FORMAT=""
 ```
 
 **Cache-Focused Display:**
+
 ```bash
 # .env
 FORGE_TITLE_METADATA_FORMAT="{cached} {cache_pct}"
