@@ -186,75 +186,42 @@ Forge understands your theme system and suggests consistent changes across files
 
 ## Configuration
 
-The extension provides several settings to customize its behavior. Access settings via **File → Preferences → Settings → Extensions → Forge**.
+Configure the extension to match your workflow (**File → Preferences → Settings → Extensions → Forge**):
 
-### Open Terminal
+| Setting | Description | Default |
+| :------ | :---------- | :------ |
+| `forge.openTerminal` | Terminal behavior (`once` or `never`) when copying file references | `once` |
+| `forge.autoPaste` | Auto-paste file references into terminals | `true` |
+| `forge.pasteDelay` | Delay before auto-pasting (milliseconds) | `5000` |
+| `forge.pathFormat` | Path format (`absolute` or `relative`) for file references | `absolute` |
+| `forge.showNotifications` | Show notifications when using extension | `true` |
+| `forge.showInstallationPrompt` | Show installation prompt when Forge not detected | `true` |
 
-**Setting:** `forge.openTerminal`
+### Setting Options
 
-Control whether to automatically open a Forge terminal when copying file references with `Ctrl+U`.
+**`forge.openTerminal`**
 
-- **`once`** (default): Open terminal once and reuse it for subsequent operations
-- **`never`**: Never open terminal, only copy file reference to clipboard
+| Option | Description |
+| :----- | :---------- |
+| `once` | Open terminal once and reuse it |
+| `never` | Never open terminal, only copy to clipboard |
 
-**Use `once` if:** You want the extension to automatically create and manage Forge terminals for you.
+**`forge.pasteDelay`**
 
-**Use `never` if:** You prefer to manually manage your own Forge terminal (whether internal or external) and only want the extension to copy file references to clipboard.
+| Range | Description |
+| :---- | :---------- |
+| `3000-10000` | Recommended range (milliseconds) |
 
-### Auto Paste
+- Increase if pasting fails
+- Decrease for faster machines
+- Only applies when extension creates new terminals
 
-**Setting:** `forge.autoPaste`
+**`forge.pathFormat`**
 
-Toggle automatic pasting of file references into Forge terminals.
-
-- **`true`** (default): Automatically paste file references after the paste delay
-- **`false`**: Only copy to clipboard, paste manually
-
-**Enable if:** You want the extension to automatically paste file references into Forge terminals.
-
-**Disable if:** You prefer to manually paste file references. The extension will still copy references to clipboard.
-
-### Paste Delay
-
-**Setting:** `forge.pasteDelay`
-
-Set the delay (in milliseconds) to wait for Forge to start before auto-pasting file references.
-
-- **Default**: `5000` (5 seconds)
-
-**When this applies:** Only when the extension automatically creates a new Forge terminal (via `Ctrl+U` when no terminal exists, or "Start New Forge Session" command). Does not apply to manually started Forge terminals.
-
-**Why this exists:** Forge needs time to start up before accepting input. This delay ensures the file reference is pasted after Forge is ready.
-
-**Adjust this if:**
-- File references aren't being pasted → Increase to 7000-10000ms
-- You have a fast machine → Decrease to 3000-4000ms
-
-### Path Format
-
-**Setting:** `forge.pathFormat`
-
-Choose between absolute or relative file paths when copying references.
-
-- **`absolute`** (default): Full file paths (e.g., `/Users/name/project/src/file.ts`)
-- **`relative`**: Workspace-relative paths (e.g., `src/file.ts`)
-
-**Use `absolute` if:** You want unambiguous paths that work everywhere (recommended for most users).
-
-**Use `relative` if:** You prefer shorter paths or work with multiple workspace folders.
-
-**Tip:** Need a different format just once? Right-click in the editor and choose "Copy Absolute Path" or "Copy Relative Path" to override this setting for that specific copy.
-
-### Installation Prompt
-
-**Setting:** `forge.showInstallationPrompt`
-
-Toggle the installation prompt when Forge CLI is not detected in your PATH.
-
-- **`true`** (default): Show installation prompt
-- **`false`**: Hide installation prompt
-
-**Disable if:** You use Forge via `npx` or have it installed in a non-standard location.
+| Option | Description | Example |
+| :----- | :---------- | :------ |
+| `absolute` | Full file paths | `/Users/name/project/src/file.ts` |
+| `relative` | Workspace-relative paths | `src/file.ts` |
 
 ## Troubleshooting
 
