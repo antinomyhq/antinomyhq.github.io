@@ -41,12 +41,13 @@ htop -p $(pgrep server)
 - **Intelligent Context Management**: Maintain conversation context across prompts with `:reset` control and agent targeting like `:sage` or `:muse`
 - **Syntax Highlighting**: Color-coded prompts optimized for dark terminals (requires zsh-syntax-highlighting plugin)
 
-### Advanced Features (Require fd and fzf)
+### Advanced Features (Require fd, fzf, and bat)
 
-- **Fuzzy File Finding**: Quick file tagging with `@filename<Tab>`
-- **Fuzzy Agent Selection**: Press Tab after `:` to get a searchable list of available agents
+- **Fuzzy File Finding**: Quick file tagging with `@filename<Tab>` (requires fd + fzf)
+- **Fuzzy Agent Selection**: Press Tab after `:` to get a searchable list of available agents (requires `fzf`)
+- **Syntax-Highlighted Previews**: See colorized code when selecting files (requires `bat`)
 
-These features are optional but provide a significantly better experience. Installation instructions are in Step 1 below.
+These features are optional but provide a significantly better experience. Installation instructions are in Step 3 below.
 
 ## Installation
 
@@ -154,24 +155,31 @@ These features are optional but provide a significantly better experience. Insta
   </Step>
 
   <Step title="Install Optional File Finding Tools (Recommended)">
-    For fuzzy file finding and agent selection, install fd and fzf:
+    These tools enhance the ZSH integration with fuzzy finding and better previews:
+
+    **What each tool does:**
+    - **fd**: Fast file search - enables finding files by partial name
+    - **fzf**: Fuzzy finder UI - provides the interactive selection interface
+    - **bat**: Syntax highlighter - shows colorized code previews in the fuzzy finder
+
+    **Install all three:**
 
     ```bash
     # macOS
-    brew install fd fzf
+    brew install fd fzf bat
 
     # Ubuntu/Debian
-    sudo apt install fd-find fzf
+    sudo apt install fd-find fzf bat
 
     # Arch Linux
-    sudo pacman -S fd fzf
+    sudo pacman -S fd fzf bat
     ```
 
     **Other platforms:** See our [ZSH Dependencies Installation Guide](/docs/fd-fzf-installation)
 
 :::tip Optional but Recommended
 
-ZSH Support works without these tools, but you'll need to type full file paths instead of using fuzzy finding. You can install them later if you skip this step.
+These tools enable fuzzy file finding with `@filename<Tab>`, agent selection with Tab after `:`, and syntax-highlighted file previews. You can install them later if you skip this step.
 
 :::
 
