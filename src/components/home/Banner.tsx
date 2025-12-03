@@ -9,7 +9,10 @@ const INSTALL_COMMAND = "npx forgecode@latest"
 const Banner: React.FC = () => {
   return (
     <main>
-      <Section className="!pb-0 !pt-8 sm:!pt-12 lg:!pt-16 overflow-hidden !px-0 !max-w-none" innerClassName="!max-w-none">
+      <Section
+        className="!pb-0 !pt-8 sm:!pt-12 lg:!pt-16 overflow-hidden !px-0 !max-w-none"
+        innerClassName="!max-w-none"
+      >
         {/* Two-column layout: Text on left, GIF on right */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-6 lg:gap-14 xl:gap-16 items-center px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
           {/* Left Column - Text Content */}
@@ -29,7 +32,8 @@ const Banner: React.FC = () => {
 
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-tailCall-terminal-text-secondary leading-relaxed sm:leading-relaxed md:leading-loose animate-fade-in-up max-w-xl mx-auto lg:mx-0 px-2 sm:px-0 [animation-delay:0.3s] font-mono">
                 Stop context switching. Get AI coding help{" "}
-                <span className="font-semibold text-tailCall-terminal-green-primary terminal-glow">directly</span> in your terminal without leaving your workflow.
+                <span className="font-semibold text-tailCall-terminal-green-primary terminal-glow">directly</span> in
+                your terminal without leaving your workflow.
               </p>
             </div>
 

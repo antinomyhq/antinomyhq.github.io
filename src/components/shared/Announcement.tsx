@@ -14,7 +14,9 @@ const Announcement: React.FC<AnnouncementProps> = ({text, children, refLink, ref
   return (
     <div
       className={`w-full h-auto flex items-center justify-center p-2 sm:p-3 ${
-        isGradient ? "bg-tailCall-terminal-bg-primary text-tailCall-terminal-text-primary" : "bg-tailCall-terminal-bg-primary text-tailCall-terminal-text-primary"
+        isGradient
+          ? "bg-tailCall-terminal-bg-primary text-tailCall-terminal-text-primary"
+          : "bg-tailCall-terminal-bg-primary text-tailCall-terminal-text-primary"
       }`}
     >
       <div className="text-center">
@@ -23,7 +25,9 @@ const Announcement: React.FC<AnnouncementProps> = ({text, children, refLink, ref
           {refLink && refText && (
             <a
               className={`font-bold ml-2 font-mono ${
-                isGradient ? "text-tailCall-terminal-green-primary hover:text-tailCall-terminal-green-secondary transition-colors underline" : "text-tailCall-terminal-green-primary"
+                isGradient
+                  ? "text-tailCall-terminal-green-primary hover:text-tailCall-terminal-green-secondary transition-colors underline"
+                  : "text-tailCall-terminal-green-primary"
               }`}
               href={refLink}
               target="_blank"

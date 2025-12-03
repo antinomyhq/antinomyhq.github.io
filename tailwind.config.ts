@@ -45,30 +45,30 @@ module.exports = {
           // Terminal theme colors
           terminal: {
             bg: {
-              primary: "#0a0e14",    // Deep terminal black
-              secondary: "#1a1f29",  // Slightly lighter terminal bg
-              tertiary: "#151a21",   // Mid-tone terminal bg
+              primary: "#0a0e14", // Deep terminal black
+              secondary: "#1a1f29", // Slightly lighter terminal bg
+              tertiary: "#151a21", // Mid-tone terminal bg
             },
             green: {
-              primary: "#4ade80",    // Bright terminal green
-              secondary: "#22c55e",  // Darker terminal green
-              glow: "#4ade8033",     // Green glow effect
+              primary: "#4ade80", // Bright terminal green
+              secondary: "#22c55e", // Darker terminal green
+              glow: "#4ade8033", // Green glow effect
             },
             amber: {
-              primary: "#fbbf24",    // Terminal amber/yellow
-              secondary: "#f59e0b",  // Darker amber
-              glow: "#fbbf2433",     // Amber glow effect
+              primary: "#fbbf24", // Terminal amber/yellow
+              secondary: "#f59e0b", // Darker amber
+              glow: "#fbbf2433", // Amber glow effect
             },
             cyan: {
-              primary: "#22d3ee",    // Terminal cyan
-              secondary: "#06b6d4",  // Darker cyan
+              primary: "#22d3ee", // Terminal cyan
+              secondary: "#06b6d4", // Darker cyan
             },
             text: {
-              primary: "#e6edf3",    // Primary terminal text
-              secondary: "#8b949e",  // Dimmed terminal text
-              muted: "#6e7681",      // Muted terminal text
+              primary: "#e6edf3", // Primary terminal text
+              secondary: "#8b949e", // Dimmed terminal text
+              muted: "#6e7681", // Muted terminal text
             },
-            border: "#30363d",       // Terminal border color
+            border: "#30363d", // Terminal border color
           },
         },
       },

@@ -83,11 +83,15 @@ const PricingPage = (): JSX.Element => {
       <main>
         <Section className="py-6 lg:py-10 terminal-grid-bg">
           <div className="text-center mb-8">
-            <Heading as="h1" className="text-3xl sm:text-display-medium lg:text-display-large mb-6 whitespace-nowrap text-terminal-green-primary terminal-glow font-mono drop-shadow-[0_0_20px_rgba(74,222,128,0.5)]">
+            <Heading
+              as="h1"
+              className="text-3xl sm:text-display-medium lg:text-display-large mb-6 whitespace-nowrap text-terminal-green-primary terminal-glow font-mono drop-shadow-[0_0_20px_rgba(74,222,128,0.5)]"
+            >
               Simple Pricing
             </Heading>
             <p className="text-xl text-terminal-text-secondary max-w-2xl mx-auto font-mono">
-              Start free, upgrade when you're ready. <span className="text-terminal-green-primary">No hidden fees.</span>
+              Start free, upgrade when you're ready.{" "}
+              <span className="text-terminal-green-primary">No hidden fees.</span>
             </p>
           </div>
 
@@ -138,9 +142,7 @@ const PricingPage = (): JSX.Element => {
                           </span>
                           <span className="text-terminal-text-secondary text-base font-mono">{tier.period}</span>
                         </div>
-                        <span className="terminal-badge mt-2">
-                          LIMITED TIME ONLY
-                        </span>
+                        <span className="terminal-badge mt-2">LIMITED TIME ONLY</span>
                       </div>
                     ) : (
                       <div className="flex flex-col items-center gap-1">
@@ -158,8 +160,13 @@ const PricingPage = (): JSX.Element => {
                 <ul className="space-y-2 sm:space-y-3 mb-6 pl-3 flex-grow">
                   {tier.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start gap-2 sm:gap-3 group">
-                      <Check size={14} className="text-terminal-green-primary flex-shrink-0 mt-1 sm:w-4 sm:h-4 group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]" />
-                      <span className="text-terminal-text-primary text-xs sm:text-sm leading-relaxed font-mono group-hover:text-terminal-green-primary transition-colors">{feature}</span>
+                      <Check
+                        size={14}
+                        className="text-terminal-green-primary flex-shrink-0 mt-1 sm:w-4 sm:h-4 group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.6)]"
+                      />
+                      <span className="text-terminal-text-primary text-xs sm:text-sm leading-relaxed font-mono group-hover:text-terminal-green-primary transition-colors">
+                        {feature}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -180,7 +187,11 @@ const PricingPage = (): JSX.Element => {
               Works with every model offered by leading AI providers.
             </h2>
             <p className="text-terminal-text-secondary mb-12 max-w-2xl mx-auto font-mono">
-              Seamlessly integrate with <span className="text-terminal-green-primary">OpenAI, Anthropic, Google, xAI, Meta, Mistral, and Deepseek</span> models.
+              Seamlessly integrate with{" "}
+              <span className="text-terminal-green-primary">
+                OpenAI, Anthropic, Google, xAI, Meta, Mistral, and Deepseek
+              </span>{" "}
+              models.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 max-w-5xl mx-auto">
@@ -192,7 +203,9 @@ const PricingPage = (): JSX.Element => {
                   <div className="w-12 h-12 mb-3 text-terminal-text-secondary group-hover:text-terminal-green-primary group-hover:drop-shadow-[0_0_15px_rgba(74,222,128,0.8)] transition-all duration-300">
                     <provider.logo className="w-full h-full" />
                   </div>
-                  <span className="text-sm font-medium text-terminal-text-primary group-hover:text-terminal-green-primary transition-colors font-mono">{provider.name}</span>
+                  <span className="text-sm font-medium text-terminal-text-primary group-hover:text-terminal-green-primary transition-colors font-mono">
+                    {provider.name}
+                  </span>
                 </div>
               ))}
             </div>
@@ -200,18 +213,23 @@ const PricingPage = (): JSX.Element => {
 
           {/* FAQ Section */}
           <div className="mt-24 max-w-4xl mx-auto">
-            <Heading as="h2" className="text-display-tiny text-center mb-12 text-terminal-green-primary terminal-glow font-mono drop-shadow-[0_0_15px_rgba(74,222,128,0.4)]">
+            <Heading
+              as="h2"
+              className="text-display-tiny text-center mb-12 text-terminal-green-primary terminal-glow font-mono drop-shadow-[0_0_15px_rgba(74,222,128,0.4)]"
+            >
               Frequently Asked Questions
             </Heading>
 
             <div className="space-y-8">
               <div className="bg-terminal-bg-secondary p-6 dash border-terminal-border hover:border-terminal-green-primary/50 hover:shadow-[0_0_15px_rgba(74,222,128,0.1)] transition-all duration-300 group">
-                <h3 className="text-title-medium font-semibold mb-3 text-terminal-green-primary font-mono group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">How do I purchase additional prompts?</h3>
+                <h3 className="text-title-medium font-semibold mb-3 text-terminal-green-primary font-mono group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">
+                  How do I purchase additional prompts?
+                </h3>
                 <p className="text-terminal-text-primary font-mono">
                   Additional prompts can be purchased directly through your ForgeCode dashboard when you approach your
                   monthly limit.
-                  <strong className="text-terminal-green-primary">Pro users</strong> can buy 250 additional prompts for $10 USD, while These additional prompts
-                  are added to your current month's allowance.
+                  <strong className="text-terminal-green-primary">Pro users</strong> can buy 250 additional prompts for
+                  $10 USD, while These additional prompts are added to your current month's allowance.
                 </p>
               </div>
 
@@ -220,18 +238,21 @@ const PricingPage = (): JSX.Element => {
                   What's the difference between Free, Pro, and Max plans?
                 </h3>
                 <p className="text-terminal-text-primary font-mono">
-                  <strong className="text-terminal-green-primary">Free ($0):</strong> Basic AI model access with limited daily usage, perfect for getting
-                  started.
+                  <strong className="text-terminal-green-primary">Free ($0):</strong> Basic AI model access with limited
+                  daily usage, perfect for getting started.
                   <br />
-                  <strong className="text-terminal-green-primary">Pro ($20/month):</strong> Access to premium models (OpenAI, Claude, Gemini) with 500 requests
-                  per month and priority support.
+                  <strong className="text-terminal-green-primary">Pro ($20/month):</strong> Access to premium models
+                  (OpenAI, Claude, Gemini) with 500 requests per month and priority support.
                   <br />
-                  <strong className="text-terminal-green-primary">Max (FREE - normally $200/month):</strong> Unlimited access.
+                  <strong className="text-terminal-green-primary">Max (FREE - normally $200/month):</strong> Unlimited
+                  access.
                 </p>
               </div>
 
               <div className="bg-terminal-bg-secondary p-6 dash border-terminal-border hover:border-terminal-green-primary/50 hover:shadow-[0_0_15px_rgba(74,222,128,0.1)] transition-all duration-300 group">
-                <h3 className="text-title-medium font-semibold mb-3 text-terminal-green-primary font-mono group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">What are "top tier" models?</h3>
+                <h3 className="text-title-medium font-semibold mb-3 text-terminal-green-primary font-mono group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">
+                  What are "top tier" models?
+                </h3>
                 <p className="text-terminal-text-primary font-mono">
                   Top tier models include the most advanced AI models like GPT-4, Claude-4, and Gemini 2.5 - the premium
                   models from each provider that offer the best performance for complex coding tasks.
@@ -239,7 +260,9 @@ const PricingPage = (): JSX.Element => {
               </div>
 
               <div className="bg-terminal-bg-secondary p-6 dash border-terminal-border hover:border-terminal-green-primary/50 hover:shadow-[0_0_15px_rgba(74,222,128,0.1)] transition-all duration-300 group">
-                <h3 className="text-title-medium font-semibold mb-3 text-terminal-green-primary font-mono group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">How does the Max plan unlimited usage work?</h3>
+                <h3 className="text-title-medium font-semibold mb-3 text-terminal-green-primary font-mono group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">
+                  How does the Max plan unlimited usage work?
+                </h3>
                 <p className="text-terminal-text-primary font-mono">
                   Max plan users get truly unlimited access to all AI models during with no daily caps, or usage
                   restrictions.
@@ -251,16 +274,19 @@ const PricingPage = (): JSX.Element => {
                   What happens when I exceed my monthly prompt limit?
                 </h3>
                 <p className="text-terminal-text-primary font-mono">
-                  <strong className="text-terminal-green-primary">Free users:</strong> Hit daily usage limits and need to wait for reset or upgrade.
+                  <strong className="text-terminal-green-primary">Free users:</strong> Hit daily usage limits and need
+                  to wait for reset or upgrade.
                   <br />
-                  <strong className="text-terminal-green-primary">Pro users:</strong> After using your 500 included prompts, you can purchase additional
-                  prompts: 250 prompts for $10 USD.
+                  <strong className="text-terminal-green-primary">Pro users:</strong> After using your 500 included
+                  prompts, you can purchase additional prompts: 250 prompts for $10 USD.
                   <br />
                 </p>
               </div>
 
               <div className="bg-terminal-bg-secondary p-6 dash border-terminal-border hover:border-terminal-green-primary/50 hover:shadow-[0_0_15px_rgba(74,222,128,0.1)] transition-all duration-300 group">
-                <h3 className="text-title-medium font-semibold mb-3 text-terminal-green-primary font-mono group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">Is my code secure and private?</h3>
+                <h3 className="text-title-medium font-semibold mb-3 text-terminal-green-primary font-mono group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">
+                  Is my code secure and private?
+                </h3>
                 <p className="text-terminal-text-primary font-mono">
                   Absolutely. ForgeCode runs entirely on your local machine using your own API keys. Your code never
                   leaves your computer - no cloud processing, complete privacy and security.
@@ -268,7 +294,9 @@ const PricingPage = (): JSX.Element => {
               </div>
 
               <div className="bg-terminal-bg-secondary p-6 dash border-terminal-border hover:border-terminal-green-primary/50 hover:shadow-[0_0_15px_rgba(74,222,128,0.1)] transition-all duration-300 group">
-                <h3 className="text-title-medium font-semibold mb-3 text-terminal-green-primary font-mono group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">Can I upgrade or downgrade my plan anytime?</h3>
+                <h3 className="text-title-medium font-semibold mb-3 text-terminal-green-primary font-mono group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">
+                  Can I upgrade or downgrade my plan anytime?
+                </h3>
                 <p className="text-terminal-text-primary font-mono">
                   Yes, you can change your plan at any time. Upgrades take effect immediately, while downgrades apply at
                   your next billing cycle.
@@ -276,7 +304,9 @@ const PricingPage = (): JSX.Element => {
               </div>
 
               <div className="bg-terminal-bg-secondary p-6 dash border-terminal-border hover:border-terminal-green-primary/50 hover:shadow-[0_0_15px_rgba(74,222,128,0.1)] transition-all duration-300 group">
-                <h3 className="text-title-medium font-semibold mb-3 text-terminal-green-primary font-mono group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">Do I need my own API keys?</h3>
+                <h3 className="text-title-medium font-semibold mb-3 text-terminal-green-primary font-mono group-hover:drop-shadow-[0_0_8px_rgba(74,222,128,0.4)]">
+                  Do I need my own API keys?
+                </h3>
                 <p className="text-terminal-text-primary font-mono">
                   For Free users, you'll need your own API keys for AI models. Pro and Max users get included access to
                   premium models without needing separate API keys, plus the option to use your own keys for additional

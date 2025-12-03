@@ -44,7 +44,7 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
                 src={LogoComponent}
                 alt={partner.name}
                 className="max-h-4 sm:max-h-5 md:max-h-7 max-w-[60px] sm:max-w-[80px] md:max-w-[110px] object-contain brightness-[1.8] contrast-[1.2] saturate-[1.1] opacity-90 group-hover:opacity-100 group-hover:brightness-[2.2] transition-all duration-300 filter"
-                style={{filter: 'brightness(1.8) contrast(1.2) saturate(1.1)'}}
+                style={{filter: "brightness(1.8) contrast(1.2) saturate(1.1)"}}
               />
             ) : (
               <LogoComponent className="max-h-4 sm:max-h-5 md:max-h-7 max-w-[60px] sm:max-w-[80px] md:max-w-[110px] object-contain brightness-[1.8] contrast-[1.2] saturate-[1.1] opacity-90 group-hover:opacity-100 group-hover:brightness-[2.2] transition-all duration-300 [&_path]:fill-[#e6edf3] [&_path]:opacity-90 group-hover:[&_path]:opacity-100" />
@@ -54,14 +54,10 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
           <>
             {typeof LogoComponent === "string" ? (
               <img
-               
                 src={LogoComponent}
-               
                 alt={partner.name}
-               
                 className="max-h-4 sm:max-h-5 md:max-h-7 max-w-[60px] sm:max-w-[80px] md:max-w-[110px] object-contain brightness-[1.8] contrast-[1.2] saturate-[1.1] opacity-90"
-                style={{filter: 'brightness(1.8) contrast(1.2) saturate(1.1)'}}
-             
+                style={{filter: "brightness(1.8) contrast(1.2) saturate(1.1)"}}
               />
             ) : (
               <LogoComponent className="max-h-4 sm:max-h-5 md:max-h-7 max-w-[60px] sm:max-w-[80px] md:max-w-[110px] object-contain brightness-[1.8] contrast-[1.2] saturate-[1.1] opacity-90 [&_path]:fill-[#e6edf3] [&_path]:opacity-90" />

@@ -10,7 +10,7 @@ interface TerminalLayoutProps {
 
 /**
  * TerminalLayout - Wraps content with terminal-themed visual effects
- * 
+ *
  * Features:
  * - Scanline animation (optional)
  * - Noise texture overlay (optional)
@@ -37,12 +37,9 @@ const TerminalLayout: React.FC<TerminalLayoutProps> = ({
       {enableNoise && <div className="terminal-noise" />}
 
       {/* CRT vignette effect */}
-      <div className="terminal-crt">
-        {children}
-      </div>
+      <div className="terminal-crt">{children}</div>
     </div>
   )
 }
 
 export default TerminalLayout
-
