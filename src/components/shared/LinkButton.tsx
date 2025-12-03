@@ -43,28 +43,27 @@ const LinkButton: React.FC<LinkButtonProps> = ({
     }
   }
 
-  // Generate classes based on the provided theme
+  // Generate classes based on the provided theme - Terminal themed
   const generateThemeClasses = () => {
     const themes = {
       [Theme.Light]: {
-        classes: "dash text-tailCall-dark-500 bg-transparent hover:text-tailCall-dark-500",
+        classes: "border border-tailCall-terminal-border text-tailCall-terminal-text-primary bg-transparent hover:text-tailCall-terminal-green-primary hover:border-tailCall-terminal-green-primary/50 hover:shadow-[0_0_15px_rgba(74,222,128,0.2)] transition-all duration-200",
         gridClasses: "",
       },
       [Theme.Dark]: {
-        classes: "dash dash-current text-tailCall-light-100 bg-tailCall-dark-500 hover:text-tailCall-light-100",
+        classes: "border border-tailCall-terminal-green-primary text-tailCall-terminal-text-primary bg-tailCall-terminal-bg-secondary hover:bg-tailCall-terminal-bg-tertiary hover:shadow-[0_0_20px_rgba(74,222,128,0.3)] terminal-glow transition-all duration-200",
         gridClasses: "",
       },
       [Theme.Gray]: {
-        classes: "dash dash-current text-tailCall-light-100 bg-transparent hover:text-tailCall-light-100",
+        classes: "border border-tailCall-terminal-border text-tailCall-terminal-text-secondary bg-transparent hover:text-tailCall-terminal-green-primary hover:border-tailCall-terminal-green-primary/50 transition-all duration-200",
         gridClasses: "hidden",
       },
       [Theme.Tailcall]: {
-        classes: "bg-tailCall-black dash text-white hover:text-white",
-
+        classes: "bg-tailCall-terminal-bg-primary border border-tailCall-terminal-green-primary text-tailCall-terminal-green-primary hover:bg-tailCall-terminal-bg-secondary hover:shadow-[0_0_25px_rgba(74,222,128,0.4)] terminal-glow transition-all duration-200",
         gridClasses: "",
       },
       [Theme.Outlined]: {
-        classes: "dash-outline text-white hover:text-white",
+        classes: "dash-outline text-tailCall-terminal-text-primary hover:text-tailCall-terminal-green-primary hover:shadow-[0_0_15px_rgba(74,222,128,0.2)] terminal-button-glow transition-all duration-200",
         gridClasses: "",
       },
     }

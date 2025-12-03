@@ -30,13 +30,15 @@
     border-top-style: solid;
     border-bottom-style: solid;
   }
-  /* Shared dashed border utilities */
+  /* Shared dashed border utilities - Terminal theme */
   .dash {
-    border: 1px dashed #545556;
+    border: 1px dashed #4a5568;
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.05);
   }
   .dash-outline {
-    outline: 1px dashed #545556;
+    outline: 1px dashed #4a5568;
     outline-offset: 4px;
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.1);
   }
   .dash-current {
     border-color: currentColor;
@@ -71,15 +73,21 @@
   }
 }
 
+.dash-glow {
+  border: 1px dashed #4ade80;
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.3);
+}
+
 html,
 body {
-  background-color: #f5f3eb;
+  background-color: #0a0e14;
+  color: #e6edf3;
 }
 
 :root {
   /* Font and Dimension Tokens */
-  --ifm-font-family-base: "Rubik";
-  --ifm-font-size-base: 18px;
+  --ifm-font-family-base: "Space Mono", monospace;
+  --ifm-font-size-base: 16px;
   --header-height: 5rem;
   --ifm-navbar-height: 5rem;
   --ifm-navbar-height-sm: 4.5rem;
@@ -92,53 +100,79 @@ body {
   --ifm-grid-bg-size-md: 2.5rem;
   --ifm-grid-bg-size-sm: 1.25rem;
   --ifm-list-item-link: 1rem;
-  --ifm-navbar-font-size: 1.25rem;
+  --ifm-navbar-font-size: 1.125rem;
   --ifm-content-link-font-size: 0.875rem;
   --ifm-search-input-font-size: 0.9rem;
   --ifm-search-desc-font-size: 14px;
-  --ifm-font-weight-bold: 500;
-  --ifm-navbar-background-color: #f5f3eb;
+  --ifm-font-weight-bold: 600;
+  --ifm-navbar-background-color: #0a0e14;
 
-  /* Color Tokens */
-  --ifm-color-brand: #181818;
+  /* Terminal Color Tokens */
+  --ifm-color-brand: #4ade80;
   --ifm-color-brand-linkedin: #0a66c2;
   --ifm-color-brand-discord: #5865f2;
-  --ifm-color-brand-dark: #000;
-  --ifm-color-brand-dark-100: #121315;
-  --ifm-color-brand-dark-200: #323335;
-  --ifm-color-brand-dark-300: #2c2c2c;
-  --ifm-color-brand-dark-400: #545556;
-  --ifm-color-brand-dark-opacity-05: rgba(0, 0, 0, 0.05);
-  --ifm-color-brand-light: #ffffff;
-  --ifm-color-brand-light-100: #f3f4f7;
-  --ifm-color-brand-light-200: #e4e4e4;
-  --ifm-color-brand-light-300: #e5e5e5;
-  --ifm-color-brand-light-400: #e7e7e7;
-  --ifm-color-brand-light-500: #cececf;
-  --ifm-color-brand-light-600: #b6b6b7;
-  --ifm-color-brand-light-opacity-15: rgba(255, 255, 255, 0.15);
+  --ifm-color-brand-dark: #0a0e14;
+  --ifm-color-brand-dark-100: #151a21;
+  --ifm-color-brand-dark-200: #1a1f29;
+  --ifm-color-brand-dark-300: #1f2937;
+  --ifm-color-brand-dark-400: #30363d;
+  --ifm-color-brand-dark-opacity-05: rgba(10, 14, 20, 0.05);
+  --ifm-color-brand-light: #e6edf3;
+  --ifm-color-brand-light-100: #f0f6fc;
+  --ifm-color-brand-light-200: #c9d1d9;
+  --ifm-color-brand-light-300: #8b949e;
+  --ifm-color-brand-light-400: #6e7681;
+  --ifm-color-brand-light-500: #484f58;
+  --ifm-color-brand-light-600: #30363d;
+  --ifm-color-brand-light-opacity-15: rgba(230, 237, 243, 0.15);
+
+  /* Terminal Accent Colors */
+  --terminal-green: #4ade80;
+  --terminal-green-glow: rgba(74, 222, 128, 0.2);
+  --terminal-amber: #fbbf24;
+  --terminal-amber-glow: rgba(251, 191, 36, 0.2);
+  --terminal-cyan: #22d3ee;
+  --terminal-text: #e6edf3;
+  --terminal-text-dim: #8b949e;
 
   /* Code Settings */
-  --ifm-font-family-monospace: "Space Mono";
-  --ifm-code-background: #181818;
-  --ifm-code-border-radius: var(--ifm-global-radius);
-  --ifm-code-font-size: 0.9eem;
-  --ifm-code-padding-horizontal: 0.1em;
-  --ifm-code-padding-vertical: 0em;
-  --ifm-pre-background: var(--ifm-code-background);
-  --docusaurus-highlighted-code-line-bg: #282828;
+  --ifm-font-family-monospace: "Space Mono", monospace;
+  --ifm-code-background: #151a21;
+  --ifm-code-border-radius: 0;
+  --ifm-code-font-size: 0.9em;
+  --ifm-code-padding-horizontal: 0.4em;
+  --ifm-code-padding-vertical: 0.2em;
+  --ifm-pre-background: #151a21;
+  --docusaurus-highlighted-code-line-bg: #1f2937;
+
+  /* Override Infima alert contrast colors for terminal dark theme */
+  /* These prevent light backgrounds in admonition boxes */
+  --ifm-color-primary-contrast-background: #151a21;
+  --ifm-color-primary-contrast-foreground: #e6edf3;
+  --ifm-color-secondary-contrast-background: #151a21;
+  --ifm-color-secondary-contrast-foreground: #e6edf3;
+  --ifm-color-success-contrast-background: #151a21;
+  --ifm-color-success-contrast-foreground: #e6edf3;
+  --ifm-color-info-contrast-background: #151a21;
+  --ifm-color-info-contrast-foreground: #e6edf3;
+  --ifm-color-warning-contrast-background: #151a21;
+  --ifm-color-warning-contrast-foreground: #e6edf3;
+  --ifm-color-danger-contrast-background: #151a21;
+  --ifm-color-danger-contrast-foreground: #e6edf3;
 }
 
 code {
-  color: #111727;
-  border: 1px dashed #545556;
-  letter-spacing: 0.00001px;
+  color: #4ade80;
+  border: 1px dashed #4a5568;
+  letter-spacing: 0.05em;
   vertical-align: baseline;
-  background-color: #eee;
-  border-radius: px;
-  padding: 0px 6px;
-  font-size: 1em;
-  font-weight: 600;
+  background-color: #151a21;
+  border-radius: 0;
+  padding: 2px 8px;
+  font-size: 0.9em;
+  font-weight: 500;
+  font-family: "Space Mono", monospace;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.1);
 }
 
 /* Firefox copy-paste fix: Force code block lines to behave as block elements */
@@ -194,8 +228,13 @@ input[type="radio"]:checked::before {
 
 .breadcrumbs__item.breadcrumbs__item--active span {
   background: transparent;
-  color: var(--ifm-color-gray-900);
+  color: var(--terminal-green);
   font-weight: var(--ifm-font-weight-bold);
+}
+
+.breadcrumbs__item a,
+.breadcrumbs__link {
+  color: var(--terminal-text);
 }
 
 .theme-doc-sidebar-menu {
@@ -232,21 +271,23 @@ input[type="radio"]:checked::before {
   height: 2.125rem;
   display: flex;
   align-items: center;
-  color: var(--ifm-color-gray-900);
+  color: #8b949e;
   border-radius: 0;
   font-size: 0.875rem;
   font-weight: var(--ifm-font-weight-normal);
+  transition: all 0.2s ease;
 }
 
 [data-theme="dark"] .menu__link {
-  color: #e6e6e6;
+  color: #8b949e;
 }
 
 .menu__link.menu__link--active {
-  background-color: transparent;
-  color: var(--ifm-color-gray-900);
+  background-color: rgba(74, 222, 128, 0.05);
+  color: #4ade80;
   font-weight: var(--ifm-font-weight-semibold);
-  box-shadow: inset 2px 0 0 0 var(--ifm-color-brand);
+  box-shadow: inset 2px 0 0 0 #4ade80;
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
 }
 
 .menu__list-item-collapsible a {
@@ -258,7 +299,8 @@ input[type="radio"]:checked::before {
 }
 
 .menu__link:hover {
-  color: var(--ifm-color-gray-900);
+  color: #4ade80;
+  background-color: rgba(74, 222, 128, 0.03);
 }
 
 .theme-doc-sidebar-item-category:not(:first-child) {
@@ -274,7 +316,7 @@ input[type="radio"]:checked::before {
 }
 
 .theme-edit-this-page:hover {
-  color: var(--ifm-color-gray-900);
+  color: var(--terminal-green);
   text-decoration: none;
 }
 
@@ -285,12 +327,17 @@ input[type="radio"]:checked::before {
 }
 
 .pagination-nav__label {
-  color: var(--ifm-color-gray-900);
+  color: var(--terminal-text);
+  transition: color 0.2s ease;
+}
+
+.pagination-nav__label:hover {
+  color: var(--terminal-green);
 }
 
 .pagination-nav__sublabel {
   display: flex;
-  color: var(--ifm-color-brand-dark-200);
+  color: var(--terminal-green);
   line-height: 1;
   align-items: center;
 }
@@ -369,8 +416,11 @@ input[type="radio"]:checked::before {
 }
 
 .navbar {
-  box-shadow: var(--ifm-color-brand-light-400) 0 0 0 1px;
+  box-shadow: 0 1px 0 0 var(--terminal-border), 0 0 20px rgba(74, 222, 128, 0.05);
   height: var(--header-height);
+  background-color: var(--ifm-navbar-background-color);
+  border-bottom: 1px solid var(--terminal-border);
+  font-family: var(--ifm-font-family-monospace);
 }
 
 .navbar__brand {
@@ -390,6 +440,9 @@ input[type="radio"]:checked::before {
 .navbar__item.dropdown .navbar__link {
   font-weight: var(--ifm-font-weight-bold);
   font-size: var(--ifm-navbar-font-size);
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--terminal-text-dim);
+  transition: all 0.2s ease;
 }
 
 .navbar__item.navbar__link {
@@ -406,45 +459,42 @@ input[type="radio"]:checked::before {
   padding: 0 0.5rem;
 }
 
+.navbar__item.navbar__link {
+  border: 1px dashed transparent;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease;
+}
+
 .navbar__item.navbar__link:hover {
-  background-color: #f3f3f3;
-  color: var(--ifm-color-gray-900);
+  background-color: transparent;
+  color: var(--terminal-green);
   border-radius: 0;
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
 }
 
 .navbar__item.navbar__link.navbar__link--active,
 .navbar__item.dropdown.navbar__link--active {
   position: relative;
   overflow: hidden;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
-  color: #fff;
+  background-color: #0a0e14;
+  color: var(--terminal-green);
   border-radius: 0;
-  border: none;
-  outline: 1px dashed #545556;
-  outline-offset: 4px;
+  border: 1px dashed #4a5568;
+  outline: none;
+  outline-offset: 0;
+  padding: 0.5rem 1rem;
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.4);
 }
 
-/* Reuse button grid pattern for navbar hover */
+/* Remove grid pattern for navbar - keep it simple */
 .navbar__item.navbar__link.navbar__link--active::before,
 .navbar__item.dropdown.navbar__link--active::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--ifm-color-brand-light-opacity-15) 1px, transparent 2px),
-    linear-gradient(90deg, var(--ifm-color-brand-light-opacity-15) 1px, transparent 2px);
-  background-size: var(--ifm-grid-bg-size-sm) var(--ifm-grid-bg-size-sm);
-  clip-path: inset(0.2rem);
-  opacity: 0;
-  scale: 0.9;
-  transition: all 0.25s ease-out;
-  pointer-events: none;
+  display: none;
 }
 
 .navbar__item.navbar__link.navbar__link--active:hover::before,
 .navbar__item.dropdown.navbar__link--active:hover::before {
-  opacity: 1;
-  scale: 0.98;
+  display: none;
 }
 
 .navbar-sidebar__item .menu__link:hover {
@@ -562,7 +612,7 @@ input[type="radio"]:checked::before {
 
 .table-of-contents__link--active {
   font-weight: var(--ifm-font-weight-bold);
-  color: var(--ifm-color-gray-900);
+  color: var(--terminal-green);
 }
 
 .theme-doc-toc-desktop > .table-of-contents {
@@ -583,11 +633,11 @@ input[type="radio"]:checked::before {
 }
 
 .table-of-contents__link:hover {
-  color: var(--ifm-color-gray-900);
+  color: var(--terminal-green);
 }
 
 .breadcrumbs__link:hover {
-  color: var(--ifm-color-gray-900);
+  color: var(--terminal-green);
 }
 
 [class*="navbarHidden"] + .main-wrapper .sidebar-search-container,
@@ -627,6 +677,97 @@ aside.theme-doc-sidebar-container {
   background-color: var(--ifm-color-gray-300) !important;
   color: var(--ifm-color-brand-dark-300) !important;
   text-transform: none !important;
+}
+
+/* Hide DocSearch keyboard shortcut keys (Ctrl + K) */
+.DocSearch-Button-Keys {
+  display: none !important;
+}
+
+/* DocSearch Green Theme Overrides */
+.DocSearch-Modal {
+  border: 1px dashed #4ade80;
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.15);
+}
+
+.DocSearch-SearchBar {
+  border-bottom: 1px solid #30363d;
+}
+
+.DocSearch-Form {
+  box-shadow: inset 0 0 0 1px #4ade80 !important;
+  background: #151a21;
+}
+
+.DocSearch-Input {
+  color: #e6edf3;
+}
+
+.DocSearch-Input::placeholder {
+  color: #8b949e;
+}
+
+.DocSearch-Search-Icon {
+  color: #4ade80 !important;
+}
+
+.DocSearch-Reset {
+  color: #8b949e;
+}
+
+.DocSearch-Reset:hover {
+  color: #4ade80;
+}
+
+.DocSearch-Cancel {
+  color: #8b949e;
+}
+
+/* Close button (X) - force green */
+.DocSearch-Close {
+  color: #4ade80 !important;
+}
+
+.DocSearch-Close svg {
+  color: #4ade80 !important;
+}
+
+/* Algolia logo - change to green */
+.DocSearch-Logo svg .cls-1,
+.DocSearch-Logo svg .cls-2 {
+  fill: #4ade80 !important;
+}
+
+.DocSearch-Logo a {
+  color: #4ade80 !important;
+}
+
+/* "Clear the query" button - green */
+.DocSearch-Clear {
+  color: #4ade80 !important;
+}
+
+.DocSearch-Footer {
+  border-top: 1px solid #30363d;
+}
+
+.DocSearch-Commands-Key {
+  background: #1f2937;
+  border: 1px solid #30363d;
+  color: #8b949e;
+  box-shadow: none;
+}
+
+/* Force description text visibility in DocSearch results - same as hover state */
+.DocSearch-Hit-path,
+.DocSearch-Hit-content-wrapper .DocSearch-Hit-path {
+  color: #e6edf3 !important;
+  opacity: 0.7 !important;
+}
+
+.DocSearch-Hit-title,
+.DocSearch-Hit-content-wrapper .DocSearch-Hit-title {
+  color: #e6edf3 !important;
 }
 
 .sidebar-search-container {
@@ -1200,46 +1341,52 @@ pre.main-install-command {
     font-size: 2rem;
   }
 }
-/* Fix details element background to match theme */
+/* Fix details element background to match terminal theme */
 details {
   background-color: transparent !important;
-  border: 1px solid var(--ifm-color-brand-light-400);
+  border: 1px dashed #4a5568;
   border-radius: 0;
   padding: 0;
   margin-bottom: 1rem;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.05);
 }
 
 details summary {
-  background-color: #ede9d8;
+  background-color: #151a21;
   padding: 1rem;
   cursor: pointer;
   border-radius: 0;
   font-weight: var(--ifm-font-weight-semibold);
-  border-bottom: 1px dotted #ccc;
+  border-bottom: 1px dashed #4a5568;
+  color: #4ade80;
+  transition: all 0.2s ease;
 }
 
 details[open] summary {
   border-radius: 0;
+  background-color: #1a1f29;
 }
 
 details > div {
-  background-color: #ede9d8;
+  background-color: #151a21;
   padding: 1rem;
   border-radius: 0;
+  color: #e6edf3;
 }
 
 details summary:hover {
-  background-color: #e5ddc5;
+  background-color: #1a1f29;
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.1);
 }
-/* Override details sections blue coloring */
+/* Override details sections coloring for terminal theme */
 details {
-  --ifm-alert-foreground-color: #666 !important;
-  border: 1px dotted #ccc !important;
+  --ifm-alert-foreground-color: #e6edf3 !important;
+  border: 1px dashed #4a5568 !important;
   border-radius: 0 !important;
 }
 
 details summary {
-  color: #333 !important;
+  color: var(--terminal-green) !important;
   border-radius: 0 !important;
 }
 
@@ -1253,12 +1400,12 @@ details > div {
 
 /* Override any blue text in details content */
 details code {
-  color: #333 !important;
+  color: var(--terminal-green) !important;
 }
 
 details .admonition-heading code,
 details .admonition-content code {
-  color: #333 !important;
+  color: var(--terminal-green) !important;
 }
 
 /* Stats section - smaller on mobile */
@@ -1309,4 +1456,467 @@ article table th {
     padding: 8px 12px;
     min-width: 100px;
   }
+}
+
+/* ============================================
+   Banner Animations
+   ============================================ */
+
+/* Fade in and slide up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in and slide from right */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slow pulse for glow effect */
+@keyframes pulseSlow {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* Apply animations */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 1s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 3s ease-in-out infinite;
+}
+
+/* Blinking cursor animation for terminal */
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Typing animation for terminal command */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.typing-animation {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(30, end) forwards;
+  animation-delay: 0.5s;
+  width: 0;
+}
+
+/* ============================================
+   TERMINAL THEME VISUAL EFFECTS
+   ============================================ */
+
+/* Scanline effect for authentic terminal feel */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.terminal-scanline::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(74, 222, 128, 0.1) 50%,
+    transparent 100%
+  );
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* CRT screen curvature effect */
+.terminal-crt {
+  position: relative;
+}
+
+.terminal-crt::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Phosphor glow effect for text */
+.terminal-glow {
+  text-shadow:
+    0 0 5px rgba(74, 222, 128, 0.5),
+    0 0 10px rgba(74, 222, 128, 0.3),
+    0 0 15px rgba(74, 222, 128, 0.2);
+}
+
+.terminal-glow-amber {
+  text-shadow:
+    0 0 5px rgba(251, 191, 36, 0.5),
+    0 0 10px rgba(251, 191, 36, 0.3),
+    0 0 15px rgba(251, 191, 36, 0.2);
+}
+
+.terminal-glow-cyan {
+  text-shadow:
+    0 0 5px rgba(34, 211, 238, 0.5),
+    0 0 10px rgba(34, 211, 238, 0.3),
+    0 0 15px rgba(34, 211, 238, 0.2);
+}
+
+/* Subtle text flicker animation */
+@keyframes flicker {
+  0%, 100% {
+    opacity: 1;
+  }
+  41.99% {
+    opacity: 1;
+  }
+  42% {
+    opacity: 0.8;
+  }
+  43% {
+    opacity: 1;
+  }
+  45.99% {
+    opacity: 1;
+  }
+  46% {
+    opacity: 0.9;
+  }
+  46.5% {
+    opacity: 1;
+  }
+}
+
+.terminal-flicker {
+  animation: flicker 3s linear infinite;
+}
+
+/* Terminal grid background */
+.terminal-grid-bg {
+  background-image:
+    linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Noise texture overlay */
+@keyframes noise {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(-10%, 5%); }
+  30% { transform: translate(5%, -10%); }
+  40% { transform: translate(-5%, 15%); }
+  50% { transform: translate(-10%, 5%); }
+  60% { transform: translate(15%, 0); }
+  70% { transform: translate(0, 10%); }
+  80% { transform: translate(-15%, 0); }
+  90% { transform: translate(10%, 5%); }
+}
+
+.terminal-noise::after {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200%;
+  background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=') repeat;
+  animation: noise 1s steps(2) infinite;
+  pointer-events: none;
+  opacity: 0.03;
+  z-index: 9998;
+}
+
+/* Terminal button glow effect */
+.terminal-button-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.terminal-button-glow::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #4ade80, #22c55e, #4ade80);
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.terminal-button-glow:hover::before {
+  opacity: 0.6;
+}
+
+/* Pulsing dot indicator */
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+.terminal-pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Terminal border animation */
+@keyframes border-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.terminal-border-animated {
+  background: linear-gradient(
+    90deg,
+    #30363d 0%,
+    #4ade80 50%,
+    #30363d 100%
+  );
+  background-size: 200% 100%;
+  animation: border-flow 3s ease infinite;
+}
+
+/* ============================================
+   GLOBAL TEXT COLOR FIXES FOR TERMINAL THEME
+   ============================================ */
+
+/* Base documentation content container */
+article,
+.markdown,
+.theme-doc-markdown {
+  color: var(--terminal-text) !important;
+}
+
+/* Markdown content text colors */
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6,
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  color: var(--terminal-green) !important;
+}
+
+article p,
+article li,
+article td,
+article th,
+.markdown p,
+.markdown li,
+.markdown td,
+.markdown th {
+  color: var(--terminal-text) !important;
+}
+
+/* Ordered list numbers (step numbers) */
+article ol,
+.markdown ol {
+  color: var(--terminal-green) !important;
+}
+
+article ol li,
+.markdown ol li {
+  color: var(--terminal-text) !important;
+}
+
+article ol li::marker,
+.markdown ol li::marker {
+  color: var(--terminal-green) !important;
+  font-weight: var(--ifm-font-weight-bold);
+}
+
+/* Unordered list bullets */
+article ul li::marker,
+.markdown ul li::marker {
+  color: var(--terminal-green) !important;
+}
+
+/* Links in markdown */
+article a,
+.markdown a {
+  color: var(--terminal-green) !important;
+}
+
+article a:hover,
+.markdown a:hover {
+  color: var(--terminal-green) !important;
+  text-decoration: underline;
+}
+
+/* Code blocks inline */
+article code:not([class*="language-"]),
+.markdown code:not([class*="language-"]) {
+  color: var(--terminal-green) !important;
+  background-color: var(--ifm-code-background) !important;
+}
+
+/* Blockquotes */
+article blockquote,
+.markdown blockquote {
+  border-left-color: var(--terminal-green) !important;
+  color: var(--terminal-text-dim) !important;
+}
+
+/* Strong/bold text */
+article strong,
+article b,
+.markdown strong,
+.markdown b {
+  color: var(--terminal-text) !important;
+}
+
+/* Emphasis/italic text */
+article em,
+article i,
+.markdown em,
+.markdown i {
+  color: var(--terminal-text-dim) !important;
+}
+
+/* Blog page specific fixes */
+.blog-wrapper a,
+.blog-wrapper h1,
+.blog-wrapper h2,
+.blog-wrapper h3,
+.blog-wrapper h4,
+.blog-wrapper h5,
+.blog-wrapper h6 {
+  color: var(--terminal-green) !important;
+}
+
+.blog-wrapper p,
+.blog-wrapper li,
+.blog-wrapper span {
+  color: var(--terminal-text) !important;
+}
+
+/* Override any default blue link colors */
+a[href] {
+  color: var(--terminal-green) !important;
+}
+
+a[href]:not([class*="DocSearch"]):not(.DocSearch-Modal a):hover {
+  color: var(--terminal-green) !important;
+  opacity: 0.8;
+}
+
+/* ============================================
+   COMPANY LOGOS ENHANCEMENT
+   ============================================ */
+
+/* Make company logos more visible on dark background */
+.marquee-container img,
+.marquee-container svg {
+  filter: brightness(1.8) contrast(1.2) saturate(1.1);
+  transition: all 0.3s ease;
+}
+
+.marquee-container img:hover,
+.marquee-container svg:hover {
+  filter: brightness(2.2) contrast(1.3) saturate(1.2);
+  transform: scale(1.05);
+}
+
+/* Ensure SVG paths are visible */
+.marquee-container svg path {
+  fill: #e6edf3 !important;
+  opacity: 0.9;
+}
+
+.marquee-container svg:hover path {
+  opacity: 1;
+}
+
+/* Terminal Badge - Reusable component for EARLY ACCESS, LIMITED TIME ONLY, etc. */
+.terminal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--terminal-green);
+  color: #0a0e14;
+  border: 1px solid var(--terminal-green);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
 }
