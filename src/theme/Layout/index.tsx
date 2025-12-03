@@ -14,6 +14,7 @@ import styles from "./styles.module.css"
 import GlobalLayout from "@site/src/components/shared/GlobalLayout"
 import Announcement from "@site/src/components/shared/Announcement"
 import {FloatingCta} from "@site/src/components/cta"
+import TerminalLayout from "@site/src/components/shared/TerminalLayout"
 
 export default function Layout(props: Props): JSX.Element {
   const {
@@ -33,35 +34,37 @@ export default function Layout(props: Props): JSX.Element {
 
   return (
     <LayoutProvider>
-      <GlobalLayout />
+      <TerminalLayout enableScanline={true} enableNoise={true} enableGrid={false}>
+        <GlobalLayout />
 
-      <PageMetadata title={title} description={description} />
+        <PageMetadata title={title} description={description} />
 
-      <SkipToContent />
+        <SkipToContent />
 
-      <AnnouncementBar />
+        <AnnouncementBar />
 
-      <Navbar />
+        <Navbar />
 
-      {hasAnnouncement && (
-        <div>
-          <Announcement variant="gradient">
-            <i className="fas fa-trophy mr-1"></i> #1 CLI Coding Agent on OpenRouter • Over 1 Billion tokens processed
-            every day.
-          </Announcement>
+        {hasAnnouncement && (
+          <div>
+            <Announcement variant="gradient">
+              <i className="fas fa-trophy mr-1"></i> #1 CLI Coding Agent on OpenRouter • Over 1 Billion tokens processed
+              every day.
+            </Announcement>
+          </div>
+        )}
+
+        <div
+          id={SkipToContentFallbackId}
+          className={clsx(ThemeClassNames.wrapper.main, styles.mainWrapper, wrapperClassName)}
+        >
+          <ErrorBoundary fallback={(params) => <ErrorPageContent {...params} />}>{children}</ErrorBoundary>
         </div>
-      )}
 
-      <div
-        id={SkipToContentFallbackId}
-        className={clsx(ThemeClassNames.wrapper.main, styles.mainWrapper, wrapperClassName)}
-      >
-        <ErrorBoundary fallback={(params) => <ErrorPageContent {...params} />}>{children}</ErrorBoundary>
-      </div>
+        {!noFooter && <Footer />}
 
-      {!noFooter && <Footer />}
-
-      {/* <FloatingCta /> */}
+        {/* <FloatingCta /> */}
+      </TerminalLayout>
     </LayoutProvider>
   )
 }

@@ -53,7 +53,7 @@ const Stats: React.FC = () => {
 
           let Wrapper: React.ElementType = "div"
           const wrapperProps: any = {
-            className: "group p-0.5 sm:p-2 flex flex-col items-center text-center w-full",
+            className: "group p-0.5 sm:p-2 flex flex-col items-center text-center w-full border border-tailCall-terminal-border",
           }
 
           if (isGithub) {
@@ -61,7 +61,7 @@ const Stats: React.FC = () => {
             wrapperProps.href = stat.infoLink
             wrapperProps.target = "_blank"
             wrapperProps.rel = "noopener noreferrer"
-            wrapperProps.className += " no-underline hover:no-underline text-inherit"
+            wrapperProps.className += " no-underline hover:no-underline !text-inherit hover:!opacity-100"
           }
 
           return (
@@ -73,15 +73,15 @@ const Stats: React.FC = () => {
                   {stat.suffix}
                 </Heading>
               </div>
-              <div className="text-[9px] sm:text-content-tiny md:text-content-small text-slate-600 mt-0.5 sm:mt-1 min-h-[1.75rem] sm:min-h-[2rem] md:h-8 flex flex-col justify-center leading-tight">
+              <div className="text-[9px] sm:text-content-tiny md:text-content-small text-tailCall-terminal-text-secondary mt-0.5 sm:mt-1 min-h-[1.75rem] sm:min-h-[2rem] md:h-8 flex flex-col justify-center leading-tight font-mono">
                 <div>
                   {stat.label} {stat.description}
                   {stat.infoLink &&
                     (isGithub ? (
-                      <Info className="inline-block w-2 h-2 sm:w-3 sm:h-3 ml-0.5 sm:ml-1 text-slate-500" />
+                      <Info className="inline-block w-2 h-2 sm:w-3 sm:h-3 ml-0.5 sm:ml-1 text-tailCall-terminal-green-primary" />
                     ) : (
                       <a href={stat.infoLink} target="_blank" rel="noopener noreferrer">
-                        <Info className="inline-block w-2 h-2 sm:w-3 sm:h-3 ml-0.5 sm:ml-1 text-slate-500" />
+                        <Info className="inline-block w-2 h-2 sm:w-3 sm:h-3 ml-0.5 sm:ml-1 text-tailCall-terminal-green-primary" />
                       </a>
                     ))}
                 </div>

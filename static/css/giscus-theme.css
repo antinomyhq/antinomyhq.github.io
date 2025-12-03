@@ -32,40 +32,40 @@ main {
   --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f;
   --color-prettylights-syntax-constant-other-reference-link: #0a3069;
   --color-btn-text: #24292f;
-  --color-btn-bg: #f5f3eb;
-  --color-btn-border: #cececf;
+  --color-btn-bg: #0a0e14;
+  --color-btn-border: #30363d;
   --color-btn-shadow: 0 1px 0 #1f23280a;
   --color-btn-inset-shadow: inset 0 1px 0 #ffffff40;
-  --color-btn-hover-bg: #e8e6de;
-  --color-btn-hover-border: #cececf;
-  --color-btn-active-bg: #e0ded6;
-  --color-btn-active-border: #cececf;
-  --color-btn-selected-bg: #ffffff;
+  --color-btn-hover-bg: #151a21;
+  --color-btn-hover-border: #30363d;
+  --color-btn-active-bg: #1a1f29;
+  --color-btn-active-border: #30363d;
+  --color-btn-selected-bg: #1a1f29;
   --color-btn-primary-text: #fff;
-  --color-btn-primary-bg: #121315;
+  --color-btn-primary-bg: #4ade80;
   --color-btn-primary-border: #1f232826;
   --color-btn-primary-shadow: 0 1px 0 #1f23281a;
   --color-btn-primary-inset-shadow: inset 0 1px 0 #ffffff08;
-  --color-btn-primary-hover-bg: #121315;
+  --color-btn-primary-hover-bg: #22c55e;
   --color-btn-primary-hover-border: #1f232826;
-  --color-btn-primary-selected-bg: #121315;
+  --color-btn-primary-selected-bg: #22c55e;
   --color-btn-primary-selected-shadow: inset 0 1px 0 #002d1133;
   --color-btn-primary-disabled-text: #fffc;
   --color-btn-primary-disabled-bg: #b4b4b4;
   --color-btn-primary-disabled-border: #1f232826;
   --color-action-list-item-default-hover-bg: #d0d7de52;
-  --color-segmented-control-bg: #e8e6de;
-  --color-segmented-control-button-bg: #f5f3eb;
-  --color-segmented-control-button-selected-border: #121315;
+  --color-segmented-control-bg: #0a0e14;
+  --color-segmented-control-button-bg: #151a21;
+  --color-segmented-control-button-selected-border: #4ade80;
   --color-fg-default: #1f2328;
   --color-fg-muted: #323335;
   --color-fg-subtle: #6e7781;
-  --color-canvas-default: #f5f3eb;
-  --color-canvas-overlay: #f5f3eb;
-  --color-canvas-inset: #f5f3eb;
-  --color-canvas-subtle: #f5f3eb;
-  --color-border-default: #cececf;
-  --color-border-muted: #cececf;
+  --color-canvas-default: #0a0e14;
+  --color-canvas-overlay: #0a0e14;
+  --color-canvas-inset: #0a0e14;
+  --color-canvas-subtle: #0a0e14;
+  --color-border-default: #30363d;
+  --color-border-muted: #30363d;
   --color-neutral-muted: #afb8c133;
   --color-accent-fg: #323335;
   --color-accent-emphasis: #0969da;
@@ -102,8 +102,8 @@ main .gsc-comment-box {
   background-position: 3px 23px;
   font-family: "Space Grotesk", sans-serif;
   padding: 32px;
-  border: 1px solid #cececf;
-  border-radius: 0.5rem;
+  border: 1px dashed #30363d;
+  border-radius: 0;
 }
 
 main .gsc-comment-box-tabs {
@@ -116,7 +116,7 @@ main .gsc-comments .btn-primary {
   font-size: 16px;
   line-height: 20.42px;
   padding: 12px 24px;
-  border-radius: 0.5rem !important;
+  border-radius: 0 !important;
 }
 
 main .gsc-comment-box-tabs button {
@@ -126,7 +126,7 @@ main .gsc-comment-box-tabs button {
   font-weight: 500;
   font-size: 18px;
   line-height: 22.97px;
-  border-bottom: 2px solid #000000 !important;
+  border-bottom: 2px dashed #4ade80 !important;
 }
 
 main .gsc-comment-box-tabs .color-text-secondary {
@@ -161,22 +161,22 @@ main .gsc-comment-box-textarea {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  border-radius: 0.5rem 0.5rem 0 0;
+  border-radius: 0 0 0 0;
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
 }
 
 main .gsc-comment-box-textarea:focus {
-  border: 1px solid #cececf;
+  border: 1px solid #30363d;
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
 }
 
 main .gsc-comment-box-write:focus-within {
-  border-color: #cececf;
+  border-color: #30363d;
   box-shadow: none;
 }
 
 main .gsc-comment-box-textarea-extras {
-  border-radius: 0 0 0.5rem 0.5rem;
+  border-radius: 0 0 0 0;
 }
 
 main .gsc-comment-box-preview {
@@ -186,9 +186,26 @@ main .gsc-comment-box-preview {
   line-height: 24px;
   box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 0.05);
   border: 1px solid var(--color-border-default);
-  border-radius: 0.5rem;
-  background: #f5f3eb;
-  color: #000000;
+  border-radius: 0;
+  background: #0a0e14;
+  color: #e6edf3;
+}
+
+/* Comment items styling */
+main .gsc-comment {
+  border: 1px dashed #30363d;
+  border-radius: 0;
+  background: #0a0e14;
+}
+
+main .gsc-comment + .gsc-comment {
+  margin-top: 1rem;
+}
+
+main .gsc-reply {
+  border: 1px dashed #30363d;
+  border-radius: 0;
+  background: #0a0e14;
 }
 
 /* Comment items styling */
