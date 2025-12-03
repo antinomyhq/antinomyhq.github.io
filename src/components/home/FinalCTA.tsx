@@ -16,7 +16,10 @@ const FinalCTA = ({showPricingButton = true}: FinalCTAProps): JSX.Element => {
             <BgForgeCode className="w-full h-full" />
           </div>
           <div className="flex flex-col items-center max-w-4xl space-y-SPACE_04 sm:space-y-SPACE_06 px-4 sm:px-6">
-            <Heading as="h5" className="text-title-semi-large sm:text-display-medium text-center mb-0 text-tailCall-terminal-green-primary terminal-glow whitespace-nowrap">
+            <Heading
+              as="h5"
+              className="text-title-semi-large sm:text-display-medium text-center mb-0 text-tailCall-terminal-green-primary terminal-glow whitespace-nowrap"
+            >
               Ready to Get Started?
             </Heading>
             <p className="text-content-medium max-w-2xl mx-auto mb-4 text-center text-tailCall-terminal-text-primary">

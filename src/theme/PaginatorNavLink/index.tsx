@@ -7,7 +7,11 @@ import {ArrowLeft} from "lucide-react"
 function NavigatorIcon({isNext}: {isNext: boolean}): JSX.Element {
   return (
     <div className="w-10 h-10 p-2 bg-terminal-bg-primary border border-terminal-border flex justify-center items-center hover:border-terminal-green-primary hover:shadow-[0_0_15px_rgba(74,222,128,0.4)] transition-all duration-300">
-      {isNext ? <ArrowRight size={24} className="text-terminal-green-primary" /> : <ArrowLeft size={24} className="text-terminal-green-primary" />}
+      {isNext ? (
+        <ArrowRight size={24} className="text-terminal-green-primary" />
+      ) : (
+        <ArrowLeft size={24} className="text-terminal-green-primary" />
+      )}
     </div>
   )
 }

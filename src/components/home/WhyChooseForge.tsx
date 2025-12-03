@@ -15,13 +15,18 @@ const WhyChooseForge = (): JSX.Element => {
           className="text-title-large sm:text-display-tiny lg:text-display-medium flex flex-col items-center md:flex-row lg:mb-12 font-mono text-tailCall-terminal-green-primary terminal-glow"
         >
           <span>How Developers Use</span>
-          <span className="bg-tailCall-terminal-bg-secondary text-tailCall-terminal-green-primary px-SPACE_01 ml-SPACE_02">Forge</span>
+          <span className="bg-tailCall-terminal-bg-secondary text-tailCall-terminal-green-primary px-SPACE_01 ml-SPACE_02">
+            Forge
+          </span>
         </Heading>
       </div>
 
       <p className="text-center text-content-medium lg:text-content-large max-w-3xl mx-auto mb-16 font-mono text-tailCall-terminal-text-secondary">
         From understanding complex codebases to implementing new features, Forge adapts to your workflow.
-        <strong className="text-tailCall-terminal-text-primary"> See how developers across the industry use Forge in their daily work.</strong>
+        <strong className="text-tailCall-terminal-text-primary">
+          {" "}
+          See how developers across the industry use Forge in their daily work.
+        </strong>
       </p>
 
       {/* Use Case Tabs */}
@@ -80,7 +85,9 @@ const WhyChooseForge = (): JSX.Element => {
                       {useCase.examples.map((example, index) => (
                         <div key={index} className="group hover:scale-[1.01] transition-transform duration-200">
                           <div className="bg-tailCall-terminal-bg-primary p-5 border border-tailCall-terminal-border hover:border-tailCall-terminal-green-primary/50 transition-all duration-300">
-                            <p className="text-tailCall-terminal-text-primary text-base leading-relaxed font-medium font-mono">"{example}"</p>
+                            <p className="text-tailCall-terminal-text-primary text-base leading-relaxed font-medium font-mono">
+                              "{example}"
+                            </p>
                           </div>
                         </div>
                       ))}

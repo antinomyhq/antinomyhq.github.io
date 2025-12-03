@@ -6,10 +6,7 @@ interface TerminalWindowProps {
   showFullTitle?: boolean
 }
 
-const TerminalWindow: React.FC<TerminalWindowProps> = ({
-  command,
-  showFullTitle = false
-}) => {
+const TerminalWindow: React.FC<TerminalWindowProps> = ({command, showFullTitle = false}) => {
   return (
     <div className="relative w-full group">
       {/* Enhanced terminal glow effect with green accent */}
@@ -75,4 +72,3 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({
 }
 
 export default TerminalWindow
-

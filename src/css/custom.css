@@ -416,7 +416,9 @@ input[type="radio"]:checked::before {
 }
 
 .navbar {
-  box-shadow: 0 1px 0 0 var(--terminal-border), 0 0 20px rgba(74, 222, 128, 0.05);
+  box-shadow:
+    0 1px 0 0 var(--terminal-border),
+    0 0 20px rgba(74, 222, 128, 0.05);
   height: var(--header-height);
   background-color: var(--ifm-navbar-background-color);
   border-bottom: 1px solid var(--terminal-border);
@@ -1488,7 +1490,8 @@ article table th {
 
 /* Slow pulse for glow effect */
 @keyframes pulseSlow {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.2;
   }
   50% {
@@ -1513,10 +1516,12 @@ article table th {
 
 /* Blinking cursor animation for terminal */
 @keyframes blink {
-  0%, 49% {
+  0%,
+  49% {
     opacity: 1;
   }
-  50%, 100% {
+  50%,
+  100% {
     opacity: 0;
   }
 }
@@ -1564,12 +1569,7 @@ article table th {
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(74, 222, 128, 0.1) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(to bottom, transparent 0%, rgba(74, 222, 128, 0.1) 50%, transparent 100%);
   animation: scanline 8s linear infinite;
   pointer-events: none;
   z-index: 9999;
@@ -1587,11 +1587,7 @@ article table th {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
-    ellipse at center,
-    transparent 0%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -1620,7 +1616,8 @@ article table th {
 
 /* Subtle text flicker animation */
 @keyframes flicker {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
   41.99% {
@@ -1657,16 +1654,37 @@ article table th {
 
 /* Noise texture overlay */
 @keyframes noise {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -5%); }
-  20% { transform: translate(-10%, 5%); }
-  30% { transform: translate(5%, -10%); }
-  40% { transform: translate(-5%, 15%); }
-  50% { transform: translate(-10%, 5%); }
-  60% { transform: translate(15%, 0); }
-  70% { transform: translate(0, 10%); }
-  80% { transform: translate(-15%, 0); }
-  90% { transform: translate(10%, 5%); }
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-5%, -5%);
+  }
+  20% {
+    transform: translate(-10%, 5%);
+  }
+  30% {
+    transform: translate(5%, -10%);
+  }
+  40% {
+    transform: translate(-5%, 15%);
+  }
+  50% {
+    transform: translate(-10%, 5%);
+  }
+  60% {
+    transform: translate(15%, 0);
+  }
+  70% {
+    transform: translate(0, 10%);
+  }
+  80% {
+    transform: translate(-15%, 0);
+  }
+  90% {
+    transform: translate(10%, 5%);
+  }
 }
 
 .terminal-noise::after {
@@ -1678,7 +1696,9 @@ article table th {
   bottom: -50%;
   width: 200%;
   height: 200%;
-  background: transparent url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=') repeat;
+  background: transparent
+    url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxwYXRoIGQ9Ik0wIDBoMzAwdjMwMEgweiIgZmlsdGVyPSJ1cmwoI2EpIiBvcGFjaXR5PSIuMDUiLz48L3N2Zz4=")
+    repeat;
   animation: noise 1s steps(2) infinite;
   pointer-events: none;
   opacity: 0.03;
@@ -1709,7 +1729,8 @@ article table th {
 
 /* Pulsing dot indicator */
 @keyframes pulse-dot {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
@@ -1737,12 +1758,7 @@ article table th {
 }
 
 .terminal-border-animated {
-  background: linear-gradient(
-    90deg,
-    #30363d 0%,
-    #4ade80 50%,
-    #30363d 100%
-  );
+  background: linear-gradient(90deg, #30363d 0%, #4ade80 50%, #30363d 100%);
   background-size: 200% 100%;
   animation: border-flow 3s ease infinite;
 }

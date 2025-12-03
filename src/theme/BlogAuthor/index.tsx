@@ -141,13 +141,17 @@ export const BlogAuthor: React.FC<AuthorDisplayProps> = ({
             {author.name}
           </a>
         ) : (
-          <span className={clsx("font-semibold text-terminal-text-primary font-mono", textClassName)}>{author.name}</span>
+          <span className={clsx("font-semibold text-terminal-text-primary font-mono", textClassName)}>
+            {author.name}
+          </span>
         )}
       </div>
 
       {/* Author Title */}
       {author.title && (
-        <div className="text-sm text-terminal-text-secondary leading-relaxed mb-1 font-mono">{renderTitleWithLinks(author.title)}</div>
+        <div className="text-sm text-terminal-text-secondary leading-relaxed mb-1 font-mono">
+          {renderTitleWithLinks(author.title)}
+        </div>
       )}
 
       {/* Social Links */}
