@@ -3,30 +3,30 @@ import {benefits} from "@site/src/constants"
 import Link from "@docusaurus/Link"
 import clsx from "clsx"
 
-const BenefitsCard = (): React.JSX.Element => {
+const BenefitsCard: React.FC = () => {
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 w-full">
         {benefits.map((item, index) => (
           <Link
             className={clsx(
-              "group  p-6 flex flex-col md:flex-row items-start cursor-pointer hover:no-underline",
+              "group p-4 lg:p-6 flex flex-col lg:flex-row items-start cursor-pointer hover:no-underline",
               benefits.length % 2 !== 0 &&
                 index === benefits.length - 1 &&
-                "md:col-span-2 md:max-w-[calc(50%-20px)] md:mx-auto",
+                "lg:col-span-2 lg:max-w-[calc(50%-20px)] lg:mx-auto",
             )}
             key={item.id}
             href={item.redirection_url}
           >
-            <div className="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
-              <item.image className="w-16 h-16 text-tailCall-terminal-text-secondary group-hover:text-tailCall-terminal-green-primary object-contain transition-colors" />
+            <div className="flex-shrink-0 mb-4 lg:mb-0 lg:mr-6">
+              <item.image className="w-12 h-12 lg:w-16 lg:h-16 text-tailCall-terminal-text-secondary group-hover:text-tailCall-terminal-green-primary object-contain transition-colors" />
             </div>
-            <div className="flex-grow">
-              <p className="text-title-small sm:text-title-large text-tailCall-terminal-text-primary mb-2 flex items-center justify-between font-mono">
+            <div className="flex-grow min-w-0 w-full">
+              <p className="text-lg lg:text-title-large text-tailCall-terminal-text-primary mb-2 flex items-center justify-between font-mono break-words">
                 {item.title}
                 <span className="text-tailCall-terminal-text-secondary group-hover:text-tailCall-terminal-green-primary"></span>
               </p>
-              <p className="text-content-tiny sm:text-content-small text-tailCall-terminal-text-secondary font-mono">{item.description}</p>
+              <p className="text-sm lg:text-content-small text-tailCall-terminal-text-secondary font-mono break-words">{item.description}</p>
             </div>
           </Link>
         ))}
