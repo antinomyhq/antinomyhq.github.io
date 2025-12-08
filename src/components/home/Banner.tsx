@@ -11,7 +11,7 @@ const Banner: React.FC = () => {
     <main>
       <Section className="!pb-0 !pt-8 sm:!pt-12 lg:!pt-16 overflow-hidden !px-0 !max-w-none" innerClassName="!max-w-none">
         {/* Two-column layout: Text on left, GIF on right */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-0 lg:gap-14 xl:gap-16 items-center px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-6 lg:gap-14 xl:gap-16 items-center px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20">
           {/* Left Column - Text Content */}
           <div className="flex flex-col gap-5 sm:gap-6 md:gap-7 animate-fade-in-up text-center lg:text-left items-center lg:items-start w-full">
             <div className="flex flex-col w-full">
@@ -43,12 +43,12 @@ const Banner: React.FC = () => {
 
           {/* Right Column - Demo GIF */}
           <div className="flex items-center justify-center lg:justify-end w-full animate-fade-in-right mt-0 lg:mt-0 [animation-delay:0.5s]">
-            <div className="w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-none relative group">
+            <div className="w-full max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-none relative group">
               {/* Animated terminal green glow */}
               <div className="absolute -inset-1 bg-gradient-to-r from-tailCall-terminal-green-glow via-transparent to-tailCall-terminal-green-glow opacity-30 blur-md group-hover:opacity-60 transition-opacity duration-500"></div>
 
               <img
-                src="/images/demo.gif"
+                src="https://assets.antinomy.ai/images/forge_demo_2x.gif"
                 alt="Forge Code Demo - AI coding assistant in action"
                 className="relative w-full h-auto border border-tailCall-terminal-border p-1.5 sm:p-2 bg-tailCall-terminal-bg-primary hover:scale-[1.02] hover:border-tailCall-terminal-green-primary/50 transition-all duration-500 shadow-[0_0_30px_rgba(74,222,128,0.1)]"
                 loading="eager"
@@ -58,7 +58,7 @@ const Banner: React.FC = () => {
         </div>
 
         {/* Terminal Command - Shown on mobile below GIF, hidden on desktop */}
-        <div className="flex lg:hidden flex-col gap-2 pt-4 animate-fade-in-up w-full max-w-2xl mx-auto [animation-delay:0.6s]">
+        <div className="flex lg:hidden flex-col gap-2 pt-4 animate-fade-in-up w-full max-w-md sm:max-w-xl md:max-w-2xl mx-auto px-4 sm:px-8 [animation-delay:0.6s]">
           <TerminalWindow command={INSTALL_COMMAND} showFullTitle={true} />
         </div>
       </Section>

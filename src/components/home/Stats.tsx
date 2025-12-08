@@ -66,8 +66,8 @@ const Stats: React.FC = () => {
 
           return (
             <Wrapper key={stat.label} {...wrapperProps}>
-              <stat.icon className="w-4 h-4 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 text-slate-500" />
-              <div className="mt-0.5 sm:mt-2 text-base sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900">
+              <stat.icon className="w-4 h-4 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 text-tailCall-terminal-green-primary terminal-glow" />
+              <div className="mt-0.5 sm:mt-2 text-base sm:text-2xl md:text-3xl lg:text-4xl font-bold text-tailCall-terminal-text-primary font-mono terminal-glow">
                 <Heading as="h2" className="text-title-large sm:text-display-tiny lg:text-display-small stats-counter">
                   {formatNumber(stat.value)}
                   {stat.suffix}
