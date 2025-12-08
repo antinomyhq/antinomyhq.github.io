@@ -1,6 +1,6 @@
 import React from "react"
 import Section from "../shared/Section"
-import AnimatedCounter from "../shared/AnimatedCounter"
+import Heading from "@theme/Heading"
 import {Info, Coins, Code, Github} from "lucide-react"
 import TrustedByMarquee from "./TrustedByMarquee"
 import {clientLogos} from "@site/src/constants"
@@ -36,7 +36,7 @@ const Stats: React.FC = () => {
       icon: Code,
     },
     {
-      value: 4500,
+      value: 4600,
       suffix: "+",
       label: "GitHub Stars",
       description: "",
@@ -68,12 +68,10 @@ const Stats: React.FC = () => {
             <Wrapper key={stat.label} {...wrapperProps}>
               <stat.icon className="w-4 h-4 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 text-slate-500" />
               <div className="mt-0.5 sm:mt-2 text-base sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900">
-                <AnimatedCounter
-                  end={stat.value}
-                  suffix={stat.suffix}
-                  formatter={formatNumber}
-                  aria-label={stat.value.toLocaleString()}
-                />
+                <Heading as="h2" className="text-title-large sm:text-display-tiny lg:text-display-small stats-counter">
+                  {formatNumber(stat.value)}
+                  {stat.suffix}
+                </Heading>
               </div>
               <div className="text-[9px] sm:text-content-tiny md:text-content-small text-slate-600 mt-0.5 sm:mt-1 min-h-[1.75rem] sm:min-h-[2rem] md:h-8 flex flex-col justify-center leading-tight">
                 <div>
