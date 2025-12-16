@@ -243,10 +243,15 @@
   line-height: 32px;
   color: #e6edf3;
   background-color: transparent;
+  padding: 0.45rem 0;
 }
 
 .DocSearch-Input::placeholder {
   color: #8b949e;
+}
+
+.DocSearch-MagnifierLabel {
+  margin-right: 12px;
 }
 
 .DocSearch-Form {
