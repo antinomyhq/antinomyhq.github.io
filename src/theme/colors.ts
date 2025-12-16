@@ -1,16 +1,16 @@
 import colors from "tailwindcss/colors"
 
-// Theme colors using Tailwind's color palette
+// Theme colors using terminal color palette
 export const themeColors = {
-  // NextSteps component icons
-  install: colors.violet[500],
-  tutorial: colors.amber[500],
-  commands: colors.red[500],
-  customCommands: colors.gray[500],
-  operatingAgents: colors.violet[500],
-  commandsReference: colors.blue[500],
-  customProviders: colors.amber[500],
-  advancedConfig: colors.emerald[500],
+  // NextSteps component icons - using terminal colors
+  install: "#4ade80", // terminal green
+  tutorial: "#fbbf24", // terminal amber
+  commands: "#ef4444", // terminal red
+  customCommands: "#8b949e", // terminal text secondary
+  operatingAgents: "#a78bfa", // terminal purple
+  commandsReference: "#22d3ee", // terminal cyan
+  customProviders: "#fbbf24", // terminal amber
+  advancedConfig: "#4ade80", // terminal green
 } as const
 
 export type ThemeColorKey = keyof typeof themeColors

@@ -1,5 +1,17 @@
 .title {
   font-size: 3rem;
+  color: var(--terminal-green);
+  font-family: "Space Mono", monospace;
+}
+
+.title a {
+  color: var(--terminal-text-primary);
+  transition: color 0.2s ease;
+}
+
+.title a:hover {
+  color: var(--terminal-green);
+  text-decoration: none;
 }
 
 /**

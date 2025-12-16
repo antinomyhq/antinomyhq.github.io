@@ -35,10 +35,10 @@ function LoadMoreButton({handleLoadMore}: {handleLoadMore: () => void}): JSX.Ele
     <div className="flex justify-center mt-4">
       <button
         onClick={handleLoadMore}
-        className="h-12 cursor-pointer dash-outline text-white bg-gray-900 px-4 py-2 text-title-tiny font-bold hover:text-white relative group overflow-hidden"
+        className="h-12 cursor-pointer dash-outline text-tailCall-terminal-text-primary bg-tailCall-terminal-bg-secondary px-4 py-2 text-title-tiny font-bold hover:text-tailCall-terminal-green-primary relative group overflow-hidden font-mono"
       >
         {/* Background element for hover effect */}
-        <div className="hidden lg:block absolute inset-0 w-full bg-gray-900 group-hover:lg:scale-x-[0.98] group-hover:lg:scale-y-[0.95] transform transition-all ease-out duration-250" />
+        <div className="hidden lg:block absolute inset-0 w-full bg-tailCall-terminal-bg-secondary group-hover:lg:scale-x-[0.98] group-hover:lg:scale-y-[0.95] transform transition-all ease-out duration-250" />
         <div className="hidden lg:block button-grid-bg-section h-full w-full scale-90 opacity-0 group-hover:scale-[0.98] group-hover:opacity-100 transform transition-all ease-out duration-250 absolute inset-0" />
         <span className="relative z-20">Load more blogs</span>
       </button>
