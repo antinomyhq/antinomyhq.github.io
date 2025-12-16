@@ -26,7 +26,9 @@ const BenefitsCard: React.FC = () => {
                 {item.title}
                 <span className="text-tailCall-terminal-text-secondary group-hover:text-tailCall-terminal-green-primary"></span>
               </p>
-              <p className="text-sm lg:text-content-small text-tailCall-terminal-text-secondary font-mono break-words">{item.description}</p>
+              <p className="text-sm lg:text-content-small text-tailCall-terminal-text-secondary font-mono break-words">
+                {item.description}
+              </p>
             </div>
           </Link>
         ))}
