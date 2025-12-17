@@ -30,8 +30,8 @@
   color: var(--ifm-color-primary);
   background-color: rgba(var(--ifm-color-primary-rgb), 0.1);
   font-weight: 600;
-  padding: 2px 4px;
-  border-radius: 4px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
   border: 1px solid rgba(var(--ifm-color-primary-rgb), 0.2);
 }
 
@@ -200,7 +200,12 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 32px;
-  color: #545556;
+  color: var(--ifm-font-color-base);
+  padding: 0.45rem 0;
+}
+
+.DocSearch-MagnifierLabel {
+  margin-right: 12px;
 }
 
 .DocSearch-Form {
