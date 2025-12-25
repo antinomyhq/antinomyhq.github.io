@@ -168,6 +168,106 @@ FORGE_TOOL_TIMEOUT=300
 FORGE_DUMP_AUTO_OPEN=false
 ```
 
+### Title Display Configuration
+
+Customize how information is displayed in Forge's title bars during operations. You can control both the overall layout and the specific metadata shown.
+
+| Environment Variable            | Default                                          | Description                                |
+| ------------------------------- | ------------------------------------------------ | ------------------------------------------ |
+| `FORGE_TITLE_FORMAT`            | `[{metadata}] {title} {subtitle}`                | Overall layout template for title display  |
+| `FORGE_TITLE_METADATA_FORMAT`   | `{timestamp} {input}/{total} {cost} {cache_pct}` | Format template for metadata content       |
+| `FORGE_TITLE_SHOW_TIMESTAMP`    | `true`                                           | Show timestamp in title metadata           |
+| `FORGE_TITLE_SHOW_INPUT_TOKENS` | `true`                                           | Show input/prompt tokens in title metadata |
+| `FORGE_TITLE_SHOW_TOTAL_TOKENS` | `true`                                           | Show total tokens in title metadata        |
+| `FORGE_TITLE_SHOW_COST`         | `true`                                           | Show estimated cost in title metadata      |
+| `FORGE_TITLE_SHOW_CACHE_PCT`    | `true`                                           | Show cache percentage in title metadata    |
+
+#### Title Format Placeholders
+
+The `FORGE_TITLE_FORMAT` variable controls the overall layout and supports these placeholders:
+
+- `{icon}` - The status icon (⏺)
+- `{metadata}` - The metadata content (configured via `FORGE_TITLE_METADATA_FORMAT`)
+- `{title}` - The main title text
+- `{subtitle}` - Additional subtitle information
+
+#### Metadata Format Placeholders
+
+The `FORGE_TITLE_METADATA_FORMAT` variable controls what information is shown in the metadata section and supports these placeholders:
+
+- `{timestamp}` - Current time in HH:MM:SS format
+- `{input}` - Input/prompt tokens
+- `{output}` - Output/completion tokens
+- `{total}` - Total tokens (input + output)
+- `{cached}` - Number of cached tokens
+- `{cache_pct}` - Cache percentage (e.g., "45%")
+- `{cost}` - Estimated cost in USD (e.g., "$0.0012")
+
+#### Usage Examples
+
+**Default Display:**
+
+```bash
+# Shows timestamp, input/total tokens, cost, and cache percentage
+# Result: ⏺ [12:34:56 1234/5678 $0.0012 45%] Task Complete
+```
+
+**Cost-Focused Display:**
+
+```bash
+# .env
+FORGE_TITLE_FORMAT="{title} [{metadata}]"
+FORGE_TITLE_METADATA_FORMAT="{cost}"
+FORGE_TITLE_SHOW_TIMESTAMP=false
+
+# Result: ⏺ Task Complete [$0.0045]
+```
+
+**Input/Output Tokens:**
+
+```bash
+# .env
+FORGE_TITLE_METADATA_FORMAT="{timestamp} {input}/{output}"
+FORGE_TITLE_SHOW_COST=false
+FORGE_TITLE_SHOW_CACHE_PCT=false
+
+# Result: ⏺ [12:34:56 1234/4444] Processing
+```
+
+**Detailed Token Display:**
+
+```bash
+# .env
+FORGE_TITLE_METADATA_FORMAT="{timestamp} | in:{input} out:{output} total:{total} | cache:{cache_pct} | {cost}"
+
+# Result: ⏺ [12:34:56 | in:1234 out:567 total:1801 | cache:15% | $0.0023] Processing
+```
+
+**Minimal Display (No Metadata):**
+
+```bash
+# .env
+FORGE_TITLE_FORMAT="{title}"
+FORGE_TITLE_METADATA_FORMAT=""
+
+# Result: ⏺ Initialize a43840cd-ac16-4a2a-888f-6b5d99a81084
+```
+
+**Cache-Focused Display:**
+
+```bash
+# .env
+FORGE_TITLE_METADATA_FORMAT="{cached} {cache_pct}"
+FORGE_TITLE_SHOW_TIMESTAMP=false
+FORGE_TITLE_SHOW_COST=false
+
+# Result: ⏺ [234 15%] Task Complete
+```
+
+::::info
+When a component is disabled via its toggle flag (e.g., `FORGE_TITLE_SHOW_TIMESTAMP=false`), it will be removed from the output even if it's in the format template. Empty metadata brackets `[]` are automatically hidden.
+::::
+
 ### ZSH Plugin Configuration
 
 Configure the ZSH plugin behavior. The `FORGE_BIN` environment variable allows you to customize the command used by the ZSH plugin when transforming `#` prefixed commands.
@@ -233,6 +333,15 @@ FORGE_HTTP_KEEP_ALIVE_WHILE_IDLE=true
 # Tool Configuration
 FORGE_TOOL_TIMEOUT=300
 FORGE_DUMP_AUTO_OPEN=false
+
+# Title Display Configuration
+FORGE_TITLE_FORMAT="[{metadata}] {title} {subtitle}"
+FORGE_TITLE_METADATA_FORMAT="{timestamp} {input}/{total} {cost} {cache_pct}"
+FORGE_TITLE_SHOW_TIMESTAMP=true
+FORGE_TITLE_SHOW_INPUT_TOKENS=true
+FORGE_TITLE_SHOW_TOTAL_TOKENS=true
+FORGE_TITLE_SHOW_COST=true
+FORGE_TITLE_SHOW_CACHE_PCT=true
 
 # ZSH Plugin Configuration
 FORGE_BIN=forge
