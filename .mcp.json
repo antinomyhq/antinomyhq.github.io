@@ -2,7 +2,12 @@
   "mcpServers": {
     "playwright": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    },
+    "forge_vscode": {
+      "url": "http://localhost:60717/mcp"
     }
   }
 }
