@@ -64,7 +64,7 @@ This is perfect for:
 - **Token efficiency** - Only send relevant lines to the LLM, reducing costs and improving response speed
 
 :::tip Use the VS Code Extension
-Skip manual typing of file references! The [Forge VS Code Extension](/docs/vscode-extension) lets you select any code and press `Ctrl+U` to instantly copy the reference in the correct format (`@[filepath:start:end]`). Perfect for quickly referencing specific functions or code sections without typing paths and line numbers manually.
+Skip manual typing of file references! The [Forge VS Code Extension](/docs/vscode) lets you select any code and press `Ctrl+U` to instantly copy the reference in the correct format (`@[filepath:start:end]`). Perfect for quickly referencing specific functions or code sections without typing paths and line numbers manually.
 :::
 
 ### Multiple Files and Edge Cases
@@ -82,7 +82,7 @@ Files with spaces work fine:
 ```
 
 :::tip VS Code Extension
-Skip the manual typing! The [Forge VS Code Extension](/docs/vscode-extension) automatically generates file references in the exact format above. Just select your code and press `Ctrl+U` to copy the reference directly to your clipboard.
+Skip the manual typing! The [Forge VS Code Extension](/docs/vscode) automatically generates file references in the exact format above. Just select your code and press `Ctrl+U` to copy the reference directly to your clipboard.
 :::
 
 ## When File Tagging Works Best
