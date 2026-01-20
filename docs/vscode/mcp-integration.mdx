@@ -1,25 +1,362 @@
 ---
-title: MCP Integration
+title: IDE Intelligence
 sidebar_position: 4
-description: "Model Context Protocol server for exposing VS Code's LSP features to Forge CLI."
-sidebar_label: MCP Integration
+description: "Give Forge CLI access to VS Code's language intelligence. Find references, go to definition, rename symbols, and more."
+sidebar_label: IDE Intelligence
 ---
 
-# MCP Integration
+import {Server, Zap, Search, FileCode, AlertTriangle, RefreshCw, Terminal} from "lucide-react"
 
-:::note Coming Soon
-This documentation is being updated with new features. Check back soon!
+# Give Forge Your IDE's Superpowers
+
+Ever wished Forge could understand your code the way VS Code does? Now it can.
+
+The VS Code extension runs an MCP server that gives Forge CLI direct access to VS Code's language intelligence. This means Forge can find references, jump to definitions, see type information, and even rename symbols across your entire codebase.
+
+## What This Unlocks
+
+**Without MCP integration:** Forge reads your files as plain text. It can see the code, but it doesn't "understand" it the way your IDE does.
+
+**With MCP integration:** Forge gains access to everything VS Code knows about your code:
+
+- Find all places where a function is called
+- Jump to where a symbol is defined
+- See type signatures and documentation on hover
+- Get all errors and warnings in your project
+- Rename a symbol everywhere it appears
+- Explore the structure of any file
+
+:::info Zero Configuration Required
+This works automatically when you have the Forge VS Code extension installed. No setup needed.
 :::
 
-The Forge VS Code extension includes an MCP (Model Context Protocol) server that exposes VS Code's Language Server Protocol features to Forge CLI.
+## How It Works
 
-## Features
+When you open VS Code with the Forge extension:
 
-- **LSP Tools** - Access hover, go-to-definition, find-references, and more from Forge
-- **Symbol Operations** - Rename symbols, get diagnostics, and explore document symbols
-- **Workspace Integration** - Search symbols across your entire workspace
+1. **Extension starts an MCP server** on your machine (localhost only)
+2. **Server connects to VS Code's language services** (TypeScript, Python, etc.)
+3. **Forge CLI discovers and connects** to this server automatically
+4. **You ask Forge questions** and it queries VS Code for intelligent answers
+
+The server runs on a port specific to your workspace. You'll see a **Forge MCP** indicator in your status bar when it's active.
+
+## What Forge Can Do Now
+
+With MCP integration, Forge CLI has access to these powerful tools:
+
+### Symbol Information
+
+Ask Forge about any symbol in your codebase:
+
+| Operation | What It Does | Example Prompt |
+|-----------|--------------|----------------|
+| **Find References** | Locate every usage of a symbol | "Where is `UserService` used?" |
+| **Go to Definition** | Find where a symbol is declared | "Show me where `handleRequest` is defined" |
+| **Go to Implementation** | Find concrete implementations of interfaces | "What classes implement `IAuthProvider`?" |
+| **Hover Info** | Get type signatures and documentation | "What's the type signature of `useState`?" |
+
+**Example conversation:**
+
+```
+> Find all references to the validateUser function
+
+Forge will query VS Code and return:
+- Total count of references
+- File path, line, and column for each usage
+- Code preview showing the context
+- Which function or class contains each reference
+```
+
+### Rename Symbol
+
+Safely rename any symbol across your entire codebase:
+
+```
+> Rename the function "processData" to "transformPayload"
+```
+
+Forge will:
+- Find all occurrences across all files
+- Apply the rename automatically
+- Save the modified files
+- Show you a summary of what changed
+
+### Get Diagnostics
+
+See all errors, warnings, and hints from your language server:
+
+```
+> Show me all TypeScript errors in this project
+> What warnings are in src/services/userService.ts?
+```
+
+Forge returns:
+- Diagnostics grouped by file
+- Line and column for each issue
+- Severity (error, warning, info, hint)
+- The actual error message
+- Summary counts
+
+### Get Active File
+
+Forge can see what file you're currently editing:
+
+```
+> What file am I working on?
+> Analyze the currently open file
+```
+
+Returns:
+- File path and name
+- Language (TypeScript, Python, etc.)
+- Whether there are unsaved changes
+- Selected text (if any)
+- Full file content (if requested)
+
+### Document Symbols
+
+Get a structured outline of any file:
+
+```
+> Show me the structure of this file
+> What functions are defined in userController.ts?
+```
+
+Returns a hierarchical view of:
+- Classes, interfaces, types
+- Functions and methods
+- Variables and constants
+- Nested structure (methods inside classes)
+
+### Workspace Symbols
+
+Search for symbols across your entire workspace:
+
+```
+> Find all symbols containing "Config"
+> Where are the "handle" functions in this project?
+```
+
+Great for discovering:
+- All classes related to a concept
+- Functions following a naming pattern
+- Interfaces and their implementations
+
+## Real-World Examples
+
+### Debugging an Unknown Codebase
+
+You're new to a project and need to understand how authentication works:
+
+```
+> Find all references to AuthService
+> Go to the definition of validateToken
+> What implements the IAuthProvider interface?
+```
+
+Forge navigates the codebase like an experienced developer, showing you exactly where things connect.
+
+### Safe Refactoring
+
+You need to rename a core function used everywhere:
+
+```
+> Rename getUserById to fetchUserById across the entire codebase
+```
+
+Forge uses VS Code's rename capability to safely update every reference, including:
+- Function calls
+- Import statements
+- Type references
+- Documentation comments
+
+### Pre-commit Code Check
+
+Before committing, check for any issues:
+
+```
+> Show me all errors and warnings in this project
+> Are there any TypeScript errors in the files I changed?
+```
+
+Catch problems before they reach your CI pipeline.
+
+### Understanding Complex Types
+
+Working with a complex generic type you don't understand:
+
+```
+> What's the type signature of useQuery?
+> Show me the hover info for ApiResponse
+```
+
+Get the same type information VS Code shows on hover, directly in your Forge conversation.
+
+## Configuration
+
+The MCP server works out of the box, but you can customize it if needed.
+
+### Settings
+
+Access via **File → Preferences → Settings → Extensions → Forge**.
+
+#### `forge.mcpServer.enabled`
+
+Enable or disable the MCP server.
+
+- **Type**: Boolean
+- **Default**: `true`
+
+**When to disable:** If you only use the extension for file references and don't need Forge CLI integration, you can disable this to save resources.
+
+```json
+{
+  "forge.mcpServer.enabled": false
+}
+```
+
+:::note
+Changes take effect immediately. No restart required.
+:::
+
+## Commands
+
+The extension provides commands to manage the MCP server:
+
+### Show MCP Server Output
+
+View the MCP server logs for debugging.
+
+- **Command Palette**: `Ctrl+Shift+P` → "Show MCP Server Output"
+- **Click**: Status bar "Forge MCP" indicator
+
+Useful for:
+- Seeing which sessions are connected
+- Debugging connection issues
+- Monitoring server activity
+
+### Restart MCP Server
+
+Restart the server if it becomes unresponsive.
+
+- **Command Palette**: `Ctrl+Shift+P` → "Forge: Restart MCP Server"
+
+The server will stop, then start again on the same port.
+
+## How the Connection Works
+
+### Automatic Port Assignment
+
+The extension generates a consistent port number based on your workspace path. This means:
+
+- Same workspace = Same port every time
+- Different workspaces = Different ports
+- Multiple VS Code windows work independently
+
+### The `.mcp.json` File
+
+The extension automatically creates/updates a `.mcp.json` file in your workspace root:
+
+```json
+{
+  "mcpServers": {
+    "forge_extension": {
+      "url": "http://localhost:54321/mcp"
+    }
+  }
+}
+```
+
+Forge CLI reads this file to discover the MCP server. You don't need to edit it manually.
+
+:::tip
+Add `.mcp.json` to your `.gitignore`. The port is machine-specific and will be different for each developer.
+:::
+
+### Session Management
+
+- Each Forge CLI instance creates a session with the MCP server
+- Sessions are tracked in the status bar: "Forge MCP (2)" means 2 active sessions
+- Sessions are automatically cleaned up when Forge CLI disconnects
+
+## Troubleshooting
+
+### MCP Server Not Starting
+
+**Check if it's enabled:**
+
+1. Open VS Code Settings (`Ctrl+,`)
+2. Search for "forge.mcpServer.enabled"
+3. Make sure it's checked (enabled)
+
+**Check the output logs:**
+
+1. Click the "Forge MCP" indicator in status bar, or
+2. `Ctrl+Shift+P` → "Show Forge MCP Server Output"
+3. Look for error messages
+
+### Forge CLI Can't Connect
+
+**Verify the server is running:**
+
+- Look for "Forge MCP" in your VS Code status bar
+- If missing, the server isn't running
+
+**Check `.mcp.json` exists:**
+
+- Look for `.mcp.json` in your workspace root
+- It should contain a `forge_extension` entry with a URL
+
+**Try restarting:**
+
+1. `Ctrl+Shift+P` → "Restart Forge MCP Server"
+2. Restart Forge CLI
+
+### Port Conflicts
+
+If another application is using the generated port:
+
+1. The extension will automatically try the next available port
+2. `.mcp.json` will be updated with the new port
+3. Restart Forge CLI to pick up the change
+
+### No Language Features Available
+
+MCP integration depends on VS Code's language servers. If features don't work:
+
+- **TypeScript/JavaScript**: Should work automatically
+- **Python**: Install the Python extension
+- **Other languages**: Install the appropriate language extension
+
+The MCP server can only expose features that VS Code's language servers provide.
+
+## Status Bar Indicator
+
+The "Forge MCP" status bar item shows the server state:
+
+| Indicator | Meaning |
+|-----------|---------|
+| **Forge MCP** | Server running, no active sessions |
+| **Forge MCP (1)** | Server running, 1 Forge CLI connected |
+| **Forge MCP (3)** | Server running, 3 Forge CLI sessions |
+| *(Not visible)* | Server disabled or not running |
+
+Click it to view the server output logs.
+
+## Related Guides
+
+- [Getting Started](/docs/vscode): Installation and core features
+- [MCP Integration (CLI)](/docs/mcp-integration): Configure external MCP servers for Forge CLI
+- [CodeLens & Quick Fix](/docs/vscode/ai-features): Delegate tasks directly from your code
 
 ---
 
-Detailed documentation coming soon. For now, see the main [VS Code Extension](/docs/vscode) page for core features.
+## Need Help?
+
+**If you're having issues:**
+
+- **Server logs**: Click "Forge MCP" in status bar to see logs
+- **Report bugs**: [GitHub Issues](https://github.com/antinomyhq/forge/issues)
+- **Community help**: Join our [Discord](https://discord.gg/kRZBPpkgwq)
 
