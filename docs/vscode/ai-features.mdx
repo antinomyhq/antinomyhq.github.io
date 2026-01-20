@@ -27,11 +27,11 @@ See a clickable "Delegate to Forge" link above your TODO, FIXME, BUG, HACK, and 
 
 Write a TODO, FIXME, or NOTE comment and you'll see "Delegate to Forge" appear above it. Click it and Forge runs in the background while you keep coding.
 
-<div style={{textAlign: 'center', margin: '1.5rem 0'}}>
+<div style={{textAlign: "center", margin: "1.5rem 0"}}>
   <img
     src="/images/docs/codelens-delegate.png"
     alt="Delegate to Forge CodeLens"
-    style={{borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.15)', maxWidth: '100%'}}
+    style={{borderRadius: "8px", boxShadow: "0 4px 12px rgba(0,0,0,0.15)", maxWidth: "100%"}}
   />
 </div>
 
@@ -39,13 +39,13 @@ Write a TODO, FIXME, or NOTE comment and you'll see "Delegate to Forge" appear a
 
 The extension detects these comment patterns (case-insensitive):
 
-| Tag | Common Use |
-|-----|------------|
-| `TODO` | Tasks to complete |
-| `FIXME` | Known issues to fix |
-| `BUG` | Bugs to resolve |
-| `HACK` | Temporary workarounds |
-| `NOTE` | Important information |
+| Tag     | Common Use            |
+| ------- | --------------------- |
+| `TODO`  | Tasks to complete     |
+| `FIXME` | Known issues to fix   |
+| `BUG`   | Bugs to resolve       |
+| `HACK`  | Temporary workarounds |
+| `NOTE`  | Important information |
 
 ### Multi-Line Comments
 
@@ -96,6 +96,7 @@ When you trigger "Fix using Forge", the extension sends:
 - Severity level
 
 **Example prompt sent to Forge:**
+
 ```
 @[src/utils/validator.ts:42] Fix this error: Type 'string' is not assignable to type 'number' [typescript: 2322]
 ```
@@ -104,12 +105,12 @@ When you trigger "Fix using Forge", the extension sends:
 
 The extension adjusts the prompt based on severity:
 
-| Severity | Prompt Prefix |
-|----------|---------------|
-| Error | "Fix this error" |
-| Warning | "Fix this warning" |
-| Information | "Review this" |
-| Hint | "Apply this suggestion" |
+| Severity    | Prompt Prefix           |
+| ----------- | ----------------------- |
+| Error       | "Fix this error"        |
+| Warning     | "Fix this warning"      |
+| Information | "Review this"           |
+| Hint        | "Apply this suggestion" |
 
 ## Background Tasks
 
@@ -150,16 +151,19 @@ Forge: TODO (src/utils/validator.ts:42)
 ```
 
 You can view it by:
+
 - Clicking the task in the task manager
 - Going to View → Output → selecting the task channel
 
 ### Stopping Tasks
 
 **Stop a single task:**
+
 - Click the `$(close)` button in the CodeLens
 - Or select the task in task manager and choose stop
 
 **Stop all tasks:**
+
 - Command Palette: "Stop All Background Tasks"
 - Or click "Stop All Running Tasks" in the task manager
 
@@ -194,19 +198,20 @@ Customize which comment patterns trigger the CodeLens.
 ```
 
 **When to customize:**
+
 - Add custom tags your team uses (e.g., `REVIEW`, `OPTIMIZE`)
 - Remove tags you don't want CodeLens on
 - Matching is case-insensitive (`todo`, `TODO`, `Todo` all work)
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| **Delegate to Forge** | Run from CodeLens click |
-| **Fix using Forge** | Run from Quick Fix menu |
-| **Show Background Tasks** | Open task manager |
-| **Stop All Background Tasks** | Cancel all running tasks |
-| **Stop Task** | Stop a specific task (from CodeLens or task manager) |
+| Command                       | Description                                          |
+| ----------------------------- | ---------------------------------------------------- |
+| **Delegate to Forge**         | Run from CodeLens click                              |
+| **Fix using Forge**           | Run from Quick Fix menu                              |
+| **Show Background Tasks**     | Open task manager                                    |
+| **Stop All Background Tasks** | Cancel all running tasks                             |
+| **Stop Task**                 | Stop a specific task (from CodeLens or task manager) |
 
 ## Tips
 

@@ -35,6 +35,7 @@ The generated message follows conventional commit style and describes what chang
 ### Example
 
 **Your changes:**
+
 ```diff
 + function validateEmail(email: string): boolean {
 +   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -43,6 +44,7 @@ The generated message follows conventional commit style and describes what chang
 ```
 
 **Generated message:**
+
 ```
 feat(validation): add email validation function
 
@@ -89,12 +91,12 @@ This does the same thing as the automatic method but bypasses VS Code's default 
 
 ### Why Attribution Matters
 
-| Benefit | Description |
-|---------|-------------|
-| **Transparency** | Shows which commits had AI assistance |
-| **Team Visibility** | Teammates can see Forge contributions in git log |
-| **GitHub Integration** | Attribution visible on commit history pages |
-| **Audit Trail** | Track AI-assisted changes over time |
+| Benefit                | Description                                      |
+| ---------------------- | ------------------------------------------------ |
+| **Transparency**       | Shows which commits had AI assistance            |
+| **Team Visibility**    | Teammates can see Forge contributions in git log |
+| **GitHub Integration** | Attribution visible on commit history pages      |
+| **Audit Trail**        | Track AI-assisted changes over time              |
 
 ## Configuration
 
@@ -109,6 +111,7 @@ Maximum size of the git diff sent to Forge for commit message generation.
 **Why this exists:** Large diffs can overwhelm the AI and slow down generation. The setting limits how much diff context is sent.
 
 **When to increase:**
+
 - If you frequently have large commits and messages seem incomplete
 - For monorepo or multi-file refactoring commits
 
@@ -147,6 +150,7 @@ Make sure you've opened a folder that contains a `.git` directory. The Source Co
 ### "No Changes to Commit"
 
 Stage some changes first:
+
 1. Go to Source Control panel (`Ctrl+Shift+G`)
 2. Click the `+` icon next to changed files to stage them
 3. Then generate the commit message
@@ -154,6 +158,7 @@ Stage some changes first:
 ### Commit Message Is Empty or Generic
 
 This can happen when:
+
 - The diff is too large and gets truncated
 - Changes are minimal (e.g., whitespace only)
 - Try increasing `forge.commitMessage.maxDiffSize`

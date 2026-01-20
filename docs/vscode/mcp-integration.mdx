@@ -49,12 +49,12 @@ With MCP integration, Forge CLI has access to these powerful tools:
 
 Ask Forge about any symbol in your codebase:
 
-| Operation | What It Does | Example Prompt |
-|-----------|--------------|----------------|
-| **Find References** | Locate every usage of a symbol | "Where is `UserService` used?" |
-| **Go to Definition** | Find where a symbol is declared | "Show me where `handleRequest` is defined" |
-| **Go to Implementation** | Find concrete implementations of interfaces | "What classes implement `IAuthProvider`?" |
-| **Hover Info** | Get type signatures and documentation | "What's the type signature of `useState`?" |
+| Operation                | What It Does                                | Example Prompt                             |
+| ------------------------ | ------------------------------------------- | ------------------------------------------ |
+| **Find References**      | Locate every usage of a symbol              | "Where is `UserService` used?"             |
+| **Go to Definition**     | Find where a symbol is declared             | "Show me where `handleRequest` is defined" |
+| **Go to Implementation** | Find concrete implementations of interfaces | "What classes implement `IAuthProvider`?"  |
+| **Hover Info**           | Get type signatures and documentation       | "What's the type signature of `useState`?" |
 
 **Example conversation:**
 
@@ -77,6 +77,7 @@ Safely rename any symbol across your entire codebase:
 ```
 
 Forge will:
+
 - Find all occurrences across all files
 - Apply the rename automatically
 - Save the modified files
@@ -92,6 +93,7 @@ See all errors, warnings, and hints from your language server:
 ```
 
 Forge returns:
+
 - Diagnostics grouped by file
 - Line and column for each issue
 - Severity (error, warning, info, hint)
@@ -108,6 +110,7 @@ Forge can see what file you're currently editing:
 ```
 
 Returns:
+
 - File path and name
 - Language (TypeScript, Python, etc.)
 - Whether there are unsaved changes
@@ -124,6 +127,7 @@ Get a structured outline of any file:
 ```
 
 Returns a hierarchical view of:
+
 - Classes, interfaces, types
 - Functions and methods
 - Variables and constants
@@ -139,6 +143,7 @@ Search for symbols across your entire workspace:
 ```
 
 Great for discovering:
+
 - All classes related to a concept
 - Functions following a naming pattern
 - Interfaces and their implementations
@@ -166,6 +171,7 @@ You need to rename a core function used everywhere:
 ```
 
 Forge uses VS Code's rename capability to safely update every reference, including:
+
 - Function calls
 - Import statements
 - Type references
@@ -232,6 +238,7 @@ View the MCP server logs for debugging.
 - **Click**: Status bar "Forge MCP" indicator
 
 Useful for:
+
 - Seeing which sessions are connected
 - Debugging connection issues
 - Monitoring server activity
@@ -335,12 +342,12 @@ The MCP server can only expose features that VS Code's language servers provide.
 
 The "Forge MCP" status bar item shows the server state:
 
-| Indicator | Meaning |
-|-----------|---------|
-| **Forge MCP** | Server running, no active sessions |
+| Indicator         | Meaning                               |
+| ----------------- | ------------------------------------- |
+| **Forge MCP**     | Server running, no active sessions    |
 | **Forge MCP (1)** | Server running, 1 Forge CLI connected |
-| **Forge MCP (3)** | Server running, 3 Forge CLI sessions |
-| *(Not visible)* | Server disabled or not running |
+| **Forge MCP (3)** | Server running, 3 Forge CLI sessions  |
+| _(Not visible)_   | Server disabled or not running        |
 
 Click it to view the server output logs.
 
@@ -359,4 +366,3 @@ Click it to view the server output logs.
 - **Server logs**: Click "Forge MCP" in status bar to see logs
 - **Report bugs**: [GitHub Issues](https://github.com/antinomyhq/forge/issues)
 - **Community help**: Join our [Discord](https://discord.gg/kRZBPpkgwq)
-
