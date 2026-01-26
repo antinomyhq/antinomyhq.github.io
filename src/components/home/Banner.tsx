@@ -13,22 +13,9 @@ const Banner: React.FC = () => {
     <main className="grid justify-center">
       <Section className="flex flex-col sm:items-center sm:text-center w-full !pb-0">
         <div className="h-full 2xl:min-h-0">
-          <Heading
-            as="h1"
-            className="hero-banner-title text-title-large max-w-xs sm:text-display-small lg:text-display-large sm:max-w-5xl"
-          >
-            AI Pair Programmer <br></br> in Your Terminal
+          <Heading as="h1" className="hero-banner-title">
+            AI-Native <br />Engineering
           </Heading>
-
-          <div className="flex flex-col sm:flex-row justify-center items-center mt-SPACE_06 sm:mt-SPACE_10 space-y-SPACE_04 sm:space-y-0 sm:space-x-SPACE_06">
-            <LinkButton
-              title="Get Started"
-              href={pageLinks.installation}
-              theme={Theme.Outlined}
-              width="medium"
-              onClick={() => analyticsHandler("Home Page", "Click", "Get Started")}
-            />
-          </div>
         </div>
       </Section>
     </main>

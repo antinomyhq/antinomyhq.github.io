@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono&family=Rubik:ital,wght@0,400;0,500;0,700&display=swap");
+@import url("/css/fonts.css");
 
 @tailwind base;
 @tailwind components;
@@ -78,7 +78,8 @@ body {
 
 :root {
   /* Font and Dimension Tokens */
-  --ifm-font-family-base: "Rubik";
+  --ifm-font-family-base: "Lilex Nerd Font Mono";
+  --ifm-heading-font-weight: 200;
   --ifm-font-size-base: 18px;
   --header-height: 5rem;
   --ifm-navbar-height: 5rem;
@@ -96,7 +97,7 @@ body {
   --ifm-content-link-font-size: 0.875rem;
   --ifm-search-input-font-size: 0.9rem;
   --ifm-search-desc-font-size: 14px;
-  --ifm-font-weight-bold: 500;
+  --ifm-font-weight-bold: 400;
   --ifm-navbar-background-color: #f5f3eb;
 
   /* Color Tokens */
@@ -119,7 +120,7 @@ body {
   --ifm-color-brand-light-opacity-15: rgba(255, 255, 255, 0.15);
 
   /* Code Settings */
-  --ifm-font-family-monospace: "Space Mono";
+  --ifm-font-family-monospace: "Lilex Nerd Font Mono";
   --ifm-code-background: #181818;
   --ifm-code-border-radius: var(--ifm-global-radius);
   --ifm-code-font-size: 0.9eem;
@@ -127,6 +128,15 @@ body {
   --ifm-code-padding-vertical: 0em;
   --ifm-pre-background: var(--ifm-code-background);
   --docusaurus-highlighted-code-line-bg: #282828;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--ifm-heading-font-weight) !important;
 }
 
 code {
@@ -1113,6 +1123,11 @@ span.token.tag.script.language-javascript {
     max-width: unset;
     text-align: center;
   }
+}
+
+.hero-banner-title {
+  font-size: 5em;
+  font-weight: 100;
 }
 
 .featured-posts-container {

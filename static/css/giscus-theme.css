@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono&display=swap");
+@import url("/css/fonts.css");
 
 main {
   --color-prettylights-syntax-comment: #6e7781;
@@ -100,7 +100,7 @@ main .gsc-comment-box {
     linear-gradient(90deg, #ececec 0.5px, transparent 0.5px), linear-gradient(#ececec 0.5px, transparent 0.5px);
   background-size: 60px 60px;
   background-position: 3px 23px;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Lilex Nerd Font Mono", monospace;
   padding: 32px;
   border: 1px solid #cececf;
   border-radius: 0.5rem;

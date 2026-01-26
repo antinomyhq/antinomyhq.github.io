@@ -21,7 +21,7 @@ const formatNumber = (num: number): string => {
 const Stats: React.FC = () => {
   const stats = [
     {
-      value: 9500000000,
+      value: 38100000000,
       suffix: "+",
       label: "Tokens",
       description: "/ day",
@@ -29,7 +29,7 @@ const Stats: React.FC = () => {
       icon: Coins,
     },
     {
-      value: 6100000,
+      value: 24400000,
       suffix: "+",
       label: "Lines of Code",
       description: "/ day",
