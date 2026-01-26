@@ -198,7 +198,7 @@
 .DocSearch-Input {
   font-family: var(--ifm-font-family-base);
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1rem;
   line-height: 32px;
   color: var(--ifm-font-color-base);
   padding: 0.45rem 0;
@@ -319,7 +319,7 @@
 
 .DocSearch-Button-Placeholder {
   font-weight: var(--ifm-font-weight-bold);
-  font-size: 20px;
+  font-size: 1rem;
   font-family: var(--ifm-font-family-base);
   color: #121315;
   padding-right: 0;
