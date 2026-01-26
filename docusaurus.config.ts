@@ -191,7 +191,6 @@ export default {
   url: "https://forgecode.dev",
   baseUrl: "/",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
   onBrokenAnchors: "warn",
 
   // GitHub pages deployment config.
@@ -214,6 +213,11 @@ export default {
   },
   future: {
     experimental_faster: false, // Required for faster production builds. For reference: https://docusaurus.io/blog/releases/3.6#adoption-strategy
+  },
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "throw",
+    },
   },
   presets: [
     [
