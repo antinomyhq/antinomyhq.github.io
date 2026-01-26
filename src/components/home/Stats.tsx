@@ -25,7 +25,6 @@ const Stats: React.FC = () => {
       suffix: "+",
       label: "Tokens",
       description: "/ day",
-      infoLink: "https://openrouter.ai/apps?url=https%3A%2F%2Fforgecode.dev%2F",
       icon: Coins,
     },
     {
