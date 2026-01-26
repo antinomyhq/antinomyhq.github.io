@@ -100,7 +100,7 @@ main .gsc-comment-box {
     linear-gradient(90deg, #ececec 0.5px, transparent 0.5px), linear-gradient(#ececec 0.5px, transparent 0.5px);
   background-size: 60px 60px;
   background-position: 3px 23px;
-  font-family: "Lilex Nerd Font Mono", monospace;
+  font-family: "Space Grotesk", sans-serif;
   padding: 32px;
   border: 1px solid #cececf;
   border-radius: 0.5rem;

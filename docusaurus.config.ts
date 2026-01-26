@@ -15,6 +15,31 @@ export default {
   trailingSlash: true,
   tagline: "Forge: The AI Coding Assistant for Your Terminal",
   headTags: [
+    // Google Fonts preconnect for performance
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossorigin: "anonymous",
+      },
+    },
+    // Google Fonts: Space Grotesk (default) and Geist Mono (headings, code)
+    // Weights: 200 (ExtraLight), 400 (Regular), 500 (Medium), 700 (Bold)
+    {
+      tagName: "link",
+      attributes: {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Geist+Mono:wght@200;400;500;700&family=Space+Grotesk:wght@300;400;500;700&display=swap",
+      },
+    },
     // Adaptive favicon implementation - automatically switches based on system theme
     {
       tagName: "link",

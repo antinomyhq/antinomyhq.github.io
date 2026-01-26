@@ -73,12 +73,16 @@
 
 html,
 body {
-  background-color: #f5f3eb;
+  background-color: var(--ifm-background-color);
 }
 
 :root {
+  /* Background Color */
+  --ifm-background-color: #ebf5ed;
+
   /* Font and Dimension Tokens */
-  --ifm-font-family-base: "Lilex Nerd Font Mono";
+  --ifm-font-family-base: "Space Grotesk", sans-serif;
+  --ifm-font-family-heading: "Geist Mono", monospace;
   --ifm-heading-font-weight: 200;
   --ifm-font-size-base: 18px;
   --header-height: 5rem;
@@ -98,8 +102,7 @@ body {
   --ifm-search-input-font-size: 0.9rem;
   --ifm-search-desc-font-size: 14px;
   --ifm-font-weight-bold: 400;
-  --ifm-navbar-background-color: #f5f3eb;
-
+  --ifm-navbar-background-color: var(--ifm-background-color);
   /* Color Tokens */
   --ifm-color-brand: #181818;
   --ifm-color-brand-linkedin: #0a66c2;
@@ -120,7 +123,7 @@ body {
   --ifm-color-brand-light-opacity-15: rgba(255, 255, 255, 0.15);
 
   /* Code Settings */
-  --ifm-font-family-monospace: "Lilex Nerd Font Mono";
+  --ifm-font-family-monospace: "Geist Mono", monospace;
   --ifm-code-background: #181818;
   --ifm-code-border-radius: var(--ifm-global-radius);
   --ifm-code-font-size: 0.9eem;
@@ -136,6 +139,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--ifm-font-family-heading) !important;
   font-weight: var(--ifm-heading-font-weight) !important;
 }
 
@@ -1184,7 +1188,7 @@ pre.main-install-command {
   font-weight: 600;
   font-family: var(--ifm-font-family-monospace);
   border-radius: 0;
-  color: #f5f3eb;
+  color: var(--ifm-background-color);
   overflow-wrap: break-word;
   word-break: break-all;
   white-space: pre-wrap;
