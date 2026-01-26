@@ -38,7 +38,7 @@ const CommunityLinks = (): JSX.Element => {
           href={link.href}
           target={link.href.startsWith("http") ? "_blank" : "_self"}
           rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors duration-200"
+          className="flex items-center gap-2 px-3 py-2 text-sm text-tailCall-terminal-text-secondary hover:text-tailCall-terminal-green-primary hover:bg-tailCall-terminal-bg-secondary transition-colors duration-200 font-mono border border-tailCall-terminal-border"
           title={link.description}
         >
           {link.icon}

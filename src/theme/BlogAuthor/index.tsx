@@ -89,7 +89,7 @@ const renderTitleWithLinks = (title: string) => {
         href={match[2]}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-blue-600 hover:text-blue-800 underline decoration-1 underline-offset-2 transition-colors"
+        className="text-terminal-green-primary hover:text-terminal-green-secondary underline decoration-1 underline-offset-2 transition-colors"
         onClick={(e) => e.stopPropagation()}
       >
         {match[1]}
@@ -119,7 +119,7 @@ export const BlogAuthor: React.FC<AuthorDisplayProps> = ({
       <img
         src={author.imageURL}
         alt={author.name}
-        className="w-10 h-10 rounded-full object-cover border-2 border-gray-100 shadow-sm"
+        className="w-10 h-10 rounded-full object-cover border-2 border-terminal-border shadow-sm"
       />
     </div>
 
@@ -133,7 +133,7 @@ export const BlogAuthor: React.FC<AuthorDisplayProps> = ({
             target="_blank"
             rel="noopener noreferrer"
             className={clsx(
-              "font-semibold text-gray-900 hover:text-blue-600 transition-colors no-underline",
+              "font-semibold text-terminal-text-primary hover:text-terminal-green-primary transition-colors no-underline font-mono",
               textClassName,
             )}
             onClick={(e) => e.stopPropagation()}
@@ -141,13 +141,17 @@ export const BlogAuthor: React.FC<AuthorDisplayProps> = ({
             {author.name}
           </a>
         ) : (
-          <span className={clsx("font-semibold text-gray-900", textClassName)}>{author.name}</span>
+          <span className={clsx("font-semibold text-terminal-text-primary font-mono", textClassName)}>
+            {author.name}
+          </span>
         )}
       </div>
 
       {/* Author Title */}
       {author.title && (
-        <div className="text-sm text-gray-600 leading-relaxed mb-1">{renderTitleWithLinks(author.title)}</div>
+        <div className="text-sm text-terminal-text-secondary leading-relaxed mb-1 font-mono">
+          {renderTitleWithLinks(author.title)}
+        </div>
       )}
 
       {/* Social Links */}
@@ -159,7 +163,7 @@ export const BlogAuthor: React.FC<AuthorDisplayProps> = ({
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-500 hover:text-gray-700 transition-colors p-0.5 hover:bg-gray-100 rounded"
+              className="text-terminal-text-muted hover:text-terminal-green-primary transition-colors p-0.5 hover:bg-terminal-bg-tertiary rounded"
               aria-label={`${author.name} on ${social.platform}`}
               onClick={(e) => e.stopPropagation()}
             >
