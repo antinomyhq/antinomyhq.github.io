@@ -20,12 +20,12 @@ const BenefitsCard = (): JSX.Element => {
             href={item.redirection_url}
           >
             <div className="flex-shrink-0 mb-4 md:mb-0 md:mr-6">
-              <item.image className="w-16 h-16 text-gray-400 group-hover:text-white object-contain" />
+              <item.image className="w-16 h-16 text-gray-400 group-hover:text-orange-400 object-contain" />
             </div>
             <div className="flex-grow">
               <p className="text-title-small sm:text-title-large text-tailCall-white mb-2 flex items-center justify-between">
                 {item.title}
-                <span className="text-gray-400 group-hover:text-white"></span>
+                <span className="text-gray-400 group-hover:text-orange-400"></span>
               </p>
               <p className="text-content-tiny sm:text-content-small text-tailCall-light-600">{item.description}</p>
             </div>
