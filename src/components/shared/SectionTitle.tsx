@@ -7,7 +7,7 @@ type SectionTitleProps = {
 
 const SectionTitle = ({title}: SectionTitleProps): JSX.Element => {
   return (
-    <div className="text-content-tiny sm:text-title-tiny text-tailCall-terminal-text-secondary space-x-SPACE_01 font-space-mono">
+    <div className="text-base sm:text-lg text-tailCall-terminal-text-secondary space-x-SPACE_01 font-vt323 tracking-wider flex items-center">
       <GreaterThanUnderscoreIcon className="h-3 sm:h-4 w-6" />
       <span>{title}</span>
     </div>

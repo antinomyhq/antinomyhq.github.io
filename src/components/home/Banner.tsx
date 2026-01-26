@@ -20,7 +20,7 @@ const Banner: React.FC = () => {
             <div className="flex flex-col w-full">
               <Heading
                 as="h1"
-                className="hero-banner-title text-[2rem] sm:text-[2.5rem] md:text-[3rem] lg:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.5rem] leading-[1.15] sm:leading-[1.1] font-bold px-2 sm:px-0 font-mono"
+                className="hero-banner-title text-[2.5rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[3rem] xl:text-[3.5rem] 2xl:text-[4rem] leading-[1.1] sm:leading-[1.05] font-normal px-2 sm:px-0 font-vt323 tracking-wide"
               >
                 <span className="animate-fade-in-up [animation-delay:0.1s] text-tailCall-terminal-text-primary terminal-glow">
                   Token Efficient AI

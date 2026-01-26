@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono&family=Rubik:ital,wght@0,400;0,500;0,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono&family=Rubik:ital,wght@0,400;0,500;0,700&family=VT323&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -1841,7 +1841,7 @@ article i,
 
 .blog-wrapper p,
 .blog-wrapper li,
-.blog-wrapper span {
+.blog-wrapper span:not(.DocSearch-Button-Placeholder):not([class*="DocSearch"]) {
   color: var(--terminal-text) !important;
 }
 

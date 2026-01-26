@@ -99,7 +99,11 @@ module.exports = {
         "3xl": "2200px",
       },
     },
-    fontFamily: {},
+    fontFamily: {
+      vt323: ['"VT323"', 'monospace'],
+      mono: ['"Space Mono"', 'monospace'],
+      rubik: ['"Rubik"', 'sans-serif'],
+    },
     fontSize: {
       "display-large": [
         "96px",

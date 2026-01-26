@@ -18,7 +18,7 @@ const FinalCTA = ({showPricingButton = true}: FinalCTAProps): JSX.Element => {
           <div className="flex flex-col items-center max-w-4xl space-y-SPACE_04 sm:space-y-SPACE_06 px-4 sm:px-6">
             <Heading
               as="h5"
-              className="text-title-semi-large sm:text-display-medium text-center mb-0 text-tailCall-terminal-green-primary terminal-glow whitespace-nowrap"
+              className="text-[2rem] sm:text-[3.5rem] text-center mb-0 text-tailCall-terminal-green-primary terminal-glow whitespace-nowrap font-vt323 tracking-wide"
             >
               Ready to Get Started?
             </Heading>

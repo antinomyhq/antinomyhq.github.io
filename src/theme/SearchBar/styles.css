@@ -33,6 +33,11 @@
   box-shadow: none !important;
 }
 
+/* Consistent white text for search button across all pages */
+.DocSearch-Button-Placeholder {
+  color: #e6edf3 !important;
+}
+
 .DocSearch-Cancel {
   margin: 0 10px;
 }
@@ -239,15 +244,19 @@
 .DocSearch-Input {
   font-family: var(--ifm-font-family-base);
   font-weight: 400;
-  font-size: 20px;
+  font-size: 20px !important;
   line-height: 32px;
-  color: #e6edf3;
+  color: #e6edf3 !important;
   background-color: transparent;
   padding: 0.45rem 0;
+  min-height: 44px;
+  /* Safari fix */
+  -webkit-text-fill-color: #e6edf3;
 }
 
 .DocSearch-Input::placeholder {
   color: #8b949e;
+  -webkit-text-fill-color: #8b949e;
 }
 
 .DocSearch-MagnifierLabel {
@@ -257,6 +266,7 @@
 .DocSearch-Form {
   border-bottom: 1px dashed #30363d !important;
   background-color: #0a0e14;
+  min-height: 56px;
 }
 
 /* Large tablets and small laptops */

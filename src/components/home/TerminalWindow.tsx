@@ -25,7 +25,7 @@ const TerminalWindow: React.FC<TerminalWindowProps> = ({command, showFullTitle =
 
           {/* Terminal Title with glow */}
           <div className="absolute left-1/2 transform -translate-x-1/2">
-            <span className="text-xs text-tailCall-terminal-text-secondary font-mono font-medium terminal-glow">
+            <span className="text-sm text-tailCall-terminal-text-secondary font-vt323 tracking-wider terminal-glow">
               {showFullTitle ? "forge — terminal" : "forge"}
             </span>
           </div>
