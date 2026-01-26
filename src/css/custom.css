@@ -818,14 +818,13 @@ nav.menu {
   width: 100%;
   height: 100%;
   /* Continuous diagonal lines at 45deg */
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent calc(var(--grid-line-spacing) - 1px),
-      rgba(255, 255, 255, 0.05) calc(var(--grid-line-spacing) - 1px),
-      rgba(255, 255, 255, 0.05) var(--grid-line-spacing)
-    );
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent calc(var(--grid-line-spacing) - 1px),
+    rgba(255, 255, 255, 0.05) calc(var(--grid-line-spacing) - 1px),
+    rgba(255, 255, 255, 0.05) var(--grid-line-spacing)
+  );
   z-index: 0;
 }
 
