@@ -83,7 +83,7 @@ body {
   /* Font and Dimension Tokens */
   --ifm-font-family-base: "Space Grotesk", sans-serif;
   --ifm-font-family-heading: "Geist Mono", monospace;
-  --ifm-heading-font-weight: 200;
+  --ifm-heading-font-weight: 100;
   --ifm-font-size-base: 18px;
   --header-height: 5rem;
   --ifm-navbar-height: 5rem;
@@ -97,7 +97,7 @@ body {
   --ifm-grid-bg-size-md: 2.5rem;
   --ifm-grid-bg-size-sm: 1.25rem;
   --ifm-list-item-link: 1rem;
-  --ifm-navbar-font-size: 1.25rem;
+  --ifm-navbar-font-size: 1rem;
   --ifm-content-link-font-size: 0.875rem;
   --ifm-search-input-font-size: 0.9rem;
   --ifm-search-desc-font-size: 14px;
@@ -105,6 +105,7 @@ body {
   --ifm-navbar-background-color: var(--ifm-background-color);
   /* Color Tokens */
   --ifm-color-brand: #181818;
+  --ifm-color-brand-orange: #fb923c;
   --ifm-color-brand-linkedin: #0a66c2;
   --ifm-color-brand-discord: #5865f2;
   --ifm-color-brand-dark: #000;
@@ -409,6 +410,21 @@ input[type="radio"]:checked::before {
 .navbar__item.navbar__link {
   padding: 0 0.5rem;
   margin-right: 2.5rem;
+  position: relative;
+}
+
+/* Animated orange underline */
+.navbar__item.navbar__link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 2px;
+  background-color: var(--ifm-color-brand-orange);
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
 }
 
 .navbar__item.dropdown {
@@ -418,6 +434,21 @@ input[type="radio"]:checked::before {
 
 .navbar__item.dropdown .navbar__link {
   padding: 0 0.5rem;
+  position: relative;
+}
+
+/* Animated orange underline for dropdown */
+.navbar__item.dropdown .navbar__link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 100%;
+  height: 2px;
+  background-color: var(--ifm-color-brand-orange);
+  transition: transform 0.3s ease-in-out;
+  transform-origin: center;
 }
 
 .navbar__item.navbar__link:hover {
@@ -426,39 +457,25 @@ input[type="radio"]:checked::before {
   border-radius: 0;
 }
 
+.navbar__item.navbar__link:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
 .navbar__item.navbar__link.navbar__link--active,
 .navbar__item.dropdown.navbar__link--active {
   position: relative;
   overflow: hidden;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
-  color: #fff;
+  background-color: transparent;
+  color: var(--ifm-color-gray-900);
   border-radius: 0;
   border: none;
-  outline: 1px dashed #545556;
-  outline-offset: 4px;
+  outline: none;
 }
 
-/* Reuse button grid pattern for navbar hover */
-.navbar__item.navbar__link.navbar__link--active::before,
-.navbar__item.dropdown.navbar__link--active::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--ifm-color-brand-light-opacity-15) 1px, transparent 2px),
-    linear-gradient(90deg, var(--ifm-color-brand-light-opacity-15) 1px, transparent 2px);
-  background-size: var(--ifm-grid-bg-size-sm) var(--ifm-grid-bg-size-sm);
-  clip-path: inset(0.2rem);
-  opacity: 0;
-  scale: 0.9;
-  transition: all 0.25s ease-out;
-  pointer-events: none;
-}
-
-.navbar__item.navbar__link.navbar__link--active:hover::before,
-.navbar__item.dropdown.navbar__link--active:hover::before {
-  opacity: 1;
-  scale: 0.98;
+/* Show underline on active nav item */
+.navbar__item.navbar__link.navbar__link--active::after,
+.navbar__item.dropdown.navbar__link--active::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
 .navbar-sidebar__item .menu__link:hover {
@@ -480,6 +497,10 @@ input[type="radio"]:checked::before {
 .navbar__item .dropdown__menu .dropdown__link.dropdown__link--active,
 .navbar__item.dropdown .navbar__link:hover {
   color: var(--ifm-color-brand-dark-100);
+}
+
+.navbar__item.dropdown .navbar__link:hover::after {
+  transform: translateX(-50%) scaleX(1);
 }
 
 .dropdown > .navbar__link:after {

@@ -37,7 +37,7 @@ export default {
       tagName: "link",
       attributes: {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Geist+Mono:wght@200;400;500;700&family=Space+Grotesk:wght@300;400;500;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100;200;400;500;700&family=Space+Grotesk:wght@300;400;500;700&display=swap",
       },
     },
     // Adaptive favicon implementation - automatically switches based on system theme
