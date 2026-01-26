@@ -6,7 +6,7 @@
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://forgecode.dev/blog/"/>
     <subtitle>Forge Code Blog</subtitle>
-    <rights>Copyright © 2025 Tailcall, Inc.</rights>
+    <rights>Copyright © 2026 Tailcall, Inc.</rights>
     <entry>
         <title type="html"><![CDATA[Forge v0.106.0 Release: Plan Progress Tracking and Reliability Improvements]]></title>
         <id>https://forgecode.dev/blog/forge-v0106-release/</id>
