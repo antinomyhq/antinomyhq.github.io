@@ -1199,7 +1199,6 @@ span.token.tag.script.language-javascript {
   font-size: 3em;
   font-weight: 100;
 }
-
 .featured-posts-container {
   max-height: 100vh;
   padding-bottom: calc(var(--ifm-navbar-height) + 1rem);
