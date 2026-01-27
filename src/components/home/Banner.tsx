@@ -19,8 +19,8 @@ const Banner: React.FC = () => {
             AI Native <br /> Engineering
           </Heading>
           <p className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
-            Our mission is to make deterministic agentic operations possible at massive scale — across code,
-            architecture, infrastructure, CI/CD, and runbooks.
+            Our mission is to scale - deterministic agentic operations across the entire engineering stack, from code,
+            architecture and infrastructure to CI/CD, and runbooks.
           </p>
         </div>
       </Section>
