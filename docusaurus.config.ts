@@ -31,13 +31,13 @@ export default {
         crossorigin: "anonymous",
       },
     },
-    // Google Fonts: Space Grotesk (default) and Geist Mono (headings, code)
-    // Weights: 200 (ExtraLight), 400 (Regular), 500 (Medium), 700 (Bold)
+    // Google Fonts: Space Grotesk (default)
+    // Weights: 300 (Light), 400 (Regular), 500 (Medium), 700 (Bold)
     {
       tagName: "link",
       attributes: {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100;200;400;500;700&family=Space+Grotesk:wght@300;400;500;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap",
       },
     },
     // Adaptive favicon implementation - automatically switches based on system theme
