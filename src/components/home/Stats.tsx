@@ -46,7 +46,7 @@ const Stats: React.FC = () => {
 
   return (
     <Section>
-      <div className="grid grid-cols-3 gap-1 sm:gap-4 md:gap-6 lg:gap-8 w-full max-w-5xl mx-auto place-items-center">
+      <div className="flex justify-between items-start gap-4 sm:gap-8 md:gap-12 w-full">
         {stats.map((stat) => {
           const isGithub = stat.label === "GitHub Stars"
 
