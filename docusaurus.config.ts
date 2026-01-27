@@ -32,12 +32,13 @@ export default {
       },
     },
     // Google Fonts: Space Grotesk (default)
-    // Weights: 300 (Light), 400 (Regular), 500 (Medium), 700 (Bold)
+    // Loading weights: 300-700 to cover all font-weight values (100-700) used in the project
+    // Space Grotesk available weights: 300 (Light), 400 (Regular), 500 (Medium), 600 (SemiBold), 700 (Bold)
     {
       tagName: "link",
       attributes: {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap",
       },
     },
     // Adaptive favicon implementation - automatically switches based on system theme
