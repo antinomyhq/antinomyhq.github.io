@@ -79,7 +79,7 @@
 @keyframes heartbeat {
   0% {
     color: var(--ifm-color-brand-dark-400);
-  }  
+  }
   5% {
     color: var(--ifm-color-brand-orange);
   }
