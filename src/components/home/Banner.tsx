@@ -6,6 +6,7 @@ import {analyticsHandler} from "@site/src/utils"
 import {Theme} from "@site/src/constants"
 import {pageLinks} from "@site/src/constants/routes"
 import Section from "../shared/Section"
+import SectionTitle from "../shared/SectionTitle"
 import {Star, Github} from "lucide-react"
 
 const Banner: React.FC = () => {
@@ -13,6 +14,7 @@ const Banner: React.FC = () => {
     <main>
       <Section className="flex flex-col items-start text-left w-full !pb-0">
         <div className="h-full 2xl:min-h-0">
+          <SectionTitle title="Mission" />
           <Heading as="h1" className="hero-banner-title mb-4">
             AI-Native <br />
             Engineering

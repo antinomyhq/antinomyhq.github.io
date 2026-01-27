@@ -52,6 +52,11 @@
   .copy-check-glow {
     filter: drop-shadow(0 0 6px rgba(74, 222, 128, 0.5));
   }
+
+  /* Section title heartbeat animation */
+  .section-title-heartbeat {
+    animation: heartbeat 2s ease-in-out infinite;
+  }
 }
 
 @keyframes checkBounce {
@@ -71,6 +76,27 @@
   }
 }
 
+@keyframes heartbeat {
+  0% {
+    color: var(--ifm-color-brand-dark-400);
+  }  
+  5% {
+    color: var(--ifm-color-brand-orange);
+  }
+  6% {
+    color: var(--ifm-color-brand-dark-400);
+  }
+  7% {
+    color: var(--ifm-color-brand-orange);
+  }
+  8% {
+    color: var(--ifm-color-brand-dark-400);
+  }
+  100% {
+    color: var(--ifm-color-brand-dark-400);
+  }
+}
+
 html,
 body {
   background-color: var(--ifm-background-color);
@@ -78,7 +104,7 @@ body {
 
 :root {
   /* Background Color - Factory.ai inspired cream/off-white */
-  --ifm-background-color: #F5F5F0;
+  --ifm-background-color: #f5f5f0;
 
   /* Font and Dimension Tokens */
   --ifm-font-family-base: "Space Grotesk", sans-serif;
