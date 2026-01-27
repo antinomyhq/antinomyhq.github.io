@@ -16,7 +16,7 @@ const Banner: React.FC = () => {
         <div className="h-full 2xl:min-h-0">
           <SectionTitle title="Mission" />
           <Heading as="h1" className="hero-banner-title mb-4">
-            AI Native Engineering
+            AI Native <br /> Engineering
           </Heading>
           <p className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
             Our mission is to make deterministic agentic operations possible at massive scale — across code,
