@@ -3,7 +3,7 @@ export const pageLinks = {
   docs: "/docs",
   installation: "/docs/installation",
   signup: "https://app.forgecode.dev/app/",
-  pricing: "/pricing",
+  // pricing: "/pricing",
   terms: "/terms",
   // about: "/about",
   // contact: "/",
