@@ -77,8 +77,8 @@ body {
 }
 
 :root {
-  /* Background Color */
-  --ifm-background-color: #ebf5ed;
+  /* Background Color - Factory.ai inspired cream/off-white */
+  --ifm-background-color: #F5F5F0;
 
   /* Font and Dimension Tokens */
   --ifm-font-family-base: "Space Grotesk", sans-serif;
@@ -474,7 +474,6 @@ input[type="radio"]:checked::before {
 }
 
 .navbar__item.navbar__link:hover {
-  background-color: #f3f3f3;
   color: var(--ifm-color-gray-900);
   border-radius: 0;
 }

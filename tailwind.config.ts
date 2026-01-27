@@ -40,8 +40,8 @@ module.exports = {
             600: "#121212",
             700: "#000000",
           },
-          black: "#181818",
-          white: "#f5f3eb",
+          black: "#000000",
+          white: "#FAFAF9",
         },
       },
       spacing: {
