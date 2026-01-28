@@ -16,7 +16,7 @@ const Footer = (): JSX.Element => {
         {footerItems.map((category: FooterItem, idx: number) => {
           return (
             <div className="flex flex-col gap-4 lg:gap-6" key={idx}>
-              <span className="text-content-small font-bold lg:text-title-small text-tailCall-white leading-[20px] lg:leading-[26px]">
+              <span className="text-[1rem] font-bold text-tailCall-light-500">
                 {category.title}
               </span>
               {category.items.map((footerItem: FooterLink, index: number) => {
@@ -24,7 +24,7 @@ const Footer = (): JSX.Element => {
                   <Link
                     key={index}
                     href={footerItem.link}
-                    className="text-content-small lg:text-content-medium text-tailCall-light-500 hover:text-tailCall-light-300 hover:no-underline leading-[20px] lg:leading-[26px]"
+                    className="text-[0.8rem] text-tailCall-light-500 hover:text-tailCall-light-300 hover:no-underline"
                   >
                     {footerItem.name}
                   </Link>

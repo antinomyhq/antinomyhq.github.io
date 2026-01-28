@@ -90,7 +90,7 @@ const Stats: React.FC = () => {
         })}
       </div>
       <div className="mt-5">
-        <TrustedByMarquee title="Trusted by developers at" logos={clientLogos} />
+        <TrustedByMarquee title="Trusted by" logos={clientLogos} />
       </div>
     </Section>
   )
