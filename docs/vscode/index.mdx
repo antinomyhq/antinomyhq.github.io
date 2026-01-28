@@ -2,7 +2,7 @@
 title: VS Code Extension
 sidebar_position: 15
 description: "Learn how to install and use the Forge VS Code extension to copy file references directly into Forge CLI."
-sidebar_label: VS Code Extension
+sidebar_label: Getting Started
 ---
 
 import {Download, Zap, Copy, Keyboard, Lightbulb, ArrowRight, FileText, Clock, Target, Terminal} from "lucide-react"
@@ -30,7 +30,7 @@ This extension works with [Forge CLI](/docs/installation). Install that first if
 
 ## See It in Action
 
-![Forge VS Code Extension Demo](../static/blog/demo_vscode.gif)
+![Forge VS Code Extension Demo](../../static/blog/demo_vscode.gif)
 
 **What you just saw:** Select code → Press `Ctrl+U` → Reference copied and ready to use with Forge.
 
@@ -96,7 +96,42 @@ Now Forge can see exactly what code you're talking about, with full context and 
 **Alternative ways to copy:**
 
 - **Command Palette**: `Ctrl+Shift+P` → type "Copy File Reference"
-- **Right-click Menu**: Select code → right-click → "Copy File Reference"
+- **Right-click Menu**: Select code → right-click → "Forge Code" → "Copy File Reference"
+
+### Keyboard Shortcuts
+
+The extension provides multiple shortcuts for copying file references:
+
+| Shortcut       | Action              | Description                      |
+| -------------- | ------------------- | -------------------------------- |
+| `Ctrl+U`       | Copy File Reference | Uses your default format setting |
+| `Ctrl+Shift+A` | Copy Absolute Path  | Always copies with absolute path |
+| `Ctrl+Shift+R` | Copy Relative Path  | Always copies with relative path |
+
+**Example outputs:**
+
+- **Absolute**: `@[/home/user/project/src/utils/helper.ts:15:28]`
+- **Relative**: `@[src/utils/helper.ts:15:28]`
+
+Use `Ctrl+U` for everyday use (respects your settings), or the specific shortcuts when you need a particular format.
+
+### Context Menu
+
+Right-click in the editor or file explorer to access the **"Forge Code"** submenu:
+
+<div style={{textAlign: "center", margin: "1.5rem 0"}}>
+  <img
+    src="/images/docs/context-menu.png"
+    alt="Forge context menu"
+    style={{borderRadius: "8px", boxShadow: "0 4px 12px rgba(0,0,0,0.15)", maxWidth: "100%"}}
+  />
+</div>
+
+The submenu contains:
+
+- **Start New Forge Session**: Open Forge in a new terminal
+- **Copy Absolute Path**: Copy reference with absolute path
+- **Copy Relative Path**: Copy reference with relative path
 
 ### Start New Forge Session
 
@@ -122,7 +157,7 @@ The extension will:
 **Scenario:** Authentication fails in production but works locally.
 
 ```
-> Help me debug this auth function @[src/auth/AuthService.ts:45:67] - works locally but fails in production
+> Help me debug this auth function @[src/auth/AuthService.ts:45:67] works locally but fails in production
 ```
 
 Forge sees the exact code and can suggest environment-specific issues to check.
@@ -142,7 +177,7 @@ Instead of generic advice, Forge sees your specific component and suggests targe
 **Scenario:** API data doesn't match your TypeScript types.
 
 ```
-> @[src/api/users.js:156:203] @[src/types/User.ts] have a type mismatch - API returns 'user_id' but type expects 'userId'
+> @[src/api/users.js:156:203] @[src/types/User.ts] have a type mismatch. API returns 'user_id' but type expects 'userId'
 ```
 
 Forge compares both files simultaneously and suggests proper fixes.
@@ -161,21 +196,50 @@ Forge understands your theme system and suggests consistent changes across files
 
 The extension provides several settings to customize its behavior. Access settings via **File → Preferences → Settings → Extensions → Forge**.
 
-### Available Settings
+### File Reference Settings
 
-#### `forge.terminalMode`
+#### `forge.fileReferenceFormat`
 
-Controls terminal interaction when copying file references with `Ctrl+U`.
+Choose the default path format when copying file references with `Ctrl+U`.
+
+- **Type**: String (dropdown)
+- **Options**:
+  - `absolute` (default): Full absolute paths
+  - `relative`: Workspace-relative paths
+- **Default**: `absolute`
+
+**When to use `absolute`:** Works reliably in all scenarios including multi-root workspaces and files outside the workspace.
+
+**When to use `relative`:** Best for sharing references with teammates or when paths are long. Paths are shorter and portable across machines.
+
+:::tip
+You can always use `Ctrl+Shift+A` (absolute) or `Ctrl+Shift+R` (relative) to override this setting on-the-fly.
+:::
+
+### Terminal Settings
+
+#### `forge.openTerminal`
+
+Controls when the extension opens a Forge terminal.
 
 - **Type**: String (dropdown)
 - **Options**:
   - `once` (default): Open terminal once and reuse it for subsequent operations
-  - `never`: Never open terminal, only copy file reference to clipboard
+  - `never`: Only copy file reference to clipboard, never open terminal
 - **Default**: `once`
 
 **When to use `once`:** Most users should use this. The extension intelligently manages Forge terminals, creating one when needed and reusing it for subsequent file references.
 
 **When to use `never`:** Use this if you always work with Forge in an external terminal and only want the extension to copy file references to clipboard without any terminal interaction.
+
+#### `forge.autoPaste`
+
+Automatically paste file references into the Forge terminal.
+
+- **Type**: Boolean
+- **Default**: `true`
+
+**When to disable:** If you prefer to manually paste references, or if auto-pasting interferes with your workflow.
 
 #### `forge.pasteDelay`
 
@@ -183,24 +247,53 @@ Delay in milliseconds before auto-pasting file reference into a newly created Fo
 
 - **Type**: Number
 - **Default**: `5000` (5 seconds)
-- **Range**: 0-10000 milliseconds
+- **Range**: 0-30000 milliseconds
 
 **Why this exists:** When the extension creates a new Forge terminal, it needs time to start up before accepting input. This delay ensures the file reference is pasted after Forge is ready.
 
 **When to adjust:**
 
-- If file references aren't being pasted: Increase the value (try 7000-10000ms)
-- If you have a fast machine and want quicker pasting: Decrease the value (try 3000-4000ms)
+- If file references aren't being pasted: Increase the value (try 7000-15000ms)
+- If you have a fast machine and want quicker pasting: Decrease the value (try 2000-3000ms)
 - Note: This only affects newly created terminals, not existing ones
 
-#### `forge.showInstallationPrompt`
+### Advanced Settings
 
-Show a prompt to install Forge CLI if it's not detected in your PATH.
+#### `forge.binPath`
 
-- **Type**: Boolean
-- **Default**: `true`
+Custom path to the Forge executable.
 
-**When to disable:** If you use Forge via `npx` or have it installed in a non-standard location, you might want to disable this prompt.
+- **Type**: String
+- **Default**: Empty (uses PATH)
+
+**When to use:** If Forge is installed in a non-standard location or you want to use a specific version.
+
+```json
+{
+  "forge.binPath": "/usr/local/bin/forge"
+}
+```
+
+This overrides the `FORGE_BIN` environment variable.
+
+#### `forge.notifications`
+
+Control which notifications the extension shows.
+
+- **Type**: Object
+- **Default**: All enabled
+
+```json
+{
+  "forge.notifications": {
+    "info": true,
+    "warning": true,
+    "error": true
+  }
+}
+```
+
+**When to adjust:** Disable `info` notifications if you find them too frequent. Keep `error` enabled to catch important issues.
 
 ## Troubleshooting
 
@@ -208,8 +301,8 @@ Show a prompt to install Forge CLI if it's not detected in your PATH.
 
 **Quick fixes to try:**
 
-1. Verify Forge CLI is installed - run `forge --version` in terminal
-2. Check your VS Code version (Help → About) - need 1.102.0+
+1. Verify Forge CLI is installed. Run `forge --version` in terminal
+2. Check your VS Code version (Help > About). Need 1.102.0+
 3. Verify the extension is enabled in Extensions view (`Ctrl+Shift+X`)
 4. Restart VS Code completely
 
@@ -233,21 +326,21 @@ Try these workarounds:
 - Use Command Palette: `Ctrl+Shift+P` → "Copy File Reference"
 - Use right-click menu → "Copy File Reference"
 - Check if you're in a text file (extension won't work on images/binaries)
-- Some systems have clipboard permission issues - restart VS Code usually fixes this
+- Some systems have clipboard permission issues. Restart VS Code usually fixes this
 
 ### Terminal Not Opening or Forge Not Starting
 
 **If "Start New Forge Session" doesn't work:**
 
-1. Check that Forge is in your PATH - run `which forge` (macOS/Linux) or `where forge` (Windows) in terminal
-2. If using `npx`, the extension may not detect it - install Forge globally: `npm install -g forgecode`
+1. Check that Forge is in your PATH. Run `which forge` (macOS/Linux) or `where forge` (Windows) in terminal
+2. If using `npx`, the extension may not detect it. Install Forge globally: `npm install -g forgecode`
 3. Try manually opening a terminal and running `forge` to see if there are any errors
 4. Restart VS Code after installing Forge globally
 
 **If file references aren't being pasted automatically:**
 
 - Increase the `forge.pasteDelay` setting (try 7000-10000ms for slower machines)
-- The default is 5000ms (5 seconds) - if that's not enough, Forge may need more time to start
+- The default is 5000ms (5 seconds). If that's not enough, Forge may need more time to start
 - Check that your terminal shell is compatible (bash, zsh, PowerShell work well)
 - Try using `Ctrl+U` to copy the reference, then manually paste it into the Forge terminal
 
@@ -267,19 +360,25 @@ Sometimes you'll see paths like `/workspaces/project/src/file.js` instead of nor
 
 ## Next Steps
 
-You're ready to start using the extension! The goal isn't to reference every line of code - it's to give Forge just enough context to actually help with your specific situation.
+You're ready to start using the extension! The goal isn't to reference every line of code. It's to give Forge just enough context to actually help with your specific situation.
+
+**Explore more extension features:**
+
+- [Git Integration](/docs/vscode/git-integration): AI-powered commit messages and Forge attribution
+- [CodeLens & Quick Fix](/docs/vscode/ai-features): Delegate tasks to Forge directly from your code
+- [IDE Intelligence](/docs/vscode/mcp-integration): Give Forge access to VS Code's language intelligence
 
 ## Related Guides
 
-- [File Tagging with @: Enhance AI Context for Faster Developer Workflow](/docs/file-tagging-guide)
-- [Quickstart: Get started with Forge in minutes](/docs/quickstart)
-- [Built-in Commands: Essential commands for productive workflows](/docs/commands)
+- [File Tagging with @](/docs/file-tagging-guide): Enhance AI context for faster workflows
+- [Quickstart](/docs/quickstart): Get started with Forge in minutes
+- [Built-in Commands](/docs/commands): Essential commands for productive workflows
 
 ---
 
 ## Still Need Help?
 
-**If you're still stuck:**
+**If you're stuck:**
 
 - **Extension logs:** View → Output → Select "Forge" from dropdown
 - **Report bugs:** [GitHub Issues](https://github.com/antinomyhq/forge/issues)

@@ -1,0 +1,187 @@
+---
+title: Git Integration
+sidebar_position: 2
+description: "AI-powered commit messages and Forge attribution for your Git workflow."
+sidebar_label: Git Integration
+---
+
+import {GitCommit, Sparkles, StopCircle, UserCheck, Settings} from "lucide-react"
+
+# Stop Writing Commit Messages
+
+Writing good commit messages is important. Writing them manually for every change is tedious. Let Forge analyze your changes and generate meaningful commit messages instantly.
+
+## What This Does
+
+The VS Code extension integrates directly with Git to provide:
+
+- **AI Commit Messages**: Generate commit messages based on your staged changes
+- **Smart Commit**: Commit with Forge attribution visible on GitHub
+- **One-Click Workflow**: Generate and commit without leaving VS Code
+
+## Generate Commit Message
+
+Click the Forge icon in the Source Control panel to generate a commit message from your staged changes.
+
+### How It Works
+
+1. **Stage your changes** in the Source Control panel
+2. **Click the Forge icon** (or use Command Palette: "Generate Commit Message with Forge")
+3. **Forge analyzes the diff** and generates a descriptive commit message
+4. **Message appears in the input box**: Edit if needed, then commit
+
+The generated message follows conventional commit style and describes what changed and why.
+
+### Example
+
+**Your changes:**
+
+```diff
++ function validateEmail(email: string): boolean {
++   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
++   return emailRegex.test(email);
++ }
+```
+
+**Generated message:**
+
+```
+feat(validation): add email validation function
+
+Add validateEmail utility function with regex-based email format checking.
+Returns boolean indicating whether the provided email string is valid.
+```
+
+### Stop Generation
+
+If generation is taking too long or you want to cancel:
+
+- Click the **Stop** button that replaces the Forge icon during generation
+- Or use Command Palette: "Stop Generating Commit Message"
+
+## Automatic Forge Attribution
+
+When the Forge extension is installed, **every commit you make automatically includes Forge attribution**. There's nothing extra you need to do.
+
+### How It Works
+
+Whenever a commit happens in your workspace whether from VS Code's Source Control panel, the terminal, or any other Git client the extension:
+
+1. Detects the commit event
+2. Automatically amends it with Forge as the committer
+3. Shows a brief status bar message with the Forge icon
+
+Your commits will have:
+
+- **Author**: You (your normal Git identity)
+- **Committer**: ForgeCode (`ForgeCode <noreply@forgecode.dev>`)
+
+This shows up on GitHub and other Git platforms, making it clear when AI assisted with the code.
+
+### Alternative: Command Palette
+
+You can also commit directly using the Command Palette:
+
+1. Stage your changes
+2. Write your commit message in the input box
+3. Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (Mac)
+4. Select: **"Commit (Forge Attribution)"**
+
+This does the same thing as the automatic method but bypasses VS Code's default commit flow.
+
+### Why Attribution Matters
+
+| Benefit                | Description                                      |
+| ---------------------- | ------------------------------------------------ |
+| **Transparency**       | Shows which commits had AI assistance            |
+| **Team Visibility**    | Teammates can see Forge contributions in git log |
+| **GitHub Integration** | Attribution visible on commit history pages      |
+| **Audit Trail**        | Track AI-assisted changes over time              |
+
+## Configuration
+
+### `forge.commitMessage.maxDiffSize`
+
+Maximum size of the git diff sent to Forge for commit message generation.
+
+- **Type**: Number (bytes)
+- **Default**: `10000` (10 KB)
+- **Minimum**: `10000`
+
+**Why this exists:** Large diffs can overwhelm the AI and slow down generation. The setting limits how much diff context is sent.
+
+**When to increase:**
+
+- If you frequently have large commits and messages seem incomplete
+- For monorepo or multi-file refactoring commits
+
+```json
+{
+  "forge.commitMessage.maxDiffSize": 20000
+}
+```
+
+## Requirements
+
+### Forge CLI Version
+
+Commit message generation requires **Forge CLI v1.5.0 or higher**.
+
+If you have an older version, the extension will prompt you to update:
+
+```bash
+npm install -g forgecode@latest
+```
+
+### Git Repository
+
+These features only work in folders that are Git repositories. The extension checks for:
+
+- Valid Git repository (`.git` folder exists)
+- Staged changes (for commit message generation)
+- Git extension enabled in VS Code
+
+## Troubleshooting
+
+### "No Git Repository Found"
+
+Make sure you've opened a folder that contains a `.git` directory. The Source Control panel should show your repository.
+
+### "No Changes to Commit"
+
+Stage some changes first:
+
+1. Go to Source Control panel (`Ctrl+Shift+G`)
+2. Click the `+` icon next to changed files to stage them
+3. Then generate the commit message
+
+### Commit Message Is Empty or Generic
+
+This can happen when:
+
+- The diff is too large and gets truncated
+- Changes are minimal (e.g., whitespace only)
+- Try increasing `forge.commitMessage.maxDiffSize`
+
+### "Forge Version Outdated"
+
+Update your Forge CLI:
+
+```bash
+npm install -g forgecode@latest
+```
+
+Then try again.
+
+## Related Guides
+
+- [Getting Started](/docs/vscode): Installation and core features
+- [CodeLens & Quick Fix](/docs/vscode/ai-features): Delegate tasks directly from your code
+- [Quickstart](/docs/quickstart): Getting started with Forge CLI
+
+---
+
+## Need Help?
+
+- **Report bugs**: [GitHub Issues](https://github.com/antinomyhq/forge/issues)
+- **Community help**: Join our [Discord](https://discord.gg/kRZBPpkgwq)

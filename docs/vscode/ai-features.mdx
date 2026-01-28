@@ -1,0 +1,243 @@
+---
+title: CodeLens & Quick Fix
+sidebar_position: 3
+description: "CodeLens delegation, Quick Fix integration, and background tasks for AI-assisted development."
+sidebar_label: CodeLens & Quick Fix
+---
+
+import {Zap, Play, StopCircle, ListTodo, Wrench, Settings} from "lucide-react"
+
+# Let Forge Handle Your TODOs
+
+You write `TODO: implement validation` and move on. But those TODOs pile up. Now you can delegate them to Forge with a single click. It runs in the background while you keep coding.
+
+## What This Unlocks
+
+The extension adds AI-powered features directly into your editor:
+
+- **Delegate to Forge**: Click above any TODO/FIXME to let Forge handle it
+- **Fix using Forge**: Use the Quick Fix menu to fix errors and warnings
+- **Background Tasks**: Multiple Forge tasks run in parallel without blocking you
+
+## Delegate to Forge (CodeLens)
+
+See a clickable "Delegate to Forge" link above your TODO, FIXME, BUG, HACK, and NOTE comments.
+
+### How It Works
+
+Write a TODO, FIXME, or NOTE comment and you'll see "Delegate to Forge" appear above it. Click it and Forge runs in the background while you keep coding.
+
+<div style={{textAlign: "center", margin: "1.5rem 0"}}>
+  <img
+    src="/images/docs/codelens-delegate.png"
+    alt="Delegate to Forge CodeLens"
+    style={{borderRadius: "8px", boxShadow: "0 4px 12px rgba(0,0,0,0.15)", maxWidth: "100%"}}
+  />
+</div>
+
+### Supported Tags
+
+The extension detects these comment patterns (case-insensitive):
+
+| Tag     | Common Use            |
+| ------- | --------------------- |
+| `TODO`  | Tasks to complete     |
+| `FIXME` | Known issues to fix   |
+| `BUG`   | Bugs to resolve       |
+| `HACK`  | Temporary workarounds |
+| `NOTE`  | Important information |
+
+### Multi-Line Comments
+
+The extension captures the full context of your comment, including multi-line blocks:
+
+```typescript
+/*
+ * TODO: Refactor this function
+ * - Extract validation logic
+ * - Add error handling
+ * - Improve performance for large datasets
+ */
+function processData(data: any[]) {
+  // ...
+}
+```
+
+When you click "Delegate to Forge", it sends the entire comment block as context.
+
+### Running State
+
+While a task runs on a specific line:
+
+- The CodeLens shows `$(sync~spin) Running in background`
+- A stop button `$(close)` appears next to it
+- You can't start a duplicate task on the same line
+- Other TODOs on different lines can still be delegated
+
+## Fix using Forge (Quick Fix)
+
+When VS Code shows an error, warning, or hint, you can use Forge to fix it.
+
+### How It Works
+
+1. **Hover over a diagnostic** (red squiggle for errors, yellow for warnings)
+2. **Click the lightbulb** or press `Ctrl+.`
+3. **Select "Fix using Forge"** from the Quick Fix menu
+4. **Forge analyzes and fixes** the issue in the background
+
+### What Gets Sent to Forge
+
+When you trigger "Fix using Forge", the extension sends:
+
+- File reference with line number
+- The diagnostic message
+- Diagnostic source (e.g., "typescript", "eslint")
+- Diagnostic code (e.g., `TS2322`, `no-unused-vars`)
+- Severity level
+
+**Example prompt sent to Forge:**
+
+```
+@[src/utils/validator.ts:42] Fix this error: Type 'string' is not assignable to type 'number' [typescript: 2322]
+```
+
+### Severity-Specific Prompts
+
+The extension adjusts the prompt based on severity:
+
+| Severity    | Prompt Prefix           |
+| ----------- | ----------------------- |
+| Error       | "Fix this error"        |
+| Warning     | "Fix this warning"      |
+| Information | "Review this"           |
+| Hint        | "Apply this suggestion" |
+
+## Background Tasks
+
+Both "Delegate to Forge" and "Fix using Forge" run as background tasks. This means:
+
+- **No blocking**: You keep coding while Forge works
+- **Unlimited parallel tasks**: Run as many as you want simultaneously
+- **Status tracking**: See all running tasks in the status bar
+- **Individual output**: Each task has its own output channel
+
+### Status Bar
+
+When background tasks are running, you'll see in the status bar:
+
+```
+$(sync~spin) Forge: 3 running
+```
+
+Click it to open the task manager.
+
+### Task Manager
+
+Click the status bar item or use Command Palette: "Show Background Tasks"
+
+The task manager shows:
+
+- All running tasks with their status
+- File and line number for each task
+- Duration (how long it's been running)
+- Options to view output or stop tasks
+
+### Viewing Task Output
+
+Each task creates its own output channel:
+
+```
+Forge: TODO (src/utils/validator.ts:42)
+```
+
+You can view it by:
+
+- Clicking the task in the task manager
+- Going to View → Output → selecting the task channel
+
+### Stopping Tasks
+
+**Stop a single task:**
+
+- Click the `$(close)` button in the CodeLens
+- Or select the task in task manager and choose stop
+
+**Stop all tasks:**
+
+- Command Palette: "Stop All Background Tasks"
+- Or click "Stop All Running Tasks" in the task manager
+
+## Configuration
+
+### `forge.codeLens.enabled`
+
+Enable or disable the CodeLens feature.
+
+- **Type**: Boolean
+- **Default**: `true`
+
+```json
+{
+  "forge.codeLens.enabled": false
+}
+```
+
+**When to disable:** If you find the CodeLens distracting or prefer to use Forge only through the terminal.
+
+### `forge.codeLens.patterns`
+
+Customize which comment patterns trigger the CodeLens.
+
+- **Type**: Array of strings
+- **Default**: `["TODO", "FIXME", "BUG", "HACK", "NOTE"]`
+
+```json
+{
+  "forge.codeLens.patterns": ["TODO", "FIXME", "OPTIMIZE", "REVIEW"]
+}
+```
+
+**When to customize:**
+
+- Add custom tags your team uses (e.g., `REVIEW`, `OPTIMIZE`)
+- Remove tags you don't want CodeLens on
+- Matching is case-insensitive (`todo`, `TODO`, `Todo` all work)
+
+## Commands
+
+| Command                       | Description                                          |
+| ----------------------------- | ---------------------------------------------------- |
+| **Delegate to Forge**         | Run from CodeLens click                              |
+| **Fix using Forge**           | Run from Quick Fix menu                              |
+| **Show Background Tasks**     | Open task manager                                    |
+| **Stop All Background Tasks** | Cancel all running tasks                             |
+| **Stop Task**                 | Stop a specific task (from CodeLens or task manager) |
+
+## Tips
+
+**Start with small tasks:** Try delegating simple TODOs first to see how Forge handles them.
+
+**Be specific in comments:** The more context you provide in your TODO comment, the better Forge can help.
+
+```typescript
+// Bad: TODO: fix this
+// Good: TODO: Add null check for user.email before sending notification
+```
+
+**Check the output:** If a task doesn't produce the expected result, check its output channel for details.
+
+**Multiple tasks are fine:** Don't hesitate to delegate multiple TODOs at once. They run in parallel.
+
+## Related Guides
+
+- [Getting Started](/docs/vscode): Installation and core features
+- [Git Integration](/docs/vscode/git-integration): AI-powered commit messages
+- [IDE Intelligence](/docs/vscode/mcp-integration): Language features for Forge
+
+---
+
+## Need Help?
+
+- **View task output:** Click the status bar item or check Output panel
+- **Report bugs**: [GitHub Issues](https://github.com/antinomyhq/forge/issues)
+- **Community help**: Join our [Discord](https://discord.gg/kRZBPpkgwq)

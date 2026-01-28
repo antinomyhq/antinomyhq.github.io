@@ -58,11 +58,21 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Tools & Integrations", // Expanded category for tools and IDE integrations
+      label: "VS Code Extension", // Dedicated top-level section for VS Code
+      collapsed: false,
+      items: [
+        "vscode/index", // Overview & Setup
+        "vscode/git-integration", // Git Integration features
+        "vscode/ai-features", // AI Features (CodeLens, Quick Fix, Background Tasks)
+        "vscode/mcp-integration", // MCP Integration for LSP features
+      ],
+    },
+    {
+      type: "category",
+      label: "Tools & Integrations", // Other tools and integrations
       collapsed: false,
       items: [
         "tools-reference", // Dedicated category highlights importance of tools
-        "vscode-extension", // VS Code extension documentation
       ],
     },
     {
