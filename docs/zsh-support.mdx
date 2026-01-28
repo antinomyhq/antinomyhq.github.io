@@ -198,20 +198,22 @@ These tools enable fuzzy file finding with `@filename<Tab>`, agent selection wit
     ```bash
     # Add to ~/.zshrc
     export FORGE_BIN=forge
-    source <($FORGE_BIN extension zsh)
+    forge() { ${=FORGE_BIN} "$@" }
+    source <(forge extension zsh)
     ```
 
     If you're using npx:
     ```bash
     # Add to ~/.zshrc
     export FORGE_BIN="npx forgecode"
-    source <($FORGE_BIN extension zsh)
+    forge() { ${=FORGE_BIN} "$@" }
+    source <(forge extension zsh)
     ```
 
     :::note Critical Loading Order
     **The Forge source line must come BEFORE the zsh-syntax-highlighting source line** in your `.zshrc` file. The correct order is:
     1. All other plugins
-    2. Forge integration (`source <($FORGE_BIN extension zsh)`)
+    2. Forge integration (`source <(forge extension zsh)`)
     3. zsh-syntax-highlighting (last)
     :::
 

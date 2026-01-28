@@ -178,10 +178,11 @@ fzf --version
 ## Configuration and Loading Order
 
 :::warning Critical Loading Order
+::::warning Critical Loading Order
 The order in which you load these components in your `.zshrc` file is crucial:
 
 1. **All other plugins** (git, auto-completion, etc.)
-2. **Forge integration**: `source <($FORGE_BIN extension zsh)`
+2. **Forge integration**: `source <(forge extension zsh)`
 3. **zsh-syntax-highlighting**: Must be **LAST**
 
 **Example ~/.zshrc structure:**
@@ -192,14 +193,15 @@ plugins=(git zsh-autosuggestions)
 
 # Forge integration
 export FORGE_BIN=forge
-source <($FORGE_BIN extension zsh)
+forge() { ${=FORGE_BIN} "$@" }
+source <(forge extension zsh)
 
 # zsh-syntax-highlighting (must be last)
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh # Linux
 # source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh  # macOS
 ```
 
-:::
+::::
 
 ## Troubleshooting
 
