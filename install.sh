@@ -9,7 +9,7 @@ BLUE='\033[0;34m'
 YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}Installing Forge...${NC}"
+echo -e "${BLUE}Installing Forge and dependencies (fzf, bat, fd)...${NC}"
 
 # Check for required dependencies
 DOWNLOADER=""
@@ -41,6 +41,265 @@ download_file() {
   else
     return 1
   fi
+}
+
+# Function to check if a tool is already installed
+check_tool_installed() {
+  local tool_name="$1"
+  if command -v "$tool_name" > /dev/null 2>&1; then
+    echo -e "${GREEN}✓ $tool_name is already installed${NC}"
+    return 0
+  fi
+  return 1
+}
+
+# Function to get latest release version from GitHub
+get_latest_version() {
+  local repo="$1"
+  if [ "$DOWNLOADER" = "curl" ]; then
+    curl -fsSL "https://api.github.com/repos/$repo/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+  else
+    wget -qO- "https://api.github.com/repos/$repo/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+  fi
+}
+
+# Function to install fzf
+install_fzf() {
+  if check_tool_installed "fzf"; then
+    return 0
+  fi
+
+  echo -e "${BLUE}Installing fzf...${NC}"
+
+  local fzf_version=$(get_latest_version "junegunn/fzf")
+  if [ -z "$fzf_version" ]; then
+    echo -e "${YELLOW}Warning: Could not determine fzf version, skipping${NC}"
+    return 1
+  fi
+
+  local fzf_url=""
+  local fzf_binary="fzf"
+
+  # Determine fzf download URL based on platform
+  if [ "$OS" = "darwin" ]; then
+    if [ "$ARCH" = "aarch64" ]; then
+      fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/fzf-${fzf_version}-darwin_arm64.zip"
+    else
+      fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/fzf-${fzf_version}-darwin_amd64.zip"
+    fi
+  elif [ "$OS" = "linux" ]; then
+    if is_android; then
+      # For Android, use the Linux arm64 binary
+      fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/fzf-${fzf_version}-linux_arm64.tar.gz"
+    elif [ "$ARCH" = "aarch64" ]; then
+      fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/fzf-${fzf_version}-linux_arm64.tar.gz"
+    else
+      fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/fzf-${fzf_version}-linux_amd64.tar.gz"
+    fi
+  elif [[ "$OS" =~ msys|mingw|cygwin|windows ]]; then
+    fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/fzf-${fzf_version}-windows_amd64.zip"
+    fzf_binary="fzf.exe"
+  else
+    echo -e "${YELLOW}Warning: fzf not supported on $OS, skipping${NC}"
+    return 1
+  fi
+
+  local fzf_temp="$TMP_DIR/fzf-${fzf_version}"
+  mkdir -p "$fzf_temp"
+
+  if download_file "$fzf_url" "$fzf_temp/fzf_archive"; then
+    # Extract based on archive type
+    if [[ "$fzf_url" == *.zip ]]; then
+      if command -v unzip > /dev/null 2>&1; then
+        unzip -q "$fzf_temp/fzf_archive" -d "$fzf_temp"
+      else
+        echo -e "${YELLOW}Warning: unzip not found, cannot extract fzf${NC}"
+        return 1
+      fi
+    else
+      tar -xzf "$fzf_temp/fzf_archive" -C "$fzf_temp"
+    fi
+
+    # Find and install the binary
+    if [ -f "$fzf_temp/$fzf_binary" ]; then
+      cp "$fzf_temp/$fzf_binary" "$INSTALL_DIR/$fzf_binary"
+      chmod +x "$INSTALL_DIR/$fzf_binary"
+      echo -e "${GREEN}✓ fzf installed successfully${NC}"
+    elif [ -f "$fzf_temp/fzf" ]; then
+      cp "$fzf_temp/fzf" "$INSTALL_DIR/fzf"
+      chmod +x "$INSTALL_DIR/fzf"
+      echo -e "${GREEN}✓ fzf installed successfully${NC}"
+    else
+      echo -e "${YELLOW}Warning: Could not find fzf binary in archive${NC}"
+      return 1
+    fi
+  else
+    echo -e "${YELLOW}Warning: Failed to download fzf, skipping${NC}"
+    return 1
+  fi
+
+  rm -rf "$fzf_temp"
+  return 0
+}
+
+# Function to install bat
+install_bat() {
+  if check_tool_installed "bat"; then
+    return 0
+  fi
+
+  echo -e "${BLUE}Installing bat...${NC}"
+
+  local bat_version=$(get_latest_version "sharkdp/bat")
+  if [ -z "$bat_version" ]; then
+    echo -e "${YELLOW}Warning: Could not determine bat version, skipping${NC}"
+    return 1
+  fi
+
+  local bat_url=""
+  local bat_binary="bat"
+
+  # Determine bat download URL based on platform
+  if [ "$OS" = "darwin" ]; then
+    if [ "$ARCH" = "aarch64" ]; then
+      bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/bat-${bat_version}-aarch64-apple-darwin.tar.gz"
+    else
+      bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/bat-${bat_version}-x86_64-apple-darwin.tar.gz"
+    fi
+  elif [ "$OS" = "linux" ]; then
+    if is_android; then
+      # For Android, use the Linux musl arm64 build
+      bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/bat-${bat_version}-aarch64-unknown-linux-musl.tar.gz"
+    elif [ "$ARCH" = "aarch64" ]; then
+      bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/bat-${bat_version}-aarch64-unknown-linux-musl.tar.gz"
+    else
+      bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/bat-${bat_version}-x86_64-unknown-linux-musl.tar.gz"
+    fi
+  elif [[ "$OS" =~ msys|mingw|cygwin|windows ]]; then
+    bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/bat-${bat_version}-x86_64-pc-windows-msvc.zip"
+    bat_binary="bat.exe"
+  else
+    echo -e "${YELLOW}Warning: bat not supported on $OS, skipping${NC}"
+    return 1
+  fi
+
+  local bat_temp="$TMP_DIR/bat-${bat_version}"
+  mkdir -p "$bat_temp"
+
+  if download_file "$bat_url" "$bat_temp/bat_archive"; then
+    # Extract based on archive type
+    if [[ "$bat_url" == *.zip ]]; then
+      if command -v unzip > /dev/null 2>&1; then
+        unzip -q "$bat_temp/bat_archive" -d "$bat_temp"
+      else
+        echo -e "${YELLOW}Warning: unzip not found, cannot extract bat${NC}"
+        return 1
+      fi
+    else
+      tar -xzf "$bat_temp/bat_archive" -C "$bat_temp"
+    fi
+
+    # Find and install the binary
+    local bat_extracted_dir=$(find "$bat_temp" -type d -name "bat-*" | head -n 1)
+    if [ -n "$bat_extracted_dir" ] && [ -f "$bat_extracted_dir/$bat_binary" ]; then
+      cp "$bat_extracted_dir/$bat_binary" "$INSTALL_DIR/$bat_binary"
+      chmod +x "$INSTALL_DIR/$bat_binary"
+      echo -e "${GREEN}✓ bat installed successfully${NC}"
+    elif [ -f "$bat_temp/$bat_binary" ]; then
+      cp "$bat_temp/$bat_binary" "$INSTALL_DIR/$bat_binary"
+      chmod +x "$INSTALL_DIR/$bat_binary"
+      echo -e "${GREEN}✓ bat installed successfully${NC}"
+    else
+      echo -e "${YELLOW}Warning: Could not find bat binary in archive${NC}"
+      return 1
+    fi
+  else
+    echo -e "${YELLOW}Warning: Failed to download bat, skipping${NC}"
+    return 1
+  fi
+
+  rm -rf "$bat_temp"
+  return 0
+}
+
+# Function to install fd
+install_fd() {
+  if check_tool_installed "fd"; then
+    return 0
+  fi
+
+  echo -e "${BLUE}Installing fd...${NC}"
+
+  local fd_version=$(get_latest_version "sharkdp/fd")
+  if [ -z "$fd_version" ]; then
+    echo -e "${YELLOW}Warning: Could not determine fd version, skipping${NC}"
+    return 1
+  fi
+
+  local fd_url=""
+  local fd_binary="fd"
+
+  # Determine fd download URL based on platform
+  if [ "$OS" = "darwin" ]; then
+    if [ "$ARCH" = "aarch64" ]; then
+      fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/fd-${fd_version}-aarch64-apple-darwin.tar.gz"
+    else
+      fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/fd-${fd_version}-x86_64-apple-darwin.tar.gz"
+    fi
+  elif [ "$OS" = "linux" ]; then
+    if is_android; then
+      # For Android, use the Linux musl arm64 build
+      fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/fd-${fd_version}-aarch64-unknown-linux-musl.tar.gz"
+    elif [ "$ARCH" = "aarch64" ]; then
+      fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/fd-${fd_version}-aarch64-unknown-linux-musl.tar.gz"
+    else
+      fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/fd-${fd_version}-x86_64-unknown-linux-musl.tar.gz"
+    fi
+  elif [[ "$OS" =~ msys|mingw|cygwin|windows ]]; then
+    fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/fd-${fd_version}-x86_64-pc-windows-msvc.zip"
+    fd_binary="fd.exe"
+  else
+    echo -e "${YELLOW}Warning: fd not supported on $OS, skipping${NC}"
+    return 1
+  fi
+
+  local fd_temp="$TMP_DIR/fd-${fd_version}"
+  mkdir -p "$fd_temp"
+
+  if download_file "$fd_url" "$fd_temp/fd_archive"; then
+    # Extract based on archive type
+    if [[ "$fd_url" == *.zip ]]; then
+      if command -v unzip > /dev/null 2>&1; then
+        unzip -q "$fd_temp/fd_archive" -d "$fd_temp"
+      else
+        echo -e "${YELLOW}Warning: unzip not found, cannot extract fd${NC}"
+        return 1
+      fi
+    else
+      tar -xzf "$fd_temp/fd_archive" -C "$fd_temp"
+    fi
+
+    # Find and install the binary
+    local fd_extracted_dir=$(find "$fd_temp" -type d -name "fd-*" | head -n 1)
+    if [ -n "$fd_extracted_dir" ] && [ -f "$fd_extracted_dir/$fd_binary" ]; then
+      cp "$fd_extracted_dir/$fd_binary" "$INSTALL_DIR/$fd_binary"
+      chmod +x "$INSTALL_DIR/$fd_binary"
+      echo -e "${GREEN}✓ fd installed successfully${NC}"
+    elif [ -f "$fd_temp/$fd_binary" ]; then
+      cp "$fd_temp/$fd_binary" "$INSTALL_DIR/$fd_binary"
+      chmod +x "$INSTALL_DIR/$fd_binary"
+      echo -e "${GREEN}✓ fd installed successfully${NC}"
+    else
+      echo -e "${YELLOW}Warning: Could not find fd binary in archive${NC}"
+      return 1
+    fi
+  else
+    echo -e "${YELLOW}Warning: Failed to download fd, skipping${NC}"
+    return 1
+  fi
+
+  rm -rf "$fd_temp"
+  return 0
 }
 
 # Detect architecture
@@ -270,7 +529,6 @@ else
   mv "$TEMP_BINARY" "$INSTALL_PATH"
   chmod +x "$INSTALL_PATH"
 fi
-rm -rf "$TMP_DIR"
 
 # Add to PATH if necessary (for Windows or non-standard install locations)
 if [ "$OS" = "windows" ] || [ "$OS" = "msys" ] || [ "$OS" = "mingw" ] || [ "$OS" = "cygwin" ]; then
@@ -327,3 +585,17 @@ else
     esac
   fi
 fi
+
+# Install dependencies (fzf, bat, fd)
+echo ""
+echo -e "${BLUE}Installing dependencies...${NC}"
+install_fzf || true
+install_bat || true
+install_fd || true
+
+echo ""
+echo -e "${GREEN}Installation complete!${NC}"
+echo -e "${BLUE}Tools installed: forge, fzf, bat, fd${NC}"
+
+# Cleanup temp directory
+rm -rf "$TMP_DIR"
