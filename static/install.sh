@@ -77,27 +77,30 @@ install_fzf() {
     return 1
   fi
 
+  # Strip 'v' prefix from version for URL construction
+  fzf_version="${fzf_version#v}"
+
   local fzf_url=""
   local fzf_binary="fzf"
 
   # Determine fzf download URL based on platform
   if [ "$OS" = "darwin" ]; then
     if [ "$ARCH" = "aarch64" ]; then
-      fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/fzf-${fzf_version}-darwin_arm64.zip"
+      fzf_url="https://github.com/junegunn/fzf/releases/download/v${fzf_version}/fzf-${fzf_version}-darwin_arm64.tar.gz"
     else
-      fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/fzf-${fzf_version}-darwin_amd64.zip"
+      fzf_url="https://github.com/junegunn/fzf/releases/download/v${fzf_version}/fzf-${fzf_version}-darwin_amd64.tar.gz"
     fi
   elif [ "$OS" = "linux" ]; then
     if is_android; then
       # For Android, use the Linux arm64 binary
-      fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/fzf-${fzf_version}-linux_arm64.tar.gz"
+      fzf_url="https://github.com/junegunn/fzf/releases/download/v${fzf_version}/fzf-${fzf_version}-android_arm64.tar.gz"
     elif [ "$ARCH" = "aarch64" ]; then
-      fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/fzf-${fzf_version}-linux_arm64.tar.gz"
+      fzf_url="https://github.com/junegunn/fzf/releases/download/v${fzf_version}/fzf-${fzf_version}-linux_arm64.tar.gz"
     else
-      fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/fzf-${fzf_version}-linux_amd64.tar.gz"
+      fzf_url="https://github.com/junegunn/fzf/releases/download/v${fzf_version}/fzf-${fzf_version}-linux_amd64.tar.gz"
     fi
   elif [[ "$OS" =~ msys|mingw|cygwin|windows ]]; then
-    fzf_url="https://github.com/junegunn/fzf/releases/download/${fzf_version}/fzf-${fzf_version}-windows_amd64.zip"
+    fzf_url="https://github.com/junegunn/fzf/releases/download/v${fzf_version}/fzf-${fzf_version}-windows_amd64.zip"
     fzf_binary="fzf.exe"
   else
     echo -e "${YELLOW}Warning: fzf not supported on $OS, skipping${NC}"
@@ -156,27 +159,30 @@ install_bat() {
     return 1
   fi
 
+  # Strip 'v' prefix from version for URL construction
+  bat_version="${bat_version#v}"
+
   local bat_url=""
   local bat_binary="bat"
 
   # Determine bat download URL based on platform
   if [ "$OS" = "darwin" ]; then
     if [ "$ARCH" = "aarch64" ]; then
-      bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/bat-${bat_version}-aarch64-apple-darwin.tar.gz"
+      bat_url="https://github.com/sharkdp/bat/releases/download/v${bat_version}/bat-v${bat_version}-aarch64-apple-darwin.tar.gz"
     else
-      bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/bat-${bat_version}-x86_64-apple-darwin.tar.gz"
+      bat_url="https://github.com/sharkdp/bat/releases/download/v${bat_version}/bat-v${bat_version}-x86_64-apple-darwin.tar.gz"
     fi
   elif [ "$OS" = "linux" ]; then
     if is_android; then
       # For Android, use the Linux musl arm64 build
-      bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/bat-${bat_version}-aarch64-unknown-linux-musl.tar.gz"
+      bat_url="https://github.com/sharkdp/bat/releases/download/v${bat_version}/bat-v${bat_version}-aarch64-unknown-linux-musl.tar.gz"
     elif [ "$ARCH" = "aarch64" ]; then
-      bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/bat-${bat_version}-aarch64-unknown-linux-musl.tar.gz"
+      bat_url="https://github.com/sharkdp/bat/releases/download/v${bat_version}/bat-v${bat_version}-aarch64-unknown-linux-musl.tar.gz"
     else
-      bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/bat-${bat_version}-x86_64-unknown-linux-musl.tar.gz"
+      bat_url="https://github.com/sharkdp/bat/releases/download/v${bat_version}/bat-v${bat_version}-x86_64-unknown-linux-musl.tar.gz"
     fi
   elif [[ "$OS" =~ msys|mingw|cygwin|windows ]]; then
-    bat_url="https://github.com/sharkdp/bat/releases/download/${bat_version}/bat-${bat_version}-x86_64-pc-windows-msvc.zip"
+    bat_url="https://github.com/sharkdp/bat/releases/download/v${bat_version}/bat-v${bat_version}-x86_64-pc-windows-msvc.zip"
     bat_binary="bat.exe"
   else
     echo -e "${YELLOW}Warning: bat not supported on $OS, skipping${NC}"
@@ -200,7 +206,7 @@ install_bat() {
     fi
 
     # Find and install the binary
-    local bat_extracted_dir=$(find "$bat_temp" -type d -name "bat-*" | head -n 1)
+    local bat_extracted_dir=$(find "$bat_temp" -mindepth 1 -maxdepth 1 -type d -name "bat-*" | head -n 1)
     if [ -n "$bat_extracted_dir" ] && [ -f "$bat_extracted_dir/$bat_binary" ]; then
       cp "$bat_extracted_dir/$bat_binary" "$INSTALL_DIR/$bat_binary"
       chmod +x "$INSTALL_DIR/$bat_binary"
@@ -236,27 +242,30 @@ install_fd() {
     return 1
   fi
 
+  # Strip 'v' prefix from version for URL construction
+  fd_version="${fd_version#v}"
+
   local fd_url=""
   local fd_binary="fd"
 
   # Determine fd download URL based on platform
   if [ "$OS" = "darwin" ]; then
     if [ "$ARCH" = "aarch64" ]; then
-      fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/fd-${fd_version}-aarch64-apple-darwin.tar.gz"
+      fd_url="https://github.com/sharkdp/fd/releases/download/v${fd_version}/fd-v${fd_version}-aarch64-apple-darwin.tar.gz"
     else
-      fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/fd-${fd_version}-x86_64-apple-darwin.tar.gz"
+      fd_url="https://github.com/sharkdp/fd/releases/download/v${fd_version}/fd-v${fd_version}-x86_64-apple-darwin.tar.gz"
     fi
   elif [ "$OS" = "linux" ]; then
     if is_android; then
       # For Android, use the Linux musl arm64 build
-      fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/fd-${fd_version}-aarch64-unknown-linux-musl.tar.gz"
+      fd_url="https://github.com/sharkdp/fd/releases/download/v${fd_version}/fd-v${fd_version}-aarch64-unknown-linux-musl.tar.gz"
     elif [ "$ARCH" = "aarch64" ]; then
-      fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/fd-${fd_version}-aarch64-unknown-linux-musl.tar.gz"
+      fd_url="https://github.com/sharkdp/fd/releases/download/v${fd_version}/fd-v${fd_version}-aarch64-unknown-linux-musl.tar.gz"
     else
-      fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/fd-${fd_version}-x86_64-unknown-linux-musl.tar.gz"
+      fd_url="https://github.com/sharkdp/fd/releases/download/v${fd_version}/fd-v${fd_version}-x86_64-unknown-linux-musl.tar.gz"
     fi
   elif [[ "$OS" =~ msys|mingw|cygwin|windows ]]; then
-    fd_url="https://github.com/sharkdp/fd/releases/download/${fd_version}/fd-${fd_version}-x86_64-pc-windows-msvc.zip"
+    fd_url="https://github.com/sharkdp/fd/releases/download/v${fd_version}/fd-v${fd_version}-x86_64-pc-windows-msvc.zip"
     fd_binary="fd.exe"
   else
     echo -e "${YELLOW}Warning: fd not supported on $OS, skipping${NC}"
@@ -280,7 +289,7 @@ install_fd() {
     fi
 
     # Find and install the binary
-    local fd_extracted_dir=$(find "$fd_temp" -type d -name "fd-*" | head -n 1)
+    local fd_extracted_dir=$(find "$fd_temp" -mindepth 1 -maxdepth 1 -type d -name "fd-*" | head -n 1)
     if [ -n "$fd_extracted_dir" ] && [ -f "$fd_extracted_dir/$fd_binary" ]; then
       cp "$fd_extracted_dir/$fd_binary" "$INSTALL_DIR/$fd_binary"
       chmod +x "$INSTALL_DIR/$fd_binary"
