@@ -24,13 +24,20 @@ fi
 
 # Download function that works with both curl and wget
 download_file() {
-  local url="$1"
-  local output="$2"
+  download_url="$1"
+  download_output="$2"
 
   if [ "$DOWNLOADER" = "curl" ]; then
-    curl -fsSL -o "$output" "$url"
+    # First try default transport
+    if curl -fsSL -o "$download_output" "$download_url"; then
+      return 0
+    fi
+
+    # Fallback for intermittent HTTP/2 issues on some networks
+    sleep 1
+    curl -fsSL --http1.1 -o "$download_output" "$download_url"
   elif [ "$DOWNLOADER" = "wget" ]; then
-    wget -q -O "$output" "$url"
+    wget -q -O "$download_output" "$download_url"
   else
     return 1
   fi
@@ -79,7 +86,7 @@ is_android() {
   return 1
 }
 
-# Get glibc version and type
+# Get libc type and glibc compatibility
 get_libc_info() {
   # Check for musl library files first (faster and more reliable)
   if [ -f "/lib/libc.musl-x86_64.so.1" ] || [ -f "/lib/libc.musl-aarch64.so.1" ]; then
@@ -88,11 +95,11 @@ get_libc_info() {
   fi
 
   # Find ls binary dynamically (more portable)
-  local ls_binary=$(command -v ls 2> /dev/null || echo "/bin/ls")
+  libc_ls_binary=$(command -v ls 2> /dev/null || echo "/bin/ls")
 
   # Check if ldd reports musl (if ldd exists)
   if command -v ldd > /dev/null 2>&1; then
-    if ldd "$ls_binary" 2>&1 | grep -q musl; then
+    if ldd "$libc_ls_binary" 2>&1 | grep -q musl; then
       echo "musl"
       return
     fi
@@ -100,34 +107,34 @@ get_libc_info() {
 
   # Try ldd for glibc version (if ldd exists)
   if command -v ldd > /dev/null 2>&1; then
-    local ldd_output=$(ldd --version 2>&1 | head -n 1 || true)
+    libc_ldd_output=$(ldd --version 2>&1 | head -n 1 || true)
 
     # Double-check it's not musl
-    if echo "$ldd_output" | grep -qiF "musl"; then
+    if echo "$libc_ldd_output" | grep -qiF "musl"; then
       echo "musl"
       return
     fi
 
     # Extract glibc version
-    local version=$(echo "$ldd_output" | grep -oE '[0-9]+\.[0-9]+' | head -n 1)
+    libc_version=$(echo "$libc_ldd_output" | grep -oE '[0-9]+\.[0-9]+' | head -n 1)
 
     # If no version found from ldd, try getconf
-    if [ -z "$version" ]; then
+    if [ -z "$libc_version" ]; then
       if command -v getconf > /dev/null 2>&1; then
-        local getconf_output=$(getconf GNU_LIBC_VERSION 2> /dev/null || true)
-        version=$(echo "$getconf_output" | grep -oE '[0-9]+\.[0-9]+' | head -n 1)
+        libc_getconf_output=$(getconf GNU_LIBC_VERSION 2> /dev/null || true)
+        libc_version=$(echo "$libc_getconf_output" | grep -oE '[0-9]+\.[0-9]+' | head -n 1)
       fi
     fi
 
     # If we have a version, check if it's sufficient (>= 2.39)
-    if [ -n "$version" ]; then
+    if [ -n "$libc_version" ]; then
       # Convert version to comparable number (e.g., 2.39 -> 239)
-      local major=$(echo "$version" | cut -d. -f1)
-      local minor=$(echo "$version" | cut -d. -f2)
-      local version_num=$((major * 100 + minor))
+      libc_major=$(echo "$libc_version" | cut -d. -f1)
+      libc_minor=$(echo "$libc_version" | cut -d. -f2)
+      libc_version_num=$((libc_major * 100 + libc_minor))
 
       # Our binary requires glibc 2.39 or higher
-      if [ "$version_num" -ge 239 ]; then
+      if [ "$libc_version_num" -ge 239 ]; then
         echo "gnu"
         return
       else
@@ -205,16 +212,35 @@ echo -e "${BLUE}Detected platform: $TARGET${NC}"
 # Allow optional version argument, defaulting to "latest"
 VERSION="${1:-latest}"
 
-# Construct download URL
-DOWNLOAD_URL="https://release-download.tailcall.workers.dev/download/$VERSION/forge-$TARGET"
+# Construct download URLs
+if [ "$VERSION" = "latest" ]; then
+  DOWNLOAD_URLS="https://github.com/antinomyhq/forge/releases/latest/download/forge-$TARGET"
+else
+  DOWNLOAD_URLS="https://github.com/antinomyhq/forge/releases/download/$VERSION/forge-$TARGET"
+  case "$VERSION" in
+    v*) ;;
+
+    *)
+      DOWNLOAD_URLS="$DOWNLOAD_URLS https://github.com/antinomyhq/forge/releases/download/v$VERSION/forge-$TARGET"
+      ;;
+  esac
+fi
 
 # Create temp directory
 TMP_DIR=$(mktemp -d)
 TEMP_BINARY="$TMP_DIR/$BINARY_NAME"
 
 # Download Forge
-echo -e "${BLUE}Downloading Forge from $DOWNLOAD_URL...${NC}"
-if ! download_file "$DOWNLOAD_URL" "$TEMP_BINARY"; then
+download_success=false
+for DOWNLOAD_URL in $DOWNLOAD_URLS; do
+  echo -e "${BLUE}Downloading Forge from $DOWNLOAD_URL...${NC}"
+  if download_file "$DOWNLOAD_URL" "$TEMP_BINARY"; then
+    download_success=true
+    break
+  fi
+done
+
+if [ "$download_success" != "true" ]; then
   echo -e "${RED}Failed to download Forge.${NC}" >&2
   echo -e "${YELLOW}Please check:${NC}" >&2
   echo -e "  - Your internet connection" >&2
@@ -284,7 +310,7 @@ else
     echo -e "${BLUE}Restart your shell or run:${NC}"
 
     # Detect shell and provide appropriate source command
-    local shell_name=$(basename "${SHELL:-bash}")
+    shell_name=$(basename "${SHELL:-bash}")
     case "$shell_name" in
       zsh)
         echo -e "  source ~/.zshrc"
