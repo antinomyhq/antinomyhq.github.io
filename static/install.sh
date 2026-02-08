@@ -218,8 +218,8 @@ if [ "$VERSION" = "latest" ]; then
 else
   DOWNLOAD_URLS="https://github.com/antinomyhq/forge/releases/download/$VERSION/forge-$TARGET"
   case "$VERSION" in
-    v*)
-      ;;
+    v*) ;;
+
     *)
       DOWNLOAD_URLS="$DOWNLOAD_URLS https://github.com/antinomyhq/forge/releases/download/v$VERSION/forge-$TARGET"
       ;;

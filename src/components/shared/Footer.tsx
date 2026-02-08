@@ -16,9 +16,7 @@ const Footer = (): JSX.Element => {
         {footerItems.map((category: FooterItem, idx: number) => {
           return (
             <div className="flex flex-col gap-4 lg:gap-6" key={idx}>
-              <span className="text-[1rem] font-bold text-tailCall-light-500">
-                {category.title}
-              </span>
+              <span className="text-[1rem] font-bold text-tailCall-light-500">{category.title}</span>
               {category.items.map((footerItem: FooterLink, index: number) => {
                 return (
                   <Link

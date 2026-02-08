@@ -1,8 +1,8 @@
 {
   "mcpServers": {
-    "playwright": {
+    "chrome-devtools": {
       "command": "npx",
-      "args": ["@playwright/mcp@latest"]
+      "args": ["chrome-devtools-mcp@latest"]
     },
     "forge_vscode": {
       "url": "http://localhost:60717/mcp"
