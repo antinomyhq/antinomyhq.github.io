@@ -7,11 +7,11 @@ sidebar_label: npm Troubleshooting
 
 # Node.js & npm Troubleshooting
 
-This guide helps you resolve common Node.js and npm issues that may occur during Forge installation.
+This guide helps you resolve common Node.js and npm issues. Note: Forge is now installed via `curl -fsSL https://forgecode.dev/install.sh | sh`, but this guide is useful if you need to troubleshoot Node.js or npm for other reasons.
 
 ## Permission Errors with npm
 
-If you encounter permission errors when installing Forge globally, here are the recommended solutions:
+If you encounter permission errors when installing Node.js packages globally, here are the recommended solutions:
 
 ### Solution 1: Use a Node.js Version Manager (Recommended)
 
@@ -102,12 +102,12 @@ npm config get prefix
 export PATH=$(npm config get prefix)/bin:$PATH
 ```
 
-### Alternative: Use npx
+### Alternative: Use the curl script
 
-If you continue having PATH issues, you can always use npx:
+If you continue having PATH issues, you can always reinstall Forge using the curl script:
 
 ```bash
-npx forgecode@latest
+curl -fsSL https://forgecode.dev/install.sh | sh
 ```
 
 ## Node.js Version Issues

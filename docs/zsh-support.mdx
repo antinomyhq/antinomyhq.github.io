@@ -187,24 +187,14 @@ These tools enable fuzzy file finding with `@filename<Tab>`, agent selection wit
   
   <Step title="Install Forge">
     [Install and set up Forge](/docs/installation) following the main installation guide.
-    
-    Choose either global installation via `npm` or `npx` usage. Remember your choice for the next step.
   </Step>
-  
+
   <Step title="Configure ZSH Integration">
     Add Forge ZSH integration to your shell configuration:
 
-    If you installed Forge globally:
     ```bash
     # Add to ~/.zshrc
     export FORGE_BIN=forge
-    source <($FORGE_BIN extension zsh)
-    ```
-
-    If you're using npx:
-    ```bash
-    # Add to ~/.zshrc
-    export FORGE_BIN="npx forgecode"
     source <($FORGE_BIN extension zsh)
     ```
 
@@ -375,7 +365,7 @@ If `: command not found` appears:
 1. Ensure you added the source line to `~/.zshrc`
 2. Reload your shell: `source ~/.zshrc` or `exec zsh`
 3. Verify `FORGE_BIN` is set correctly: `echo $FORGE_BIN`
-4. Check the path matches your installation method (global vs npx)
+4. Verify Forge is installed: `forge --version`
 
 #### File Tagging Doesn't Work
 

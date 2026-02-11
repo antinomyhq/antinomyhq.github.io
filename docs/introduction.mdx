@@ -17,17 +17,17 @@ Forge Code is an AI software engineering agent that runs in your terminal. It un
 
 Get started in under 2 minutes:
 
-**Navigate first (the traditional way):**
+**First, install Forge:**
+
+```bash
+curl -fsSL https://forgecode.dev/install.sh | sh
+```
+
+**Then navigate to your project:**
 
 ```bash
 cd path/to/your/project/directory
-npx forgecode@latest
-```
-
-**Or start from anywhere (much nicer):**
-
-```bash
-npx forgecode@latest path/to/your/project/directory
+forge
 ```
 
 For detailed installation instructions, see [Setup Forge](/docs/installation).
@@ -74,7 +74,7 @@ import NextSteps from "../src/components/NextSteps"
     {
       logo: <Package size={24} style={{color: themeColors.install, marginRight: 6}} />,
       title: "Install Forge",
-      subtitle: "Set up Forge on your system with npx or npm.",
+      subtitle: "Set up Forge on your system.",
       link: "./installation",
     },
     {

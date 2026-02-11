@@ -84,13 +84,7 @@ Replaced cryptic error messages with clear, actionable feedback that includes co
 ## How to Update
 
 ```bash
-npx forgecode@latest
-```
-
-Or install globally:
-
-```bash
-npm install -g forgecode@latest
+forge update
 ```
 
 ## Looking Ahead

@@ -20,11 +20,12 @@ v0.98.0 replaces manual API key configuration with browser-based authentication 
 
 #### Setup Process
 
-1. Run `npx forgecode@latest`
-2. Forge opens your browser to `app.forgecode.dev`
-3. Sign in with Google or GitHub
-4. Authorize the app
-5. Return to terminal - authentication is complete
+1. Install Forge: `curl -fsSL https://forgecode.dev/install.sh | sh`
+2. Run `forge`
+3. Forge opens your browser to `app.forgecode.dev`
+4. Sign in with Google or GitHub
+5. Authorize the app
+6. Return to terminal - authentication is complete
 
 <img src="/images/blog/login-newuser.gif" alt="Forge Code browser authentication setup - AI coding assistant terminal login process showing seamless Google and GitHub integration" style={{width: "100%", maxWidth: "800px"}} />
 
@@ -128,7 +129,8 @@ This is particularly useful for:
 ### New Users
 
 ```bash
-npx forgecode@latest
+curl -fsSL https://forgecode.dev/install.sh | sh
+forge
 # Follow browser authentication prompts
 ```
 
@@ -139,7 +141,7 @@ _Complete setup experience for first-time users_
 ### Existing Users
 
 ```bash
-npx forgecode@latest
+forge
 # Optionally set up browser auth (by removing API keys from .env)
 # Continue using existing API key if preferred
 ```
@@ -154,7 +156,7 @@ Continue using API key authentication for automated environments:
 
 ```bash
 export FORGE_KEY=your_key
-npx forgecode@latest
+forge
 ```
 
 ## Resources

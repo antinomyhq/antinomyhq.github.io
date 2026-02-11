@@ -9,20 +9,19 @@ import Steps, {Step} from "../components/Steps"
 import {Trash2, AlertTriangle, CheckCircle} from "lucide-react"
 
 # Uninstall Forge
+# Uninstall Forge
 
 Uninstall Forge Code from your system.
 
-### For Global npm Uninstallation
-
-If you installed Forge using `npm install -g forgecode@latest`, follow these steps to uninstall:
-
 <Steps>
   <Step title="Uninstall">
+    Run the uninstall command:
+
     ```bash
-    npm uninstall -g forgecode
+    forge uninstall
     ```
 
-    This removes the globally installed Forge package from your system.
+    This will remove Forge from your system.
 
   </Step>
 
@@ -37,21 +36,6 @@ If you installed Forge using `npm install -g forgecode@latest`, follow these ste
 
   </Step>
 </Steps>
-
-### For npx Usage
-
-If you've been using `npx forgecode@latest`, **no uninstallation is required**. The npx command downloads and runs Forge temporarily without installing it permanently on your system.
-
-:::info No Installation = No Uninstallation
-Since `npx forgecode@latest` doesn't install anything permanently, there's nothing to uninstall. Each time you run the command, it downloads the latest version temporarily.
-:::
-
-Optionally, you can clear the npx cache to free up disk space:
-
-```bash
-npm cache clean --force
-```
-
 ## Clean Up Configuration and Data
 
 After uninstalling the main application, you may want to remove associated configuration files and data:
@@ -94,28 +78,19 @@ If you encounter permission errors during uninstallation:
 **macOS/Linux:**
 
 ```bash
-sudo npm uninstall -g forgecode
+sudo forge uninstall
 ```
 
 **Windows (Run as Administrator):**
 
 ```cmd
-npm uninstall -g forgecode
-```
-
-### npm Cache Issues
-
-If you experience issues with npm, clear the npm cache:
-
-```bash
-npm cache clean --force
+forge uninstall
 ```
 
 ## Need Help?
 
 If you encounter issues during uninstallation:
 
-- Check our [npm Troubleshooting Guide](/docs/npm-troubleshooting)
 - Join our [Discord community](https://discord.gg/kRZBPpkgwq) for real-time help
 - Visit our [GitHub Issues](https://github.com/antinomyhq/forge/issues)
 

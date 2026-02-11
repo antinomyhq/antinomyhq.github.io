@@ -4,7 +4,7 @@ import Link from "@docusaurus/Link"
 import Section from "../shared/Section"
 import CopyButton from "../shared/CopyButton"
 
-const INSTALL_COMMAND = "npx forgecode@latest"
+const INSTALL_COMMAND = "curl -fsSL https://forgecode.dev/install.sh | sh"
 
 const Configuration: React.FC = () => {
   return (
