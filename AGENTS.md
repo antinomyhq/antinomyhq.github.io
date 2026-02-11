@@ -14,7 +14,7 @@
 
 ### Development Tools & Libraries
 
-- **Playwright MCP**: Use when available for end-to-end testing and browser automation
+- **Chrome Devtools MCP**: Use when available for end-to-end testing and browser automation
 - **Context7**: Leverage for accessing the latest documentation of libraries and frameworks
 - **TypeScript**: Always write type-safe code with proper type definitions
 - Maintain strict TypeScript configuration standards
@@ -107,7 +107,7 @@ This is a **Docusaurus** documentation site with the following key areas:
 - ✅ Write TypeScript-first code
 - ✅ Follow expert UI/UX principles
 - ✅ Use npm/npx for package management
-- ✅ Leverage Playwright MCP when available
+- ✅ Leverage Chrome Devtools MCP when available
 - ✅ Consult Context7 for latest documentation
 
 ## 📝 Code Quality Checklist
