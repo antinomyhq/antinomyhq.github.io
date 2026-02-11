@@ -8,10 +8,12 @@ import {pageLinks} from "@site/src/constants/routes"
 import Section from "../shared/Section"
 import SectionTitle from "../shared/SectionTitle"
 import {Star, Github} from "lucide-react"
+import HeroAnimation from "./HeroAnimation"
 
 const Banner: React.FC = () => {
   return (
-    <main>
+    <main className="relative">
+      <HeroAnimation />
       <Section className="flex flex-col items-start text-left w-full !pb-0">
         <div className="h-full 2xl:min-h-0">
           <SectionTitle title="Mission" />
