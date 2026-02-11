@@ -41,6 +41,15 @@ export default {
         href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap",
       },
     },
+    // Google Fonts: Space Mono (monospace)
+    // Loading weights: 400 (Regular), 700 (Bold)
+    {
+      tagName: "link",
+      attributes: {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap",
+      },
+    },
     // Adaptive favicon implementation - automatically switches based on system theme
     {
       tagName: "link",

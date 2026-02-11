@@ -19,7 +19,7 @@ const TrustedByMarquee: React.FC<TrustedByMarqueeProps> = ({
   title = "Used By",
   logos,
   onClick,
-  titleClassName = "text-content-small font-bold sm:text-title-tiny lg:text-title-small text-tailCall-light-600 text-center space-x-1",
+  titleClassName = "text-content-small font-bold sm:text-title-tiny lg:text-title-small text-tailCall-light-600 text-left space-x-1",
 }) => {
   const handleClick = () => {
     if (onClick) {

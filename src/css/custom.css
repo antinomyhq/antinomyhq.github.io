@@ -1,5 +1,3 @@
-@import url("/css/fonts.css");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -150,7 +148,7 @@ body {
   --ifm-color-brand-light-opacity-15: rgba(255, 255, 255, 0.15);
 
   /* Code Settings */
-  --ifm-font-family-monospace: "Space Grotesk", sans-serif;
+  --ifm-font-family-monospace: "Space Mono", monospace;
   --ifm-code-background: #181818;
   --ifm-code-border-radius: var(--ifm-global-radius);
   --ifm-code-font-size: 0.9eem;
