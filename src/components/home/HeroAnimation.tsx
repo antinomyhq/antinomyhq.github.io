@@ -153,7 +153,7 @@ const HeroAnimation: React.FC = () => {
         0,
         canvas.width * 0.5,
         canvas.height * 0.5,
-        canvas.width * 0.8
+        canvas.width * 0.8,
       )
       bgGradient.addColorStop(0, "rgba(251, 146, 60, 0.02)")
       bgGradient.addColorStop(0.5, "rgba(84, 85, 86, 0.01)")
@@ -309,7 +309,7 @@ const HeroAnimation: React.FC = () => {
         0,
         mouseRef.current.x,
         mouseRef.current.y,
-        120
+        120,
       )
       glowGradient.addColorStop(0, "rgba(251, 146, 60, 0.08)")
       glowGradient.addColorStop(0.5, "rgba(251, 146, 60, 0.02)")
@@ -333,11 +333,7 @@ const HeroAnimation: React.FC = () => {
   }, [])
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-auto"
-      style={{opacity: 0.5, zIndex: -1}}
-    />
+    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{opacity: 0.5}} />
   )
 }
 
