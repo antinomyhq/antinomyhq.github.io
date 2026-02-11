@@ -336,7 +336,7 @@ const HeroAnimation: React.FC = () => {
     <canvas
       ref={canvasRef}
       className="absolute inset-0 w-full h-full pointer-events-auto"
-      style={{opacity: 0.5}}
+      style={{opacity: 0.5, zIndex: -1}}
     />
   )
 }
