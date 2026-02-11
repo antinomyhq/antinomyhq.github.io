@@ -134,7 +134,7 @@ const HeroAnimation: React.FC = () => {
       mouseRef.current.targetY = e.clientY - rect.top
     }
 
-    canvas.addEventListener("mousemove", handleMouseMove)
+    window.addEventListener("mousemove", handleMouseMove)
 
     // Animation loop
     const animate = () => {
@@ -325,7 +325,7 @@ const HeroAnimation: React.FC = () => {
     // Cleanup
     return () => {
       window.removeEventListener("resize", resizeCanvas)
-      canvas.removeEventListener("mousemove", handleMouseMove)
+      window.removeEventListener("mousemove", handleMouseMove)
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }
