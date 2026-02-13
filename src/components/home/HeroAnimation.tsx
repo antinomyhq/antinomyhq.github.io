@@ -262,7 +262,8 @@ const HeroAnimation: React.FC = () => {
         particle.radius = particle.baseRadius + Math.sin(particle.phase) * 0.5
 
         // More dynamic alpha transition for pulsing effect
-        if (Math.random() < 0.02) { // Increased frequency for more frequent changes
+        if (Math.random() < 0.02) {
+          // Increased frequency for more frequent changes
           particle.targetAlpha = Math.random() * 0.5 + 0.2 // Brighter range
         }
         particle.alpha += (particle.targetAlpha - particle.alpha) * 0.05 // Faster transitions
@@ -299,7 +300,8 @@ const HeroAnimation: React.FC = () => {
         particle.vy *= 0.99
 
         // Add more frequent random motion for energetic feel
-        if (Math.random() < 0.03) { // Increased frequency from 0.01 to 0.03
+        if (Math.random() < 0.03) {
+          // Increased frequency from 0.01 to 0.03
           particle.vx += (Math.random() - 0.5) * 0.15 // Increased strength
           particle.vy += (Math.random() - 0.5) * 0.15
         }
@@ -332,7 +334,8 @@ const HeroAnimation: React.FC = () => {
         const mouseDy = mouseRef.current.y - particle.y
         const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy)
 
-        if (mouseDistance < 250 && mouseDistance > 0) { // Increased radius for more interaction
+        if (mouseDistance < 250 && mouseDistance > 0) {
+          // Increased radius for more interaction
           const force = (250 - mouseDistance) / 250
           const alpha = force * 0.6 // Increased alpha for more visible connections
 
