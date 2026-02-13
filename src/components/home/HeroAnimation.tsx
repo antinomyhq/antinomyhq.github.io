@@ -37,12 +37,26 @@ interface DataPoint {
   alpha: number
 }
 
+interface ClusterConfig {
+  targetX: number // 0-1 (percentage of canvas width)
+  targetY: number // 0-1 (percentage of canvas height)
+  attractionStrength: number
+  radius: number // how far particles spread from center
+}
+
 const HeroAnimation: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef<number | undefined>(undefined)
   const mouseRef = useRef({x: 0, y: 0, targetX: 0, targetY: 0})
   const timeRef = useRef(0)
 
+  // Configurable clustering behavior
+  const clusterConfig: ClusterConfig = {
+    targetX: 0.8, // 80% to the right
+    targetY: 0.25, // 25% from top
+    attractionStrength: 0.0006, // strength of attraction to cluster point (increased for more energy)
+    radius: 150, // how far particles spread from center
+  }
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
@@ -76,7 +90,7 @@ const HeroAnimation: React.FC = () => {
 
     for (let i = 0; i < particleCount; i++) {
       const layer = Math.random() < 0.3 ? 0 : Math.random() < 0.5 ? 1 : 2
-      const baseSpeed = layer === 0 ? 0.3 : layer === 1 ? 0.5 : 0.8
+      const baseSpeed = layer === 0 ? 0.8 : layer === 1 ? 1.2 : 1.6 // Increased base speeds for more energy
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -87,7 +101,7 @@ const HeroAnimation: React.FC = () => {
         alpha: Math.random() * 0.4 + 0.1,
         targetAlpha: Math.random() * 0.4 + 0.1,
         phase: Math.random() * Math.PI * 2,
-        speed: Math.random() * 0.02 + 0.01,
+        speed: Math.random() * 0.04 + 0.02, // Increased pulsing speed for more dynamic feel
         layer,
       })
     }
@@ -100,10 +114,10 @@ const HeroAnimation: React.FC = () => {
       shapes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.2,
-        vy: (Math.random() - 0.5) * 0.2,
+        vx: (Math.random() - 0.5) * 0.4, // Doubled speed for more movement
+        vy: (Math.random() - 0.5) * 0.4,
         rotation: Math.random() * Math.PI * 2,
-        rotationSpeed: (Math.random() - 0.5) * 0.005,
+        rotationSpeed: (Math.random() - 0.5) * 0.012, // Faster rotation
         size: Math.random() * 60 + 30,
         sides: Math.floor(Math.random() * 3) + 3, // 3-5 sides
         alpha: Math.random() * 0.08 + 0.02,
@@ -122,7 +136,7 @@ const HeroAnimation: React.FC = () => {
         targetX: Math.random() * canvas.width,
         targetY: Math.random() * canvas.height,
         progress: Math.random(),
-        speed: Math.random() * 0.002 + 0.001,
+        speed: Math.random() * 0.004 + 0.003, // Doubled speed for faster travel
         alpha: Math.random() * 0.3 + 0.2,
       })
     }
@@ -143,6 +157,10 @@ const HeroAnimation: React.FC = () => {
       // Smooth mouse interpolation
       mouseRef.current.x += (mouseRef.current.targetX - mouseRef.current.x) * 0.1
       mouseRef.current.y += (mouseRef.current.targetY - mouseRef.current.y) * 0.1
+
+      // Calculate cluster center point
+      const clusterX = canvas.width * clusterConfig.targetX
+      const clusterY = canvas.height * clusterConfig.targetY
 
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -243,37 +261,47 @@ const HeroAnimation: React.FC = () => {
         particle.phase += particle.speed
         particle.radius = particle.baseRadius + Math.sin(particle.phase) * 0.5
 
-        // Smooth alpha transition
-        if (Math.random() < 0.01) {
-          particle.targetAlpha = Math.random() * 0.4 + 0.1
+        // More dynamic alpha transition for pulsing effect
+        if (Math.random() < 0.02) { // Increased frequency for more frequent changes
+          particle.targetAlpha = Math.random() * 0.5 + 0.2 // Brighter range
         }
-        particle.alpha += (particle.targetAlpha - particle.alpha) * 0.02
+        particle.alpha += (particle.targetAlpha - particle.alpha) * 0.05 // Faster transitions
 
-        // Apply repulsion force to prevent clustering
+        // Attraction to cluster point (main behavior)
+        const clusterDx = clusterX - particle.x
+        const clusterDy = clusterY - particle.y
+        const clusterDistance = Math.sqrt(clusterDx * clusterDx + clusterDy * clusterDy)
+
+        // Apply attraction force towards cluster center
+        if (clusterDistance > 0) {
+          particle.vx += (clusterDx / clusterDistance) * clusterConfig.attractionStrength
+          particle.vy += (clusterDy / clusterDistance) * clusterConfig.attractionStrength
+        }
+
+        // Gentle repulsion from other particles to maintain spacing within cluster
         particles.forEach((other, j) => {
           if (i === j) return
           const dx = particle.x - other.x
           const dy = particle.y - other.y
           const distance = Math.sqrt(dx * dx + dy * dy)
 
-          // Strong repulsion when particles get too close
-          if (distance < 50 && distance > 0) {
-            const repulsionStrength = 0.02
-            const force = (50 - distance) / 50
+          // Mild repulsion when particles get too close (prevents overlap)
+          if (distance < 40 && distance > 0) {
+            const repulsionStrength = 0.012 // Increased for more dynamic spacing
+            const force = (40 - distance) / 40
             particle.vx += (dx / distance) * force * repulsionStrength
-            particle.vy += (dy / distance) * force * repulsionStrength
+            particle.vy += (dx / distance) * force * repulsionStrength
           }
         })
 
-        // Apply velocity dampening to prevent buildup
-        particle.vx *= 0.995
-        particle.vy *= 0.995
+        // Apply lighter velocity dampening for more sustained movement
+        particle.vx *= 0.99
+        particle.vy *= 0.99
 
-        // Periodically add small random velocity to break up static patterns
-        if (Math.random() < 0.005) {
-          const baseSpeed = particle.layer === 0 ? 0.3 : particle.layer === 1 ? 0.5 : 0.8
-          particle.vx += (Math.random() - 0.5) * baseSpeed * 0.1
-          particle.vy += (Math.random() - 0.5) * baseSpeed * 0.1
+        // Add more frequent random motion for energetic feel
+        if (Math.random() < 0.03) { // Increased frequency from 0.01 to 0.03
+          particle.vx += (Math.random() - 0.5) * 0.15 // Increased strength
+          particle.vy += (Math.random() - 0.5) * 0.15
         }
 
         // Draw particle
@@ -299,43 +327,35 @@ const HeroAnimation: React.FC = () => {
           }
         })
 
-        // Mouse interaction - weaker attraction to prevent clustering
-        const dx = mouseRef.current.x - particle.x
-        const dy = mouseRef.current.y - particle.y
-        const mouseDistance = Math.sqrt(dx * dx + dy * dy)
+        // Mouse interaction - temporary disturbance (repulsion)
+        const mouseDx = mouseRef.current.x - particle.x
+        const mouseDy = mouseRef.current.y - particle.y
+        const mouseDistance = Math.sqrt(mouseDx * mouseDx + mouseDy * mouseDy)
 
-        if (mouseDistance < 250) {
+        if (mouseDistance < 250 && mouseDistance > 0) { // Increased radius for more interaction
           const force = (250 - mouseDistance) / 250
-          const alpha = force * 0.5
+          const alpha = force * 0.6 // Increased alpha for more visible connections
 
           // Draw connection to mouse
           ctx.beginPath()
           ctx.moveTo(particle.x, particle.y)
           ctx.lineTo(mouseRef.current.x, mouseRef.current.y)
           ctx.strokeStyle = `rgba(251, 146, 60, ${alpha})`
-          ctx.lineWidth = 0.8
+          ctx.lineWidth = 1.0 // Thicker lines for more visibility
           ctx.stroke()
 
-          // Weaker attraction to mouse to prevent clustering
-          const attractionStrength = 0.0001
-          particle.vx += dx * attractionStrength
-          particle.vy += dy * attractionStrength
+          // Stronger repulsion from mouse (more dramatic disturbance)
+          const repulsionStrength = 0.025 // Increased from 0.015
+          particle.vx -= (mouseDx / mouseDistance) * force * repulsionStrength
+          particle.vy -= (mouseDy / mouseDistance) * force * repulsionStrength
         }
 
-        // Limit velocity
-        const maxVelocity = 1.2
+        // Limit velocity to prevent particles from moving too fast (but allow more speed)
+        const maxVelocity = 3.5 // Increased from 2.0 for more energetic movement
         const velocity = Math.sqrt(particle.vx * particle.vx + particle.vy * particle.vy)
         if (velocity > maxVelocity) {
           particle.vx = (particle.vx / velocity) * maxVelocity
           particle.vy = (particle.vy / velocity) * maxVelocity
-        }
-
-        // Maintain minimum velocity to keep particles moving
-        const minVelocity = 0.1
-        if (velocity < minVelocity && velocity > 0) {
-          const baseSpeed = particle.layer === 0 ? 0.3 : particle.layer === 1 ? 0.5 : 0.8
-          particle.vx = (particle.vx / velocity) * baseSpeed * 0.5
-          particle.vy = (particle.vy / velocity) * baseSpeed * 0.5
         }
       })
 
