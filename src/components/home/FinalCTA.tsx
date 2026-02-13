@@ -9,7 +9,7 @@ interface FinalCTAProps {
 
 const FinalCTA = ({showPricingButton = true}: FinalCTAProps): JSX.Element => {
   return (
-    <div className="bg-tailCall-black w-full">
+    <div className="bg-tailCall-dark-700 w-full">
       <Section className="!px-0 !py-0">
         <div className="relative flex items-center justify-center h-[280px] sm:h-[452px] w-full overflow-hidden">
           <div className="absolute inset-0 flex items-center justify-center opacity-10">
