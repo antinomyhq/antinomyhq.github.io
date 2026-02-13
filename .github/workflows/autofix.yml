@@ -8,9 +8,6 @@ on:
       - reopened
     branches:
       - main
-  push:
-    branches:
-      - main
 
 permissions:
   contents: read
