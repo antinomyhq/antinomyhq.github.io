@@ -95,6 +95,40 @@
   }
 }
 
+/* Terminal typewriter animation */
+@keyframes typeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.terminal-char {
+  display: inline-block;
+  opacity: 0;
+  animation: typeIn 0.05s ease-out forwards;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  background-color: #c9f5c3;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
 html,
 body {
   background-color: var(--ifm-background-color);
