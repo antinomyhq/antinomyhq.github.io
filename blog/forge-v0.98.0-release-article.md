@@ -20,7 +20,7 @@ v0.98.0 replaces manual API key configuration with browser-based authentication 
 
 #### Setup Process
 
-1. Install Forge: `curl -fsSL https://forgecode.dev/install.sh | sh`
+1. Install Forge: `curl -fsSL https://forgecode.dev/cli | sh`
 2. Run `forge`
 3. Forge opens your browser to `app.forgecode.dev`
 4. Sign in with Google or GitHub
@@ -129,7 +129,7 @@ This is particularly useful for:
 ### New Users
 
 ```bash
-curl -fsSL https://forgecode.dev/install.sh | sh
+curl -fsSL https://forgecode.dev/cli | sh
 forge
 # Follow browser authentication prompts
 ```
