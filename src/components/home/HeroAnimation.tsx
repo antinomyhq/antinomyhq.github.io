@@ -233,9 +233,11 @@ const HeroAnimation: React.FC = () => {
         particle.x += particle.vx
         particle.y += particle.vy
 
-        // Bounce off walls
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1
+        // Wrap around walls instead of bouncing to prevent clustering at edges
+        if (particle.x < 0) particle.x = canvas.width
+        if (particle.x > canvas.width) particle.x = 0
+        if (particle.y < 0) particle.y = canvas.height
+        if (particle.y > canvas.height) particle.y = 0
 
         // Pulsing effect based on phase
         particle.phase += particle.speed
@@ -246,6 +248,33 @@ const HeroAnimation: React.FC = () => {
           particle.targetAlpha = Math.random() * 0.4 + 0.1
         }
         particle.alpha += (particle.targetAlpha - particle.alpha) * 0.02
+
+        // Apply repulsion force to prevent clustering
+        particles.forEach((other, j) => {
+          if (i === j) return
+          const dx = particle.x - other.x
+          const dy = particle.y - other.y
+          const distance = Math.sqrt(dx * dx + dy * dy)
+
+          // Strong repulsion when particles get too close
+          if (distance < 50 && distance > 0) {
+            const repulsionStrength = 0.02
+            const force = (50 - distance) / 50
+            particle.vx += (dx / distance) * force * repulsionStrength
+            particle.vy += (dy / distance) * force * repulsionStrength
+          }
+        })
+
+        // Apply velocity dampening to prevent buildup
+        particle.vx *= 0.995
+        particle.vy *= 0.995
+
+        // Periodically add small random velocity to break up static patterns
+        if (Math.random() < 0.005) {
+          const baseSpeed = particle.layer === 0 ? 0.3 : particle.layer === 1 ? 0.5 : 0.8
+          particle.vx += (Math.random() - 0.5) * baseSpeed * 0.1
+          particle.vy += (Math.random() - 0.5) * baseSpeed * 0.1
+        }
 
         // Draw particle
         ctx.beginPath()
@@ -270,7 +299,7 @@ const HeroAnimation: React.FC = () => {
           }
         })
 
-        // Mouse interaction
+        // Mouse interaction - weaker attraction to prevent clustering
         const dx = mouseRef.current.x - particle.x
         const dy = mouseRef.current.y - particle.y
         const mouseDistance = Math.sqrt(dx * dx + dy * dy)
@@ -287,8 +316,8 @@ const HeroAnimation: React.FC = () => {
           ctx.lineWidth = 0.8
           ctx.stroke()
 
-          // Gentle attraction to mouse
-          const attractionStrength = 0.0002
+          // Weaker attraction to mouse to prevent clustering
+          const attractionStrength = 0.0001
           particle.vx += dx * attractionStrength
           particle.vy += dy * attractionStrength
         }
@@ -299,6 +328,14 @@ const HeroAnimation: React.FC = () => {
         if (velocity > maxVelocity) {
           particle.vx = (particle.vx / velocity) * maxVelocity
           particle.vy = (particle.vy / velocity) * maxVelocity
+        }
+
+        // Maintain minimum velocity to keep particles moving
+        const minVelocity = 0.1
+        if (velocity < minVelocity && velocity > 0) {
+          const baseSpeed = particle.layer === 0 ? 0.3 : particle.layer === 1 ? 0.5 : 0.8
+          particle.vx = (particle.vx / velocity) * baseSpeed * 0.5
+          particle.vy = (particle.vy / velocity) * baseSpeed * 0.5
         }
       })
 
