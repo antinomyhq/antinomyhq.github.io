@@ -15,7 +15,7 @@
 ### Development Tools & Libraries
 
 - **Chrome Devtools MCP**: Use when available for end-to-end testing and browser automation
-  - Note: Chrome DevTools MCP might already be running. If it is, you can continue using it with other commands without needing to restart it
+  - Note: Chrome DevTools MCP is **already running most of the time**. You can use it directly with commands without starting it. Only attempt to start it if it's not already running
 - **Context7**: Leverage for accessing the latest documentation of libraries and frameworks
 - **TypeScript**: Always write type-safe code with proper type definitions
 - Maintain strict TypeScript configuration standards
