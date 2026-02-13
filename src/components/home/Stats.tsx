@@ -2,8 +2,7 @@ import React from "react"
 import Section from "../shared/Section"
 import Heading from "@theme/Heading"
 import {Info, Coins, Code, Github} from "lucide-react"
-import TrustedByMarquee from "./TrustedByMarquee"
-import {clientLogos} from "@site/src/constants"
+import SectionTitle from "../shared/SectionTitle"
 
 const formatNumber = (num: number): string => {
   if (num >= 1000000000) {
@@ -46,6 +45,7 @@ const Stats: React.FC = () => {
 
   return (
     <Section>
+      <SectionTitle title="Scale" />
       <div className="flex justify-between items-start gap-4 sm:gap-8 md:gap-12 w-full">
         {stats.map((stat) => {
           const isGithub = stat.label === "GitHub Stars"
@@ -88,9 +88,6 @@ const Stats: React.FC = () => {
             </Wrapper>
           )
         })}
-      </div>
-      <div className="mt-5">
-        <TrustedByMarquee title="Trusted by" logos={clientLogos} />
       </div>
     </Section>
   )

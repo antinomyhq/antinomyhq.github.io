@@ -7,6 +7,7 @@ import WhyChooseForge from "./WhyChooseForge"
 import FinalCTA from "./FinalCTA"
 import Stats from "./Stats"
 import HeroAnimation from "./HeroAnimation"
+import TrustedBy from "./TrustedBy"
 
 const HomePage = (): JSX.Element => {
   return (
@@ -14,9 +15,10 @@ const HomePage = (): JSX.Element => {
       <div className="relative">
         <HeroAnimation />
         <Banner />
-        <Stats />
       </div>
+      <TrustedBy />
       <Benefits />
+      <Stats />
       <FinalCTA />
     </div>
   )
