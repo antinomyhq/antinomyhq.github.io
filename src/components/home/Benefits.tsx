@@ -12,13 +12,15 @@ const Benefits = (): JSX.Element => {
       <Section>
         <div>
           <SectionTitle title="Why Forge?" />
-          <div className="h-fit sm:flex-row sm:items-center sm:space-x-SPACE_10 lg:space-x-SPACE_20">
+          <div className="h-fit sm:flex-row sm:items-center sm:space-x-SPACE_10 lg:space-x-SPACE_20 mb-8">
             <Heading as="h3" className="text-title-large sm:text-display-tiny lg:text-display-small">
               AI Assistance Without Compromises
             </Heading>
           </div>
         </div>
-        <BenefitsCard />
+        <div className="ml-0">
+          <BenefitsCard />
+        </div>
       </Section>
     </div>
   )
