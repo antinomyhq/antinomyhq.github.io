@@ -20,9 +20,8 @@ const Banner: React.FC = () => {
             AI Native <br /> Engineering
           </Heading>
           <p className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed mb-8">
-            Enabling deterministic agentic operations at scale <br/>
-            across the entire engineering stack -  from code and
-            architecture to infrastructure, CI/CD, and runbooks.
+            Enabling deterministic agentic operations across the entire engineering stack - <br /> 
+            From code and architecture to infrastructure and CI/CD.
           </p>
           <InstallTerminal className="mt-8" />
         </div>
