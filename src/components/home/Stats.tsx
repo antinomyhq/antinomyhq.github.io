@@ -3,7 +3,6 @@ import Section from "../shared/Section"
 import Heading from "@theme/Heading"
 import {Info, Coins, Code, Github} from "lucide-react"
 import SectionTitle from "../shared/SectionTitle"
-import HeroAnimation from "./HeroAnimation"
 
 const formatNumber = (num: number): string => {
   if (num >= 1000000000) {
@@ -45,14 +44,8 @@ const Stats: React.FC = () => {
   ]
 
   return (
-    <Section className="relative overflow-hidden">
-      {/* Animated Canvas Background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <HeroAnimation />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10">
+    <Section className="overflow-hidden">
+      <div>
         <SectionTitle title="Scale" />
         <div className="flex justify-between items-start gap-4 sm:gap-8 md:gap-12 w-full">
           {stats.map((stat) => {

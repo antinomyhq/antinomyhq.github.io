@@ -1,4 +1,9 @@
-import React, {useEffect, useRef} from "react"
+import React, {useEffect, useRef, type ReactNode} from "react"
+
+interface HeroAnimationProps {
+  children?: ReactNode
+  className?: string
+}
 
 interface Particle {
   x: number
@@ -44,7 +49,7 @@ interface ClusterConfig {
   radius: number // how far particles spread from center
 }
 
-const HeroAnimation: React.FC = () => {
+const HeroAnimation: React.FC<HeroAnimationProps> = ({children, className}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const animationRef = useRef<number | undefined>(undefined)
   const mouseRef = useRef({x: 0, y: 0, targetX: 0, targetY: 0})
@@ -392,7 +397,12 @@ const HeroAnimation: React.FC = () => {
     }
   }, [])
 
-  return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
+  return (
+    <div className={`relative ${className ?? ""}`}>
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" />
+      {children}
+    </div>
+  )
 }
 
 export default HeroAnimation

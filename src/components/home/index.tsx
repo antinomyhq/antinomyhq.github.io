@@ -14,12 +14,11 @@ const HomePage = (): JSX.Element => {
   return (
     <div>
       <Benefits />
-      <div className="relative">
-        <HeroAnimation />
+      <HeroAnimation>
         <Mission />
         <TrustedBy />
         <Stats />
-      </div>
+      </HeroAnimation>
       <OpenSource />
     </div>
   )
