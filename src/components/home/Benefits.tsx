@@ -62,7 +62,7 @@ const Benefits = (): JSX.Element => {
               </div>
 
               {/* Terminal Body with dark pastel background */}
-              <div className="p-4">
+              <div className="p-4" style={{background: "#0000001a"}}>
                 <div ref={playerRef} className="asciinema-demo-player" />
               </div>
             </div>

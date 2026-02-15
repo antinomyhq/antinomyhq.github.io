@@ -1462,3 +1462,21 @@ article table th {
 div.ap-wrapper div.ap-player {
   border-radius: 0;
 }
+
+/* Reserve space for demo window to prevent layout shift, but allow content to expand */
+.asciinema-demo-player {
+  min-height: 400px;
+}
+
+/* Responsive minimum height adjustments */
+@media (min-width: 640px) {
+  .asciinema-demo-player {
+    min-height: 500px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .asciinema-demo-player {
+    min-height: 600px;
+  }
+}
