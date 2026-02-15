@@ -1467,16 +1467,3 @@ div.ap-wrapper div.ap-player {
 .asciinema-demo-player {
   min-height: 400px;
 }
-
-/* Responsive minimum height adjustments */
-@media (min-width: 640px) {
-  .asciinema-demo-player {
-    min-height: 500px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .asciinema-demo-player {
-    min-height: 600px;
-  }
-}
