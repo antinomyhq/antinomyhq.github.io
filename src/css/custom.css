@@ -1455,15 +1455,10 @@ article table th {
   }
 }
 
-.ap-term {
-  border-radius: 0;
+/* ASCIINEMA THEME OVERRIDES */
+.asciinema-player-theme-nord {
+  --term-color-background: #2E2F31;
 }
-
 div.ap-wrapper div.ap-player {
   border-radius: 0;
-  background-color: linear-gradient(135deg, #1e1e2e 0%, #2a2d3a 100%);
-}
-
-div.ap-term {
-  --term-color-background: transparent;
 }
