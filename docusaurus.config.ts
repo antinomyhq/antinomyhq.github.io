@@ -284,7 +284,7 @@ export default {
     },
 
     navbar: {
-      hideOnScroll: false,
+      hideOnScroll: true,
       logo: {
         alt: "ForgeCode",
         src: "/images/home/logo-dark.svg",
