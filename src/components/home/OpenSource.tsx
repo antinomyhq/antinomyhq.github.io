@@ -205,13 +205,13 @@ const OpenSource: React.FC = () => {
           ])}
 
           {/* Center content panel */}
-          <div className="flex flex-col items-center justify-center text-center px-6 py-6 bg-tailCall-dark-600/50 border border-dashed border-[rgba(245,245,240,0.176)] rounded-none">
+          <div className="flex flex-col items-center justify-center text-center px-2 py-2 bg-tailCall-dark-600/50 border border-dashed border-[rgba(245,245,240,0.176)] rounded-none">
             <Heading as="h2" className="text-title-large sm:text-display-tiny text-white mb-3">
               Open source
             </Heading>
-            <p className="text-content-small sm:text-content-medium text-tailCall-light-500 mb-6 font-mono leading-relaxed">
+            <div className="text-content-small sm:text-content-medium text-tailCall-light-500 font-mono leading-relaxed">
               Crafted in Rust to stay fast, reliable, and invisible in your workflow.
-            </p>
+            </div>
             <a
               href={GITHUB_URL}
               target="_blank"
