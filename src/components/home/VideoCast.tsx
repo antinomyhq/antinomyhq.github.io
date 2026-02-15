@@ -28,7 +28,7 @@ const VideoCast: React.FC = () => {
         <p className="text-lg text-center text-gray-600 dark:text-gray-400 mb-8">
           Watch how Forge helps you code smarter and faster
         </p>
-        
+
         {/* Terminal-style wrapper */}
         <div className="relative group">
           {/* Soft pastel glow effect on hover */}
