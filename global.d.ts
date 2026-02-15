@@ -1,6 +1,6 @@
 export {}
 
-declare module 'asciinema-player' {
+declare module "asciinema-player" {
   export function create(
     src: string,
     element: HTMLElement,
@@ -12,7 +12,7 @@ declare module 'asciinema-player' {
       fit?: string
       terminalFontSize?: string
       terminalFontFamily?: string
-    }
+    },
   ): void
 }
 

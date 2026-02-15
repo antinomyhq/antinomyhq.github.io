@@ -165,7 +165,7 @@ declare module "asciinema-player" {
       terminalFontSize?: string
       terminalFontFamily?: string
       controls?: boolean
-    }
+    },
   ): void
 }
 

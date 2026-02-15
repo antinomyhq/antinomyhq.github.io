@@ -1,5 +1,4 @@
 import React, {useEffect, useRef} from "react"
-import "asciinema-player/dist/bundle/asciinema-player.css"
 
 const VideoCast: React.FC = () => {
   const playerRef = useRef<HTMLDivElement>(null)
@@ -16,7 +15,7 @@ const VideoCast: React.FC = () => {
           theme: "nord",
           fit: "width",
           terminalFontFamily: "'JetBrainsMono Nerd Font', 'JetBrains Mono', monospace",
-          terminalFontSize: "medium"
+          terminalFontSize: "medium",
         })
       }
     })

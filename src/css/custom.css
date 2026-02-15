@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap");
-
+@import "asciinema-player/dist/bundle/asciinema-player.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -1453,4 +1453,17 @@ article table th {
     padding: 8px 12px;
     min-width: 100px;
   }
+}
+
+.ap-term {
+  border-radius: 0;
+}
+
+div.ap-wrapper div.ap-player {
+  border-radius: 0;
+  background-color: linear-gradient(135deg, #1e1e2e 0%, #2a2d3a 100%);
+}
+
+div.ap-term {
+  --term-color-background: transparent;
 }
