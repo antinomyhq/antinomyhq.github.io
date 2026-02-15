@@ -3,7 +3,7 @@ import Heading from "@theme/Heading"
 import SectionTitle from "../shared/SectionTitle"
 import Section from "../shared/Section"
 
-const Benefits = (): JSX.Element => {
+const Showcase = (): JSX.Element => {
   const playerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -73,4 +73,4 @@ const Benefits = (): JSX.Element => {
   )
 }
 
-export default Benefits
+export default Showcase

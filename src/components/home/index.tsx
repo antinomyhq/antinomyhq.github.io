@@ -1,7 +1,7 @@
 import React from "react"
 
 import Mission from "./Mission"
-import Benefits from "./Benefits"
+import Showcase from "./Showcase"
 import IntroductionGif from "./IntroductionGif"
 import WhyChooseForge from "./WhyChooseForge"
 import OpenSource from "./OpenSource"
@@ -13,9 +13,9 @@ import {JSX} from "react/jsx-runtime"
 const HomePage = (): JSX.Element => {
   return (
     <div>
-      <Benefits />
+      <Mission />
+      <Showcase />
       <HeroAnimation>
-        <Mission />
         <TrustedBy />
         <Stats />
       </HeroAnimation>
