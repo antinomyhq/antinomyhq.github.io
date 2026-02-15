@@ -10,7 +10,7 @@ import SectionTitle from "../shared/SectionTitle"
 import {Star, Github} from "lucide-react"
 import InstallTerminal from "./InstallTerminal"
 
-const Banner: React.FC = () => {
+const Mission: React.FC = () => {
   return (
     <main>
       <Section className="flex flex-col items-start text-left w-full !pb-0">
@@ -30,4 +30,4 @@ const Banner: React.FC = () => {
   )
 }
 
-export default Banner
+export default Mission

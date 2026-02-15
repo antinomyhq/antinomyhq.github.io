@@ -1,6 +1,6 @@
 import React from "react"
 
-import Banner from "./Banner"
+import Mission from "./Mission"
 import Benefits from "./Benefits"
 import IntroductionGif from "./IntroductionGif"
 import WhyChooseForge from "./WhyChooseForge"
@@ -13,13 +13,13 @@ import {JSX} from "react/jsx-runtime"
 const HomePage = (): JSX.Element => {
   return (
     <div>
+      <Benefits />
       <div className="relative">
         <HeroAnimation />
-        <Banner />
+        <Mission />
+        <TrustedBy />
+        <Stats />
       </div>
-      <TrustedBy />
-      <Benefits />
-      <Stats />
       <FinalCTA />
     </div>
   )
