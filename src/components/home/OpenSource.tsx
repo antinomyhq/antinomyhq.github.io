@@ -210,7 +210,7 @@ const OpenSource: React.FC = () => {
               Open source
             </Heading>
             <p className="text-content-small sm:text-content-medium text-tailCall-light-500 mb-6 font-mono leading-relaxed">
-              Forge is built by a global community of developers.
+              Crafted in Rust to stay fast, reliable, and invisible in your workflow.
             </p>
             <a
               href={GITHUB_URL}
