@@ -196,7 +196,7 @@ const OpenSource: React.FC = () => {
   }
 
   return (
-    <div className="bg-tailCall-dark-700 w-full border-y border-tailCall-dark-400/50 overflow-hidden">
+    <div className="bg-tailCall-dark-400 w-full border-y border-tailCall-dark-400/50 overflow-hidden">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px_1fr] xl:grid-cols-[1fr_320px_1fr] gap-3 xl:gap-4 items-stretch">
           {/* Left avatar grid: Forks stat at top-right area */}

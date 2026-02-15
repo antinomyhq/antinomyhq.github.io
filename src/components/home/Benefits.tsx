@@ -25,7 +25,7 @@ const Benefits = (): JSX.Element => {
   }, [])
 
   return (
-    <div className="bg-[#1C1D1F] grid-background text-tailCall-white">
+    <div className="bg-tailCall-dark-400 grid-background text-tailCall-white">
       <Section>
         <div>
           <SectionTitle title="Why Forge?" />
