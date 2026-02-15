@@ -31,7 +31,7 @@ const Showcase = (): JSX.Element => {
           <SectionTitle title="Why Forge?" />
           <div className="h-fit sm:flex-row sm:items-center sm:space-x-SPACE_10 lg:space-x-SPACE_20 mb-8">
             <Heading as="h3" className="text-title-large sm:text-display-tiny lg:text-display-small">
-              Invisible When You Don’t. Powerful When You Do.
+              Seamless AI on the CLI
             </Heading>
           </div>
         </div>

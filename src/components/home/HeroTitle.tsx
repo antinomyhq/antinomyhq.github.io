@@ -10,24 +10,24 @@ import SectionTitle from "../shared/SectionTitle"
 import {Star, Github} from "lucide-react"
 import InstallTerminal from "./InstallTerminal"
 
-const Mission: React.FC = () => {
+const HeroTitle: React.FC = () => {
   return (
     <main>
       <Section className="flex flex-col items-start text-left w-full !pb-0">
         <div className="h-full 2xl:min-h-0">
-          <SectionTitle title="Mission" />
           <Heading as="h1" className="hero-banner-title mb-4">
-            AI Native <br /> Engineering
+            Invisible When You Don’t.
+            <br />
+            Powerful When You Do.
           </Heading>
           <p className="text-lg sm:text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed">
-            Enabling deterministic agentic operations across the entire engineering stack - <br />
-            From code and architecture to infrastructure and CI/CD.
+            AI-native engineering that lives in your terminal. Fast. Deterministic. Context-aware.
           </p>
-          <InstallTerminal className="mt-8" />
+          <InstallTerminal className="mt-8 mb-8" />
         </div>
       </Section>
     </main>
   )
 }
 
-export default Mission
+export default HeroTitle

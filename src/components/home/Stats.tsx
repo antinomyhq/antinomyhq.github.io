@@ -46,7 +46,6 @@ const Stats: React.FC = () => {
   return (
     <Section className="overflow-hidden">
       <div>
-        <SectionTitle title="Scale" />
         <div className="flex justify-between items-start gap-4 sm:gap-8 md:gap-12 w-full">
           {stats.map((stat) => {
             const isGithub = stat.label === "GitHub Stars"
