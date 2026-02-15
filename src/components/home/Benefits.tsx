@@ -35,8 +35,38 @@ const Benefits = (): JSX.Element => {
             </Heading>
           </div>
         </div>
+
+        {/* Terminal-style wrapper */}
         <div className="ml-0 mt-8">
-          <div ref={playerRef} className="asciinema-demo-player" />
+          <div className="relative group">
+            {/* Soft pastel glow effect on hover */}
+            <div className="absolute -inset-1 rounded-xl opacity-0 group-hover:opacity-100 transition duration-700 blur-lg" />
+
+            <div
+              className="relative border-2 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              style={{border: "1px dashed #f5f5f02d"}}
+            >
+              {/* Terminal Header with dark pastel gradient */}
+              <div
+                className="border-b-2 px-6 py-4 flex items-center"
+                style={{
+                  borderBottom: "1px dashed #f5f5f02d",
+                }}
+              >
+                <div className="flex items-center gap-2">
+                  {/* Pastel control dots */}
+                  <div className="w-2.5 h-2.5 rounded-full" style={{backgroundColor: "#ff9999"}} />
+                  <div className="w-2.5 h-2.5 rounded-full" style={{backgroundColor: "#ffdb99"}} />
+                  <div className="w-2.5 h-2.5 rounded-full" style={{backgroundColor: "#b4f8c8"}} />
+                </div>
+              </div>
+
+              {/* Terminal Body with dark pastel background */}
+              <div className="p-4">
+                <div ref={playerRef} className="asciinema-demo-player" />
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
     </div>
