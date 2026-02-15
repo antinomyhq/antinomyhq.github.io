@@ -67,13 +67,13 @@ const OpenSource: React.FC = () => {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const [repoRes, contributorsRes] = await Promise.all([
+        const [response, contributorsRes] = await Promise.all([
           fetch(`https://api.github.com/repos/${GITHUB_REPO}`),
           fetch(`https://api.github.com/repos/${GITHUB_REPO}/contributors?per_page=30`),
         ])
 
-        if (repoRes.ok && contributorsRes.ok) {
-          const repo = await repoRes.json()
+        if (response.ok && contributorsRes.ok) {
+          const repo = await response.json()
           const contributors = await contributorsRes.json()
           const humanContributors = contributors.filter((c: any) => !c.login.includes("[bot]"))
           setStats({
