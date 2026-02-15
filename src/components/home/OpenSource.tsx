@@ -17,7 +17,7 @@ const formatNumber = (num: number): string => {
 }
 
 const StatCard: React.FC<{label: string; value: string}> = ({label, value}) => (
-  <div className="flex flex-col items-center justify-center bg-tailCall-dark-500/80 border border-dashed border-[rgba(245,245,240,0.176)] rounded-none col-span-3 row-span-2">
+  <div className="flex flex-col items-center justify-center py-2 px-4 bg-tailCall-dark-500/80 border border-dashed border-[rgba(245,245,240,0.176)] rounded-none col-span-3 row-span-2">
     <span className="text-content-tiny text-tailCall-light-600">{label}</span>
     <span className="text-title-small sm:text-title-medium lg:text-title-large text-white font-bold">{value}</span>
   </div>
