@@ -2,12 +2,10 @@
   "mcpServers": {
     "chrome-devtools": {
       "command": "npx",
-      "args": [
-        "chrome-devtools-mcp@latest"
-      ]
+      "args": ["chrome-devtools-mcp@latest"]
     },
     "forge_extension": {
-      "url": "http://localhost:60718/mcp"
+      "url": "http://localhost:60717/mcp"
     }
   }
 }

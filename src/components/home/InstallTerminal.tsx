@@ -27,7 +27,7 @@ const InstallTerminal: React.FC<InstallTerminalProps> = ({
           <div
             className="border-b-2 px-6 py-2.5 flex items-center justify-between"
             style={{
-              background: "linear-gradient(135deg, #2d2d3a 0%, #353545 100%)",
+              background: "linear-gradient(135deg, rgb(30 31 32) 0%, rgb(40 40 43) 100%)",
               borderColor: "#4a4a5a",
             }}
           >
@@ -49,7 +49,7 @@ const InstallTerminal: React.FC<InstallTerminalProps> = ({
           <div
             className="pl-8 pr-24 py-10"
             style={{
-              background: "linear-gradient(135deg, #1e1e2e 0%, #2a2d3a 100%)",
+              background: "linear-gradient(135deg, rgb(41 42 45) 0%, rgb(54 54 56) 100%)",
             }}
           >
             <pre

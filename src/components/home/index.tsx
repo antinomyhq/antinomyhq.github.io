@@ -8,6 +8,7 @@ import FinalCTA from "./FinalCTA"
 import Stats from "./Stats"
 import HeroAnimation from "./HeroAnimation"
 import TrustedBy from "./TrustedBy"
+import {JSX} from "react/jsx-runtime"
 
 const HomePage = (): JSX.Element => {
   return (
