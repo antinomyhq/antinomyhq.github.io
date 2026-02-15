@@ -152,6 +152,22 @@ type BlogTag = {
 
 declare module "docusaurus-lunr-search/src/theme/SearchBar"
 declare module "react-platform-js"
+declare module "asciinema-player" {
+  export function create(
+    src: string,
+    element: HTMLElement,
+    options?: {
+      autoPlay?: boolean
+      loop?: boolean
+      speed?: number
+      theme?: string
+      fit?: string | boolean
+      terminalFontSize?: string
+      terminalFontFamily?: string
+      controls?: boolean
+    }
+  ): void
+}
 
 type RecentBlogPostItem = {
   date: string
