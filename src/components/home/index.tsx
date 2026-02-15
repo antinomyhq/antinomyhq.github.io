@@ -8,7 +8,6 @@ import FinalCTA from "./FinalCTA"
 import Stats from "./Stats"
 import HeroAnimation from "./HeroAnimation"
 import TrustedBy from "./TrustedBy"
-import VideoCast from "./VideoCast"
 import {JSX} from "react/jsx-runtime"
 
 const HomePage = (): JSX.Element => {
@@ -19,7 +18,6 @@ const HomePage = (): JSX.Element => {
         <Banner />
       </div>
       <TrustedBy />
-      <VideoCast />
       <Benefits />
       <Stats />
       <FinalCTA />

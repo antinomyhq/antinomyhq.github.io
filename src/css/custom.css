@@ -1457,7 +1457,7 @@ article table th {
 
 /* ASCIINEMA THEME OVERRIDES */
 .asciinema-player-theme-nord {
-  --term-color-background: #2E2F31;
+  --term-color-background: transparent;
 }
 div.ap-wrapper div.ap-player {
   border-radius: 0;
